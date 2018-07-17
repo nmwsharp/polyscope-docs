@@ -1,0 +1,6 @@
+site_name: Shapescope 
+theme:
+  name: 'material'
+  palette:
+    primary: 'teal'
+    accent: 'deep orange'
