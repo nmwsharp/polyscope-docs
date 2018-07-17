@@ -4,3 +4,22 @@ theme:
   palette:
     primary: 'teal'
     accent: 'deep orange'
+markdown_extensions:
+  - codehilite
+  - admonition
+
+pages:
+  - Home: 'index.md'
+  - Install & Build: 
+    - 'Basics' : 'building/index.md'
+  - Structures: 
+    - 'Structure management' : 'structures/structure_management.md'
+    - Surface Mesh:
+      - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'
+      - 'Scalar Quantities' : 'structures/surface_mesh/scalar_quantities.md'
+      - 'Vector Quantities' : 'structures/surface_mesh/vector_quantities.md'
+    - Point Cloud:
+      - 'Scalar Quantities' : 'structures/point_cloud/scalar_quantities.md'
+  - Integrations: 
+      - 'Geometry Central' : 'integrations/geometry_central/index.md'
+      - 'CGAL' : 'integrations/cgal/index.md'

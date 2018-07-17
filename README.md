@@ -6,8 +6,7 @@ Managed using mkdocs.
 
 To install mkdocs and theme:
 ```
-pip install mkdocs
-pip install mkdocs-material
+pip install mkdocs mkdocs-material pygments
 ```
 
 To preview locally:
