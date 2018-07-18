@@ -8,6 +8,9 @@ markdown_extensions:
   - codehilite
   - admonition
 
+repo_name: 'nmwsharp/polyscope'
+repo_url: 'https://github.com/nmwsharp/polyscope'
+
 pages:
   - Home: 'index.md'
   - Install & Build: 
