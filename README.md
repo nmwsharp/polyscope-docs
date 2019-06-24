@@ -1,5 +1,5 @@
-# shapescope-docs
-Documentation for shapescope
+# polyscope-docs
+Documentation for polyscope
 
 
 Managed using mkdocs.
