@@ -1,4 +1,4 @@
-site_name: Shapescope 
+site_name: Polyscope 
 theme:
   name: 'material'
   palette:
@@ -7,6 +7,23 @@ theme:
 markdown_extensions:
   - codehilite
   - admonition
+  - markdown.extensions.footnotes
+  - markdown.extensions.smarty
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex
+  - pymdownx.emoji
+
+extra:
+  search:
+    tokenizer: '[\s\-\.::]+'
+
+extra_css:
+  - extras.css
+
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
 
 repo_name: 'nmwsharp/polyscope'
 repo_url: 'https://github.com/nmwsharp/polyscope'

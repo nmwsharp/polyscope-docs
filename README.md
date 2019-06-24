@@ -11,7 +11,7 @@ pip install mkdocs mkdocs-material pygments
 
 To preview locally:
 ```
-mkdocs serve
+python3 -m mkdocs serve
 ```
 
 To build and deploy (TODO):
