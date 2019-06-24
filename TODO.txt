@@ -1,0 +1,5 @@
+- Make sure calling show() multiple times works as expected
+
+- shutdown() is probably not something most users want...
+
+- make sure we respect printPrefix
