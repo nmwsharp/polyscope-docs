@@ -5,7 +5,7 @@ We've all been there: a crucial error message gets printed to the terminal, but 
 There are a few levels of messages available:
 
 - **error** A very bad error; immediately shows and blocks the UI for user response.
-- **terminating error** Like error, but terminates the program after being dismissed.
+- **terminating error** Like `error`, but terminates the program after being dismissed.
 - **warning** A medium priorty warning, shown the next time UI main loop executes. Warnings of the same type can be batched together, so these messages can be issued in a dense loop without drowning the program.
 - **info** A low-priority message, which is just printed to `stdout`.
 

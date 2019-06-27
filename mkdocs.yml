@@ -50,3 +50,4 @@ pages:
   - Integrations: 
       - 'Geometry Central' : 'integrations/geometry_central/index.md'
       - 'CGAL' : 'integrations/cgal/index.md'
+      - 'libIGL' : 'integrations/libIGL/index.md'

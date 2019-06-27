@@ -14,7 +14,7 @@ polyscope::init();
 
 ### Options
 
-??? func "std::string options::programName"
+??? func "`#!cpp std::string options::programName`"
 
     ##### program name 
    
@@ -26,7 +26,7 @@ polyscope::init();
     ```
 
 
-??? func "int options::verbosity"
+??? func "`#!cpp int options::verbosity`"
 
     ##### verbosity
    
@@ -41,7 +41,7 @@ polyscope::init();
     polyscope::options::verbosity = 1;
     ```
 
-??? func "std::string options::printPrefix"
+??? func "`#!cpp std::string options::printPrefix`"
     
     ##### print prefix
     
@@ -53,21 +53,21 @@ polyscope::init();
     // prints now look like "[MYAPP] loaded openGL"
     ```
 
-??? func "bool options::errorsThrowExceptions"
+??? func "`#!cpp bool options::errorsThrowExceptions`"
     
     ##### errors throw execptions
    
     If true, errors in polyscope throw execptions. If false, a `polyscope::error` is shown in the UI, but processing attempts to continue. Default: `false`.
 
 
-??? func "int options::maxFPS"
+??? func "`#!cpp int options::maxFPS`"
     
     ##### max fps
 
     The main loop will not run at more than `maxFPS` iterations per second. `-1` disables, running the loop as fast as possible. Default: `60`.
 
 
-??? func "bool options::usePrefsFile"
+??? func "`#!cpp bool options::usePrefsFile`"
     
     ##### use prefs file
 
@@ -76,10 +76,10 @@ polyscope::init();
     This option controls the use of the preferences file. If `false`, if will be neither written nor read. Default: `true`.
 
 
-??? func "bool options::alwaysRedraw"
+??? func "`#!cpp bool options::alwaysRedraw`"
     
     ##### always redraw
 
-    Polyscope is designed to use lazy rendering: the scene is only re-drawn if it has changed since the last time it was drawn. This can dramatically reduce resource consumption, and keeps the immediate GUI responsive even on scenes which are irresponsibly large for the user's graphics card capabilities.
+    Polyscope is designed to use lazy rendering: the scene is only re-drawn if it has changed since the last time it was drawn. This can dramatically reduce resource consumption, and keeps the immediate GUI responsive even on scenes which are irresponsibly large for the machine's graphics capabilities.
 
     If this option is `true`, the scene will be redrawn on every main loop iteration no matter what, circumventing the lazy drawing features. Default: `false`.
