@@ -43,9 +43,9 @@ pages:
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Surface Mesh:
-      - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'
       - 'Scalar Quantities' : 'structures/surface_mesh/scalar_quantities.md'
       - 'Vector Quantities' : 'structures/surface_mesh/vector_quantities.md'
+      - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'
     - Point Cloud:
       - 'Scalar Quantities' : 'structures/point_cloud/scalar_quantities.md'
   - Integrations: 

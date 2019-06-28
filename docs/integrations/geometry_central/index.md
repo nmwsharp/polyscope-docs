@@ -36,3 +36,10 @@ Geometry-central's `Meshdata<>` containers can be passed directly to Polyscope f
 
 
 ```
+
+
+#### Custom ordering
+
+Geometry-central's ordering of mesh halfedges and corners is different from Polyscope's ordering (see [indexing convention](../../../structures/surface_mesh/indexing_convention)). As such, you must tell Polyscope about this ordering for halfedge or corner-valued visualizations to work properly.
+
+You can do this at mesh construction time...

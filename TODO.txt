@@ -4,6 +4,7 @@
 
 - shutdown() is probably not something most users want...
 
+- wtf is arcblob doing
 
 ## Needs to be resurrected
 
