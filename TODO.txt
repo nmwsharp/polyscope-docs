@@ -3,3 +3,27 @@
 - shutdown() is probably not something most users want...
 
 - make sure we respect printPrefix
+
+- clean up surface_mesh.h and point_cloud.h
+
+- restore intrinsic vector fields
+
+- restore surface input functions
+
+- ctrl-c ctrl-v for camera pose
+
+- "sticky" parameters for options?
+
+- resurrect subsets, add edges and faces
+
+- dock menus to side
+
+- pretty background
+
+- SSAO?
+
+- some kind of solution for transparency
+
+- update dependencies
+
+- guard polyscope calls to do nothing if uninitialized
