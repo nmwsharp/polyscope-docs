@@ -27,3 +27,12 @@ polyscope::registerSurfaceMesh(mesh.getFaceVertexList(),
                                posGeom.inputVertexPositions);
 ```
 
+
+### Meshdata containers
+
+Geometry-central's `Meshdata<>` containers can be passed directly to Polyscope for visualization.
+
+```cpp
+
+
+```

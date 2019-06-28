@@ -1,29 +1,55 @@
+## Bugs (or likely bugs)
+
 - Make sure calling show() multiple times works as expected
 
 - shutdown() is probably not something most users want...
 
-- make sure we respect printPrefix
 
-- clean up surface_mesh.h and point_cloud.h
+## Needs to be resurrected
 
 - restore intrinsic vector fields
 
 - restore surface input functions
 
+- resurrect subsets, add edges and faces
+
+
+## Basic stuff to add
+
 - ctrl-c ctrl-v for camera pose
 
-- "sticky" parameters for options?
+- make sure we respect printPrefix
 
-- resurrect subsets, add edges and faces
+
+## Visual improvements
 
 - dock menus to side
 
 - pretty background
 
+- some kind of solution for transparency
+
 - SSAO?
 
-- some kind of solution for transparency
+
+## Short term features
+
+- clean up surface_mesh.h and point_cloud.h
 
 - update dependencies
 
 - guard polyscope calls to do nothing if uninitialized
+
+- corner data
+
+## Long term features
+
+- "sticky" parameters for options?
+
+
+
+
+
+
+
+

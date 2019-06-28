@@ -39,6 +39,7 @@ pages:
     - 'Camera Controls' : 'basics/camera_controls.md'
     - 'Messages' : 'basics/messages.md'
     - 'Screenshots' : 'basics/screenshots.md'
+    - 'Array adaptors' : 'basics/array_adaptors.md'
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Surface Mesh:
