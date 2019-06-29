@@ -6,6 +6,7 @@
 
 - wtf is arcblob doing
 
+
 ## Needs to be resurrected
 
 - restore intrinsic vector fields
@@ -35,6 +36,8 @@
 
 ## Short term features
 
+- rip out halfedge mesh
+
 - clean up surface_mesh.h and point_cloud.h
 
 - update dependencies
@@ -42,6 +45,9 @@
 - guard polyscope calls to do nothing if uninitialized
 
 - corner data
+
+- templated functions to set mesh tangent spaces
+
 
 ## Long term features
 

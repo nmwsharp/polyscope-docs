@@ -30,8 +30,7 @@ repo_url: 'https://github.com/nmwsharp/polyscope'
 
 pages:
   - Home: 'index.md'
-  - Build: 
-    - 'Basics' : 'building/index.md'
+  - Build: 'building/index.md'
   - Basics: 
     - 'Initializing' : 'basics/initializing.md'
     - 'Program Options' : 'basics/program_options.md'
@@ -39,10 +38,12 @@ pages:
     - 'Camera Controls' : 'basics/camera_controls.md'
     - 'Messages' : 'basics/messages.md'
     - 'Screenshots' : 'basics/screenshots.md'
+    - 'User Callback' : 'basics/user_callback.md'
     - 'Array adaptors' : 'basics/array_adaptors.md'
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Surface Mesh:
+      - 'Basics' : 'structures/surface_mesh/basics.md'
       - 'Scalar Quantities' : 'structures/surface_mesh/scalar_quantities.md'
       - 'Vector Quantities' : 'structures/surface_mesh/vector_quantities.md'
       - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'

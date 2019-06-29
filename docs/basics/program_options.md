@@ -83,3 +83,15 @@ polyscope::init();
     Polyscope is designed to use lazy rendering: the scene is only re-drawn if it has changed since the last time it was drawn. This can dramatically reduce resource consumption, and keeps the immediate GUI responsive even on scenes which are irresponsibly large for the machine's graphics capabilities.
 
     If this option is `true`, the scene will be redrawn on every main loop iteration no matter what, circumventing the lazy drawing features. Default: `false`.
+
+??? func "`#!cpp bool options::openImGuiWindowForUserCallback`"
+    
+    ##### open imgui window for user callback
+
+    If true, an ImGui window will be created and docked to the side of the UI when the [user callback function](../user_callback) is invoked. This means you can immediately start making ui calls like `ImGui::Button("do stuff")`. 
+    
+    If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).
+
+    Default: `true`.
+
+    

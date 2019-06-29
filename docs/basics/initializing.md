@@ -33,6 +33,7 @@ polyscope::show();
 
     Performs one-time work like setting up openGL and creating a window.
 
+
 ??? func "show()"
     
     ##### show()
