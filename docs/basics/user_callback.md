@@ -14,7 +14,7 @@ See [ImGui](https://github.com/ocornut/imgui) for documentation of UI commands.
 
 ### Example
 
-The code below uses the callback to create the UI shown in this screenshot.
+The code below creates the following UI using a callback.
 
 ![callback ui demo](../../media/callback_ui_demo.png)
 
