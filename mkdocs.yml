@@ -28,6 +28,9 @@ extra_javascript:
 repo_name: 'nmwsharp/polyscope'
 repo_url: 'https://github.com/nmwsharp/polyscope'
 
+docs_dir: 'source'
+site_dir: 'docs'
+
 pages:
   - Home: 'index.md'
   - Build: 'building/index.md'
