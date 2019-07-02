@@ -629,13 +629,14 @@
 <p>Polyscope uses a paradigm of <em>structures</em> and <em>quantities</em>. A <strong>structure</strong> is a geometric object in the scene, such as a surface mesh or point cloud. A <strong>quantity</strong> is data associated with a structure, such as a scalar function or a vector field.</p>
 <p>When any of these structures and quantities are registered, Polyscope displays them in an interactive 3D scene, handling boilerplate concerns such as toggling the display of various data, colormapping data and editing maps, providing &ldquo;picking&rdquo; support to click in the scene and display numerical quantities, and generating histograms of scalar values.</p>
 <p>A simple workflow for visualizing data in Polyscope looks like:
-<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;polyscope.h&quot;</span><span class="cp"></span>
+<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;polyscope/polyscope.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span><span class="cp"></span>
 
 <span class="c1">// Initialize polyscope</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
 <span class="c1">// Register a surface mesh structure</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">meshGeometry</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">.</span><span class="n">vertices</span><span class="p">,</span> <span class="n">mesh</span><span class="p">.</span><span class="n">faces</span><span class="p">);</span>
 
 <span class="c1">// Add a scalar and a vector function to the mesh</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addQuantity</span><span class="p">(</span><span class="s">&quot;my_scalar&quot;</span><span class="p">,</span> <span class="n">scalarQuantity</span><span class="p">);</span>

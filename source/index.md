@@ -8,13 +8,14 @@ When any of these structures and quantities are registered, Polyscope displays t
 
 A simple workflow for visualizing data in Polyscope looks like:
 ``` C++
-#include "polyscope.h"
+#include "polyscope/polyscope.h"
+#include "polyscope/surface_mesh.h"
 
 // Initialize polyscope
 polyscope::init();
 
 // Register a surface mesh structure
-polyscope::registerSurfaceMesh("my mesh", meshGeometry);
+polyscope::registerSurfaceMesh("my mesh", mesh.vertices, mesh.faces);
 
 // Add a scalar and a vector function to the mesh
 polyscope::getSurfaceMesh("my mesh")->addQuantity("my_scalar", scalarQuantity);
@@ -22,7 +23,6 @@ polyscope::getSurfaceMesh("my mesh")->addQuantity("my_vector", vectorQuantity);
 
 // Show the gui
 polyscope::show();
-
 ```
 
 The last line creates a UI window allowing you to inspect and visualize the data! For details on the API, see the documentation.
