@@ -28,5 +28,6 @@ polyscope::show();
 The last line creates a UI window allowing you to inspect and visualize the data! For details on the API, see the documentation.
 
 ---
+Author: [Nicholas Sharp](nmwsharp.com)
 
 Development of this software was funded in part by NSF Award 1717320, an NSF graduate research fellowship, and gifts from Adobe Research and Autodesk, Inc.
