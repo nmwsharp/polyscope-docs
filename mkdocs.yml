@@ -52,6 +52,7 @@ pages:
       - 'Basics' : 'structures/surface_mesh/basics.md'
       - 'Scalar Quantities' : 'structures/surface_mesh/scalar_quantities.md'
       - 'Vector Quantities' : 'structures/surface_mesh/vector_quantities.md'
+      - 'Misc Quantities' : 'structures/surface_mesh/misc_quantities.md'
       - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'
     - Point Cloud:
       - 'Scalar Quantities' : 'structures/point_cloud/scalar_quantities.md'
