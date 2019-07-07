@@ -20,7 +20,7 @@ theme:
     primary: 'teal'
     accent: 'deep orange'
   font:
-    text: 'Lato'
+    text: 'PT serif'
     code: 'Inconsolata'
 
 extra_css:
@@ -33,7 +33,7 @@ repo_name: 'nmwsharp/polyscope'
 repo_url: 'https://github.com/nmwsharp/polyscope'
 edit_uri: ''
 
-google_analytics: ['UA-58346315-2', 'polyscope.run']
+google_analytics: ['UA-58346315-2', 'auto']
 
 docs_dir: 'source'
 site_dir: 'docs'
