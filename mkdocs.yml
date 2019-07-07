@@ -20,7 +20,7 @@ theme:
     primary: 'teal'
     accent: 'deep orange'
   font:
-    text: 'PT serif'
+    text: 'PT Serif'
     code: 'Inconsolata'
   logo: 
     icon: 'home'
