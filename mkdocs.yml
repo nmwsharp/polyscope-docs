@@ -1,9 +1,4 @@
 site_name: Polyscope 
-theme:
-  name: 'material'
-  palette:
-    primary: 'teal'
-    accent: 'deep orange'
 markdown_extensions:
   - codehilite
   - admonition
@@ -18,6 +13,15 @@ markdown_extensions:
 extra:
   search:
     tokenizer: '[\s\-\.::]+'
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'teal'
+    accent: 'deep orange'
+  font:
+    text: 'Lato'
+    code: 'Inconsolata'
 
 extra_css:
   - extras.css
