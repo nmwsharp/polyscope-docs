@@ -22,10 +22,10 @@
 
 - make sure we respect printPrefix
 
+- make sure all quantities return pointer to themself, suggest this paradigm
+
 
 ## Visual improvements
-
-- dock menus to side
 
 - pretty background
 
@@ -36,17 +36,15 @@
 
 ## Short term features
 
-- rip out halfedge mesh
-
 - clean up surface_mesh.h and point_cloud.h
 
 - update dependencies
 
 - guard polyscope calls to do nothing if uninitialized
 
-- corner data
-
 - templated functions to set mesh tangent spaces
+
+- use enums for colormaps instead whatever integers are doing now
 
 
 ## Long term features
