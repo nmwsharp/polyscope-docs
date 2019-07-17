@@ -51,7 +51,7 @@ pages:
     - 'Messages' : 'basics/messages.md'
     - 'Screenshots' : 'basics/screenshots.md'
     - 'User Callback' : 'basics/user_callback.md'
-    - 'Array adaptors' : 'basics/array_adaptors.md'
+  - Data Adaptors : 'data_adaptors.md'
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Surface Mesh:
