@@ -11,7 +11,7 @@ Screenshots can be taken manually by pressing the `[screenshot]` button in the o
     
     ##### numbered screenshot
 
-    Saves a screenshot to the current directory, with file names `screenshot_000000.png`, numbered automatically in increasing order. The numbering is reset to `0` for each run of the program; existing files will be silently overwritten.
+    Saves a screenshot to the current directory, with file named `screenshot_000000.tga`, numbered automatically in increasing order. The numbering is reset to `0` for each run of the program; existing files will be silently overwritten.
 
     If `transparentBG` is `true`, the background will be rendered as transparent.
 
