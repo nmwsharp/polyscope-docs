@@ -112,6 +112,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#add-scalars-to-elements" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -290,6 +294,18 @@
   <li class="md-nav__item">
     <a href="../../../about/license/" title="License" class="md-nav__link">
       License
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/bindings/" title="Bindings" class="md-nav__link">
+      Bindings
     </a>
   </li>
 
@@ -605,9 +621,36 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Scalar Quantities
+      </label>
+    
     <a href="./" title="Scalar Quantities" class="md-nav__link md-nav__link--active">
       Scalar Quantities
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-scalars-to-elements" title="Add scalars to elements" class="md-nav__link">
+    Add scalars to elements
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -761,6 +804,35 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-scalars-to-elements" title="Add scalars to elements" class="md-nav__link">
+    Add scalars to elements
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -769,7 +841,57 @@
                 
                   <h1>Scalar Quantities</h1>
                 
-                
+                <p>Visualize scalar (real or integer)-valued data at the elements of a surface mesh.</p>
+<p><strong>Example</strong>: visualizing cotangent weights at edges with geometry-central
+<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;geometrycentral/surface/vertex_position_geometry.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;polyscope/polyscope.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span><span class="cp"></span>
+
+<span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
+
+<span class="c1">// Load mesh</span>
+<span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">HalfedgeMesh</span><span class="o">&gt;</span> <span class="n">mesh</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">VertexPositionGeometry</span><span class="o">&gt;</span> <span class="n">geom</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">tie</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">loadMesh</span><span class="p">(</span><span class="n">args</span><span class="o">::</span><span class="n">get</span><span class="p">(</span><span class="n">inputFilename</span><span class="p">));</span>
+<span class="n">geom</span><span class="o">-&gt;</span><span class="n">requireVertexPositions</span><span class="p">();</span>
+
+
+<span class="c1">// Register the geometry-central mesh</span>
+<span class="k">auto</span> <span class="n">psMesh</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">,</span> 
+                                             <span class="n">geom</span><span class="o">-&gt;</span><span class="n">vertexPositions</span><span class="p">,</span> 
+                                             <span class="n">mesh</span><span class="o">-&gt;</span><span class="n">getFaceVertexList</span><span class="p">());</span>
+<span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">setAllPermutations</span><span class="p">(</span><span class="n">polyscopePermutations</span><span class="p">(</span><span class="o">*</span><span class="n">mesh</span><span class="p">));</span> <span class="c1">// set permutations, </span>
+                                                          <span class="c1">// so edge data is meaningful</span>
+
+<span class="c1">// Build cotan weights for the mesh</span>
+<span class="n">geom</span><span class="o">-&gt;</span><span class="n">requireEdgeCotanWeights</span><span class="p">();</span>
+
+<span class="c1">// Visualize cotan weights</span>
+<span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">addEdgeScalarQuantity</span><span class="p">(</span><span class="s">&quot;edge cotan weights&quot;</span><span class="p">,</span> <span class="n">geom</span><span class="o">-&gt;</span><span class="n">edgeCotanWeights</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
+</pre></div></p>
+<h3 id="add-scalars-to-elements">Add scalars to elements</h3>
+<details class="func"><summary><code class="codehilite"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">values</span><span class="p">,</span> <span class="n">DataType</span> <span class="n">type</span> <span class="o">=</span> <span class="n">DataType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary><p>Add a scalar quantity defined at the vertices of the mesh.</p>
+<ul>
+<li><code class="codehilite"><span class="k">values</span></code> is the array of scalars at vertices. The type should be <a href="/data_adaptors">adaptable</a> to a <code class="codehilite"><span class="nb">float</span></code> scalar array. The length should be the number of vertices in the mesh.</li>
+</ul>
+</details>
+<details class="func"><summary><code class="codehilite"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">values</span><span class="p">,</span> <span class="n">DataType</span> <span class="n">type</span> <span class="o">=</span> <span class="n">DataType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary><p>Add a scalar quantity defined at the faces of the mesh.</p>
+<ul>
+<li><code class="codehilite"><span class="k">values</span></code> is the array of scalars at faces. The type should be <a href="/data_adaptors">adaptable</a> to a <code class="codehilite"><span class="nb">float</span></code> scalar array. The length should be the number of faces in the mesh.</li>
+</ul>
+</details>
+<details class="func"><summary><code class="codehilite"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addEdgeScalarQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">values</span><span class="p">,</span> <span class="n">DataType</span> <span class="n">type</span> <span class="o">=</span> <span class="n">DataType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary><p>Add a scalar quantity defined at the edges of the mesh.</p>
+<ul>
+<li><code class="codehilite"><span class="k">values</span></code> is the array of scalars at edges. The type should be <a href="/data_adaptors">adaptable</a> to a <code class="codehilite"><span class="nb">float</span></code> scalar array. The length should be the number of edges in the mesh.</li>
+</ul>
+</details>
+<details class="func"><summary><code class="codehilite"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addHalfedgeScalarQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">values</span><span class="p">,</span> <span class="n">DataType</span> <span class="n">type</span> <span class="o">=</span> <span class="n">DataType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary><p>Add a scalar quantity defined at the halfedges of the mesh.</p>
+<ul>
+<li><code class="codehilite"><span class="k">values</span></code> is the array of scalars at halfedges. The type should be <a href="/data_adaptors">adaptable</a> to a <code class="codehilite"><span class="nb">float</span></code> scalar array. The length should be the number of halfedges in the mesh.</li>
+</ul>
+</details>
                 
                   
                 

@@ -304,6 +304,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../about/bindings/" title="Bindings" class="md-nav__link">
+      Bindings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../about/contributing/" title="Contributing" class="md-nav__link">
       Contributing
     </a>
@@ -839,7 +851,20 @@
                 
                   <h1>Building</h1>
                 
-                <h3 id="dependencies">Dependencies</h3>
+                <p>Polyscope uses CMake as its build system. </p>
+<p>If you&rsquo;re using CMAKE, integrating Polyscope in to your codebase should be as simple as running
+<div class="codehilite"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="c1">--recurse-submodules https://github.com/nmwsharp/polyscope.git</span>
+</pre></div>
+and adding
+<div class="codehilite"><pre><span></span><span class="n">add_subdirectory</span><span class="p">(</span><span class="ss">&quot;polyscope&quot;</span><span class="p">)</span>
+</pre></div>
+to your <code class="codehilite"><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span></code>.</p>
+<p>See these repositories for some simple examples of using Polyscope to an existing codebase or library:</p>
+<ul>
+<li>with <a href="http://geometry-central.net">geometry-central</a> &ndash; <a href="https://github.com/nmwsharp/gc-polyscope-project-template">example project</a></li>
+<li>with <a href="https://libigl.github.io/">libIGL</a> &ndash; <a href="https://github.com/nmwsharp/libigl-polyscope-project-template">example project</a></li>
+</ul>
+<h3 id="dependencies">Dependencies</h3>
 <p>Polyscope packages all of its source code dependencies with the repository.</p>
 <p>On Ubuntu and friends, you may want to <code class="codehilite"><span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">install</span> <span class="n">xorg</span><span class="o">-</span><span class="n">dev</span> <span class="n">libglu1</span><span class="o">-</span><span class="n">mesa</span><span class="o">-</span><span class="n">dev</span> <span class="n">freeglut3</span><span class="o">-</span><span class="n">dev</span> <span class="n">mesa</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">dev</span></code> to pull graphics and windowing related headers to build.</p>
 <h3 id="building-in-windows">Building in Windows</h3>

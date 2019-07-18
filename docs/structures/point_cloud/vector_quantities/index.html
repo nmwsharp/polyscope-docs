@@ -300,6 +300,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../about/bindings/" title="Bindings" class="md-nav__link">
+      Bindings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../about/contributing/" title="Contributing" class="md-nav__link">
       Contributing
     </a>
@@ -784,7 +796,7 @@
 <details class="func"><summary><code class="codehilite"><span class="n">PointCloud</span><span class="o">::</span><span class="n">addVectorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">VectorType</span> <span class="n">vectorType</span> <span class="o">=</span> <span class="n">VectorType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary><p>Add a vector quantity to the point cloud.</p>
 <ul>
 <li><code class="codehilite"><span class="n">vectors</span></code> is the array of vectors at points. The type should be <a href="/data_adaptors">adaptable</a> to a 3-vector array of <code class="codehilite"><span class="nb">float</span></code>s. The length should be the number of points in the point cloud.</li>
-<li><code class="codehilite"><span class="n">vectorType</span></code> indicates how to interpret vector data. The default setting is as a freely-scaled value, but passing <code class="codehilite"><span class="n">VectorType</span><span class="p">::</span><span class="n">AMBIENT</span></code> ensures they have the proper world-space length.</li>
+<li><code class="codehilite"><span class="n">vectorType</span></code> indicates how to interpret vector data. The default setting is as a freely-scaled value, which will be automatically scaled to be visible. Passing <code class="codehilite"><span class="n">VectorType</span><span class="p">::</span><span class="n">AMBIENT</span></code> ensures vectors have the proper world-space length.</li>
 </ul>
 </details>
                 
