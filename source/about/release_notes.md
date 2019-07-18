@@ -8,4 +8,4 @@
 
 ## Release notes
 
-- **July 18, 2019** `TODO hash`: Completely-rewritten Polyscope version 2.0 released. This new version is decoupled from any particular geometry codebase, and is designed to be easy to integrate with existing projects.
+- **July 18, 2019** `8514792`: Completely-rewritten Polyscope version 2.0 released. This new version is decoupled from any particular geometry codebase, and is designed to be easy to integrate with existing projects.
