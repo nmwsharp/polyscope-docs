@@ -1,3 +1,19 @@
+Polyscope uses CMake as its build system. 
+
+If you're using CMAKE, integrating Polyscope in to your codebase should be as simple as running
+```
+git clone --recurse-submodules https://github.com/nmwsharp/polyscope.git
+```
+and adding
+```
+add_subdirectory("polyscope")
+```
+to your `CMakeLists.txt`.
+
+See these repositories for some simple examples of using Polyscope to an existing codebase or library:
+
+- with [geometry-central](http://geometry-central.net) -- [example project](https://github.com/nmwsharp/gc-polyscope-project-template)
+- with [libIGL](https://libigl.github.io/) -- [example project](https://github.com/nmwsharp/libigl-polyscope-project-template)
 
 
 ### Dependencies

@@ -45,6 +45,7 @@ nav:
   - About: 
     - 'about/release_notes.md'
     - 'about/license.md'
+    - 'about/bindings.md'
     - 'about/contributing.md'
     - 'about/contributors.md'
   - Building: 'building/index.md'
