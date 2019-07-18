@@ -1,0 +1,34 @@
+# Point Clouds
+
+Point clouds are one of the core structures in Polyscope. In addition to simply displaying the points, Polyscope can show any number of scalar, vector, or color quantities associated with the points.
+
+As always, try clicking on a point to see the data associated with that point.
+
+![point_cloud_demo](../../media/point_cloud_demo.gif)
+
+### Registering a point cloud
+
+Example: a point cloud of random points
+```cpp
+#include "polyscope/point_cloud.h"
+
+std::vector<glm::vec3> points;
+
+// generate points
+for (size_t i = 0; i < 3000; i++) {
+  points.push_back(
+      glm::vec3{polyscope::randomUnit() - .5, 
+                polyscope::randomUnit() - .5, 
+                polyscope::randomUnit() - .5});
+}
+
+// visualize!
+polyscope::registerPointCloud("really great points", points);
+```
+
+??? func "`#!cpp polyscope::registerPointCloud(std::string name, const T& pointPositions)`"
+
+    Add a new point cloud structure to Polyscope.
+
+    - `pointPositions` is the array of 3D point locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of points.
+

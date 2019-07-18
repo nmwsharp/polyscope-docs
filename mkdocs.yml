@@ -59,15 +59,21 @@ nav:
   - Data Adaptors : 'data_adaptors.md'
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'
+    - Point Cloud:
+      - 'Basics' : 'structures/point_cloud/basics.md'
+      - 'Scalar Quantities' : 'structures/point_cloud/scalar_quantities.md'
+      - 'Color Quantities' : 'structures/point_cloud/color_quantities.md'
+      - 'Vector Quantities' : 'structures/point_cloud/vector_quantities.md'
     - Surface Mesh:
       - 'Basics' : 'structures/surface_mesh/basics.md'
       - 'Scalar Quantities' : 'structures/surface_mesh/scalar_quantities.md'
+      - 'Color Quantities' : 'structures/surface_mesh/color_quantities.md'
+      - 'Distance Quantities' : 'structures/surface_mesh/distance_quantities.md'
       - 'Vector Quantities' : 'structures/surface_mesh/vector_quantities.md'
       - 'Parameterization Quantities' : 'structures/surface_mesh/parameterization_quantities.md'
+      - 'Count Quantities' : 'structures/surface_mesh/count_quantities.md'
       - 'Misc Quantities' : 'structures/surface_mesh/misc_quantities.md'
       - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'
-    - Point Cloud:
-      - 'Scalar Quantities' : 'structures/point_cloud/scalar_quantities.md'
   - Integrations: 
       - 'Geometry Central' : 'integrations/geometry_central/index.md'
       #- 'CGAL' : 'integrations/cgal/index.md'
