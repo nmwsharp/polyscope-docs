@@ -40,9 +40,14 @@ google_analytics: ['UA-58346315-2', 'auto']
 docs_dir: 'source'
 site_dir: 'docs'
 
-pages:
+nav:
   - Home: 'index.md'
-  - Build: 'building/index.md'
+  - About: 
+    - 'about/release_notes.md'
+    - 'about/license.md'
+    - 'about/contributing.md'
+    - 'about/contributors.md'
+  - Building: 'building/index.md'
   - Basics: 
     - 'Initializing' : 'basics/initializing.md'
     - 'Program Options' : 'basics/program_options.md'
@@ -65,5 +70,5 @@ pages:
       - 'Scalar Quantities' : 'structures/point_cloud/scalar_quantities.md'
   - Integrations: 
       - 'Geometry Central' : 'integrations/geometry_central/index.md'
-      - 'CGAL' : 'integrations/cgal/index.md'
+      #- 'CGAL' : 'integrations/cgal/index.md'
       - 'libIGL' : 'integrations/libIGL/index.md'

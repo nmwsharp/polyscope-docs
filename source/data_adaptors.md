@@ -15,7 +15,7 @@ Examples of 3D vector types that Polyscope can read from out of the box include 
 
 #### Hierarchy
 
-Polyscope will attempt to access an input 2D vector in the following ways, in order of decreasing precedence:
+Polyscope will attempt to access an **input 2D vector** in the following ways, in order of decreasing precedence:
 
   - any user-defined function (see below)
   - bracketed indices (like `vec[0]` and `vec[1]`)
@@ -170,8 +170,6 @@ Polyscope will attempt to access an input array of vectors in the following ways
 Notice that two these options make use of the [fixed-sized vector adaptors](#fixed-size-vector-types). Once Polyscope can read the elements of `SOME_VEC3_TYPE`, it can also read from `std::vector<SOME_VEC3_TYPE>`, etc.
 
 The sizes of the inner vector type are generally not checked by Polyscope, so be sure you're passing in something with the right dimensions! If a function expects an array of 3D vectors, don't give it an array of 2D vectors.
-
-#### Extending
 
 ??? note "extending array-of-vectors access"
 

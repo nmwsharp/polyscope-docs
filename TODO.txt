@@ -24,6 +24,10 @@
 
 - make sure all quantities return pointer to themself, suggest this paradigm
 
+- for intrinsic surface vector fields:
+  - add option to pass in 3D field and project it to tangent spaces
+  - add option for interpreting nSym as power or representative
+
 
 ## Visual improvements
 

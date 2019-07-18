@@ -31,7 +31,7 @@ Each structure offers a `register___(name, ...)` function (like `registerPointCl
 
 By default, these functions will error-out if a structure with that name is already in use. However, they take an optional boolean argument `allowReplacement` argument, which can be set to `true` to replace an existing structure of the same name.
 
-The general form is for registering structures is below; it may be useful if you are implementing your own structures.
+The general form for registering structures is below; it may be useful if you are implementing your own structures.
 
 ??? func "`#!cpp bool registerStructure(Structure* structure, bool replaceIfPresent = true)`"
 
@@ -58,7 +58,7 @@ psMesh->addScalarQuantity("some values", values);
 // by name
 polyscope::getSurfaceMesh("my mesh")->addScalarQuantity("some values", values);
 ```
-The former is concise and programmatic, while the latter avoids the need to keep track of a pointer.
+The former is concise and programmatic, while the latter avoids the need to keep track of a varible.
 
 As before, each structure offers a `get___(name)` method, like `getSurfaceMesh(name)` which can be used to get pointer to a structure of that type by name. The general form below may be useful if you are implementing your own structures.
 
@@ -75,7 +75,7 @@ As before, each structure offers a `get___(name)` method, like `getSurfaceMesh(n
 
 ## Removing structures
 
-If no longer needed, structures can be removed by name or by pointer. The removing a structure frees the underlying objects, invalidating all references to the structure and its quantities.
+If no longer needed, structures can be removed by name or by pointer. Removing a structure frees memory for the underlying objects, invalidating all references to the structure and its quantities.
 
 
 ??? func "`#!cpp void removeStructure(Structure* structure, bool errorIfAbsent = true)`"

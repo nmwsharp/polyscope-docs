@@ -1,4 +1,9 @@
-This section demonstrates using Polyscope with [geometry-central](https://github.com/nmwsharp/geometry-central)! Note that a few useful adaptor functions are included in `geometrycentral/surface/meshio.h`.
+This section demonstrates using Polyscope with [geometry-central](https://geometry-central.net)! Note that a few useful adaptor functions are included in `geometrycentral/surface/meshio.h`.
+
+See [this repository](https://github.com/nmwsharp/gc-polyscope-project-template) for a sample project configuration and CMAKE build system.
+
+!!! note
+    This section is written against a soon-to-be released overhaul of geometry-central, which currently lives in the `v1` branch of that repository.
 
 ### Registering a surface mesh
 
