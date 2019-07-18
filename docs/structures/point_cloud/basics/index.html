@@ -112,6 +112,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#point-clouds" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -459,10 +463,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       Structures
@@ -490,16 +496,128 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" checked>
     
     <label class="md-nav__link" for="nav-6-2">
-      Surface Mesh
+      Point Cloud
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-6-2">
+        Point Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Basics
+      </label>
+    
+    <a href="./" title="Basics" class="md-nav__link md-nav__link--active">
+      Basics
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#registering-a-point-cloud" title="Registering a point cloud" class="md-nav__link">
+    Registering a point cloud
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../scalar_quantities/" title="Scalar Quantities" class="md-nav__link">
+      Scalar Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../color_quantities/" title="Color Quantities" class="md-nav__link">
+      Color Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vector_quantities/" title="Vector Quantities" class="md-nav__link">
+      Vector Quantities
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Surface Mesh
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
         Surface Mesh
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -535,6 +653,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../../surface_mesh/color_quantities/" title="Color Quantities" class="md-nav__link">
+      Color Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../surface_mesh/distance_quantities/" title="Distance Quantities" class="md-nav__link">
+      Distance Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../surface_mesh/vector_quantities/" title="Vector Quantities" class="md-nav__link">
       Vector Quantities
     </a>
@@ -559,6 +701,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../surface_mesh/count_quantities/" title="Count Quantities" class="md-nav__link">
+      Count Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../surface_mesh/misc_quantities/" title="Misc Quantities" class="md-nav__link">
       Misc Quantities
     </a>
@@ -573,42 +727,6 @@
   <li class="md-nav__item">
     <a href="../../surface_mesh/indexing_convention/" title="Indexing Convention" class="md-nav__link">
       Indexing Convention
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
-    
-    <label class="md-nav__link" for="nav-6-3">
-      Point Cloud
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-3">
-        Point Cloud
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../scalar_quantities/" title="Scalar Quantities" class="md-nav__link">
-      Scalar Quantities
     </a>
   </li>
 
@@ -678,15 +796,69 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#registering-a-point-cloud" title="Registering a point cloud" class="md-nav__link">
+    Registering a point cloud
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Basics</h1>
-                
-                
+                <h1 id="point-clouds">Point Clouds</h1>
+<p>Point clouds are one of the core structures in Polyscope. In addition to simply displaying the points, Polyscope can show any number of scalar, vector, or color quantities associated with the points.</p>
+<p>As always, try clicking on a point to see the data associated with that point.</p>
+<p><img alt="point_cloud_demo" src="../../../media/point_cloud_demo.gif" /></p>
+<h3 id="registering-a-point-cloud">Registering a point cloud</h3>
+<p>Example: a point cloud of random points
+<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;polyscope/point_cloud.h&quot;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span> <span class="n">points</span><span class="p">;</span>
+
+<span class="c1">// generate points</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">points</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span>
+      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span> <span class="o">-</span> <span class="mf">.5</span><span class="p">,</span> 
+                <span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span> <span class="o">-</span> <span class="mf">.5</span><span class="p">,</span> 
+                <span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span> <span class="o">-</span> <span class="mf">.5</span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// visualize!</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">&quot;really great points&quot;</span><span class="p">,</span> <span class="n">points</span><span class="p">);</span>
+</pre></div></p>
+<details class="func"><summary><code class="codehilite"><span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">pointPositions</span><span class="p">)</span></code></summary><p>Add a new point cloud structure to Polyscope.</p>
+<ul>
+<li><code class="codehilite"><span class="n">pointPositions</span></code> is the array of 3D point locations. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code class="codehilite"><span class="nb">float</span></code>-valued 3-vectors. The length will be the number of points.</li>
+</ul>
+</details>
                 
                   
                 
@@ -703,6 +875,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../structure_management/" title="Structure Management" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Structure Management
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../scalar_quantities/" title="Scalar Quantities" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Scalar Quantities
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

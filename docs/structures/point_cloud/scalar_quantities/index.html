@@ -492,16 +492,97 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" checked>
     
     <label class="md-nav__link" for="nav-6-2">
-      Surface Mesh
+      Point Cloud
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-6-2">
+        Point Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../basics/" title="Basics" class="md-nav__link">
+      Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="Scalar Quantities" class="md-nav__link md-nav__link--active">
+      Scalar Quantities
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../color_quantities/" title="Color Quantities" class="md-nav__link">
+      Color Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vector_quantities/" title="Vector Quantities" class="md-nav__link">
+      Vector Quantities
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Surface Mesh
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
         Surface Mesh
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -537,6 +618,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../../surface_mesh/color_quantities/" title="Color Quantities" class="md-nav__link">
+      Color Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../surface_mesh/distance_quantities/" title="Distance Quantities" class="md-nav__link">
+      Distance Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../surface_mesh/vector_quantities/" title="Vector Quantities" class="md-nav__link">
       Vector Quantities
     </a>
@@ -551,6 +656,18 @@
   <li class="md-nav__item">
     <a href="../../surface_mesh/parameterization_quantities/" title="Parameterization Quantities" class="md-nav__link">
       Parameterization Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../surface_mesh/count_quantities/" title="Count Quantities" class="md-nav__link">
+      Count Quantities
     </a>
   </li>
 
@@ -576,51 +693,6 @@
     <a href="../../surface_mesh/indexing_convention/" title="Indexing Convention" class="md-nav__link">
       Indexing Convention
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3" checked>
-    
-    <label class="md-nav__link" for="nav-6-3">
-      Point Cloud
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-3">
-        Point Cloud
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="Scalar Quantities" class="md-nav__link md-nav__link--active">
-      Scalar Quantities
-    </a>
-    
   </li>
 
         
@@ -697,10 +769,23 @@
                 
                   <h1>Scalar Quantities</h1>
                 
-                <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This has not been written yet.</p>
-</div>
+                <p>Visualize scalar (real or integer)-valued data at the points of a point cloud.</p>
+<p>Example:
+<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;polyscope/point_cloud.h&quot;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">xC</span><span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">xC</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// visualize</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getPointCloud</span><span class="p">(</span><span class="n">pointCloudName</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="s">&quot;xC&quot;</span><span class="p">,</span> <span class="n">xC</span><span class="p">);</span>
+</pre></div></p>
+<details class="func"><summary><code class="codehilite"><span class="n">PointCloud</span><span class="o">::</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">values</span><span class="p">,</span> <span class="n">DataType</span> <span class="n">type</span> <span class="o">=</span> <span class="n">DataType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary><p>Add a scalar quantity to the point cloud.</p>
+<ul>
+<li><code class="codehilite"><span class="k">values</span></code> is the array of scalars at points. The type should be <a href="/data_adaptors">adaptable</a> to a <code class="codehilite"><span class="nb">float</span></code> scalar array. The length should be the number of points in the point cloud.</li>
+</ul>
+</details>
                 
                   
                 
@@ -721,7 +806,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../surface_mesh/indexing_convention/" title="Indexing Convention" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../basics/" title="Basics" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -730,19 +815,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Indexing Convention
+                Basics
               </span>
             </div>
           </a>
         
         
-          <a href="../../../integrations/geometry_central/" title="Geometry Central" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../color_quantities/" title="Color Quantities" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Geometry Central
+                Color Quantities
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
