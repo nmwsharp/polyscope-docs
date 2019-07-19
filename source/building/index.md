@@ -7,6 +7,10 @@ git clone --recurse-submodules https://github.com/nmwsharp/polyscope.git
 and adding
 ```
 add_subdirectory("polyscope")
+
+...
+
+target_link_libraries(YOUR_TARGET polyscope)
 ```
 to your `CMakeLists.txt`.
 
