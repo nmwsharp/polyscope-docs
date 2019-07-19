@@ -8,4 +8,5 @@
 
 ## Release notes
 
+- **July 20, 2019** `afe7c5e`: Add helpers for 2D visualization. Move templates on structure constructors for consistency.
 - **July 18, 2019** `8514792`: Completely-rewritten Polyscope version 2.0 released. This new version is decoupled from any particular geometry codebase, and is designed to be easy to integrate with existing projects.
