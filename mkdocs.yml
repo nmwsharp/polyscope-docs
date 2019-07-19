@@ -1,6 +1,7 @@
 site_name: Polyscope 
 markdown_extensions:
   - codehilite
+  - attr_list
   - admonition
   - markdown.extensions.footnotes
   - markdown.extensions.smarty
@@ -9,6 +10,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.arithmatex
   - pymdownx.emoji
+    
 
 extra:
   search:
@@ -54,10 +56,12 @@ nav:
     - 'Program Options' : 'basics/program_options.md'
     - 'Scene Options' : 'basics/scene_options.md'
     - 'Camera Controls' : 'basics/camera_controls.md'
-    - 'Messages' : 'basics/messages.md'
-    - 'Screenshots' : 'basics/screenshots.md'
-    - 'User Callback' : 'basics/user_callback.md'
   - Data Adaptors : 'data_adaptors.md'
+  - Features: 
+    - 'Messages' : 'features/messages.md'
+    - 'Screenshots' : 'features/screenshots.md'
+    - 'User Callback' : 'features/user_callback.md'
+    - '2D Data' : 'features/2D_data.md'
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Point Cloud:

@@ -20,3 +20,4 @@ polyscope::getPointCloud(pointCloudName)->addColorQuantity("random color", randC
     - `vectors` is the array of vectors at points. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of points in the point cloud.
     - `vectorType` indicates how to interpret vector data. The default setting is as a freely-scaled value, which will be automatically scaled to be visible. Passing `VectorType::AMBIENT` ensures vectors have the proper world-space length.
 
+    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D point cloud), `addVectorQuantity2D` exists with the same signature. See [2D data](/features/2D_data).

@@ -4,7 +4,7 @@ Rather than forcing the user to manually convert their data types to some Polysc
 
 **You don't need to do anything special to use these adaptors!** They are applied internally to the arguments of nearly every Polyscope function, like the `vertices` and `faces` arguments of `registerSurfaceMesh("name", vertices, faces)`. This section outlines how the adaptors will try to read from your data, and how to extend them for unusual datatypes which are not automatically handled.
 
-These functions live in `#include "polyscope/standardize_data_array.h"`. It's fairly well-commented---check it out to see how all this works under the hood!
+These functions live in `#include "polyscope/standardize_data_array.h"`. It's fairly well-commented---[check it out](https://github.com/nmwsharp/polyscope/blob/master/include/polyscope/standardize_data_array.h) to see how all this works under the hood!
 
 --- 
 ## Fixed size vector types

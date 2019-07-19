@@ -32,3 +32,5 @@ polyscope::registerPointCloud("really great points", points);
 
     - `pointPositions` is the array of 3D point locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of points.
 
+    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D point cloud, `registerPointCloud2D` exists with the same signature. See [2D data](/features/2D_data).
+

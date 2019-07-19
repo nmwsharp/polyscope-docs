@@ -40,6 +40,8 @@ Surface meshes are registered with Polyscope by passing the location of each ver
     - `faceIndices` is the nested array of vertex indices for each face. The type should be [adaptable](/data_adaptors) to a nested array of `size_t`. The outer length will be the number of faces. All indices should be valid 0-based indices in to the vertex list.
 
     Fortunately, although Polyscope accepts a general nested list of face vertex indices to support Polygonal meshes, passing a fixed-size `Nx3` array for a triangle will work just fine, like `Eigen::MatrixXi`.
+    
+    Note: the inner vector type of the vertex positions _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D surface mesh, `registerSurfaceMesh2D` exists with the same signature. See [2D data](/features/2D_data).
 
 ---
 
