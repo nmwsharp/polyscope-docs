@@ -418,42 +418,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../basics/messages/" title="Messages" class="md-nav__link">
-      Messages
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../basics/screenshots/" title="Screenshots" class="md-nav__link">
-      Screenshots
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../basics/user_callback/" title="User Callback" class="md-nav__link">
-      User Callback
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -650,10 +614,82 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
-      Structures
+      Features
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
+        Features
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../features/messages/" title="Messages" class="md-nav__link">
+      Messages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../features/screenshots/" title="Screenshots" class="md-nav__link">
+      Screenshots
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../features/user_callback/" title="User Callback" class="md-nav__link">
+      User Callback
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../features/2D_data/" title="2D Data" class="md-nav__link">
+      2D Data
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Structures
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
         Structures
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -678,13 +714,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
-    <label class="md-nav__link" for="nav-6-2">
+    <label class="md-nav__link" for="nav-7-2">
       Point Cloud
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-2">
+      <label class="md-nav__title" for="nav-7-2">
         Point Cloud
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -750,13 +786,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
     
-    <label class="md-nav__link" for="nav-6-3">
+    <label class="md-nav__link" for="nav-7-3">
       Surface Mesh
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-3">
+      <label class="md-nav__title" for="nav-7-3">
         Surface Mesh
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -887,13 +923,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
-    <label class="md-nav__link" for="nav-7">
+    <label class="md-nav__link" for="nav-8">
       Integrations
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-8">
         Integrations
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1110,7 +1146,7 @@
                 <p>Polyscope is designed as a lightweight general-purpose 3D visualization library. But there&rsquo;s a problem, because different codebases uses different C++ types to store their data: is an array of scalars a <code class="codehilite"><span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">double</span><span class="o">&gt;</span></code> or an <code class="codehilite"><span class="n">Eigen</span><span class="p">::</span><span class="n">VectorXf</span></code> or some other internal type? Codebases for 3D geometry are particularly guilty of this: there are probably several hundred distinct 3D vector x-y-z classes floating around github.</p>
 <p>Rather than forcing the user to manually convert their data types to some Polyscope types, we implement a series of templated <em>adaptor</em> functions, which attempt to read from the user types via a common set of strategies. These adaptors are applied to the inputs to nearly all Polyscope functions, allowing them to automatically accept user-defined types as inputs.</p>
 <p><strong>You don&rsquo;t need to do anything special to use these adaptors!</strong> They are applied internally to the arguments of nearly every Polyscope function, like the <code class="codehilite"><span class="n">vertices</span></code> and <code class="codehilite"><span class="n">faces</span></code> arguments of <code class="codehilite"><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="ss">&quot;name&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span></code>. This section outlines how the adaptors will try to read from your data, and how to extend them for unusual datatypes which are not automatically handled.</p>
-<p>These functions live in <code class="codehilite">#<span class="k">include</span> <span class="s2">&quot;</span><span class="s">polyscope/standardize_data_array.h</span><span class="s2">&quot;</span></code>. It&rsquo;s fairly well-commented&mdash;check it out to see how all this works under the hood!</p>
+<p>These functions live in <code class="codehilite">#<span class="k">include</span> <span class="s2">&quot;</span><span class="s">polyscope/standardize_data_array.h</span><span class="s2">&quot;</span></code>. It&rsquo;s fairly well-commented&mdash;<a href="https://github.com/nmwsharp/polyscope/blob/master/include/polyscope/standardize_data_array.h">check it out</a> to see how all this works under the hood!</p>
 <hr />
 <h2 id="fixed-size-vector-types">Fixed size vector types</h2>
 <p>These are 2D or 3D vectors whose size are known at compile time, commonly used to represent things like positions (3D), or UV coordinates (2D).</p>
@@ -1324,7 +1360,7 @@ anywhere before the Polyscope includes. This will cause most compilers to print 
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../basics/user_callback/" title="User Callback" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../basics/camera_controls/" title="Camera Controls" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1333,19 +1369,19 @@ anywhere before the Polyscope includes. This will cause most compilers to print 
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                User Callback
+                Camera Controls
               </span>
             </div>
           </a>
         
         
-          <a href="../structures/structure_management/" title="Structure Management" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../features/messages/" title="Messages" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Structure Management
+                Messages
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

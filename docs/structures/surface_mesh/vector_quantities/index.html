@@ -418,42 +418,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../basics/messages/" title="Messages" class="md-nav__link">
-      Messages
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../basics/screenshots/" title="Screenshots" class="md-nav__link">
-      Screenshots
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../basics/user_callback/" title="User Callback" class="md-nav__link">
-      User Callback
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -475,18 +439,90 @@
       
       
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Features
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Features
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../features/messages/" title="Messages" class="md-nav__link">
+      Messages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../features/screenshots/" title="Screenshots" class="md-nav__link">
+      Screenshots
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../features/user_callback/" title="User Callback" class="md-nav__link">
+      User Callback
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../features/2D_data/" title="2D Data" class="md-nav__link">
+      2D Data
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       Structures
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         Structures
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -511,13 +547,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
-    <label class="md-nav__link" for="nav-6-2">
+    <label class="md-nav__link" for="nav-7-2">
       Point Cloud
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-2">
+      <label class="md-nav__title" for="nav-7-2">
         Point Cloud
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -585,13 +621,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3" checked>
     
-    <label class="md-nav__link" for="nav-6-3">
+    <label class="md-nav__link" for="nav-7-3">
       Surface Mesh
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-3">
+      <label class="md-nav__title" for="nav-7-3">
         Surface Mesh
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -770,13 +806,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
-    <label class="md-nav__link" for="nav-7">
+    <label class="md-nav__link" for="nav-8">
       Integrations
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-8">
         Integrations
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -878,12 +914,14 @@
 <li><code class="codehilite"><span class="n">vectors</span></code> is the array of vectors at vertices. The type should be <a href="/data_adaptors">adaptable</a> to a 3-vector array of <code class="codehilite"><span class="nb">float</span></code>s. The length should be the number of vertices in the mesh.</li>
 <li><code class="codehilite"><span class="n">vectorType</span></code> indicates how to interpret vector data. The default setting is as a freely-scaled value, which will be automatically scaled to be visible. Passing <code class="codehilite"><span class="n">VectorType</span><span class="p">::</span><span class="n">AMBIENT</span></code> ensures vectors have the proper world-space length.</li>
 </ul>
+<p>Note: the inner vector type of the input <em>must</em> be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D mesh), <code class="codehilite"><span class="n">addVertexVectorQuantity2D</span></code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
 </details>
 <details class="func"><summary><code class="codehilite"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">vectors</span><span class="p">)</span></code></summary><p>Add a vector quantity defined at the faces of the mesh.</p>
 <ul>
 <li><code class="codehilite"><span class="n">vectors</span></code> is the array of vectors at faces. The type should be <a href="/data_adaptors">adaptable</a> to a 3-vector array of <code class="codehilite"><span class="nb">float</span></code>s. The length should be the number of vertices in the mesh.</li>
 <li><code class="codehilite"><span class="n">vectorType</span></code> indicates how to interpret vector data. The default setting is as a freely-scaled value, which will be automatically scaled to be visible. Passing <code class="codehilite"><span class="n">VectorType</span><span class="p">::</span><span class="n">AMBIENT</span></code> ensures vectors have the proper world-space length.</li>
 </ul>
+<p>Note: the inner vector type of the input <em>must</em> be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D mesh), <code class="codehilite"><span class="n">addFaceVectorQuantity2D</span></code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
 </details>
 <h3 id="tangent-vectors">Tangent vectors</h3>
 <p><em>Tangent</em> vectors lie flat against the surface of the mesh. The are expressed as 2D vectors with X-Y coordinates in some basis frame at the mesh element.</p>
