@@ -11,8 +11,9 @@ polyscope::init();
 polyscope::view::style = polyscope::view::NavigateStyle::Planar;
 
 // Build a random point cloud
-std::vector<glm::vec2> points;
-for (size_t i = 0; i < 3000; i++) {
+size_t N = 3000;
+std::vector<glm::vec2> points(N);
+for (size_t i = 0; i < N; i++) {
   points.push_back(glm::vec2{polyscope::randomUnit() - .5, polyscope::randomUnit() - .5});
 }
 
@@ -21,8 +22,8 @@ polyscope::registerPointCloud2D("flat points", points);
 
 
 // Build a random vector
-std::vector<glm::vec2> randVec;
-for (size_t i = 0; i < points.size(); i++) {
+std::vector<glm::vec2> randVec(N);
+for (size_t i = 0; i < N; i++) {
   randVec[i] = glm::vec2{polyscope::randomUnit() - .5, polyscope::randomUnit() - .5};
 }
 
