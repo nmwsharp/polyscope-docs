@@ -47,11 +47,15 @@ polyscope::show();
 
     - `values` is the array of scalars at faces. The type should be [adaptable](/data_adaptors) to a `float` scalar array. The length should be the number of faces in the mesh.
 
+
 ??? func "`#!cpp SurfaceMesh::addEdgeScalarQuantity(std::string name, const T& values, DataType type = DataType::STANDARD)`"
 
     Add a scalar quantity defined at the edges of the mesh.
 
     - `values` is the array of scalars at edges. The type should be [adaptable](/data_adaptors) to a `float` scalar array. The length should be the number of edges in the mesh.
+    
+    Remember, before passing edge-valued data, be sure your [indexing convention](../indexing_convention) matches what Polyscope expects.
+
 
 ??? func "`#!cpp SurfaceMesh::addHalfedgeScalarQuantity(std::string name, const T& values, DataType type = DataType::STANDARD)`"
 
@@ -59,3 +63,4 @@ polyscope::show();
 
     - `values` is the array of scalars at halfedges. The type should be [adaptable](/data_adaptors) to a `float` scalar array. The length should be the number of halfedges in the mesh.
 
+    Remember, before passing halfedge-valued data, be sure your [indexing convention](../indexing_convention) matches what Polyscope expects.
