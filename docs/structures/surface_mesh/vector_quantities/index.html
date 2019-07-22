@@ -721,6 +721,26 @@
     Tangent vectors
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-the-tangent-basis" title="Specifying the tangent basis" class="md-nav__link">
+    Specifying the tangent basis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-intrinsic-tangent-vectors" title="Adding intrinsic tangent vectors" class="md-nav__link">
+    Adding intrinsic tangent vectors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -877,6 +897,26 @@
     Tangent vectors
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-the-tangent-basis" title="Specifying the tangent basis" class="md-nav__link">
+    Specifying the tangent basis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-intrinsic-tangent-vectors" title="Adding intrinsic tangent vectors" class="md-nav__link">
+    Adding intrinsic tangent vectors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -924,28 +964,79 @@
 <p>Note: the inner vector type of the input <em>must</em> be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D mesh), <code class="codehilite"><span class="n">addFaceVectorQuantity2D</span></code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
 </details>
 <h3 id="tangent-vectors">Tangent vectors</h3>
-<p><em>Tangent</em> vectors lie flat against the surface of the mesh. The are expressed as 2D vectors with X-Y coordinates in some basis frame at the mesh element.</p>
+<p><em>Tangent</em> vectors lie flat against the surface of the mesh. They are expressed as 2D vectors with X-Y coordinates in some basis frame at each mesh element.</p>
+<p>Example: visualizing tangent vectors with geometry-central
+<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;polyscope/polyscope.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span><span class="cp"></span>
+
+<span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
+
+<span class="c1">// Load mesh</span>
+<span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">HalfedgeMesh</span><span class="o">&gt;</span> <span class="n">mesh</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">VertexPositionGeometry</span><span class="o">&gt;</span> <span class="n">geometry</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">tie</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">geometry</span><span class="p">)</span> <span class="o">=</span> <span class="n">loadMesh</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+
+<span class="c1">// Register the mesh with polyscope</span>
+<span class="n">psMesh</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;mesh&quot;</span><span class="p">,</span>
+              <span class="n">geometry</span><span class="o">-&gt;</span><span class="n">inputVertexPositions</span><span class="p">,</span> <span class="n">mesh</span><span class="o">-&gt;</span><span class="n">getFaceVertexList</span><span class="p">(),</span>
+              <span class="n">polyscopePermutations</span><span class="p">(</span><span class="o">*</span><span class="n">mesh</span><span class="p">));</span>
+
+
+<span class="c1">// Set vertex tangent spaces</span>
+<span class="n">geometry</span><span class="o">-&gt;</span><span class="n">requireVertexTangentBasis</span><span class="p">();</span>
+<span class="n">VertexData</span><span class="o">&lt;</span><span class="n">Vector3</span><span class="o">&gt;</span> <span class="n">vBasisX</span><span class="p">(</span><span class="o">*</span><span class="n">mesh</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="n">Vertex</span> <span class="nl">v</span> <span class="p">:</span> <span class="n">mesh</span><span class="o">-&gt;</span><span class="n">vertices</span><span class="p">())</span> <span class="p">{</span>
+  <span class="n">vBasisX</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">-&gt;</span><span class="n">vertexTangentBasis</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setVertexTangentBasisX</span><span class="p">(</span><span class="n">vBasisX</span><span class="p">);</span>
+
+<span class="c1">// Make a vector field</span>
+<span class="n">VertexData</span><span class="o">&lt;</span><span class="n">Vector2</span><span class="o">&gt;</span> <span class="n">vecField</span> <span class="o">=</span> <span class="cm">/* some field */</span>
+
+<span class="c1">// Register the field</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span>
+  <span class="n">addVertexIntrinsicVectorQuantity</span><span class="p">(</span><span class="s">&quot;great vectors&quot;</span><span class="p">,</span> <span class="n">vecField</span><span class="p">);</span>
+
+<span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
+</pre></div></p>
+<h4 id="specifying-the-tangent-basis">Specifying the tangent basis</h4>
+<p>Tangent vectors are defined with respect to a coordinate frame at each vertex (resp., face). Before adding any tangent vector quantities, you probably need to tell Polyscope what this coordinate frame looks like. To do so, pass an array of the x-axis vectors (in 3D) for mesh element.</p>
+<details class="func"><summary><code class="codehilite"><span class="kt">void</span> <span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">setVertexTangentBasisX</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">vectors</span><span class="p">)</span></code></summary><p>Specify the tangent coordinates at vertices, by giving the direction of the x-axis of the basis.</p>
+<ul>
+<li><code class="codehilite"><span class="n">vectors</span></code> is an array of one 3D vector at each vertex. The type should be <a href="/data_adaptors">adaptable</a> to a 3-vector array of <code class="codehilite"><span class="nb">float</span></code>s. The length should be the number of vertices in the mesh.</li>
+</ul>
+<p>Note: As always for functions that take 3D vector inputs, there is a <code class="codehilite"><span class="n">setVertexTangentBasisX2D</span></code> with the same signature, which expects 2D vector inputs. See <a href="/features/2D_data">2D data</a>.</p>
+</details>
+<details class="func"><summary><code class="codehilite"><span class="kt">void</span> <span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">setFaceTangentBasisX</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">vectors</span><span class="p">)</span></code></summary><p>Specify the tangent coordinates at faces, by giving the direction of the x-axis of the basis.</p>
+<ul>
+<li><code class="codehilite"><span class="n">vectors</span></code> is an array of one 3D vector at each face. The type should be <a href="/data_adaptors">adaptable</a> to a 3-vector array of <code class="codehilite"><span class="nb">float</span></code>s. The length should be the number of faces in the mesh.</li>
+</ul>
+<p>Note: As always for functions that take 3D vector inputs, there is a <code class="codehilite"><span class="n">setFaceTangentBasisX2D</span></code> with the same signature, which expects vector 2D inputs. See <a href="/features/2D_data">2D data</a>.</p>
+</details>
+<h4 id="adding-intrinsic-tangent-vectors">Adding intrinsic tangent vectors</h4>
+<p>In these function names, <em>intrinsic vector</em> is a fancy synonym for tangent vector, which indicates that the vectors lie in the surface itself, not the containing 3D space.</p>
 <details class="func"><summary><code class="codehilite"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addVertexIntrinsicVectorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">vectors</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nSym</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code></summary><p>Add a tangent vector quantity defined at the vertices of the mesh.</p>
 <ul>
 <li><code class="codehilite"><span class="n">vectors</span></code> is the array of vectors at vertices. The type should be <a href="/data_adaptors">adaptable</a> to a 2-vector array of <code class="codehilite"><span class="nb">float</span></code>s. The length should be the number of vertices in the mesh.</li>
-<li><code class="codehilite"><span class="n">nSym</span></code> is a symmetry order for visualiztion line field (n = 2) and cross field (n = 4), etc. If it is set to a non-<code class="codehilite"><span class="mi">1</span></code> value, n distinct vectors will be displayed at each element. This function presumes a &ldquo;power&rdquo;-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n&rsquo;th power.</li>
+<li><code class="codehilite"><span class="n">nSym</span></code> is a symmetry order for visualization line field (n = 2) and cross field (n = 4), etc. If it is set to a non-<code class="codehilite"><span class="mi">1</span></code> value, n distinct vectors will be displayed at each element. This function presumes a &ldquo;power&rdquo;-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n&rsquo;th power.</li>
 </ul>
-<p>The vectors will be interpreted in the basis of <code class="codehilite"><span class="n">SurfaceMesh</span><span class="p">::</span><span class="n">vertexTangentSpaces</span></code>. These tangent spaces can be manually specified with (TODO).</p>
+<p>The vectors will be interpreted in the basis of <code class="codehilite"><span class="n">SurfaceMesh</span><span class="p">::</span><span class="n">vertexTangentSpaces</span></code>. These tangent spaces can be manually specified as described above.</p>
 </details>
 <details class="func"><summary><code class="codehilite"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addFaceIntrinsicVectorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">vectors</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nSym</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code></summary><p>Add a tangent vector quantity defined at the faces of the mesh.</p>
 <ul>
 <li><code class="codehilite"><span class="n">vectors</span></code> is the array of vectors at faces. The type should be <a href="/data_adaptors">adaptable</a> to a 2-vector array of <code class="codehilite"><span class="nb">float</span></code>s. The length should be the number of faces in the mesh.</li>
-<li><code class="codehilite"><span class="n">nSym</span></code> is a symmetry order for visualiztion line field (n = 2) and cross field (n = 4), etc. If it is set to a non-<code class="codehilite"><span class="mi">1</span></code> value, n distinct vectors will be displayed at each element. This function presumes a &ldquo;power&rdquo;-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n&rsquo;th power.</li>
+<li><code class="codehilite"><span class="n">nSym</span></code> is a symmetry order for visualization line field (n = 2) and cross field (n = 4), etc. If it is set to a non-<code class="codehilite"><span class="mi">1</span></code> value, n distinct vectors will be displayed at each element. This function presumes a &ldquo;power&rdquo;-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n&rsquo;th power.</li>
 </ul>
-<p>The vectors will be interpreted in the basis of <code class="codehilite"><span class="n">SurfaceMesh</span><span class="p">::</span><span class="n">facesTangentSpaces</span></code>. These tangent spaces can be manually specified with (TODO).</p>
+<p>The vectors will be interpreted in the basis of <code class="codehilite"><span class="n">SurfaceMesh</span><span class="p">::</span><span class="n">facesTangentSpaces</span></code>. These tangent spaces can be manually specified as described above.</p>
 </details>
 <h3 id="one-forms">One forms</h3>
-<p><em>One forms</em> are tangent vector-like quantites represented as integrated scalars along edges. The commonly arise, for example, as a gradient which is difference of scalar values at vertices.</p>
-<details class="func"><summary><code class="codehilite"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addFaceIntrinsicVectorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="n">O</span><span class="o">&amp;</span> <span class="n">orientations</span><span class="p">)</span></code></summary><p>Add a one-form quantity via a scalar at edges, which will be shown like a vector field.</p>
+<p><em>One forms</em> are tangent vector-like quantities represented as integrated scalars along edges. They commonly arise, for example, as a gradient which is difference of scalar values at vertices.</p>
+<details class="func"><summary><code class="codehilite"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addOneFormIntrinsicVectorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="n">O</span><span class="o">&amp;</span> <span class="n">orientations</span><span class="p">)</span></code></summary><p>Add a one-form quantity via a scalar at edges, which will be shown like a vector field.</p>
 <ul>
 <li><code class="codehilite"><span class="k">data</span></code> is the array of scalars at edges. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code class="codehilite"><span class="nb">float</span></code>s. The length should be the number of edges in the mesh.</li>
 <li><code class="codehilite"><span class="n">orientations</span></code> 1-forms are defined with respect to an orientation of edges, so you need to tell Polyscope which direction your edges point in. This input is an array of booleans at edges. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code class="codehilite"><span class="nb">char</span></code>s (because <code class="codehilite"><span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">bool</span><span class="o">&gt;</span></code> is broken). The length should be the number of edges in the mesh. These booleans should be <code class="codehilite"><span class="k">true</span></code> if the edge points from the lower indexed adjacent vertex to the higher-indexed vertex, and false otherwise.</li>
 </ul>
+<p>Remember, before passing edge-valued data, be sure your <a href="../indexing_convention">indexing convention</a> matches what Polyscope expects.</p>
 </details>
                 
                   

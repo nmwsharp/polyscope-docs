@@ -922,11 +922,13 @@
 <ul>
 <li><code class="codehilite"><span class="k">values</span></code> is the array of scalars at edges. The type should be <a href="/data_adaptors">adaptable</a> to a <code class="codehilite"><span class="nb">float</span></code> scalar array. The length should be the number of edges in the mesh.</li>
 </ul>
+<p>Remember, before passing edge-valued data, be sure your <a href="../indexing_convention">indexing convention</a> matches what Polyscope expects.</p>
 </details>
 <details class="func"><summary><code class="codehilite"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addHalfedgeScalarQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">values</span><span class="p">,</span> <span class="n">DataType</span> <span class="n">type</span> <span class="o">=</span> <span class="n">DataType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary><p>Add a scalar quantity defined at the halfedges of the mesh.</p>
 <ul>
 <li><code class="codehilite"><span class="k">values</span></code> is the array of scalars at halfedges. The type should be <a href="/data_adaptors">adaptable</a> to a <code class="codehilite"><span class="nb">float</span></code> scalar array. The length should be the number of halfedges in the mesh.</li>
 </ul>
+<p>Remember, before passing halfedge-valued data, be sure your <a href="../indexing_convention">indexing convention</a> matches what Polyscope expects.</p>
 </details>
                 
                   
