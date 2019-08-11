@@ -749,6 +749,78 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
+    
+    <label class="md-nav__link" for="nav-7-4">
+      Curve Network
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-4">
+        Curve Network
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../curve_network/basics/" title="Basics" class="md-nav__link">
+      Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../curve_network/scalar_quantities/" title="Scalar Quantities" class="md-nav__link">
+      Scalar Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../curve_network/color_quantities/" title="Color Quantities" class="md-nav__link">
+      Color Quantities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../curve_network/vector_quantities/" title="Vector Quantities" class="md-nav__link">
+      Vector Quantities
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -818,17 +890,6 @@
                   <h1>Vector Quantities</h1>
                 
                 <p>Visualize vector-valued data at the points of a point cloud.</p>
-<p>Example:
-<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;polyscope/point_cloud.h&quot;</span><span class="cp"></span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;&gt;</span> <span class="n">randColor</span><span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">randColor</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{{</span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">(),</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">(),</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()}};</span>
-<span class="p">}</span>
-
-<span class="c1">// visualize</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getPointCloud</span><span class="p">(</span><span class="n">pointCloudName</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addColorQuantity</span><span class="p">(</span><span class="s">&quot;random color&quot;</span><span class="p">,</span> <span class="n">randColor</span><span class="p">);</span>
-</pre></div></p>
 <details class="func"><summary><code class="codehilite"><span class="n">PointCloud</span><span class="o">::</span><span class="n">addVectorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">VectorType</span> <span class="n">vectorType</span> <span class="o">=</span> <span class="n">VectorType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary><p>Add a vector quantity to the point cloud.</p>
 <ul>
 <li><code class="codehilite"><span class="n">vectors</span></code> is the array of vectors at points. The type should be <a href="/data_adaptors">adaptable</a> to a 3-vector array of <code class="codehilite"><span class="nb">float</span></code>s. The length should be the number of points in the point cloud.</li>
