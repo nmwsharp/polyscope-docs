@@ -1,18 +1,5 @@
 Visualize vector-valued data at the points of a point cloud.
 
-Example:
-```cpp
-#include "polyscope/point_cloud.h"
-
-std::vector<std::array<double, 3>> randColor(points.size());
-for (size_t i = 0; i < points.size(); i++) {
-  randColor[i] = {{polyscope::randomUnit(), polyscope::randomUnit(), polyscope::randomUnit()}};
-}
-
-// visualize
-polyscope::getPointCloud(pointCloudName)->addColorQuantity("random color", randColor);
-```
-
 ??? func "`#!cpp PointCloud::addVectorQuantity(std::string name, const T& vectors, VectorType vectorType = VectorType::STANDARD)`"
 
     Add a vector quantity to the point cloud.
