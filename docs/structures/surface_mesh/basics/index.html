@@ -672,6 +672,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#updating-a-mesh" title="Updating a mesh" class="md-nav__link">
+    Updating a mesh
+  </a>
+  
+</li>
+      
       
       
       
@@ -936,6 +943,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#updating-a-mesh" title="Updating a mesh" class="md-nav__link">
+    Updating a mesh
+  </a>
+  
+</li>
+      
       
       
       
@@ -996,6 +1010,14 @@
 <p>Polyscope quantities are ordered arrays of data, but not everone can agree on the ordering of elements in a mesh. See <a href="../indexing_convention/">indexing conventions</a>.</p>
 <p>The default ordering is probably the same as yours for data on <strong>vertices, faces, and corners</strong>. However, data on <strong>edges and halfedges</strong> is much more likely to require setting an ordering.</p>
 </div>
+<h3 id="updating-a-mesh">Updating a mesh</h3>
+<p>The locations of the vertices in a mesh can be updated with the member function <code class="codehilite"><span class="n">updateVertexPositions</span><span class="p">(</span><span class="n">newPositions</span><span class="p">)</span></code>. All quantities will be preserved. Changing the connectivity or element counts in a mesh is not supported, you will need to register a new mesh (perhaps with the same name to overwrite).</p>
+<details class="func"><summary><code class="codehilite"><span class="kt">void</span> <span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">updateVertexPositions</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;&amp;</span> <span class="n">newPositions</span><span class="p">)</span></code></summary><p>Update the vertex positions in a surface mesh structure.</p>
+<ul>
+<li><code class="codehilite"><span class="n">pointPositions</span></code> is the new 3D vertex locations. The length must be equal to the current number of vertices.</li>
+</ul>
+<p><strong>TODO:</strong> Make this use the adaptors and create a 2D variant so it can accept all the types the initial constructor can.</p>
+</details>
                 
                   
                 
