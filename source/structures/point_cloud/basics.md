@@ -34,3 +34,16 @@ polyscope::registerPointCloud("really great points", points);
 
     Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D point cloud, `registerPointCloud2D` exists with the same signature. See [2D data](/features/2D_data).
 
+
+### Updating a point cloud
+
+The locations of the points in a point cloud can be updated with the member function `updatePointPositions(newPositions)`. All quantities will be preserved. Changing the _number_ of points in the cloud is not supported, you will need to register a new cloud (perhaps with the same name to overwrite this one).
+
+
+??? func "`#!cpp void PointCloud::updatePointPositions(const std::vector<glm::vec3>& newPositions)`"
+
+    Update the point positions in a point cloud structure.
+
+    - `pointPositions` is the new 3D point locations. The length must be equal to the current number of points.
+
+    **TODO:** Make this use the adaptors and create a 2D variant so it can accept all the types the initial constructor can.

@@ -51,3 +51,16 @@ Surface meshes are registered with Polyscope by passing the location of each ver
 
     The default ordering is probably the same as yours for data on **vertices, faces, and corners**. However, data on **edges and halfedges** is much more likely to require setting an ordering.
 
+
+### Updating a mesh
+
+The locations of the vertices in a mesh can be updated with the member function `updateVertexPositions(newPositions)`. All quantities will be preserved. Changing the connectivity or element counts in a mesh is not supported, you will need to register a new mesh (perhaps with the same name to overwrite).
+
+
+??? func "`#!cpp void SurfaceMesh::updateVertexPositions(const std::vector<glm::vec3>& newPositions)`"
+
+    Update the vertex positions in a surface mesh structure.
+
+    - `pointPositions` is the new 3D vertex locations. The length must be equal to the current number of vertices.
+
+    **TODO:** Make this use the adaptors and create a 2D variant so it can accept all the types the initial constructor can.

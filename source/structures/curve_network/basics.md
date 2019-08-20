@@ -55,3 +55,16 @@ polyscope::show();
 
     Note: the inner vector type of the `points` input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D curve network, `registerCurveNetworkLoop2D` exists with the same signature. See [2D data](/features/2D_data).
 
+
+### Updating a curve network
+
+The locations of the nodes in a curve network can be updated with the member function `updateNodePositions(newPositions)`. All quantities will be preserved. Changing the connectivity or number of nodes/edges is not supported, you will need to register a new curve network (perhaps with the same name to overwrite).
+
+
+??? func "`#!cpp void CurveNetwork::updateNodePositions(const std::vector<glm::vec3>& newPositions)`"
+
+    Update the node positions in a curve network structure.
+
+    - `pointPositions` is the new 3D node locations. The length must be equal to the current number of nodes.
+
+    **TODO:** Make this use the adaptors and create a 2D variant so it can accept all the types the initial constructor can.
