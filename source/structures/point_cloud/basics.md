@@ -40,10 +40,10 @@ polyscope::registerPointCloud("really great points", points);
 The locations of the points in a point cloud can be updated with the member function `updatePointPositions(newPositions)`. All quantities will be preserved. Changing the _number_ of points in the cloud is not supported, you will need to register a new cloud (perhaps with the same name to overwrite this one).
 
 
-??? func "`#!cpp void PointCloud::updatePointPositions(const std::vector<glm::vec3>& newPositions)`"
+??? func "`#!cpp void PointCloud::updatePointPositions(const V& newPositions)`"
 
     Update the point positions in a point cloud structure.
 
-    - `pointPositions` is the new 3D point locations. The length must be equal to the current number of points.
+    - `newPositions` is the vector array of 3D point locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors.  The length must be equal to the current number of points.
 
-    **TODO:** Make this use the adaptors and create a 2D variant so it can accept all the types the initial constructor can.
+    Note: `updatePointPositions2D` exists with the same signature. See [2D data](/features/2D_data).

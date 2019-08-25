@@ -61,10 +61,12 @@ polyscope::show();
 The locations of the nodes in a curve network can be updated with the member function `updateNodePositions(newPositions)`. All quantities will be preserved. Changing the connectivity or number of nodes/edges is not supported, you will need to register a new curve network (perhaps with the same name to overwrite).
 
 
-??? func "`#!cpp void CurveNetwork::updateNodePositions(const std::vector<glm::vec3>& newPositions)`"
+??? func "`#!cpp void CurveNetwork::updateNodePositions(const V& newPositions)`"
 
     Update the node positions in a curve network structure.
 
-    - `pointPositions` is the new 3D node locations. The length must be equal to the current number of nodes.
+    - `newPositions` is the vector array of 3D node locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors.  The length must be equal to the current number of nodes.
 
-    **TODO:** Make this use the adaptors and create a 2D variant so it can accept all the types the initial constructor can.
+    Note: `updatePointPositions2D` exists with the same signature. See [2D data](/features/2D_data).
+
+
