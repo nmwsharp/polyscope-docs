@@ -996,11 +996,11 @@
 </details>
 <h3 id="updating-a-point-cloud">Updating a point cloud</h3>
 <p>The locations of the points in a point cloud can be updated with the member function <code class="codehilite"><span class="n">updatePointPositions</span><span class="p">(</span><span class="n">newPositions</span><span class="p">)</span></code>. All quantities will be preserved. Changing the <em>number</em> of points in the cloud is not supported, you will need to register a new cloud (perhaps with the same name to overwrite this one).</p>
-<details class="func"><summary><code class="codehilite"><span class="kt">void</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">updatePointPositions</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;&amp;</span> <span class="n">newPositions</span><span class="p">)</span></code></summary><p>Update the point positions in a point cloud structure.</p>
+<details class="func"><summary><code class="codehilite"><span class="kt">void</span> <span class="n">PointCloud</span><span class="o">::</span><span class="n">updatePointPositions</span><span class="p">(</span><span class="k">const</span> <span class="n">V</span><span class="o">&amp;</span> <span class="n">newPositions</span><span class="p">)</span></code></summary><p>Update the point positions in a point cloud structure.</p>
 <ul>
-<li><code class="codehilite"><span class="n">pointPositions</span></code> is the new 3D point locations. The length must be equal to the current number of points.</li>
+<li><code class="codehilite"><span class="n">newPositions</span></code> is the vector array of 3D point locations. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code class="codehilite"><span class="nb">float</span></code>-valued 3-vectors.  The length must be equal to the current number of points.</li>
 </ul>
-<p><strong>TODO:</strong> Make this use the adaptors and create a 2D variant so it can accept all the types the initial constructor can.</p>
+<p>Note: <code class="codehilite"><span class="n">updatePointPositions2D</span></code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
 </details>
                 
                   
