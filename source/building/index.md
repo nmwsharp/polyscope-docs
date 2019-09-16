@@ -24,7 +24,9 @@ See these repositories for some simple examples of using Polyscope with an exist
 
 ### Building in Windows
 
-If you are using Cygwin, WSL, or some other unix-emulation environment on Windows, just follow the Unix instructions above. Additionally, Polyscope builds out of the box on Visual Studio 2019 (earlier versions have not been tested). Simply run CMake (either with the GUI or terminal interface) on Polyscope's CMakeLists.txt to generate Visual Studio project and solution files. 
+If you are using Cygwin, WSL, or some other unix-emulation environment on Windows, just follow the Unix instructions above (though be wary that these tools often do not have good openGL and windowing support, which can be a problem at runtime for a graphical application like Polyscope). 
+
+Additionally, Polyscope builds out of the box on Visual Studio 2019 (earlier versions have not been tested). Simply run CMake (either with the GUI or terminal interface) on Polyscope's CMakeLists.txt to generate Visual Studio project and solution files. 
 
 To integrate Polyscope with an existing Visual Studio project:
 
