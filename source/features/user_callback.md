@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
   polyscope::init();
 
   // Specify the callback
-  polyscope::state::userCallback = callback;
+  polyscope::state::userCallback = myCallback;
 
   // Give control to the polyscope gui
   polyscope::show();
