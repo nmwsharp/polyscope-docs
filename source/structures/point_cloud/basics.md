@@ -3,7 +3,6 @@
 Point clouds are one of the core structures in Polyscope. In addition to simply displaying the points, Polyscope can show any number of scalar, vector, or color quantities associated with the points.
 
 As always, try clicking on a point to see the data associated with that point.
-
 ![point_cloud_demo](../../media/point_cloud_demo.gif)
 
 ### Registering a point cloud
@@ -47,3 +46,14 @@ The locations of the points in a point cloud can be updated with the member func
     - `newPositions` is the vector array of 3D point locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors.  The length must be equal to the current number of points.
 
     Note: `updatePointPositions2D` exists with the same signature. See [2D data](/features/2D_data).
+
+### Options
+
+
+**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
+--- | --- | --- | --- | ---
+enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+point radius | size of rendered points | `#!cpp float getPointRadius()` | `#!cpp setPointRadius(float newVal, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values) |
+point color | default color for point | `#!cpp glm::vec3 getPointColor` | `#! setPointColor(glm::vec3 newVal)` | [yes](/basics/parameters/#persistent-values) |
+
+_(all setters return `this` to support chaining. setEnabled() returns generic setter, so chain it last)_

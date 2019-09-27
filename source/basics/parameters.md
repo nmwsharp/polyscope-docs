@@ -9,11 +9,11 @@ In Polyscope, if you manually set the color of points in a point cloud, then reg
 
 Persistent values are lightweight wrappers around a variable which on-construction look up the variable's in a global cache, and if a cache entry exists take the cached value instead. Any time the variable is written to, its value is recorded in the global cache. Generally, the cache key includes the name of a structure (and quantity if applicable), so a cached variable will only be picked up when names match.
 
-Generally, the user should not manually interact with persistent values ever, all you need to know is that you can assign to them just like normal variables of the same type:
+Generally, the user should not manually interact with persistent values ever, all you need to know is that some variables may "magically" remember old values by pulling them from the cache.
 ```cpp
 PointCloud* psCloud = polyscope::getPointCloud("my cloud");
-psCloud->pointColor = glm::vec3(0.5, 0.5, 0.5);  // this records the persistent 
-                                                 // value in the cache
+psCloud->setPointColor(glm::vec3(0.5, 0.5, 0.5));  
+// the persistent value is recorded in the cache
 
 // ... later ...
 
