@@ -34,3 +34,15 @@ polyscope::getSurfaceMesh("input mesh")
     - `values` is the array of distances at vertices. The type should be [adaptable](/data_adaptors) to a `float` scalar array. The length should be the number of vertices in the mesh.
 
     This quantity is very similar to `addVertexDistanceQuantity`, except the colormap is adjusted to scale symetrically for negative values.
+
+### Options
+
+**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
+--- | --- | --- | --- | ---
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+color map | the [color map](/features/color_maps) to use | `#!cpp gl::ColorMapID getColorMap()` | `#!cpp setColorMap(gl::ColorMapID newMap)` | [yes](/basics/parameters/#persistent-values)
+map range | the lower and upper limits used when mapping the data in to the color map| `#!cpp std::pair<double,double> getMapRange()` | `#!cpp setMapRange(std::pair<double,double>)` and `#!cpp resetMapRange()`| no
+stripe size | the size of the stripes showing distance isolines | `#!cpp setStripeSize(double size, bool isRelative=true)` | `#!cpp double getStripeSize()` | [yes](/basics/parameters/#persistent-values)
+
+_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+

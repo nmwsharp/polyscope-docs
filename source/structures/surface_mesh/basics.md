@@ -64,3 +64,16 @@ The locations of the vertices in a mesh can be updated with the member function 
     - `newPositions` is the vector array of 3D vertex locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors.  The length must be equal to the current number of vertices.
 
     Note: `updateVertexPositions2D` exists with the same signature. See [2D data](/features/2D_data).
+
+### Options
+
+
+**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
+--- | --- | --- | --- | ---
+enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+shade smooth | use smooth shading along faces or simple flat faces | `#!cpp bool isSmoothShade()` | `#!cpp setSmoothShade(bool isSmooth)` | [yes](/basics/parameters/#persistent-values)
+surface color | the color of the mesh | `#!cpp glm::vec3 getSurfaceColor()` | `#!cpp setSurfaceColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
+edge color | the color of the edges of the mesh | `#!cpp glm::vec3 getEdgeColor()` | `#!cpp setEdgeColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
+edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!cpp double getEdgeWidth()` | `#!cpp setEdgeWidth(double val)` | [yes](/basics/parameters/#persistent-values)
+
+_(all setters return `this` to support chaining. setEnabled() returns generic setter, so chain it last)_

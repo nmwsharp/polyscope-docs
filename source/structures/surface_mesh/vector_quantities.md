@@ -121,3 +121,16 @@ _One forms_ are tangent vector-like quantities represented as integrated scalars
     - `orientations` 1-forms are defined with respect to an orientation of edges, so you need to tell Polyscope which direction your edges point in. This input is an array of booleans at edges. The type should be [adaptable](/data_adaptors) to an array of `char`s (because `std::vector<bool>` is broken). The length should be the number of edges in the mesh. These booleans should be `true` if the edge points from the lower indexed adjacent vertex to the higher-indexed vertex, and false otherwise.
 
     Remember, before passing edge-valued data, be sure your [indexing convention](../indexing_convention) matches what Polyscope expects.
+
+### Options
+
+**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
+--- | --- | --- | --- | ---
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+vector radius | the radius vectors are drawn with | `#!cpp double getVectorRadius()` | `#!cpp setVectorRadius(double val, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values)
+vector length | vectors will be scaled so the longest is this long. ignored if `VectorType::Ambient` | `#!cpp double getVectorLengthScale()` | `#!cpp setVectorLengthScale(double val, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values)
+vector color | the color to draw the vectors with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
+ribbon enabled | draw the ribbon visualization (only available for intrinsic vector fields) | `#!cpp bool isRibbonEnabled()` | `#!cpp setRibbonEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+
+_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+

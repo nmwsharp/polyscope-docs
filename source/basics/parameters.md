@@ -9,7 +9,7 @@ In Polyscope, if you manually set the color of points in a point cloud, then reg
 
 Persistent values are lightweight wrappers around a variable which on-construction look up the variable's in a global cache, and if a cache entry exists take the cached value instead. Any time the variable is written to, its value is recorded in the global cache. Generally, the cache key includes the name of a structure (and quantity if applicable), so a cached variable will only be picked up when names match.
 
-Generally, the user should not manually interact with persistent values ever, all you need to know is that some variables may "magically" remember old values by pulling them from the cache.
+Generally, the user should not manually interact with persistent values ever, all you need to know is that some variables may "magically" remember their old values by pulling them from a cache.
 ```cpp
 PointCloud* psCloud = polyscope::getPointCloud("my cloud");
 psCloud->setPointColor(glm::vec3(0.5, 0.5, 0.5));  
@@ -27,19 +27,19 @@ Note that this persistence behavior applies even when variables are manually man
 
     If writing custom Polyscope library code (e.g. your own custom structures and quantities), here's what you need to know to use persistent values.
 
-    The class `PersistentValue<T>` is templated on the underlying scalar type, like `PersistentValue<double>`. Only a predefined set of types can be used as template arguments because the corresponding global cache must be allocated. See `persistent_value.h` for a listing, which currently includes `float`, `double`, `ScaledValue<float>`, `ScaledValue<double>`, and `glm::vec3`.
+    The class `PersistentValue<T>` is templated on the underlying scalar type, like `PersistentValue<double>`. Only a predefined set of types can be used as template arguments because the corresponding global cache must be allocated. See `persistent_value.h` for a listing, which currently includes `bool`, `float`, `double`, `ScaledValue<float>`, `ScaledValue<double>`, `glm::vec3`, and `gl::ColorMapID`.
 
     Construct a persistent value like
     ```cpp
     PersistentValue<float> myVar("unique_name", 0.5)
     ```
-    the variable will the cached value if one exists, and if not take the value `0.5` and add it to the cache.  Remember to use a globally unique name for the for the name argument; in structures you can use a concatenation of the type name, structure name, and (if applicable) quantity name.
+    the variable will the cached value if one exists, and if not take the value `0.5` (and add it to the cache).  Remember to use a globally unique name for the for the name argument; in structures you can use a concatenation of the type name, structure name, and (if applicable) quantity name.
 
     To access a persistent value, call `myVar.get()`, which returns a reference to the underlying value.
 
     In some occasions, in particular when using ImGui, you may need to write to a value directly via the pointer from `&myVar.get()`. This is problematic, because the variable does not know it has been written to and thus needs to update the cache. The function `myVar.manuallyUpdated()` can be called to notify the persistent value that it needs to update the cache. The paradigm for using a persistent value with ImGui then looks like
     ```cpp
-    if (ImGui::SliderFloat("some text", myVar.get())) {
+    if (ImGui::SliderFloat("some text", &myVar.get())) {
       myVar.manuallyChanged();
     }
     ```
