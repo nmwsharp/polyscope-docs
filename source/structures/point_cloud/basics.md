@@ -53,7 +53,7 @@ The locations of the points in a point cloud can be updated with the member func
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
 enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-point radius | size of rendered points | `#!cpp float getPointRadius()` | `#!cpp setPointRadius(float newVal, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values) |
+point radius | size of rendered points | `#!cpp double getPointRadius()` | `#!cpp setPointRadius(double newVal, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values) |
 point color | default color for point | `#!cpp glm::vec3 getPointColor` | `#! setPointColor(glm::vec3 newVal)` | [yes](/basics/parameters/#persistent-values) |
 
 _(all setters return `this` to support chaining. setEnabled() returns generic setter, so chain it last)_

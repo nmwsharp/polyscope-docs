@@ -30,3 +30,12 @@ polyscope::getCurveNetwork(curveNetworkName)->addEdgeColorQuantity("random color
     - `values` is the array of colors at edges. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of edges in the curve network.
 
     RGB values are interpreted in the range `[0,1]`.
+
+### Options
+
+**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
+--- | --- | --- | --- | ---
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+
+_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+

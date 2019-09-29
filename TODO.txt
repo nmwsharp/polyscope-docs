@@ -9,8 +9,6 @@
 
 ## Needs to be resurrected
 
-- restore intrinsic vector fields
-
 - restore surface input functions
 
 - resurrect subsets, add edges and faces
@@ -51,14 +49,9 @@
 - use enums for colormaps instead whatever integers are doing now
 
 
-## Long term features
 
-- "sticky" parameters for options?
+copy me:
+NAME | DESC | `#!cpp GETTER` | `#! SETTER` | YESNO |
+NAME | DESC | `#!cpp GETTER` | `#! SETTER` | [yes](/basics/parameters/#persistent-values)
 
-
-
-
-
-
-
-
+**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
