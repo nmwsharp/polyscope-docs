@@ -49,6 +49,8 @@
 - use enums for colormaps instead whatever integers are doing now
 
 
+language toggle? https://docs.netdata.cloud/docs/what-is-netdata/
+
 
 copy me:
 NAME | DESC | `#!cpp GETTER` | `#! SETTER` | YESNO |
