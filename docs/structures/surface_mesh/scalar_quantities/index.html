@@ -418,6 +418,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basics/parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -486,6 +498,18 @@
   <li class="md-nav__item">
     <a href="../../../features/user_callback/" title="User Callback" class="md-nav__link">
       User Callback
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../features/color_maps/" title="Color Maps" class="md-nav__link">
+      Color Maps
     </a>
   </li>
 
@@ -676,6 +700,13 @@
         <li class="md-nav__item">
   <a href="#add-scalars-to-elements" title="Add scalars to elements" class="md-nav__link">
     Add scalars to elements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options" title="Options" class="md-nav__link">
+    Options
   </a>
   
 </li>
@@ -942,6 +973,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#options" title="Options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+      
       
       
       
@@ -1014,6 +1052,42 @@
 </ul>
 <p>Remember, before passing halfedge-valued data, be sure your <a href="../indexing_convention">indexing convention</a> matches what Polyscope expects.</p>
 </details>
+<h3 id="options">Options</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Getter</strong></th>
+<th><strong>Setter</strong></th>
+<th><strong>Persistent?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>is the quantity enabled?</td>
+<td><code class="codehilite"><span class="kt">bool</span> <span class="n">isEnabled</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span> <span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>color map</td>
+<td>the <a href="/features/color_maps">color map</a> to use</td>
+<td><code class="codehilite"><span class="n">gl</span><span class="o">::</span><span class="n">ColorMapID</span> <span class="n">getColorMap</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setColorMap</span><span class="p">(</span><span class="n">gl</span><span class="o">::</span><span class="n">ColorMapID</span> <span class="n">newMap</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>map range</td>
+<td>the lower and upper limits used when mapping the data in to the color map</td>
+<td><code class="codehilite"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">getMapRange</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setMapRange</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">)</span></code> and <code class="codehilite"><span class="n">resetMapRange</span><span class="p">()</span></code></td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p><em>(all setters return <code class="codehilite"><span class="n">this</span></code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>
                 
                   
                 
