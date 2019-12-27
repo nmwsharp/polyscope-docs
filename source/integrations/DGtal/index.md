@@ -33,7 +33,7 @@ polyscope::show();
 
 The resulting surface:
 
-![DGtal surface](/media/DGtal_surface.jpg)
+![DGtal surface](/media/dgtal_surface.jpg)
 
 ### Computing surface quantities
 
@@ -66,8 +66,8 @@ polyscope::show();
 
 The resulting curvatures:
 
-![DGtal curvature](/media/DGtal_curvature.jpg)
+![DGtal curvature](/media/dgtal_curvature.jpg)
 
 The resulting normal vectors:
 
-![DGtal vectors](/media/DGtal_vectors.jpg)
+![DGtal vectors](/media/dgtal_vectors.jpg)
