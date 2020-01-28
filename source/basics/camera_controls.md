@@ -31,10 +31,6 @@ polyscope::init();
     polyscope::view::style = NavigateStyle::Free;
     ```
 
-
-<!--enum class NavigateStyle { Turntable = 0, Free, Planar, Arcball };-->
-<!--enum class UpDir { XUp = 0, YUp, ZUp };-->
-
 ??? func "`#!cpp UpDir view::upDir`"
 
     ##### up direction
