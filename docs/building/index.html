@@ -1015,13 +1015,14 @@
 <div class="codehilite"><pre><span></span>git clone --recurse-submodules https://github.com/nmwsharp/polyscope.git
 </pre></div>
 and adding
-<div class="codehilite"><pre><span></span><span class="n">add_subdirectory</span><span class="p">(</span><span class="ss">&quot;polyscope&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">add_subdirectory</span><span class="p">(</span><span class="ss">&quot;path/to/polyscope&quot;</span><span class="p">)</span>
 
 <span class="p">...</span>
 
 <span class="n">target_link_libraries</span><span class="p">(</span><span class="n">YOUR_TARGET</span> <span class="n">polyscope</span><span class="p">)</span>
 </pre></div>
-to your <code class="codehilite"><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span></code>.</p>
+to your <code class="codehilite"><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span></code>. If you place polyscope outside of your project&rsquo;s source tree, you may need 
+<code class="codehilite"><span class="n">add_subdirectory</span><span class="p">(</span><span class="ss">&quot;path/to/polyscope&quot;</span> <span class="ss">&quot;polyscope&quot;</span><span class="p">)</span></code> to also set a library build directory.</p>
 <p>See these repositories for some simple examples of using Polyscope with an existing codebase or library:</p>
 <ul>
 <li>with <a href="http://geometry-central.net">geometry-central</a> &ndash; <a href="https://github.com/nmwsharp/gc-polyscope-project-template">example project</a></li>
