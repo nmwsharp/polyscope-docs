@@ -418,6 +418,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basics/parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -486,6 +498,18 @@
   <li class="md-nav__item">
     <a href="../../../features/user_callback/" title="User Callback" class="md-nav__link">
       User Callback
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../features/color_maps/" title="Color Maps" class="md-nav__link">
+      Color Maps
     </a>
   </li>
 
@@ -603,6 +627,13 @@
         <li class="md-nav__item">
   <a href="#updating-a-point-cloud" title="Updating a point cloud" class="md-nav__link">
     Updating a point cloud
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options" title="Options" class="md-nav__link">
+    Options
   </a>
   
 </li>
@@ -962,6 +993,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#options" title="Options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+      
       
       
       
@@ -981,8 +1019,8 @@
                 
                 <h1 id="point-clouds">Point Clouds</h1>
 <p>Point clouds are one of the core structures in Polyscope. In addition to simply displaying the points, Polyscope can show any number of scalar, vector, or color quantities associated with the points.</p>
-<p>As always, try clicking on a point to see the data associated with that point.</p>
-<p><img alt="point_cloud_demo" src="../../../media/point_cloud_demo.gif" /></p>
+<p>As always, try clicking on a point to see the data associated with that point.
+<img alt="point_cloud_demo" src="../../../media/point_cloud_demo.gif" /></p>
 <h3 id="registering-a-point-cloud">Registering a point cloud</h3>
 <p>Example: a point cloud of random points
 <div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;polyscope/point_cloud.h&quot;</span><span class="cp"></span>
@@ -1014,6 +1052,42 @@
 </ul>
 <p>Note: <code class="codehilite"><span class="n">updatePointPositions2D</span></code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
 </details>
+<h3 id="options">Options</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Getter</strong></th>
+<th><strong>Setter</strong></th>
+<th><strong>Persistent?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>is the structure enabled?</td>
+<td><code class="codehilite"><span class="kt">bool</span> <span class="n">isEnabled</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span> <span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>point radius</td>
+<td>size of rendered points</td>
+<td><code class="codehilite"><span class="kt">double</span> <span class="n">getPointRadius</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setPointRadius</span><span class="p">(</span><span class="kt">double</span> <span class="n">newVal</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">isRelative</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>point color</td>
+<td>default color for point</td>
+<td><code class="codehilite"><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">getPointColor</span></code></td>
+<td><code class="codehilite"><span class="n">setPointColor</span><span class="p">(</span><span class="n">glm</span><span class="p">::</span><span class="n">vec3</span> <span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+</tbody>
+</table>
+<p><em>(all setters return <code class="codehilite"><span class="n">this</span></code> to support chaining. setEnabled() returns generic setter, so chain it last)</em></p>
                 
                   
                 

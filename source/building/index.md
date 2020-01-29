@@ -8,13 +8,14 @@ git clone --recurse-submodules https://github.com/nmwsharp/polyscope.git
 ```
 and adding
 ```
-add_subdirectory("polyscope")
+add_subdirectory("path/to/polyscope")
 
 ...
 
 target_link_libraries(YOUR_TARGET polyscope)
 ```
-to your `CMakeLists.txt`.
+to your `CMakeLists.txt`. If you place polyscope outside of your project's source tree, you may need 
+`add_subdirectory("path/to/polyscope" "polyscope")` to also set a library build directory.
 
 See these repositories for some simple examples of using Polyscope with an existing codebase or library:
 

@@ -418,6 +418,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basics/parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -486,6 +498,18 @@
   <li class="md-nav__item">
     <a href="../../../features/user_callback/" title="User Callback" class="md-nav__link">
       User Callback
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../features/color_maps/" title="Color Maps" class="md-nav__link">
+      Color Maps
     </a>
   </li>
 
@@ -688,6 +712,13 @@
         <li class="md-nav__item">
   <a href="#add-colors-to-elements" title="Add colors to elements" class="md-nav__link">
     Add colors to elements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options" title="Options" class="md-nav__link">
+    Options
   </a>
   
 </li>
@@ -942,6 +973,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#options" title="Options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+      
       
       
       
@@ -988,6 +1026,28 @@
 </ul>
 <p>RGB values are interpreted in the range <code class="codehilite"><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span></code>.</p>
 </details>
+<h3 id="options">Options</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Getter</strong></th>
+<th><strong>Setter</strong></th>
+<th><strong>Persistent?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>is the quantity enabled?</td>
+<td><code class="codehilite"><span class="kt">bool</span> <span class="n">isEnabled</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span> <span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+</tbody>
+</table>
+<p><em>(all setters return <code class="codehilite"><span class="n">this</span></code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>
                 
                   
                 

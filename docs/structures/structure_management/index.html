@@ -418,6 +418,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -486,6 +498,18 @@
   <li class="md-nav__item">
     <a href="../../features/user_callback/" title="User Callback" class="md-nav__link">
       User Callback
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../features/color_maps/" title="Color Maps" class="md-nav__link">
+      Color Maps
     </a>
   </li>
 
@@ -1014,13 +1038,12 @@ This avoids the need to pass a pointer to the structure you created around your 
 <p class="admonition-title">Memory management</p>
 <p>As a general policy, Polyscope always manages its own memory, and will take care of deleting anything it allocated. Whenever a routine returns a pointer (like <code class="codehilite"><span class="n">getStructure</span><span class="p">()</span></code>), it is a <em>non-owning</em> pointer. You <strong>should never</strong> <code class="codehilite"><span class="k">delete</span></code> one of these pointers. To delete a structure and free memory, see the <code class="codehilite"><span class="n">removeStructure</span><span class="p">()</span></code> methods below.</p>
 </div>
-<p>The following structures available in Polyscope. Many more structures are in developement!</p>
+<p>The following structures available in Polyscope. Many more structures are in development!</p>
 <ul>
 <li><a href="../surface_mesh/basics">Surface Mesh</a></li>
 <li><a href="../point_cloud/basics">Point Cloud</a></li>
 <li><a href="../curve_network/basics">Curve Network</a></li>
 <li><em>in progress</em>: Camera View</li>
-<li><em>in progress</em>: Curve</li>
 <li><em>in progress</em>: Tet Mesh</li>
 </ul>
 <h2 id="registering-structures">Registering structures</h2>
@@ -1045,7 +1068,7 @@ This avoids the need to pass a pointer to the structure you created around your 
 <span class="c1">// by name</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="s">&quot;some values&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">);</span>
 </pre></div>
-The former is concise and programmatic, while the latter avoids the need to keep track of a varible.</p>
+The former is concise and programmatic, while the latter avoids the need to keep track of a variable.</p>
 <p>As before, each structure offers a <code class="codehilite"><span class="n">get___</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code> method, like <code class="codehilite"><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code> which can be used to get pointer to a structure of that type by name. The general form below may be useful if you are implementing your own structures.</p>
 <details class="func"><summary><code class="codehilite"><span class="n">Structure</span><span class="o">*</span> <span class="n">getStructure</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">type</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span></code></summary><p>Get a pointer to a registered structure. The <code class="codehilite"><span class="k">type</span></code> must be the unique string corresponding to the structure type.</p>
 <p>As a convenience, if the <code class="codehilite"><span class="n">name</span></code> may be argument omitted <em>only</em> if there is exactly one structure of that type.</p>

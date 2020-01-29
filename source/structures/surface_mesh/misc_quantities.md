@@ -52,3 +52,15 @@ polyscope::getSurfaceMesh("my mesh")->
     - `edges` is the list of edges for the graph, where each entry is two 0-based indices in to the `nodes` array. The type should be [adaptable](../../../basics/array_adaptors) to a list of `size_t`-valued 2-vectors (aka pairs of indices).
 
     The resulting class has `color` and `radius` fields which can be set to adjust the appearance of the resulting graph.
+
+
+### Options
+
+**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
+--- | --- | --- | --- | ---
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+radius | the radius the graph is drawn with | `#!cpp double getRadius()` | `#!cpp setRadius(double val, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values)
+color | the color to draw the graph with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
+
+_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+

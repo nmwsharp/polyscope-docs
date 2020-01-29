@@ -418,6 +418,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basics/parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -486,6 +498,18 @@
   <li class="md-nav__item">
     <a href="../../../features/user_callback/" title="User Callback" class="md-nav__link">
       User Callback
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../features/color_maps/" title="Color Maps" class="md-nav__link">
+      Color Maps
     </a>
   </li>
 
@@ -750,6 +774,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#options" title="Options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+      
       
       
       
@@ -1010,6 +1041,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#options" title="Options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+      
       
       
       
@@ -1122,6 +1160,56 @@
 </ul>
 <p>Remember, before passing edge-valued data, be sure your <a href="../indexing_convention">indexing convention</a> matches what Polyscope expects.</p>
 </details>
+<h3 id="options">Options</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Getter</strong></th>
+<th><strong>Setter</strong></th>
+<th><strong>Persistent?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>is the quantity enabled?</td>
+<td><code class="codehilite"><span class="kt">bool</span> <span class="n">isEnabled</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span> <span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>vector radius</td>
+<td>the radius vectors are drawn with</td>
+<td><code class="codehilite"><span class="kt">double</span> <span class="n">getVectorRadius</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setVectorRadius</span><span class="p">(</span><span class="kt">double</span> <span class="n">val</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">isRelative</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>vector length</td>
+<td>vectors will be scaled so the longest is this long. ignored if <code class="codehilite"><span class="n">VectorType</span><span class="p">::</span><span class="n">Ambient</span></code></td>
+<td><code class="codehilite"><span class="kt">double</span> <span class="n">getVectorLengthScale</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setVectorLengthScale</span><span class="p">(</span><span class="kt">double</span> <span class="n">val</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">isRelative</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>vector color</td>
+<td>the color to draw the vectors with</td>
+<td><code class="codehilite"><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">getVectorColor</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setVectorColor</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">val</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>ribbon enabled</td>
+<td>draw the ribbon visualization (only available for intrinsic vector fields)</td>
+<td><code class="codehilite"><span class="kt">bool</span> <span class="n">isRibbonEnabled</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setRibbonEnabled</span><span class="p">(</span><span class="kt">bool</span> <span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+</tbody>
+</table>
+<p><em>(all setters return <code class="codehilite"><span class="n">this</span></code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>
                 
                   
                 

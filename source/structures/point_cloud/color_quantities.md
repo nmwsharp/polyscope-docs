@@ -21,3 +21,11 @@ polyscope::getPointCloud(pointCloudName)->addColorQuantity("random color", randC
 
     RGB values are interpreted in the range `[0,1]`.
 
+### Options
+
+**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
+--- | --- | --- | --- | ---
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+
+_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+

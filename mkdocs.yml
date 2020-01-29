@@ -56,11 +56,13 @@ nav:
     - 'Program Options' : 'basics/program_options.md'
     - 'Scene Options' : 'basics/scene_options.md'
     - 'Camera Controls' : 'basics/camera_controls.md'
+    - 'Parameters' : 'basics/parameters.md'
   - Data Adaptors : 'data_adaptors.md'
   - Features: 
     - 'Messages' : 'features/messages.md'
     - 'Screenshots' : 'features/screenshots.md'
     - 'User Callback' : 'features/user_callback.md'
+    - 'Color Maps' : 'features/color_maps.md'
     - '2D Data' : 'features/2D_data.md'
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'

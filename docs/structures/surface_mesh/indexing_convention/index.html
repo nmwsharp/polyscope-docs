@@ -418,6 +418,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basics/parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -486,6 +498,18 @@
   <li class="md-nav__item">
     <a href="../../../features/user_callback/" title="User Callback" class="md-nav__link">
       User Callback
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../features/color_maps/" title="Color Maps" class="md-nav__link">
+      Color Maps
     </a>
   </li>
 
@@ -1058,7 +1082,7 @@
                   <h1>Indexing Convention</h1>
                 
                 <h2 id="default-ordering">Default ordering</h2>
-<p>Polyscope abstracts over data types by accepting generic ordered containers of data to visualize (see <a href="../../../basics/array_adaptors">input adaptors</a>). Unfortunately, not everyone can agree on how to order the elements of their meshes&mdash;which edge is the <span><span class="MathJax_Preview">i^\textrm{th}</span><script type="math/tex">i^\textrm{th}</script></span> edge in mesh?</p>
+<p>Polyscope abstracts over data types by accepting generic ordered containers of data to visualize (see <a href="../../../basics/array_adaptors">input adaptors</a>). Unfortunately, not everyone can agree on how to order the elements of their meshes&mdash;which edge is the <span><span class="MathJax_Preview">i^\textrm{th}</span><script type="math/tex">i^\textrm{th}</script></span> edge in a mesh?</p>
 <p>Polyscope defines a <em>default ordering</em> of mesh elements. If you happen to use the same ordering, everything will &ldquo;just work&rdquo; (this is probably the case for quantities defined on vertices and faces), you can simply call the relevant functions as you see in the tutorials and examples.</p>
 <p>However, if you happen to a different convention for ordering some mesh element (say, edges), visualizations of data on edges will not work correctly out of the box&mdash;your data arrays will be associated with the wrong mesh elements.</p>
 <p>This section describes the remedy: you can give the mesh a permutation, which will be used to translate from the indexing conventions of your data to the indexing conventions of Polyscope. In general, this permutation <code class="codehilite"><span class="n">p</span></code> should be an array of integers, such that if <code class="codehilite"><span class="n">i</span></code> is the <span><span class="MathJax_Preview">i^\textrm{th}</span><script type="math/tex">i^\textrm{th}</script></span> element in the default ordering, <code class="codehilite"><span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code> gives the index under your convention. Your data arrays will then be indexed as <code class="codehilite"><span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span></code> when passed as arguments to surface mesh visualization functions. In fact, your indexing convention need not even have the same number of elements as the Polyscope convention, so long as <code class="codehilite"><span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span></code> is always a valid access; if the size of your index space is different, a size can also be passed in.</p>

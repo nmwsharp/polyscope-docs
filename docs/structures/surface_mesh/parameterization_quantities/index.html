@@ -418,6 +418,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basics/parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -486,6 +498,18 @@
   <li class="md-nav__item">
     <a href="../../../features/user_callback/" title="User Callback" class="md-nav__link">
       User Callback
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../features/color_maps/" title="Color Maps" class="md-nav__link">
+      Color Maps
     </a>
   </li>
 
@@ -1077,6 +1101,62 @@
 <li><code class="codehilite"><span class="n">WORLD</span></code>: UV coords are assumed to be scaled like the world-space positions of the mesh</li>
 </ul>
 <p>These enums can be passed as an optional third argument when a parameterization is registered.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Getter</strong></th>
+<th><strong>Setter</strong></th>
+<th><strong>Persistent?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>is the quantity enabled?</td>
+<td><code class="codehilite"><span class="kt">bool</span> <span class="n">isEnabled</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span> <span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>style</td>
+<td>the visualization style (see above)</td>
+<td><code class="codehilite"><span class="n">ParamVizStyle</span> <span class="n">getStyle</span></code></td>
+<td><code class="codehilite"><span class="n">setStyle</span><span class="p">(</span><span class="n">ParamVizStyle</span> <span class="n">style</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>checker colors</td>
+<td>two colors to use for checkerboards</td>
+<td><code class="codehilite"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="n">getCheckerColors</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setCheckerColors</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span> <span class="n">colors</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>grid colors</td>
+<td>two colors to use for line and background of grid</td>
+<td><code class="codehilite"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="n">getGridColors</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setGridColors</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span> <span class="n">colors</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>checker size</td>
+<td>the width of checkers / stripes, always used as a relative value, unless the coord tpe is <code class="codehilite"><span class="n">UNIT</span></code></td>
+<td><code class="codehilite"><span class="kt">double</span> <span class="n">getCheckerSize</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setCheckerSize</span><span class="p">(</span><span class="kt">double</span> <span class="n">val</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>color map</td>
+<td>the <a href="/features/color_maps">color map</a> to use for radial displays</td>
+<td><code class="codehilite"><span class="n">gl</span><span class="o">::</span><span class="n">ColorMapID</span> <span class="n">getColorMap</span><span class="p">()</span></code></td>
+<td><code class="codehilite"><span class="n">setColorMap</span><span class="p">(</span><span class="n">gl</span><span class="o">::</span><span class="n">ColorMapID</span> <span class="n">newMap</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+</tbody>
+</table>
+<p><em>(all setters return <code class="codehilite"><span class="n">this</span></code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>
                 
                   
                 
