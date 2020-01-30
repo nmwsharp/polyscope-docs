@@ -3,6 +3,7 @@
 Point clouds are one of the core structures in Polyscope. In addition to simply displaying the points, Polyscope can show any number of scalar, vector, or color quantities associated with the points.
 
 As always, try clicking on a point to see the data associated with that point.
+
 ![point_cloud_demo](../../media/point_cloud_demo.gif)
 
 ### Registering a point cloud

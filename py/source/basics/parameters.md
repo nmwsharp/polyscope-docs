@@ -5,7 +5,7 @@ This page documents special features in Polyscope which provide extra functional
 
 ## Persistent values
 
-In Polyscope, if you manually set the color of points in a point cloud, then register a new point cloud with the same name overwriting the original, the new point cloud will inherit the old point cloud's color. This functionality, and other similar behavior, is implemented via _persistent values_.
+In Polyscope, if you manually set the color of points in a point cloud (for instance), then register a new point cloud with the same name overwriting the original, the new point cloud will inherit the old point cloud's color. This functionality, and other similar behavior, is implemented via _persistent values_.
 
 Persistent values are lightweight wrappers around a variable which on-construction look up the variable's in a global cache, and if a cache entry exists take the cached value instead. Any time the variable is written to, its value is recorded in the global cache. Generally, the cache key includes the name of a structure (and quantity if applicable), so a cached variable will only be picked up when names match.
 
