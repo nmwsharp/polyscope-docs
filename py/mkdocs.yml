@@ -1,0 +1,87 @@
+site_name: Polyscope 
+markdown_extensions:
+  - codehilite
+  - attr_list
+  - admonition
+  - markdown.extensions.footnotes
+  - markdown.extensions.smarty
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex
+  - pymdownx.emoji
+    
+
+extra:
+  search:
+    tokenizer: '[\s\-\.::]+'
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'teal'
+    accent: 'deep orange'
+  font:
+    text: 'PT Serif'
+    code: 'Inconsolata'
+  logo: 
+    icon: 'home'
+
+extra_css:
+  - extras.css
+
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
+repo_name: 'nmwsharp/polyscope'
+repo_url: 'https://github.com/nmwsharp/polyscope'
+edit_uri: ''
+
+google_analytics: ['UA-58346315-2', 'auto']
+
+docs_dir: 'source'
+site_dir: 'site_build'
+
+nav:
+  - Home: 'index.md'
+  - About: 
+    - 'about/release_notes.md'
+    - 'about/license.md'
+    - 'about/bindings.md'
+    - 'about/contributing.md'
+    - 'about/contributors.md'
+  - Building: 'installing/index.md'
+  - Basics: 
+    - 'Initializing' : 'basics/initializing.md'
+    - 'Program Options' : 'basics/program_options.md'
+    - 'Scene Options' : 'basics/scene_options.md'
+    - 'Camera Controls' : 'basics/camera_controls.md'
+    - 'Parameters' : 'basics/parameters.md'
+  - Features: 
+    - 'Messages' : 'features/messages.md'
+    - 'Screenshots' : 'features/screenshots.md'
+    - 'User Callback' : 'features/user_callback.md'
+    - 'Color Maps' : 'features/color_maps.md'
+    - '2D Data' : 'features/2D_data.md'
+  - Structures: 
+    - 'Structure Management' : 'structures/structure_management.md'
+    - Point Cloud:
+      - 'Basics' : 'structures/point_cloud/basics.md'
+      - 'Scalar Quantities' : 'structures/point_cloud/scalar_quantities.md'
+      - 'Color Quantities' : 'structures/point_cloud/color_quantities.md'
+      - 'Vector Quantities' : 'structures/point_cloud/vector_quantities.md'
+    - Surface Mesh:
+      - 'Basics' : 'structures/surface_mesh/basics.md'
+      - 'Scalar Quantities' : 'structures/surface_mesh/scalar_quantities.md'
+      - 'Color Quantities' : 'structures/surface_mesh/color_quantities.md'
+      - 'Distance Quantities' : 'structures/surface_mesh/distance_quantities.md'
+      - 'Vector Quantities' : 'structures/surface_mesh/vector_quantities.md'
+      - 'Parameterization Quantities' : 'structures/surface_mesh/parameterization_quantities.md'
+      - 'Count Quantities' : 'structures/surface_mesh/count_quantities.md'
+      - 'Misc Quantities' : 'structures/surface_mesh/misc_quantities.md'
+      - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'
+    - Curve Network:
+      - 'Basics' : 'structures/curve_network/basics.md'
+      - 'Scalar Quantities' : 'structures/curve_network/scalar_quantities.md'
+      - 'Color Quantities' : 'structures/curve_network/color_quantities.md'
+      - 'Vector Quantities' : 'structures/curve_network/vector_quantities.md'

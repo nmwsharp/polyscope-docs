@@ -40,7 +40,7 @@ edit_uri: ''
 google_analytics: ['UA-58346315-2', 'auto']
 
 docs_dir: 'source'
-site_dir: 'docs'
+site_dir: 'site_build'
 
 nav:
   - Home: 'index.md'
