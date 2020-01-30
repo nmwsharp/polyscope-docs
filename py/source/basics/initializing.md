@@ -36,3 +36,5 @@ ps.show()
     ##### show()
 
     Give control to the polyscope GUI. Blocks until the user returns control via the GUI, possibly by exiting the window.
+
+    This function can be called anywhere, and can be called multiple times to re-open the GUI after it has been closed. Existing data will be preserved between calls to `show()`.

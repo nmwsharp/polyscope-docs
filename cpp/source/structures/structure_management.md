@@ -29,8 +29,6 @@ The following structures available in Polyscope. Many more structures are in dev
 
 Each structure offers a `register___(name, ...)` function (like `registerPointCloud()`) which accepts the name of the structure and the data necessary to construct it. These functions will return a `Structure*` pointer which may be used to add quantities to the structure. See the relevant sections for documentation on each of these register functions.
 
-By default, these functions will error-out if a structure with that name is already in use. However, they take an optional boolean argument `allowReplacement` argument, which can be set to `true` to replace an existing structure of the same name.
-
 The general form for registering structures is below; it may be useful if you are implementing your own structures.
 
 ??? func "`#!cpp bool registerStructure(Structure* structure, bool replaceIfPresent = true)`"
@@ -52,15 +50,15 @@ Polyscope offers two patterns for calling methods on a registered structure: you
 polyscope::SurfaceMesh* psMesh = 
     polyscope::registerSurfaceMesh("my mesh", vertices, faces);
 
-// with the pointer
+// access with the pointer
 psMesh->addScalarQuantity("some values", values);
 
-// by name
+// access by name
 polyscope::getSurfaceMesh("my mesh")->addScalarQuantity("some values", values);
 ```
 The former is concise and programmatic, while the latter avoids the need to keep track of a variable.
 
-As before, each structure offers a `get___(name)` method, like `getSurfaceMesh(name)` which can be used to get pointer to a structure of that type by name. The general form below may be useful if you are implementing your own structures.
+As before, each structure offers a `get___(name)` method, like `getSurfaceMesh(name)` which can be used to get a pointer to the structure of that type by name. The general form below may be useful if you are implementing your own structures.
 
 
 ??? func "`#!cpp Structure* getStructure(std::string type, std::string name = "")`"
