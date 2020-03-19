@@ -1,22 +1,46 @@
 Visualize vector-valued data at the points of a point cloud.
 
-??? func "`#!cpp PointCloud::addVectorQuantity(std::string name, const T& vectors, VectorType vectorType = VectorType::STANDARD)`"
+Example:
+```python
+import numpy as np
+import polyscope as ps
+
+# register a point cloud
+N = 100
+points = np.random.rand(N, 3)
+ps_cloud = ps.register_point_cloud("my points", points)
+
+# generate some random vectors per-point
+vecs = np.random.rand(N, 3)
+
+# basic visualization
+ps_cloud.add_vector_quantity("rand vecs", vecs)
+
+# set radius/length/color of the vectors
+ps_cloud.add_vector_quantity("rand vecs", vecs, radius=0.001, length=0.005, color=(0.2, 0.5, 0.5))
+
+# ambient vectors don't get auto-scaled, useful e.g. when reprsenting offsets in 3D space
+ps_cloud.add_vector_quantity("vecs ambient", vecs, vectortype='ambient')
+
+# view the point cloud with all of these quantities
+ps.show() 
+```
+
+???+ func "`#!python PointCloud.add_vector_quantity(self, name, values, enabled=None, vectortype="standard", length=None, radius=None, color=None)`"
+
 
     Add a vector quantity to the point cloud.
 
-    - `vectors` is the array of vectors at points. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of points in the point cloud.
-    - `vectorType` indicates how to interpret vector data. The default setting is as a freely-scaled value, which will be automatically scaled to be visible. Passing `VectorType::AMBIENT` ensures vectors have the proper world-space length.
+    - `name` string, a name for the quantity
+    - `values` an `Nx3` numpy array, vectors at points (or `Nx2` for 2D data)
+    
+    Additional optional keyword arguments:
 
-    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D point cloud), `addVectorQuantity2D` exists with the same signature. See [2D data](/features/2D_data).
-
-### Options
-
-**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
---- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-vector radius | the radius vectors are drawn with | `#!cpp double getVectorRadius()` | `#!cpp setVectorRadius(double val, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values)
-vector length | vectors will be scaled so the longest is this long. ignored if `VectorType::Ambient` | `#!cpp double getVectorLengthScale()` | `#!cpp setVectorLengthScale(double val, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values)
-vector color | the color to draw the vectors with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
-
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
-
+    - `enabled` boolean, whether the quantity is initially enabled
+    - `vectortype`, one of `standard` or `ambient`. Ambient vectors don't get auto-scaled, and thus are good for representing values in absolute 3D world coordinates
+    - `length` float, a (relative) length for the vectors
+    - `radius` float, a (relative) radius for the vectors
+    - `color` 3-tuple, color for the vectors
+    
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    

@@ -30,12 +30,12 @@ ps_cloud.add_scalar_quantity("gaussian vals symmetric", vals_gaussian, datatype=
 ps.show() 
 ```
 
-??? func "`#!python PointCloud.add_scalar_quantity(name, values, enabled=None, datatype="standard", vminmax=None, cmap=None)`"
+???+ func "`#!python PointCloud.add_scalar_quantity(name, values, enabled=None, datatype="standard", vminmax=None, cmap=None)`"
 
     Add a scalar quantity to the point cloud.
 
-    - `name` is a name for the quantity
-    - `values` is a length `N` numpy array of scalars at points
+    - `name` string, a name for the quantity
+    - `values` a length `N` numpy array, scalars at points
     
     Additional optional keyword arguments:
 
@@ -44,5 +44,5 @@ ps.show()
     - `vminmax`, a 2-tuple of floats, specifying the min and max range to colormap in to
     - `cmap`, which [colormap](/features/color_maps) to use
     
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
     

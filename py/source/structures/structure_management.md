@@ -1,5 +1,3 @@
-## Intro
-
 A **structure** is a geometric object visualized in Polyscope, like a mesh or a point cloud. The first step in seeing your data in Polyscope is to register one or more structures to add them to the visualization. Then, _quantities_ can be added to these structures, like scalar functions, colors, or vector fields.
 
 Each structure should be given a name which is unique among structures of that type. You can then use this name as a handle to perform operations on the structure; For instance, you can register a mesh with:
@@ -33,7 +31,7 @@ Polyscope offers two patterns for calling methods on a registered structure: you
 import polyscope as ps
 
 # register a structure
-ps_mesh = polyscope.register_surface_mesh("my mesh", vertices, faces)
+ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)
 
 # access with the handle
 ps_mesh.add_scalar_quantity("some values", values)
@@ -54,7 +52,7 @@ If no longer needed, structures can be removed by name or by handle. Removing a 
 import polyscope as ps
 
 # register a structure and some data
-ps_mesh = polyscope.register_surface_mesh("my mesh", vertices, faces)
+ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)
 ps_mesh.add_scalar_quantity("some values", values)
 
 # look at it
