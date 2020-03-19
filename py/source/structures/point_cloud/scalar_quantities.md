@@ -1,33 +1,48 @@
 Visualize scalar (real or integer)-valued data at the points of a point cloud.
 
 Example:
-```cpp
-#include "polyscope/point_cloud.h"
+```python
+import numpy as np
+import polyscope as ps
 
-std::vector<double> xC(points.size());
-for (size_t i = 0; i < points.size(); i++) {
-  xC[i] = points[i].x;
-}
+# register a point cloud
+N = 100
+points = np.random.rand(N, 3)
+ps_cloud = ps.register_point_cloud("my points", points)
 
-// visualize
-polyscope::getPointCloud(pointCloudName)->addScalarQuantity("xC", xC);
+# generate some random data per-point
+vals = np.random.rand(N)
+
+# basic visualization
+ps_cloud.add_scalar_quantity("rand vals", vals)
+
+# manually specify a range for colormapping
+ps_cloud.add_scalar_quantity("rand vals with range", vals, vminmax=(-5., 5.))
+
+# use a different colormap
+ps_cloud.add_scalar_quantity("rand vals with range", vals, cmap='blues')
+
+# use the 'datatype' to specify default visualization semantics
+vals_gaussian = np.random.normal(size=N)
+ps_cloud.add_scalar_quantity("gaussian vals symmetric", vals_gaussian, datatype='symmetric')
+
+# view the point cloud with all of these quantities
+ps.show() 
 ```
 
-??? func "`#!cpp PointCloud::addScalarQuantity(std::string name, const T& values, DataType type = DataType::STANDARD)`"
+??? func "`#!python PointCloud.add_scalar_quantity(name, values, enabled=None, datatype="standard", vminmax=None, cmap=None)`"
 
     Add a scalar quantity to the point cloud.
 
-    - `values` is the array of scalars at points. The type should be [adaptable](/data_adaptors) to a `float` scalar array. The length should be the number of points in the point cloud.
+    - `name` is a name for the quantity
+    - `values` is a length `N` numpy array of scalars at points
+    
+    Additional optional keyword arguments:
 
-
-
-### Options
-
-**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
---- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-color map | the [color map](/features/color_maps) to use | `#!cpp gl::ColorMapID getColorMap()` | `#!cpp setColorMap(gl::ColorMapID newMap)` | [yes](/basics/parameters/#persistent-values)
-map range | the lower and upper limits used when mapping the data in to the color map| `#!cpp std::pair<double,double> getMapRange()` | `#!cpp setMapRange(std::pair<double,double>)` and `#!cpp resetMapRange()`| no
-
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
-
+    - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantitiy can be shown at a time; the most recent will be used)
+    - `datatype`, one of `standard`, `symmetric`, or `magnitude`, affects default colormap and map range
+    - `vminmax`, a 2-tuple of floats, specifying the min and max range to colormap in to
+    - `cmap`, which [colormap](/features/color_maps) to use
+    
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](/basics/parameters/#persistent-values) if previously set.
+    

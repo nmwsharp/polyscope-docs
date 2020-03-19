@@ -10,6 +10,8 @@ When any of these structures and quantities are registered, Polyscope displays t
 
     The python API for polyscope is new, and should considered experimental. It may be broken, and it may change without warning!
 
+    Not all features of the C++ library are exposed in Python; they are being added incrementally.
+
 A simple workflow for visualizing data in Polyscope looks like:
 ``` python
 TODO

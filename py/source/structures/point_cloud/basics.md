@@ -17,7 +17,7 @@ import polyscope as ps
 points = np.random.rand(100, 3)
 
 # visualize!
-ps.register_point_cloud("my points", points)
+ps_cloud = ps.register_point_cloud("my points", points)
 ps.show()
 ```
 
@@ -34,7 +34,7 @@ ps.show()
     - `radius` float, a size for the points relative to the scene length scale (use `set_point_radius(val, relative=False)` for absolute units)
     - `color` float 3-tuple, default color values for the points as rgb in [0,1]
 
-    if not specified, these optional parameters will take a reasonable default value, or a [persistant value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](/basics/parameters/#persistent-values) if previously set.
     
     2D point clouds are also supported, see [2D data](/features/2D_data).
 
@@ -44,6 +44,13 @@ ps.show()
 The locations of the points in a point cloud can be updated with the member function `update_point_positions(newPositions)`. All quantities will be preserved. Changing the _number_ of points in the cloud is not supported, you will need to register a new cloud (perhaps with the same name to overwrite this one).
 
 
+Example: update positions (continued from above)
+```python
+new_pos = np.random.rand(100, 3)
+ps_cloud.update_point_positions(new_pos)
+ps.show()
+```
+
 ??? func "`#!python PointCloud.update_point_positions(newPos)`"
 
     Update the point positions in a point cloud structure. `newPos` must be valid input as to initially construct a point cloud, with the same number of points.
@@ -51,21 +58,21 @@ The locations of the points in a point cloud can be updated with the member func
 
 ### Options
 
-Options control the appearance of the cloud. Note that these options can also be passed as arguments to the initial `register_point_cloud()`, as noted above.
+Options control the appearance of the cloud. Note that these options can also be passed as keyword arguments to the initial `register_point_cloud()`, as noted above.
 
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? | `---` | `#!python set_enabled(newVal)` | [yes](/basics/parameters/#persistent-values)
-point radius | size of rendered points | `---` | `#!python set_point_radius(newVal, relative=True)` | [yes](/basics/parameters/#persistent-values) |
-point color | default color for points | `---` | `#!python set_point_color(newVal)` | [yes](/basics/parameters/#persistent-values) |
+enabled | is the structure enabled? |  `#!python is_enabled()` | `#!python set_enabled(newVal=True)` | [yes](/basics/parameters/#persistent-values)
+point radius | size of rendered points | `#!python get_point_radius()` | `#!python set_point_radius(newVal, relative=True)` | [yes](/basics/parameters/#persistent-values) |
+point color | default color for points | `#!python get_point_color()` | `#!python set_point_color(newVal)` | [yes](/basics/parameters/#persistent-values) |
 
 
 Example: set options which affect the appearance of the point cloud
 ```python
 cloud = polyscope.register_point_cloud("my points", points)
 
-cloud.set_enabled(false) # disable
+cloud.set_enabled(False) # disable
 cloud.set_enabled() # default is true
 
 cloud.set_point_radius(0.02) # radius is relative to a scene length scale by default
