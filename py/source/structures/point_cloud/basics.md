@@ -85,5 +85,5 @@ cloud.set_material("candy")
 
 # alternately:
 ps.register_point_cloud("my points 2", points, enabled=False, material='candy',
-                        point_radius=0.02, point_color=(1., 0., 0.))
+                        radius=0.02, color=(1., 0., 0.))
 ```

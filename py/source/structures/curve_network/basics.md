@@ -8,75 +8,81 @@ Try clicking on a node or edge to see the data associated with that point!
 
 ### Registering a curve network
 
-Curve network structures can be registered with Polyscope by passing the node position and edge indices. There are also two helpers for constructing lines and loops which only require the node locations and automatically build connectivity.
+Curve network structures can be registered with Polyscope by passing the node position and edge indices. Polyscope also has makes it easy to automatically construct lines and loops by just passing node locations and `edges='line'` (or `loop`).
 
-As usual in Polyscope, the [data adaptors](/data_adaptors) allow these functions to accept a wide variety of data types as input-- any `nodes` which are essentially a list of vectors and any `edges` which are a list of index tuples will work. The `std::vector<>` types in the example below are just one possibility.
+Example: a network of random curves 
+```python
+import numpy as np
+import polyscope as ps
 
-Example: add a curve network
-```cpp
-#include "polyscope/curve_network.h"
+# generate some random nodes and edges between them
+nodes = np.random.rand(100, 3)
+edges = np.random.randint(0, 100, size=(250,2))
 
-polyscope::init();
-
-std::vector<glm::vec3> nodes = /* some nodes */;
-std::vector<std::array<size_t, 2>> edges = /* edges between nodes */;
-
-// Add the curve network
-polyscope::registerCurveNetwork("my network", nodes, edges);
-
-// visualize!
-polyscope::show();
+# visualize!
+ps_net = ps.register_curve_network("my network", nodes, edges)
+ps.show()
 ```
 
-??? func "`#!cpp CurveNetwork* polyscope::registerCurveNetwork(std::string name, const P& nodes, const E& edges)`"
 
-    Add a new curve network to polyscope
+???+ func "`#!python register_curve_network(name, nodes, edges, enabled=None, radius=None, color=None, material=None)`"
 
-    - `nodes` is the array of 3D point locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of nodes.
+    Add a new curve network structure to Polyscope.
 
-    - `edges` is the array of edges, each of which is a pair of 0-based node indices node. The type should be [adaptable](/data_adaptors) to an array of `size_t`-valued 2-vectors. The length will be the number of edges.
+    - `name` string, a name for the structure
+    - `nodes`, an `Nx3` numpy float array of node locations (or `Nx2` for 2D)
+    - `edges`, an `Nx2` numpy integer array of edge connections, as 0-based indices in to the nodes array, OR the string `line`/`loop`,  to generate node connectivity as a line or loop, respectively.
 
-    Note: the inner vector type of the `nodes` input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D curve network, `registerCurveNetwork2D` exists with the same signature. See [2D data](/features/2D_data).
+    Additional optional keyword arguments:
 
-??? func "`#!cpp CurveNetwork* polyscope::registerCurveNetworkLine(std::string name, const P& nodes)`"
+    - `enabled` boolean, is the structure enabled initially
+    - `radius` float, a size for the nodes and edges relative to the scene length scale (use `set_radius(val, relative=False)` for absolute units)
+    - `color` float 3-tuple, default color values for the network as rgb in [0,1]
+    - `material` string, name of material to use for network 
 
-    Add a new curve network to polyscope from a **polyline** of points. The connectivity will be automatically created to connect the points in order.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](/basics/parameters/#persistent-values) if previously set.
+    
+    2D node positions are also supported, see [2D data](/features/2D_data).
 
-    - `nodes` is the array of 3D point locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of nodes.
-
-    Note: the inner vector type of the `points` input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D curve network, `registerCurveNetworkLine2D` exists with the same signature. See [2D data](/features/2D_data).
-
-
-??? func "`#!cpp CurveNetwork* polyscope::registerCurveNetworkLoop(std::string name, const P& nodes)`"
-
-    Add a new curve network to polyscope from a **closed loop** of points. The connectivity will be automatically created to connect the points in order.
-
-    - `nodes` is the array of 3D point locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of nodes.
-
-    Note: the inner vector type of the `points` input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D curve network, `registerCurveNetworkLoop2D` exists with the same signature. See [2D data](/features/2D_data).
 
 
 ### Updating a curve network
 
-The locations of the nodes in a curve network can be updated with the member function `updateNodePositions(newPositions)`. All quantities will be preserved. Changing the connectivity or number of nodes/edges is not supported, you will need to register a new curve network (perhaps with the same name to overwrite).
+The locations of the nodes in a curve network can be updated with the member function `update_node_positions(newPositions)`. All quantities will be preserved. Changing the connectivity or number of nodes/edges is not supported, you will need to register a new curve network (perhaps with the same name to overwrite).
 
 
-??? func "`#!cpp void CurveNetwork::updateNodePositions(const V& newPositions)`"
+??? func "`#!python CurveNetwork.update_node_positions(newPos)`"
 
-    Update the node positions in a curve network structure.
-
-    - `newPositions` is the vector array of 3D node locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors.  The length must be equal to the current number of nodes.
-
-    Note: `updatePointPositions2D` exists with the same signature. See [2D data](/features/2D_data).
+    Update the node positions in a curve network structure. `newPos` must be valid input as to initially construct the nodes of the network, with the same number of nodes as the network curently has.
 
 
 ### Options
 
+Options control the appearance of the network . Note that these options can also be passed as keyword arguments to the initial `register_curve_network()`, as noted above.
+
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-radius | size of rendered points and lines | `#!cpp double getRadius()` | `#!cpp setRadius(double newVal, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values) |
-color | default color the curve network | `#!cpp glm::vec3 getColor` | `#! setColor(glm::vec3 newVal)` | [yes](/basics/parameters/#persistent-values) |
+enabled | is the structure enabled? |  `#!python is_enabled()` | `#!python set_enabled(newVal=True)` | [yes](/basics/parameters/#persistent-values)
+radius | size of rendered nodes/edges | `#!python get_radius()` | `#!python set_radius(newVal, relative=True)` | [yes](/basics/parameters/#persistent-values) |
+color | default color for the network | `#!python get_color()` | `#!python set_color(newVal)` | [yes](/basics/parameters/#persistent-values) |
+material | material for structure | `#!python get_material()` | `#!python set_material(newVal)` | [yes](/basics/parameters/#persistent-values) |
 
-_(all setters return `this` to support chaining. setEnabled() returns generic setter, so chain it last)_
+
+Example: set options which affect the appearance of the curve network
+```python
+network = polyscope.register_curve_network("my net", nodes, edges)
+
+network.set_enabled(False) # disable
+network.set_enabled() # default is true
+
+network.set_radius(0.02) # radius is relative to a scene length scale by default
+network.set_radius(1.7, relative=False) # radius in absolute world units
+
+network.set_color((0.3, 0.6, 0.8)) # rgb triple on [0,1]
+network.set_material("candy")
+
+# alternately:
+ps.register_curve_network("my net 2", nodes, edges, enabled=False, 
+                           material='candy', radius=0.02, color=(1., 0., 0.))
+```
