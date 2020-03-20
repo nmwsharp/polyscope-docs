@@ -19,14 +19,14 @@ ps_cloud.add_vector_quantity("rand vecs", vecs)
 # set radius/length/color of the vectors
 ps_cloud.add_vector_quantity("rand vecs", vecs, radius=0.001, length=0.005, color=(0.2, 0.5, 0.5))
 
-# ambient vectors don't get auto-scaled, useful e.g. when reprsenting offsets in 3D space
+# ambient vectors don't get auto-scaled, useful e.g. when representing offsets in 3D space
 ps_cloud.add_vector_quantity("vecs ambient", vecs, vectortype='ambient')
 
 # view the point cloud with all of these quantities
 ps.show() 
 ```
 
-???+ func "`#!python PointCloud.add_vector_quantity(self, name, values, enabled=None, vectortype="standard", length=None, radius=None, color=None)`"
+???+ func "`#!python PointCloud.add_vector_quantity(name, values, enabled=None, vectortype="standard", length=None, radius=None, color=None)`"
 
 
     Add a vector quantity to the point cloud.

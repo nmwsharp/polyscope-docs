@@ -8,7 +8,7 @@ Try clicking on a node or edge to see the data associated with that point!
 
 ### Registering a curve network
 
-Curve network structures can be registered with Polyscope by passing the node position and edge indices. Polyscope also has makes it easy to automatically construct lines and loops by just passing node locations and `edges='line'` (or `loop`).
+Curve network structures can be registered with Polyscope by passing the node position and edge indices. Polyscope also makes it easy to automatically construct lines and loops by just passing `edges='line'` or `edges='loop'`.
 
 Example: a network of random curves 
 ```python

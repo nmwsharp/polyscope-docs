@@ -3,40 +3,48 @@ Visualize scalar valued data at the nodes or edges of a curve network.
 ![curve network scalar demo](/media/curve_network_scalar.jpeg)
 
 Example:
-```cpp
-#include "polyscope/curve_network.h"
+```python
+import numpy as np
+import polyscope as ps
 
-std::vector<double> xC(nodes.size());
-for (size_t i = 0; i < nodes.size(); i++) {
-  xC[i] = nodes[i].x; // (use the x coordinate as sample data)
-}
+# register a curve network 
+N_node = 100
+N_edge = 250
+nodes = np.random.rand(N_node, 3)
+edges = np.random.randint(0, N_node, size=(N_edge,2))
+ps_net = ps.register_curve_network("my network", nodes, edges)
 
-// visualize
-polyscope::getCurveNetwork(curveNetworkName)->addNodeScalarQuantity("sample value", xC);
+# visualize some random data per-node
+vals_node = np.random.rand(N_node)
+ps_net.add_scalar_quantity("rand vals", vals_node)
+
+# visualize some random data per-edge
+vals_edge = np.random.rand(N_edge)
+ps_net.add_scalar_quantity("rand vals2", vals_edge, defined_on='edges')
+
+# as always, we can customize the initial appearance
+ps_net.add_scalar_quantity("rand vals2 opt", vals_edge, defined_on='edges', 
+                           enabled=True, vminmax=(-3., 3.), cmap='reds')
+
+
+# view the network with all of these quantities
+ps.show() 
 ```
 
-??? func "`#!cpp CurveNetwork::addNodeScalarQuantity(std::string name, const T& values, DataType type = DataType::STANDARD)`"
+???+ func "`#!python CurveNetwork.add_scalar_quantity(name, values, defined_on='nodes', enabled=None, datatype="standard", vminmax=None, cmap=None)`"
 
-    Add a scalar quantity to the nodes of the curve network.
+    Add a scalar quantity to the network.
 
-    - `values` is the array of scalars at nodes. The type should be [adaptable](/data_adaptors) to a `float` scalar array. The length should be the number of nodes in the curve network.
+    - `name` string, a name for the quantity
+    - `values` a length `N` numpy array, scalars at nodes/edges
+    
+    Additional optional keyword arguments:
 
-
-
-??? func "`#!cpp CurveNetwork::addEdgeScalarQuantity(std::string name, const T& values, DataType type = DataType::STANDARD)`"
-
-    Add a scalar quantity to the edges of the curve network.
-
-    - `values` is the array of scalars at edges . The type should be [adaptable](/data_adaptors) to a `float` scalar array. The length should be the number of edges in the curve network.
-
-
-### Options
-
-**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
---- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-color map | the [color map](/features/color_maps) to use | `#!cpp gl::ColorMapID getColorMap()` | `#!cpp setColorMap(gl::ColorMapID newMap)` | [yes](/basics/parameters/#persistent-values)
-map range | the lower and upper limits used when mapping the data in to the color map| `#!cpp std::pair<double,double> getMapRange()` | `#!cpp setMapRange(std::pair<double,double>)` and `#!cpp resetMapRange()`| no
-
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
-
+    - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
+    - `defined_on` string, one of `nodes` or `edges`, is this data a value per-node or a value per-edge?
+    - `datatype`, one of `standard`, `symmetric`, or `magnitude`, affects default colormap and map range
+    - `vminmax`, a 2-tuple of floats, specifying the min and max range to colormap in to
+    - `cmap`, which [colormap](/features/color_maps) to use
+    
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    

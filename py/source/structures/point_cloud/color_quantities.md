@@ -24,7 +24,7 @@ ps.show()
     Add a color quantity to the point cloud.
 
     - `name` string, a name for the quantity
-    - `values` a length `N` numpy array, colors at points
+    - `values` an `Nx3` numpy array, with rgb [0,1] colors at points
     
     Additional optional keyword arguments:
 

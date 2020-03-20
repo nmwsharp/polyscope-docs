@@ -3,39 +3,41 @@ Visualize color rgb-valued data at the nodes or edges of a curve network.
 ![curve network color](/media/curve_network_color.jpeg)
 
 Example:
-```cpp
-#include "polyscope/curve_network.h"
+```python
+import numpy as np
+import polyscope as ps
 
-std::vector<std::array<double, 3>> randColor(edges.size());
-for (size_t i = 0; i < edges.size(); i++) {
-  randColor[i] = {{polyscope::randomUnit(), polyscope::randomUnit(), polyscope::randomUnit()}};
-}
+# register a curve network 
+N_node = 100
+N_edge = 250
+nodes = np.random.rand(N_node, 3)
+edges = np.random.randint(0, N_node, size=(N_edge,2))
+ps_net = ps.register_curve_network("my network", nodes, edges)
 
-// visualize
-polyscope::getCurveNetwork(curveNetworkName)->addEdgeColorQuantity("random color", randColor);
+# visualize some random colors per-node
+vals_node = np.random.rand(N_node, 3)
+ps_net.add_color_quantity("rand vals", vals_node)
+
+# visualize some random colors per-edge
+vals_edge = np.random.rand(N_edge, 3)
+ps_net.add_color_quantity("rand vals2", vals_edge, defined_on='edges')
+
+
+# view the network with all of these quantities
+ps.show() 
 ```
 
-??? func "`#!cpp CurveNetwork::addNodeColorQuantity(std::string name, const T& values)`"
+???+ func "`#!python CurveNetwork.add_color_quantity(name, values, defined_on='nodes', enabled=None, datatype="standard", vminmax=None, cmap=None)`"
 
-    Add a color quantity to the nodes of the curve network
+    Add a scalar quantity to the network.
 
-    - `values` is the array of colors at nodes. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of nodes in the curve network.
+    - `name` string, a name for the quantity
+    - `values` an `Nx3` numpy array, with rgb [0,1] colors at nodes/edges
+    
+    Additional optional keyword arguments:
 
-    RGB values are interpreted in the range `[0,1]`.
-
-??? func "`#!cpp CurveNetwork::addEdgeColorQuantity(std::string name, const T& values)`"
-
-    Add a color quantity to the edges of the curve network
-
-    - `values` is the array of colors at edges. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of edges in the curve network.
-
-    RGB values are interpreted in the range `[0,1]`.
-
-### Options
-
-**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
---- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
-
+    - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
+    - `defined_on` string, one of `nodes` or `edges`, is this data a color per-node or a value per-edge?
+    
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    
