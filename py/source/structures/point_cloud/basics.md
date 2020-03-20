@@ -12,6 +12,7 @@ Example: a point cloud of random points
 ```python
 import numpy as np
 import polyscope as ps
+ps.init()
 
 # generate some points
 points = np.random.rand(100, 3)

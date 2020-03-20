@@ -14,6 +14,7 @@ Example: a network of random curves
 ```python
 import numpy as np
 import polyscope as ps
+ps.init()
 
 # generate some random nodes and edges between them
 nodes = np.random.rand(100, 3)
@@ -31,7 +32,7 @@ ps.show()
 
     - `name` string, a name for the structure
     - `nodes`, an `Nx3` numpy float array of node locations (or `Nx2` for 2D)
-    - `edges`, an `Nx2` numpy integer array of edge connections, as 0-based indices in to the nodes array, OR the string `line`/`loop`,  to generate node connectivity as a line or loop, respectively.
+    - `edges`, an `Ex2` numpy integer array of edge connections, as 0-based indices in to the nodes array, OR the string `line`/`loop`,  to generate node connectivity as a line or loop, respectively.
 
     Additional optional keyword arguments:
 
