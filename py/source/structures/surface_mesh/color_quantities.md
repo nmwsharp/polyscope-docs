@@ -1,45 +1,41 @@
 Visualize color rgb-valued data at the elements of a surface mesh.
 
-**Example**: visualizing random colors at faces
-```cpp
-#include "polyscope/surface_mesh.h"
+Example:
+```python
+import numpy as np
+import polyscope as ps
 
-// Make some random colors
-std::vector<std::array<double, 3>> fColor(nFaces);
-for (size_t iF = 0; iF < nFaces; iF++) {
-  std::vector<size_t>& face = faceIndices[iF];
-  fColor[iF] = {{polyscope::randomUnit(), polyscope::randomUnit(), polyscope::randomUnit()}};
-}
+N_vert = 100
+N_face = 250
+vertices = np.random.rand(N_vert, 3) # (V,3) vertex position array
+faces = np.random.randint(0, N_vert, size=(N_face,3)) # (F,3) array of indices 
+                                                      # for triangular faces
 
-// Visualize
-polyscope::getSurfaceMesh("name")->addFaceColorQuantity("fColor", fColor);
+ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)
+
+# visualize some random data per-vertex
+colors_vert = np.random.rand(N_vert, 3)
+ps_mesh.add_color_quantity("rand colors", colors_vert)
+
+# visualize some random data per-face
+colors_face = np.random.rand(N_face, 3)
+ps_mesh.add_color_quantity("rand colors2", colors_face, defined_on='faces')
+
+# view the mesh with all of these quantities
+ps.show() 
 ```
 
+???+ func "`#!python SurfaceMesh.add_color_quantity(name, values, defined_on='vertices', enabled=None)`"
 
-### Add colors to elements
+    Add a scalar quantity to the network.
 
-??? func "`#!cpp SurfaceMesh::addVertexColorQuantity(std::string name, const T& values)`"
+    - `name` string, a name for the quantity
+    - `values` an `Nx3` numpy array, with rgb [0,1] colors at vertices/faces
+    - `defined_on` string, one of `vertices` or `faces`, is this data a color per vertex or a color per face?
+    
+    Additional optional keyword arguments:
 
-    Add a color quantity defined at the vertices of the mesh.
-
-    - `values` is the array of colors at vertices. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
-
-    RGB values are interpreted in the range `[0,1]`.
-
-??? func "`#!cpp SurfaceMesh::addFaceColorQuantity(std::string name, const T& values)`"
-
-    Add a color quantity defined at the faces of the mesh.
-
-    - `values` is the array of colors at faces. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of faces in the mesh.
-
-    RGB values are interpreted in the range `[0,1]`.
-
-
-### Options
-
-**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
---- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
-
+    - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
+    
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    

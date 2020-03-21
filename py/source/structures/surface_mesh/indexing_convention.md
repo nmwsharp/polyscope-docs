@@ -1,6 +1,6 @@
 ## Default ordering
 
-Polyscope abstracts over data types by accepting generic ordered containers of data to visualize (see [input adaptors](../../../basics/array_adaptors)). Unfortunately, not everyone can agree on how to order the elements of their meshes---which edge is the $i^\textrm{th}$ edge in a mesh?
+Polyscope abstracts over data types by accepting generic ordered arrays of data to visualize. Unfortunately, not everyone can agree on how to order the elements of their meshes---which edge is the $i^\textrm{th}$ edge in a mesh?
 
 Polyscope defines a _default ordering_ of mesh elements. If you happen to use the same ordering, everything will "just work" (this is probably the case for quantities defined on vertices and faces), you can simply call the relevant functions as you see in the tutorials and examples.
 
@@ -13,37 +13,37 @@ The sections below define the _default ordering_ of mesh elements, and show how 
 
 ### Vertices
 
-The first argument when registering a surface mesh with Polyscope is a list of vertex positions. The ordering of vertices in this list is the default ordering vertices. Arrays of vertex-valued data passed for visualization will be interpted in that order, unless an alternate permutation is set as below.
+The first argument when registering a surface mesh with Polyscope is a list of vertex positions. The ordering of vertices in this list is the default ordering vertices. Arrays of vertex-valued data passed for visualization will be interpreted in that order, unless an alternate permutation is set as below.
 
-??? func "`#!cpp SurfaceMesh::setVertexPermutation(const T& permArr, size_t expectedSize = 0)`"
+??? func "`#!python SurfaceMesh.set_vertex_permutation(perm, expected_size=None)`"
 
     Set a non-standard ordering for vertex-valued data on a mesh.
 
-    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::vector<size_t>`.
+    The argument `perm` should be an array of integers.
 
-    If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `permArr`.
+    If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `perm`.
 
     Must be set _before_ any quantites are added.
 
 
 ### Faces
 
-The second argument when registering a surface mesh with Polyscope is a list of face indices. The ordering of faces in this list is the default ordering faces. Arrays of face-valued data passed for visualization will be interpted in that order, unless an alternate permutation is set as below.
+The second argument when registering a surface mesh with Polyscope is a list of face indices. The ordering of faces in this list is the default ordering faces. Arrays of face-valued data passed for visualization will be interpreted in that order, unless an alternate permutation is set as below.
 
-??? func "`#!cpp SurfaceMesh::setFacePermutation(const T& permArr, size_t expectedSize = 0)`"
+??? func "`#!python SurfaceMesh.set_face_permutation(perm, expected_size=None)`"
 
     Set a non-standard ordering for face-valued data on a mesh.
 
-    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::vector<size_t>`.
+    The argument `perm` should be an array of integers.
 
-    If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `permArr`.
+    If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `perm`.
 
     Must be set _before_ any quantites are added.
 
 ### Edges
 
 The second argument when registering a surface mesh with Polyscope is a list of face indices. 
-The edge ordering is defined from this list by the first time an edge appears in any face. More formally, the ordering is equivalent to the following code:
+The edge ordering is defined from this list by the first time an edge appears in any face. More formally, the ordering is equivalent to the following C++ code:
 
 ```cpp
 std::vector<std::vector<size_t>> faceIndices;
@@ -63,22 +63,22 @@ for(std::vector<size_t> face : faceIndices) {
 ```
 The default ordering of edges is the order in which they would be emitted by this loop.
 
-Arrays of edge-valued data passed for visualization will be interpted in that order, unless an alternate permutation is set as below.
+Arrays of edge-valued data passed for visualization will be interpreted in that order, unless an alternate permutation is set as below.
 
-??? func "`#!cpp SurfaceMesh::setEdgePermutation(const T& permArr, size_t expectedSize = 0)`"
+??? func "`#!python SurfaceMesh.set_edge_permutation(perm, expected_size=None)`"
 
     Set a non-standard ordering for edge-valued data on a mesh.
 
-    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::vector<size_t>`.
+    The argument `perm` should be an array of integers.
 
-    If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `permArr`.
+    If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `perm`.
 
     Must be set _before_ any quantites are added.
 
 
 ### Halfedges
 
-The second argument when registering a surface mesh with Polyscope is a list of face indices.  The halfedge ordering is defined from this list by first ordering by the faces, then ordering by the halfedges within each face.  More formally, the ordering is equivalent to the following code:
+The second argument when registering a surface mesh with Polyscope is a list of face indices.  The halfedge ordering is defined from this list by first ordering by the faces, then ordering by the halfedges within each face.  More formally, the ordering is equivalent to the following C++ code:
 
 ```cpp
 std::vector<std::vector<size_t>> faceIndices;
@@ -97,22 +97,22 @@ for(std::vector<size_t> face : faceIndices) {
 ```
 The default ordering of halfedges is the order in which they would be emitted by this loop.
 
-Arrays of halfedge-valued data passed for visualization will be interpted in that order, unless an alternate permutation is set as below.
+Arrays of halfedge-valued data passed for visualization will be interpreted in that order, unless an alternate permutation is set as below.
 
-??? func "`#!cpp SurfaceMesh::setHalfedgePermutation(const T& permArr, size_t expectedSize = 0)`"
+??? func "`#!python SurfaceMesh.set_halfedge_permutation(perm, expected_size=None)`"
 
     Set a non-standard ordering for halfedge-valued data on a mesh.
 
-    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::vector<size_t>`.
+    The argument `perm` should be an array of integers.
 
-    If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `permArr`.
+    If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `perm`.
 
     Must be set _before_ any quantites are added.
 
 
 ### Corners
 
-The second argument when registering a surface mesh with Polyscope is a list of face indices.  The corner ordering is defined from this list by first ordering by the faces, then ordering by the corners within each face.  More formally, the ordering is equivalent to the following code:
+The second argument when registering a surface mesh with Polyscope is a list of face indices.  The corner ordering is defined from this list by first ordering by the faces, then ordering by the corners within each face.  More formally, the ordering is equivalent to the following C++ code:
 
 ```cpp
 std::vector<std::vector<size_t>> faceIndices;
@@ -130,15 +130,15 @@ for(std::vector<size_t> face : faceIndices) {
 ```
 The default ordering of corners is the order in which they would be emitted by this loop.
 
-Arrays of corner-valued data passed for visualization will be interpted in that order, unless an alternate permutation is set as below.
+Arrays of corner-valued data passed for visualization will be interpreted in that order, unless an alternate permutation is set as below.
 
-??? func "`#!cpp SurfaceMesh::setCornerPermutation(const T& permArr, size_t expectedSize = 0)`"
+??? func "`#!python SurfaceMesh.set_corner_permutation(perm, expected_size=None)`"
 
     Set a non-standard ordering for corner-valued data on a mesh.
 
-    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::vector<size_t>`.
+    The argument `perm` should be an array of integers.
     
-    If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `permArr`.
+    If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `perm`.
 
     Must be set _before_ any quantites are added.
 
@@ -146,35 +146,9 @@ Arrays of corner-valued data passed for visualization will be interpted in that 
 
 ### All at once
 
-As a convenience, you can alternately define a single function which passes all permutations needed at the same time. This is useful because you can write a single helper function which defines any necessary permutations for the mesh convention in your codebase; see the [geometry-central integration](../../../integrations/geometry_central) for an example.
+As a convenience, you can alternately use a single function which passes all permutations needed at the same time. This might ease writing a single helper function which defines any necessary permutations for the mesh convention in your codebase.
 
-The permutations should be passed as a `#!cpp std::array<std::pair<T,size_t>,5>`, where `T` is any type that could be used in the `set___Permutation()` functions above---one good choice is a `#!cpp std::array<std::pair<std::vector<size_t>, size_t>, 5>`.  Each entry of this array is one of the permutations listed above: [vertices, faces, edges, halfedges, corners].  Any permutations which have `size() == 0` will be untouched. The second entry of the pair is the optional size of the target index space, as in `expectedSize` above.
+??? func "`#!cpp SurfaceMesh.set_all_permutations(vertex_perm=None, vertex_perm_size=None, face_perm=None, face_perm_size=None, edge_perm=None, edge_perm_size=None, corner_perm=None, corner_perm_size=None, halfedge_perm=None, halfedge_perm_size=None)`"
 
-These permutations can either be set with `SurfaceMesh::setAllPermutations()`, or at construction time via a third argument to `registerSurfaceMesh()`.
-    
-??? func "`#!cpp SurfaceMesh::setAllPermutations(const std::array<std::pair<T,size_t>,5>& perms)`"
+    Any non-`None` keyword arguments will simply be forwarded to the appropriate `set_XXX_permutation()` variant as above.
 
-    Set all of the ordering permutations at once, as described above.
-    
-    The argument should be a `std::array<>` of an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::array<std::pair<std::vector<size_t>, size_t>, 5>`.
-    
-    If the size of your index space is different from size of the default index space, the second component of each pair must give this new size. Otherwise, the second component of the pair may be set to zero, to infer the size of the index space from the maximum index given.
-    
-    Must be set _before_ any quantites are added.
-
-
-??? func "`#!cpp SurfaceMesh* polyscope::registerSurfaceMesh(std::string name, const V& vertexPositions, const F& faceIndices, const std::array<std::pair<P,size_t>,5>& perms, bool replaceIfPresent = true)`"
-
-    Register a mesh and immediately set all custom permutations, as described above.
-
-    Equivalent to
-    ```cpp
-    SurfaceMesh* s = registerSurfaceMesh(name, vertexPositions, faceIndices, replaceIfPresent);
-    s->setAllPermutations(perms);
-    ```
-
-    Other wise behave like the standard `registerSurfaceMesh()`.
-    
-    The argument should be a `std::array<>` of an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::array<std::pair<std::vector<size_t>, size_t>, 5>`.
-    
-    Must be set _before_ any quantites are added.

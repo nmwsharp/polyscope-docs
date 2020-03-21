@@ -36,11 +36,11 @@ ps.show()
 
     - `name` string, a name for the quantity
     - `values` an `Nx3` numpy array, vectors at nodes/edges (or `Nx2` for 2D data)
+    - `defined_on` string, one of `nodes` or `edges`, is this data a vector per-node or a vector per-edge?
     
     Additional optional keyword arguments:
 
     - `enabled` boolean, whether the quantity is initially enabled
-    - `defined_on` string, one of `nodes` or `edges`, is this data a vector per-node or a vector per-edge?
     - `vectortype`, one of `standard` or `ambient`. Ambient vectors don't get auto-scaled, and thus are good for representing values in absolute 3D world coordinates
     - `length` float, a (relative) length for the vectors
     - `radius` float, a (relative) radius for the vectors

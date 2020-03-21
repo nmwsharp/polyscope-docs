@@ -37,11 +37,11 @@ ps.show()
 
     - `name` string, a name for the quantity
     - `values` a length `N` numpy array, scalars at nodes/edges
+    - `defined_on` string, one of `nodes` or `edges`, is this data a value per-node or a value per-edge?
     
     Additional optional keyword arguments:
 
     - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
-    - `defined_on` string, one of `nodes` or `edges`, is this data a value per-node or a value per-edge?
     - `datatype`, one of `standard`, `symmetric`, or `magnitude`, affects default colormap and map range
     - `vminmax`, a 2-tuple of floats, specifying the min and max range to colormap in to
     - `cmap`, which [colormap](/features/color_maps) to use

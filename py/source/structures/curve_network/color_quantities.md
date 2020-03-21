@@ -27,17 +27,17 @@ ps_net.add_color_quantity("rand vals2", vals_edge, defined_on='edges')
 ps.show() 
 ```
 
-???+ func "`#!python CurveNetwork.add_color_quantity(name, values, defined_on='nodes', enabled=None, datatype="standard", vminmax=None, cmap=None)`"
+???+ func "`#!python CurveNetwork.add_color_quantity(name, values, defined_on='nodes', enabled=None)`"
 
     Add a scalar quantity to the network.
 
     - `name` string, a name for the quantity
     - `values` an `Nx3` numpy array, with rgb [0,1] colors at nodes/edges
+    - `defined_on` string, one of `nodes` or `edges`, is this data a color per-node or a value per-edge?
     
     Additional optional keyword arguments:
 
     - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
-    - `defined_on` string, one of `nodes` or `edges`, is this data a color per-node or a value per-edge?
     
     if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
     

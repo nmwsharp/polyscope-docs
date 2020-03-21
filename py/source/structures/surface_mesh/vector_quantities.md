@@ -68,23 +68,20 @@ polyscope::show();
 
 #### Specifying the tangent basis
 
-Tangent vectors are defined with respect to a coordinate frame at each vertex (resp., face). Before adding any tangent vector quantities, you probably need to tell Polyscope what this coordinate frame looks like. To do so, pass an array of the x-axis vectors (in 3D) for mesh element.
+Tangent vectors are defined with respect to a coordinate frame at each vertex (resp., face). Before adding any tangent vector quantities, you probably need to tell Polyscope what this coordinate frame looks like. To do so, pass an array of the x-axis vectors (in 3D) for each mesh element.
 
-??? func "`#!cpp void SurfaceMesh::setVertexTangentBasisX(const T& vectors)`"
+??? func "`#!python SurfaceMesh.set_vertex_tangent_basisX(vectors)`"
 
-    Specify the tangent coordinates at vertices, by giving the direction of the x-axis of the basis.
+    Specify the tangent coordinate system at vertices, by giving the direction of the x-axis of the basis.
 
-    - `vectors` is an array of one 3D vector at each vertex. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
+    - `vectors` is an `Vx3` (or `Vx2` for 2D) array of one 3D vector at each vertex, giving the direction of the x-axis of the basis. The rest of the basis will be computed from the normal.
 
-    Note: As always for functions that take 3D vector inputs, there is a `setVertexTangentBasisX2D` with the same signature, which expects 2D vector inputs. See [2D data](/features/2D_data).
+??? func "`#!python SurfaceMesh.set_face_tangent_basisX(vectors)`"
 
-??? func "`#!cpp void SurfaceMesh::setFaceTangentBasisX(const T& vectors)`"
+    Specify the tangent coordinate system at faces, by giving the direction of the x-axis of the basis.
 
-    Specify the tangent coordinates at faces, by giving the direction of the x-axis of the basis.
+    - `vectors` is an `Fx3` (or `Fx2` for 2D) array of one 3D vector at each face, giving the direction of the x-axis of the basis. The rest of the basis will be computed from the normal.
 
-    - `vectors` is an array of one 3D vector at each face. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of faces in the mesh.
-
-    Note: As always for functions that take 3D vector inputs, there is a `setFaceTangentBasisX2D` with the same signature, which expects vector 2D inputs. See [2D data](/features/2D_data).
 
 #### Adding intrinsic tangent vectors
 
