@@ -18,6 +18,7 @@ extra:
 
 theme:
   name: 'material'
+  custom_dir: 'theme'
   palette:
     primary: 'teal'
     accent: 'deep orange'
