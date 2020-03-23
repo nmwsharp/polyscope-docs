@@ -1,17 +1,18 @@
-These are settings which affect the visual display of the scene. It is often convenient to set them just before calling `polyscope::init`, but they may set be anywhere.
+These are settings which affect the visual display of the scene.  It is often convenient to set them just before calling `polyscope.init()`, but they may generally be set anywhere.
 
-```cpp
-#include "polyscope/polyscope.h"
 
-// a few options
-polyscope::options::autocenterStructures = true;
-polyscope::options::autoscaleStructures = true;
+```python
+import polyscope as ps
 
-// initialize
-polyscope::init();
+# enable auto centering and scaling
+ps.set_autocenter_structures(True)
+ps.set_autoscale_structures(True)
+
+# initialize
+ps.init()
 ```
 
-??? func "`#!cpp bool options::autocenterStructures`"
+??? func "`#!python set_autocenter_structures(b)`"
     
     ##### autocenter structures
 
@@ -19,9 +20,9 @@ polyscope::init();
 
     This centers the content nicely in view, but obscures any important absolute world positions.
 
-    Default: `false`.
+    Default: `False`.
 
-??? func "`#!cpp bool options::autoscaleStructures`"
+??? func "`#!python set_autoscale_structures(b)`"
     
     ##### autoscale structures
 
@@ -29,4 +30,4 @@ polyscope::init();
 
     This scales the content nicely in view, but obscures any important absolute world positions.
 
-    Default: `false`.
+    Default: `False`.

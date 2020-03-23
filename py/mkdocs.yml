@@ -1,4 +1,4 @@
-site_name: Polyscope 
+site_name: Polyscope - Python 
 markdown_extensions:
   - codehilite
   - attr_list
@@ -48,7 +48,6 @@ nav:
   - About: 
     - 'about/release_notes.md'
     - 'about/license.md'
-    - 'about/bindings.md'
     - 'about/contributing.md'
     - 'about/contributors.md'
   - Building: 'installing/index.md'
@@ -61,7 +60,7 @@ nav:
   - Features: 
     - 'Messages' : 'features/messages.md'
     - 'Screenshots' : 'features/screenshots.md'
-    - 'User Callback' : 'features/user_callback.md'
+    #- 'User Callback' : 'features/user_callback.md'
     - 'Color Maps' : 'features/color_maps.md'
     - '2D Data' : 'features/2D_data.md'
   - Structures: 

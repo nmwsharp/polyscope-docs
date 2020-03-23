@@ -1,97 +1,88 @@
-These are general settings which affect polyscope's behavior as a library. It is often convenient to set them just before calling `polyscope::init`, but they may set be anywhere.
+These are general settings which affect polyscope's behavior as a library. It is often convenient to set them just before calling `polyscope.init()`, but they may generally be set anywhere.
 
-```cpp
-#include "polyscope/polyscope.h"
+```python
+import polyscope as ps
 
-// a few options
-polyscope::options::programName = "important app";
-polyscope::options::verbosity = 0;
-polyscope::options::usePrefsFile = false;
+# a few options
+ps.set_program_name("important app")
+ps.set_verbosity(0)
+ps.set_use_prefs_file(False)
 
-// initialize
-polyscope::init();
+# initialize
+ps.init()
 ```
 
 ### Options
 
-??? func "`#!cpp std::string options::programName`"
+??? func "`#!python set_program_name(name)`"
 
     ##### program name 
    
     A general name to use when referring to the program in window headings, etc. Default: `Polyscope`.
 
     Example:
-    ```cpp
-    polyscope::options::programName = "important app";
+    ```python
+    import polyscope as ps
+    ps.set_program_name("important app")
     ```
 
 
-??? func "`#!cpp int options::verbosity`"
+??? func "`#!python set_verbosity(v)`"
 
     ##### verbosity
    
-    How much useful info should polyscope print to `std::cout`? Default: `1`.
+    How much useful info should polyscope print to stdout? Default: `1`.
 
     - `0` print nothing
     - `1` print occasionally
     - `>= 2` print a lot
 
     Example:
-    ```cpp
-    polyscope::options::verbosity = 1;
+    ```python
+    import polyscope as ps
+    ps.set_verbosity(0)
     ```
 
-??? func "`#!cpp std::string options::printPrefix`"
+??? func "`#!python set_print_prefix(p)`"
     
     ##### print prefix
     
     A string used as a prefix for all messages printed to the terminal by polyscope.  Default: `[polyscope] `.
 
     Example:
-    ```cpp
-    polyscope::options::printPrefix = "[MYAPP] ";
-    // prints now look like "[MYAPP] loaded openGL"
+    ```python
+    import polyscope as ps
+    ps.set_print_prefix("[MYAPP] ");
+    # prints now look like "[MYAPP] loaded openGL"
     ```
 
-??? func "`#!cpp bool options::errorsThrowExceptions`"
+??? func "`#!python set_errors_throw_exceptions(b)`"
     
     ##### errors throw execptions
    
-    If true, errors in polyscope throw execptions. If false, a `polyscope::error` is shown in the UI, but processing attempts to continue. Default: `false`.
+    If true, errors in polyscope raise execptions. If false, a polyscope error is shown in the UI, but processing attempts to continue. Default: `False`.
 
 
-??? func "`#!cpp int options::maxFPS`"
+??? func "`#!python set_max_fps(f)`"
     
     ##### max fps
 
     The main loop will not run at more than `maxFPS` iterations per second. `-1` disables, running the loop as fast as possible. Default: `60`.
 
 
-??? func "`#!cpp bool options::usePrefsFile`"
+??? func "`#!python set_use_prefs_file(b)`"
     
     ##### use prefs file
 
     Polyscope can read and write to a preferences file to save state between invocations. For now, this is primarily used to restore the window position on the desktop. The preference file is a `json`-formatted plaintext file called `.polyscope.ini`.
 
-    This option controls the use of the preferences file. If `false`, if will be neither written nor read. Default: `true`.
+    This option controls the use of the preferences file. If `False`, if will be neither written nor read. Default: `True`.
 
 
-??? func "`#!cpp bool options::alwaysRedraw`"
+??? func "`#!python set_always_redraw(b)`"
     
     ##### always redraw
 
     Polyscope is designed to use lazy rendering: the scene is only re-drawn if it has changed since the last time it was drawn. This can dramatically reduce resource consumption, and keeps the immediate GUI responsive even on scenes which are irresponsibly large for the machine's graphics capabilities.
 
-    If this option is `true`, the scene will be redrawn on every main loop iteration no matter what, circumventing the lazy drawing features. Default: `false`.
-
-??? func "`#!cpp bool options::openImGuiWindowForUserCallback`"
-    
-    ##### open imgui window for user callback
-
-    If true, an ImGui window will be created and docked to the side of the UI when the [user callback function](../user_callback) is invoked. This means you can immediately start making ui calls like `ImGui::Button("do stuff")`. 
-    
-    If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).
-
-    Default: `true`.
-
-    
+    If this option is `True`, the scene will be redrawn on every main loop iteration no matter what, circumventing the lazy drawing features. Default: `False`.

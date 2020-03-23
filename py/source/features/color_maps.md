@@ -1,4 +1,4 @@
-Polyscope supports the following color maps (set via the enum `polyscope::gl::ColorMapID`).
+Polyscope has the following color maps available by default. 
 
 Different color maps are appropriate for different situations:
 
@@ -9,17 +9,17 @@ Different color maps are appropriate for different situations:
 
 <!--TODO render images of these-->
 
-| **Name** | **Type** | **Enum** | 
+| **Name** | **Type** | **String key** | 
 --- | --- | ---
-viridis | sequential | `VIRIDIS`
-blues | sequential | `BLUES`
-reds | sequential | `REDS`
-coolwarm | diverging | `COOLWARM`
-pink-green | diverging | `PIYG`
-phase | cyclic | `PHASE`
-spectral | decorative | `SPECTRAL`
-rainbow | decorative | `RAINBOW`
-jet | decorative | `JET`
+viridis | sequential | `viridis`
+blues | sequential | `blues`
+reds | sequential | `reds`
+coolwarm | diverging | `coolwarm`
+pink-green | diverging | `pink-green`
+phase | cyclic | `phase`
+spectral | decorative | `spectral`
+rainbow | decorative | `rainbow`
+jet | decorative | `jet`
 
 
 [^1]: Viridis is by Nathaniel J. Smith, Stefan van der Walt, and Eric Firing. [link](https://github.com/BIDS/colormap/blob/master/colormaps.py)
