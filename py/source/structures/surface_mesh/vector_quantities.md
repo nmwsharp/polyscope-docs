@@ -1,69 +1,60 @@
 Visualize vector-valued data at the elements of a surface mesh.
 
-### Ambient vectors
-
-_Ambient_ vectors are "standard" vectors, which have X-Y-Z vector coordinates in world space.
-
 ![face_vector_demo](../../media/face_vectors_demo.png)
 
-??? func "`#!cpp SurfaceMesh::addVertexVectorQuantity(std::string name, const T& vectors)`"
+Example:
+```python
+import numpy as np
+import polyscope as ps
+ps.init()
 
-    Add a vector quantity defined at the vertices of the mesh.
+# register a surface mesh
+N_vert = 100
+N_face = 250
+vertices = np.random.rand(N_vert, 3) # (V,3) vertex position array
+faces = np.random.randint(0, N_vert, size=(N_face,3)) # (F,3) array of indices 
+                                                      # for triangular faces
 
-    - `vectors` is the array of vectors at vertices. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
-    - `vectorType` indicates how to interpret vector data. The default setting is as a freely-scaled value, which will be automatically scaled to be visible. Passing `VectorType::AMBIENT` ensures vectors have the proper world-space length.
+ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)
+
+# visualize some random vectors per vertex
+vecs_vert = np.random.rand(N_vert, 3)
+ps_mesh.add_vector_quantity("rand vecs", vecs_vert)
+
+# set radius/length/color of the vectors
+ps_mesh.add_vector_quantity("rand vecs opt", vecs_vert, radius=0.001, 
+                            length=0.005, color=(0.2, 0.5, 0.5))
+
+# ambient vectors don't get auto-scaled, useful e.g. when representing offsets in 3D space
+ps_mesh.add_vector_quantity("vecs ambient", vecs_vert, vectortype='ambient')
+
+# view the mesh with all of these quantities
+ps.show() 
+```
+
+???+ func "`#!python SurfaceMesh.add_vector_quantity(name, values, defined_on='vertices', enabled=None, vectortype="standard", length=None, radius=None, color=None)`"
+
+    Add a vector quantity to the mesh.
+
+    - `name` string, a name for the quantity
+    - `values` an `Nx3` numpy array, vectors at vertices/faces (or `Nx2` for 2D data)
+    - `defined_on` string, one of `vertices` or `faces`, is this data a vector per-vertex or a vector per-face?
     
-    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D mesh), `addVertexVectorQuantity2D` exists with the same signature. See [2D data](/features/2D_data).
+    Additional optional keyword arguments:
 
-??? func "`#!cpp SurfaceMesh::addFaceVectorQuantity(std::string name, const T& vectors)`"
-
-    Add a vector quantity defined at the faces of the mesh.
-
-    - `vectors` is the array of vectors at faces. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
-    - `vectorType` indicates how to interpret vector data. The default setting is as a freely-scaled value, which will be automatically scaled to be visible. Passing `VectorType::AMBIENT` ensures vectors have the proper world-space length.
-
-    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D mesh), `addFaceVectorQuantity2D` exists with the same signature. See [2D data](/features/2D_data).
+    - `enabled` boolean, whether the quantity is initially enabled
+    - `vectortype`, one of `standard` or `ambient`. Ambient vectors don't get auto-scaled, and thus are good for representing values in absolute 3D world coordinates
+    - `length` float, a (relative) length for the vectors
+    - `radius` float, a (relative) radius for the vectors
+    - `color` 3-tuple, color for the vectors
+    
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    
 
 
 ### Tangent vectors
 
 _Tangent_ vectors lie flat against the surface of the mesh. They are expressed as 2D vectors with X-Y coordinates in some basis frame at each mesh element.
-
-Example: visualizing tangent vectors with geometry-central
-```cpp 
-#include "polyscope/polyscope.h"
-#include "polyscope/surface_mesh.h"
-
-polyscope::init();
-
-// Load mesh
-std::unique_ptr<HalfedgeMesh> mesh;
-std::unique_ptr<VertexPositionGeometry> geometry;
-std::tie(mesh, geometry) = loadMesh(filename);
-
-// Register the mesh with polyscope
-psMesh = polyscope::registerSurfaceMesh("mesh",
-              geometry->inputVertexPositions, mesh->getFaceVertexList(),
-              polyscopePermutations(*mesh));
-
-
-// Set vertex tangent spaces
-geometry->requireVertexTangentBasis();
-VertexData<Vector3> vBasisX(*mesh);
-for(Vertex v : mesh->vertices()) {
-  vBasisX[v] = geometry->vertexTangentBasis[v][0];
-}
-polyscope::getSurfaceMesh("mesh")->setVertexTangentBasisX(vBasisX);
-
-// Make a vector field
-VertexData<Vector2> vecField = /* some field */
-
-// Register the field
-polyscope::getSurfaceMesh("mesh")->
-  addVertexIntrinsicVectorQuantity("great vectors", vecField);
-
-polyscope::show();
-```
 
 
 #### Specifying the tangent basis
@@ -87,47 +78,47 @@ Tangent vectors are defined with respect to a coordinate frame at each vertex (r
 
 In these function names, _intrinsic vector_ is a fancy synonym for tangent vector, which indicates that the vectors lie in the surface itself, not the containing 3D space.
 
-??? func "`#!cpp SurfaceMesh::addVertexIntrinsicVectorQuantity(std::string name, const T& vectors, int nSym=1)`"
+???+ func "`#!python SurfaceMesh.add_intrinsic_vector_quantity(name, values, n_sym=1, defined_on='vertices', enabled=None, vectortype="standard", length=None, radius=None, color=None, ribbon=None)`"
 
-    Add a tangent vector quantity defined at the vertices of the mesh.
+    Add a vector quantity to the mesh. Remember to specify your tangent basis first!
 
-    - `vectors` is the array of vectors at vertices. The type should be [adaptable](/data_adaptors) to a 2-vector array of `float`s. The length should be the number of vertices in the mesh.
-    - `nSym` is a symmetry order for visualization line field (n = 2) and cross field (n = 4), etc. If it is set to a non-`1` value, n distinct vectors will be displayed at each element. This function presumes a "power"-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n'th power.
+    - `name` string, a name for the quantity
+    - `values` an `Nx2` numpy array, of tangent vectors at vertices/faces
+    - `n_sym` is a symmetry order for visualizing line fields (n = 2) and cross fields (n = 4), etc. If it is set to a non-`1` value, n distinct vectors will be displayed at each element. This function presumes a "power"-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n'th power.
+    - `defined_on` string, one of `vertices` or `faces`, is this data a vector per-vertex or a vector per-face?
+    
+    Additional optional keyword arguments:
 
-    The vectors will be interpreted in the basis of `SurfaceMesh::vertexTangentSpaces`. These tangent spaces can be manually specified as described above.
-
-??? func "`#!cpp SurfaceMesh::addFaceIntrinsicVectorQuantity(std::string name, const T& vectors, int nSym=1)`"
-
-    Add a tangent vector quantity defined at the faces of the mesh.
-
-    - `vectors` is the array of vectors at faces. The type should be [adaptable](/data_adaptors) to a 2-vector array of `float`s. The length should be the number of faces in the mesh.
-    - `nSym` is a symmetry order for visualization line field (n = 2) and cross field (n = 4), etc. If it is set to a non-`1` value, n distinct vectors will be displayed at each element. This function presumes a "power"-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n'th power.
-
-    The vectors will be interpreted in the basis of `SurfaceMesh::facesTangentSpaces`. These tangent spaces can be manually specified as described above.
+    - `enabled` boolean, whether the quantity is initially enabled
+    - `vectortype`, one of `standard` or `ambient`. Ambient vectors don't get auto-scaled, and thus are good for representing values in absolute 3D world coordinates
+    - `length` float, a (relative) length for the vectors
+    - `radius` float, a (relative) radius for the vectors
+    - `color` 3-tuple, color for the vectors
+    - `ribbon` boolean, if true show the traced ribbon visualization 
+    
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    
 
 ### One forms
 
 _One forms_ are tangent vector-like quantities represented as integrated scalars along edges. They commonly arise, for example, as a gradient which is difference of scalar values at vertices.
 
 
-??? func "`#!cpp SurfaceMesh::addOneFormIntrinsicVectorQuantity(std::string name, const T& data, const O& orientations)`"
+???+ func "`#!python SurfaceMesh.add_one_form_vector_quantity(name, values, orientations, enabled=None, length=None, radius=None, color=None, ribbon=None)`"
 
-    Add a one-form quantity via a scalar at edges, which will be shown like a vector field.
+    Add a one-form vector quantity to the mesh.  Remember, before passing edge-valued data, be sure your [indexing convention](../indexing_convention) matches what Polyscope expects.
 
-    - `data` is the array of scalars at edges. The type should be [adaptable](/data_adaptors) to an array of `float`s. The length should be the number of edges in the mesh.
-    - `orientations` 1-forms are defined with respect to an orientation of edges, so you need to tell Polyscope which direction your edges point in. This input is an array of booleans at edges. The type should be [adaptable](/data_adaptors) to an array of `char`s (because `std::vector<bool>` is broken). The length should be the number of edges in the mesh. These booleans should be `true` if the edge points from the lower indexed adjacent vertex to the higher-indexed vertex, and false otherwise.
+    - `name` string, a name for the quantity
+    - `values` a length `n_edges` numpy float array, integrated 1-form values at edges
+    - `orientations` a length `n_edges` numpy boolean array. 1-forms are defined with respect to an orientation of edges, so you need to tell Polyscope which direction your edges point in. These booleans should be `true` if the edge points from the lower indexed adjacent vertex to the higher-indexed vertex, and false otherwise.
+    
+    Additional optional keyword arguments:
 
-    Remember, before passing edge-valued data, be sure your [indexing convention](../indexing_convention) matches what Polyscope expects.
-
-### Options
-
-**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
---- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-vector radius | the radius vectors are drawn with | `#!cpp double getVectorRadius()` | `#!cpp setVectorRadius(double val, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values)
-vector length | vectors will be scaled so the longest is this long. ignored if `VectorType::Ambient` | `#!cpp double getVectorLengthScale()` | `#!cpp setVectorLengthScale(double val, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values)
-vector color | the color to draw the vectors with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
-ribbon enabled | draw the ribbon visualization (only available for intrinsic vector fields) | `#!cpp bool isRibbonEnabled()` | `#!cpp setRibbonEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+    - `enabled` boolean, whether the quantity is initially enabled
+    - `length` float, a (relative) length for the vectors
+    - `radius` float, a (relative) radius for the vectors
+    - `color` 3-tuple, color for the vectors
+    - `ribbon` boolean, if true show the traced ribbon visualization 
+    
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
 

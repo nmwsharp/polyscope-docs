@@ -78,8 +78,8 @@ nav:
       - 'Distance Quantities' : 'structures/surface_mesh/distance_quantities.md'
       - 'Vector Quantities' : 'structures/surface_mesh/vector_quantities.md'
       - 'Parameterization Quantities' : 'structures/surface_mesh/parameterization_quantities.md'
-      - 'Count Quantities' : 'structures/surface_mesh/count_quantities.md'
-      - 'Misc Quantities' : 'structures/surface_mesh/misc_quantities.md'
+      #- 'Count Quantities' : 'structures/surface_mesh/count_quantities.md'
+      #- 'Misc Quantities' : 'structures/surface_mesh/misc_quantities.md'
       - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'
     - Curve Network:
       - 'Basics' : 'structures/curve_network/basics.md'

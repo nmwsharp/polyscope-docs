@@ -4,6 +4,7 @@ Example:
 ```python
 import numpy as np
 import polyscope as ps
+ps.init()
 
 # register a curve network 
 N_node = 100
@@ -30,7 +31,7 @@ ps_net.add_vector_quantity("vecs ambient", vecs_node, vectortype='ambient')
 ps.show() 
 ```
 
-???+ func "`#!python CurveNetwork.add_vector_quantity(name, values, defined_on=enabled=None, vectortype="standard", length=None, radius=None, color=None)`"
+???+ func "`#!python CurveNetwork.add_vector_quantity(name, values, defined_on='nodes', enabled=None, vectortype="standard", length=None, radius=None, color=None)`"
 
     Add a vector quantity to the network.
 
