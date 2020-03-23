@@ -2,7 +2,7 @@
 
 Surface meshes are one of the core structures in Polyscope. In addition to simply displaying the mesh, Polyscope can show any number of scalar, vector,color, and other kinds of quantities associated with the vertices/faces/etc of the mesh.
 
-Polyscope does not impose any requirements on the meshes visualized. They may be polygonal or nonmanifold.  As always, try clicking on the vertices or faces of a mesh see the data associated with that mesh element.
+Polyscope does not impose any requirements on the meshes visualized. They may be polygonal or nonmanifold, and all faces need not have the same degree.  As always, try clicking on the vertices or faces of a mesh see the data associated with that mesh element.
 
 ![surface_mesh_demo](../../media/mesh_demo.gif)
 
@@ -19,7 +19,7 @@ faces = np.random.randint(0, 100, size=(250,3)) # (F,3) array of indices
                                                 # for triangular faces
 
 # visualize!
-ps_mesh = ps.register_surface_mesh("my network", vertices, faces)
+ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)
 ps.show()
 ```
 
@@ -32,7 +32,7 @@ Surface meshes are registered with Polyscope by passing the location of each ver
 
     - `name` string, a name for the structure
     - `vertices`, an `Nx3` numpy float array of vertex locations (or `Nx2` for 2D)
-    - `faces`, an `FxD` numpy integer array of faces, as 0-based indices in to the nodes array, OR a plain python list-of-lists of indices (to support meshes where faces have varying degree)
+    - `faces`, an `FxD` numpy integer array of faces, as 0-based indices in to the vertices array, OR a plain python list-of-lists of indices (or really, anything twice-iterable which yields integers). The latter option enables meshes where not all faces have the same degree.
 
     Additional optional keyword arguments:
 
