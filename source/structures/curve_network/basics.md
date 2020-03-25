@@ -78,5 +78,6 @@ The locations of the nodes in a curve network can be updated with the member fun
 enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
 radius | size of rendered points and lines | `#!cpp double getRadius()` | `#!cpp setRadius(double newVal, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values) |
 color | default color the curve network | `#!cpp glm::vec3 getColor` | `#! setColor(glm::vec3 newVal)` | [yes](/basics/parameters/#persistent-values) |
+material | what [material](/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes](/basics/parameters/#persistent-values) |
 
 _(all setters return `this` to support chaining. setEnabled() returns generic setter, so chain it last)_

@@ -130,6 +130,7 @@ enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnable
 vector radius | the radius vectors are drawn with | `#!cpp double getVectorRadius()` | `#!cpp setVectorRadius(double val, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values)
 vector length | vectors will be scaled so the longest is this long. ignored if `VectorType::Ambient` | `#!cpp double getVectorLengthScale()` | `#!cpp setVectorLengthScale(double val, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values)
 vector color | the color to draw the vectors with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
+material | what [material](/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes](/basics/parameters/#persistent-values) |
 ribbon enabled | draw the ribbon visualization (only available for intrinsic vector fields) | `#!cpp bool isRibbonEnabled()` | `#!cpp setRibbonEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
