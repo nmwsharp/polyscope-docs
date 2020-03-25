@@ -45,8 +45,9 @@ site_dir: 'docs'
 nav:
   - Home: 'index.md'
   - About: 
-    - 'about/release_notes.md'
+    - 'Release Notes' : 'about/release_notes.md'
     - 'about/license.md'
+    - 'Dependencies' : 'about/dependencies.md'
     - 'about/bindings.md'
     - 'about/contributing.md'
     - 'about/contributors.md'
@@ -62,6 +63,7 @@ nav:
     - 'Messages' : 'features/messages.md'
     - 'Screenshots' : 'features/screenshots.md'
     - 'User Callback' : 'features/user_callback.md'
+    - 'Materials' : 'features/materials.md'
     - 'Color Maps' : 'features/color_maps.md'
     - '2D Data' : 'features/2D_data.md'
   - Structures: 
