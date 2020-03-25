@@ -56,4 +56,4 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 make -j4 && ./bin/polyscope-test --gtest_catch_exceptions=0
 ```
 
-Tests can be run using the mock openGL backend by setting the cmake variable `-DPOLYSCOPE_BACKEND=MOCK_OPENGL` above. This is especially useful for testing on headless machines which might not have openGL available.
+Tests can be run using the mock openGL backend by setting the additional cmake variable `-DPOLYSCOPE_BACKEND=MOCK_OPENGL` above. This is especially useful for testing on headless machines which might not have openGL available.

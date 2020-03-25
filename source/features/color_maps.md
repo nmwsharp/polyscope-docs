@@ -1,7 +1,5 @@
 ## Built-in color maps
 
-Polyscope supports the following built-in color maps:
-
 Different color maps are appropriate for different situations:
 
 - *sequential* maps data in to a linear range (when it doesn't fall in to one of the more specific categories below).
@@ -10,6 +8,8 @@ Different color maps are appropriate for different situations:
 - *decorative* maps should generally not be used to encode numerical data, but may be useful for other visualization purposes
 
 <!--TODO render images of these-->
+
+Polyscope supports the following built-in color maps:
 
 | **Name** | **Type** | **String Key** | 
 --- | --- | ---
