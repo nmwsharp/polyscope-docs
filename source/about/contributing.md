@@ -10,7 +10,7 @@ A few high-level guidelines:
 
   - If adding a new structure or quantity, be sure to make use of the [data adaptors](../../data_adaptors/) for all user inputs. See `point_cloud.h` for an example.
 
-  - Due to the challenges of testing GUI code, Polyscope doesn't have many unit tests. However, the data adaptors _are_ unit-tested. If you modify them in any way, be sure to update and run the tests in `/test/`.
+  - Be sure to run the unit tests (see [building](/building)), and add tests for any new features.
 
   - Add a blurb to the [release notes](../release_notes)!
 

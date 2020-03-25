@@ -1,13 +1,4 @@
-
-!!! note "Rolling Updates"
-
-    As of July 2019, Polyscope is a recently-released library, we'll be frequently pushing updates and fixes directly to `master` as they come in. Once things settle down, hopefully within the next 6 months, we will switch to periodic versioned releases.
-
-
-
-
-## Release notes
-
+- **Version 1.0.0** `6f44d1a` Mar 25, 2020: Overhaul rendering backend, generalize materials, raycast vectors and cylinders, linear lighting workflow, custom matcaps, mocked backend, general unit tests.
 - **Jan 29, 2020** `92b45be`: Many bugfixes, small features, and general API cleanup.  Encapsulate parameters for structures and quantities.  Use scaled values and persistent values to track parameters.  Additional camera navigation controls.  Simplify picking API.
 - **Sept 19, 2019** `2f83da2`: Add streamline visualization for vector fields (previously existed but was removed)
 - **Aug 11, 2019** `dd4b36f`: Add curve network quantity.

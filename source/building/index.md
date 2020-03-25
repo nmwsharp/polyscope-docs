@@ -42,3 +42,18 @@ Polyscope has been verified to compile in Visual Studio 2019 & 2017; older versi
 Polyscope packages all of its source code dependencies with the repository.
 
 On Ubuntu and friends, you may want to `apt-get install xorg-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev` to pull graphics and windowing related headers to build.
+
+### Tests
+
+Unit test live in the `/test/` directory, and cover most of the core functionality of Polyscope. Polyscope uses googletest, which will be downloaded automatically when you build the tests.
+
+To build and run the tests, use:
+
+```sh
+cd test
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make -j4 && ./bin/polyscope-test --gtest_catch_exceptions=0
+```
+
+Tests can be run using the mock openGL backend by setting the cmake variable `-DPOLYSCOPE_BACKEND=MOCK_OPENGL` above. This is especially useful for testing on headless machines which might not have openGL available.

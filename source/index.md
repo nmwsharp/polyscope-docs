@@ -1,4 +1,9 @@
 ![Polyscope](/media/teaser.svg)
+
+![GitHub](https://img.shields.io/github/license/nmwsharp/polyscope?style=flat-square)
+![Travis (.com)](https://img.shields.io/travis/com/nmwsharp/polyscope?style=flat-square)
+![GitHub stars](https://img.shields.io/github/stars/nmwsharp/polyscope?style=flat-square)
+
 Polyscope is a C++ viewer and user interface for 3D data like meshes and point clouds. Scientists, engineers, artists, and hackers can use Polyscope to prototype and debug algorithms---it is designed to easily integrate with existing codebases and popular libraries.  The lofty objective of Polyscope is to offer a useful visual interface to your data via a single line of code.
 
 Polyscope uses a paradigm of *structures* and *quantities*. A **structure** is a geometric object in the scene, such as a surface mesh or point cloud. A **quantity** is data associated with a structure, such as a scalar function or a vector field.
