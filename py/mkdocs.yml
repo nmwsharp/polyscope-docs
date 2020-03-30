@@ -50,7 +50,7 @@ nav:
     - 'about/license.md'
     - 'about/contributing.md'
     - 'about/contributors.md'
-  - Building: 'installing/index.md'
+  - Installing : 'installing/index.md'
   - Basics: 
     - 'Initializing' : 'basics/initializing.md'
     - 'Program Options' : 'basics/program_options.md'
