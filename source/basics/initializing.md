@@ -25,7 +25,7 @@ polyscope::show();
 
 `#!cpp #include "polyscope/polyscope.h"`
 
-??? func "init()"
+??? func "`#!cpp init(std::string backend="")`"
 
     ##### init()
 
@@ -33,8 +33,10 @@ polyscope::show();
 
     Performs one-time work like setting up openGL and creating a window.
 
+    `backend` is an optional specifier for which [rendering backend](/building#backends) to use, passing `""` selects a reasonable default backend. Generally, you should not need to manually set the backend.
 
-??? func "show()"
+
+??? func "`#!cpp show()`"
     
     ##### show()
 
