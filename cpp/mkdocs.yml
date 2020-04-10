@@ -1,4 +1,4 @@
-site_name: Polyscope 
+site_name: Polyscope - C++
 markdown_extensions:
   - codehilite
   - attr_list
@@ -10,7 +10,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.arithmatex
   - pymdownx.emoji
-    
+  - pymdownx.tabbed
+
 
 extra:
   search:
@@ -18,14 +19,17 @@ extra:
 
 theme:
   name: 'material'
+  custom_dir: 'theme'
   palette:
     primary: 'teal'
     accent: 'deep orange'
   font:
     text: 'PT Serif'
     code: 'Inconsolata'
-  logo: 
-    icon: 'home'
+  icon: 
+    logo: material/home
+  features:
+    - instant
 
 extra_css:
   - extras.css
