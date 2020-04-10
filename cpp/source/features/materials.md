@@ -32,6 +32,7 @@ Polyscope supports the following built-in materials:
 clay | `clay` | yes | ![clay image](/media/materials/clay_r.jpg){: style="width:100px;"}
 wax | `wax` | yes | ![wax image](/media/materials/wax_r.jpg){: style="width:100px;"}
 candy | `candy` | yes | ![candy image](/media/materials/candy_r.jpg){: style="width:100px;"}
+flat | `flat` | yes | ![flat image](/media/materials/flat_r.jpg){: style="width:100px;"}
 mud[^1] | `mud` | no | ![mud image](/media/materials/mud.jpg){: style="width:100px;"}
 ceramic[^1] | `ceramic` | no | ![ceramic image](/media/materials/ceramic.jpg){: style="width:100px;"}
 jade[^1] | `jade` | no | ![jade image](/media/materials/jade.jpg){: style="width:100px;"}
