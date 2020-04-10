@@ -6,20 +6,22 @@ Most objects in Polyscope (surface meshes, point clouds, vectors, etc) expose a 
 
 In Polyscope, we often want to adjust set custom colors for rendered objects. This can be a constant color for the object (to distinguish structures in a scene), or a varying color across a surface (when color-mapping scalar quantities).  Traditionally, matcaps don't really support setting an albedo color like this, but we achieve the effect in Polyscope by blending between basis matcaps.
 
-Instead of just using a single material image, we take four images of the material, representing basis red, green, blue, and black components.
+???+ info "How it works"
 
-![sample colormap](/media/materials/clay_r.jpg){: style="height:200px;"}
-![sample colormap](/media/materials/clay_g.jpg){: style="height:200px;"}
-![sample colormap](/media/materials/clay_b.jpg){: style="height:200px;"}
-![sample colormap](/media/materials/clay_k.jpg){: style="height:200px;"}
+    Instead of just using a single material image, we take four images of the material, representing basis red, green, blue, and black components.
 
-At runtime, to generate a color from a triple of `rgb` values each in the range `[0,1]`, we sample the images like:
+    ![sample colormap](/media/materials/clay_r.jpg){: style="height:150px;"}
+    ![sample colormap](/media/materials/clay_g.jpg){: style="height:150px;"}
+    ![sample colormap](/media/materials/clay_b.jpg){: style="height:150px;"}
+    ![sample colormap](/media/materials/clay_k.jpg){: style="height:150px;"}
 
-```cpp
-outputColor = r * basis_r + g * basis_g + b * basis_b + (1. - r - g - b) * basis_k
-```
+    At runtime, to generate a color from a triple of `rgb` values each in the range `[0,1]`, we sample the images like:
 
-Intuitively, this strategy presumes the underlying material has a light response which is a linear function of the color, plus another component which is independent of the color.  Crucially, Polyscope uses a linear lighting workflow and performs this blending on linear matcaps before tone-mapping, which is necessary for the results to look reasonable across the full color space.
+    ```cpp
+    outputColor = r * basis_r + g * basis_g + b * basis_b + (1. - r - g - b) * basis_k
+    ```
+
+    Intuitively, this strategy presumes the underlying material has a light response which is a linear function of the color, plus another component which is independent of the color.  Crucially, Polyscope uses a linear lighting workflow and performs this blending on linear matcaps before tone-mapping, which is necessary for the results to look reasonable across the full color space.
 
 Materials which which support this blending are denoted by `(rgb)` in the options menu.  Ordinary static matcaps consisting of a single image can still be used as materials, but will ignore any color maps or other options.
 

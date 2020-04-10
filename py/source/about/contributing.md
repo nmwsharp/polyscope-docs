@@ -1,5 +1,7 @@
 Polyscope is an open-source project, and you are encouraged to contribute!
 
+Polyscope is first and foremost a C++ library; this Python bindings are just wrappers. Any significant new features should first be implemented in C++, then wrapped in Python.
+
 A few high-level guidelines:
 
   - All contributions must be released under Polyscope's MIT license.
@@ -8,9 +10,7 @@ A few high-level guidelines:
     - The documentation uses markdown. Modifying the docs amounts to editing a source file and rebuilding the site source. The the nodes there in `README.md`.
     - To add a new page to the documentation, edit `mkdocs.yml`.
 
-  - If adding a new structure or quantity, be sure to make use of the [data adaptors](../../data_adaptors/) for all user inputs. See `point_cloud.h` for an example.
-
-  - Due to the challenges of testing GUI code, Polyscope doesn't have many unit tests. However, the data adaptors _are_ unit-tested. If you modify them in any way, be sure to update and run the tests in `/test/`.
+  - Be sure to run the unit tests and add tests for any new features.
 
   - Add a blurb to the [release notes](../release_notes)!
 

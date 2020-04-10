@@ -54,6 +54,7 @@ nav:
   - About: 
     - 'about/release_notes.md'
     - 'about/license.md'
+    - 'Dependencies' : 'about/dependencies.md'
     - 'about/contributing.md'
     - 'about/contributors.md'
   - Installing : 'installing/index.md'

@@ -55,7 +55,6 @@ nav:
     - 'Release Notes' : 'about/release_notes.md'
     - 'about/license.md'
     - 'Dependencies' : 'about/dependencies.md'
-    - 'about/bindings.md'
     - 'about/contributing.md'
     - 'about/contributors.md'
   - Building: 'building/index.md'
@@ -97,6 +96,5 @@ nav:
       - 'Vector Quantities' : 'structures/curve_network/vector_quantities.md'
   - Integrations: 
       - 'Geometry Central' : 'integrations/geometry_central/index.md'
-      #- 'CGAL' : 'integrations/cgal/index.md'
       - 'libIGL' : 'integrations/libIGL/index.md'
       - 'DGtal' : 'integrations/DGtal/index.md'
