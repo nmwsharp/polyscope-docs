@@ -67,7 +67,8 @@ nav:
   - Features: 
     - 'Messages' : 'features/messages.md'
     - 'Screenshots' : 'features/screenshots.md'
-    #- 'User Callback' : 'features/user_callback.md'
+    - 'User Callback' : 'features/user_callback.md'
+    - 'Materials' : 'features/materials.md'
     - 'Color Maps' : 'features/color_maps.md'
     - '2D Data' : 'features/2D_data.md'
   - Structures: 

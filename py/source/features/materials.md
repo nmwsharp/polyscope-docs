@@ -1,6 +1,6 @@
 Polyscope uses *matcaps* to render the appearance of objects in the scene, as opposed to more traditional configurations of lights and shading models, etc. A matcap is a small image of a material, which is sampled by the renderer to query the materials' appearance from a some angle. Scene information like lighting is implicitly baked in to the matcap image.
 
-Most objects in Polyscope (surface meshes, point clouds, vectors, etc) expose a `#!cpp setMaterial(std::string)` option to choose a material for the object's appearance. Additionally, materials can generally be set in the UI from `[Options] --> [Material]`.
+Most objects in Polyscope (surface meshes, point clouds, vectors, etc) expose a `#!python material='matname'` option to choose a material for the object's appearance. Additionally, materials can generally be set in the UI from `[Options] --> [Material]`.
 
 ## Blended materials
 
@@ -49,23 +49,44 @@ Custom matcaps can be loaded at runtime from image files and used anywhere mater
 
 Ideally, matcap images should be linear `.hdr` images for best results, but any image will work. If other image formats are given, the input is assumed to be non-linear and will be inverse-tonemapped with `intensity=1` and `gamma=2.2` before use.  Most common image formats are accepted (anything `stb_image` can read).
 
-??? func "`#!cpp void polyscope::loadStaticMaterial(std::string matName, std::string filename)`"
+??? func "`#!python load_static_material(mat_name, filename)`"
 
-    ##### loadStaticMaterial
+    ##### load_static_material
 
-    Load a new static (non-blendable) material from a single image file `filename`. The new material will be called `matName`.
+    Load a new static (non-blendable) material from a single image file `filename`. The new material will be called `mat_nam`.
+
+    Example:
+    ```python
+    import polyscope as ps
+
+    ps.load_static_material("fancy mat", "my_image.png")
+    ```
 
 
-??? func "`#!cpp void polyscope::loadBlendableMaterial(std::string matName, std::array<std::string, 4> filenames)`"
+??? func "`#!python load_blendable_material(mat_name, filenames=None, filename_base=None, filename_ext=None)`"
 
-    ##### loadBlendableMaterial 
+    ##### load_blendable_material
 
-    Load a new blendable material from image files `filenames`, corresponding to red, green, blue, and black basis materials. The new material will be called `matName`.
+    Load a new blendable material, which will be called `matName`.
 
+    There are two different ways to specify which files to load the material images from:
 
-??? func "`#!cpp void polyscope::loadBlendableMaterial(std::string matName, std::string filenameBase, std::string filenameExt)`"
+    - Specify `filenames`, a tuple of four string filenames corresponding to red, green, blue, and black basis materials
+    - Specify `filename_base`, and `filename_ext`, to generate the four filenames as `filename_base + "_r" + filename_ext`, etc.
 
-    ##### loadBlendableMaterial 
+    Example:
+    ```python
+    import polyscope as ps
 
-    Same as above, but the four filenames will be generated as `filenameBase + "_r" + filenameExt`, etc.
+    ps.load_blendable_material("fancy blendable mat", filenames = (
+                                "my_image_r.png",
+                                "my_image_g.png",
+                                "my_image_b.png",
+                                "my_image_k.png"
+                              ))
+
+    # OR
+
+    ps.load_blendable_material("fancy blendable mat", filename_base="my_image", filename_ext=".png")
+    ```
 
