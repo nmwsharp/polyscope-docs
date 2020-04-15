@@ -32,7 +32,7 @@ theme:
     logo: media/icons/material/highlight-24px.svg
   favicon: media/icons/material/baseline_highlight_black_18dp.png
   features:
-    - instant
+    #- instant
 
 extra_css:
   - extras.css
