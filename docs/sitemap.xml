@@ -1,162 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/about/release_notes/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/about/license/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/about/dependencies/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/about/contributing/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/about/contributors/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/building/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/basics/initializing/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/basics/program_options/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/basics/scene_options/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/basics/camera_controls/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/basics/parameters/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/data_adaptors/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/features/messages/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/features/screenshots/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/features/user_callback/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/features/materials/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/features/color_maps/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/features/2D_data/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/structure_management/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/point_cloud/basics/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/point_cloud/scalar_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/point_cloud/color_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/point_cloud/vector_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/surface_mesh/basics/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/surface_mesh/scalar_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/surface_mesh/color_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/surface_mesh/distance_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/surface_mesh/vector_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/surface_mesh/parameterization_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/surface_mesh/count_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/surface_mesh/misc_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/surface_mesh/indexing_convention/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/curve_network/basics/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/curve_network/scalar_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/curve_network/color_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/structures/curve_network/vector_quantities/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/integrations/geometry_central/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/integrations/libIGL/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>None</loc>
+     <loc>https://polysope.run/integrations/DGtal/</loc>
      <lastmod>2020-04-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
