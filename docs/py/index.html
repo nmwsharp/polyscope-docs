@@ -906,34 +906,7 @@
 <p>When any of these structures and quantities are registered, Polyscope displays them in an interactive 3D scene, handling boilerplate concerns such as toggling visibility, color-mapping data and adjusting maps, &ldquo;picking&rdquo; to click in the scene and query numerical quantities, etc.</p>
 <p><strong>Note:</strong> There are two variants of this documentation, for C++ and Python. Use the buttons on the top bar to change language.</p>
 <p>A simple workflow for visualizing data in Polyscope looks like:</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">C++</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;polyscope/polyscope.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span><span class="cp"></span>
-
-<span class="c1">// Initialize polyscope</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
-
-<span class="c1">// Register a point cloud</span>
-<span class="c1">// `points` is a Nx3 array-like container of points</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">&quot;my points&quot;</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
-
-<span class="c1">// Register a surface mesh structure</span>
-<span class="c1">// `meshVerts` is a Vx3 array-like container of vertex positions</span>
-<span class="c1">// `meshFaces` is a Fx3 array-like container of face indices  </span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">meshVerts</span><span class="p">,</span> <span class="n">meshFaces</span><span class="p">);</span>
-
-<span class="c1">// Add a scalar and a vector function defined on the mesh</span>
-<span class="c1">// `scalarQuantity` is a length V array-like container of values</span>
-<span class="c1">// `vectorQuantity` is an Fx3 array-like container of vectors per face</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">&quot;my_scalar&quot;</span><span class="p">,</span> <span class="n">scalarQuantity</span><span class="p">);</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="s">&quot;my_vector&quot;</span><span class="p">,</span> <span class="n">vectorQuantity</span><span class="p">);</span>
-
-<span class="c1">// View the point cloud and mesh we just registered in the 3D UI</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
-</code></pre></div>
-
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Python</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Python</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 
 <span class="c1"># Initialize polyscope</span>
@@ -961,8 +934,35 @@
 </code></pre></div>
 
 </div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">C++</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;polyscope/polyscope.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// Initialize polyscope</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
+
+<span class="c1">// Register a point cloud</span>
+<span class="c1">// `points` is a Nx3 array-like container of points</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">&quot;my points&quot;</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
+
+<span class="c1">// Register a surface mesh structure</span>
+<span class="c1">// `meshVerts` is a Vx3 array-like container of vertex positions</span>
+<span class="c1">// `meshFaces` is a Fx3 array-like container of face indices  </span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">meshVerts</span><span class="p">,</span> <span class="n">meshFaces</span><span class="p">);</span>
+
+<span class="c1">// Add a scalar and a vector function defined on the mesh</span>
+<span class="c1">// `scalarQuantity` is a length V array-like container of values</span>
+<span class="c1">// `vectorQuantity` is an Fx3 array-like container of vectors per face</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">&quot;my_scalar&quot;</span><span class="p">,</span> <span class="n">scalarQuantity</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="s">&quot;my_vector&quot;</span><span class="p">,</span> <span class="n">vectorQuantity</span><span class="p">);</span>
+
+<span class="c1">// View the point cloud and mesh we just registered in the 3D UI</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
+</code></pre></div>
+
 </div>
-<p>Polyscope is designed to make your life easier. It is simple to build, and fewer than 10 lines of code should be sufficient to start visualizing. In C++, some <a href="https://polyscope.run/data_adaptors/">template magic</a> means Polyscope can probably accept the data types you&rsquo;re already using!</p>
+</div>
+<p>Polyscope is designed to make your life easier. It is simple to build, and fewer than 10 lines of code should be sufficient to start visualizing.</p>
 <hr />
 <p>Author: <a href="http://www.nmwsharp.com">Nicholas Sharp</a></p>
 <p>If Polyscope contributes to an academic publication, cite it as:
