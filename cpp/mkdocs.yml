@@ -31,7 +31,7 @@ theme:
   theme:
     logo: media/icons/material/highlight-24px.svg
   favicon: media/icons/material/baseline_highlight_black_18dp.png
-  features:
+  #features:
     #- instant
 
 extra_css:
