@@ -1,48 +1,27 @@
 
 
 
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
       
-      
-        <meta name="lang:clipboard.copy" content="Copy to clipboard">
-      
-        <meta name="lang:clipboard.copied" content="Copied to clipboard">
-      
-        <meta name="lang:search.language" content="en">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="No matching documents">
-      
-        <meta name="lang:search.result.one" content="1 matching document">
-      
-        <meta name="lang:search.result.other" content="# matching documents">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-\.::]+">
-      
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+      <link rel="shortcut icon" href="../../media/icons/material/baseline_highlight_black_18dp.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.0.1">
     
     
       
-        <title>Parameters - Polyscope</title>
+        <title>Parameters - Polyscope - C++</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c3000690.min.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.4444686e.min.css">
       
       
         
@@ -51,16 +30,13 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,400,400i,700|Inconsolata&display=fallback">
-        <style>body,input{font-family:"PT Serif","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Inconsolata","Courier New",Courier,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,400,400i,700%7CInconsolata&display=fallback">
+        <style>body,input{font-family:"PT Serif",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Inconsolata",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="../../extras.css">
@@ -68,99 +44,117 @@
     
       
         
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
-  /* Setup integration and send page view */
-  ga("create", "UA-58346315-2", "auto")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
+<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-58346315-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
     
   </head>
   
+  
     
     
     <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="deep-orange">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
-        
-      </defs>
-    </svg>
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#persistent-values" tabindex="1" class="md-skip">
-        Skip to content
-      </a>
-    
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="Polyscope" class="md-header-nav__button md-logo">
-          
-            <i class="md-icon">home</i>
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Polyscope
-            </span>
-            <span class="md-header-nav__topic">
-              
-                Parameters
-              
-            </span>
-          
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
         
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+        <a href="#persistent-values" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Application header -->
+<header class="md-header" data-md-component="header">
+
+  <!-- Top-level navigation -->
+  <nav class="md-header-nav md-grid" aria-label="Header">
+
+    <!-- Link to home -->
+    <a
+      href="../.."
+      title="Polyscope - C++"
+      class="md-header-nav__button md-logo"
+      aria-label="Polyscope - C++"
+    >
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M6,14l3,3v5h6v-5l3-3V9H6V14z M11,2h2v3h-2V2z M3.5,5.88l1.41-1.41l2.12,2.12L5.62,8L3.5,5.88z M16.96,6.59l2.12-2.12 l1.41,1.41L18.38,8L16.96,6.59z"/></g></g></g></svg>
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Polyscope - C++
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Parameters
+            
+          </span>
+        </div>
+      
+    </div>
+
+    <!-- Button to open search dialogue -->
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+
+      <!-- Search interface -->
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Type to start searching
           </div>
@@ -170,71 +164,70 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            
-
-
-  
-
-<a href="https://github.com/nmwsharp/polyscope" title="Go to repository" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
+    
+			
+    <!-- ADDED BY NSHARP language selector -->
+    <div class="md-flex__cell md-flex__cell--shrink">
+      <a href="https://polyscope.run" class="lang-button">
+        C++
+      </a>
     </div>
-  
+    <div class="md-flex__cell md-flex__cell--shrink">
+      <a href="https://polyscope.run/py" class="lang-button lang-button-inactive">
+        Python
+      </a>
+    </div>
+
+    <!-- Repository containing source -->
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/nmwsharp/polyscope" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
   <div class="md-source__repository">
     nmwsharp/polyscope
   </div>
 </a>
-          </div>
-        </div>
-      
-    </div>
+      </div>
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="Polyscope" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Polyscope - C++" class="md-nav__button md-logo" aria-label="Polyscope - C++">
       
-        <i class="md-icon">home</i>
-      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M6,14l3,3v5h6v-5l3-3V9H6V14z M11,2h2v3h-2V2z M3.5,5.88l1.41-1.41l2.12,2.12L5.62,8L3.5,5.88z M16.96,6.59l2.12-2.12 l1.41,1.41L18.38,8L16.96,6.59z"/></g></g></g></svg>
+
     </a>
-    Polyscope
+    Polyscope - C++
   </label>
   
     <div class="md-nav__source">
       
-
-
-  
-
-<a href="https://github.com/nmwsharp/polyscope" title="Go to repository" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
+<a href="https://github.com/nmwsharp/polyscope" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
   <div class="md-source__repository">
     nmwsharp/polyscope
   </div>
@@ -262,13 +255,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       About
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="About" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         About
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -306,18 +305,6 @@
   <li class="md-nav__item">
     <a href="../../about/dependencies/" title="Dependencies" class="md-nav__link">
       Dependencies
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../about/bindings/" title="Bindings" class="md-nav__link">
-      Bindings
     </a>
   </li>
 
@@ -372,13 +359,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Basics
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Basics" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Basics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -441,11 +434,14 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Parameters
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
       </label>
     
     <a href="./" title="Parameters" class="md-nav__link md-nav__link--active">
@@ -453,30 +449,31 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#persistent-values" title="Persistent values" class="md-nav__link">
+  <a href="#persistent-values" class="md-nav__link">
     Persistent values
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scaled-values" title="Scaled values" class="md-nav__link">
+  <a href="#scaled-values" class="md-nav__link">
     Scaled values
   </a>
   
 </li>
-      
-      
-      
-      
       
     </ul>
   
@@ -509,13 +506,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       Features
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Features" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Features
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -605,13 +608,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
     <label class="md-nav__link" for="nav-7">
       Structures
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Structures" data-md-level="1">
       <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Structures
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -636,13 +645,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
     <label class="md-nav__link" for="nav-7-2">
       Point Cloud
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Point Cloud" data-md-level="2">
       <label class="md-nav__title" for="nav-7-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Point Cloud
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -708,13 +723,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
     
     <label class="md-nav__link" for="nav-7-3">
       Surface Mesh
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Surface Mesh" data-md-level="2">
       <label class="md-nav__title" for="nav-7-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Surface Mesh
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -840,13 +861,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
     
     <label class="md-nav__link" for="nav-7-4">
       Curve Network
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Curve Network" data-md-level="2">
       <label class="md-nav__title" for="nav-7-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Curve Network
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -917,13 +944,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
     <label class="md-nav__link" for="nav-8">
       Integrations
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Integrations" data-md-level="1">
       <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Integrations
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -981,30 +1014,31 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#persistent-values" title="Persistent values" class="md-nav__link">
+  <a href="#persistent-values" class="md-nav__link">
     Persistent values
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scaled-values" title="Scaled values" class="md-nav__link">
+  <a href="#scaled-values" class="md-nav__link">
     Scaled values
   </a>
   
 </li>
-      
-      
-      
-      
       
     </ul>
   
@@ -1019,15 +1053,18 @@
               
                 
                 
+                  
+                
+                
                   <h1>Parameters</h1>
                 
                 <p>Many structures and quantities in Polyscope have optional values which can be set to control their appearance or behavior, such as the radius of points in a point cloud or the color of a mesh. These values can generally be manually adjusted in the GUI, or set programmatically in code.</p>
 <p>This page documents special features in Polyscope which provide extra functionality while setting these parameters.</p>
 <h2 id="persistent-values">Persistent values</h2>
-<p>In Polyscope, if you manually set the color of points in a point cloud, then register a new point cloud with the same name overwriting the original, the new point cloud will inherit the old point cloud&rsquo;s color. This functionality, and other similar behavior, is implemented via <em>persistent values</em>.</p>
+<p>In Polyscope, if you manually set the color of points in a point cloud (for instance), then register a new point cloud with the same name overwriting the original, the new point cloud will inherit the old point cloud&rsquo;s color. This functionality, and other similar behavior, is implemented via <em>persistent values</em>.</p>
 <p>Persistent values are lightweight wrappers around a variable which on-construction look up the variable&rsquo;s in a global cache, and if a cache entry exists take the cached value instead. Any time the variable is written to, its value is recorded in the global cache. Generally, the cache key includes the name of a structure (and quantity if applicable), so a cached variable will only be picked up when names match.</p>
 <p>Generally, the user should not manually interact with persistent values ever, all you need to know is that some variables may &ldquo;magically&rdquo; remember their old values by pulling them from a cache.
-<div class="codehilite"><pre><span></span><span class="n">PointCloud</span><span class="o">*</span> <span class="n">psCloud</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">getPointCloud</span><span class="p">(</span><span class="s">&quot;my cloud&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">PointCloud</span><span class="o">*</span> <span class="n">psCloud</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">getPointCloud</span><span class="p">(</span><span class="s">&quot;my cloud&quot;</span><span class="p">);</span>
 <span class="n">psCloud</span><span class="o">-&gt;</span><span class="n">setPointColor</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>  
 <span class="c1">// the persistent value is recorded in the cache</span>
 
@@ -1036,50 +1073,50 @@
 <span class="n">PointCloud</span><span class="o">*</span> <span class="n">newCloud</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">&quot;my cloud&quot;</span><span class="p">,</span> <span class="n">new_points</span><span class="p">);</span>
 <span class="c1">// newCloud will automatically pick up the pointColor we set above, </span>
 <span class="c1">// since this point cloud has the same name</span>
-</pre></div>
+</code></pre></div>
 Note that this persistence behavior applies even when variables are manually manipulated in the GUI.</p>
 <details class="note"><summary>for implementors</summary><p>If writing custom Polyscope library code (e.g. your own custom structures and quantities), here&rsquo;s what you need to know to use persistent values.</p>
-<p>The class <code class="codehilite"><span class="err">PersistentValue&lt;T&gt;</span></code> is templated on the underlying scalar type, like <code class="codehilite"><span class="err">PersistentValue&lt;double&gt;</span></code>. Only a predefined set of types can be used as template arguments because the corresponding global cache must be allocated. See <code class="codehilite"><span class="err">persistent_value.h</span></code> for a listing, which currently includes <code class="codehilite"><span class="err">bool</span></code>, <code class="codehilite"><span class="err">float</span></code>, <code class="codehilite"><span class="err">double</span></code>, <code class="codehilite"><span class="err">ScaledValue&lt;float&gt;</span></code>, <code class="codehilite"><span class="err">ScaledValue&lt;double&gt;</span></code>, <code class="codehilite"><span class="c">glm::vec3</span></code>, and <code class="codehilite"><span class="c">gl::ColorMapID</span></code>.</p>
+<p>The class <code>PersistentValue&lt;T&gt;</code> is templated on the underlying scalar type, like <code>PersistentValue&lt;double&gt;</code>. Only a predefined set of types can be used as template arguments because the corresponding global cache must be allocated. See <code>persistent_value.h</code> for a listing, which currently includes <code>bool</code>, <code>float</code>, <code>double</code>, <code>ScaledValue&lt;float&gt;</code>, <code>ScaledValue&lt;double&gt;</code>, <code>glm::vec3</code>, and <code>gl::ColorMapID</code>.</p>
 <p>Construct a persistent value like
-<div class="codehilite"><pre><span></span><span class="n">PersistentValue</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">myVar</span><span class="p">(</span><span class="s">&quot;unique_name&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-</pre></div>
-the variable will the cached value if one exists, and if not take the value <code class="codehilite"><span class="err">0.5</span></code> (and add it to the cache).  Remember to use a globally unique name for the for the name argument; in structures you can use a concatenation of the type name, structure name, and (if applicable) quantity name.</p>
-<p>To access a persistent value, call <code class="codehilite"><span class="err">myVar.get()</span></code>, which returns a reference to the underlying value.</p>
-<p>In some occasions, in particular when using ImGui, you may need to write to a value directly via the pointer from <code class="codehilite"><span class="err">&amp;myVar.get()</span></code>. This is problematic, because the variable does not know it has been written to and thus needs to update the cache. The function <code class="codehilite"><span class="err">myVar.manuallyUpdated()</span></code> can be called to notify the persistent value that it needs to update the cache. The paradigm for using a persistent value with ImGui then looks like
-<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">ImGui</span><span class="o">::</span><span class="n">SliderFloat</span><span class="p">(</span><span class="s">&quot;some text&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">myVar</span><span class="p">.</span><span class="n">get</span><span class="p">()))</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">PersistentValue</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">myVar</span><span class="p">(</span><span class="s">&quot;unique_name&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div>
+the variable will the cached value if one exists, and if not take the value <code>0.5</code> (and add it to the cache).  Remember to use a globally unique name for the for the name argument; in structures you can use a concatenation of the type name, structure name, and (if applicable) quantity name.</p>
+<p>To access a persistent value, call <code>myVar.get()</code>, which returns a reference to the underlying value.</p>
+<p>In some occasions, in particular when using ImGui, you may need to write to a value directly via the pointer from <code>&amp;myVar.get()</code>. This is problematic, because the variable does not know it has been written to and thus needs to update the cache. The function <code>myVar.manuallyUpdated()</code> can be called to notify the persistent value that it needs to update the cache. The paradigm for using a persistent value with ImGui then looks like
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">ImGui</span><span class="o">::</span><span class="n">SliderFloat</span><span class="p">(</span><span class="s">&quot;some text&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">myVar</span><span class="p">.</span><span class="n">get</span><span class="p">()))</span> <span class="p">{</span>
   <span class="n">myVar</span><span class="p">.</span><span class="n">manuallyChanged</span><span class="p">();</span>
 <span class="p">}</span>
-</pre></div></p>
+</code></pre></div></p>
 </details>
 <h2 id="scaled-values">Scaled values</h2>
 <p>Specifying appearance (such as the radius of points in a point cloud) in global length units can be inconvenient; its generally much easier to set values relatively, which respect to some reasonable length scale.
-The <code class="codehilite"><span class="err">ScaledValue</span></code> type tracks such represents such values, if we set <code class="codehilite"><span class="err">ScaledValue s = 7.</span></code>, then <code class="codehilite"><span class="err">s.asAbsolute()</span></code> will return <code class="codehilite"><span class="err">7. * state::lengthScale</span></code> when used.
+The <code>ScaledValue</code> type tracks such represents such values, if we set <code>ScaledValue s = 7.</code>, then <code>s.asAbsolute()</code> will return <code>7. * state::lengthScale</code> when used.
 Most length-valued parameters in Polyscope use this mechanism, and thus are relative by default.</p>
-<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">polyscope</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="k">namespace</span> <span class="n">polyscope</span><span class="p">;</span>
 <span class="n">PointCloud</span><span class="o">*</span> <span class="n">psCloud</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">getPointCloud</span><span class="p">(</span><span class="s">&quot;my cloud&quot;</span><span class="p">);</span>
 
 <span class="c1">// radius will be 0.05 * lengthScale when used</span>
 <span class="n">psCloud</span><span class="o">-&gt;</span><span class="n">pointRadius</span> <span class="o">=</span> <span class="n">ScaledValue</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">relative</span><span class="p">(</span><span class="mf">0.05</span><span class="p">);</span> 
 <span class="n">psCloud</span><span class="o">-&gt;</span><span class="n">pointRadius</span> <span class="o">=</span> <span class="n">relativeValue</span><span class="p">(</span><span class="mf">0.05</span><span class="p">);</span> <span class="c1">// shorthand, same as previous</span>
 <span class="n">psCloud</span><span class="o">-&gt;</span><span class="n">pointRadius</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="c1">// shorthand, same as previous</span>
-</pre></div>
+</code></pre></div>
 
 <p>However, sometimes you might want to actually use an absolute value for a parameter, for instance to get exactly the same appearance between runs of a program on different data. To support that, scaled values can optionally be set as absolute values, which will <em>not</em> be scaled before use.</p>
-<div class="codehilite"><pre><span></span><span class="c1">// radius will be 1.6 when used</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// radius will be 1.6 when used</span>
 <span class="n">psCloud</span><span class="o">-&gt;</span><span class="n">pointRadius</span> <span class="o">=</span> <span class="n">ScaledValue</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">absolute</span><span class="p">(</span><span class="mf">1.6</span><span class="p">)</span> 
 <span class="n">psCloud</span><span class="o">-&gt;</span><span class="n">pointRadius</span> <span class="o">=</span> <span class="n">absoluteValue</span><span class="p">(</span><span class="mf">1.6</span><span class="p">);</span> <span class="c1">// shorthand, same as previous</span>
-</pre></div>
+</code></pre></div>
 
 <p>Note that scaled values can be (and often are) used as <em>persistent values</em>, as described above; the two concepts are complementary. </p>
 <details class="note"><summary>for implementors</summary><p>If writing custom Polyscope library code (e.g. your own custom structures and quantities), here&rsquo;s what you need to know to use scaled values.</p>
-<p>The class <code class="codehilite"><span class="err">ScaledValue&lt;T&gt;</span></code> is templated on the scalar type, which basically just needs to support scalar multiplicaiton.</p>
+<p>The class <code>ScaledValue&lt;T&gt;</code> is templated on the scalar type, which basically just needs to support scalar multiplicaiton.</p>
 <p>The examples above show how to construct scaled values as relative or absolute.</p>
-<p>If you want to get the value represented by the <code class="codehilite"><span class="err">ScaledValue</span></code> as an absolute quantity, use <code class="codehilite"><span class="err">ScaledValue&lt;T&gt;::asAbsolute()</span></code>, which scales by <code class="codehilite"><span class="c">state::lengthScale</span></code> if the value is relative.</p>
-<p>Use <code class="codehilite"><span class="err">ScaledValue&lt;T&gt;::getValuePtr</span></code> to get a pointer to the underlying <code class="codehilite"><span class="err">T</span></code>, for instance if using ImGui. A basic ImGui pattern to manipulate the variable looks like:
-<div class="codehilite"><pre><span></span><span class="n">ImGui</span><span class="o">::</span><span class="n">SliderFloat</span><span class="p">(</span><span class="s">&quot;value &quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">.</span><span class="n">getValuePtr</span><span class="p">());</span>
-</pre></div></p>
-<p>If the value is a persistent scaled value, like <code class="codehilite"><span class="err">PersistentValue&lt;ScaledValue&lt;float&gt;&gt;</span></code>, it can be used like:
-<div class="codehilite"><pre><span></span><span class="c1">// example persistent scaled value</span>
+<p>If you want to get the value represented by the <code>ScaledValue</code> as an absolute quantity, use <code>ScaledValue&lt;T&gt;::asAbsolute()</code>, which scales by <code>state::lengthScale</code> if the value is relative.</p>
+<p>Use <code>ScaledValue&lt;T&gt;::getValuePtr</code> to get a pointer to the underlying <code>T</code>, for instance if using ImGui. A basic ImGui pattern to manipulate the variable looks like:
+<div class="highlight"><pre><span></span><code><span class="n">ImGui</span><span class="o">::</span><span class="n">SliderFloat</span><span class="p">(</span><span class="s">&quot;value &quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">.</span><span class="n">getValuePtr</span><span class="p">());</span>
+</code></pre></div></p>
+<p>If the value is a persistent scaled value, like <code>PersistentValue&lt;ScaledValue&lt;float&gt;&gt;</code>, it can be used like:
+<div class="highlight"><pre><span></span><code><span class="c1">// example persistent scaled value</span>
 <span class="n">PersistentValue</span><span class="o">&lt;</span><span class="n">ScaledValue</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;&gt;</span> <span class="n">myVal</span><span class="p">(</span><span class="s">&quot;unique name&quot;</span><span class="p">,</span> <span class="n">relativeValue</span><span class="p">(</span><span class="mf">0.03</span><span class="p">));</span>
 
 <span class="c1">// access</span>
@@ -1089,10 +1126,8 @@ Most length-valued parameters in Polyscope use this mechanism, and thus are rela
 <span class="k">if</span> <span class="p">(</span><span class="n">ImGui</span><span class="o">::</span><span class="n">SliderFloat</span><span class="p">(</span><span class="s">&quot;my val&quot;</span><span class="p">,</span> <span class="n">myVal</span><span class="p">.</span><span class="n">get</span><span class="p">().</span><span class="n">getValuePtr</span><span class="p">()))</span> <span class="p">{</span>
   <span class="n">myVal</span><span class="p">.</span><span class="n">manuallyChanged</span><span class="p">();</span>
 <span class="p">}</span>
-</pre></div></p>
+</code></pre></div></p>
 </details>
-                
-                  
                 
               
               
@@ -1109,34 +1144,34 @@ Most length-valued parameters in Polyscope use this mechanism, and thus are rela
 <footer class="md-footer">
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../camera_controls/" title="Camera Controls" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a href="../camera_controls/" title="Camera Controls" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
                 Camera Controls
-              </span>
+              </div>
             </div>
           </a>
         
         
-          <a href="../../data_adaptors/" title="Data Adaptors" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a href="../../data_adaptors/" title="Data Adaptors" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
                 Data Adaptors
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
             </div>
           </a>
         
@@ -1147,11 +1182,10 @@ Most length-valued parameters in Polyscope use this mechanism, and thus are rela
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -1160,9 +1194,18 @@ Most length-valued parameters in Polyscope use this mechanism, and thus are rela
       
     </div>
     
-      <script src="../../assets/javascripts/application.245445c6.js"></script>
+      <script src="../../assets/javascripts/vendor.f45d2d8d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.74d0b805.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["instant"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
