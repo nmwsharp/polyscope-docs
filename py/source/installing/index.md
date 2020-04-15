@@ -26,6 +26,13 @@ Here are some common fixes:
 conda install -c conda-forge polyscope
 ```
 
+!!! note 
+    
+    Windows Python 2.7 builds on conda may have dependency problems; the issue will be resolved soon.
+    
+    Remember that that you can still use `pip` in conjuction with conda, like `python -m pip install polyscope`.
+
+
 ## Installing manually
 
 To manually download the sources:
