@@ -43,9 +43,9 @@ Surface meshes are registered with Polyscope by passing the location of each ver
     - `smooth_shade` boolean, if `True` use smooth shading (default: `False` for flat shading)
     - `material` string, name of material to use for the mesh
 
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](../../../basics/parameters/#persistent-values) if previously set.
     
-    2D vertex positions are also supported, see [2D data](/features/2D_data).
+    2D vertex positions are also supported, see [2D data](../../../features/2D_data).
 
 ---
 
@@ -70,12 +70,12 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? | `#!python bool is_enabled()` | `#!python set_enabled(newVal)` | [yes](/basics/parameters/#persistent-values)
+enabled | is the structure enabled? | `#!python bool is_enabled()` | `#!python set_enabled(newVal)` | [yes](../../../basics/parameters/#persistent-values)
 surface color | the color of the mesh | `#!python get_color()` | `#!python set_color(val)` | [yes](/basics/parameters/#persistent-values)
-edge color | the color of the edges of the mesh | `#!python get_edge_color()` | `#!python set_edge_color(val)` | [yes](/basics/parameters/#persistent-values)
-edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!python get_edge_width()` | `#!python set_edge_width(val)` | [yes](/basics/parameters/#persistent-values)
-shade smooth | use smooth shading along faces or simple flat faces | `#!python get_smoooth_shade()` | `#!python set_smooth_shade(isSmooth)` | [yes](/basics/parameters/#persistent-values)
-material | material for structure | `#!python get_material()` | `#!python set_material(newVal)` | [yes](/basics/parameters/#persistent-values) |
+edge color | the color of the edges of the mesh | `#!python get_edge_color()` | `#!python set_edge_color(val)` | [yes](../../../basics/parameters/#persistent-values)
+edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!python get_edge_width()` | `#!python set_edge_width(val)` | [yes](../../../basics/parameters/#persistent-values)
+shade smooth | use smooth shading along faces or simple flat faces | `#!python get_smoooth_shade()` | `#!python set_smooth_shade(isSmooth)` | [yes](../../../basics/parameters/#persistent-values)
+material | material for structure | `#!python get_material()` | `#!python set_material(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 
 Example: set options which affect the appearance of the mesh
 ```python

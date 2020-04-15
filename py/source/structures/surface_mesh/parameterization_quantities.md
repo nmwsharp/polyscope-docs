@@ -57,9 +57,9 @@ ps.show()
     - `grid_colors` 2-tuple of rgb colors, used to color the grid visualization
     - `checker_colors` 2-tuple of rgb colors, used to color the checkerboard visualization
     - `checker_size` float, the size of checkers/grid/stripes
-    - `cmap` string, which [colormap](/features/color_maps) to use
+    - `cmap` string, which [colormap](../../../features/color_maps) to use
     
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
     
 
 ## Options

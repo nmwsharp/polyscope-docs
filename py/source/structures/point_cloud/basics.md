@@ -38,7 +38,7 @@ ps.show()
 
     if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](/basics/parameters/#persistent-values) if previously set.
     
-    2D point clouds are also supported, see [2D data](/features/2D_data).
+    2D point clouds are also supported, see [2D data](../../../features/2D_data).
 
 
 ### Updating a point cloud
@@ -65,10 +65,10 @@ Options control the appearance of the cloud. Note that these options can also be
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? |  `#!python is_enabled()` | `#!python set_enabled(newVal=True)` | [yes](/basics/parameters/#persistent-values)
-point radius | size of rendered points | `#!python get_radius()` | `#!python set_radius(newVal, relative=True)` | [yes](/basics/parameters/#persistent-values) |
-point color | default color for points | `#!python get_color()` | `#!python set_color(newVal)` | [yes](/basics/parameters/#persistent-values) |
-material | material for point | `#!python get_material()` | `#!python set_material(newVal)` | [yes](/basics/parameters/#persistent-values) |
+enabled | is the structure enabled? |  `#!python is_enabled()` | `#!python set_enabled(newVal=True)` | [yes](../../../basics/parameters/#persistent-values)
+point radius | size of rendered points | `#!python get_radius()` | `#!python set_radius(newVal, relative=True)` | [yes](../../../basics/parameters/#persistent-values) |
+point color | default color for points | `#!python get_color()` | `#!python set_color(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
+material | material for point | `#!python get_material()` | `#!python set_material(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 
 
 Example: set options which affect the appearance of the point cloud

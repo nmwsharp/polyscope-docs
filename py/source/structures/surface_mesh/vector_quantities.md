@@ -48,7 +48,7 @@ ps.show()
     - `radius` float, a (relative) radius for the vectors
     - `color` 3-tuple, color for the vectors
     
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
     
 
 
@@ -96,7 +96,7 @@ In these function names, _intrinsic vector_ is a fancy synonym for tangent vecto
     - `color` 3-tuple, color for the vectors
     - `ribbon` boolean, if true show the traced ribbon visualization 
     
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
     
 
 ### One forms
@@ -120,5 +120,5 @@ _One forms_ are tangent vector-like quantities represented as integrated scalars
     - `color` 3-tuple, color for the vectors
     - `ribbon` boolean, if true show the traced ribbon visualization 
     
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
 

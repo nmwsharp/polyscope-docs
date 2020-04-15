@@ -42,5 +42,5 @@ ps.show()
     - `radius` float, a (relative) radius for the vectors
     - `color` 3-tuple, color for the vectors
     
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
     

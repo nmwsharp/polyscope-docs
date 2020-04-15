@@ -1,6 +1,6 @@
 Visualize color rgb-valued data at the nodes or edges of a curve network.
 
-![curve network color](/media/curve_network_color.jpeg)
+![curve network color](../../../media/curve_network_color.jpeg)
 
 Example:
 ```python
@@ -39,5 +39,5 @@ ps.show()
 
     - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
     
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
     

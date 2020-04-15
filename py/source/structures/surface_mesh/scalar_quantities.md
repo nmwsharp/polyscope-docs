@@ -48,7 +48,7 @@ ps.show()
     - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
     - `datatype` one of `standard`, `symmetric`, or `magnitude`, affects default colormap and map range
     - `vminmax` a 2-tuple of floats, specifying the min and max range to colormap in to
-    - `cmap` string, which [colormap](/features/color_maps) to use
+    - `cmap` string, which [colormap](../../../features/color_maps) to use
     
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
     

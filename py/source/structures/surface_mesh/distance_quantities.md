@@ -43,7 +43,7 @@ ps.show()
     - `vminmax` a 2-tuple of floats, specifying the min and max range to colormap in to
     - `stripe_size` float, the width of stripes in the visualization
     - `stripe_size_relative` boolean, if true `stripe_size` is interpreted relative to the scene length scale, otherwise absolute
-    - `cmap` string, which [colormap](/features/color_maps) to use
+    - `cmap` string, which [colormap](../../../features/color_maps) to use
     
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](/basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
     

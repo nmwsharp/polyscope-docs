@@ -43,7 +43,7 @@ ps.show()
 
     if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](/basics/parameters/#persistent-values) if previously set.
     
-    2D node positions are also supported, see [2D data](/features/2D_data).
+    2D node positions are also supported, see [2D data](../../../features/2D_data).
 
 
 
@@ -64,10 +64,10 @@ Options control the appearance of the network . Note that these options can also
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? |  `#!python is_enabled()` | `#!python set_enabled(newVal=True)` | [yes](/basics/parameters/#persistent-values)
-radius | size of rendered nodes/edges | `#!python get_radius()` | `#!python set_radius(newVal, relative=True)` | [yes](/basics/parameters/#persistent-values) |
-color | default color for the network | `#!python get_color()` | `#!python set_color(newVal)` | [yes](/basics/parameters/#persistent-values) |
-material | material for structure | `#!python get_material()` | `#!python set_material(newVal)` | [yes](/basics/parameters/#persistent-values) |
+enabled | is the structure enabled? |  `#!python is_enabled()` | `#!python set_enabled(newVal=True)` | [yes](../../../basics/parameters/#persistent-values)
+radius | size of rendered nodes/edges | `#!python get_radius()` | `#!python set_radius(newVal, relative=True)` | [yes](../../../basics/parameters/#persistent-values) |
+color | default color for the network | `#!python get_color()` | `#!python set_color(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
+material | material for structure | `#!python get_material()` | `#!python set_material(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 
 
 Example: set options which affect the appearance of the curve network
