@@ -43,6 +43,7 @@ extra_javascript:
 repo_name: 'nmwsharp/polyscope'
 repo_url: 'https://github.com/nmwsharp/polyscope'
 edit_uri: ''
+site_url: 'https://polysope.run/'
 
 google_analytics: ['UA-58346315-2', 'auto']
 
