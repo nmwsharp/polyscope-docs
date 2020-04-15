@@ -1,14 +1,30 @@
+Polyscope supports Python 2 and 3 on Linux, macOS, and Windows. At runtime, your environment must support OpenGL >= `3.3 core`, and have the ability to open windows in a display. This includes nearly all modern desktop/laptop computers, but not all headless servers and virtual machines.
+
 ## Installing from PyPi
 
-Polyscope is registered on PyPi, so you can install with:
 ```sh
-pip install polyscope
+python -m pip install polyscope
 ```
-(as always this `pip` should match the version of python you intend to use; you might want `pip3` on your system to install for Python 3.)
+Using `python -m pip install` rather than just `pip install` helps when your system has multiple version of Python installed, ensuring the correct `pip` is used. Just be sure `python` refers to the install of Python you intend to use.
 
-Polyscope supports Python 2.7+ and Python 3.5+.
+Ideally, this install will resolve to a precompiled wheel for your platform---see [troubleshooting](#troubleshooting) if not. Otherwise, the setup script will compile the Polyscope C++ library from source, which may take a few minutes, and requires a suitable C++ toolchain (see [building from source](#building-from-source)).
 
-Ideally, this install will resolve to a precompiled wheels for your platform. If not, the setup script will compile the Polyscope C++ library from source, which may take a few mintues. This process requires a suitable C++ toolchain; see [building from source](#building-from-source).
+#### Troubleshooting
+
+On common platforms, `pip` should always be able to install from a binary `.whl` file. If it fails to select a binary wheel, it will try to compile from source, leading to long install times or compilation errors if your toolchain is not configured.
+
+Here are some common fixes: 
+
+- Ensure you're targeting the latest Polyscope `python -m pip install polyscope --upgrade`
+- Very old versions of `pip` may not be able to use the precompiled wheels. Upgrade `pip` with `python -m pip install pip --upgrade`.
+- Precompiled wheels are available on pip for Python 2.7 and 3.5-3.8 (aka most common versions), check yours with `python --version`, and update your Python install if needed.
+
+
+## Installing from Conda
+
+```sh
+conda install -c conda-forge polyscope
+```
 
 ## Installing manually
 
@@ -21,7 +37,7 @@ cd polyscope-py
 
 Polyscope can then by installed with pip as
 ```sh
-pip install .
+python -m pip install .
 ```
 
 Or manually installed with the setup script using
@@ -31,7 +47,7 @@ python setup.py install
 
 ## Building from source
 
-If a pre-compiled wheel is not available, the setup scripts (either run automatically via `pip` or manually with `setup.py`) will need to compile the underlying C++ library. Your system must have a suitable C++ compiler available to build Polyscope, as well as build tools like CMake installed. See the main Polyscope C++ repository for more details about compiling. Polyscope is a 3D graphics program, so it may be difficult to build on servers without graphics support, or extremely old machines. In particular, OpenGL 3.3 is a hard requirement.
+If a pre-compiled wheel is not available, the setup scripts (either run automatically via `pip` or manually with `setup.py`) will need to compile the underlying C++ library. Your system must have a suitable C++ compiler available to build Polyscope, as well as build tools like CMake installed. The [Polyscope C++ repository](https://polyscope.run/building/) has a few more details about compiling. Polyscope is a 3D graphics program, so it may be difficult to build on servers without graphics support, or extremely old machines. In particular, OpenGL >= `3.3 core` is a strict requirement.
 
 ## Development builds
 

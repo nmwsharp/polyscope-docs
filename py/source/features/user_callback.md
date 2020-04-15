@@ -1,4 +1,4 @@
-!!! info "Not Implemented"
+!!! info "Not Available"
 
     User-callback functionality is not currently exposed in Python bindings.
 

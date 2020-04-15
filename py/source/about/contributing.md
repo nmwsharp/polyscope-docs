@@ -1,6 +1,6 @@
 Polyscope is an open-source project, and you are encouraged to contribute!
 
-Polyscope is first and foremost a C++ library; this Python bindings are just wrappers. Any significant new features should first be implemented in C++, then wrapped in Python.
+Polyscope is first and foremost a C++ library; these Python bindings are just wrappers. Any significant new features should first be implemented in C++, then wrapped in Python.
 
 A few high-level guidelines:
 

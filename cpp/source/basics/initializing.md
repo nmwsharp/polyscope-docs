@@ -19,6 +19,13 @@ polyscope::init();
 // Pass control flow to polyscope, displaying the interactive window.
 // Function will return when user closes the window.
 polyscope::show();
+
+// More of your code
+// ...
+
+// Show again. Data is preserved between calls to show()
+// unless explicitly removed.
+polyscope::show();
 ```
 
 ## Functions
