@@ -71,7 +71,7 @@ A simple workflow for visualizing data in Polyscope looks like:
     ```
 
 
-Polyscope is designed to make your life easier. It is simple to build, and fewer than 10 lines of code should be sufficient to start visualizing. In C++, some [template magic](https://polyscope.run/data_adaptors/) means Polyscope can probably accept the data types you're already using!
+Polyscope is designed to make your life easier. It is simple to build, and fewer than 10 lines of code should be sufficient to start visualizing.
 
 ---
 Author: [Nicholas Sharp](http://www.nmwsharp.com)
