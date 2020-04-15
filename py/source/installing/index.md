@@ -28,7 +28,7 @@ conda install -c conda-forge polyscope
 
 !!! note 
     
-    Windows Python 2.7 builds on conda may have dependency problems; the issue will be resolved soon.
+    Python 2.7 builds on conda may have dependency problems (a false dependency on Python 3); the issue will be resolved soon.
     
     Remember that that you can still use `pip` in conjuction with conda, like `python -m pip install polyscope`.
 
