@@ -27,10 +27,10 @@ conda install -c conda-forge polyscope
 ```
 
 !!! note 
+   
+    The Conda package currently only supports Python 3.
     
-    Python 2.7 builds on conda may have dependency problems (a false dependency on Python 3); the issue will be resolved soon.
-    
-    Remember that that you can still use `pip` in conjuction with conda, like `python -m pip install polyscope`.
+    Remember that that you can always use `pip` in conjuction with conda, like `python -m pip install polyscope`.
 
 
 ## Installing manually
