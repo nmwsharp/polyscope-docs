@@ -391,6 +391,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#source-installs-with-pypi" class="md-nav__link">
+    Source installs with PyPI
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -973,6 +980,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#source-installs-with-pypi" class="md-nav__link">
+    Source installs with PyPI
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1038,6 +1052,11 @@ Using <code>python -m pip install</code> rather than just <code>pip install</cod
 <li>Very old versions of <code>pip</code> may not be able to use the precompiled wheels. Upgrade <code>pip</code> with <code>python -m pip install pip --upgrade</code>.</li>
 <li>Precompiled wheels are available on pip for Python 2.7 and 3.5-3.8 (aka most common versions), check yours with <code>python --version</code>, and update your Python install if needed.</li>
 </ul>
+<h4 id="source-installs-with-pypi">Source installs with PyPI</h4>
+<p>Despite our best efforts, the precompiled binaries still may not work on some platforms. You can intentionally instruct <code>pip</code> to build the library from source using:
+<div class="highlight"><pre><span></span><code>python -m pip install polyscope --no-binary polyscope
+</code></pre></div>
+This may take a few minutes, and requires a suitable C++ toolchain (see <a href="#building-from-source">building from source</a>).</p>
 <h2 id="installing-from-conda">Installing from Conda</h2>
 <div class="highlight"><pre><span></span><code>conda install -c conda-forge polyscope
 </code></pre></div>
