@@ -19,6 +19,13 @@ Here are some common fixes:
 - Very old versions of `pip` may not be able to use the precompiled wheels. Upgrade `pip` with `python -m pip install pip --upgrade`.
 - Precompiled wheels are available on pip for Python 2.7 and 3.5-3.8 (aka most common versions), check yours with `python --version`, and update your Python install if needed.
 
+#### Source installs with PyPI
+
+Despite our best efforts, the precompiled binaries still may not work on some platforms. You can intentionally instruct `pip` to build the library from source using:
+```sh
+python -m pip install polyscope --no-binary polyscope
+```
+This may take a few minutes, and requires a suitable C++ toolchain (see [building from source](#building-from-source)).
 
 ## Installing from Conda
 
