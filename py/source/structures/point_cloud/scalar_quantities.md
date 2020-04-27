@@ -4,6 +4,7 @@ Example:
 ```python
 import numpy as np
 import polyscope as ps
+ps.init()
 
 # register a point cloud
 N = 100
@@ -17,7 +18,7 @@ vals = np.random.rand(N)
 ps_cloud.add_scalar_quantity("rand vals", vals)
 
 # manually specify a range for colormapping
-ps_cloud.add_scalar_quantity("rand vals with range", vals, vminmax=(-5., 5.))
+ps_cloud.add_scalar_quantity("rand vals with range", vals, vminmax=(-5., 5.), enabled=True)
 
 # use a different colormap
 ps_cloud.add_scalar_quantity("rand vals with range", vals, cmap='blues')

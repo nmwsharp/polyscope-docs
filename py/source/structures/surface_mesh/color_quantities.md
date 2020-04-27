@@ -4,6 +4,7 @@ Example:
 ```python
 import numpy as np
 import polyscope as ps
+ps.init()
 
 N_vert = 100
 N_face = 250
@@ -15,7 +16,7 @@ ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)
 
 # visualize some random data per-vertex
 colors_vert = np.random.rand(N_vert, 3)
-ps_mesh.add_color_quantity("rand colors", colors_vert)
+ps_mesh.add_color_quantity("rand colors", colors_vert, enabled=True)
 
 # visualize some random data per-face
 colors_face = np.random.rand(N_face, 3)

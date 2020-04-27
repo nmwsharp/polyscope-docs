@@ -17,7 +17,7 @@ ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)
 
 # parameterization per vertex
 param_vert = np.random.rand(N_vert,2)
-ps_mesh.add_parameterization_quantity("rand param", param_vert)
+ps_mesh.add_parameterization_quantity("rand param", param_vert, enabled=True)
 
 # parameterization per corner
 param_corner = np.random.rand(ps_mesh.n_corners(),2)

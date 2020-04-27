@@ -15,7 +15,7 @@ ps_net = ps.register_curve_network("my network", nodes, edges)
 
 # visualize some random vectors per-node
 vecs_node = np.random.rand(N_node, 3)
-ps_net.add_vector_quantity("rand vecs", vecs_node)
+ps_net.add_vector_quantity("rand vecs", vecs_node, enabled=True)
 
 # visualize some random vectors per-edge
 vecs_edge = np.random.rand(N_edge, 3)

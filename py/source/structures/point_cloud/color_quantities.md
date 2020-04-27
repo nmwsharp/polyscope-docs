@@ -4,11 +4,12 @@ Example:
 ```python
 import numpy as np
 import polyscope as ps
+ps.init()
 
 # register a point cloud
 N = 100
 points = np.random.rand(N, 3)
-ps_cloud = ps.register_point_cloud("my points", points)
+ps_cloud = ps.register_point_cloud("my points", points, enabled=True)
 
 # generate some random color per-point
 vals = np.random.rand(N,3)

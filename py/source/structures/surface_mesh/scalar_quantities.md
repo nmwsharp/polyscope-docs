@@ -17,7 +17,7 @@ ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)
 
 # visualize some random data per-vertex
 vals_vert = np.random.rand(N_vert)
-ps_mesh.add_scalar_quantity("rand vals", vals_vert)
+ps_mesh.add_scalar_quantity("rand vals", vals_vert, enabled=True)
 
 # visualize some random data per-face
 vals_face = np.random.rand(N_face)

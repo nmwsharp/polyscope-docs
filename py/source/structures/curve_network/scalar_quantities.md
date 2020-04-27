@@ -6,6 +6,7 @@ Example:
 ```python
 import numpy as np
 import polyscope as ps
+ps.init()
 
 # register a curve network 
 N_node = 100
@@ -16,7 +17,7 @@ ps_net = ps.register_curve_network("my network", nodes, edges)
 
 # visualize some random data per-node
 vals_node = np.random.rand(N_node)
-ps_net.add_scalar_quantity("rand vals", vals_node)
+ps_net.add_scalar_quantity("rand vals", vals_node, enabled=True)
 
 # visualize some random data per-edge
 vals_edge = np.random.rand(N_edge)

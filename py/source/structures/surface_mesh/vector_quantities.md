@@ -19,7 +19,7 @@ ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)
 
 # visualize some random vectors per vertex
 vecs_vert = np.random.rand(N_vert, 3)
-ps_mesh.add_vector_quantity("rand vecs", vecs_vert)
+ps_mesh.add_vector_quantity("rand vecs", vecs_vert, enabled=True)
 
 # set radius/length/color of the vectors
 ps_mesh.add_vector_quantity("rand vecs opt", vecs_vert, radius=0.001, 
