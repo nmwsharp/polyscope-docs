@@ -1018,7 +1018,7 @@
 
 <span class="c1"># visualize some random vectors per vertex</span>
 <span class="n">vecs_vert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_vert</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_vector_quantity</span><span class="p">(</span><span class="s2">&quot;rand vecs&quot;</span><span class="p">,</span> <span class="n">vecs_vert</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_vector_quantity</span><span class="p">(</span><span class="s2">&quot;rand vecs&quot;</span><span class="p">,</span> <span class="n">vecs_vert</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># set radius/length/color of the vectors</span>
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_vector_quantity</span><span class="p">(</span><span class="s2">&quot;rand vecs opt&quot;</span><span class="p">,</span> <span class="n">vecs_vert</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> 

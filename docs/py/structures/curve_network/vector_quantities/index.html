@@ -895,7 +895,7 @@
 
 <span class="c1"># visualize some random vectors per-node</span>
 <span class="n">vecs_node</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_node</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ps_net</span><span class="o">.</span><span class="n">add_vector_quantity</span><span class="p">(</span><span class="s2">&quot;rand vecs&quot;</span><span class="p">,</span> <span class="n">vecs_node</span><span class="p">)</span>
+<span class="n">ps_net</span><span class="o">.</span><span class="n">add_vector_quantity</span><span class="p">(</span><span class="s2">&quot;rand vecs&quot;</span><span class="p">,</span> <span class="n">vecs_node</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># visualize some random vectors per-edge</span>
 <span class="n">vecs_edge</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_edge</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>

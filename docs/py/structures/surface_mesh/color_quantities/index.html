@@ -884,6 +884,7 @@
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="n">N_vert</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">N_face</span> <span class="o">=</span> <span class="mi">250</span>
@@ -895,7 +896,7 @@
 
 <span class="c1"># visualize some random data per-vertex</span>
 <span class="n">colors_vert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_vert</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">&quot;rand colors&quot;</span><span class="p">,</span> <span class="n">colors_vert</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">&quot;rand colors&quot;</span><span class="p">,</span> <span class="n">colors_vert</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># visualize some random data per-face</span>
 <span class="n">colors_face</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_face</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>

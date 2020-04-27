@@ -1,139 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://polyscope.run/py/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/about/release_notes/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/about/license/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/about/dependencies/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/about/contributing/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/about/contributors/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/installing/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/basics/initializing/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/basics/program_options/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/basics/scene_options/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/basics/camera_controls/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/basics/parameters/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/features/messages/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/features/screenshots/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/features/user_callback/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/features/materials/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/features/color_maps/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/features/2D_data/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/structure_management/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/point_cloud/basics/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/point_cloud/scalar_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/point_cloud/color_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/point_cloud/vector_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/surface_mesh/basics/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/surface_mesh/scalar_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/surface_mesh/color_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/surface_mesh/distance_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/surface_mesh/vector_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/surface_mesh/parameterization_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/surface_mesh/indexing_convention/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/curve_network/basics/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/curve_network/scalar_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/curve_network/color_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://polyscope.run/py/structures/curve_network/vector_quantities/</loc>
-     <lastmod>2020-04-18</lastmod>
+     <lastmod>2020-04-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

@@ -896,7 +896,7 @@
 
 <span class="c1"># visualize some random data per-vertex</span>
 <span class="n">vals_vert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_vert</span><span class="p">)</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;rand vals&quot;</span><span class="p">,</span> <span class="n">vals_vert</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;rand vals&quot;</span><span class="p">,</span> <span class="n">vals_vert</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># visualize some random data per-face</span>
 <span class="n">vals_face</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_face</span><span class="p">)</span>
