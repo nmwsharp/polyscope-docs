@@ -583,6 +583,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#invoke-user-callback-for-nested-show" class="md-nav__link">
+    invoke user callback for nested show
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1103,6 +1110,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#invoke-user-callback-for-nested-show" class="md-nav__link">
+    invoke user callback for nested show
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1208,6 +1222,13 @@
 <p>If true, an ImGui window will be created and docked to the side of the UI when the <a href="../user_callback">user callback function</a> is invoked. This means you can immediately start making ui calls like <code>ImGui::Button("do stuff")</code>. </p>
 <p>If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).</p>
 <p>Default: <code>true</code>.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="kt">bool</span> <span class="n">options</span><span class="o">::</span><span class="n">invokeUserCallbackForNestedShow</span></code></summary><h5 id="invoke-user-callback-for-nested-show">invoke user callback for nested show</h5>
+<p>Suppose you call <code>polyscope::show()</code>, and within your callback, another instance of <code>polyscope::show()</code> is called&mdash;this is a nested show.</p>
+<p>Depending on the situation, you might or might not want your <code>userCallback</code> to continue being executed on each render loop iteration of this nested viewer; this setting exposes the option.</p>
+<p>If true, your callback will be executed as normal for every main loop iteration, even in nested show windows.</p>
+<p>If false, your callback will only be executed for initial, outermost calls to <code>polyscope::show()</code>.</p>
+<p>Default: <code>false</code>.</p>
 </details>
                 
               

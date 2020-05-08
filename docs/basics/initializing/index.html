@@ -1135,6 +1135,7 @@
 <details class="func"><summary><code class="highlight"><span class="n">show</span><span class="p">()</span></code></summary><h5 id="show">show()</h5>
 <p>Give control to the polyscope GUI. Blocks until the user returns control via the GUI, possibly by exiting the window.</p>
 <p>This function can be called anywhere, and can be called multiple times to re-open the GUI after it has been closed. Existing data will be preserved between calls to <code>show()</code>.</p>
+<p>You can even nest calls to <code>show()</code>&mdash;for instance, if the user clicks a button in your callback which executes some function, you can invoke <code>show()</code> again within that function for immediate debugging. Closing the nested window will then &ldquo;pop back&rdquo; to continue displaying the previously shown GUI.</p>
 </details>
                 
               
