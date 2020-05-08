@@ -87,6 +87,8 @@ int main(int argc, char** argv) {
 
 ```
 
+
+
 ### Options
 
 ??? func "`#!cpp bool options::openImGuiWindowForUserCallback`"
@@ -98,4 +100,19 @@ int main(int argc, char** argv) {
     If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).
 
     Default: `true`.
+
+
+??? func "`#!cpp bool options::invokeUserCallbackForNestedShow`"
+    
+    ##### invoke user callback for nested show
+
+    Suppose you call `polyscope::show()`, and within your callback, another instance of `polyscope::show()` is called---this is a nested show.
+
+    Depending on the situation, you might or might not want your `userCallback` to continue being executed on each render loop iteration of this nested viewer; this setting exposes the option.
+
+    If true, your callback will be executed as normal for every main loop iteration, even in nested show windows.
+
+    If false, your callback will only be executed for initial, outermost calls to `polyscope::show()`.
+
+    Default: `false`.
 

@@ -94,4 +94,28 @@ polyscope::init();
 
     Default: `true`.
 
+??? func "`#!cpp bool options::invokeUserCallbackForNestedShow`"
+    
+    ##### invoke user callback for nested show
+
+    Suppose you call `polyscope::show()`, and within your callback, another instance of `polyscope::show()` is called---this is a nested show.
+
+    Depending on the situation, you might or might not want your `userCallback` to continue being executed on each render loop iteration of this nested viewer; this setting exposes the option.
+
+    If true, your callback will be executed as normal for every main loop iteration, even in nested show windows.
+
+    If false, your callback will only be executed for initial, outermost calls to `polyscope::show()`.
+
+    Default: `false`.
+
+??? func "`#!cpp bool options::enableRenderErrorChecks`"
+    
+    ##### render error checks
+
+    If true, the rendering subsystem will eagerly check for and report errors. This comes at some small performance cost, but can help catch problems.
+
+    Default: `true` when compiled in `Debug` mode, `false` in `Release` mode.
+
+    
+
     

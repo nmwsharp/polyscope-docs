@@ -50,3 +50,5 @@ polyscope::show();
     Give control to the polyscope GUI. Blocks until the user returns control via the GUI, possibly by exiting the window.
 
     This function can be called anywhere, and can be called multiple times to re-open the GUI after it has been closed. Existing data will be preserved between calls to `show()`.
+
+    You can even nest calls to `show()`---for instance, if the user clicks a button in your callback which executes some function, you can invoke `show()` again within that function for immediate debugging. Closing the nested window will then "pop back" to continue displaying the previously shown GUI.
