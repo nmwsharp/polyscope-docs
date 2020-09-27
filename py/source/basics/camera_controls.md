@@ -54,3 +54,16 @@ ps.init()
     import polyscope as ps
     ps.set_up_dir("z_up")
     ```
+
+??? func "`#!python reset_camera_to_home_view()`"
+
+    ##### reset camera to home view
+
+    Reset the camera view to the home view (a reasonable default view scaled to the scene).
+
+    **Note:** The "home" view is dependent on the data in the scene; it is computed from the bounding boxes of all registered structures to ensure that everything is nicely scaled and in view. As such, one should generally call this function _after_ registering data.
+
+    Example:
+    ```python
+    ps.reset_camera_to_home_view()
+    ```

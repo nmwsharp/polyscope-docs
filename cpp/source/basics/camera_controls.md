@@ -52,3 +52,17 @@ polyscope::init();
     ```cpp
     polyscope::view::upDir = UpDir::ZUp;
     ```
+
+
+??? func "`#!cpp void resetCameraToHomeView()`"
+
+    ##### reset camera to home view
+
+    Reset the camera view to the home view (a reasonable default view scaled to the scene).
+
+    **Note:** The "home" view is dependent on the data in the scene; it is computed from the bounding boxes of all registered structures to ensure that everything is nicely scaled and in view. As such, one should generally call this function _after_ registering data.
+
+    Example:
+    ```cpp
+    polyscope::view::resetCameraToHomeView();
+    ```
