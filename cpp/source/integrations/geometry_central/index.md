@@ -8,13 +8,13 @@ See [this repository](https://github.com/nmwsharp/gc-polyscope-project-template)
 #include "polyscope/polyscope.h"
 #include "polyscope/surface_mesh.h"
 
-#include "geometrycentral/surface/halfedge_mesh.h"
+#include "geometrycentral/surface/surface_mesh.h"
 #include "geometrycentral/surface/vertex_position_geometry.h"
-#include "geometrycentral/surface/meshio.h
+#include "geometrycentral/surface/meshio.h"
 
 using namespace geometrycentral::surface;
 
-HalfedgeMesh& mesh = /* your mesh */;
+SurfaceMesh& mesh = /* your mesh */;
 EmbeddedGeometryInterface& geom = /* your geometry */;
 
 // Be sure your mesh has vertex positions available
@@ -30,6 +30,8 @@ polyscope::registerSurfaceMesh("myMesh", posGeom.inputVertexPositions,
                                mesh.getFaceVertexList());
 ```
 
+
+**Note:** Geometry-central meshes must be in "compressed mode" (with dense indices) to register with Polyscope. If you have deleted elements from your mesh, this may require calling `SurfaceMesh::compress()` before you register it.
 
 ### Meshdata containers
 
@@ -58,7 +60,7 @@ polyscope::getMesh("myMesh")->addVertexVectorQuantity("vertex normals",
 
 #### Custom ordering
 
-Geometry-central's ordering of mesh halfedges and corners is different from Polyscope's default ordering (see [indexing convention](../../../structures/surface_mesh/indexing_convention)). As such, you must tell Polyscope about this ordering for halfedge or corner-valued visualizations to work properly. The geometry-central function `polyscopePermutations(HalfedgeMesh& mesh)` from `meshio.h` generates the ordering data in an approriate form for Polyscope, and can be passed either at construction time or after.
+Geometry-central's ordering of mesh halfedges and corners is different from Polyscope's default ordering (see [indexing convention](../../../structures/surface_mesh/indexing_convention)). As such, you must tell Polyscope about this ordering for edge-valued, halfedge-valued or corner-valued visualizations to work properly. The geometry-central function `polyscopePermutations(HalfedgeMesh& mesh)` from `meshio.h` generates the ordering data in an approriate form for Polyscope, and can be passed either at construction time or after.
 
 ```cpp
 polyscope::SurfaceMesh* psMesh = 
