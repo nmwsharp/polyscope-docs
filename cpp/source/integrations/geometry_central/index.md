@@ -30,6 +30,12 @@ polyscope::registerSurfaceMesh("myMesh", posGeom.inputVertexPositions,
                                mesh.getFaceVertexList());
 ```
 
+!!! warning "Compressed meshes"
+    
+    Polyscope expects dense buffers of data, but geometry-central uses sparse and lazily allocated buffers to support fast mesh modification.
+
+    If you are modifying your mesh, be sure to call `mesh->compress()` before registering it with Polyscope.
+
 
 ### Meshdata containers
 
@@ -79,8 +85,6 @@ polyscope::SurfaceMesh* psMesh =
 ```
 
 #### Tangent vector data
-
-
 
 
 #### 1-forms
