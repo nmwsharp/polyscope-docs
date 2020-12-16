@@ -1084,20 +1084,20 @@
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;polyscope/polyscope.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&quot;geometrycentral/surface/halfedge_mesh.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;geometrycentral/surface/surface_mesh.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;geometrycentral/surface/vertex_position_geometry.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;geometrycentral/surface/meshio.h</span>
+<span class="cp">#include</span> <span class="cpf">&quot;geometrycentral/surface/meshio.h&quot;</span><span class="cp"></span>
 
-<span class="cpf">using namespace geometrycentral::surface;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">geometrycentral</span><span class="o">::</span><span class="n">surface</span><span class="p">;</span>
 
-<span class="cpf">HalfedgeMesh&amp; mesh = /* your mesh */;</span>
-<span class="cpf">EmbeddedGeometryInterface&amp; geom = /* your geometry */;</span>
+<span class="n">SurfaceMesh</span><span class="o">&amp;</span> <span class="n">mesh</span> <span class="o">=</span> <span class="cm">/* your mesh */</span><span class="p">;</span>
+<span class="n">EmbeddedGeometryInterface</span><span class="o">&amp;</span> <span class="n">geom</span> <span class="o">=</span> <span class="cm">/* your geometry */</span><span class="p">;</span>
 
-<span class="cpf">// Be sure your mesh has vertex positions available</span>
-<span class="cpf">geom.requireVertexPositions();</span>
+<span class="c1">// Be sure your mesh has vertex positions available</span>
+<span class="n">geom</span><span class="p">.</span><span class="n">requireVertexPositions</span><span class="p">();</span>
 
-<span class="cpf">// Register the mesh with polyscope</span>
-<span class="cpf">polyscope::registerSurfaceMesh(&quot;</span><span class="c1">myMesh&quot;, geom.vertexPositions, </span><span class="cp"></span>
+<span class="c1">// Register the mesh with polyscope</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">,</span> <span class="n">geom</span><span class="p">.</span><span class="n">vertexPositions</span><span class="p">,</span> 
                               <span class="n">mesh</span><span class="p">.</span><span class="n">getFaceVertexList</span><span class="p">());</span>
 
 <span class="c1">// Note: for a VertexPositionGeometry, one could instead use:</span>
@@ -1106,6 +1106,12 @@
                                <span class="n">mesh</span><span class="p">.</span><span class="n">getFaceVertexList</span><span class="p">());</span>
 </code></pre></div>
 
+<div class="admonition warning">
+<p class="admonition-title">Compressed meshes</p>
+<p>Polyscope expects dense buffers of data, but geometry-central uses sparse and lazily allocated buffers to support fast mesh modification.</p>
+<p>If you are modifying your mesh, be sure to call <code>mesh-&gt;compress()</code> before registering it with Polyscope.</p>
+</div>
+<p><strong>Note:</strong> Geometry-central meshes must be in &ldquo;compressed mode&rdquo; (with dense indices) to register with Polyscope. If you have deleted elements from your mesh, this may require calling <code>SurfaceMesh::compress()</code> before you register it.</p>
 <h3 id="meshdata-containers">Meshdata containers</h3>
 <p>Geometry-central&rsquo;s <code>Meshdata&lt;&gt;</code> containers can be passed directly to Polyscope for visualization.</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/* (continuing up from the Registering example above) */</span>
@@ -1128,7 +1134,7 @@
 </code></pre></div>
 
 <h4 id="custom-ordering">Custom ordering</h4>
-<p>Geometry-central&rsquo;s ordering of mesh halfedges and corners is different from Polyscope&rsquo;s default ordering (see <a href="../../../structures/surface_mesh/indexing_convention">indexing convention</a>). As such, you must tell Polyscope about this ordering for halfedge or corner-valued visualizations to work properly. The geometry-central function <code>polyscopePermutations(HalfedgeMesh&amp; mesh)</code> from <code>meshio.h</code> generates the ordering data in an approriate form for Polyscope, and can be passed either at construction time or after.</p>
+<p>Geometry-central&rsquo;s ordering of mesh halfedges and corners is different from Polyscope&rsquo;s default ordering (see <a href="../../../structures/surface_mesh/indexing_convention">indexing convention</a>). As such, you must tell Polyscope about this ordering for edge-valued, halfedge-valued or corner-valued visualizations to work properly. The geometry-central function <code>polyscopePermutations(HalfedgeMesh&amp; mesh)</code> from <code>meshio.h</code> generates the ordering data in an approriate form for Polyscope, and can be passed either at construction time or after.</p>
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMesh</span><span class="o">*</span> <span class="n">psMesh</span> <span class="o">=</span> 
     <span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">,</span> 
                                    <span class="n">geom</span><span class="o">-&gt;</span><span class="n">vertexPositions</span><span class="p">,</span> 
