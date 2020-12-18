@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#options" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -769,9 +774,36 @@
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Count Quantities
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
     <a href="./" title="Count Quantities" class="md-nav__link md-nav__link--active">
       Count Quantities
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -953,6 +985,34 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1000,6 +1060,42 @@
 <li><code>values</code> is a list of pairs, where the first entry of each pair is a vertex index, and the second is an real value at that vertex. This list may be any length.</li>
 </ul>
 </details>
+<h3 id="options">Options</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Getter</strong></th>
+<th><strong>Setter</strong></th>
+<th><strong>Persistent?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>is the quantity enabled?</td>
+<td><code class="highlight"><span class="kt">bool</span> <span class="n">isEnabled</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span> <span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>color map</td>
+<td>the <a href="/features/color_maps">color map</a> to use</td>
+<td><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">getColorMap</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setColorMap</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">newMap</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>point radius</td>
+<td>radius of points</td>
+<td><code class="highlight"><span class="kt">double</span> <span class="n">getPointRadius</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setPointRadius</span><span class="p">(</span><span class="kt">double</span> <span class="n">newVal</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">isRelative</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+</tbody>
+</table>
+<p><em>(all setters return <code>this</code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>
                 
               
               
