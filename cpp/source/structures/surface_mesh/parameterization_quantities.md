@@ -86,7 +86,7 @@ style | the visualization style (see above) | `#!cpp ParamVizStyle getStyle` | `
 checker colors | two colors to use for checkerboards | `#!cpp std::pair<glm::vec3,glm::vec3>getCheckerColors()` | `#!cpp setCheckerColors(std::pair<glm::vec3, glm::vec3> colors) ` | [yes](/basics/parameters/#persistent-values)
 grid colors | two colors to use for line and background of grid | `#!cpp std::pair<glm::vec3,glm::vec3>getGridColors()` | `#!cpp setGridColors(std::pair<glm::vec3, glm::vec3> colors) ` | [yes](/basics/parameters/#persistent-values)
 checker size | the width of checkers / stripes, always used as a relative value, unless the coord tpe is `UNIT` | `#!cpp double getCheckerSize()` | `#!cpp setCheckerSize(double val)` | [yes](/basics/parameters/#persistent-values)
-color map | the [color map](/features/color_maps) to use for radial displays | `#!cpp gl::ColorMapID getColorMap()` | `#!cpp setColorMap(gl::ColorMapID newMap)` | [yes](/basics/parameters/#persistent-values)
+color map | the [color map](/features/color_maps) to use for radial displays | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes](/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
 

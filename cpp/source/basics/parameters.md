@@ -27,7 +27,7 @@ Note that this persistence behavior applies even when variables are manually man
 
     If writing custom Polyscope library code (e.g. your own custom structures and quantities), here's what you need to know to use persistent values.
 
-    The class `PersistentValue<T>` is templated on the underlying scalar type, like `PersistentValue<double>`. Only a predefined set of types can be used as template arguments because the corresponding global cache must be allocated. See `persistent_value.h` for a listing, which currently includes `bool`, `float`, `double`, `ScaledValue<float>`, `ScaledValue<double>`, `glm::vec3`, and `gl::ColorMapID`.
+    The class `PersistentValue<T>` is templated on the underlying scalar type, like `PersistentValue<double>`. Only a predefined set of types can be used as template arguments because the corresponding global cache must be allocated. See `persistent_value.h` for a listing, which currently includes `bool`, `float`, `double`, `ScaledValue<float>`, `ScaledValue<double>`, `glm::vec3`, and `std::string`.
 
     Construct a persistent value like
     ```cpp

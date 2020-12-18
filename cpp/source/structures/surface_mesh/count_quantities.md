@@ -47,7 +47,7 @@ polyscope::getSurfaceMesh(/*mesh name */)->addVertexCountQuantity("sample count"
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
 enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-color map | the [color map](/features/color_maps) to use | `#!cpp gl::ColorMapID getColorMap()` | `#!cpp setColorMap(gl::ColorMapID newMap)` | [yes](/basics/parameters/#persistent-values)
+color map | the [color map](/features/color_maps) to use | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes](/basics/parameters/#persistent-values)
 point radius | radius of points | `#!cpp double getPointRadius()` | `#!cpp setPointRadius(double newVal, bool isRelative)` | [yes](/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
