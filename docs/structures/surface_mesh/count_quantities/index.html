@@ -964,12 +964,42 @@
                 
                   <h1>Count Quantities</h1>
                 
-                <p>Count quantities store integers defined at just a few elements of a mesh, rather than at every element.</p>
-<p>These useful for visualizing, e.g., singularities of a vector field at vertices.</p>
-<div class="admonition warning">
-<p class="admonition-title">TODO</p>
-<p>TODO document count quantities. See <code>polyscope/surface_mesh.h</code> for add signatures.</p>
+                <p>Count quantities store integers defined at just a few elements of a mesh, rather than at every element.  These useful for visualizing special vertices or faces, e.g., singularities of a vector field.</p>
+<p><img alt="count example" src="/media/surface_count.jpg" /></p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;polyscope/polyscope.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// Generate a random count quantity</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">vCount</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">iV</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iV</span> <span class="o">&lt;</span> <span class="n">nVertices</span><span class="p">;</span> <span class="n">iV</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vCount</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="n">iV</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+  <span class="p">}</span> 
+<span class="p">}</span>
+
+<span class="c1">// Add the count quantity</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="cm">/*mesh name */</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexCountQuantity</span><span class="p">(</span><span class="s">&quot;sample count&quot;</span><span class="p">,</span> <span class="n">vCount</span><span class="p">);</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">No adaptors here</p>
+<p>Unlike almost all other quantity adders in Polyscope, these <em>do not</em> use the data adaptors, and must be explicitly given a <code>std::vector&lt;&gt;</code>.</p>
 </div>
+<details class="func"><summary><code class="highlight"><span class="n">SurfaceVertexCountQuantity</span><span class="o">*</span> <span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addVertexCountQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">values</span><span class="p">)</span></code></summary><p>Add a count quantity defined at vertices. </p>
+<ul>
+<li><code>values</code> is a list of pairs, where the first entry of each pair is a vertex index, and the second is an integer value at that vertex. This list may be any length.</li>
+</ul>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">SurfaceFaceCountQuantity</span><span class="o">*</span> <span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addFaceCountQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">values</span><span class="p">)</span></code></summary><p>Add a count quantity defined at faces.</p>
+<ul>
+<li><code>values</code> is a list of pairs, where the first entry of each pair is a face index, and the second is an integer value at that vertex. This list may be any length.</li>
+</ul>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">SurfaceVertexIsolatedScalarQuantity</span><span class="o">*</span> <span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addVertexIsolatedScalarQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;&gt;&amp;</span> <span class="n">values</span><span class="p">)</span></code></summary><p>Add an isolated quantity defined at vertices. This is very similar to the <code>SurfaceVertexCountQuantity</code>, except the data is real-valued rather than integer-valued.</p>
+<ul>
+<li><code>values</code> is a list of pairs, where the first entry of each pair is a vertex index, and the second is an real value at that vertex. This list may be any length.</li>
+</ul>
+</details>
                 
               
               

@@ -1089,8 +1089,8 @@
                   <h1>Screenshots</h1>
                 
                 <h2 id="taking-screenshots">Taking screenshots</h2>
-<p>Polyscope includes simple functionality for saving screenshots of the UI to disk. The imGUI windows will be automatically hidden when taking a screenshot.</p>
-<p>Screenshots can be taken manually by pressing the <code>[screenshot]</code> button in the options UI window, or programmatically using the functions below. Clicking the UI button is equivalent to calling <code>screenshot()</code> below, generating a numbered screenshot file in the current directory.</p>
+<p>Polyscope includes simple functionality for saving screenshots of the UI to disk. The ImGUI windows will be automatically hidden when taking a screenshot.</p>
+<p>Screenshots can be taken manually by pressing the <code>[screenshot]</code> button in the options UI window, or programmatically using the functions below. Clicking the UI button is equivalent to calling <code>screenshot(false)</code> in the first form below, generating a numbered screenshot file in the current directory.</p>
 <h3 id="messages">Messages</h3>
 <details class="func"><summary><code class="highlight"><span class="kt">void</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">screenshot</span><span class="p">(</span><span class="kt">bool</span> <span class="n">transparentBG</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span></code></summary><h5 id="numbered-screenshot">numbered screenshot</h5>
 <p>Saves a screenshot to the current directory, with file named <code>screenshot_000000.png</code>, numbered automatically in increasing order. The numbering is reset to <code>0</code> for each run of the program; existing files will be silently overwritten.</p>
@@ -1098,7 +1098,7 @@
 </details>
 <details class="func"><summary><code class="highlight"><span class="kt">void</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">screenshot</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">filename</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">transparentBG</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span></code></summary><h5 id="named-screenshot">named screenshot</h5>
 <p>Saves a screenshot to the path given as <code>filename</code>, with format inferred from the file extension. </p>
-<p>The extension should be one of <code>.png</code>, <code>.tga</code>, or <code>.bmp</code>.</p>
+<p>The extension should be <code>.png</code>, or <code>.jpg</code>.</p>
 <p>If <code>transparentBG</code> is <code>true</code>, the background will be rendered as transparent.</p>
 </details>
                 
