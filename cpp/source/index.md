@@ -1,9 +1,11 @@
 ![Polyscope](/media/teaser.svg)
 
 ![GitHub](https://img.shields.io/github/license/nmwsharp/polyscope?style=flat-square)
-![Travis (.com)](https://img.shields.io/travis/com/nmwsharp/polyscope?style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/nmwsharp/polyscope?style=flat-square)
 ![PyPI](https://img.shields.io/pypi/v/polyscope?style=flat-square)
+[![actions status linux](https://github.com/nmwsharp/polyscope/workflows/linux/badge.svg)](https://github.com/nmwsharp/polyscope/actions)
+[![actions status macOS](https://github.com/nmwsharp/polyscope/workflows/macOS/badge.svg)](https://github.com/nmwsharp/polyscope/actions)
+[![actions status windows](https://github.com/nmwsharp/polyscope/workflows/windows/badge.svg)](https://github.com/nmwsharp/polyscope/actions)
 
 Polyscope is a C++/Python viewer and user interface for 3D data, like meshes and point clouds. Scientists, engineers, artists, and hackers can use Polyscope to prototype algorithms---it is designed to easily integrate with existing codebases and popular libraries.  The lofty objective of Polyscope is to offer a useful visual interface to your data via a single line of code.
 
