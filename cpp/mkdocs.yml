@@ -77,6 +77,7 @@ nav:
     - 'Structure Management' : 'structures/structure_management.md'
     - Point Cloud:
       - 'Basics' : 'structures/point_cloud/basics.md'
+      - 'Variable Radius' : 'structures/point_cloud/variable_radius.md'
       - 'Scalar Quantities' : 'structures/point_cloud/scalar_quantities.md'
       - 'Color Quantities' : 'structures/point_cloud/color_quantities.md'
       - 'Vector Quantities' : 'structures/point_cloud/vector_quantities.md'
