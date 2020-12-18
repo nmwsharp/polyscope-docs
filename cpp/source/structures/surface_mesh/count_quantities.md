@@ -41,3 +41,14 @@ polyscope::getSurfaceMesh(/*mesh name */)->addVertexCountQuantity("sample count"
     Add an isolated quantity defined at vertices. This is very similar to the `SurfaceVertexCountQuantity`, except the data is real-valued rather than integer-valued.
 
     - `values` is a list of pairs, where the first entry of each pair is a vertex index, and the second is an real value at that vertex. This list may be any length.
+
+### Options
+
+**Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
+--- | --- | --- | --- | ---
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+color map | the [color map](/features/color_maps) to use | `#!cpp gl::ColorMapID getColorMap()` | `#!cpp setColorMap(gl::ColorMapID newMap)` | [yes](/basics/parameters/#persistent-values)
+point radius | radius of points | `#!cpp double getPointRadius()` | `#!cpp setPointRadius(double newVal, bool isRelative)` | [yes](/basics/parameters/#persistent-values)
+
+_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+
