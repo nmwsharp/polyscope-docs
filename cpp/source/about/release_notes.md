@@ -1,3 +1,4 @@
+- **since latest version** Overhaul to flexible shader system, add point cloud radius quantities, change default screenshot format back to `png`, fix size validation bugs with surface mesh, require explicit tangent spaces
 - **Version 1.1.0** `107930b` Mar 30, 2020: Select backend at runtime, improve backend support in build system,  keep window invisible until first show, bugfixes, add Windows builds to CI.
 - **Version 1.0.0** `6f44d1a` Mar 25, 2020: Overhaul rendering backend, generalize materials, raycast vectors and cylinders, linear lighting workflow, custom matcaps, mocked backend, general unit tests.
 - **Jan 29, 2020** `92b45be`: Many bugfixes, small features, and general API cleanup.  Encapsulate parameters for structures and quantities.  Use scaled values and persistent values to track parameters.  Additional camera navigation controls.  Simplify picking API.
