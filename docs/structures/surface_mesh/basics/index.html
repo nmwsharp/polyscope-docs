@@ -535,6 +535,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../features/transparency/" title="Transparency" class="md-nav__link">
+      Transparency
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../features/2D_data/" title="2D Data" class="md-nav__link">
       2D Data
     </a>
@@ -1127,6 +1139,13 @@
 <td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
+<td>transparency</td>
+<td><a href="/features/transparency">transparency</a> alpha for this structure in <code>[0,1]</code></td>
+<td><code class="highlight"><span class="kt">double</span> <span class="n">getTransparency</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setTransparency</span><span class="p">(</span><span class="kt">double</span> <span class="n">val</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
 <td>shade smooth</td>
 <td>use smooth shading along faces or simple flat faces</td>
 <td><code class="highlight"><span class="kt">bool</span> <span class="n">isSmoothShade</span><span class="p">()</span></code></td>
@@ -1163,7 +1182,7 @@
 </tr>
 </tbody>
 </table>
-<p><em>(all setters return <code>this</code> to support chaining. setEnabled() returns generic setter, so chain it last)</em></p>
+<p><em>(all setters return <code>this</code> to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)</em></p>
                 
               
               
