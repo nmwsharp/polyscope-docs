@@ -31,12 +31,14 @@ polyscope::show();
 In computer graphics, rendering scenes with transparent content is surprisingly difficult and often computationally expensive. Polyscope supports three different modes for transparent rendering:
 
 - `TransparencyMode::None` is the default, which does not use any transparency and ignores any related settings.
-- `TransparencyMode::Simple` uses an approximation which takes a weighted average of objections in view. The benefit is that this method is efficient, only slightly more expensive than normal rendering. However, it ignores the relative depth of different objects, and thus can yield noticeable and confusing artifacts on complex scenes. Generally, this method should only be used when rendering performance is a concern (i.e., if the view is otherwise too laggy to use).
+- `TransparencyMode::Simple` uses an approximation which takes a weighted average of objects in view. The benefit is that this method is efficient, only slightly more expensive than normal rendering. However, it ignores the relative depth of different objects, and thus can yield noticeable and confusing artifacts on complex scenes. Generally, this method should only be used when rendering performance is a concern (i.e., if the view is otherwise too laggy to use).
 - `TransparencyMode::Pretty` implements expensive-but-accurate "true" transparency, which properly accounts for objects at different depths. This mode is implemented using [depth peeling](https://en.wikipedia.org/wiki/Depth_peeling), which internally renders the scene many times to generate each frame. Because many internal render passes are needed, this mode may be dramatically more expensive than normal rendering, leading to a laggy interface. The parameter `polyscope::options::transparencyRenderPasses` controls the number passes performed (default: `8`); smaller values will reduce the performance hit, whereas larger values may be necessary to resolve complex scenes.
 
 The modes are set in `options::transparencyMode`. Initially, the transparency mode is set to `TransparencyMode::None`. However, if the transparency of any object is modified while the mode is `None`, the mode will be automatically updated to `Pretty` so that the effect is visible.
 
-The transparency mode can be changed in the GUI in the [Appearance] --> [Transparency] menu.
+Any ground plane reflections are disabled when using transparency.
+
+The transparency mode can also be changed in the GUI in the [Appearance] --> [Transparency] menu.
 
 ??? func "`#!cpp TransparencyMode options::transparencyMode`"
     
