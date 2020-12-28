@@ -71,10 +71,11 @@ The locations of the vertices in a mesh can be updated with the member function 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
 enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+transparency | [transparency](/features/transparency) alpha for this structure in `[0,1]` | `#!cpp double getTransparency()` | `#!cpp setTransparency(double val)` | [yes](/basics/parameters/#persistent-values)
 shade smooth | use smooth shading along faces or simple flat faces | `#!cpp bool isSmoothShade()` | `#!cpp setSmoothShade(bool isSmooth)` | [yes](/basics/parameters/#persistent-values)
 surface color | the color of the mesh | `#!cpp glm::vec3 getSurfaceColor()` | `#!cpp setSurfaceColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
 edge color | the color of the edges of the mesh | `#!cpp glm::vec3 getEdgeColor()` | `#!cpp setEdgeColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
 edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!cpp double getEdgeWidth()` | `#!cpp setEdgeWidth(double val)` | [yes](/basics/parameters/#persistent-values)
 material | what [material](/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes](/basics/parameters/#persistent-values) |
 
-_(all setters return `this` to support chaining. setEnabled() returns generic setter, so chain it last)_
+_(all setters return `this` to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)_

@@ -54,8 +54,9 @@ The locations of the points in a point cloud can be updated with the member func
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
 enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+transparency | [transparency](/features/transparency) alpha for this structure in `[0,1]` | `#!cpp double getTransparency()` | `#!cpp setTransparency(double val)` | [yes](/basics/parameters/#persistent-values)
 point radius | size of rendered points | `#!cpp double getPointRadius()` | `#!cpp setPointRadius(double newVal, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values) |
 point color | default color for point | `#!cpp glm::vec3 getPointColor()` | `#! setPointColor(glm::vec3 newVal)` | [yes](/basics/parameters/#persistent-values) |
 material | what [material](/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes](/basics/parameters/#persistent-values) |
 
-_(all setters return `this` to support chaining. setEnabled() returns generic setter, so chain it last)_
+_(all setters return `this` to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)_
