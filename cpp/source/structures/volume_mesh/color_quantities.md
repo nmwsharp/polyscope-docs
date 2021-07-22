@@ -1,36 +1,42 @@
-Visualize color rgb-valued data at the elements of a surface mesh.
+Visualize color rgb-valued data at the elements of a volume mesh.
 
-**Example**: visualizing random colors at faces
+![volume mesh color values](/media/volume_color.jpg)
+
+**Example**: showing a scalar on vertices (here randomly generated data)
 ```cpp
-#include "polyscope/surface_mesh.h"
+/* ... initialization, create mesh ... */ 
 
-// Make some random colors
-std::vector<std::array<double, 3>> fColor(nFaces);
-for (size_t iF = 0; iF < nFaces; iF++) {
-  std::vector<size_t>& face = faceIndices[iF];
-  fColor[iF] = {{polyscope::randomUnit(), polyscope::randomUnit(), polyscope::randomUnit()}};
+// Register the volume mesh with Polyscope
+polyscope::registerTetMesh("my mesh", verts, tets);
+
+// Add a color quantity
+size_t nCells = tets.rows();
+std::vector<std::array<double, 3>> randColor(nCells);
+for (size_t i = 0; i < nCells; i++) {
+  // generate random colors 
+  randColor[i] = {{polyscope::randomUnit(), polyscope::randomUnit(), polyscope::randomUnit()}};
 }
+polyscope::getVolumeMesh("my mesh")->addCellColorQuantity("random color", randColor);
 
-// Visualize
-polyscope::getSurfaceMesh("name")->addFaceColorQuantity("fColor", fColor);
+// Show the GUI
+polyscope::show();
 ```
-
 
 ### Add colors to elements
 
-??? func "`#!cpp SurfaceMesh::addVertexColorQuantity(std::string name, const T& values)`"
+???+ func "`#!cpp VolumeMesh::addVertexColorQuantity(std::string name, const T& data)`"
 
     Add a color quantity defined at the vertices of the mesh.
 
-    - `values` is the array of colors at vertices. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
+    - `data` is the array of colors at vertices. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
 
     RGB values are interpreted in the range `[0,1]`.
 
-??? func "`#!cpp SurfaceMesh::addFaceColorQuantity(std::string name, const T& values)`"
+??? func "`#!cpp VolumeMesh::addCellColorQuantity(std::string name, const T& data)`"
 
     Add a color quantity defined at the faces of the mesh.
 
-    - `values` is the array of colors at faces. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of faces in the mesh.
+    - `data` is the array of colors at faces. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of cells (tets, hexes, etc) in the mesh.
 
     RGB values are interpreted in the range `[0,1]`.
 

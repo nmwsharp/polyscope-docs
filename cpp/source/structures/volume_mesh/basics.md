@@ -19,7 +19,7 @@ polyscope::init();
 Eigen::MatrixXd V; // vertex positions
 Eigen::MatrixXi T; // tetrahedra
 Eigen::MatrixXi F; // faces (we don't use these here)
-igl::readMESH(filename, V, T, F);
+igl::readMESH("path/to/volume.mesh", V, T, F);
 
 // Register the volume mesh with Polyscope
 polyscope::registerTetMesh("my mesh", V, T);
@@ -80,10 +80,6 @@ Volume meshes are registered with Polyscope by passing the location of each vert
     For the purposes of element ordering, the cells are presumed to be ordered with all tetrahedral cells coming first, then hexahedral cells.
 
 ---
-
-!!! warning "Element ordering"
-
-    Implicitly, Polyscope assumes that vertex (or cell) data arrays are indexed according to order of the vertices (or cells) when the mesh was constructed.
 
 !!! warning "No support for 2D"
 
