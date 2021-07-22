@@ -2,8 +2,7 @@
 
 Volumetric meshes, such as tetrahedral (*tet*) and hexahedral (*hex*, cube-like) meshes, represent a region of 3D space. Polyscope can display tet and hex meshes, including those which have a mix of hex and tet elements. We'll use the term *cell* to refer generically to a tet or hex in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values.
 
-TODO
-![volume_mesh_demo](../../media/volume_mesh_demo.gif)
+![volume_mesh_demo](/media/volume_demo.gif)
 
 ### Registering a volume mesh
 
@@ -32,7 +31,7 @@ polyscope::show();
 
 Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different variants to register meshes with tets, hexes, or a mix of the two. All of these register helpers return a pointer to a `polyscope::VolumeMesh` object which you can then add quantities to.
 
-![tet element ordering conventions](../../media/tet_element_orderings.jpg)
+![tet element ordering conventions](/media/tet_element_orderings.jpg)
 
 ???+ func "`#!cpp polyscope::registerTetMesh(std::string name, const V& vertexPositions, const C& tetIndices)`"
 
