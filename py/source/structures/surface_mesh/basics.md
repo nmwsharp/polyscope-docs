@@ -51,7 +51,7 @@ Surface meshes are registered with Polyscope by passing the location of each ver
 
 !!! warning "Element ordering"
 
-    Polyscope quantities are ordered arrays of data, but not everone can agree on the ordering of elements in a mesh. See [indexing conventions](../indexing_convention/).
+    Polyscope quantities are ordered arrays of data, but not everyone can agree on the ordering of elements in a mesh. See [indexing conventions](../indexing_convention/).
 
     The default ordering is probably the same as yours for data on **vertices, faces, and corners**. However, data on **edges and halfedges** is much more likely to require setting an ordering.
 
