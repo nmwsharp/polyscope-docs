@@ -35,11 +35,11 @@ Surface meshes are registered with Polyscope by passing the location of each ver
 
     Add a new surface mesh structure to Polyscope.
 
-    - `vertexPositions` is the vector array of 3D vertex locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of vertices.
+    - `vertexPositions` is the vector array of 3D vertex locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors; this allows many common types to be used as input, including `Eigen::MatrixXd` and `std::vector<std::array<double, 3>>`. The length will be the number of vertices.
 
-    - `faceIndices` is the nested array of vertex indices for each face. The type should be [adaptable](/data_adaptors) to a nested array of `size_t`. The outer length will be the number of faces. All indices should be valid 0-based indices in to the vertex list.
+    - `faceIndices` is the nested array of vertex indices for each face. The type should be [adaptable](/data_adaptors) to a nested array of `size_t`; this allows many common types to be used as input, including `Eigen::MatrixXi` and `std::vector<std::array<size_t, 3>>`. The outer length will be the number of faces. All indices should be valid 0-based indices in to the vertex list.
 
-    Fortunately, although Polyscope accepts a general nested list of face vertex indices to support Polygonal meshes, passing a fixed-size `Nx3` array for a triangle will work just fine, like `Eigen::MatrixXi`.
+    General nested lists can be used to create polygonal meshes of varying face degree, such as `std::vector<std::vector<size_t>>`. Also, passing a fixed-size 2D array of indices will work just fine, like `Eigen::MatrixXi` with `Fx3` dimensions for a triangle mesh, or `Fx4` for a quad mesh.
     
     Note: the inner vector type of the vertex positions _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D surface mesh, `registerSurfaceMesh2D` exists with the same signature. See [2D data](/features/2D_data).
 
@@ -47,7 +47,7 @@ Surface meshes are registered with Polyscope by passing the location of each ver
 
 !!! warning "Element ordering"
 
-    Polyscope quantities are ordered arrays of data, but not everone can agree on the ordering of elements in a mesh. See [indexing conventions](../indexing_convention/).
+    Polyscope quantities are ordered arrays of data, but not everyone can agree on the ordering of elements in a mesh. See [indexing conventions](../indexing_convention/).
 
     The default ordering is probably the same as yours for data on **vertices, faces, and corners**. However, data on **edges and halfedges** is much more likely to require setting an ordering.
 
