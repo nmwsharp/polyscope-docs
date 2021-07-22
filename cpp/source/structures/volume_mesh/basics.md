@@ -6,24 +6,32 @@ Volumetric meshes, such as tetrahedral (*tet*) and hexahedral (*hex*, cube-like)
 
 ### Registering a volume mesh
 
-TODO
-
-Example: registering a volume mesh from libIGL
+Example: registering a tetrahedral mesh from libIGL
 ```cpp
 #include "polyscope/polyscope.h"
 #include "polyscope/volume_mesh.h"
-#include <igl/readOBJ.h>
+#include <igl/readMESH.h>
 
 // Initialize Polyscope
 polyscope::init();
 
-// Read the mesh
-Eigen::MatrixXd meshV;
-Eigen::MatrixXi meshF;
-igl::readOBJ(filename, meshV, meshF);
+// Read mesh from file
+Eigen::MatrixXd V; // vertex positions
+Eigen::MatrixXi T; // tetrahedra
+Eigen::MatrixXi F; // faces (we don't use these here)
+igl::readMESH(filename, V, T, F);
 
-// Register the mesh with Polyscope
-polyscope::registerVolumeMesh("input mesh", meshV, meshF);
+// Register the volume mesh with Polyscope
+polyscope::registerTetMesh("my mesh", V, T);
+
+// Add a scalar quantity
+size_t nVerts = V.rows();
+std::vector<double> scalarV(nVerts);
+for (size_t i = 0; i < nVerts; i++) {
+  // use the x-coordinate of vertex position as a test function
+  scalarV[i] = V(i,0);
+}
+polyscope::getVolumeMesh("my mesh")->addVertexScalarQuantity("scalar Q", scalarV);
 
 // Show the GUI
 polyscope::show();
