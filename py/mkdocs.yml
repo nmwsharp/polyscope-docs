@@ -94,3 +94,8 @@ nav:
       - 'Scalar Quantities' : 'structures/curve_network/scalar_quantities.md'
       - 'Color Quantities' : 'structures/curve_network/color_quantities.md'
       - 'Vector Quantities' : 'structures/curve_network/vector_quantities.md'
+    - Volume Mesh:
+      - 'Basics' : 'structures/volume_mesh/basics.md'
+      - 'Scalar Quantities' : 'structures/volume_mesh/scalar_quantities.md'
+      - 'Color Quantities' : 'structures/volume_mesh/color_quantities.md'
+      - 'Vector Quantities' : 'structures/volume_mesh/vector_quantities.md'

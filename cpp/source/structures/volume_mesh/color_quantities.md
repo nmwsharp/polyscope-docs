@@ -2,7 +2,7 @@ Visualize color rgb-valued data at the elements of a volume mesh.
 
 ![volume mesh color values](/media/volume_color.jpg)
 
-**Example**: showing a scalar on vertices (here randomly generated data)
+**Example**: showing a color value at cells (here randomly generated data)
 ```cpp
 /* ... initialization, create mesh ... */ 
 

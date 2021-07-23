@@ -28,9 +28,9 @@ vectorQ->setVectorLengthScale(0.05); // make the vectors bigger
 polyscope::show();
 ```
 
+### Add vectors to elements
 
-
-???+ func "`#!cpp SurfaceMesh::addVertexVectorQuantity(std::string name, const T& vectors, VectorType vectorType = VectorType::STANDARD)`"
+???+ func "`#!cpp VolumeMesh::addVertexVectorQuantity(std::string name, const T& vectors, VectorType vectorType = VectorType::STANDARD)`"
 
     Add a vector quantity defined at the vertices of the mesh.
 
@@ -39,7 +39,7 @@ polyscope::show();
     
     Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse.
 
-??? func "`#!cpp SurfaceMesh::addCellVectorQuantity(std::string name, const T& vectors, VectorType vectorType = VectorType::STANDARD)`"
+??? func "`#!cpp VolumeMesh::addCellVectorQuantity(std::string name, const T& vectors, VectorType vectorType = VectorType::STANDARD)`"
 
     Add a vector quantity defined at the cells of the mesh.
 
