@@ -25,9 +25,11 @@ Any negative values in the scalar quantity will be clamped to `0`. By default, v
 
 !!! note "Reproducing radius in world units"
 
-    By default, the point cloud still respects the point radius parameter as adjusted via the slider in the GUI or via `setPointRadius()`. The variable radius from the quantity is multiplied by the structure parameter to get the actual radius used. 
+    Remember that point clouds always have a per-structure `radius` parameter which sets a radius for all of the points in the point cloud (and can be adjusted via a slider in the GUI, or via `setPointRadius()`). This per-structure parameter makes things a little more complicated when also setting length via a scalar quantity as described here.
 
-    To properly reproduce a radius in world-coordinate units, you can apply the variable quantity without autoscaling like `cloud->setPointRadiusQuantity(q, false)`. This will prevent the auto-scaling of the radii, and also ignore the point radius parameter.
+    By default, the structure radius parameter is still respected. The variable radius from the quantity first scaled such that the largest value is `1.`, and then is multiplied by the structure parameter to get the actual radius used for the points.
+
+    This usually gives a reasonable visualization, but makes it difficult to set a precise radius in world units.  To properly reproduce a radius in world-coordinate units, you can circumvent autoscaling like `cloud->setPointRadiusQuantity(q, false)`. This will prevent the auto-scaling of the radii, and also ignore the structure's point radius parameter.
 
 
 ??? func "`#!cpp void PointCloud::setPointRadiusQuantity(PointCloudScalarQuantity* quantity, bool autoScale = true)`"
