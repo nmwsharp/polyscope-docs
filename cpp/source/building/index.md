@@ -35,7 +35,7 @@ To integrate Polyscope with an existing Visual Studio project:
  - **(otherwise):** first generate the Polyscope project with its `CMakeLists.txt`, then manually add the `polyscope` project to your existing Visual Studio solution
 
 
-Polyscope has been verified to compile in Visual Studio 2019 & 2017; older versions may work but have not been tested! Polyscope uses only C++11 language features, but does make advanced use of templates (for instance, SFINAE), with which some past version of MSVC have struggled.  To test Polyscope on your machine, you can compile the demo app with `examples/demo-app/CMakeLists.txt`.
+Polyscope has been verified to compile in Visual Studio 2019 & 2017; other versions should work but have not been tested! Polyscope uses only C++11 language features, but does make advanced use of templates (for instance, SFINAE), which some older versions of MSVC do not fully support.  To test Polyscope on your machine, you can compile the demo app with `examples/demo-app/CMakeLists.txt`.
 
 ### Dependencies
 
