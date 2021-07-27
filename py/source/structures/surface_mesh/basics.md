@@ -89,6 +89,7 @@ The choice of these policies can be set as an option for each surface mesh struc
 
 ### Options
 
+Options control the appearance of the mesh. Note that these options can also be passed as keyword arguments to the initial `register_surface_mesh()`, as noted above.
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---

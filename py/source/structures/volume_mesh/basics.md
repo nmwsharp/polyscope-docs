@@ -92,6 +92,7 @@ TODO
 
 ### Options
 
+Options control the appearance of the mesh. Note that these options can also be passed as keyword arguments to the initial `register_volume_mesh()`, as noted above.
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
