@@ -2,12 +2,22 @@ These settings affect the 3D camera view in polyscope. It is often convenient to
 
 ```python
 import polyscope as ps
+import numpy as np
 
 ps.set_navigation_style("free")
 ps.set_up_dir("z_up")
 
 # initialize
 ps.init()
+   
+# set the camera pose explicitly
+ps.look_at((0., 0., 5.), (1., 1., 1.))
+
+# (alternately, use numpy vectors)
+ps.look_at(np.array((0., 0., 5.)), np.array((1., 1., 1.)))
+
+# show the GUI
+ps.show()
 ```
 
 ### Options
@@ -44,8 +54,11 @@ ps.init()
     This value can be manually set under the `view` menu of the ui. Programmatically, the setting strings are:
 
     - `'x_up'` The positive X-axis is up.
+    - `'neg_x_up'` The negative X-axis is up.
     - `'y_up'` The positive Y-axis is up.
+    - `'neg_y_up'` The negative Y-axis is up.
     - `'z_up'` The positive Z-axis is up.
+    - `'neg_z_up'` The negative Z-axis is up.
    
     Default: `'y_up'`.
 
@@ -53,6 +66,33 @@ ps.init()
     ```python
     import polyscope as ps
     ps.set_up_dir("z_up")
+    ```
+
+
+??? func "`#!python look_at(camera_location, target, fly_to=False)`"
+
+    ##### look at
+
+    Set the camera to be located at the 3D position `camera_location` and looking at the 3D position `target`, both in world coordinates. The up direction for the camera is set to be the scene's up direction. If `fly_to=True`, the camera will smoothly animate to the new configuration.
+
+    The input 3D vectors can be tuples, length-3 numpy arrays, or really anything that can be indexed for three components.
+
+    Example:
+    ```python
+    polyscope.look_at((0., 0., 5.), (1., 1., 1.))
+    ```
+
+??? func "`#!python look_at_dir(camera_location, target, up_dir, fly_to=False)`"
+    
+    Set the camera to be located at the 3D position `camera_location` and looking at the 3D position `target`, oriented with the up direction `up_dir`, all in world coordinates. If `fly_to=True`, the camera will smoothly animate to the new configuration.
+
+    Note that setting the up direction for the camera view with this function is separate from the scene's up direction with `set_up_dir()`, which affects things like ground plane placement, and manual view manipulation.
+
+    The input 3D vectors can be tuples, length-3 numpy arrays, or really anything that can be indexed for three components.
+
+    Example:
+    ```python
+    polyscope.look_at_dir((0., 0., 5.), (1., 1., 1.), (-1., -1., 0.))
     ```
 
 ??? func "`#!python reset_camera_to_home_view()`"
