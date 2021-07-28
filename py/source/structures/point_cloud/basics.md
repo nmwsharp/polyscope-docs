@@ -66,6 +66,7 @@ Options control the appearance of the cloud. Note that these options can also be
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
 enabled | is the structure enabled? |  `#!python is_enabled()` | `#!python set_enabled(newVal=True)` | [yes](../../../basics/parameters/#persistent-values)
+transparency | alpha value | `#!python get_transparency()` | `#!python set_transparency(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 point radius | size of rendered points | `#!python get_radius()` | `#!python set_radius(newVal, relative=True)` | [yes](../../../basics/parameters/#persistent-values) |
 point color | default color for points | `#!python get_color()` | `#!python set_color(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 material | material for point | `#!python get_material()` | `#!python set_material(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
@@ -83,8 +84,10 @@ cloud.set_radius(1.7, relative=False) # radius in absolute world units
 
 cloud.set_color((0.3, 0.6, 0.8)) # rgb triple on [0,1]
 cloud.set_material("candy")
+cloud.set_transparency(0.5)
 
 # alternately:
 ps.register_point_cloud("my points 2", points, enabled=False, material='candy',
-                        radius=0.02, color=(1., 0., 0.))
+                        radius=0.02, color=(1., 0., 0.)
+                        transparency=0.5)
 ```

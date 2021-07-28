@@ -97,6 +97,7 @@ Options control the appearance of the mesh. Note that these options can also be 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
 enabled | is the structure enabled? | `#!python bool is_enabled()` | `#!python set_enabled(newVal)` | [yes](/basics/parameters/#persistent-values)
+transparency | alpha value | `#!python get_transparency()` | `#!python set_transparency(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 color | the color of the outside of the volume | `#!python get_color()` | `#!python set_color(val)` | [yes](/basics/parameters/#persistent-values)
 interior color | the color of the inside of the volume | `#!python get_interior_color()` | `#!python set_interior_color(val)` | [yes](/basics/parameters/#persistent-values)
 edge color | the color of the edges of the mesh | `#!python get_edge_color()` | `#!python set_edge_color(val)` | [yes](/basics/parameters/#persistent-values)
@@ -134,12 +135,13 @@ ps_vol.set_interior_color((0.4, 0.7, 0.9))
 ps_vol.set_edge_color((0.8, 0.8, 0.8)) 
 ps_vol.set_edge_width(1.0)
 ps_vol.set_material("wax")
+ps_vol.set_transparency(0.5)
 
 # alternately:
 ps.register_volume_mesh("test volume mesh 2", verts, mixed_cells=cells, enabled=False, 
                          color=(1., 0., 0.), interior_color=(0., 1., 0.),
                          edge_color=((0.8, 0.8, 0.8)), edge_width=1.0, 
-                         material='candy')
+                         material='candy', transparency=0.5)
 
 ps.show()
 ```

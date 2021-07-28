@@ -65,6 +65,7 @@ Options control the appearance of the network . Note that these options can also
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
 enabled | is the structure enabled? |  `#!python is_enabled()` | `#!python set_enabled(newVal=True)` | [yes](../../../basics/parameters/#persistent-values)
+transparency | alpha value | `#!python get_transparency()` | `#!python set_transparency(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 radius | size of rendered nodes/edges | `#!python get_radius()` | `#!python set_radius(newVal, relative=True)` | [yes](../../../basics/parameters/#persistent-values) |
 color | default color for the network | `#!python get_color()` | `#!python set_color(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 material | material for structure | `#!python get_material()` | `#!python set_material(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
@@ -82,8 +83,10 @@ network.set_radius(1.7, relative=False) # radius in absolute world units
 
 network.set_color((0.3, 0.6, 0.8)) # rgb triple on [0,1]
 network.set_material("candy")
+network.set_transparency(0.5)
 
 # alternately:
 ps.register_curve_network("my net 2", nodes, edges, enabled=False, 
-                           material='candy', radius=0.02, color=(1., 0., 0.))
+                           material='candy', radius=0.02, color=(1., 0., 0.),
+                           transparency=0.5)
 ```

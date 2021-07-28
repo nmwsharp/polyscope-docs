@@ -94,6 +94,7 @@ Options control the appearance of the mesh. Note that these options can also be 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
 enabled | is the structure enabled? | `#!python bool is_enabled()` | `#!python set_enabled(newVal)` | [yes](../../../basics/parameters/#persistent-values)
+transparency | alpha value | `#!python get_transparency()` | `#!python set_transparency(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 surface color | the color of the mesh | `#!python get_color()` | `#!python set_color(val)` | [yes](../../../basics/parameters/#persistent-values)
 edge color | the color of the edges of the mesh | `#!python get_edge_color()` | `#!python set_edge_color(val)` | [yes](../../../basics/parameters/#persistent-values)
 edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!python get_edge_width()` | `#!python set_edge_width(val)` | [yes](../../../basics/parameters/#persistent-values)
@@ -119,10 +120,11 @@ ps_mesh.set_edge_color((0.8, 0.8, 0.8))
 ps_mesh.set_edge_width(1.0)
 ps_mesh.set_smooth_shade(True)
 ps_mesh.set_material("candy")
+ps_mesh.set_transparency(0.5)
 
 # alternately:
 ps.register_surface_mesh("my mesh2", vertices, faces, enabled=False, 
                          color=(1., 0., 0.), edge_color=((0.8, 0.8, 0.8)),
                          edge_width=1.0, smooth_shade=True,
-                         material='candy')
+                         material='candy', transparency=0.5)
 ```
