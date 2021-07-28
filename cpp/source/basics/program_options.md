@@ -59,6 +59,16 @@ polyscope::init();
    
     If true, errors in polyscope throw execptions. If false, a `polyscope::error` is shown in the UI, but processing attempts to continue. Default: `false`.
 
+
+??? func "`#!cpp bool options::enableRenderErrorChecks`"
+    
+    ##### render error checks
+
+    If true, the rendering subsystem will eagerly check for and report errors. This comes at some small performance cost, but can help catch problems.
+
+    Default: `true` when compiled in `Debug` mode, `false` in `Release` mode.
+    
+
 ??? func "`#!cpp int options::ssaaFactor`"
     
     ##### SSAA anti-aliasing factor
@@ -117,14 +127,3 @@ polyscope::init();
 
     Default: `false`.
 
-??? func "`#!cpp bool options::enableRenderErrorChecks`"
-    
-    ##### render error checks
-
-    If true, the rendering subsystem will eagerly check for and report errors. This comes at some small performance cost, but can help catch problems.
-
-    Default: `true` when compiled in `Debug` mode, `false` in `Release` mode.
-
-    
-
-    

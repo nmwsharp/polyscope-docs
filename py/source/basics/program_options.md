@@ -62,6 +62,15 @@ ps.init()
    
     If true, errors in polyscope raise execptions. If false, a polyscope error is shown in the UI, but processing attempts to continue. Default: `False`.
 
+
+??? func "`#!python set_enable_render_error_checks(b)`"
+    
+    ##### render error checks
+
+    If true, the rendering subsystem will eagerly check for and report errors. This comes at some small performance cost, but can help catch problems.
+
+    Default: `True` when compiled in `Debug` mode, `False` in `Release` mode (this python library is generally compiled in release mode)
+
 ??? func "`#!python set_SSAA_factor(n)`"
     
     ##### SSAA anti-aliasing factor
