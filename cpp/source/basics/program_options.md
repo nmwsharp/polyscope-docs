@@ -59,6 +59,15 @@ polyscope::init();
    
     If true, errors in polyscope throw execptions. If false, a `polyscope::error` is shown in the UI, but processing attempts to continue. Default: `false`.
 
+??? func "`#!cpp int options::ssaaFactor`"
+    
+    ##### SSAA anti-aliasing factor
+
+    Enable super-sampling anti-aliasing for a prettier rendered scene. SSAA renders the scene at multiple samples for each pixel, then averages them to resolve final pixel values. 
+
+    Cost scales quadratically with the value of this parameter, so it will quickly become expensive. Reasonable values are in the range `1` to `4`. Using `2` is generally sufficient for anti-aliasing.
+
+    Default: `1` (no anti-aliasing)
 
 ??? func "`#!cpp int options::maxFPS`"
     
