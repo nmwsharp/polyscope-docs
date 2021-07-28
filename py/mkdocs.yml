@@ -72,6 +72,7 @@ nav:
     - 'User Callback' : 'features/user_callback.md'
     - 'Materials' : 'features/materials.md'
     - 'Color Maps' : 'features/color_maps.md'
+    - 'Ground and Shadows' : 'features/ground_and_shadows.md'
     - '2D Data' : 'features/2D_data.md'
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'

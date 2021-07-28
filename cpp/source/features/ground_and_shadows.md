@@ -2,6 +2,16 @@ The Polyscope scene view includes a ground plane which optionally supports refle
 
 ![ground modes](/media/ground_plane_options.jpg)
 
+
+## Ground plane and shadow modes
+
+- `GroundPlaneMode::None` no ground plane, nor reflection/shadows are shown
+- `GroundPlaneMode::Tile` a tiled ground plane 
+- `GroundPlaneMode::TileReflection` a tiled ground plane with a reflection of the scene (default)
+- `GroundPlaneMode::ShadowOnly` a transparent ground plane with a soft vertical shadow of the scene
+
+The ground plane and shadow settings can also be manually adjusted in the GUI under the `[Appearance] --> [Ground Plane]` menu.
+
 **Example:** adjust the ground plane & shadow appearance
 
 ```cpp
@@ -24,16 +34,6 @@ polyscope::screenshot("test_image.png", true);
 // open the GUI
 polyscope::show();
 ```
-
-## Ground plane and shadow modes
-
-- `GroundPlaneMode::None` no ground plane, nor reflection/shadows are shown
-- `GroundPlaneMode::Tile` a tiled ground plane 
-- `GroundPlaneMode::TileReflection` a tiled ground plane with a reflection of the scene (default)
-- `GroundPlaneMode::ShadowOnly` a transparent ground plane with a soft vertical shadow of the scene
-
-The ground plane and shadow settings can also be manually adjusted in the GUI under the `[Appearance] --> [Ground Plane]` menu.
-
 
 ??? func "`#!cpp GroundPlaneMode options::groundPlaneMode`"
     
