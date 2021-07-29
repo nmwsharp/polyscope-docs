@@ -8,7 +8,6 @@ Volumetric meshes, such as tetrahedral (*tet*) and hexahedral (*hex*, cube-like)
 </video>
 
 ### Registering a volume mesh
-
 **Example**: registering a tetrahedral mesh
 
 ```python
@@ -91,7 +90,7 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 ### Slice planes
 
-TODO
+[Slice planes](/features/slice_planes) are particularly useful for inspecting the internal stucture of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.
 
 ### Options
 

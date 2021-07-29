@@ -1,4 +1,4 @@
-Geometric data often has complex internal structures. Slice planes can be added to the scene cull away parts of an object and inspect its interior. These planes can be manipulated either programmatically or manually in the GUI.
+Geometric data often has complex internal structures. Slice planes can be added to the scene to cull away parts of an object and inspect its interior. These planes can be manipulated either programmatically or manually in the GUI.
 
 <video width=100% autoplay muted loop>
   <source src="/media/movies/slice_slide.mp4" type="video/mp4">
@@ -32,8 +32,7 @@ for t in np.linspace(0., 2*np.pi, 120):
     ps.screenshot(transparent_bg=False)
 ```
 
-Slice planes can also be manipulated in the GUI under `[View] --> [Slice Planes]`, where you can add and remove slice planes and control whether they are active and widgets are visible. When a plane is active in the scene, you can drag the 3D widget to adjust its pose. Additionally, for each structure, the `[Options] --> [Slice Planes]` allows you to toggle whether the slice plane effects that structure.
-
+Slice planes can also be manipulated in the GUI under `[View] --> [Slice Planes]`, where you can add and remove slice planes and control whether they are active and widgets are visible. When a plane is active in the scene, you can drag the 3D widget to adjust its pose. Additionally, for each structure, `[Options] --> [Slice Planes]` allows you to toggle whether the slice plane effects that structure.
 
 
 ### Creating and modifying slice planes
