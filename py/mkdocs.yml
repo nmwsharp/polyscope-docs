@@ -74,6 +74,7 @@ nav:
     - 'Color Maps' : 'features/color_maps.md'
     - 'Transparency' : 'features/transparency.md'
     - 'Ground and Shadows' : 'features/ground_and_shadows.md'
+    - 'Slice Planes' : 'features/slice_planes.md'
     - '2D Data' : 'features/2D_data.md'
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'
