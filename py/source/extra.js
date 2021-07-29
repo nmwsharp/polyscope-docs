@@ -16,6 +16,7 @@ function load_navpane() {
     // First, test if we are on the home page. Its path is empty, so detect it 
     // by checking for a really short pathname.
     var pathname = window.location.pathname;
+    console.log(pathname)
     var isOnHomePage = pathname.length < 2;
   
     // If we are on the home page, find the nav element for "Structures" 
