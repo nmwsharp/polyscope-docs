@@ -10,7 +10,7 @@ There are a few levels of messages available:
 
 Messages can be dismissed by clicking the button in dialog box, or pressing `[space]`.
 
-![messages demo](../../media/messages_demo.png)
+![messages demo](/media/messages_demo.png)
 
 Example:
 ```python
