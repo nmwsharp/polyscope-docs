@@ -2,7 +2,10 @@
 
 Volumetric meshes, such as tetrahedral (*tet*) and hexahedral (*hex*, cube-like) meshes, represent a region of 3D space. Polyscope can display tet and hex meshes, including those which have a mix of hex and tet elements. We'll use the term *cell* to refer generically to a tet or hex in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values.
 
-![volume_mesh_demo](/media/volume_demo.gif)
+<video width=100% autoplay muted loop>
+  <source src="/media/movies/volume_demo_compress.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ### Registering a volume mesh
 
