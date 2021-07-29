@@ -16,7 +16,7 @@ function load_navpane() {
     // First, test if we are on the home page.
     // We need a /py/ because python docs are hosted a polyscope.run/py (will not work in test serving)
     var pathname = window.location.pathname;
-    var isOnHomePage = (pathname.length == "/py/")
+    var isOnHomePage = (pathname == "/py/")
   
     // If we are on the home page, find the nav element for "Structures" 
     // (which we happen to know will be "nav-6") and click it.
