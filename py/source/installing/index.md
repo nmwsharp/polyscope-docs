@@ -1,9 +1,11 @@
-Polyscope supports Python 3.5-3.9 on all major operating systems. At runtime, your environment must support OpenGL >= `3.3 core`, and have the ability to open windows in a display. This includes nearly all modern desktop/laptop computers, but not all headless servers and virtual machines.
+Polyscope supports Python 3.5-3.9 with prebuilt binaries on all major operating systems. At runtime, your environment must support OpenGL >= `3.3 core`, and have the ability to open windows in a display. This includes nearly all modern desktop/laptop computers, but not all headless servers and virtual machines.
 
-## Installing from PyPi
+## Installing from PyPi with pip
 
 ```sh
 python -m pip install polyscope
+# or maybe
+python3 -m pip install polyscope
 ```
 Using `python -m pip install` rather than just `pip install` helps when your system has multiple version of Python installed, ensuring the correct `pip` is used. Just be sure `python` refers to the install of Python you intend to use.
 
