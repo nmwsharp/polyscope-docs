@@ -15,7 +15,7 @@ function load_navpane() {
 
     // First, test if we are on the home page. 
     var pathname = window.location.pathname;
-    var isOnHomePage = (pathname.length === "/")
+    var isOnHomePage = (pathname.length == "/")
   
     // If we are on the home page, find the nav element for "Structures" 
     // (which we happen to know will be "nav-7") and click it.
