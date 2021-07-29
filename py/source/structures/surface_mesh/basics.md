@@ -4,7 +4,7 @@ Surface meshes are one of the core structures in Polyscope. In addition to simpl
 
 Polyscope does not impose any requirements on the meshes visualized. They may be polygonal or nonmanifold, and all faces need not have the same degree.  As always, try clicking on the vertices or faces of a mesh see the data associated with that mesh element.
 
-![surface_mesh_demo](../../media/mesh_demo.gif)
+![surface_mesh_demo](/media/mesh_demo.gif)
 
 ### Registering a surface mesh
 
