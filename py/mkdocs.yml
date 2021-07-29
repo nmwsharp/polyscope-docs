@@ -31,14 +31,15 @@ theme:
   theme:
     logo: media/icons/material/highlight-24px.svg
   favicon: media/icons/material/baseline_highlight_black_18dp.png
-  #features:
-    #- instant
+  features:
+    - navigation.instant
 
 extra_css:
   - extras.css
 
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+  - 'extra.js'
 
 repo_name: 'nmwsharp/polyscope'
 repo_url: 'https://github.com/nmwsharp/polyscope'
@@ -71,6 +72,9 @@ nav:
     - 'User Callback' : 'features/user_callback.md'
     - 'Materials' : 'features/materials.md'
     - 'Color Maps' : 'features/color_maps.md'
+    - 'Transparency' : 'features/transparency.md'
+    - 'Ground and Shadows' : 'features/ground_and_shadows.md'
+    - 'Slice Planes' : 'features/slice_planes.md'
     - '2D Data' : 'features/2D_data.md'
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'
@@ -79,6 +83,7 @@ nav:
       - 'Scalar Quantities' : 'structures/point_cloud/scalar_quantities.md'
       - 'Color Quantities' : 'structures/point_cloud/color_quantities.md'
       - 'Vector Quantities' : 'structures/point_cloud/vector_quantities.md'
+      - 'Variable Radius' : 'structures/point_cloud/variable_radius.md'
     - Surface Mesh:
       - 'Basics' : 'structures/surface_mesh/basics.md'
       - 'Scalar Quantities' : 'structures/surface_mesh/scalar_quantities.md'
@@ -94,3 +99,8 @@ nav:
       - 'Scalar Quantities' : 'structures/curve_network/scalar_quantities.md'
       - 'Color Quantities' : 'structures/curve_network/color_quantities.md'
       - 'Vector Quantities' : 'structures/curve_network/vector_quantities.md'
+    - Volume Mesh:
+      - 'Basics' : 'structures/volume_mesh/basics.md'
+      - 'Scalar Quantities' : 'structures/volume_mesh/scalar_quantities.md'
+      - 'Color Quantities' : 'structures/volume_mesh/color_quantities.md'
+      - 'Vector Quantities' : 'structures/volume_mesh/vector_quantities.md'

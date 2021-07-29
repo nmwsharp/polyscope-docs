@@ -15,8 +15,8 @@ The following structures available in Polyscope. Many more structures are in dev
 - [Surface Mesh](../surface_mesh/basics)
 - [Point Cloud](../point_cloud/basics)
 - [Curve Network](../curve_network/basics)
+- [Volume Mesh](../volume_mesh/basics)
 - _in progress_: Camera View
-- _in progress_: Tet Mesh
 
 
 ## Registering structures

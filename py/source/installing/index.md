@@ -1,4 +1,4 @@
-Polyscope supports Python 2 and 3 on Linux, macOS, and Windows. At runtime, your environment must support OpenGL >= `3.3 core`, and have the ability to open windows in a display. This includes nearly all modern desktop/laptop computers, but not all headless servers and virtual machines.
+Polyscope supports Python 3.5-3.9 on all major operating systems. At runtime, your environment must support OpenGL >= `3.3 core`, and have the ability to open windows in a display. This includes nearly all modern desktop/laptop computers, but not all headless servers and virtual machines.
 
 ## Installing from PyPi
 
@@ -17,7 +17,7 @@ Here are some common fixes:
 
 - Ensure you're targeting the latest Polyscope `python -m pip install polyscope --upgrade`
 - Very old versions of `pip` may not be able to use the precompiled wheels. Upgrade `pip` with `python -m pip install pip --upgrade`.
-- Precompiled wheels are available on pip for Python 2.7 and 3.5-3.8 (aka most common versions), check yours with `python --version`, and update your Python install if needed.
+- Precompiled wheels are available on pip for Python 3.5-3.9 (aka most common versions), check yours with `python --version`, and update your Python install if needed.
 
 #### Source installs with PyPI
 
@@ -32,13 +32,6 @@ This may take a few minutes, and requires a suitable C++ toolchain (see [buildin
 ```sh
 conda install -c conda-forge polyscope
 ```
-
-!!! note 
-   
-    The Conda package currently only supports Python 3.
-    
-    Remember that that you can always use `pip` in conjuction with conda, like `python -m pip install polyscope`.
-
 
 ## Installing manually
 

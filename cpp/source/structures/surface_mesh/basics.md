@@ -4,7 +4,7 @@ Surface meshes are one of the core structures in Polyscope. In addition to simpl
 
 Polyscope does not impose any requirements on the meshes visualized. They may be polygonal or nonmanifold.  As always, try clicking on the vertices or faces of a mesh see the data associated with that mesh element.
 
-![surface_mesh_demo](../../media/mesh_demo.gif)
+![surface_mesh_demo](/media/mesh_demo.gif)
 
 ### Registering a surface mesh
 
@@ -35,11 +35,11 @@ Surface meshes are registered with Polyscope by passing the location of each ver
 
     Add a new surface mesh structure to Polyscope.
 
-    - `vertexPositions` is the vector array of 3D vertex locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of vertices.
+    - `vertexPositions` is the vector array of 3D vertex locations. The type should be [adaptable](/data_adaptors) to an array of `float`-valued 3-vectors; this allows many common types to be used as input, including `Eigen::MatrixXd` and `std::vector<std::array<double, 3>>`. The length will be the number of vertices.
 
-    - `faceIndices` is the nested array of vertex indices for each face. The type should be [adaptable](/data_adaptors) to a nested array of `size_t`. The outer length will be the number of faces. All indices should be valid 0-based indices in to the vertex list.
+    - `faceIndices` is the nested array of vertex indices for each face. The type should be [adaptable](/data_adaptors) to a nested array of `size_t`; this allows many common types to be used as input, including `Eigen::MatrixXi` and `std::vector<std::array<size_t, 3>>`. The outer length will be the number of faces. All indices should be valid 0-based indices in to the vertex list.
 
-    Fortunately, although Polyscope accepts a general nested list of face vertex indices to support Polygonal meshes, passing a fixed-size `Nx3` array for a triangle will work just fine, like `Eigen::MatrixXi`.
+    General nested lists can be used to create polygonal meshes of varying face degree, such as `std::vector<std::vector<size_t>>`. Also, passing a fixed-size 2D array of indices will work just fine, like `Eigen::MatrixXi` with `Fx3` dimensions for a triangle mesh, or `Fx4` for a quad mesh.
     
     Note: the inner vector type of the vertex positions _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D surface mesh, `registerSurfaceMesh2D` exists with the same signature. See [2D data](/features/2D_data).
 
@@ -47,7 +47,7 @@ Surface meshes are registered with Polyscope by passing the location of each ver
 
 !!! warning "Element ordering"
 
-    Polyscope quantities are ordered arrays of data, but not everone can agree on the ordering of elements in a mesh. See [indexing conventions](../indexing_convention/).
+    Polyscope quantities are ordered arrays of data, but not everyone can agree on the ordering of elements in a mesh. See [indexing conventions](../indexing_convention/).
 
     The default ordering is probably the same as yours for data on **vertices, faces, and corners**. However, data on **edges and halfedges** is much more likely to require setting an ordering.
 
@@ -65,6 +65,27 @@ The locations of the vertices in a mesh can be updated with the member function 
 
     Note: `updateVertexPositions2D` exists with the same signature. See [2D data](/features/2D_data).
 
+
+### Back face policies
+
+The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the "outward" direction. Faces which are viewed from behind are referred to as _back faces_; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how backfaces are displayed.
+
+![backface policies diagram](../../media/backface_diagram.png)
+
+- `BackFacePolicy::Identical` all faces are always rendered identically, whether viewed from the front or back
+- `BackFacePolicy::Different` backfaces are shaded differently, so they can be distinguished (this is the default)
+- `BackFacePolicy::Cull` backfaces are culled, and not rendered at all
+
+The choice of these policies can be set as an option for each surface mesh structure, either in the GUI via `[Options] -> [Back Face Policy]` or programmatically with the function below.
+
+??? func "`#!cpp SurfaceMesh* SurfaceMesh::setBackFacePolicy(BackFacePolicy newPolicy)`"
+
+    Set the policy for rendering oppositely-oriented backfaces.
+
+    - `newPolicy` is an enum giving the new policy, one of `BackFacePolicy::Identical`, `BackFacePolicy::Different`, or `BackFacePolicy::Cull` as described above
+
+    There is also a corresponding `getBackFacePolicy()`.
+
 ### Options
 
 
@@ -77,5 +98,6 @@ surface color | the color of the mesh | `#!cpp glm::vec3 getSurfaceColor()` | `#
 edge color | the color of the edges of the mesh | `#!cpp glm::vec3 getEdgeColor()` | `#!cpp setEdgeColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
 edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!cpp double getEdgeWidth()` | `#!cpp setEdgeWidth(double val)` | [yes](/basics/parameters/#persistent-values)
 material | what [material](/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes](/basics/parameters/#persistent-values) |
+back face policy | what [back face policy](#back-face-policies) to use | `#!cpp BackFacePolicy getBackFacePolicy()` | `#! setBackFacePolicy(BackFacePolicy newPolicy)` | [yes](/basics/parameters/#persistent-values) |
 
 _(all setters return `this` to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)_

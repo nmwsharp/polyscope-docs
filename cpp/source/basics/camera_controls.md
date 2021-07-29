@@ -9,6 +9,12 @@ polyscope::view::style = NavigateStyle::Free;
 
 // initialize
 polyscope::init();
+
+// set the camera pose explicitly
+polyscope::view::lookAt(glm::vec3{10., 10., 0.}, glm::vec3{0., 2., 0.});
+
+// show the GUI
+polyscope::show();
 ```
 
 ### Options
@@ -43,14 +49,39 @@ polyscope::init();
     This value can be manually set under the `view` menu of the ui. Programmatically, the enum `view::UpDir` contains various settings:
 
     - `UpDir::XUp` The positive X-axis is up.
+    - `UpDir::NegXUp` The negative X-axis is up.
     - `UpDir::YUp` The positive Y-axis is up.
+    - `UpDir::NegYUp` The negative Y-axis is up.
     - `UpDir::ZUp` The positive Z-axis is up.
+    - `UpDir::NegZUp` The negative Z-axis is up.
    
     Default: `UpDir::Yup`.
 
     Example:
     ```cpp
     polyscope::view::upDir = UpDir::ZUp;
+    ```
+
+??? func "`#!cpp void lookAt(glm::vec3 cameraLocation, glm::vec3 target, bool flyTo = false)`"
+    
+    ##### look at
+
+    Set the camera to be located at the 3D position `cameraLocation` and looking at the 3D position `target`, both in world coordinates. The up direction for the camera is set to be the scene's up direction. If `flyTo=true`, the camera will smoothly animate to the new configuration.
+
+    Example:
+    ```cpp
+    polyscope::view::lookAt(glm::vec3{10., 10., 0.}, glm::vec3{0., 2., 0.});
+    ```
+
+??? func "`#!cpp void lookAt(glm::vec3 cameraLocation, glm::vec3 target, glm::vec3 upDir, bool flyTo = false)`"
+    
+    Set the camera to be located at the 3D position `cameraLocation` and looking at the 3D position `target`, oriented with the up direction `upDir`, all in world coordinates. If `flyTo=true`, the camera will smoothly animate to the new configuration.
+
+    Note that setting the up direction for the camera view with this function is separate from the scene's `view::upDir` parameter, which affects things like ground plane placement, and manual view manipulation.
+
+    Example:
+    ```cpp
+    polyscope::view::lookAt(glm::vec3{10., 10., 0.}, glm::vec3{0., 2., 0.}, glm::vec3{0., 0., 1.});
     ```
 
 

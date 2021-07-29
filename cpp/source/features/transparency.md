@@ -1,11 +1,10 @@
-The Polyscope rendering framework supports transparent rendering to visualize complicated data with nested internal structures.
+The Polyscope rendering framework supports transparency to visualize complicated data with nested internal structures.
 
 ![transparency modes](/media/transparency_modes.jpg)
 
 **Example:** register a surface mesh and render it with transparency
 
 ```cpp
-
 #include "polyscope/polyscope.h"
 #include "polyscope/surface_mesh.h"
 
@@ -38,7 +37,7 @@ The modes are set in `options::transparencyMode`. Initially, the transparency mo
 
 Any ground plane reflections are disabled when using transparency.
 
-The transparency mode can also be changed in the GUI in the [Appearance] --> [Transparency] menu.
+The transparency mode can also be changed in the GUI in the `[Appearance] --> [Transparency]` menu.
 
 ??? func "`#!cpp TransparencyMode options::transparencyMode`"
     
@@ -53,10 +52,16 @@ The transparency mode can also be changed in the GUI in the [Appearance] --> [Tr
     Default: `8`. 
 
 
-## Setting transparency
+## Setting structure transparency
 
-Transparency is controlled via a real-valued parameter from `0` to `1`, commonly called "alpha". Setting transparency to `1` means completely opaque (the default), whereas `0` means completely transparent.
+Transparency is controlled via a real-valued parameter from `0` to `1`, commonly called "alpha". Setting transparency to `1` means completely opaque (the default), whereas `0` means completely transparent.  This parameter is specified on a per-structure basis via `Structure::setTransparency(float)`.  Transparency for each structure can also be modified in the GUI by selecting `[Options] --> [Transparency]` for the structure.
 
-This parameter is specified on a per-structure basis via `Structure::setTransparency(float)`. In the future, Polyscope could also support setting transparency more granularly on individual quantities or textures, but for now it is managed at the structure level.
+??? func "`#!cpp Structure::setTransparency(float)`"
 
-Transparency for each structure can also be modified in the GUI by selecting [Options] --> [Transparency] for the structure.
+    Set the transparency for a structure, `1` means completely opaque (the default), whereas `0` means completely transparent.
+
+    Example:
+    ```cpp
+    polyscope::SurfaceMesh* psMesh = registerSurfaceMesh("mesh", verts, faces);
+    psMesh->setTransparency(0.5);
+    ```

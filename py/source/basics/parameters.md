@@ -32,15 +32,15 @@ Many Polyscope parameters take a `relative` option, which is usually `True` by d
 ps_cloud = ps.get_point_cloud("my cloud")
 
 # radius will be 0.05 * lengthScale when used
-ps_cloud->set_radius(0.05); 
-ps_cloud->set_radius(0.05, relative=True); # same as previous (default is True)
+ps_cloud.set_radius(0.05); 
+ps_cloud.set_radius(0.05, relative=True); # same as previous (default is True)
 ```
 
 However, sometimes you might want to actually use an absolute value for a parameter, for instance to get exactly the same appearance between runs of a program on different data. To support that, scaled values can optionally be set as absolute values, which will _not_ be scaled before use.
 
 ```python
 # radius will be 1.6 when used
-ps_cloud->set_radius(1.6, relative=False)
+ps_cloud.set_radius(1.6, relative=False)
 ```
 
 Note that scaled values can be (and often are) used as _persistent values_, as described above; the two concepts are complementary. 
