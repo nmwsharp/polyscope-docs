@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#add-colors-to-elements" class="md-skip">
+        <a href="#macro-syntax-error" class="md-skip">
           Skip to content
         </a>
       
@@ -139,38 +139,6 @@
     </div>
 
     <!-- Button to open search dialogue -->
-    
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-
-      <!-- Search interface -->
-      
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
     
 			
     <!-- ADDED BY NSHARP language selector -->
@@ -1010,44 +978,12 @@
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
+        
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Color Quantities
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Color Quantities
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#add-colors-to-elements" class="md-nav__link">
-    Add colors to elements
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#options" class="md-nav__link">
-    Options
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1159,28 +1095,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#add-colors-to-elements" class="md-nav__link">
-    Add colors to elements
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#options" class="md-nav__link">
-    Options
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1193,63 +1109,10 @@
               
                 
                 
-                  <h1>Color Quantities</h1>
-                
-                <p>Visualize color rgb-valued data at the elements of a volume mesh.</p>
-<p><img alt="volume mesh color values" src="/media/volume_color.jpg" /></p>
-<p><strong>Example</strong>: showing a color value at cells (here randomly generated data)
-<div class="highlight"><pre><span></span><code><span class="cm">/* ... initialization, create mesh ... */</span> 
-
-<span class="c1">// Register the volume mesh with Polyscope</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerTetMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">tets</span><span class="p">);</span>
-
-<span class="c1">// Add a color quantity</span>
-<span class="kt">size_t</span> <span class="n">nCells</span> <span class="o">=</span> <span class="n">tets</span><span class="p">.</span><span class="n">rows</span><span class="p">();</span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;&gt;</span> <span class="n">randColor</span><span class="p">(</span><span class="n">nCells</span><span class="p">);</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nCells</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// generate random colors </span>
-  <span class="n">randColor</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{{</span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">(),</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">(),</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()}};</span>
-<span class="p">}</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getVolumeMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addCellColorQuantity</span><span class="p">(</span><span class="s">&quot;random color&quot;</span><span class="p">,</span> <span class="n">randColor</span><span class="p">);</span>
-
-<span class="c1">// Show the GUI</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
+                <h1 id="macro-syntax-error"><em>Macro Syntax Error</em></h1>
+<p><em>Line 17 in Markdown file:</em> <strong>expected token &lsquo;end of print statement&rsquo;, got &lsquo;:&rsquo;</strong> 
+<div class="highlight"><pre><span></span><code>  <span class="n">randColor</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{{</span><span class="n">polyscope</span><span class="p">::</span><span class="n">randomUnit</span><span class="p">(),</span> <span class="n">polyscope</span><span class="p">::</span><span class="n">randomUnit</span><span class="p">(),</span> <span class="n">polyscope</span><span class="p">::</span><span class="n">randomUnit</span><span class="p">()}};</span>
 </code></pre></div></p>
-<h3 id="add-colors-to-elements">Add colors to elements</h3>
-<details class="func" open="open"><summary><code class="highlight"><span class="n">VolumeMesh</span><span class="o">::</span><span class="n">addVertexColorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">)</span></code></summary><p>Add a color quantity defined at the vertices of the mesh.</p>
-<ul>
-<li><code>data</code> is the array of colors at vertices. The type should be <a href="/data_adaptors">adaptable</a> to a 3-vector array of <code>float</code>s. The length should be the number of vertices in the mesh.</li>
-</ul>
-<p>RGB values are interpreted in the range <code>[0,1]</code>.</p>
-</details>
-<details class="func"><summary><code class="highlight"><span class="n">VolumeMesh</span><span class="o">::</span><span class="n">addCellColorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">)</span></code></summary><p>Add a color quantity defined at the faces of the mesh.</p>
-<ul>
-<li><code>data</code> is the array of colors at faces. The type should be <a href="/data_adaptors">adaptable</a> to a 3-vector array of <code>float</code>s. The length should be the number of cells (tets, hexes, etc) in the mesh.</li>
-</ul>
-<p>RGB values are interpreted in the range <code>[0,1]</code>.</p>
-</details>
-<h3 id="options">Options</h3>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Meaning</strong></th>
-<th><strong>Getter</strong></th>
-<th><strong>Setter</strong></th>
-<th><strong>Persistent?</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enabled</td>
-<td>is the quantity enabled?</td>
-<td><code class="highlight"><span class="kt">bool</span> <span class="n">isEnabled</span><span class="p">()</span></code></td>
-<td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span> <span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="/basics/parameters/#persistent-values">yes</a></td>
-</tr>
-</tbody>
-</table>
-<p><em>(all setters return <code>this</code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>
                 
               
               
