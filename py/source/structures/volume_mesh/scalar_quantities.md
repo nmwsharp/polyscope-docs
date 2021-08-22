@@ -1,6 +1,6 @@
 Visualize scalar (real or integer)-valued data at the elements of a volume mesh.
 
-![volume mesh scalar values](/media/volume_scalar.jpg)
+![volume mesh scalar values]({{url.prefix}}/media/volume_scalar.jpg)
 
 **Example**: showing a scalar on vertices (here, random values)
 ```python

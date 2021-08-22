@@ -34,7 +34,7 @@ jet | decorative | `jet`
 
 Custom colormaps can be loaded at runtime from image files and used anywhere colormaps are used. Loading can be performed with the UI from `[Appearance] --> [Color maps] --> [Load color map]`, or programatically using the function below. The input should be a horizontally-oriented image file like the one below; the centermost row of pixels will be read to generate the color map. Most common image formats are accepted (anyting `stb_image` can read).
 
-![sample colormap](/media/sample_colormap.png)
+![sample colormap]({{url.prefix}}/media/sample_colormap.png)
 
 ??? func "`#!cpp void polyscope::loadColorMap(std::string cmapName, std::string filename)`"
 

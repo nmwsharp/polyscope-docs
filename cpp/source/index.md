@@ -1,4 +1,4 @@
-![Polyscope](/media/teaser.svg)
+![Polyscope]({{url.prefix}}/media/teaser.svg)
 
 ![GitHub](https://img.shields.io/github/license/nmwsharp/polyscope?style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/nmwsharp/polyscope?style=flat-square)

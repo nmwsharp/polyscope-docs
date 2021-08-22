@@ -16,7 +16,7 @@ See [ImGui](https://github.com/ocornut/imgui) for documentation of UI commands.
 
 The code below creates the following UI using a callback.
 
-![callback ui demo](/media/callback_ui_demo.png)
+![callback ui demo]({{url.prefix}}/media/callback_ui_demo.png)
 
 ```cpp
 #include "polyscope/polyscope.h"

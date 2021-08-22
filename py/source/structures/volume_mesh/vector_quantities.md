@@ -1,6 +1,6 @@
 Visualize vector-valued data at the elements of a volume mesh.
 
-![volume mesh vector values](/media/volume_vector.jpg)
+![volume mesh vector values]({{url.prefix}}/media/volume_vector.jpg)
 
 **Example**: showing vectors on vertices (here random vectors)
 ```python

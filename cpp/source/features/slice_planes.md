@@ -136,7 +136,7 @@ psMesh->setIgnoreSlicePlane(psPlane->name, true);
 
 For some structures, slice planes can be set to discretely cull away whole elements, rather than slicing directly through the middle of an element.  This option can be set in the GUI for each structure under `[Options] --> [Slice Planes]`, or programatically with the function below.
 
-![cull whole elements settings](/media/cull_whole_elements.png)
+![cull whole elements settings]({{url.prefix}}/media/cull_whole_elements.png)
 
 ```cpp
 polyscope::SurfaceMesh* psMesh = polyscope::registerSurfaceMesh("input mesh", meshV, meshF);

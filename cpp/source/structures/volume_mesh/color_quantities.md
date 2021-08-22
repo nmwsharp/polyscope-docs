@@ -1,6 +1,6 @@
 Visualize color rgb-valued data at the elements of a volume mesh.
 
-![volume mesh color values](/media/volume_color.jpg)
+![volume mesh color values]({{url.prefix}}/media/volume_color.jpg)
 
 **Example**: showing a color value at cells (here randomly generated data)
 ```cpp
@@ -28,7 +28,7 @@ polyscope::show();
 
     Add a color quantity defined at the vertices of the mesh.
 
-    - `data` is the array of colors at vertices. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
+    - `data` is the array of colors at vertices. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
 
     RGB values are interpreted in the range `[0,1]`.
 
@@ -36,7 +36,7 @@ polyscope::show();
 
     Add a color quantity defined at the faces of the mesh.
 
-    - `data` is the array of colors at faces. The type should be [adaptable](/data_adaptors) to a 3-vector array of `float`s. The length should be the number of cells (tets, hexes, etc) in the mesh.
+    - `data` is the array of colors at faces. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of cells (tets, hexes, etc) in the mesh.
 
     RGB values are interpreted in the range `[0,1]`.
 
@@ -45,7 +45,7 @@ polyscope::show();
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
 

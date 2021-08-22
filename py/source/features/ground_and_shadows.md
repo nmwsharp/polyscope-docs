@@ -1,6 +1,6 @@
 The Polyscope scene view includes a ground plane which optionally supports reflection and soft-shadow effects. This section outlines the various modes and options available for the ground plane.
 
-![ground modes](/media/ground_plane_options.jpg)
+![ground modes]({{url.prefix}}/media/ground_plane_options.jpg)
 
 ## Ground plane and shadow modes
 
@@ -40,7 +40,7 @@ ps.show(3)
 
     Default: `tile_reflection`.
 
-Some more details: the ground plane is automatically faded away whenever the scene is viewed from underneath the ground, and also faded away in the distance far from the scene, as determined by the scene bounding box. Shadows are properly transparent, exporting a [screenshot](/features/screenshots) with transparency will set `alpha = shadow_darkness` values for shadowed areas, and set `alpha=0` for unshadowed parts of the ground plane.
+Some more details: the ground plane is automatically faded away whenever the scene is viewed from underneath the ground, and also faded away in the distance far from the scene, as determined by the scene bounding box. Shadows are properly transparent, exporting a [screenshot]({{url.prefix}}/features/screenshots) with transparency will set `alpha = shadow_darkness` values for shadowed areas, and set `alpha=0` for unshadowed parts of the ground plane.
 
 
 The `shadow_blur_iters` and `shadow_darkness` parameters below adjust the visual appearance of soft shadows for the ground plane mode `shadow_only`.
@@ -59,7 +59,7 @@ The `shadow_blur_iters` and `shadow_darkness` parameters below adjust the visual
 
 ## Ground plane positioning
 
-The orientation of the ground plane is determined by the [up direction for the scene](/basics/camera_controls/#up-direction), which can be set along any of the coordinate directions such as `+X`, `-Z`, etc.
+The orientation of the ground plane is determined by the [up direction for the scene]({{url.prefix}}/basics/camera_controls/#up-direction), which can be set along any of the coordinate directions such as `+X`, `-Z`, etc.
 
 The height of the ground plane is set by default from the bounding box of the scene. The `options::groundPlaneHeightFactor` can be set to adjust the relative offset of the ground plane from the bounding box.
 
@@ -67,6 +67,6 @@ The height of the ground plane is set by default from the bounding box of the sc
 
     The offset of the ground plane from the bottom of the bounding box for the scene. Use postive/negative values to shift the ground plane up/down.
 
-    This parameter is a [scaled value](/basics/parameters/#scaled-values). By default, values will be interpreted relative to the scene length scale, whereas calling `set_ground_plane_height_factor(0.1, is_relative=False)` will specify a value in absolute units.
+    This parameter is a [scaled value]({{url.prefix}}/basics/parameters/#scaled-values). By default, values will be interpreted relative to the scene length scale, whereas calling `set_ground_plane_height_factor(0.1, is_relative=False)` will specify a value in absolute units.
 
     Default: `0`. 

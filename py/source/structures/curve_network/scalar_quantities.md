@@ -1,6 +1,6 @@
 Visualize scalar valued data at the nodes or edges of a curve network.
 
-![curve network scalar demo](/media/curve_network_scalar.jpeg)
+![curve network scalar demo]({{url.prefix}}/media/curve_network_scalar.jpeg)
 
 Example:
 ```python

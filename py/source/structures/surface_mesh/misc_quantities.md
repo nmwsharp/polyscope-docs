@@ -58,9 +58,9 @@ polyscope::getSurfaceMesh("my mesh")->
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes](/basics/parameters/#persistent-values)
-radius | the radius the graph is drawn with | `#!cpp double getRadius()` | `#!cpp setRadius(double val, bool isRelative=true)` | [yes](/basics/parameters/#persistent-values)
-color | the color to draw the graph with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes](/basics/parameters/#persistent-values)
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+radius | the radius the graph is drawn with | `#!cpp double getRadius()` | `#!cpp setRadius(double val, bool isRelative=true)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+color | the color to draw the graph with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
 
