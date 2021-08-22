@@ -2,7 +2,7 @@ Polyscope includes simple functionality for saving screenshots from the current 
 
 Screenshots can be taken manually by pressing the `[screenshot]` button in the options GUI window, or programmatically using the functions below. Clicking the GUI button generates a numbered screenshot file in the current directory; the arrow to the side of the button can be used to adjust file format and transparency settings for these screenshots.
 
-It is **not** necessary to call `polyscope::show()` before taking screenshots. You can set up you scene and programmatically [configure the camera view]({{url.prefix}}/basics/camera_controls), then call `polyscope::screenshot()` to save a rendered image to disk, all without any user interaction.
+It is **not** necessary to call `polyscope::show()` before taking screenshots. You can set up you scene and programmatically [configure the camera view]([[url.prefix]]/basics/camera_controls), then call `polyscope::screenshot()` to save a rendered image to disk, all without any user interaction.
 
 **Example:** Register a mesh, position the camera, and take a screenshot
 ```cpp 

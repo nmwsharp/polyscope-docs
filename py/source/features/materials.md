@@ -10,10 +10,10 @@ In Polyscope, we often want to adjust set custom colors for rendered objects. Th
 
     Instead of just using a single material image, we take four images of the material, representing basis red, green, blue, and black components.
 
-    ![sample colormap]({{url.prefix}}/media/materials/clay_r.jpg){: style="height:150px;"}
-    ![sample colormap]({{url.prefix}}/media/materials/clay_g.jpg){: style="height:150px;"}
-    ![sample colormap]({{url.prefix}}/media/materials/clay_b.jpg){: style="height:150px;"}
-    ![sample colormap]({{url.prefix}}/media/materials/clay_k.jpg){: style="height:150px;"}
+    ![sample colormap]([[url.prefix]]/media/materials/clay_r.jpg){: style="height:150px;"}
+    ![sample colormap]([[url.prefix]]/media/materials/clay_g.jpg){: style="height:150px;"}
+    ![sample colormap]([[url.prefix]]/media/materials/clay_b.jpg){: style="height:150px;"}
+    ![sample colormap]([[url.prefix]]/media/materials/clay_k.jpg){: style="height:150px;"}
 
     At runtime, to generate a color from a triple of `rgb` values each in the range `[0,1]`, we sample the images like:
 
@@ -31,14 +31,14 @@ Polyscope supports the following built-in materials:
 
 | **Name** | **String Key** |  **Blendable** | Image |
 --- | --- | --- | ---
-clay | `clay` | yes | ![clay image]({{url.prefix}}/media/materials/clay_r.jpg){: style="width:100px;"}
-wax | `wax` | yes | ![wax image]({{url.prefix}}/media/materials/wax_r.jpg){: style="width:100px;"}
-candy | `candy` | yes | ![candy image]({{url.prefix}}/media/materials/candy_r.jpg){: style="width:100px;"}
-flat | `flat` | yes | ![flat image]({{url.prefix}}/media/materials/flat_r.jpg){: style="width:100px;"}
-mud[^1] | `mud` | no | ![mud image]({{url.prefix}}/media/materials/mud.jpg){: style="width:100px;"}
-ceramic[^1] | `ceramic` | no | ![ceramic image]({{url.prefix}}/media/materials/ceramic.jpg){: style="width:100px;"}
-jade[^1] | `jade` | no | ![jade image]({{url.prefix}}/media/materials/jade.jpg){: style="width:100px;"}
-normal[^1] | `normal` | no | ![normal image]({{url.prefix}}/media/materials/normal.jpg){: style="width:100px;"}
+clay | `clay` | yes | ![clay image]([[url.prefix]]/media/materials/clay_r.jpg){: style="width:100px;"}
+wax | `wax` | yes | ![wax image]([[url.prefix]]/media/materials/wax_r.jpg){: style="width:100px;"}
+candy | `candy` | yes | ![candy image]([[url.prefix]]/media/materials/candy_r.jpg){: style="width:100px;"}
+flat | `flat` | yes | ![flat image]([[url.prefix]]/media/materials/flat_r.jpg){: style="width:100px;"}
+mud[^1] | `mud` | no | ![mud image]([[url.prefix]]/media/materials/mud.jpg){: style="width:100px;"}
+ceramic[^1] | `ceramic` | no | ![ceramic image]([[url.prefix]]/media/materials/ceramic.jpg){: style="width:100px;"}
+jade[^1] | `jade` | no | ![jade image]([[url.prefix]]/media/materials/jade.jpg){: style="width:100px;"}
+normal[^1] | `normal` | no | ![normal image]([[url.prefix]]/media/materials/normal.jpg){: style="width:100px;"}
 
 
 [^1]: The matcaps are from the Blender matcap repository, available under a [CC0/public domain license](https://github.com/blender/blender/blob/master/release/datafiles/studiolights/matcap/license.txt). Thanks to the Blender community for contributing them!

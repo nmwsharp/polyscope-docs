@@ -1,6 +1,6 @@
 The Polyscope rendering framework supports transparency to visualize complicated data with nested internal structures.
 
-![transparency modes]({{url.prefix}}/media/transparency_modes.jpg)
+![transparency modes]([[url.prefix]]/media/transparency_modes.jpg)
 
 **Example:** register a surface mesh and render it with transparency
 

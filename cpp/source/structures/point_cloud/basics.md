@@ -30,9 +30,9 @@ polyscope::registerPointCloud("really great points", points);
 
     Add a new point cloud structure to Polyscope.
 
-    - `pointPositions` is the array of 3D point locations. The type should be [adaptable]({{url.prefix}}/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of points.
+    - `pointPositions` is the array of 3D point locations. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of points.
 
-    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D point cloud, `registerPointCloud2D` exists with the same signature. See [2D data]({{url.prefix}}/features/2D_data).
+    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D point cloud, `registerPointCloud2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
 
 ### Updating a point cloud
@@ -44,19 +44,19 @@ The locations of the points in a point cloud can be updated with the member func
 
     Update the point positions in a point cloud structure.
 
-    - `newPositions` is the vector array of 3D point locations. The type should be [adaptable]({{url.prefix}}/data_adaptors) to an array of `float`-valued 3-vectors.  The length must be equal to the current number of points.
+    - `newPositions` is the vector array of 3D point locations. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 3-vectors.  The length must be equal to the current number of points.
 
-    Note: `updatePointPositions2D` exists with the same signature. See [2D data]({{url.prefix}}/features/2D_data).
+    Note: `updatePointPositions2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
 ### Options
 
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-transparency | [transparency]({{url.prefix}}/features/transparency) alpha for this structure in `[0,1]` | `#!cpp double getTransparency()` | `#!cpp setTransparency(double val)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-point radius | size of rendered points | `#!cpp double getPointRadius()` | `#!cpp setPointRadius(double newVal, bool isRelative=true)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values) |
-point color | default color for point | `#!cpp glm::vec3 getPointColor()` | `#! setPointColor(glm::vec3 newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values) |
-material | what [material]({{url.prefix}}/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values) |
+enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+transparency | [transparency]([[url.prefix]]/features/transparency) alpha for this structure in `[0,1]` | `#!cpp double getTransparency()` | `#!cpp setTransparency(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+point radius | size of rendered points | `#!cpp double getPointRadius()` | `#!cpp setPointRadius(double newVal, bool isRelative=true)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+point color | default color for point | `#!cpp glm::vec3 getPointColor()` | `#! setPointColor(glm::vec3 newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
 _(all setters return `this` to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)_

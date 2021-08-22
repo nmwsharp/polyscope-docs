@@ -1,6 +1,6 @@
 Visualize scalar (real or integer)-valued data at the elements of a volume mesh.
 
-![volume mesh scalar values]({{url.prefix}}/media/volume_scalar.jpg)
+![volume mesh scalar values]([[url.prefix]]/media/volume_scalar.jpg)
 
 **Example**: showing a scalar on vertices (here just one of the spatial coordinate functions)
 ```cpp
@@ -35,14 +35,14 @@ polyscope::show();
 
     Add a scalar quantity defined at the vertices of the mesh.
 
-    - `data` is the array of scalars at vertices. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a `float` scalar array; this includes may common types like `std::vector<float>` and `Eigen::VectorXd`. The length should be the number of vertices in the mesh.
+    - `data` is the array of scalars at vertices. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array; this includes may common types like `std::vector<float>` and `Eigen::VectorXd`. The length should be the number of vertices in the mesh.
 
 
 ??? func "`#!cpp VolumeMesh::addCellScalarQuantity(std::string name, const T& data, DataType type = DataType::STANDARD)`"
 
     Add a scalar quantity defined at the cells of the mesh.
 
-    - `data` is the array of scalars, with one value per cell. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a `float` scalar array; this includes may common types like `std::vector<float>` and `Eigen::VectorXd`. The length should be the number of cell in the mesh.
+    - `data` is the array of scalars, with one value per cell. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array; this includes may common types like `std::vector<float>` and `Eigen::VectorXd`. The length should be the number of cell in the mesh.
 
 
 
@@ -50,8 +50,8 @@ polyscope::show();
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-color map | the [color map]({{url.prefix}}/features/color_maps) to use | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+color map | the [color map]([[url.prefix]]/features/color_maps) to use | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 map range | the lower and upper limits used when mapping the data in to the color map| `#!cpp std::pair<double,double> getMapRange()` | `#!cpp setMapRange(std::pair<double,double>)` and `#!cpp resetMapRange()`| no
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_

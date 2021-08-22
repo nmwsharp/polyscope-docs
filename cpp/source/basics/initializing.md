@@ -40,7 +40,7 @@ polyscope::show();
 
     Performs one-time work like setting up openGL and creating a window.
 
-    `backend` is an optional specifier for which [rendering backend]({{url.prefix}}/building#backends) to use, passing `""` selects a reasonable default backend. Generally, you should not need to manually set the backend.
+    `backend` is an optional specifier for which [rendering backend]([[url.prefix]]/building#backends) to use, passing `""` selects a reasonable default backend. Generally, you should not need to manually set the backend.
 
 
 ??? func "`#!cpp show()`"

@@ -44,7 +44,13 @@ extra_javascript:
   - 'extra.js'
 
 plugins:
-  - macros
+  - macros:
+      # use a custom tag so it doesn't interfere with C++
+      # code blocks using {{ }} 
+      j2_block_start_string: '[[%'
+      j2_block_end_string: '%]]'
+      j2_variable_start_string: '[['
+      j2_variable_end_string: ']]'
 
 repo_name: 'nmwsharp/polyscope'
 repo_url: 'https://github.com/nmwsharp/polyscope'

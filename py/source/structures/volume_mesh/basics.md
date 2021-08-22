@@ -39,7 +39,7 @@ ps.show()
 
 Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different argument variants to register meshes with tets, hexes, or a mix of the two. 
 
-![tet element ordering conventions]({{url.prefix}}/media/tet_element_orderings.jpg)
+![tet element ordering conventions]([[url.prefix]]/media/tet_element_orderings.jpg)
 
 
 
@@ -75,7 +75,7 @@ Volume meshes are registered with Polyscope by passing the location of each vert
 
 !!! warning "No support for 2D"
 
-    Unlike other structures, 2D volume meshes are not supported; they don't make much sense (see [2D data]({{url.prefix}}/features/2D_data)).
+    Unlike other structures, 2D volume meshes are not supported; they don't make much sense (see [2D data]([[url.prefix]]/features/2D_data)).
 
 
 ### Updating a mesh
@@ -90,7 +90,7 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 ### Slice planes
 
-[Slice planes]({{url.prefix}}/features/slice_planes) are particularly useful for inspecting the internal stucture of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.
+[Slice planes]([[url.prefix]]/features/slice_planes) are particularly useful for inspecting the internal stucture of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.
 
 ### Options
 
@@ -98,13 +98,13 @@ Options control the appearance of the mesh. Note that these options can also be 
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? | `#!python bool is_enabled()` | `#!python set_enabled(newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+enabled | is the structure enabled? | `#!python bool is_enabled()` | `#!python set_enabled(newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 transparency | alpha value | `#!python get_transparency()` | `#!python set_transparency(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
-color | the color of the outside of the volume | `#!python get_color()` | `#!python set_color(val)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-interior color | the color of the inside of the volume | `#!python get_interior_color()` | `#!python set_interior_color(val)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-edge color | the color of the edges of the mesh | `#!python get_edge_color()` | `#!python set_edge_color(val)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!python get_edge_width()` | `#!python set_edge_width(val)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-material | what [material]({{url.prefix}}/features/materials) to use | `#!python get_material()` | `#!python set_material(name)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values) |
+color | the color of the outside of the volume | `#!python get_color()` | `#!python set_color(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+interior color | the color of the inside of the volume | `#!python get_interior_color()` | `#!python set_interior_color(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+edge color | the color of the edges of the mesh | `#!python get_edge_color()` | `#!python set_edge_color(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!python get_edge_width()` | `#!python set_edge_width(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+material | what [material]([[url.prefix]]/features/materials) to use | `#!python get_material()` | `#!python set_material(name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
 **Example**: set options which affect the appearance of the mesh
 ```python

@@ -1,6 +1,6 @@
 Visualize color rgb-valued data at the nodes or edges of a curve network.
 
-![curve network color]({{url.prefix}}/media/curve_network_color.jpeg)
+![curve network color]([[url.prefix]]/media/curve_network_color.jpeg)
 
 Example:
 ```cpp
@@ -19,7 +19,7 @@ polyscope::getCurveNetwork(curveNetworkName)->addEdgeColorQuantity("random color
 
     Add a color quantity to the nodes of the curve network
 
-    - `values` is the array of colors at nodes. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of nodes in the curve network.
+    - `values` is the array of colors at nodes. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be the number of nodes in the curve network.
 
     RGB values are interpreted in the range `[0,1]`.
 
@@ -27,7 +27,7 @@ polyscope::getCurveNetwork(curveNetworkName)->addEdgeColorQuantity("random color
 
     Add a color quantity to the edges of the curve network
 
-    - `values` is the array of colors at edges. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of edges in the curve network.
+    - `values` is the array of colors at edges. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be the number of edges in the curve network.
 
     RGB values are interpreted in the range `[0,1]`.
 
@@ -35,7 +35,7 @@ polyscope::getCurveNetwork(curveNetworkName)->addEdgeColorQuantity("random color
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
 

@@ -1,6 +1,6 @@
 Visualize color rgb-valued data at the elements of a volume mesh.
 
-![volume mesh color values]({{url.prefix}}/media/volume_color.jpg)
+![volume mesh color values]([[url.prefix]]/media/volume_color.jpg)
 
 **Example**: showing a color value at cells (here, random values)
 ```python

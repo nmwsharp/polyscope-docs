@@ -1,6 +1,6 @@
 Count quantities store integers defined at just a few elements of a mesh, rather than at every element.  These useful for visualizing special vertices or faces, e.g., singularities of a vector field.
 
-![count example]({{url.prefix}}/media/surface_count.jpg)
+![count example]([[url.prefix]]/media/surface_count.jpg)
 
 **Example:**
 ```cpp
@@ -46,9 +46,9 @@ polyscope::getSurfaceMesh(/*mesh name */)->addVertexCountQuantity("sample count"
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-color map | the [color map]({{url.prefix}}/features/color_maps) to use | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-point radius | radius of points | `#!cpp double getPointRadius()` | `#!cpp setPointRadius(double newVal, bool isRelative)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+color map | the [color map]([[url.prefix]]/features/color_maps) to use | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+point radius | radius of points | `#!cpp double getPointRadius()` | `#!cpp setPointRadius(double newVal, bool isRelative)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
 

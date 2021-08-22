@@ -1,4 +1,4 @@
-Polyscope stands on the shoulders of many outstanding open-source projects. These dependencies are all [permissively licensed]({{url.prefix}}/about/license), and [bundled with the project]({{url.prefix}}/building); we just list them here to give due credit!
+Polyscope stands on the shoulders of many outstanding open-source projects. These dependencies are all [permissively licensed]([[url.prefix]]/about/license), and [bundled with the project]([[url.prefix]]/building); we just list them here to give due credit!
 
 
 | Name | Purpose | Link |
@@ -15,4 +15,4 @@ googletest | Unit testing | [github.com/google/googletest](https://github.com/go
 pybind11 | (Python only) Python bindings  | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)
 Eigen | (Python only) numpy interop for bindings | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/)
 
-Additionally, Polyscope includes a few public-domain / permissively licensed assets. Some of the built-in [matcaps]({{url.prefix}}/features/materials) are from the Blender project, and others were rendered using Blender.  The built-in colormaps come from several sources as detailed on the [colormap page]({{url.prefix}}/features/colormaps), including [Smith et. al.](https://github.com/BIDS/colormap/blob/master/colormaps.py), [cmocean](http://tos.org/oceanography/assets/docs/29-3_thyng.pdf), and [matplotlib](https://matplotlib.org/).  The concrete texture on the ground is from [cc0textures.com](https://cc0textures.com/). Thank you, artists!
+Additionally, Polyscope includes a few public-domain / permissively licensed assets. Some of the built-in [matcaps]([[url.prefix]]/features/materials) are from the Blender project, and others were rendered using Blender.  The built-in colormaps come from several sources as detailed on the [colormap page]([[url.prefix]]/features/colormaps), including [Smith et. al.](https://github.com/BIDS/colormap/blob/master/colormaps.py), [cmocean](http://tos.org/oceanography/assets/docs/29-3_thyng.pdf), and [matplotlib](https://matplotlib.org/).  The concrete texture on the ground is from [cc0textures.com](https://cc0textures.com/). Thank you, artists!

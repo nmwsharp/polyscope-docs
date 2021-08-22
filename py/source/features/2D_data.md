@@ -8,7 +8,7 @@ Functions which accept 3D positions (or vectors) as input can alternately takes 
 
 The Polyscope camera can be "locked-in" to a 2D view by setting the mode to `Planar`. In the UI, this option is in the main Polyscope window, set to `Turntable` by default. Setting the camera mode to `Planar` will also hide the ground plane.
 
-![planar view setting]({{url.prefix}}/media/view_planar.png){: style="height:200px;"}
+![planar view setting]([[url.prefix]]/media/view_planar.png){: style="height:200px;"}
 
 To set this option programmatically, use:
 ```

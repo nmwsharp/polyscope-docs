@@ -22,7 +22,7 @@ polyscope::getSurfaceMesh("name")->addFaceColorQuantity("fColor", fColor);
 
     Add a color quantity defined at the vertices of the mesh.
 
-    - `values` is the array of colors at vertices. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
+    - `values` is the array of colors at vertices. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
 
     RGB values are interpreted in the range `[0,1]`.
 
@@ -30,7 +30,7 @@ polyscope::getSurfaceMesh("name")->addFaceColorQuantity("fColor", fColor);
 
     Add a color quantity defined at the faces of the mesh.
 
-    - `values` is the array of colors at faces. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of faces in the mesh.
+    - `values` is the array of colors at faces. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be the number of faces in the mesh.
 
     RGB values are interpreted in the range `[0,1]`.
 
@@ -39,7 +39,7 @@ polyscope::getSurfaceMesh("name")->addFaceColorQuantity("fColor", fColor);
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
 

@@ -1,6 +1,6 @@
 Visualize scalar valued data at the nodes or edges of a curve network.
 
-![curve network scalar demo]({{url.prefix}}/media/curve_network_scalar.jpeg)
+![curve network scalar demo]([[url.prefix]]/media/curve_network_scalar.jpeg)
 
 Example:
 ```cpp
@@ -19,7 +19,7 @@ polyscope::getCurveNetwork(curveNetworkName)->addNodeScalarQuantity("sample valu
 
     Add a scalar quantity to the nodes of the curve network.
 
-    - `values` is the array of scalars at nodes. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a `float` scalar array. The length should be the number of nodes in the curve network.
+    - `values` is the array of scalars at nodes. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. The length should be the number of nodes in the curve network.
 
 
 
@@ -27,15 +27,15 @@ polyscope::getCurveNetwork(curveNetworkName)->addNodeScalarQuantity("sample valu
 
     Add a scalar quantity to the edges of the curve network.
 
-    - `values` is the array of scalars at edges . The type should be [adaptable]({{url.prefix}}/data_adaptors) to a `float` scalar array. The length should be the number of edges in the curve network.
+    - `values` is the array of scalars at edges . The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. The length should be the number of edges in the curve network.
 
 
 ### Options
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-color map | the [color map]({{url.prefix}}/features/color_maps) to use | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+color map | the [color map]([[url.prefix]]/features/color_maps) to use | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 map range | the lower and upper limits used when mapping the data in to the color map| `#!cpp std::pair<double,double> getMapRange()` | `#!cpp setMapRange(std::pair<double,double>)` and `#!cpp resetMapRange()`| no
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_

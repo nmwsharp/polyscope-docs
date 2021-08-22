@@ -138,7 +138,7 @@ ps_mesh.set_ignore_slice_plane(ps_plane, True)
 
 For some structures, slice planes can be set to discretely cull away whole elements, rather than slicing directly through the middle of an element.  This option can be set in the GUI for each structure under `[Options] --> [Slice Planes]`, or programatically with the function below.
 
-![cull whole elements settings]({{url.prefix}}/media/cull_whole_elements.png)
+![cull whole elements settings]([[url.prefix]]/media/cull_whole_elements.png)
 
 ```python
 ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)

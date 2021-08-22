@@ -29,7 +29,7 @@ polyscope::show();
 
     - `NavigateStyle::Turntable` The up direction (see below) is always fixed vertically, with rotation along the azumith and altitude directions.
     - `NavigateStyle::Free` The camera is free to take any orientation, rotation is always about relative to the current camera.
-    - `NavigateStyle::Planar` The camera is locked in to a 2D view of the XY plane, with no rotation (see [2D data]({{url.prefix}}/features/2D_data)).
+    - `NavigateStyle::Planar` The camera is locked in to a 2D view of the XY plane, with no rotation (see [2D data]([[url.prefix]]/features/2D_data)).
 
 
     Example:

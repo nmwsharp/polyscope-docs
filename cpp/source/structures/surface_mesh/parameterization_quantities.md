@@ -37,21 +37,21 @@ polyscope::getSurfaceMesh("input mesh")
 
     Add a new parameterization quantity to the structure, defined at the corners of a mesh.
 
-    - `coords` is the array of 2D UV coordinates at corners. The type should be [adaptable]({{url.prefix}}/data_adaptors) to an array of `float`-valued 2-vectors. The length should be the number of corners in the mesh.
+    - `coords` is the array of 2D UV coordinates at corners. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 2-vectors. The length should be the number of corners in the mesh.
 
 
 ??? func "`#!cpp SurfaceMesh::addVertexParameterizationQuantity(std::string name, const T& coords)`"
 
     Add a new parameterization quantity to the structure, defined at the vertices of a mesh.
 
-    - `coords` is the array of 2D UV coordinates at vertices. The type should be [adaptable]({{url.prefix}}/data_adaptors) to an array of `float`-valued 2-vectors. The length should be the number of vertices in the mesh.
+    - `coords` is the array of 2D UV coordinates at vertices. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 2-vectors. The length should be the number of vertices in the mesh.
 
 
 ??? func "`#!cpp SurfaceMesh::addLocalParameterizationQuantity(std::string name, const T& coords)`"
 
     Add a new parameterization quantity to the structure, defined at the vertices of a mesh. this is similar to `addVertexParameterizationQuantity`, but has preset settings for `style` and `type` which are suitable for local parameterizations about a point.
 
-    - `coords` is the array of 2D UV coordinates at vertices. The type should be [adaptable]({{url.prefix}}/data_adaptors) to an array of `float`-valued 2-vectors. The length should be the number of vertices in the mesh.
+    - `coords` is the array of 2D UV coordinates at vertices. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 2-vectors. The length should be the number of vertices in the mesh.
 
 
 ## Options
@@ -81,12 +81,12 @@ These enums can be passed as an optional third argument when a parameterization 
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-style | the visualization style (see above) | `#!cpp ParamVizStyle getStyle` | `#!cpp setStyle(ParamVizStyle style)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-checker colors | two colors to use for checkerboards | `#!cpp std::pair<glm::vec3,glm::vec3>getCheckerColors()` | `#!cpp setCheckerColors(std::pair<glm::vec3, glm::vec3> colors) ` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-grid colors | two colors to use for line and background of grid | `#!cpp std::pair<glm::vec3,glm::vec3>getGridColors()` | `#!cpp setGridColors(std::pair<glm::vec3, glm::vec3> colors) ` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-checker size | the width of checkers / stripes, always used as a relative value, unless the coord tpe is `UNIT` | `#!cpp double getCheckerSize()` | `#!cpp setCheckerSize(double val)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-color map | the [color map]({{url.prefix}}/features/color_maps) to use for radial displays | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+style | the visualization style (see above) | `#!cpp ParamVizStyle getStyle` | `#!cpp setStyle(ParamVizStyle style)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+checker colors | two colors to use for checkerboards | `#!cpp std::pair<glm::vec3,glm::vec3>getCheckerColors()` | `#!cpp setCheckerColors(std::pair<glm::vec3, glm::vec3> colors) ` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+grid colors | two colors to use for line and background of grid | `#!cpp std::pair<glm::vec3,glm::vec3>getGridColors()` | `#!cpp setGridColors(std::pair<glm::vec3, glm::vec3> colors) ` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+checker size | the width of checkers / stripes, always used as a relative value, unless the coord tpe is `UNIT` | `#!cpp double getCheckerSize()` | `#!cpp setCheckerSize(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+color map | the [color map]([[url.prefix]]/features/color_maps) to use for radial displays | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
 

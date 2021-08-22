@@ -1,6 +1,6 @@
 Visualize color rgb-valued data at the nodes or edges of a curve network.
 
-![curve network color]({{url.prefix}}/media/curve_network_color.jpeg)
+![curve network color]([[url.prefix]]/media/curve_network_color.jpeg)
 
 Example:
 ```python

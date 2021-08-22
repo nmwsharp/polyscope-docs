@@ -17,7 +17,7 @@ polyscope::getPointCloud(pointCloudName)->addColorQuantity("random color", randC
 
     Add a color quantity to the point cloud.
 
-    - `values` is the array of colors at points. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of points in the point cloud.
+    - `values` is the array of colors at points. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be the number of points in the point cloud.
 
     RGB values are interpreted in the range `[0,1]`.
 
@@ -25,7 +25,7 @@ polyscope::getPointCloud(pointCloudName)->addColorQuantity("random color", randC
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
 

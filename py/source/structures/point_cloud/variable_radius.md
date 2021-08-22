@@ -1,6 +1,6 @@
 By default, all points in the cloud have the same radius. However, any point cloud scalar quantity can be additionally interpreted as the radius of the points. This can also be set manually in the GUI via the point cloud [Options] --> [Variable Radius].
 
-![point cloud radius demo]({{url.prefix}}/media/point_cloud_radius.jpg)
+![point cloud radius demo]([[url.prefix]]/media/point_cloud_radius.jpg)
 
 Example:
 ```python

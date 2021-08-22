@@ -4,7 +4,7 @@ Surface meshes are one of the core structures in Polyscope. In addition to simpl
 
 Polyscope does not impose any requirements on the meshes visualized. They may be polygonal or nonmanifold, and all faces need not have the same degree.  As always, try clicking on the vertices or faces of a mesh see the data associated with that mesh element.
 
-![surface_mesh_demo]({{url.prefix}}/media/mesh_demo.gif)
+![surface_mesh_demo]([[url.prefix]]/media/mesh_demo.gif)
 
 ### Registering a surface mesh
 
@@ -100,7 +100,7 @@ edge color | the color of the edges of the mesh | `#!python get_edge_color()` | 
 edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!python get_edge_width()` | `#!python set_edge_width(val)` | [yes](../../../basics/parameters/#persistent-values)
 shade smooth | use smooth shading along faces or simple flat faces | `#!python get_smoooth_shade()` | `#!python set_smooth_shade(isSmooth)` | [yes](../../../basics/parameters/#persistent-values)
 material | material for structure | `#!python get_material()` | `#!python set_material(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
-back face policy | what [back face policy](#back-face-policies) to use | `#!python get_back_face_policy()` | `#!python set_back_face_policy(val)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values) |
+back face policy | what [back face policy](#back-face-policies) to use | `#!python get_back_face_policy()` | `#!python set_back_face_policy(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
 Example: set options which affect the appearance of the mesh
 ```python

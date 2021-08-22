@@ -10,19 +10,19 @@ _Ambient_ vectors are "standard" vectors, which have X-Y-Z vector coordinates in
 
     Add a vector quantity defined at the vertices of the mesh.
 
-    - `vectors` is the array of vectors at vertices. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
+    - `vectors` is the array of vectors at vertices. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
     - `vectorType` indicates how to interpret vector data. The default setting is as a freely-scaled value, which will be automatically scaled to be visible. Passing `VectorType::AMBIENT` ensures vectors have the proper world-space length.
     
-    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D mesh), `addVertexVectorQuantity2D` exists with the same signature. See [2D data]({{url.prefix}}/features/2D_data).
+    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D mesh), `addVertexVectorQuantity2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
 ??? func "`#!cpp SurfaceMesh::addFaceVectorQuantity(std::string name, const T& vectors)`"
 
     Add a vector quantity defined at the faces of the mesh.
 
-    - `vectors` is the array of vectors at faces. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of faces in the mesh.
+    - `vectors` is the array of vectors at faces. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be the number of faces in the mesh.
     - `vectorType` indicates how to interpret vector data. The default setting is as a freely-scaled value, which will be automatically scaled to be visible. Passing `VectorType::AMBIENT` ensures vectors have the proper world-space length.
 
-    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D mesh), `addFaceVectorQuantity2D` exists with the same signature. See [2D data]({{url.prefix}}/features/2D_data).
+    Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D mesh), `addFaceVectorQuantity2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
 
 ### Tangent vectors
@@ -74,17 +74,17 @@ Tangent vectors are defined with respect to a coordinate frame at each vertex (r
 
     Specify the tangent coordinates at vertices, by giving the direction of the x-axis of the basis.
 
-    - `vectors` is an array of one 3D vector at each vertex. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
+    - `vectors` is an array of one 3D vector at each vertex. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be the number of vertices in the mesh.
 
-    Note: As always for functions that take 3D vector inputs, there is a `setVertexTangentBasisX2D` with the same signature, which expects 2D vector inputs. See [2D data]({{url.prefix}}/features/2D_data).
+    Note: As always for functions that take 3D vector inputs, there is a `setVertexTangentBasisX2D` with the same signature, which expects 2D vector inputs. See [2D data]([[url.prefix]]/features/2D_data).
 
 ??? func "`#!cpp void SurfaceMesh::setFaceTangentBasisX(const T& vectors)`"
 
     Specify the tangent coordinates at faces, by giving the direction of the x-axis of the basis.
 
-    - `vectors` is an array of one 3D vector at each face. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 3-vector array of `float`s. The length should be the number of faces in the mesh.
+    - `vectors` is an array of one 3D vector at each face. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be the number of faces in the mesh.
 
-    Note: As always for functions that take 3D vector inputs, there is a `setFaceTangentBasisX2D` with the same signature, which expects vector 2D inputs. See [2D data]({{url.prefix}}/features/2D_data).
+    Note: As always for functions that take 3D vector inputs, there is a `setFaceTangentBasisX2D` with the same signature, which expects vector 2D inputs. See [2D data]([[url.prefix]]/features/2D_data).
 
 #### Adding intrinsic tangent vectors
 
@@ -94,7 +94,7 @@ In these function names, _intrinsic vector_ is a fancy synonym for tangent vecto
 
     Add a tangent vector quantity defined at the vertices of the mesh.
 
-    - `vectors` is the array of vectors at vertices. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 2-vector array of `float`s. The length should be the number of vertices in the mesh.
+    - `vectors` is the array of vectors at vertices. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 2-vector array of `float`s. The length should be the number of vertices in the mesh.
     - `nSym` is a symmetry order for visualization line field (n = 2) and cross field (n = 4), etc. If it is set to a non-`1` value, n distinct vectors will be displayed at each element. This function presumes a "power"-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n'th power.
 
     The vectors will be interpreted in the basis of `SurfaceMesh::vertexTangentSpaces`. These tangent spaces can be manually specified as described above.
@@ -103,7 +103,7 @@ In these function names, _intrinsic vector_ is a fancy synonym for tangent vecto
 
     Add a tangent vector quantity defined at the faces of the mesh.
 
-    - `vectors` is the array of vectors at faces. The type should be [adaptable]({{url.prefix}}/data_adaptors) to a 2-vector array of `float`s. The length should be the number of faces in the mesh.
+    - `vectors` is the array of vectors at faces. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 2-vector array of `float`s. The length should be the number of faces in the mesh.
     - `nSym` is a symmetry order for visualization line field (n = 2) and cross field (n = 4), etc. If it is set to a non-`1` value, n distinct vectors will be displayed at each element. This function presumes a "power"-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n'th power.
 
     The vectors will be interpreted in the basis of `SurfaceMesh::facesTangentSpaces`. These tangent spaces can be manually specified as described above.
@@ -117,8 +117,8 @@ _One forms_ are tangent vector-like quantities represented as integrated scalars
 
     Add a one-form quantity via a scalar at edges, which will be shown like a vector field.
 
-    - `data` is the array of scalars at edges. The type should be [adaptable]({{url.prefix}}/data_adaptors) to an array of `float`s. The length should be the number of edges in the mesh.
-    - `orientations` 1-forms are defined with respect to an orientation of edges, so you need to tell Polyscope which direction your edges point in. This input is an array of booleans at edges. The type should be [adaptable]({{url.prefix}}/data_adaptors) to an array of `char`s (because `std::vector<bool>` is broken). The length should be the number of edges in the mesh. These booleans should be `true` if the edge points from the lower indexed adjacent vertex to the higher-indexed vertex, and false otherwise.
+    - `data` is the array of scalars at edges. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`s. The length should be the number of edges in the mesh.
+    - `orientations` 1-forms are defined with respect to an orientation of edges, so you need to tell Polyscope which direction your edges point in. This input is an array of booleans at edges. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `char`s (because `std::vector<bool>` is broken). The length should be the number of edges in the mesh. These booleans should be `true` if the edge points from the lower indexed adjacent vertex to the higher-indexed vertex, and false otherwise.
 
     Remember, before passing edge-valued data, be sure your [indexing convention](../indexing_convention) matches what Polyscope expects.
 
@@ -126,12 +126,12 @@ _One forms_ are tangent vector-like quantities represented as integrated scalars
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-vector radius | the radius vectors are drawn with | `#!cpp double getVectorRadius()` | `#!cpp setVectorRadius(double val, bool isRelative=true)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-vector length | vectors will be scaled so the longest is this long. ignored if `VectorType::Ambient` | `#!cpp double getVectorLengthScale()` | `#!cpp setVectorLengthScale(double val, bool isRelative=true)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-vector color | the color to draw the vectors with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
-material | what [material]({{url.prefix}}/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values) |
-ribbon enabled | draw the ribbon visualization (only available for intrinsic vector fields) | `#!cpp bool isRibbonEnabled()` | `#!cpp setRibbonEnabled(bool newVal)` | [yes]({{url.prefix}}/basics/parameters/#persistent-values)
+enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+vector radius | the radius vectors are drawn with | `#!cpp double getVectorRadius()` | `#!cpp setVectorRadius(double val, bool isRelative=true)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+vector length | vectors will be scaled so the longest is this long. ignored if `VectorType::Ambient` | `#!cpp double getVectorLengthScale()` | `#!cpp setVectorLengthScale(double val, bool isRelative=true)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+vector color | the color to draw the vectors with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
+material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+ribbon enabled | draw the ribbon visualization (only available for intrinsic vector fields) | `#!cpp bool isRibbonEnabled()` | `#!cpp setRibbonEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 
 _(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
 
