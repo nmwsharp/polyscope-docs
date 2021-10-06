@@ -1,6 +1,7 @@
 # polyscope-docs
 Documentation for polyscope
 
+To contribute, check out the [instructions here](https://polyscope.run/about/contributing/).
 
 Managed using mkdocs.
 
