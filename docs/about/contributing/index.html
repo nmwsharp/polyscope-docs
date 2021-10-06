@@ -69,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#c-implementation" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -299,9 +304,64 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Contributing
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c-implementation" class="md-nav__link">
+    C++ implementation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    Unit testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prs-automated-tests" class="md-nav__link">
+    PRs &amp; automated tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-bindings" class="md-nav__link">
+    Python bindings
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1078,6 +1138,63 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c-implementation" class="md-nav__link">
+    C++ implementation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    Unit testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prs-automated-tests" class="md-nav__link">
+    PRs &amp; automated tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-bindings" class="md-nav__link">
+    Python bindings
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1086,30 +1203,89 @@
                 
                   <h1>Contributing</h1>
                 
-                <p>Polyscope is an open-source project, and you are encouraged to contribute!</p>
-<p>A few high-level guidelines:</p>
+                <p>Polyscope is an open-source project, and you are encouraged to contribute! The core library is lives in <a href="https://github.com/nmwsharp/polyscope">this repository</a>, with documentation <a href="https://github.com/nmwsharp/polyscope-docs">here</a> and Python bindings <a href="https://github.com/nmwsharp/polyscope-py">here</a>.</p>
+<p>All contributions will be released under Polyscope&rsquo;s MIT license.</p>
+<p><strong>How to make a great pull request:</strong></p>
+<p><img alt="✔️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2714.png" title=":heavy_check_mark:" /> <a href="#c-implementation">Implement a feature</a> or fix a bug</p>
+<p><img alt="✔️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2714.png" title=":heavy_check_mark:" /> Write a new <a href="#unit-testing">unit test</a> and run tests</p>
+<p><img alt="✔️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2714.png" title=":heavy_check_mark:" /> <a href="#prs-automated-tests">Submit a PR</a> and ensure automated tests pass</p>
+<p><img alt="✔️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2714.png" title=":heavy_check_mark:" /> Update the <a href="#documentation">documentation</a> </p>
+<p><img alt="✔️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2714.png" title=":heavy_check_mark:" /> Create any new <a href="#python-bindings">Python bindings</a></p>
+<p>Of course, contributions that only do some of the above are still welcome and appreciated! But doing all of these steps means your pull request is most likely to be merged right away.</p>
+<p>The sections below go in to more detail on each of these steps.</p>
+<h3 id="c-implementation">C++ implementation</h3>
+<div class="admonition info">
+<p class="admonition-title">C++ vs. Python contributions</p>
+<p>Polyscope is implemented as a C++ library, with a thin binding layer to Python.</p>
+<p>All functionality is implemented on the C++ side&mdash;pull requests which implement new features solely on the Python side or using external Python dependencies generally will not be accepted. Please file an issue asking first if you are unsure! Of course, bugfixes and additions to the Python binding layer itself are an exception.</p>
+<p>Conversely, any new C++ features are strongly encouraged to add corresponding Python bindings! See below.</p>
+</div>
+<p>A few general pointers:</p>
 <ul>
 <li>
-<p>All contributions must be released under Polyscope&rsquo;s MIT license.</p>
+<p>The UI (menus, dialogs, buttons, etc) is managed using <a href="https://github.com/ocornut/imgui">Dear ImGUI</a>, which is very well-documented and has many resources available online.</p>
 </li>
 <li>
-<p>Significant new features need to be documented! This documentation lives in <a href="https://github.com/nmwsharp/polyscope-docs">polyscope-docs</a>. You can and should submit a request there at the same time as adding code to Polyscope.</p>
-<ul>
-<li>The documentation uses markdown. Modifying the docs amounts to editing a source file and rebuilding the site source. The the nodes there in <code>README.md</code>.</li>
-<li>To add a new page to the documentation, edit <code>mkdocs.yml</code>.</li>
-</ul>
+<p>Core rendering logic and shaders are implemented in the <code>/render</code> <a href="https://github.com/nmwsharp/polyscope/tree/master/include/polyscope/render">subdirectory</a>, particularly <code>engine.h</code>. The engine is written to abstract over rendering backends, but at the moment only openGL is supported. There is also a &ldquo;mock&rdquo; backend for testing; new rendering features should be mirrored in both <code>gl_engine.cpp</code> and <code>mock_gl_engine.cpp</code>.</p>
 </li>
 <li>
-<p>If adding a new structure or quantity, be sure to make use of the <a href="../../data_adaptors/">data adaptors</a> for all user inputs. See <code>point_cloud.h</code> for an example.</p>
+<p>Polyscope shaders use a custom in-house <a href="https://github.com/nmwsharp/polyscope/blob/master/src/render/shader_builder.cpp">shader builder</a>, which performs string manipulation with a simple substitution language to build shaders at runtime which support optional features like slice planes, transparency, different quantity visualization policies, etc. The shaders themselves also explicitly track some metadata like what attributes and uniforms they require. Examples of base shaders can be found e.g. <a href="https://github.com/nmwsharp/polyscope/blob/master/src/render/opengl/shaders/sphere_shaders.cpp">here</a>, and substitution rules <a href="https://github.com/nmwsharp/polyscope/blob/master/src/render/opengl/shaders/rules.cpp">here</a>. For any shader or rule to be available in Polyscope, it must be registered in <code>GLEngine::populateDefaultShadersAndRules()</code>, and also in the corresponding function of the mock engine for testing.</p>
 </li>
 <li>
-<p>Be sure to run the unit tests (see <a href="/building">building</a>), and add tests for any new features.</p>
+<p>If adding a new structure or quantity, be sure to make use of the <a href="/data_adaptors/">data adaptors</a> for all user inputs. See <a href="https://github.com/nmwsharp/polyscope/blob/master/include/polyscope/point_cloud.ipp#L9-L10">here</a> for an example. Generally, this means functions which take user data should be templated, and the input then passed through <code>standardizeArray&lt;&gt;()</code> or <code>standardizeVectorArray&lt;&gt;()</code>, etc.</p>
 </li>
 <li>
-<p>Add a blurb to the <a href="../release_notes">release notes</a>!</p>
+<p>If adding new options or parameters to a structure/quantity. Be sure to follow proper encapsulation principles (create getters &amp; setters), and use a <a href="/basics/parameters/#persistent-values">persistent values</a>. <a href="https://github.com/nmwsharp/polyscope/blob/master/include/polyscope/point_cloud.h">Check out</a> <code>PointCloud::pointColor</code> for a good basic example.  Also, all length-valued quantities should use <a href="/basics/parameters/#scaled-values">scaled values</a> (as in <code>PointCloud::pointRadius</code>).</p>
 </li>
 </ul>
-<p>We&rsquo;ll expand these guidelines as Polyscope grows.</p>
+<h3 id="unit-testing">Unit testing</h3>
+<p>Whenever possible, add a <a href="https://github.com/nmwsharp/polyscope/blob/master/test/src/basics_test.cpp">unit test</a> that somehow exercises any new functionality or verifies that the bug has been fixed.  Polyscope uses the <a href="https://github.com/google/googletest">googletest</a> testing framework. See documentation there for test macros, executable options, etc.</p>
+<p>In a perfect world, we would actually test that the rendered output from Polyscope is pixel-perfect. However, this is hard for a lot of reasons, so instead most of our tests are just &ldquo;smoke tests&rdquo; that call functions with some dummy data and ensure no errors are thrown.</p>
+<p>In fact, these tests are often run on headless servers, where we cannot even initialize an openGL environment. For this reason, in addition to the usual <code>openGL</code> <a href="/building/#backends">backend</a>, we also have an <code>openGL_mock</code> backend (<a href="https://github.com/nmwsharp/polyscope/blob/master/src/render/mock_opengl/mock_gl_engine.cpp">implemented here</a>) for testing on headless servers. This backend cannot actually render anything, but still performs many rendering-related sanity checks.  If making changes to the rendering engine &amp; shaders, you may find that changes need to be mirrored in <code>mock_gl_engine.cpp</code>.</p>
+<p>To run unit tests locally on your own machine (here, via unix terminal commands), use</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> <span class="nb">test</span>
+mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Debug ..
+make -j4 
+./bin/polyscope-test <span class="nv">backend</span><span class="o">=</span>openGL3_glfw
+</code></pre></div>
+<p>which should create a window onscreen and run tests for a few seconds.</p>
+<p><strong>Additionally</strong>, run the tests again like</p>
+<div class="highlight"><pre><span></span><code>./bin/polyscope-test 
+</code></pre></div>
+<p>which will use the <code>openGL_mock</code> backend (you will not see anything onscreen). This is how testing will be performed on the headless CI servers. If both sets of tests pass without errors, you are good to go.</p>
+<h3 id="prs-automated-tests">PRs &amp; automated tests</h3>
+<p>Once your feature seems ready and unit tests are passing, submit a pull request to the <a href="https://github.com/nmwsharp/polyscope">main repository</a>. This will trigger continuous integration (CI) tests via Github Actions to automatically compile the code on a collection of windows/mac/linux machines with various compilers, and verify that tests pass. If there are any issues, a failed &ldquo;check&rdquo; will show on the pull request page which you can click to learn more.</p>
+<p>If this is your first contribution to Polyscope, a maintainer will need to manually approve the CI run (this is a github restriction).</p>
+<p>You are welcome to reach out in the PR chat to sort out any problems. We may request changes! If a PR ever goes more than a few days without a response feel free to ping @nmwsharp.</p>
+<h3 id="documentation">Documentation</h3>
+<p>Documentation is hosted in its own <a href="https://github.com/nmwsharp/polyscope-docs">separate repository</a>. Polyscope docs use the <a href="https://www.mkdocs.org/">mkdocs</a> documentation engine, with the <a href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a> theme (this theme is quite large and adds significant functionality beyond base mkdocs). The documentation is written in a large collection of markdown files; it is <em>not</em> automatically scraped from the code, or code comments, etc, so we must manually keep it up to date.</p>
+<p>There are two duplicate copies of all the docs for C++ and Python, stored in parallel directories <code>/cpp</code> and <code>/py</code>. A few shared files and assets are stored in the <code>/shared</code> directory, or symlinked from the <code>/py</code> subdirectory to point to a file the <code>/cpp</code> directory. We try to keep these two parallel versions in sync as much as possible, only differing where necessary between C++ and Python.</p>
+<p>To preview the documentation while editing, first install the necessary packages with <code>pip install mkdocs mkdocs-material==6.2.8 mkdocs-macros-plugin pygments</code>. Then run <code>python3 -m mkdocs serve</code> (run this command from the <code>/cpp</code> directory to view C++ docs, and likewise for <code>/py</code>). A local address will be printed to your terminal, which you can navigate to in-browser to see the docs.</p>
+<p>Hopefully editing the docs markdown files should be self-evident, you can mainly copy existing content &amp; formatting. Any new files need to be added the manifests in <code>mkdocs.yml</code>.  Don&rsquo;t forget to add a blurb to the <a href="../release_notes">release notes</a>! </p>
+<p>If you are not able to build the docs for any reason, it is fine to just edit the markdown files and submit a docs PR with that.</p>
+<p>To actually update the hosted documentation files online at polyscope.run, the documentation site needs to be recompiled and committed to the to the <code>/docs</code> subdirectory. The <code>build_commit_push.sh</code> script can handle this for you, rebuilding both C++ &amp; Python docs and committing the result to the <code>/docs</code> subdirectory:</p>
+<div class="highlight"><pre><span></span><code>sh build_commit_push.sh
+</code></pre></div>
+<p>If you include these built docs changes in your PR, the webpage will automatically update when it is merged. Otherwise the maintainers (usually @nmwsharp) will need to run this command and commit the update after accepting your PR.</p>
+<h3 id="python-bindings">Python bindings</h3>
+<p>Python bindings for Polyscope are stored in their own <a href="https://github.com/nmwsharp/polyscope-py">separate repository</a>. We use <a href="https://pybind11.readthedocs.io/">pybind11</a> to generate bindings. These bindings are kept as thin wrappers as much as possible, just doing a minimal translation between the C++ interface and typical Python calling conventions.</p>
+<p>The bindings are actually managed internally as two separate Python packages: <code>polyscope_bindings</code> (which contains the raw bindings generated by our pybind11 code), and the higher-level <code>polyscope</code> (which contains the actual, nice user-facing Python functions). The separation is because there is no way to write additional Python code in the pybind11-generated package, but we often want to do some translation and error checking on the Python side before invoking the bindings. As such, adding a binding generally means writing code in two places:</p>
+<ol>
+<li>Add a new pybind11 C++ binding, like those <a href="https://github.com/nmwsharp/polyscope-py/tree/master/src/cpp">here</a></li>
+<li>Add a new Python wrapper function which calls the generated binding, like the ones <a href="https://github.com/nmwsharp/polyscope-py/tree/master/src/polyscope">here</a></li>
+</ol>
+<p>Note that a few stylistic conventions between Python and C++. In particular, we do not expose classes for quantities, but set options via optional keyword arguments when the quantity is added. The pybind11 C++ bindings take Eigen arrays as arguments, because pybind11 performs automatic translation between Eigen/numpy.</p>
+<p>Python binding unit tests are stored in <code>/test/polyscope_test.py</code>. As with C++, these are mainly just simple &ldquo;smoke tests&rdquo; which call the functions with dummy data and ensure no errors are thrown. All new bindings functions need a test! To build and test the bindings, first compile the bindings from the <code>polyscope-py</code> root directory like
+<div class="highlight"><pre><span></span><code>mkdir build
+<span class="nb">cd</span> build
+cmake ..
+make -j8
+</code></pre></div>
+the run <code>python polyscope_test.py</code>. As you write code, these bindings must be recompiled to reflect any changes to the pybind11 C++. When testing, make sure there is not another copy of Polyscope for Python installed in your system, which might unintentionally be used instead of the development version! Also, the adjacent <code>demo_app.py</code> can be used for simple testing.</p>
+<p>Don&rsquo;t forget, the Python bindings have a parallel set of docs in the <code>/py</code> <a href="https://github.com/nmwsharp/polyscope-docs/tree/master/docs/py">directory</a>. Updates to Python should be reflected there.</p>
+<p>When all your tests are passing, create a pull request! As with C++, submitting a pull request to the Python bindings will trigger a cloud build and some automated checks.</p>
+<p>Actually deploying a new Python version to <code>pip</code> and <code>conda</code> package managers is a somewhat significant process, so we typically group together updates before cutting a new version.  Ping @nmwsharp to get a new version deployed.  Major and minor versions of the Python library are kept in-sync with the C++ library versions, whereas patch versions (<code>1.2.4</code> &ndash;&gt; <code>1.2.5</code>) are used for new updates to the Python bindings only.</p>
                 
               
               
