@@ -25,9 +25,7 @@ Eigen::MatrixXi F; // faces (we don't use these here)
 igl::readMESH("path/to/volume.mesh", V, T, F);
 
 // Register the volume mesh with Polyscope
-polyscope::registerTetMesh("my mesh", V, T);
-
-// Add a scalar quantity
+polyscope::register![volume mesh color values]([[url.prefix]]/media/volume_color.jpg)ntity
 size_t nVerts = V.rows();
 std::vector<double> scalarV(nVerts);
 for (size_t i = 0; i < nVerts; i++) {
@@ -103,7 +101,8 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 ### Slice planes
 
-[Slice planes]([[url.prefix]]/features/slice_planes) are particularly useful for inspecting the internal stucture of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.
+[Slice planes]([[url.prefix]]/features/slice_planes) are particularly useful for inspecting the internal stucture of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; they also have special functionality for filling in sliced data for volume meshes. See the slice plane documentation for more details. 
+
 
 ### Options
 

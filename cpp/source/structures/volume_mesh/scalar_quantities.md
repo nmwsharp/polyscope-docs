@@ -45,6 +45,57 @@ polyscope::show();
     - `data` is the array of scalars, with one value per cell. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array; this includes may common types like `std::vector<float>` and `Eigen::VectorXd`. The length should be the number of cell in the mesh.
 
 
+### Level sets
+
+When a vertex scalar quantity is attached to a volume mesh, level sets of the vertex data can be rendered by enabling "Level Set" in the settings for the vertex scalar quantity. Show other scalar quantities on this generated geometry by selecting "Show Quantity".
+
+
+![level set distance]([[url.prefix]]/media/level_set.png)
+<b>Example</b>: showing a level set of a vertex scalar quantity which just represents the distance from the mesh's origin, resulting in a sphere with radius equal to the value at the level set.
+
+```cpp
+/* ... initialization, create mesh ... */ 
+// Add a scalar quantity
+size_t nVerts = verts.rows();
+std::vector<double> scalarV(nVerts);
+for (size_t i = 0; i < nVerts; i++) {
+  // use the x-coordinate of vertex position as a test function
+  scalarV[i] = abs(V(i,0));
+}
+auto scalarQ = polyscope::getVolumeMesh("my mesh")->addVertexScalarQuantity("scalar Q", scalarV);
+
+// Add a second scalar quantity which is just distance from origin
+std::vector<double> scalarV2(nVerts);
+for (size_t i = 0; i < nVerts; i++) {
+  // use the x-coordinate of vertex position as a test function
+  scalarV2[i] = sqrt(pow(V(i,0), 2) + pow(V(i,1), 2) + pow(V(i,2), 2));
+}
+auto scalarQ2 = polyscope::getVolumeMesh("my mesh")->addVertexScalarQuantity("scalar Q2", scalarV2);
+
+// Set level set options
+scalarQ2->setEnabledLevelSet(true);  
+// Sphere of radius 8
+scalarQ2->setLevelSetValue(8.0f);  
+// Show original scalar on this level set
+scalarQ2->setLevelSetVisibleQuantity("scalar Q");  
+// set the name of the other scalar quantity 
+// to be rendered onto the level set
+
+// Show the GUI
+polyscope::show();
+```
+
+??? func "`#!cpp VolumeMeshVertexScalarQuantity::setEnabledLevelSet(bool enabled)`"
+
+    Enable or disable level set rendering for a vertex scalar quantity. Enabling level set rendering will disable the normal surface rendering and all other quantities.
+
+??? func "`#!cpp VolumeMeshVertexScalarQuantity::setLevelSetValue(float val)`"
+
+    Set the value of the level set to show.
+
+??? func "`#!cpp VolumeMeshVertexScalarQuantity::setLevelSetVisibleQuantity(std::string name)`"
+
+    Set the secondary scalar quantity to render onto the level set geometry. Only names of vertex scalar quantities on the same volume mesh will work.
 
 ### Options
 
