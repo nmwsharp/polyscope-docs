@@ -66,25 +66,32 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 ### Back face policies
 
-The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the "outward" direction. Faces which are viewed from behind are referred to as _back faces_; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how backfaces are displayed.
+The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the "outward" direction. Faces which are viewed from behind are referred to as _back faces_; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how back faces are displayed.
 
 ![backface policies diagram](../../media/backface_diagram.png)
 
 - `identical` all faces are always rendered identically, whether viewed from the front or back
-- `different` backfaces are shaded differently, so they can be distinguished (this is the default)
-- `cull` backfaces are culled, and not rendered at all
+- `different` back faces are shaded slightly darker, so they can be distinguished (this is the default)
+- `custom` back faces are shaded with a configurable color
+- `cull` back faces are culled, and not rendered at all
 
 The choice of these policies can be set as an option for each surface mesh structure, either in the GUI via `[Options] -> [Back Face Policy]` or programmatically with the function below or when a mesh is registered.
 
 ??? func "`#!python SurfaceMesh.set_back_face_policy(val)`"
 
-    Set the policy for rendering oppositely-oriented backfaces.
+    Set the policy for rendering oppositely-oriented back faces.
 
-    - `newPolicy` is string giving the new policy, one of `identical`, `different`, or `cull` as described above
+    - `newPolicy` is string giving the new policy, one of `identical`, `different`, `custom`, or `cull` as described above
 
     You can also set `back_face_policy='cull'` when registering a mesh.
 
     There is also a corresponding `SurfaceMesh.get_back_face_policy()`.
+
+??? func "`#!python SurfaceMesh.set_back_face_color(val)`"
+
+    Set the color to be used for custom back face coloring as a 3-tuple of floats on [0,1]. Has no effect unless the back face policy is `custom`.
+
+    There is also a corresponding `get_back_face_color()`.
 
 
 ### Options
@@ -101,6 +108,7 @@ edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reas
 shade smooth | use smooth shading along faces or simple flat faces | `#!python get_smoooth_shade()` | `#!python set_smooth_shade(isSmooth)` | [yes](../../../basics/parameters/#persistent-values)
 material | material for structure | `#!python get_material()` | `#!python set_material(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 back face policy | what [back face policy](#back-face-policies) to use | `#!python get_back_face_policy()` | `#!python set_back_face_policy(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+back face color | [back face color](#back-face-policies) for the `custom` policy | `#!python get_back_face_color()` | `#!python set_back_face_color(val)` | [yes](../../../basics/parameters/#persistent-values)
 
 Example: set options which affect the appearance of the mesh
 ```python

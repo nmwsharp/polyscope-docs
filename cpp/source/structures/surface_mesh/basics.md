@@ -68,23 +68,30 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 ### Back face policies
 
-The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the "outward" direction. Faces which are viewed from behind are referred to as _back faces_; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how backfaces are displayed.
+The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the "outward" direction. Faces which are viewed from behind are referred to as _back faces_; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how back faces are displayed.
 
 ![backface policies diagram](../../media/backface_diagram.png)
 
 - `BackFacePolicy::Identical` all faces are always rendered identically, whether viewed from the front or back
-- `BackFacePolicy::Different` backfaces are shaded differently, so they can be distinguished (this is the default)
-- `BackFacePolicy::Cull` backfaces are culled, and not rendered at all
+- `BackFacePolicy::Different` back faces are shaded slightly darker, so they can be distinguished (this is the default)
+- `BackFacePolicy::Custom` back faces are shaded with a configurable color
+- `BackFacePolicy::Cull` back faces are culled, and not rendered at all
 
 The choice of these policies can be set as an option for each surface mesh structure, either in the GUI via `[Options] -> [Back Face Policy]` or programmatically with the function below.
 
 ??? func "`#!cpp SurfaceMesh* SurfaceMesh::setBackFacePolicy(BackFacePolicy newPolicy)`"
 
-    Set the policy for rendering oppositely-oriented backfaces.
+    Set the policy for rendering oppositely-oriented back faces.
 
-    - `newPolicy` is an enum giving the new policy, one of `BackFacePolicy::Identical`, `BackFacePolicy::Different`, or `BackFacePolicy::Cull` as described above
+    - `newPolicy` is an enum giving the new policy, one of `BackFacePolicy::Identical`, `BackFacePolicy::Different`, `BackFacePolicy::Custom`, or `BackFacePolicy::Cull` as described above
 
     There is also a corresponding `getBackFacePolicy()`.
+
+??? func "`#!cpp SurfaceMesh* SurfaceMesh::setBackFaceColor(glm::vec3 val)`"
+
+    Set the color to be used for custom back face coloring. Has no effect unless the back face policy is `BackFacePolicy::Custom`.
+
+    There is also a corresponding `getBackFaceColor()`.
 
 ### Options
 
@@ -97,7 +104,8 @@ shade smooth | use smooth shading along faces or simple flat faces | `#!cpp bool
 surface color | the color of the mesh | `#!cpp glm::vec3 getSurfaceColor()` | `#!cpp setSurfaceColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 edge color | the color of the edges of the mesh | `#!cpp glm::vec3 getEdgeColor()` | `#!cpp setEdgeColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!cpp double getEdgeWidth()` | `#!cpp setEdgeWidth(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
-material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
-back face policy | what [back face policy](#back-face-policies) to use | `#!cpp BackFacePolicy getBackFacePolicy()` | `#! setBackFacePolicy(BackFacePolicy newPolicy)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#!cpp setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+back face policy | what [back face policy](#back-face-policies) to use | `#!cpp BackFacePolicy getBackFacePolicy()` | `#!cpp setBackFacePolicy(BackFacePolicy newPolicy)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+back face color | [back face color](#back-face-policies) for the `Custom` policy| `#!cpp BackFacePolicy getBackFaceColor()` | `#!cpp setBackFaceColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
 _(all setters return `this` to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)_
