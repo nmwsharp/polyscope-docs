@@ -97,3 +97,29 @@ polyscope::show();
     ```cpp
     polyscope::view::resetCameraToHomeView();
     ```
+
+#### Orthographic view
+
+By default, Polyscope's view uses [perspective projection](https://en.wikipedia.org/wiki/3D_projection#Perspective_projection). Perspective projections roughly correspond to how images are usually perceived by our eyes and cameras.
+
+Alternately [orthographic projection](https://en.wikipedia.org/wiki/3D_projection#Orthographic_projection) is also supported. Orthographic projections are common in engineering and architecture, because they have the property that distances are preserved in the projected image, regardless of whether the object is near or far from the camera.
+
+![image of perspective and orthographic projection]([[url.prefix]]/media/projection_diagram.jpg)
+
+In perspective mode, zooming (for instance, by manually scrolling the mouse) translates the camera forward in space. In orthographic mode, it instead adjusts the field of view without moving the camera. This is because counter-intuitively, translating the camera forward does not actually change the view in an orthographic projection!
+
+
+??? func "`#!cpp ProjectionMode view::projectionMode`"
+
+    ##### set projection mode
+
+    Set the camera view projection to be either orthographic or perspective (default).
+
+    Example:
+    ```cpp
+    // Enable the orthographic view
+    polyscope::view::projectionMode = polyscope::ProjectionMode::Orthographic;
+
+    // Go back to default perspective projection
+    polyscope::view::projectionMode = polyscope::ProjectionMode::Perspective;
+    ```
