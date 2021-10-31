@@ -20,9 +20,14 @@ points = np.random.rand(100, 3)
 # visualize!
 ps_cloud = ps.register_point_cloud("my points", points)
 ps.show()
+
+# with some options
+ps_cloud_opt = ps.register_point_cloud("my points", points, 
+                                       radius=0.02, point_render_mode='quad')
+ps.show()
 ```
 
-???+ func "`#!python register_point_cloud(name, points, enabled=None, radius=None, color=None, material=None)`"
+???+ func "`#!python register_point_cloud(name, points, enabled=None, radius=None, point_render_mode=None, color=None, material=None)`"
 
     Add a new point cloud structure to Polyscope.
 
@@ -57,6 +62,23 @@ ps.show()
 
     Update the point positions in a point cloud structure. `newPos` must be valid input as to initially construct a point cloud, with the same number of points.
 
+### Point render mode
+
+By default, Polyscope renders point clouds with a sphere for each point. However, for large point clouds (for instance, > 500,000 points, or on low-end hardware), this sphere rendering may become prohibitively expensive and lead to a laggy interface. As an alternative, points can be rendered as a small quad per-point, which is more efficient (for instance, it is real-time with 20,000,000+ points on my mid-range GPU).
+
+![point render mode diagram](../../media/point_render_mode_diagram.jpg)
+
+The point render mode setting specifies which style is used:
+
+- `sphere` a small sphere is drawn for each point (default)
+- `quad` a small quad is drawn for each point
+
+??? func "`#!python PointCloud.set_point_render_mode(newVal)`"
+
+    Set the the rendering method used to draw each point. Pass the string name of the style to use. One of `'sphere'` (default) or `'quad'`.
+
+    There is also a corresponding `get_point_render_mode()`.
+
 
 ### Options
 
@@ -69,6 +91,7 @@ enabled | is the structure enabled? |  `#!python is_enabled()` | `#!python set_e
 transparency | alpha value | `#!python get_transparency()` | `#!python set_transparency(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 point radius | size of rendered points | `#!python get_radius()` | `#!python set_radius(newVal, relative=True)` | [yes](../../../basics/parameters/#persistent-values) |
 point color | default color for points | `#!python get_color()` | `#!python set_color(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
+point render mode | how to draw points | `#!python get_point_render_mode()` | `#!python set_point_render_mode(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 material | material for point | `#!python get_material()` | `#!python set_material(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 
 

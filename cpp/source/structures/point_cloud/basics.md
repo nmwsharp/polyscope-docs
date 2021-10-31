@@ -23,7 +23,14 @@ for (size_t i = 0; i < 3000; i++) {
 }
 
 // visualize!
-polyscope::registerPointCloud("really great points", points);
+polyscope::PointCloud* psCloud = polyscope::registerPointCloud("really great points", points);
+
+// set some options
+psCloud->setPointRadius(0.02);
+psCloud->setPointRenderMode(polyscope::PointRenderMode::Quad);
+
+// show
+polyscope::show()
 ```
 
 ??? func "`#!cpp polyscope::registerPointCloud(std::string name, const T& pointPositions)`"
@@ -48,6 +55,24 @@ The locations of the points in a point cloud can be updated with the member func
 
     Note: `updatePointPositions2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
+### Point render mode
+
+By default, Polyscope renders point clouds with a sphere for each point. However, for large point clouds (for instance, > 500,000 points, or on low-end hardware), this sphere rendering may become prohibitively expensive and lead to a laggy interface. As an alternative, points can be rendered as a small quad per-point, which is more efficient (for instance, it is real-time with 20,000,000+ points on my mid-range GPU).
+
+![point render mode diagram](../../media/point_render_mode_diagram.jpg)
+
+The `PointRenderMode` specifies which style is used:
+
+- `PointRenderMode::Sphere` a small sphere is drawn for each point (default)
+- `PointRenderMode::Quad` a small quad is drawn for each point
+
+??? func "`#!cpp PointCloud* PointCloud::setPointRenderMode(PointRenderMode newVal)`"
+
+    Set the the rendering method used to draw each point. One of `PointRenderMode::Sphere` (default) or `PointRenderMode::Quad`.
+
+    There is also a corresponding `getPointRenderMode()`.
+
+
 ### Options
 
 
@@ -56,7 +81,8 @@ The locations of the points in a point cloud can be updated with the member func
 enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 transparency | [transparency]([[url.prefix]]/features/transparency) alpha for this structure in `[0,1]` | `#!cpp double getTransparency()` | `#!cpp setTransparency(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 point radius | size of rendered points | `#!cpp double getPointRadius()` | `#!cpp setPointRadius(double newVal, bool isRelative=true)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
-point color | default color for point | `#!cpp glm::vec3 getPointColor()` | `#! setPointColor(glm::vec3 newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
-material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+point color | default color for point | `#!cpp glm::vec3 getPointColor()` | `#!cpp setPointColor(glm::vec3 newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+point render mode | how to draw points | `#!cpp PointRenderMode getPointRenderMode()` | `#!cpp setPointRenderMode(PointRenderMode newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#!cpp setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
 _(all setters return `this` to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)_
