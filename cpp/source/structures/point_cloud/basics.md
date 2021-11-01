@@ -57,7 +57,7 @@ The locations of the points in a point cloud can be updated with the member func
 
 ### Point render mode
 
-By default, Polyscope renders point clouds with a sphere for each point. However, for large point clouds (for instance, > 500,000 points, or on low-end hardware), this sphere rendering may become prohibitively expensive and lead to a laggy interface. As an alternative, points can be rendered as a small quad per-point, which is more efficient (for instance, it is real-time with 20,000,000+ points on my mid-range GPU).
+By default, Polyscope renders point clouds with a sphere for each point. However, for large point clouds (for instance, > 500,000 points, or on low-end hardware), this sphere rendering may become prohibitively expensive and lead to a laggy interface. As an alternative, points can be rendered as a small quad per-point, which is more efficient (for instance, it renders in real-time with 20,000,000+ points on my mid-range GPU).
 
 ![point render mode diagram](../../media/point_render_mode_diagram.jpg)
 

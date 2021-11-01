@@ -64,7 +64,7 @@ ps.show()
 
 ### Point render mode
 
-By default, Polyscope renders point clouds with a sphere for each point. However, for large point clouds (for instance, > 500,000 points, or on low-end hardware), this sphere rendering may become prohibitively expensive and lead to a laggy interface. As an alternative, points can be rendered as a small quad per-point, which is more efficient (for instance, it is real-time with 20,000,000+ points on my mid-range GPU).
+By default, Polyscope renders point clouds with a sphere for each point. However, for large point clouds (for instance, > 500,000 points, or on low-end hardware), this sphere rendering may become prohibitively expensive and lead to a laggy interface. As an alternative, points can be rendered as a small quad per-point, which is more efficient (for instance, it renders in real-time with 20,000,000+ points on my mid-range GPU).
 
 ![point render mode diagram](../../media/point_render_mode_diagram.jpg)
 
@@ -76,6 +76,8 @@ The point render mode setting specifies which style is used:
 ??? func "`#!python PointCloud.set_point_render_mode(newVal)`"
 
     Set the the rendering method used to draw each point. Pass the string name of the style to use. One of `'sphere'` (default) or `'quad'`.
+
+    As usual, this can also be set as a keyword argument when the point cloud is registered, like `#!python register_point_cloud('my points', data, point_render_mode='quad')`.
 
     There is also a corresponding `get_point_render_mode()`.
 
