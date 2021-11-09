@@ -107,7 +107,7 @@ polyscope::init();
     
     ##### open imgui window for user callback
 
-    If true, an ImGui window will be created and docked to the side of the UI when the [user callback function](../user_callback) is invoked. This means you can immediately start making ui calls like `ImGui::Button("do stuff")`. 
+    If true, an ImGui window will be created and docked to the side of the UI when the [user callback function](../../features/user_callback) is invoked. This means you can immediately start making ui calls like `ImGui::Button("do stuff")`. 
     
     If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).
 
