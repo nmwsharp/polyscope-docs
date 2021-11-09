@@ -103,6 +103,17 @@ polyscope::init();
 
     If this option is `true`, the scene will be redrawn on every main loop iteration no matter what, circumventing the lazy drawing features. Default: `false`.
 
+??? func "`#!cpp bool options::buildGui`"
+    
+    ##### build gui
+
+    This option can be used to disable all of Polyscope's ImGui UI elements, which may be useful for advanced applications which wish to build a fully-custom UI on top of Polyscope.
+
+    If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.
+
+    Default: `true`.
+
+
 ??? func "`#!cpp bool options::openImGuiWindowForUserCallback`"
     
     ##### open imgui window for user callback
