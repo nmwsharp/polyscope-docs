@@ -103,6 +103,12 @@ polyscope::init();
 
     If this option is `true`, the scene will be redrawn on every main loop iteration no matter what, circumventing the lazy drawing features. Default: `false`.
 
+??? func "`#!cpp bool options::giveFocusOnShow`"
+    
+    ##### give focus on show
+
+    If this option is `true`, the rendering window will be given focus when `polyscope::show()` is called.  Default: `false`.
+
 ??? func "`#!cpp bool options::buildGui`"
     
     ##### build gui

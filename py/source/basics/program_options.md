@@ -104,3 +104,10 @@ ps.init()
     Polyscope is designed to use lazy rendering: the scene is only re-drawn if it has changed since the last time it was drawn. This can dramatically reduce resource consumption, and keeps the immediate GUI responsive even on scenes which are irresponsibly large for the machine's graphics capabilities.
 
     If this option is `True`, the scene will be redrawn on every main loop iteration no matter what, circumventing the lazy drawing features. Default: `False`.
+
+
+??? func "`#!python set_give_focus_on_show(b)`"
+    
+    ##### give focus on show
+
+    If this option is `true`, the rendering window will be given focus when `polyscope::show()` is called.  Default: `false`.
