@@ -2,7 +2,7 @@
 
 When `polyscope::show()` has been called, Polyscope will optionally invoke user-supplied callback function as each frame of the interface is redrawn. This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.
 
-See [ImGui](https://github.com/ocornut/imgui) for documentation of UI commands.
+See [Dear ImGui](https://github.com/ocornut/imgui) for documentation of UI commands.
 
 ??? func "`#!cpp std::function<void()> polyscope::state::userCallback`"
     
