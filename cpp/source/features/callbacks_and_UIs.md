@@ -116,3 +116,21 @@ int main(int argc, char** argv) {
 
     Default: `false`.
 
+
+??? func "`#!cpp bool options::giveFocusOnShow`"
+    
+    ##### give focus on show
+
+    If true, the Polyscope window will request focus from the window manager whenever `show()` is called. If false, the focus state will be left unchanged.
+
+    Default: `false`.
+
+??? func "`#!cpp bool options::buildGui`"
+    
+    ##### build gui
+
+    This option can be used to disable all of Polyscope's ImGui UI elements, which may be useful for advanced applications which wish to build a fully-custom UI on top of Polyscope.
+
+    If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.
+
+    Default: `true`.

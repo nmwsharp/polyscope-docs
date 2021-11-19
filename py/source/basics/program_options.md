@@ -104,3 +104,46 @@ ps.init()
     Polyscope is designed to use lazy rendering: the scene is only re-drawn if it has changed since the last time it was drawn. This can dramatically reduce resource consumption, and keeps the immediate GUI responsive even on scenes which are irresponsibly large for the machine's graphics capabilities.
 
     If this option is `True`, the scene will be redrawn on every main loop iteration no matter what, circumventing the lazy drawing features. Default: `False`.
+
+??? func "`#!python set_build_gui(b)`"
+    
+    ##### build gui
+
+    This option can be used to disable all of Polyscope's ImGui UI elements, which may be useful for advanced applications which wish to build a fully-custom UI on top of Polyscope.
+
+    If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.
+
+    Default: `True`.
+
+
+??? func "`#!python set_open_imgui_window_for_user_callback(b)`"
+    
+    ##### open imgui window for user callback
+
+    If true, an ImGui window will be created and docked to the side of the UI when the [user callback function](../../features/callbacks_and_UIs) is invoked. This means you can immediately start making ui calls like `polyscope.imgui.Button("do stuff")`. 
+    
+    If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).
+
+    Default: `True`.
+
+??? func "`#!python set_invoke_user_callback_for_nested_show(b)`"
+    
+    ##### invoke user callback for nested show
+
+    Suppose you call `polyscope.show()`, and within your callback, another instance of `polyscope.show()` is called---this is a nested show.
+
+    Depending on the situation, you might or might not want your user callback to continue being executed on each render loop iteration of this nested viewer; this setting exposes the option.
+
+    If true, your callback will be executed as normal for every main loop iteration, even in nested show windows.
+
+    If false, your callback will only be executed for initial, outermost calls to `polyscope.show()`.
+
+    Default: `False`.
+
+??? func "`#!python set_give_focus_on_show(b)`"
+    
+    ##### give focus on show
+
+    If true, the Polyscope window will request focus from the window manager whenever `show()` is called. If false, the focus state will be left unchanged.
+
+    Default: `False`.

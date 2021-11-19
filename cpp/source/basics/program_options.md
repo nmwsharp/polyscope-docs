@@ -138,3 +138,10 @@ polyscope::init();
 
     Default: `false`.
 
+??? func "`#!cpp bool options::giveFocusOnShow`"
+    
+    ##### give focus on show
+
+    If true, the Polyscope window will request focus from the window manager whenever `show()` is called. If false, the focus state will be left unchanged.
+
+    Default: `false`.
