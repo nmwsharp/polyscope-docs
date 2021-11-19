@@ -45,7 +45,7 @@ Polyscope uses [Dear ImGui](https://github.com/ocornut/imgui) as an immediate-mo
 
 These bindings are not yet exhaustively documented, but they follow the naming conventions of ImGui as closely as possible for simplicity. Documentation of ImGui functions and parameters lives [here](https://github.com/ocornut/imgui/blob/master/imgui.h), and  you can find the list of bound functions, types, and enums [here](https://github.com/nmwsharp/polyscope-py/blob/master/src/cpp/imgui.cpp). Common usage should be covered by the example below.
 
-**Example:**
+**Example:** Create the following UI in a Python callback
 
 ![callback ui demo]([[url.prefix]]/media/imgui_py_demo.png)
 
