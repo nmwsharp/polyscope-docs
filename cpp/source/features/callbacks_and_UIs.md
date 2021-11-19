@@ -1,6 +1,6 @@
 ### Intro
 
-When `polyscope::show()` has been called, Polyscope will optionally invoke user-supplied callback function on every loop iteration. This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.
+When `polyscope::show()` has been called, Polyscope will optionally invoke user-supplied callback function as each frame of the interface is redrawn. This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.
 
 See [ImGui](https://github.com/ocornut/imgui) for documentation of UI commands.
 
@@ -95,7 +95,7 @@ int main(int argc, char** argv) {
     
     ##### open imgui window for user callback
 
-    If true, an ImGui window will be created and docked to the side of the UI when the [user callback function](../user_callback) is invoked. This means you can immediately start making ui calls like `ImGui::Button("do stuff")`. 
+    If true, an ImGui window will be created and docked to the side of the UI when the [user callback function](../callbacks_and_UIs) is invoked. This means you can immediately start making ui calls like `ImGui::Button("do stuff")`. 
     
     If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).
 

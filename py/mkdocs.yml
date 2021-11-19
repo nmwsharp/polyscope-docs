@@ -80,7 +80,7 @@ nav:
   - Features: 
     - 'Messages' : 'features/messages.md'
     - 'Screenshots' : 'features/screenshots.md'
-    - 'User Callback' : 'features/user_callback.md'
+    - 'Callbacks & Custom UIs' : 'features/callbacks_and_UIs.md'
     - 'Materials' : 'features/materials.md'
     - 'Color Maps' : 'features/color_maps.md'
     - 'Transparency' : 'features/transparency.md'
