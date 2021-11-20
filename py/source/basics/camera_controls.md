@@ -119,7 +119,7 @@ Alternately [orthographic projection](https://en.wikipedia.org/wiki/3D_projectio
 In perspective mode, zooming (for instance, by manually scrolling the mouse) translates the camera forward in space. In orthographic mode, it instead adjusts the field of view without moving the camera. This is because counter-intuitively, translating the camera forward does not actually change the view in an orthographic projection!
 
 
-??? func "`#!python set_view_projection_mode`"
+??? func "`#!python set_view_projection_mode(mode_name)`"
 
     ##### set projection mode
 
