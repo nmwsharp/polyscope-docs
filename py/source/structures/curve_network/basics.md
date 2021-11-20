@@ -59,13 +59,11 @@ The locations of the nodes in a curve network can be updated with the member fun
 
 ### Options
 
-Options control the appearance of the network . Note that these options can also be passed as keyword arguments to the initial `register_curve_network()`, as noted above.
+Options control the appearance of the curve network. These options can also be passed as keyword arguments to the initial `register_curve_network()`, as noted above.  See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.
 
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? |  `#!python is_enabled()` | `#!python set_enabled(newVal=True)` | [yes](../../../basics/parameters/#persistent-values)
-transparency | alpha value | `#!python get_transparency()` | `#!python set_transparency(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 radius | size of rendered nodes/edges | `#!python get_radius()` | `#!python set_radius(newVal, relative=True)` | [yes](../../../basics/parameters/#persistent-values) |
 color | default color for the network | `#!python get_color()` | `#!python set_color(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 material | material for structure | `#!python get_material()` | `#!python set_material(newVal)` | [yes](../../../basics/parameters/#persistent-values) |

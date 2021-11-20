@@ -107,15 +107,14 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 ### Options
 
+See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
-transparency | [transparency]([[url.prefix]]/features/transparency) alpha for this structure in `[0,1]` | `#!cpp double getTransparency()` | `#!cpp setTransparency(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 color | the color of the outside of the volume | `#!cpp glm::vec3 getColor()` | `#!cpp setColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 interior color | the color of the inside of the volume | `#!cpp glm::vec3 getInteriorColor()` | `#!cpp setInteriorColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 edge color | the color of the edges of the mesh | `#!cpp glm::vec3 getEdgeColor()` | `#!cpp setEdgeColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!cpp double getEdgeWidth()` | `#!cpp setEdgeWidth(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(all setters return `this` to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)_
+_(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_

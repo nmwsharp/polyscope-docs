@@ -95,11 +95,10 @@ The choice of these policies can be set as an option for each surface mesh struc
 
 ### Options
 
+See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
-transparency | [transparency]([[url.prefix]]/features/transparency) alpha for this structure in `[0,1]` | `#!cpp double getTransparency()` | `#!cpp setTransparency(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 shade smooth | use smooth shading along faces or simple flat faces | `#!cpp bool isSmoothShade()` | `#!cpp setSmoothShade(bool isSmooth)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 surface color | the color of the mesh | `#!cpp glm::vec3 getSurfaceColor()` | `#!cpp setSurfaceColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 edge color | the color of the edges of the mesh | `#!cpp glm::vec3 getEdgeColor()` | `#!cpp setEdgeColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
@@ -108,4 +107,4 @@ material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp st
 back face policy | what [back face policy](#back-face-policies) to use | `#!cpp BackFacePolicy getBackFacePolicy()` | `#!cpp setBackFacePolicy(BackFacePolicy newPolicy)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 back face color | [back face color](#back-face-policies) for the `Custom` policy| `#!cpp BackFacePolicy getBackFaceColor()` | `#!cpp setBackFaceColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(all setters return `this` to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)_
+_(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_

@@ -96,12 +96,10 @@ The choice of these policies can be set as an option for each surface mesh struc
 
 ### Options
 
-Options control the appearance of the mesh. Note that these options can also be passed as keyword arguments to the initial `register_surface_mesh()`, as noted above.
+Options control the appearance of the mesh. These options can also be passed as keyword arguments to the initial `register_surface_mesh()`, as noted above.  See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? | `#!python bool is_enabled()` | `#!python set_enabled(newVal)` | [yes](../../../basics/parameters/#persistent-values)
-transparency | alpha value | `#!python get_transparency()` | `#!python set_transparency(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 surface color | the color of the mesh | `#!python get_color()` | `#!python set_color(val)` | [yes](../../../basics/parameters/#persistent-values)
 edge color | the color of the edges of the mesh | `#!python get_edge_color()` | `#!python set_edge_color(val)` | [yes](../../../basics/parameters/#persistent-values)
 edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!python get_edge_width()` | `#!python set_edge_width(val)` | [yes](../../../basics/parameters/#persistent-values)

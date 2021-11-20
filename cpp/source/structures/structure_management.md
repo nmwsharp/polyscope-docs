@@ -90,3 +90,99 @@ If no longer needed, structures can be removed by name or by pointer. Removing a
 ??? func "`#!cpp void removeStructure(std::string name, bool errorIfAbsent = true)`"
     
     Identical to `removeStructure(Struture*)`, but accepts a name instead. Will fail unless there is exactly one structure with the given name across all structure types.
+
+## Structure options
+
+These basic options are shared by all structures.  Structure options are managed as [persistent values]([[url.prefix]]/basics/parameters/#persistent-values), and thus will persist if a new structure is registered with the same name.
+
+#### Enabled
+
+If a structure is disabled, it will be hidden from view, along with any quantities associated with that structure.
+
+??? func "`#!cpp bool Structure::isEnabled()`"
+
+    Is the structure enabled?
+
+??? func "`#!cpp void Structure::setEnabled(bool newVal)`"
+
+    Set the structure to be enabled or disabled.
+
+
+#### Transparency
+
+Set the transparency parameter for the structure. `1` is fully opaque (the default), and `0` is fully transparent. When the first structure has transparency applied, transparent rendering will be automatically enabled.
+
+Transparency can be controlled in the UI via the structure's `[Options] --> [Transparency]` menu.
+
+??? func "`#!cpp float Structure::getTransparency()`"
+
+    Get the transparency parameter for the structure.
+
+??? func "`#!cpp void Structure::setTransparency(float alpha)`"
+
+    Set the transparancy for the structure.
+
+#### Transforms
+
+Each structure has an associated spatial _transform_ applied to it for display in the scene. The transform encodes a translation, rotation, and scaling represented as a 4x4 homogeneous matrix. Initially this transformation is just the identity transform (it does nothing), but it can be adjusted to position the structures in your scene.
+
+The transform can be controlled in the UI via the structure's `[Options] --> [Transform]` menu.
+
+??? func "`#!cpp void Structure::centerBoundingBox()`"
+
+    Set the transformation such that the structure's bounding box is centered at the world origin.
+
+??? func "`#!cpp void Structure::rescaleToUnit()`"
+    
+    Set the transformation scaling such that the structure has length scale 1. This makes all structures roughly the same size.
+
+??? func "`#!cpp void Structure::resetTransform()`"
+    
+    Reset the structure's transform to be the identity transform (i.e. to do nothing).
+
+??? func "`#!cpp void Structure::setTransform(glm::mat4x4 transform)`"
+    
+    Set a particular transform matrix. 
+
+??? func "`#!cpp void Structure::setPosition(glm::vec3 vec)`"
+
+    Set the transformation matrix such that structure is transformed to the position `vec`.
+
+??? func "`#!cpp void Structure::translate(glm::vec3 vec)`"
+    
+    Translate the transformation matrix by offset `vec`.
+
+??? func "`#!cpp glm::mat4x4 Structure::getTransform()`"
+
+    Get the current transformation matrix. 
+
+??? func "`#!cpp glm::vec3 Structure::getPosition()`"
+
+    Get the translation component of the transformation matrix, the position to which the structure's origin is translated.
+
+    
+#### Slice planes
+
+Options relating to [slice planes]([[url.prefix]]/features/slice_planes/) which may be present in the scene.
+
+Slice plane options can be controlled in the UI via the structure's `[Options] --> [Slice Planes]` menu.
+
+??? func "`#!cpp Structure* Structure::setCullWholeElements(bool newVal)`"
+
+    If `true`, slice planes will affect this structure by culling whole elements (tets, triangles, points, etc), rather than slicing through the middle of the elements.
+
+    Note that not all structures may support culling whole elements. If not supported, this setting will do nothing.
+    
+    Default: false.
+
+??? func "`#!cpp bool Structure::getCullWholeElements()`"
+
+    Get whether the cull whole elements setting is applied.
+
+??? func "`#!cpp Structure* Structure::setIgnoreSlicePlane(std::string name, bool newValue)`"
+    
+    Set a slice plane to be ignored by the structure. If `newValue` is `true` the slice plane will be ignored, and if `false` it will be respected.
+
+??? func "`#!cpp bool Structure::getIgnoreSlicePlane(std::string name)`"
+
+    Get if a slice plane is currently being ignored by the structure.

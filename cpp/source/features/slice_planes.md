@@ -130,7 +130,7 @@ psMesh->setIgnoreSlicePlane(psPlane->name, true);
 
 ??? func "`#!cpp bool Structure::getIgnoreSlicePlane(std::string name)`"
 
-    Test if a slice plane is currently being ignored by the structure.
+    Get if a slice plane is currently being ignored by the structure.
 
 ### Cull whole elements
 
@@ -151,8 +151,10 @@ psMesh->setCullWholeElements(false);
     If `true`, slice planes will affect this structure by culling whole elements (tets, triangles, points, etc), rather than slicing through the middle of the elements.
 
     Note that not all structures may support culling whole elements. If not supported, this setting will do nothing.
+    
+    Default: false.
 
 ??? func "`#!cpp bool Structure::getCullWholeElements()`"
 
-    Test whether the cull whole elements setting is applied.
+    Get whether the cull whole elements setting is applied.
 

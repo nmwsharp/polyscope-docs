@@ -94,12 +94,10 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 ### Options
 
-Options control the appearance of the mesh. Note that these options can also be passed as keyword arguments to the initial `register_volume_mesh()`, as noted above.
+Options control the appearance of the mesh. These options can also be passed as keyword arguments to the initial `register_volume_mesh()`, as noted above.  See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? | `#!python bool is_enabled()` | `#!python set_enabled(newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
-transparency | alpha value | `#!python get_transparency()` | `#!python set_transparency(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 color | the color of the outside of the volume | `#!python get_color()` | `#!python set_color(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 interior color | the color of the inside of the volume | `#!python get_interior_color()` | `#!python set_interior_color(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 edge color | the color of the edges of the mesh | `#!python get_edge_color()` | `#!python set_edge_color(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)

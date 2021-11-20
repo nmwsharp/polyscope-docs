@@ -75,14 +75,14 @@ The `PointRenderMode` specifies which style is used:
 
 ### Options
 
+See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.
+
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
-enabled | is the structure enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnabled(bool newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
-transparency | [transparency]([[url.prefix]]/features/transparency) alpha for this structure in `[0,1]` | `#!cpp double getTransparency()` | `#!cpp setTransparency(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 point radius | size of rendered points | `#!cpp double getPointRadius()` | `#!cpp setPointRadius(double newVal, bool isRelative=true)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 point color | default color for point | `#!cpp glm::vec3 getPointColor()` | `#!cpp setPointColor(glm::vec3 newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 point render mode | how to draw points | `#!cpp PointRenderMode getPointRenderMode()` | `#!cpp setPointRenderMode(PointRenderMode newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#!cpp setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(all setters return `this` to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)_
+_(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_
