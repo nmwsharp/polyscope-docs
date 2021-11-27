@@ -22,13 +22,16 @@ phase | cyclic | `phase`
 spectral | decorative | `spectral`
 rainbow | decorative | `rainbow`
 jet | decorative | `jet`
+turbo | decorative | `turbo`
 
 
 [^1]: Viridis is by Nathaniel J. Smith, Stefan van der Walt, and Eric Firing. [link](https://github.com/BIDS/colormap/blob/master/colormaps.py)
 
 [^2]: Phase is from the `cmocean` package. [link](http://tos.org/oceanography/assets/docs/29-3_thyng.pdf)
 
-[^3]: The other color maps have unclear origins or are simple linear ramps, and are implemented in [matplotlib](https://matplotlib.org/).
+[^3]: Turbo is by Anton Mikhailov and others at Google. [link](https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html)
+
+[^4]: The other color maps have unclear origins or are simple linear ramps, and are implemented in [matplotlib](https://matplotlib.org/).
 
 ## Loading custom color maps
 
