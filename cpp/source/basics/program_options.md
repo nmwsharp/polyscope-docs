@@ -111,6 +111,8 @@ polyscope::init();
 
     If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.
 
+    If desired, the functions `buildStrctureGui()`, etc can be manually invoked to build pieces of the UI, but know that these are internal details which may change without warning in future verisons.
+
     Default: `true`.
 
 
