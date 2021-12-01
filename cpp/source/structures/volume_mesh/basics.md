@@ -103,7 +103,9 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 ### Slice planes
 
-[Slice planes]([[url.prefix]]/features/slice_planes) are particularly useful for inspecting the internal stucture of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.
+[Slice planes]([[url.prefix]]/features/slice_planes) are particularly useful for inspecting the internal structure of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.
+
+Slice planes have [special functionality]([[url.prefix]]/features/slice_planes/#inspecting-volume-meshes) for volume mesh vertex values---they can _inspect_ quantities on volume meshes and render them on the interior of the volume. See the slice plane documentation for details.
 
 ### Options
 

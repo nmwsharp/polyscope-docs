@@ -158,3 +158,21 @@ ps_mesh.set_cull_whole_elements(False)
 
     Test whether the cull whole elements setting is applied.
 
+
+### Inspecting volume meshes
+
+![slice plane volume inspect image]([[url.prefix]]/media/slice_plane_volume_inspect.png)
+
+Slice planes can also _inspect_ volume meshes, rendering a surface where the structure is cut by the plane. Not only does this help to visualize the interior of the shape, but scalar and color quantities can be drawn along the plane to better inspect values on the interior of the mesh.
+
+This can also be set in the UI under `[View] --> [Slice Planes] --> [Inspect]`. This option will only be available when there is at least one volume mesh in the scene.
+
+If the volume mesh has a vertex scalar or vertex color quantity enabled, it will be automatically drawn on the inspecting slice plane.
+        
+??? func "`#!python SlicePlane.set_volume_mesh_to_inspect(meshNameStr)`"
+
+    Give the name of a volume mesh to inspect. Pass the empty string `""` to clear the inspection.
+
+??? func "`#!python SlicePlane.get_volume_mesh_to_inspect()`"
+
+    Get the volume mesh being inspected. Returns a string.

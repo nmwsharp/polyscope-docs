@@ -43,3 +43,8 @@ ps.show()
     - `cmap` string, which [colormap](../../../features/color_maps) to use
     
     if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
+
+
+### Inspecting with slice planes
+
+Slice planes have [special functionality]([[url.prefix]]/features/slice_planes/#inspecting-volume-meshes) for volume mesh vertex values---they can _inspect_ quantities on volume meshes and render them on the interior of the volume. See the slice plane documentation for details.
