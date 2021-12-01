@@ -44,6 +44,7 @@ extra_javascript:
   - 'extra.js'
 
 plugins:
+  - search
   - macros:
       # use a custom tag so it doesn't interfere with C++
       # code blocks using {{ }} 
