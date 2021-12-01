@@ -125,6 +125,55 @@ int main(int argc, char** argv) {
 
     Default: `false`.
 
+### Custom UIs
+
+
+If desired, you can circumvent Polyscope's standard ImGui style and UI panes, in ordered to build dramatically customized applications.
+
+!!! warning
+
+    Circumventing the standard Polyscope user interface should be considered "advanced" usage. You are more likely to encounter bugs, and you may need to look at the Polyscope source to understand the behavior. The functions listed in this section may change in future versions of Polyscope.
+
+
+Two callback functions are made available to configure the appearance of Polyscope's ImGui panes. These callbacks are invoked internally by Polyscope during the setup process. If desired, you can set them to your own custom functions to use alternate styles.
+
+**Example:**
+```cpp
+// clearing the callback will fall back on default imgui styles
+polyscope::options::configureImGuiStyleCallback = nullptr;
+
+// alternately, set a custom callback 
+// (which in this case simply configures the imgui light style)
+polyscope::options::configureImGuiStyleCallback = []() { ImGui::StyleColorsLight(); };
+
+// clearing the fonts callback will fall back on default imgui fonts
+polyscope::options::prepareImGuiFontsCallback = nullptr;
+
+// initialize polyscope
+polyscope::init();
+
+// ... the rest of your program as usual
+```
+
+??? func "`#!cpp std::function<void()> options::configureImGuiStyleCallback`"
+    
+    ##### imgui style callback
+
+    A callback function which will be invoked when an ImGui context is created (which may happen several times as Polyscope runs). By default, this is set to invoke `configureImGuiStyle()` from Polyscope's `imgui_config.cpp`, but you may assign your own function to create custom styles. If this callback is null, the default ImGui style will be used.
+
+??? func "`#!cpp std::function<std::tuple<ImFontAtlas*, ImFont*, ImFont*>()> options::prepareImGuiFontsCallback`"
+    
+    ##### imgui fonts callback
+
+    A callback function which will be invoked exactly once during initialization to construct a font atlas for ImGui to use. The callback should return a tuple of three pointers: a newly created global shared font atlas, a regular font, and a mono font. By default, this is set to invoke `prepareImGuiFonts()` from Polyscope's `imgui_config.cpp`, but you may assign your own function to create custom styles. If this callback is null, default fonts will be used.
+
+    This callback is invoked when `polycope::init()` is called, so if you are going to customize it you **must** do so before `init()`.
+
+
+
+The option `buildGui` can be used to entirely disable all of Polyscope's ImGui UI elements, allowing you to build your own UI. Polyscope will still initialize ImGui and invoke its drawing routines each frame.
+
+
 ??? func "`#!cpp bool options::buildGui`"
     
     ##### build gui
@@ -134,3 +183,5 @@ int main(int argc, char** argv) {
     If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.
 
     Default: `true`.
+
+The functions `buildPolyscopeGui()`, `buildStructureGui()`, `buildPickGui()`, and `buildUserGuiAndInvokeCallback()` can be used to manually build pieces of the UI one at a time.
