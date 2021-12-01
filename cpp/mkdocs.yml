@@ -121,3 +121,4 @@ nav:
       - 'Geometry Central' : 'integrations/geometry_central/index.md'
       - 'libIGL' : 'integrations/libIGL/index.md'
       - 'DGtal' : 'integrations/DGtal/index.md'
+      - 'openMesh' : 'integrations/openMesh/index.md'
