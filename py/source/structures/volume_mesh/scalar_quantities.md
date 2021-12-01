@@ -43,3 +43,11 @@ ps.show()
     - `cmap` string, which [colormap](../../../features/color_maps) to use
     
     if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
+
+### Level sets
+
+When a vertex scalar quantity is attached to a volume mesh, level sets of the vertex data can be rendered by enabling "Level Set" in the settings for the vertex scalar quantity. Show other scalar quantities on this generated geometry by selecting "Show Quantity".
+
+
+![level set distance]([[url.prefix]]/media/level_set.png)
+<b>Example</b>: showing a level set of a vertex scalar quantity which just represents the distance from the mesh's origin, resulting in a sphere with radius equal to the value at the level set.

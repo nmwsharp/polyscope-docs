@@ -158,3 +158,13 @@ psMesh->setCullWholeElements(false);
 
     Get whether the cull whole elements setting is applied.
 
+
+### Slicing Volume Meshes
+
+When slicing geometry meshes, it is often useful to inspect geometry and quantities along the sliced plane within the mesh. To generate this geometry along a slice plane to "fill" the culled space, select the volume mesh you want to slice from the "Slice Volume Mesh" dropdown in the slice plane options. Scalar quantities on the surface of the mesh will also be propagated correctly onto the generated slice.
+
+??? func "`#!cpp void SlicePlane::setVolumeMeshToSlice(std::string name)`"
+
+    Set the volume mesh to slice for this plane. If the provided string is a valid name of a volume mesh in the scene, that slice plane will generate new geometry along the plane to fill in culled data.
+
+![volume mesh sliced]([[url.prefix]]/media/sliced_volume_mesh.png)
