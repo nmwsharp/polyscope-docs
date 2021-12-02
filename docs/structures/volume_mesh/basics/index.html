@@ -140,6 +140,38 @@
 
     <!-- Button to open search dialogue -->
     
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
 			
     <!-- ADDED BY NSHARP language selector -->
     <div class="md-flex__cell md-flex__cell--shrink">
@@ -496,8 +528,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/user_callback/" class="md-nav__link">
-        User Callback
+      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
+        Callbacks & Custom UIs
       </a>
     </li>
   
@@ -1124,6 +1156,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/openMesh/" class="md-nav__link">
+        openMesh
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1292,8 +1336,10 @@
 </ul>
 </details>
 <h3 id="slice-planes">Slice planes</h3>
-<p><a href="/features/slice_planes">Slice planes</a> are particularly useful for inspecting the internal stucture of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.</p>
+<p><a href="/features/slice_planes">Slice planes</a> are particularly useful for inspecting the internal structure of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.</p>
+<p>Slice planes have <a href="/features/slice_planes/#inspecting-volume-meshes">special functionality</a> for volume mesh vertex values&mdash;they can <em>inspect</em> quantities on volume meshes and render them on the interior of the volume. See the slice plane documentation for details.</p>
 <h3 id="options">Options</h3>
+<p>See <a href="/structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>
 <thead>
 <tr>
@@ -1305,20 +1351,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>enabled</td>
-<td>is the structure enabled?</td>
-<td><code class="highlight"><span class="kt">bool</span> <span class="n">isEnabled</span><span class="p">()</span></code></td>
-<td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span> <span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="/basics/parameters/#persistent-values">yes</a></td>
-</tr>
-<tr>
-<td>transparency</td>
-<td><a href="/features/transparency">transparency</a> alpha for this structure in <code>[0,1]</code></td>
-<td><code class="highlight"><span class="kt">double</span> <span class="n">getTransparency</span><span class="p">()</span></code></td>
-<td><code class="highlight"><span class="n">setTransparency</span><span class="p">(</span><span class="kt">double</span> <span class="n">val</span><span class="p">)</span></code></td>
-<td><a href="/basics/parameters/#persistent-values">yes</a></td>
-</tr>
 <tr>
 <td>color</td>
 <td>the color of the outside of the volume</td>
@@ -1356,7 +1388,7 @@
 </tr>
 </tbody>
 </table>
-<p><em>(all setters return <code>this</code> to support chaining. setEnabled()/setTransparency() return generic setter, so chain them last)</em></p>
+<p><em>(All setters return <code>this</code> to support chaining. Structure options return a generic structure pointer, so chain them last.)</em></p>
                 
               
               

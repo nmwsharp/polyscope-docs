@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://polyscope.run/features/user_callback/">
+        <link rel="canonical" href="https://polyscope.run/features/callbacks_and_UIs/">
       
       <link rel="shortcut icon" href="../../media/icons/material/baseline_highlight_black_18dp.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
     
     
       
-        <title>User Callback - Polyscope - C++</title>
+        <title>Callbacks & Custom UIs - Polyscope - C++</title>
       
     
     
@@ -131,7 +131,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              User Callback
+              Callbacks & Custom UIs
             
           </span>
         </div>
@@ -139,6 +139,38 @@
     </div>
 
     <!-- Button to open search dialogue -->
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     
 			
     <!-- ADDED BY NSHARP language selector -->
@@ -505,12 +537,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          User Callback
+          Callbacks & Custom UIs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        User Callback
+        Callbacks & Custom UIs
       </a>
       
         
@@ -569,6 +601,47 @@
           <li class="md-nav__item">
   <a href="#invoke-user-callback-for-nested-show" class="md-nav__link">
     invoke user callback for nested show
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#give-focus-on-show" class="md-nav__link">
+    give focus on show
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-uis" class="md-nav__link">
+    Custom UIs
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom UIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imgui-style-callback" class="md-nav__link">
+    imgui style callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imgui-fonts-callback" class="md-nav__link">
+    imgui fonts callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-gui" class="md-nav__link">
+    build gui
   </a>
   
 </li>
@@ -1144,6 +1217,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/openMesh/" class="md-nav__link">
+        openMesh
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1221,6 +1306,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#give-focus-on-show" class="md-nav__link">
+    give focus on show
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-uis" class="md-nav__link">
+    Custom UIs
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom UIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imgui-style-callback" class="md-nav__link">
+    imgui style callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imgui-fonts-callback" class="md-nav__link">
+    imgui fonts callback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-gui" class="md-nav__link">
+    build gui
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1239,11 +1365,11 @@
               
                 
                 
-                  <h1>User Callback</h1>
+                  <h1>Callbacks & Custom UIs</h1>
                 
                 <h3 id="intro">Intro</h3>
-<p>When <code>polyscope::show()</code> has been called, Polyscope will optionally invoke user-supplied callback function on every loop iteration. This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.</p>
-<p>See <a href="https://github.com/ocornut/imgui">ImGui</a> for documentation of UI commands.</p>
+<p>When <code>polyscope::show()</code> has been called, Polyscope will optionally invoke user-supplied callback function as each frame of the interface is redrawn. This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.</p>
+<p>See <a href="https://github.com/ocornut/imgui">Dear ImGui</a> for documentation of UI commands.</p>
 <details class="func"><summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">userCallback</span></code></summary><h5 id="user-callback">user callback</h5>
 <p>A function which will be invoked on every main loop iteration by Polyscope, once <code>show()</code> has been called.</p>
 <p>If null, nothing will be invoked.</p>
@@ -1319,7 +1445,7 @@
 </code></pre></div>
 <h3 id="options">Options</h3>
 <details class="func"><summary><code class="highlight"><span class="kt">bool</span> <span class="n">options</span><span class="o">::</span><span class="n">openImGuiWindowForUserCallback</span></code></summary><h5 id="open-imgui-window-for-user-callback">open imgui window for user callback</h5>
-<p>If true, an ImGui window will be created and docked to the side of the UI when the <a href="../user_callback">user callback function</a> is invoked. This means you can immediately start making ui calls like <code>ImGui::Button("do stuff")</code>. </p>
+<p>If true, an ImGui window will be created and docked to the side of the UI when the <a href="../callbacks_and_UIs">user callback function</a> is invoked. This means you can immediately start making ui calls like <code>ImGui::Button("do stuff")</code>. </p>
 <p>If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).</p>
 <p>Default: <code>true</code>.</p>
 </details>
@@ -1330,6 +1456,47 @@
 <p>If false, your callback will only be executed for initial, outermost calls to <code>polyscope::show()</code>.</p>
 <p>Default: <code>false</code>.</p>
 </details>
+<details class="func"><summary><code class="highlight"><span class="kt">bool</span> <span class="n">options</span><span class="o">::</span><span class="n">giveFocusOnShow</span></code></summary><h5 id="give-focus-on-show">give focus on show</h5>
+<p>If true, the Polyscope window will request focus from the window manager whenever <code>show()</code> is called. If false, the focus state will be left unchanged.</p>
+<p>Default: <code>false</code>.</p>
+</details>
+<h3 id="custom-uis">Custom UIs</h3>
+<p>If desired, you can circumvent Polyscope&rsquo;s standard ImGui style and UI panes, in ordered to build dramatically customized applications.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Circumventing the standard Polyscope user interface should be considered &ldquo;advanced&rdquo; usage. You are more likely to encounter bugs, and you may need to look at the Polyscope source to understand the behavior. The functions listed in this section may change in future versions of Polyscope.</p>
+</div>
+<p>Two callback functions are made available to configure the appearance of Polyscope&rsquo;s ImGui panes. These callbacks are invoked internally by Polyscope during the setup process. If desired, you can set them to your own custom functions to use alternate styles.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">// clearing the callback will fall back on default imgui styles</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">configureImGuiStyleCallback</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+
+<span class="c1">// alternately, set a custom callback </span>
+<span class="c1">// (which in this case simply configures the imgui light style)</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">configureImGuiStyleCallback</span> <span class="o">=</span> <span class="p">[]()</span> <span class="p">{</span> <span class="n">ImGui</span><span class="o">::</span><span class="n">StyleColorsLight</span><span class="p">();</span> <span class="p">};</span>
+
+<span class="c1">// clearing the fonts callback will fall back on default imgui fonts</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">prepareImGuiFontsCallback</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+
+<span class="c1">// initialize polyscope</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
+
+<span class="c1">// ... the rest of your program as usual</span>
+</code></pre></div></p>
+<details class="func"><summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">options</span><span class="o">::</span><span class="n">configureImGuiStyleCallback</span></code></summary><h5 id="imgui-style-callback">imgui style callback</h5>
+<p>A callback function which will be invoked when an ImGui context is created (which may happen several times as Polyscope runs). By default, this is set to invoke <code>configureImGuiStyle()</code> from Polyscope&rsquo;s <code>imgui_config.cpp</code>, but you may assign your own function to create custom styles. If this callback is null, the default ImGui style will be used.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ImFontAtlas</span><span class="o">*</span><span class="p">,</span> <span class="n">ImFont</span><span class="o">*</span><span class="p">,</span> <span class="n">ImFont</span><span class="o">*&gt;</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">options</span><span class="o">::</span><span class="n">prepareImGuiFontsCallback</span></code></summary><h5 id="imgui-fonts-callback">imgui fonts callback</h5>
+<p>A callback function which will be invoked exactly once during initialization to construct a font atlas for ImGui to use. The callback should return a tuple of three pointers: a newly created global shared font atlas, a regular font, and a mono font. By default, this is set to invoke <code>prepareImGuiFonts()</code> from Polyscope&rsquo;s <code>imgui_config.cpp</code>, but you may assign your own function to create custom styles. If this callback is null, default fonts will be used.</p>
+<p>This callback is invoked when <code>polycope::init()</code> is called, so if you are going to customize it you <strong>must</strong> do so before <code>init()</code>.</p>
+</details>
+<p>The option <code>buildGui</code> can be used to entirely disable all of Polyscope&rsquo;s ImGui UI elements, allowing you to build your own UI. Polyscope will still initialize ImGui and invoke its drawing routines each frame.</p>
+<details class="func"><summary><code class="highlight"><span class="kt">bool</span> <span class="n">options</span><span class="o">::</span><span class="n">buildGui</span></code></summary><h5 id="build-gui">build gui</h5>
+<p>This option can be used to disable all of Polyscope&rsquo;s ImGui UI elements, which may be useful for advanced applications which wish to build a fully-custom UI on top of Polyscope.</p>
+<p>If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.</p>
+<p>Default: <code>true</code>.</p>
+</details>
+<p>The functions <code>buildPolyscopeGui()</code>, <code>buildStructureGui()</code>, <code>buildPickGui()</code>, and <code>buildUserGuiAndInvokeCallback()</code> can be used to manually build pieces of the UI one at a time.</p>
                 
               
               

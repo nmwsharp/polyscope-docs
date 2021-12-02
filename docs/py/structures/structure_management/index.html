@@ -140,6 +140,38 @@
 
     <!-- Button to open search dialogue -->
     
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
 			
     <!-- ADDED BY NSHARP language selector -->
     <div class="md-flex__cell md-flex__cell--shrink">
@@ -481,8 +513,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/user_callback/" class="md-nav__link">
-        User Callback
+      <a href="../../features/callbacks_and_UIs/" class="md-nav__link">
+        Callbacks & Custom UIs
       </a>
     </li>
   
@@ -642,6 +674,47 @@
   <a href="#removing-structures" class="md-nav__link">
     Removing structures
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure-options" class="md-nav__link">
+    Structure options
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabled" class="md-nav__link">
+    Enabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transparency" class="md-nav__link">
+    Transparency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transforms" class="md-nav__link">
+    Transforms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-planes" class="md-nav__link">
+    Slice planes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1054,6 +1127,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#structure-options" class="md-nav__link">
+    Structure options
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabled" class="md-nav__link">
+    Enabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transparency" class="md-nav__link">
+    Transparency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transforms" class="md-nav__link">
+    Transforms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-planes" class="md-nav__link">
+    Slice planes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1124,6 +1238,55 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <span class="c1"># actually, just remove everything</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">remove_all_structures</span><span class="p">()</span>
 </code></pre></div>
+<h2 id="structure-options">Structure options</h2>
+<p>These basic options are shared by all structures.  Structure options are managed as <a href="/py//basics/parameters/#persistent-values">persistent values</a>, and thus will persist if a new structure is registered with the same name.</p>
+<h4 id="enabled">Enabled</h4>
+<p>If a structure is disabled, it will be hidden from view, along with any quantities associated with that structure.</p>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">is_enabled</span><span class="p">()</span></code></summary><p>Is the structure enabled? Returns a boolean.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">(</span><span class="n">newVal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></summary><p>Set the structure to be enabled or disabled. Takes a boolean.</p>
+<p>Can also be set when registering, like <code>register_point_cloud(..., enabled=True)</code>.</p>
+</details>
+<h4 id="transparency">Transparency</h4>
+<p>Set the transparency parameter for the structure. <code>1</code> is fully opaque (the default), and <code>0</code> is fully transparent. When the first structure has transparency applied, transparent rendering will be automatically enabled.</p>
+<p>Transparency can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Transparency]</code> menu.</p>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_transparency</span><span class="p">()</span></code></summary><p>Get the transparency parameter for the structure. Returns a float</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_transparency</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span></code></summary><p>Set the transparancy for the structure. Takes a float.</p>
+<p>Can also be set when registering, like <code>register_point_cloud(..., transparency=0.5)</code>.</p>
+</details>
+<h4 id="transforms">Transforms</h4>
+<p>Each structure has an associated spatial <em>transform</em> applied to it for display in the scene. The transform encodes a translation, rotation, and scaling represented as a 4x4 homogeneous matrix. Initially this transformation is just the identity transform (it does nothing), but it can be adjusted to position the structures in your scene.</p>
+<p>The transform can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Transform]</code> menu.</p>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">center_bounding_box</span><span class="p">()</span></code></summary><p>Set the transformation such that the structure&rsquo;s bounding box is centered at the world origin.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">rescale_to_unit</span><span class="p">()</span></code></summary><p>Set the transformation scaling such that the structure has length scale 1. This makes all structures roughly the same size.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">reset_transform</span><span class="p">()</span></code></summary><p>Reset the structure&rsquo;s transform to be the identity transform (i.e. to do nothing).</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_transparency</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span></code></summary><p>Set a particular transform matrix. Takes a 4x4 numpy array.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></code></summary><p>Set the transformation matrix such that structure is transformed to the position <code>vec</code>. Takes a length-3 numpy vector.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></code></summary><p>Translate the transformation matrix by offset <code>vec</code>. Takes a length-3 numpy vector.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span></code></summary><p>Get the current transformation matrix. Returns a 4x4 numpy matrix.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span></code></summary><p>Get the translation component of the transformation matrix, the position to which the structure&rsquo;s origin is translated. Returns a length-3 numpy vector.</p>
+</details>
+<h4 id="slice-planes">Slice planes</h4>
+<p>Options relating to <a href="/py//features/slice_planes/">slice planes</a> which may be present in the scene.</p>
+<p>Slice plane options can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Slice Planes]</code> menu.</p>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_cull_whole_elements</span><span class="p">(</span><span class="n">newVal</span><span class="p">)</span></code></summary><p>If <code>true</code>, slice planes will affect this structure by culling whole elements (tets, triangles, points, etc), rather than slicing through the middle of the elements. Takes a boolean.</p>
+<p>Note that not all structures may support culling whole elements. If not supported, this setting will do nothing.</p>
+<p>Default: false.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_cull_whole_elements</span><span class="p">()</span></code></summary><p>Get whether the cull whole elements setting is applied. Returns a boolean.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_ignore_slice_plane</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">newValue</span><span class="p">)</span></code></summary><p>Set a slice plane to be ignored by the structure. If <code>newValue</code> is <code>true</code> the slice plane will be ignored, and if <code>false</code> it will be respected. Takes a string and a boolean.</p>
+</details>
+<details class="func"><summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_ignore_slice_plane</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code></summary><p>Get if a slice plane is currently being ignored by the structure. Takes a string, returns a boolean.</p>
+</details>
                 
               
               

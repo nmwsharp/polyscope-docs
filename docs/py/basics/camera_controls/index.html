@@ -140,6 +140,38 @@
 
     <!-- Button to open search dialogue -->
     
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
 			
     <!-- ADDED BY NSHARP language selector -->
     <div class="md-flex__cell md-flex__cell--shrink">
@@ -466,6 +498,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#orthographic-view" class="md-nav__link">
+    Orthographic view
+  </a>
+  
+    <nav class="md-nav" aria-label="Orthographic view">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-projection-mode" class="md-nav__link">
+    set projection mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -551,8 +603,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/user_callback/" class="md-nav__link">
-        User Callback
+      <a href="../../features/callbacks_and_UIs/" class="md-nav__link">
+        Callbacks & Custom UIs
       </a>
     </li>
   
@@ -1089,6 +1141,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#orthographic-view" class="md-nav__link">
+    Orthographic view
+  </a>
+  
+    <nav class="md-nav" aria-label="Orthographic view">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-projection-mode" class="md-nav__link">
+    set projection mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1181,6 +1253,21 @@ Computer graphics and vision often use a Y-up convention, where science and engi
 <p><strong>Note:</strong> The &ldquo;home&rdquo; view is dependent on the data in the scene; it is computed from the bounding boxes of all registered structures to ensure that everything is nicely scaled and in view. As such, one should generally call this function <em>after</em> registering data.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">reset_camera_to_home_view</span><span class="p">()</span>
+</code></pre></div></p>
+</details>
+<h4 id="orthographic-view">Orthographic view</h4>
+<p>By default, Polyscope&rsquo;s view uses <a href="https://en.wikipedia.org/wiki/3D_projection#Perspective_projection">perspective projection</a>. Perspective projections roughly correspond to how images are usually perceived by our eyes and cameras.</p>
+<p>Alternately <a href="https://en.wikipedia.org/wiki/3D_projection#Orthographic_projection">orthographic projection</a> is also supported. Orthographic projections are common in engineering and architecture, because they have the property that distances are preserved in the projected image, regardless of whether the object is near or far from the camera.</p>
+<p><img alt="image of perspective and orthographic projection" src="/py//media/projection_diagram.jpg" /></p>
+<p>In perspective mode, zooming (for instance, by manually scrolling the mouse) translates the camera forward in space. In orthographic mode, it instead adjusts the field of view without moving the camera. This is because counter-intuitively, translating the camera forward does not actually change the view in an orthographic projection!</p>
+<details class="func"><summary><code class="highlight"><span class="n">set_view_projection_mode</span><span class="p">(</span><span class="n">mode_name</span><span class="p">)</span></code></summary><h5 id="set-projection-mode">set projection mode</h5>
+<p>Set the camera view projection to be either orthographic or perspective (default).</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="c1"># Enable the orthographic view</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_view_projection_mode</span><span class="p">(</span><span class="s2">&quot;orthographic&quot;</span><span class="p">)</span>
+
+<span class="c1"># Go back to default perspective projection</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_view_projection_mode</span><span class="p">(</span><span class="s2">&quot;perspective&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
                 
