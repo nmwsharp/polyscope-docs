@@ -169,6 +169,38 @@ polyscope::init();
 
     This callback is invoked when `polycope::init()` is called, so if you are going to customize it you **must** do so before `init()`.
 
+    The default implementation of this callback looks something like the following. You can customize your own version of this function to modify any Polyscope fonts, or if you simply want to load additional fonts, do so at the commented note below.
+
+    ```cpp
+    std::tuple<ImFontAtlas*, ImFont*, ImFont*> prepareImGuiFonts() {
+      ImGuiIO& io = ImGui::GetIO();
+
+      // outputs
+      ImFontAtlas* globalFontAtlas;
+      ImFont* regularFont;
+      ImFont* monoFont;
+
+      { // add regular font
+        ImFontConfig config;
+        regularFont = io.Fonts->AddFontFromMemoryCompressedTTF(render::getLatoRegularCompressedData(),
+                                                               render::getLatoRegularCompressedSize(), 18.0f, &config);
+      }
+
+      { // add mono font
+        ImFontConfig config;
+        monoFont = io.Fonts->AddFontFromMemoryCompressedTTF(render::getCousineRegularCompressedData(),
+                                                            render::getCousineRegularCompressedSize(), 16.0f, &config);
+      }
+
+      // Add your own additional fonts here
+
+      io.Fonts->Build();
+      globalFontAtlas = io.Fonts;
+
+      return std::tuple<ImFontAtlas*, ImFont*, ImFont*>{globalFontAtlas, regularFont, monoFont};
+    }
+    ```
+
 
 
 The option `buildGui` can be used to entirely disable all of Polyscope's ImGui UI elements, allowing you to build your own UI. Polyscope will still initialize ImGui and invoke its drawing routines each frame.
