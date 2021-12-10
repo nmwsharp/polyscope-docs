@@ -1489,6 +1489,35 @@
 <details class="func"><summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ImFontAtlas</span><span class="o">*</span><span class="p">,</span> <span class="n">ImFont</span><span class="o">*</span><span class="p">,</span> <span class="n">ImFont</span><span class="o">*&gt;</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">options</span><span class="o">::</span><span class="n">prepareImGuiFontsCallback</span></code></summary><h5 id="imgui-fonts-callback">imgui fonts callback</h5>
 <p>A callback function which will be invoked exactly once during initialization to construct a font atlas for ImGui to use. The callback should return a tuple of three pointers: a newly created global shared font atlas, a regular font, and a mono font. By default, this is set to invoke <code>prepareImGuiFonts()</code> from Polyscope&rsquo;s <code>imgui_config.cpp</code>, but you may assign your own function to create custom styles. If this callback is null, default fonts will be used.</p>
 <p>This callback is invoked when <code>polycope::init()</code> is called, so if you are going to customize it you <strong>must</strong> do so before <code>init()</code>.</p>
+<p>The default implementation of this callback looks something like the following. You can customize your own version of this function to modify any Polyscope fonts, or if you simply want to load additional fonts, do so at the commented note below.</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ImFontAtlas</span><span class="o">*</span><span class="p">,</span> <span class="n">ImFont</span><span class="o">*</span><span class="p">,</span> <span class="n">ImFont</span><span class="o">*&gt;</span> <span class="n">prepareImGuiFonts</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">ImGuiIO</span><span class="o">&amp;</span> <span class="n">io</span> <span class="o">=</span> <span class="n">ImGui</span><span class="o">::</span><span class="n">GetIO</span><span class="p">();</span>
+
+  <span class="c1">// outputs</span>
+  <span class="n">ImFontAtlas</span><span class="o">*</span> <span class="n">globalFontAtlas</span><span class="p">;</span>
+  <span class="n">ImFont</span><span class="o">*</span> <span class="n">regularFont</span><span class="p">;</span>
+  <span class="n">ImFont</span><span class="o">*</span> <span class="n">monoFont</span><span class="p">;</span>
+
+  <span class="p">{</span> <span class="c1">// add regular font</span>
+    <span class="n">ImFontConfig</span> <span class="n">config</span><span class="p">;</span>
+    <span class="n">regularFont</span> <span class="o">=</span> <span class="n">io</span><span class="p">.</span><span class="n">Fonts</span><span class="o">-&gt;</span><span class="n">AddFontFromMemoryCompressedTTF</span><span class="p">(</span><span class="n">render</span><span class="o">::</span><span class="n">getLatoRegularCompressedData</span><span class="p">(),</span>
+                                                           <span class="n">render</span><span class="o">::</span><span class="n">getLatoRegularCompressedSize</span><span class="p">(),</span> <span class="mf">18.0f</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="p">{</span> <span class="c1">// add mono font</span>
+    <span class="n">ImFontConfig</span> <span class="n">config</span><span class="p">;</span>
+    <span class="n">monoFont</span> <span class="o">=</span> <span class="n">io</span><span class="p">.</span><span class="n">Fonts</span><span class="o">-&gt;</span><span class="n">AddFontFromMemoryCompressedTTF</span><span class="p">(</span><span class="n">render</span><span class="o">::</span><span class="n">getCousineRegularCompressedData</span><span class="p">(),</span>
+                                                        <span class="n">render</span><span class="o">::</span><span class="n">getCousineRegularCompressedSize</span><span class="p">(),</span> <span class="mf">16.0f</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Add your own additional fonts here</span>
+
+  <span class="n">io</span><span class="p">.</span><span class="n">Fonts</span><span class="o">-&gt;</span><span class="n">Build</span><span class="p">();</span>
+  <span class="n">globalFontAtlas</span> <span class="o">=</span> <span class="n">io</span><span class="p">.</span><span class="n">Fonts</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ImFontAtlas</span><span class="o">*</span><span class="p">,</span> <span class="n">ImFont</span><span class="o">*</span><span class="p">,</span> <span class="n">ImFont</span><span class="o">*&gt;</span><span class="p">{</span><span class="n">globalFontAtlas</span><span class="p">,</span> <span class="n">regularFont</span><span class="p">,</span> <span class="n">monoFont</span><span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
 </details>
 <p>The option <code>buildGui</code> can be used to entirely disable all of Polyscope&rsquo;s ImGui UI elements, allowing you to build your own UI. Polyscope will still initialize ImGui and invoke its drawing routines each frame.</p>
 <details class="func"><summary><code class="highlight"><span class="kt">bool</span> <span class="n">options</span><span class="o">::</span><span class="n">buildGui</span></code></summary><h5 id="build-gui">build gui</h5>
