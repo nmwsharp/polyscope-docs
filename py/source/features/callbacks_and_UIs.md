@@ -83,6 +83,9 @@ def callback():
     # Of course, you can also use any other kind of python variable as a controllable 
     # value in the UI, such as a value from a dictionary, or a class member. Just be 
     # sure to assign the result of the ImGui call to the value, as in the examples below.
+    # 
+    # If these variables are defined at the top level of a Python script file (i.e., not
+    # inside any method), you will need to use the `global` keyword instead of `nonlocal`.
     nonlocal is_true1, is_true2, ui_int, ui_float1, ui_float2, ui_color3, ui_color4, ui_text, ui_options_selected, ui_angle_rad
     
 
@@ -157,7 +160,8 @@ def callback():
     changed = psim.BeginCombo("Pick one", ui_options_selected)
     if changed:
         for val in ui_options:
-            if psim.Selectable(val, ui_options_selected==val):
+            _, selected = psim.Selectable(val, ui_options_selected==val):
+            if selected:
                 ui_options_selected = val
         psim.EndCombo()
     psim.PopItemWidth()
