@@ -160,7 +160,7 @@ def callback():
     changed = psim.BeginCombo("Pick one", ui_options_selected)
     if changed:
         for val in ui_options:
-            _, selected = psim.Selectable(val, ui_options_selected==val):
+            _, selected = psim.Selectable(val, ui_options_selected==val)
             if selected:
                 ui_options_selected = val
         psim.EndCombo()
