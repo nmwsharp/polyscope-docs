@@ -1350,7 +1350,7 @@
     <span class="n">changed</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">BeginCombo</span><span class="p">(</span><span class="s2">&quot;Pick one&quot;</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">changed</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">ui_options</span><span class="p">:</span>
-            <span class="n">_</span><span class="p">,</span> <span class="n">selected</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Selectable</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="o">==</span><span class="n">val</span><span class="p">):</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">selected</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Selectable</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="o">==</span><span class="n">val</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">selected</span><span class="p">:</span>
                 <span class="n">ui_options_selected</span> <span class="o">=</span> <span class="n">val</span>
         <span class="n">psim</span><span class="o">.</span><span class="n">EndCombo</span><span class="p">()</span>
