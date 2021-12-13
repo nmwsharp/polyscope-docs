@@ -1273,6 +1273,9 @@
     <span class="c1"># Of course, you can also use any other kind of python variable as a controllable </span>
     <span class="c1"># value in the UI, such as a value from a dictionary, or a class member. Just be </span>
     <span class="c1"># sure to assign the result of the ImGui call to the value, as in the examples below.</span>
+    <span class="c1"># </span>
+    <span class="c1"># If these variables are defined at the top level of a Python script file (i.e., not</span>
+    <span class="c1"># inside any method), you will need to use the `global` keyword instead of `nonlocal`.</span>
     <span class="k">nonlocal</span> <span class="n">is_true1</span><span class="p">,</span> <span class="n">is_true2</span><span class="p">,</span> <span class="n">ui_int</span><span class="p">,</span> <span class="n">ui_float1</span><span class="p">,</span> <span class="n">ui_float2</span><span class="p">,</span> <span class="n">ui_color3</span><span class="p">,</span> <span class="n">ui_color4</span><span class="p">,</span> <span class="n">ui_text</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">,</span> <span class="n">ui_angle_rad</span>
 
 
@@ -1347,7 +1350,8 @@
     <span class="n">changed</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">BeginCombo</span><span class="p">(</span><span class="s2">&quot;Pick one&quot;</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">changed</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">ui_options</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">psim</span><span class="o">.</span><span class="n">Selectable</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="o">==</span><span class="n">val</span><span class="p">):</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">selected</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Selectable</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="o">==</span><span class="n">val</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">selected</span><span class="p">:</span>
                 <span class="n">ui_options_selected</span> <span class="o">=</span> <span class="n">val</span>
         <span class="n">psim</span><span class="o">.</span><span class="n">EndCombo</span><span class="p">()</span>
     <span class="n">psim</span><span class="o">.</span><span class="n">PopItemWidth</span><span class="p">()</span>
