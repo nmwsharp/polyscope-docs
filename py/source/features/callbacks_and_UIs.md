@@ -15,7 +15,7 @@ def callback():
     # Do computation here, define custom UIs, etc.
     print("executing callback")
 
-polyscope.set_user_callback(callback)
+ps.set_user_callback(callback)
 
 ps.show()
 
