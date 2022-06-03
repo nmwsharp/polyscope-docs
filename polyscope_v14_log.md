@@ -1,0 +1,115 @@
+## Polyscope v1.4
+
+- [ ] Floating quantities (general)
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Scene floating images
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Texture quantities
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] SDF render helpers
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] VolumeGrid Structure
+  - [ ] Point viz
+  - [ ] Isosurface viz
+  - [ ] Slicing viz
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] CameraView Structure
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Floating Shapes Quantity
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Mouse scene options
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Better window size controls
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Set front direction
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Faster updates
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Save out colormaps
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Better colormap selection
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Headless rendering
+- [ ] Wireframe-only mesh rendering (WIREFRAME_ONLY shader)
+  - [ ] C++ implementation
+  - [ ] C++ tests
+  - [ ] Python bindings
+  - [ ] Python tests
+  - [ ] C++ docs
+  - [ ] Python docs
+- [ ] Docs FAQs
+  - [ ] How to visualize interactive/animated data
+  - [ ] How to run on headless server?
+  - [ ] How to save images and create movies?
+  - [ ] How to configure/save/restore camera poses?
+  - [ ] How to customize appearance of the UI
+  - [ ] Why do transparent surfaces disappear when on top of each other?
+  - [ ] How do I make renders look pretty?
+  - [ ] How do I visualize my own full-screen render results? 
+- [ ] Docs gallery
+
