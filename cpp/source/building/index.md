@@ -43,6 +43,13 @@ Polyscope packages all of its source code dependencies with the repository.
 
 On Ubuntu and friends, you may want to `apt-get install xorg-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev` to pull graphics and windowing related headers to build.
 
+On MacOS it may be necessary to install X11 dependencies, this can be done using Homebrew and [xquartz](https://www.xquartz.org/) package with the command: `brew install --cask xquartz`. If you are not using CMake you will need to link against the `OpenGL`, `CoreVideo`, `Cocoa` and `IOKit` MacOS frameworks explicitly. A sample command to link your application with `g++` on MacOS is:
+
+```sh
+g++ <object files> -framework OpenGL -framework CoreVideo -framework Cocoa -framework IOKit \
+     -L/opt/X11/lib/ <Other Unix Linking flags (libraries + directories)>
+```
+
 ### Backends
 
 Internally, Polyscope has (very preliminary) support for changing the rendering backend. At compile time, CMake flags control which backends Polyscope will be built with, and at runtime one of the available backends can be selected during `init()`.
