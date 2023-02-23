@@ -56,8 +56,6 @@ repo_url: 'https://github.com/nmwsharp/polyscope'
 edit_uri: ''
 site_url: 'https://polyscope.run/'
 
-google_analytics: ['UA-58346315-2', 'auto']
-
 docs_dir: 'source'
 site_dir: 'site_build'
 
