@@ -21,7 +21,7 @@ extra:
 
 theme:
   name: 'material'
-  custom_dir: 'theme'
+  custom_dir: 'theme_overrides'
   palette:
     primary: 'teal'
     accent: 'deep orange'
@@ -29,9 +29,7 @@ theme:
     text: 'PT Serif'
     code: 'Inconsolata'
   icon: 
-    logo: material/highlight-24px
-  theme:
-    logo: media/icons/material/highlight-24px.svg
+    logo: material/flashlight
   favicon: media/icons/material/baseline_highlight_black_18dp.png
   features:
     - navigation.instant
