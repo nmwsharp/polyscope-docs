@@ -10,8 +10,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.arithmatex
   - pymdownx.emoji
-  - pymdownx.tabbed
-
+  - pymdownx.tabbed:
+        alternate_style: true 
 
 extra:
   search:
@@ -24,7 +24,7 @@ theme:
   custom_dir: 'theme_overrides'
   palette:
     primary: 'teal'
-    accent: 'deep orange'
+    accent: 'teal'
   font:
     text: 'PT Serif'
     code: 'Inconsolata'
@@ -33,6 +33,9 @@ theme:
   favicon: media/icons/material/baseline_highlight_black_18dp.png
   features:
     - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - content.tabs.link
 
 extra_css:
   - extras.css
