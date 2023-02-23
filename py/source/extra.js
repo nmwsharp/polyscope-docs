@@ -25,7 +25,7 @@ function load_navpane() {
       // Now go click the element
       var nav = document.getElementsByClassName("md-nav__link");
       for(var i = 0; i < nav.length; i++) {
-          if (nav.item(i).htmlFor === "nav-6") {
+          if (nav.item(i).htmlFor === "__nav_6") {
               nav.item(i).click();
           }
       }

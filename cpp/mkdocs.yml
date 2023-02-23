@@ -10,8 +10,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.arithmatex
   - pymdownx.emoji
-  - pymdownx.tabbed
-
+  - pymdownx.tabbed:
+        alternate_style: true 
 
 extra:
   search:
@@ -21,20 +21,21 @@ extra:
 
 theme:
   name: 'material'
-  custom_dir: 'theme'
+  custom_dir: 'theme_overrides'
   palette:
     primary: 'teal'
-    accent: 'deep orange'
+    accent: 'teal'
   font:
     text: 'PT Serif'
     code: 'Inconsolata'
   icon: 
-    logo: material/highlight-24px
-  theme:
-    logo: media/icons/material/highlight-24px.svg
+    logo: material/flashlight
   favicon: media/icons/material/baseline_highlight_black_18dp.png
   features:
     - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - content.tabs.link
 
 extra_css:
   - extras.css
@@ -57,8 +58,6 @@ repo_name: 'nmwsharp/polyscope'
 repo_url: 'https://github.com/nmwsharp/polyscope'
 edit_uri: ''
 site_url: 'https://polyscope.run/'
-
-google_analytics: ['UA-58346315-2', 'auto']
 
 docs_dir: 'source'
 site_dir: 'site_build'

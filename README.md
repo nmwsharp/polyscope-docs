@@ -7,10 +7,10 @@ Managed using mkdocs.
 
 To install mkdocs and theme:
 ```
-pip install mkdocs mkdocs-material==6.2.8 mkdocs-macros-plugin pygments 
+pip install mkdocs==1.4.2 mkdocs-material==9.0.13 mkdocs-macros-plugin==0.7.0 pygments 
 ```
 
-NOTE: mkdocs-material 7.0 seems to have changed some html that breaks our custom header. Until we unbreak this, use the last 6.0 version (6.2.8)
+NOTE: the versions of mkdocs things are pinned above. New versions (esp. for mkdocs-material) break our docs fairly often, in part because of our custom-overridden html. When bumping these versions, make sure nothing breaks.
 
 To preview locally:
 ```
