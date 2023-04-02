@@ -5,9 +5,9 @@ To contribute, check out the [instructions here](https://polyscope.run/about/con
 
 Managed using mkdocs.
 
-To install mkdocs and theme:
+To install mkdocs, theme, and plugins:
 ```
-pip install mkdocs==1.4.2 mkdocs-material==9.0.13 mkdocs-macros-plugin==0.7.0 pygments 
+pip install mkdocs==1.4.2 mkdocs-material==9.0.13 mkdocs-macros-plugin==0.7.0 pygments markdown-include
 ```
 
 NOTE: the versions of mkdocs things are pinned above. New versions (esp. for mkdocs-material) break our docs fairly often, in part because of our custom-overridden html. When bumping these versions, make sure nothing breaks.

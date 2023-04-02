@@ -40,16 +40,7 @@ ps.show()
     - `values` an `Nx3` numpy array, vectors at vertices/faces (or `Nx2` for 2D data)
     - `defined_on` string, one of `vertices` or `faces`, is this data a vector per-vertex or a vector per-face?
     
-    Additional optional keyword arguments:
-
-    - `enabled` boolean, whether the quantity is initially enabled
-    - `vectortype`, one of `standard` or `ambient`. Ambient vectors don't get auto-scaled, and thus are good for representing values in absolute 3D world coordinates
-    - `length` float, a (relative) length for the vectors
-    - `radius` float, a (relative) radius for the vectors
-    - `color` 3-tuple, color for the vectors
-    
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
-    
+    This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
 
 
 ### Tangent vectors
@@ -87,16 +78,7 @@ In these function names, _intrinsic vector_ is a fancy synonym for tangent vecto
     - `n_sym` is a symmetry order for visualizing line fields (n = 2) and cross fields (n = 4), etc. If it is set to a non-`1` value, n distinct vectors will be displayed at each element. This function presumes a "power"-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n'th power.
     - `defined_on` string, one of `vertices` or `faces`, is this data a vector per-vertex or a vector per-face?
     
-    Additional optional keyword arguments:
-
-    - `enabled` boolean, whether the quantity is initially enabled
-    - `vectortype`, one of `standard` or `ambient`. Ambient vectors don't get auto-scaled, and thus are good for representing values in absolute 3D world coordinates
-    - `length` float, a (relative) length for the vectors
-    - `radius` float, a (relative) radius for the vectors
-    - `color` 3-tuple, color for the vectors
-    - `ribbon` boolean, if true show the traced ribbon visualization 
-    
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
+    This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
     
 
 ### One forms
@@ -112,13 +94,7 @@ _One forms_ are tangent vector-like quantities represented as integrated scalars
     - `values` a length `n_edges` numpy float array, integrated 1-form values at edges
     - `orientations` a length `n_edges` numpy boolean array. 1-forms are defined with respect to an orientation of edges, so you need to tell Polyscope which direction your edges point in. These booleans should be `true` if the edge points from the lower indexed adjacent vertex to the higher-indexed vertex, and false otherwise.
     
-    Additional optional keyword arguments:
+    This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
+   
 
-    - `enabled` boolean, whether the quantity is initially enabled
-    - `length` float, a (relative) length for the vectors
-    - `radius` float, a (relative) radius for the vectors
-    - `color` 3-tuple, color for the vectors
-    - `ribbon` boolean, if true show the traced ribbon visualization 
-    
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
-
+{!common/vector_quantity.md!}

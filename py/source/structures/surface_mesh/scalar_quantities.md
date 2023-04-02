@@ -43,12 +43,6 @@ ps.show()
     - `values` a length `N` numpy array, scalars at vertices/faces/etc
     - `defined_on` one of `'vertices','faces','edges','halfedges'`, is this data a value per vertex or a value per face, etc?
     
-    Additional optional keyword arguments:
-
-    - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
-    - `datatype` one of `standard`, `symmetric`, or `magnitude`, affects default colormap and map range
-    - `vminmax` a 2-tuple of floats, specifying the min and max range to colormap in to
-    - `cmap` string, which [colormap](../../../features/color_maps) to use
+    This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
     
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
-    
+{!common/scalar_quantity.md!}

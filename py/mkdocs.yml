@@ -12,6 +12,8 @@ markdown_extensions:
   - pymdownx.emoji
   - pymdownx.tabbed:
         alternate_style: true 
+  - markdown_include.include:
+        base_path: source
     
 
 extra:

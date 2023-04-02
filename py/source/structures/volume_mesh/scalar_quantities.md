@@ -35,16 +35,11 @@ ps.show()
     - `values` a length `N` numpy array, scalars at vertices/cells
     - `defined_on` one of `'vertices','cells'`, is this data a value per vertex or a value per cell?
     
-    Additional optional keyword arguments:
-
-    - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
-    - `datatype` one of `standard`, `symmetric`, or `magnitude`, affects default colormap and map range
-    - `vminmax` a 2-tuple of floats, specifying the min and max range to colormap in to
-    - `cmap` string, which [colormap](../../../features/color_maps) to use
-    
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
+    This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
 
 
 ### Inspecting with slice planes
 
 Slice planes have [special functionality]([[url.prefix]]/features/slice_planes/#inspecting-volume-meshes) for volume mesh vertex values---they can _inspect_ quantities on volume meshes and render them on the interior of the volume. See the slice plane documentation for details.
+
+{!common/scalar_quantity.md!}

@@ -27,11 +27,9 @@ ps.show()
 
     - `name` string, a name for the quantity
     - `values` an `Nx3` numpy array, with rgb [0,1] colors at vertices/cells
-    - `defined_on` string, one of `vertices` or `cells`, is this data a color per vertex or a color per cell?
-    
-    Additional optional keyword arguments:
+    - `defined_on` string, one of `"vertices"` or `"cells"`, is this data a color per vertex or a color per cell?
 
-    - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
-    
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
+    This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
 
+    
+{!common/color_quantity.md!}

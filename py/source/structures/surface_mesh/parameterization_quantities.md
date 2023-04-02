@@ -39,8 +39,6 @@ ps.show()
 ```
 
 
-## Adding
-
 ???+ func "`#!python SurfaceMesh.add_parameterization_quantity(name, values, defined_on='vertices', coords_type='unit', enabled=None, viz_style=None, grid_colors=None, checker_colors=None, checker_size=None, cmap=None)`"
 
     Add a parameterization quantity to the mesh.
@@ -48,36 +46,8 @@ ps.show()
     - `name` string, a name for the quantity
     - `values` an `Nx2` numpy array, coordinates at vertices/corners
     - `defined_on` one of `'vertices','corners'`, is this a coordinate per vertex or per corner?
-    - `coords_type` string, one of `'unit'`, `'world'`  (see below)
     
-    Additional optional keyword arguments:
-
-    - `enabled` boolean, whether the quantity is initially enabled (note that generally only one quantity can be shown at a time; the most recent will be used)
-    - `viz_style` string, one of `'checker'`, `'grid'`, `'local_check'`, `'local_rad'` (see below)
-    - `grid_colors` 2-tuple of rgb colors, used to color the grid visualization
-    - `checker_colors` 2-tuple of rgb colors, used to color the checkerboard visualization
-    - `checker_size` float, the size of checkers/grid/stripes
-    - `cmap` string, which [colormap](../../../features/color_maps) to use
-    
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
+    This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
     
 
-## Options
-
-### Styles
-
-Several styles are available for how a parameterization is displayed. 
-
-The `viz_style` option determines how parameterizations are visualized:
-
-- `checker`: a two-color checker pattern
-- `grid`: a two-color grid with thin lines
-- `local_check`: a checkerboard over a radial colormap, centered around `(0,0)`
-- `local_rad`: distance stripes over a radial colormap, centered around `(0,0)`
-
-### Types
-
-The `coords_type` options determines how parameter coordinates are interpreted for scaling:
-
- - `unit`: UV coords are assumed to lie on the `[0,1]` interval
- - `world`: UV coords are assumed to be scaled like the world-space positions of the mesh
+{!common/parameterization_quantity.md!}

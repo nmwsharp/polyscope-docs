@@ -35,13 +35,7 @@ ps.show()
     - `name` string, a name for the quantity
     - `values` an `Nx3` numpy array, vectors at points (or `Nx2` for 2D data)
     
-    Additional optional keyword arguments:
+    This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
+   
 
-    - `enabled` boolean, whether the quantity is initially enabled
-    - `vectortype`, one of `standard` or `ambient`. Ambient vectors don't get auto-scaled, and thus are good for representing values in absolute 3D world coordinates
-    - `length` float, a (relative) length for the vectors
-    - `radius` float, a (relative) radius for the vectors
-    - `color` 3-tuple, color for the vectors
-    
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
-    
+{!common/vector_quantity.md!}
