@@ -45,38 +45,18 @@ ps.show()
 
 ### Tangent vectors
 
-_Tangent_ vectors lie flat against the surface of the mesh. They are expressed as 2D vectors with X-Y coordinates in some basis frame at each mesh element.
+_Tangent_ vectors lie flat against the surface of a mesh. They are defined as 2D vector in a local 2D coordinate system at each vertex or face. We need to specify the vector itself as well as the basis vectors for the local coordinate systems.
 
+???+ func "`#!python SurfaceMesh.add_tangent_vector_quantity(name, values, basisX, basisY, defined_on='vertices', n_sym=1, enabled=None, vectortype="standard", length=None, radius=None, color=None, ribbon=None)`"
 
-#### Specifying the tangent basis
-
-Tangent vectors are defined with respect to a coordinate frame at each vertex (resp., face). Before adding any tangent vector quantities, you probably need to tell Polyscope what this coordinate frame looks like. To do so, pass an array of the x-axis vectors (in 3D) for each mesh element.
-
-??? func "`#!python SurfaceMesh.set_vertex_tangent_basisX(vectors)`"
-
-    Specify the tangent coordinate system at vertices, by giving the direction of the x-axis of the basis.
-
-    - `vectors` is an `Vx3` (or `Vx2` for 2D) array of one 3D vector at each vertex, giving the direction of the x-axis of the basis. The rest of the basis will be computed from the normal.
-
-??? func "`#!python SurfaceMesh.set_face_tangent_basisX(vectors)`"
-
-    Specify the tangent coordinate system at faces, by giving the direction of the x-axis of the basis.
-
-    - `vectors` is an `Fx3` (or `Fx2` for 2D) array of one 3D vector at each face, giving the direction of the x-axis of the basis. The rest of the basis will be computed from the normal.
-
-
-#### Adding intrinsic tangent vectors
-
-In these function names, _intrinsic vector_ is a fancy synonym for tangent vector, which indicates that the vectors lie in the surface itself, not the containing 3D space.
-
-???+ func "`#!python SurfaceMesh.add_intrinsic_vector_quantity(name, values, n_sym=1, defined_on='vertices', enabled=None, vectortype="standard", length=None, radius=None, color=None, ribbon=None)`"
-
-    Add a vector quantity to the mesh. Remember to specify your tangent basis first!
+    Add a vector quantity to the mesh.
 
     - `name` string, a name for the quantity
     - `values` an `Nx2` numpy array, of tangent vectors at vertices/faces
-    - `n_sym` is a symmetry order for visualizing line fields (n = 2) and cross fields (n = 4), etc. If it is set to a non-`1` value, n distinct vectors will be displayed at each element. This function presumes a "power"-representation for symmetric fields, which the inputs result from raising symmetric vectors to the n'th power.
+    - `basisX` an `Nx3` numpy array, giving the X component of the local basis at each vertex/face
+    - `basisY` an `Nx3` numpy array, giving the Y component of the local basis at each vertex/face
     - `defined_on` string, one of `vertices` or `faces`, is this data a vector per-vertex or a vector per-face?
+    - `n_sym` is a symmetry order for visualizing line fields (n = 2) and cross fields (n = 4), etc. If it is set to a non-`1` value, n distinct vectors will be displayed at each element, by rotating the input vector 2*PI/nSym radians.
     
     This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
     
@@ -88,7 +68,7 @@ _One forms_ are tangent vector-like quantities represented as integrated scalars
 
 ???+ func "`#!python SurfaceMesh.add_one_form_vector_quantity(name, values, orientations, enabled=None, length=None, radius=None, color=None, ribbon=None)`"
 
-    Add a one-form vector quantity to the mesh.  Remember, before passing edge-valued data, be sure your [indexing convention](../indexing_convention) matches what Polyscope expects.
+    Add a one-form vector quantity to the mesh.  Remember, before passing edge-valued data, set the [indexing convention](../indexing_convention) Polyscope.
 
     - `name` string, a name for the quantity
     - `values` a length `n_edges` numpy float array, integrated 1-form values at edges
