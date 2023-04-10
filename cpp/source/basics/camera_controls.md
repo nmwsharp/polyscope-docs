@@ -158,3 +158,28 @@ In perspective mode, zooming (for instance, by manually scrolling the mouse) tra
     // Go back to default perspective projection
     polyscope::view::projectionMode = polyscope::ProjectionMode::Perspective;
     ```
+
+#### Saving/restoring views
+
+The current camera view (location, direction, camera parameters, and window size) can be saved or loaded from a json string. This is useful for quickly setting up repeatable visualizations.
+
+Also, in the Polyscope GUI, this string can be copied to the clipboard at any time via the "copy" hotkey (ctrl-C or cmd-C), or loaded from your current clipboard using the "paste" hotkey (ctrl-V or cmd-V).
+
+??? func "`#!cpp std::string getViewAsJson()`"
+
+    Get the current view parameters specified as a json string.
+
+    Example:
+    ```cpp
+    std::string myString = polyscope::view::getViewAsJson();
+    ```
+    
+
+??? func "`#!cpp void setViewFromJson(std::string jsonString, bool animateFlight=false)`"
+
+    Set the current view to match the parameters specified in the json string.
+
+    Example:
+    ```cpp
+    polyscope::view::setViewFromJson(myString);
+    ```

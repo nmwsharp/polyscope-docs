@@ -169,3 +169,29 @@ In perspective mode, zooming (for instance, by manually scrolling the mouse) tra
     # Go back to default perspective projection
     ps.set_view_projection_mode("perspective")
     ```
+
+#### Saving/restoring views
+
+The current camera view (location, direction, camera parameters, and window size) can be saved or loaded from a json string. This is useful for quickly setting up repeatable visualizations.
+
+Also, in the Polyscope GUI, this string can be copied to the clipboard at any time via the "copy" hotkey (ctrl-C or cmd-C), or loaded from your current clipboard using the "paste" hotkey (ctrl-V or cmd-V).
+
+??? func "`#!python get_view_as_json()`"
+
+    Get the current view parameters specified as a json string. Returns a string.
+    
+    Example:
+    ```python
+    import polyscope as ps
+    my_str = ps.get_view_as_json()
+    ```
+    
+
+??? func "`#!python void set_view_from_json(json_str)`"
+
+    Set the current view to match the parameters specified in the json string.
+
+    Example:
+    ```python
+    ps.set_view_from_json(my_str);
+    ```
