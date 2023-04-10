@@ -1,6 +1,6 @@
 ## Default ordering
 
-Polyscope abstracts over data types by accepting generic ordered containers of data to visualize (see [input adaptors](../../../basics/array_adaptors)). Unfortunately, not everyone can agree on how to order the elements of their meshes---which edge is the $i^\textrm{th}$ edge in a mesh?
+Polyscope abstracts over data types by accepting generic ordered containers of data to visualize (see [input adaptors](../../../basics/array_adaptors)). Unfortunately, not everyone can agree on how to order the elements of their meshes---which edge is the i'th edge in a mesh?
 
 For vertices and faces, Polyscope only supports one order: the order of the elements used when you registered the mesh. However, for edges, halfedges, and corners it is more complicated. For these data, you should generally explicitly tell Polyscope what ordering/indexing you will be using for the data.
 
