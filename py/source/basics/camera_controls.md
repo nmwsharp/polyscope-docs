@@ -4,8 +4,9 @@ These settings affect the 3D camera view in polyscope. It is often convenient to
 import polyscope as ps
 import numpy as np
 
-ps.set_navigation_style("free")
 ps.set_up_dir("z_up")
+ps.set_front_dir("neg_y_front")
+ps.set_navigation_style("free")
 
 # initialize
 ps.init()
@@ -40,16 +41,17 @@ ps.show()
     ```python
     import polyscope as ps
     ps.set_navigation_style("free")
-    ```
+
+??? func "`#!python get_navigation_style()`"
+
+    Get the current navigation style (see explanation in the setter above). Returns a string.
+
 
 ??? func "`#!python set_up_dir(s)`"
 
     ##### up direction
-
-    3D data is typically oriented with some natural "up" direction, but not everyone agrees as to which coordinate axis is "up".
-    Computer graphics and vision often use a Y-up convention, where science and engineering more commonly use Z-up.
-
-    This setting affects default orientation of the view, the behavior of some navigation styles (esp. `turntable`), and the orientation of the ground plane.
+    
+    Set the default "up" direction for the scene. This setting affects default orientation of the view, the behavior of some navigation styles (esp. `Turntable`), and the orientation of the ground plane.
 
     This value can be manually set under the `view` menu of the ui. Programmatically, the setting strings are:
 
@@ -67,6 +69,40 @@ ps.show()
     import polyscope as ps
     ps.set_up_dir("z_up")
     ```
+
+??? func "`#!python get_up_dir()`"
+
+    Get the current up direction (see explanation in the setter above). Returns a string.
+
+??? func "`#!python set_front_dir(s)`"
+
+    ##### front direction
+
+    Set the default "front" direction for the scene. This setting affects default orientation of the view; the starting camera looks at the front of the data.
+
+    This value is interpeted as if the scene were a cube, and you are specifying which face of the cube is the 'front'. So `z_front` means the +Z face of the cube is the front face, and thus our camera initially points down the -Z axis to look at it.
+
+    This value can be manually set under the `view` menu of the ui. Programmatically, the setting strings are:
+
+    - `'x_front'` The positive X-axis is the front.
+    - `'neg_x_front'` The negative X-axis is the front.
+    - `'y_front'` The positive Y-axis is the front.
+    - `'neg_y_front'` The negative Y-axis is the front.
+    - `'z_front'` The positive Z-axis is the front.
+    - `'neg_z_front'` The negative Z-axis is the front.
+
+   
+    Default: `z_front`.
+
+    Example:
+    ```cpp
+    import polyscope as ps
+    ps.set_front_dir("z_front")
+    ```
+
+??? func "`#!python get_front_dir()`"
+
+    Get the current front direction (see explanation in the setter above). Returns a string.
 
 
 ??? func "`#!python look_at(camera_location, target, fly_to=False)`"

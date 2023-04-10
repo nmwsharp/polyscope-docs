@@ -4,8 +4,9 @@ These settings affect the 3D camera view in polyscope. It is often convenient to
 #include "polyscope/polyscope.h"
 
 // a few camera options
-polyscope::view::upDir = UpDir::ZUp;
-polyscope::view::style = NavigateStyle::Free;
+polyscope::view::setUpDir(polyscope::UpDir::ZUp);
+polyscope::view::setFrontDir(polyscope::FrontDir::NegYFront);
+polyscope::view::setNavigateStyle(polyscope::NavigateStyle::Free);
 
 // initialize
 polyscope::init();
@@ -19,7 +20,7 @@ polyscope::show();
 
 ### Options
 
-??? func "`#!cpp NavigateStyle view::style`"
+??? func "`#!cpp void view::setNavigateStyle(NavigateStyle newStyle)`"
 
     ##### navigation style
    
@@ -34,17 +35,19 @@ polyscope::show();
 
     Example:
     ```cpp
-    polyscope::view::style = NavigateStyle::Free;
+    polyscope::view::setNavigateStyle(NavigateStyle::Free);
     ```
 
-??? func "`#!cpp UpDir view::upDir`"
+??? func "`#!cpp NavigateStyle view::getNavigateStyle()`"
+
+    Get the current navigation style (see explanation in the setter above)
+
+
+??? func "`#!cpp void view::setUpDir(UpDir newDir)`"
 
     ##### up direction
 
-    3D data is typically oriented with some natural "up" direction, but not everyone agrees as to which coordinate axis is "up".
-    Computer graphics and vision often use a Y-up convention, where science and engineering more commonly use Z-up.
-
-    This setting affects default orientation of the view, the behavior of some navigation styles (esp. `Turntable`), and the orientation of the ground plane.
+    Set the default "up" direction for the scene. This setting affects default orientation of the view, the behavior of some navigation styles (esp. `Turntable`), and the orientation of the ground plane.
 
     This value can be manually set under the `view` menu of the ui. Programmatically, the enum `view::UpDir` contains various settings:
 
@@ -59,8 +62,40 @@ polyscope::show();
 
     Example:
     ```cpp
-    polyscope::view::upDir = UpDir::ZUp;
+    polyscope::view::setUpDir(UpDir::ZUp);
     ```
+
+??? func "`#!cpp UpDir view::getUpDir()`"
+
+    Get the current up direction (see explanation in the setter above).
+
+??? func "`#!cpp void view::setFrontDir(FrontDir newDir)`"
+
+    ##### front direction
+
+    Set the default "front" direction for the scene. This setting affects default orientation of the view; the starting camera looks at the front of the data.
+
+    This value is interpeted as if the scene were a cube, and you are specifying which face of the cube is the 'front'. So `ZFront` means the +Z face of the cube is the front face, and thus our camera initially points down the -Z axis to look at it.
+
+    This value can be manually set under the `view` menu of the ui. Programmatically, the enum `view::FrontDir` contains various settings:
+
+    - `FrontDir::XFront` The positive X-axis is the front.
+    - `FrontDir::NegXFront` The negative X-axis is the front.
+    - `FrontDir::YFront` The positive Y-axis is the front.
+    - `FrontDir::NegYFront` The negative Y-axis is the front.
+    - `FrontDir::ZFront` The positive Z-axis is the front.
+    - `FrontDir::NegZFront` The negative Z-axis is the front.
+   
+    Default: `FrontDir::ZFront`.
+
+    Example:
+    ```cpp
+    polyscope::view::setFrontDir(FrontDir::NegYFront);
+    ```
+
+??? func "`#!cpp FrontDir view::getFrontDir()`"
+
+    Get the current front direction (see explanation in the setter above).
 
 ??? func "`#!cpp void lookAt(glm::vec3 cameraLocation, glm::vec3 target, bool flyTo = false)`"
     

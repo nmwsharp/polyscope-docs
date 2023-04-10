@@ -1,5 +1,7 @@
 - **Version 2.0.0** Apr, 2023  
     - **Breaking:** Rename `intrinsic` vector quantities to `tangent`. Change interpretation of symmetric data. Track bases per-quantity rather than per-structure.
+    - **Breaking:** Remove ability to set vertex- and face- permutations for surface meshes.
+    - Add `view::setFrontDir` to set the default front-facing camera view direction. Change the default to be +Z front.
 
 - **Version 1.3.0** Dec 1, 2021 `8e692da` Adds high-performance mode for big point clouds, volume mesh inspection with slice planes, more slice plane config options, better control of structure transformations and scene extents, orthographic view, back face coloring options, advanced options for customizing ImGui, support for shared linking, and bug fixes.
 - **Version 1.2.0** July 29, 2021`6b3cc34` Add volume meshes, slice planes, and transparent rendering. Support soft ground shadows, point clouds with variable radius, and back face culling options for surface meshes. Better programmatic camera controls. Generalize isoline support for all scalar quantities. Change the font.  Overhaul to a more flexible shader system, internally, change default screenshot format back to `png`, fix size validation bugs with surface mesh, require explicit tangent spaces.
