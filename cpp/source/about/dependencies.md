@@ -9,6 +9,7 @@ glad | OpenGL loader (used on Windows/Linux) | [github.com/Dav1dde/glad](https:/
 glm | Vector math and glsl utilities | [glm.g-truc.net](https://glm.g-truc.net/)
 stb | Header-only libraries, esp. image loading | [github.com/nothings/stb](https://github.com/nothings/stb)
 json | Read/write json text | [github.com/nlohmann/json](https://github.com/nlohmann/json)
+MC.h | adapted for marching cubes | [github.com/aparis69/MarchingCubeCpp](https://github.com/aparis69/MarchingCubeCpp)
 mkdocs | Doc generation | [mkdocs.org](https://mkdocs.org)
 mkdocs-material | Doc generation | [squidfunk.github.io/mkdocs-material/](https://squidfunk.github.io/mkdocs-material/)
 googletest | Unit testing | [github.com/google/googletest](https://github.com/google/googletest)
