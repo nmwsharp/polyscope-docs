@@ -90,6 +90,7 @@ nav:
     - 'Ground and Shadows' : 'features/ground_and_shadows.md'
     - 'Slice Planes' : 'features/slice_planes.md'
     - '2D Data' : 'features/2D_data.md'
+    - 'Groups' : 'features/groups.md'
   - Structures: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Point Cloud:
