@@ -71,27 +71,16 @@ nav:
     - 'about/license.md'
     - 'Dependencies' : 'about/dependencies.md'
     - 'about/contributing.md'
-    - 'about/contributors.md'
+  - FAQ, Tips, and Tricks: 'FAQ/index.md'
   - Building: 'building/index.md'
+  - Data Adaptors : 'data_adaptors.md'
   - Basics: 
     - 'Initializing' : 'basics/initializing.md'
     - 'Program Options' : 'basics/program_options.md'
     - 'Scene Options' : 'basics/scene_options.md'
     - 'Camera Controls' : 'basics/camera_controls.md'
     - 'Parameters' : 'basics/parameters.md'
-  - Data Adaptors : 'data_adaptors.md'
-  - Features: 
-    - 'Messages' : 'features/messages.md'
-    - 'Screenshots' : 'features/screenshots.md'
-    - 'Callbacks & Custom UIs' : 'features/callbacks_and_UIs.md'
-    - 'Materials' : 'features/materials.md'
-    - 'Color Maps' : 'features/color_maps.md'
-    - 'Transparency' : 'features/transparency.md'
-    - 'Ground and Shadows' : 'features/ground_and_shadows.md'
-    - 'Slice Planes' : 'features/slice_planes.md'
-    - '2D Data' : 'features/2D_data.md'
-    - 'Groups' : 'features/groups.md'
-  - Structures: 
+  - Structures and Quantities: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Point Cloud:
       - 'Basics' : 'structures/point_cloud/basics.md'
@@ -119,6 +108,17 @@ nav:
       - 'Scalar Quantities' : 'structures/volume_mesh/scalar_quantities.md'
       - 'Color Quantities' : 'structures/volume_mesh/color_quantities.md'
       - 'Vector Quantities' : 'structures/volume_mesh/vector_quantities.md'
+  - Features: 
+    - 'Screenshots' : 'features/screenshots.md'
+    - 'Callbacks & Custom UIs' : 'features/callbacks_and_UIs.md'
+    - 'Messages' : 'features/messages.md'
+    - 'Materials' : 'features/materials.md'
+    - 'Color Maps' : 'features/color_maps.md'
+    - 'Transparency' : 'features/transparency.md'
+    - 'Ground and Shadows' : 'features/ground_and_shadows.md'
+    - 'Slice Planes' : 'features/slice_planes.md'
+    - '2D Data' : 'features/2D_data.md'
+    - 'Groups' : 'features/groups.md'
   - Integrations: 
       - 'Geometry Central' : 'integrations/geometry_central/index.md'
       - 'libIGL' : 'integrations/libIGL/index.md'
