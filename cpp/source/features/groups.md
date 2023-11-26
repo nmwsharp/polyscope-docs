@@ -1,13 +1,11 @@
-It can be useful to group structures together, in order to quickly hide/show them, and establish hierarchy.
-Groups can be created and show up in the UI under the structures menu.
+To manage large numbers of structures, or manage structures which are related to each other, you can gather them in **groups**. A group is a collection of structures which can be enabled/disabled together and hidden from the UI if needed. A structure can be in 0, 1, or many groups. Groups can also hold other groups, allowing nested organization.
 
 <video width=100% autoplay muted loop>
   <source src="/media/groups_demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
-
-**Example**: enabling and disabling nested groups
+**Example**: Basic usage of groups
 
 ```cpp
 #include "polyscope/polyscope.h"
@@ -18,11 +16,8 @@ polyscope::init();
 
 // make a point cloud
 std::vector<glm::vec3> points;
-for (size_t i = 0; i < 3000; i++) {
-points.push_back(
-    glm::vec3{polyscope::randomUnit() - .5, 
-                polyscope::randomUnit() - .5, 
-                polyscope::randomUnit() - .5});
+for (size_t i = 0; i < 300; i++) {
+    points.push_back(glm::vec3{polyscope::randomUnit() - .5, polyscope::randomUnit() - .5, polyscope::randomUnit() - .5}); 
 }
 polyscope::PointCloud* psCloud = polyscope::registerPointCloud("my cloud", points);
 psCloud->setPointRadius(0.02);
@@ -31,102 +26,141 @@ psCloud->setPointRenderMode(polyscope::PointRenderMode::Quad);
 // make a curve network
 std::vector<glm::vec3> nodes;
 std::vector<std::array<size_t, 2>> edges;
-nodes = {
-{1, 0, 0},
-{0, 1, 0},
-{0, 0, 1},
-{0, 0, 0},
-};
-edges = {
-{1, 3},
-{3, 0},
-{1, 0},
-{0, 2}
-};
+nodes = { {1, 0, 0}, {0, 1, 0}, {0, 0, 1}, {0, 0, 0}, };
+edges = {{1, 3}, {3, 0}, {1, 0}, {0, 2}};
 polyscope::CurveNetwork* psCurve = polyscope::registerCurveNetwork("my network", nodes, edges);
 
-// group them together
+// create a group for these two objects
 std::string groupName = "my group";
-polyscope::registerGroup(groupName);
-polyscope::setParentGroupOfStructure(psCloud, groupName);
-polyscope::setParentGroupOfStructure(psCurve, groupName);
+polyscope::Group* group = polyscope::createGroup(groupName);
+psCurve->addToGroup(*group);    // add by group ref
+psCloud->addToGroup(groupName); // add by name
 
-// put that group in another group
-std::string parentGroupName = "my parent group";
-std::string emptyGroupName = "my empty group";
-polyscope::registerGroup(parentGroupName);
-polyscope::registerGroup(emptyGroupName);
-polyscope::setParentGroupOfGroup(groupName, parentGroupName);
-polyscope::setParentGroupOfGroup(emptyGroupName, parentGroupName);
+// toggle enabled for everything in the group
+group->setEnabled(false);
 
-polyscope::show();
+// hide items in group from displaying in the UI
+// (useful if you are registering huge numbers of structures you don't always need to see)
+group->setHideDescendentsFromStructureLists(true);
+group->setShowChildDetails(false);
 
-polyscope::removeAllGroups();
-polyscope::removeAllStructures();
+// nest groups inside of other groups
+std::string superGroupName = "my parent group";
+polyscope::Group* superGroup = polyscope::createGroup(superGroupName);
+superGroup->addChildGroup(*group);
+
+polyscope::show(3);
 ```
 
+### Create, get, and remove groups
 
-### Creating groups and establishing hierarchy
-
-??? func "`#!cpp bool registerGroup(std::string name)`"
+??? func "`#!cpp Group* createGroup(std::string name)`"
     
-    ##### add a group
+    ##### create group
     
-    Add a new group and return it. Group name must be a unique string (no other group may have that name). The new group is a root group by default (no parent).
+    Create a new group and return it. Group name must be a unique string (no other group may have that name).
 
+    As always, the returned pointer is non-owning. Don't delete it.
 
-??? func "`#!cpp bool setParentGroupOfGroup(std::string child, std::string parent)`"
+??? func "`#!cpp Group* getGroup(std::string name)`"
     
-    ##### set the parent group of a group
-
-    Set the parent group of a group
-
-      - `child`: name of the child group
-      - `group`: name of the parent group
-
-??? func "`#!cpp bool setParentGroupOfStructure(std::string typeName, std::string child, std::string parent)`"
+    ##### get group
     
-    ##### set the parent group of a structure
+    Get an existing group by name. 
 
-    Set the parent group of a structure
+    As always, the returned pointer is non-owning. Don't delete it.
 
-      - `typeName`: name of the structure type
-      - `child`: name of the child structure
-      - `group`: name of the parent group
-
-
-??? func "`#!cpp bool setParentGroupOfStructure(Structure* child, std::string parent)`"
+??? func "`#!cpp void removeGroup(std::string name, bool errorIfAbsent=true)`"
     
-    ##### set the parent group of a structure
-
-    Set the parent group of a structure
-
-      - `child`: pointer to the child structure
-      - `group`: name of the parent group
-
-??? func "`#!cpp void setGroupEnabled(std::string name, bool enabled)`"
+    ##### remove group by name
     
-    ##### show/hide group
+    Remove an existing group by name
 
-    Set the visibility of all of a group's children (recursive).
-    Same effect as clicking the 'Enabled' checkbox in the Group UI
-
-      - `group`: name of the group
-      - `enabled` (bool) whether to show, or hide the group
-
-
-??? func "`#!cpp void removeGroup(std::string name, bool errorIfAbsent = true)`"
+??? func "`#!cpp void removeGroup(Group* group, bool errorIfAbsent=true)`"
     
-    ##### remove group
-
-    Removes a group. All its children which are groups become root groups. Nothing happens to its children which are structures.
-
-      - `group`: name of the group
-      - `error_if_absent` (bool) if true, requires the group to exist, otherwise an error is thrown.
+    ##### remove group by reference
+    
+    Remove an existing group by reference
 
 
 ??? func "`#!cpp void removeAllGroups()`"
     
     ##### remove all groups
 
-    Removes all existing groups. Like with remove group, structures are unaffected.
+    Removes all existing groups.
+
+
+### Group membership
+
+??? func "`#!cpp void Structure::addToGroup(Group& group)`"
+    
+    ##### add structure to group
+
+    Add a structure as a member of a group.
+
+    Note that this is a member function of a **structure** object, like `pointCloud->addToGroup(group)`.
+
+??? func "`#!cpp void Structure::addToGroup(std::string groupName)`"
+    
+    ##### add structure to group
+
+    Add a structure as a member of a group, via the string name of the group.
+
+    Note that this is a member function of a **structure** object, like `pointCloud->addToGroup(groupName)`.
+
+??? func "`#!cpp void Group::addChildStructure(Structure& newChild)`"
+    
+    ##### add child structure
+
+    Add a structure as a member of this group
+
+
+??? func "`#!cpp void Group::removeChildStructure(Structure& child)`"
+    
+    ##### remove child structure
+
+    Remove a structure as a member of this group
+
+
+??? func "`#!cpp void Group::addChildGroup(Group& newChild)`"
+    
+    ##### add child group
+
+    Add a group as a (nested) member of this group
+
+??? func "`#!cpp void Group::removeChildGroup(Group& child)`"
+    
+    ##### remove child group
+
+    Remove a group as a (nested) member of this group
+
+
+
+### Group settings
+
+??? func "`#!cpp Group* Group::setEnabled(bool newEnabled)`"
+    
+    ##### set enabled
+
+    Set all descendents of a group to be enabled or disabled (applies to direct members of a group, as well as recursively to all members-of-members for nested groups).
+
+??? func "`#!cpp Group* Group::setShowChildDetails(bool newVal)`"
+    
+    ##### show UI details
+
+    If true, the Groups section of the ImGui UI panel will show each childs structure info as a submenu under the group. If false, only the group name and toggle checkbox will be shown.
+
+    (Default: true)
+    
+    There is also a corresponding `getShowChildDetails()`.
+
+??? func "`#!cpp Group* Group::setHideDescendentsFromStructureLists(bool newVal)`"
+    
+    ##### hide from structure list
+
+    If true, the structures which are members of this group (or descendents in any nested groups) will be hidden from the ImGui UI panel structure list.
+
+    (Default: false)
+    
+    There is also a corresponding `getHideDescendentsFromStructureLists()`.
+

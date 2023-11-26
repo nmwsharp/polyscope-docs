@@ -1,5 +1,4 @@
-It can be useful to group structures together, in order to quickly hide/show them, and establish hierarchy.
-Groups can be created and show up in the UI under the structures menu.
+To manage large numbers of structures, or manage structures which are related to each other, you can gather them in **groups**. A group is a collection of structures which can be enabled/disabled together and hidden from the UI if needed. A structure can be in 0, 1, or many groups. Groups can also hold other groups, allowing nested organization.
 
 <video width=100% autoplay muted loop>
   <source src="/media/groups_demo.mp4" type="video/mp4">
@@ -7,7 +6,7 @@ Groups can be created and show up in the UI under the structures menu.
 </video>
 
 
-**Example**: enabling and disabling nested groups
+**Example**: Basic usage of groups
 
 ```python
 import polyscope as ps
@@ -15,100 +14,141 @@ import numpy as np
 
 ps.init()
 
-# group creation, hierarchy and structure assignment
-g = ps.register_group("pretty shapes")
-g1 = ps.register_group("curves")
-ps.set_parent_group(g1, g)
-for i in range(3):
-    nodes = np.random.rand(100, 3)
-    edges = np.random.randint(0, 100, size=(250,2))
-    ps_net = ps.register_curve_network("my network {}".format(i), nodes, edges)
-    ps.set_parent_group(ps_net, g1)
-g2 = ps.register_group("points")
-ps.set_parent_group(g2, g)
-for i in range(3):
-    points = np.random.rand(100, 3)
-    ps_cloud = ps.register_point_cloud("my points {}".format(i), points)
-    ps.set_parent_group(ps_cloud, g2)
-g3 = ps.register_group("surfaces")
-ps.set_parent_group(g3, g)
-for i in range(3):
-    vertices = np.random.rand(100, 3)
-    faces = np.random.randint(0, 100, size=(250,3))
-    ps_mesh = ps.register_surface_mesh("my mesh {}".format(i), vertices, faces)
-    ps.set_parent_group(ps_mesh, g3)
-g4 = ps.register_group("volumes")
-ps.set_parent_group(g4, g)
-for i in range(3):
-    verts = np.array([
-        [0, 0, 0],
-        [1, 0, 0],
-        [1, 1, 0],
-        [0, 1, 0],
-        [0, 0, 1],
-        [1, 0, 1],
-        [1, 1, 1],
-        [0, 1, 1],
-        [1, 1, 1.5]
-    ]) / 2.0
-    cells = np.array([
-    [0, 1, 2, 3, 4, 5, 6, 7],
-    [7, 5, 6, 8, -1, -1, -1, -1],
-    ])
-    ps_vol = ps.register_volume_mesh("my volume {}".format(i), verts, mixed_cells=cells)
-    ps.set_parent_group(ps_vol, g4)
+# make a point cloud
+pts = np.zeros((300,3))
+psCloud = ps.register_point_cloud("my cloud", pts)
 
-# setting a group to enabled/disabled
-ps.set_group_enabled(g4, False)
+# make a curve network
+nodes = np.zeros((4,3))
+edges = np.array([ [1, 3], [3, 0], [1, 0], [0, 2] ])
+psCurve = ps.register_curve_network("my network", nodes, edges)
 
-ps.show()
+# create a group for these two objects
+group = ps.create_group("my group")
+psCurve.add_to_group(group) # you also say psCurve.add_to_group("my group")
+psCloud.add_to_group(group)
 
-ps.remove_all_groups()
+# toggle the enabled state for everything in the group
+group.set_enabled(False)
+
+# hide items in group from displaying in the UI
+# (useful if you are registering huge numbers of structures you don't always need to see)
+group.set_hide_descendents_from_structure_lists(True)
+group.set_show_child_details(False)
+
+# nest groups inside of other groups
+super_group = ps.create_group("py parent group")
+super_group.add_child_group(group)
+
+ps.show(3)
 ```
 
+### Create, get, and remove groups
 
-### Creating groups and establishing hierarchy
-
-??? func "`#!python register_group(name)`"
+??? func "`#!python create_group(name)`"
     
-    ##### add a group
+    ##### create group
     
-    Add a new group and return it. Group name must be a unique string (no other group may have that name). The new group is a root group by default (no parent).
+    Create a new group and return it. Group name must be a unique string (no other group may have that name).
 
+    Returns the new group object.
 
-??? func "`#!python set_parent_group(child, group)`"
+??? func "`#!python get_group(name)`"
     
-    ##### set the parent group of a group, or structure
-
-    Set the parent group of a group, or structure
-
-      - `child` is a CurveNetwork, PointCloud, SurfaceMesh, VolumeMesh, or Group object
-      - `group` is a Group object or string (parent group name)
-
-
-??? func "`#!python set_group_enabled(group, enabled)`"
+    ##### get group
     
-    ##### show/hide group
+    Get an existing group by name. 
 
-    Set the visibility of all of a group's children (recursive).
-    Same effect as clicking the 'Enabled' checkbox in the Group UI
+    Returns the group object.
 
-      - `group` is a Group object or string (parent group name)
-      - `enabled` (bool) whether to show, or hide the group
-
-
-??? func "`#!python remove_group(group, error_if_absent=True)`"
+??? func "`#!python remove_group(group, error_if_absent=true)`"
     
     ##### remove group
+    
+    Remove an existing group. 
 
-    Removes a group. All its children which are groups become root groups. Nothing happens to its children which are structures.
-
-      - `group` is a Group object or string (parent group name)
-      - `error_if_absent` (bool) if true, requires the group to exist, otherwise an error is thrown.
+    The `group` argument can be either a group object or a group name string.
 
 
-??? func "`#!python remove_all_groups()`"
+??? func "`#!python removeAllGroups()`"
     
     ##### remove all groups
 
-    Removes all existing groups. Like with remove group, structures are unaffected.
+    Removes all existing groups.
+
+
+### Group membership
+
+??? func "`#!python Structure.add_to_group(group)`"
+    
+    ##### add structure to group
+
+    Add a structure as a member of a group.
+
+    The `group` argument can be either a group object or a group name string.
+
+    Note that this is a member function of a **structure** object, like `pointCloud.add_to_group(group)`.
+
+
+??? func "`#!python Group.add_child_structure(newChild)`"
+    
+    ##### add child structure
+
+    Add a structure as a member of this group
+
+
+??? func "`#!python Group.remove_child_structure(child)`"
+    
+    ##### remove child structure
+
+    Remove a structure as a member of this group
+
+
+??? func "`#!python Group.add_child_group(newChild)`"
+    
+    ##### add child group
+
+    Add a group as a (nested) member of this group
+    
+    The `group` argument can be either a group object or a group name string.
+
+??? func "`#!python Group.remove_child_group(child)`"
+    
+    ##### remove child group
+
+    Remove a group as a (nested) member of this group
+    
+    The `group` argument can be either a group object or a group name string.
+
+
+
+### Group settings
+
+??? func "`#!python Group.set_enabled(newVal)`"
+    
+    ##### set enabled
+
+    Set all descendents of a group to be enabled or disabled (applies to direct members of a group, as well as recursively to all members-of-members for nested groups).
+
+    The `newVal` argument is a bool.
+
+??? func "`#!python Group.set_show_child_details(newVal)`"
+    
+    ##### show UI details
+
+    If true, the Groups section of the ImGui UI panel will show each childs structure info as a submenu under the group. If false, only the group name and toggle checkbox will be shown.
+
+    The `newVal` argument is a bool.
+    
+    (Default: true)
+
+??? func "`#!python Group.set_hide_descendents_from_structure_lists(newVal)`"
+    
+    ##### hide from structure list
+
+    If true, the structures which are members of this group (or descendents in any nested groups) will be hidden from the ImGui UI panel structure list.
+    
+    The `newVal` argument is a bool.
+
+    (Default: false)
+    
