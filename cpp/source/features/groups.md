@@ -41,7 +41,7 @@ group->setEnabled(false);
 
 // hide items in group from displaying in the UI
 // (useful if you are registering huge numbers of structures you don't always need to see)
-group->setHideDescendentsFromStructureLists(true);
+group->setHideDescendantsFromStructureLists(true);
 group->setShowChildDetails(false);
 
 // nest groups inside of other groups
@@ -142,7 +142,7 @@ polyscope::show(3);
     
     ##### set enabled
 
-    Set all descendents of a group to be enabled or disabled (applies to direct members of a group, as well as recursively to all members-of-members for nested groups).
+    Set all descendants of a group to be enabled or disabled (applies to direct members of a group, as well as recursively to all members-of-members for nested groups).
 
 ??? func "`#!cpp Group* Group::setShowChildDetails(bool newVal)`"
     
@@ -154,13 +154,13 @@ polyscope::show(3);
     
     There is also a corresponding `getShowChildDetails()`.
 
-??? func "`#!cpp Group* Group::setHideDescendentsFromStructureLists(bool newVal)`"
+??? func "`#!cpp Group* Group::setHideDescendantsFromStructureLists(bool newVal)`"
     
     ##### hide from structure list
 
-    If true, the structures which are members of this group (or descendents in any nested groups) will be hidden from the ImGui UI panel structure list.
+    If true, the structures which are members of this group (or descendants in any nested groups) will be hidden from the ImGui UI panel structure list.
 
     (Default: false)
     
-    There is also a corresponding `getHideDescendentsFromStructureLists()`.
+    There is also a corresponding `getHideDescendantsFromStructureLists()`.
 

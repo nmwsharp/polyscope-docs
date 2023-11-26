@@ -33,7 +33,7 @@ group.set_enabled(False)
 
 # hide items in group from displaying in the UI
 # (useful if you are registering huge numbers of structures you don't always need to see)
-group.set_hide_descendents_from_structure_lists(True)
+group.set_hide_descendants_from_structure_lists(True)
 group.set_show_child_details(False)
 
 # nest groups inside of other groups
@@ -128,7 +128,7 @@ ps.show(3)
     
     ##### set enabled
 
-    Set all descendents of a group to be enabled or disabled (applies to direct members of a group, as well as recursively to all members-of-members for nested groups).
+    Set all descendants of a group to be enabled or disabled (applies to direct members of a group, as well as recursively to all members-of-members for nested groups).
 
     The `newVal` argument is a bool.
 
@@ -142,11 +142,11 @@ ps.show(3)
     
     (Default: true)
 
-??? func "`#!python Group.set_hide_descendents_from_structure_lists(newVal)`"
+??? func "`#!python Group.set_hide_descendants_from_structure_lists(newVal)`"
     
     ##### hide from structure list
 
-    If true, the structures which are members of this group (or descendents in any nested groups) will be hidden from the ImGui UI panel structure list.
+    If true, the structures which are members of this group (or descendants in any nested groups) will be hidden from the ImGui UI panel structure list.
     
     The `newVal` argument is a bool.
 
