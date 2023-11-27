@@ -1,4 +1,3 @@
-
 ### Color Quantity Options
     
 When adding a color quantity, the following keyword options can be set. These are available for all kinds of color quantities on all structures.

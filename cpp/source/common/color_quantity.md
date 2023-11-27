@@ -1,4 +1,3 @@
-
 ### Color Quantity Options
 
 These options and behaviors are available for all types of color quantities on any structure.

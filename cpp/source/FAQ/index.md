@@ -13,6 +13,7 @@ hide:
 - [Visualizing colors as exact RGB values, without any shading or tonemapping](#visualizing-colors-as-exact-rgb-values-without-any-shading-or-tonemapping)
 
 <!-- TODO -->
+<!-- - How run polyscope in a docker container -->
 <!-- - How to use floating images to visualize renders of the scene -->
 <!-- - How to adjust color map limits -->
 <!-- - How do I do more advanced interaction? (use imgui) -->
@@ -33,9 +34,9 @@ It may not not be possible to use Polyscope on a remote headless machine which d
 
 If the machine _does_ have a display attached, there should be no problem. You can run and initialize Polyscope, and even if you are working remotely via script or SSH you can programmatically capture screenshots of the rendered scene. 
 
-However, Polyscope will only work if it can create an operating system-level display window, which generally means having a physical monitor attached. Various virtual windowing systems and X-servers exist as a hypothetical workaround, however users have reported limited success with these tools, usually because the use software openGL renderers which do not support the openGL features required by Polyscope.
+However, Polyscope will only work if it can create an operating system-level display window, which generally means having a physical monitor attached. Various virtual windowing systems and X-servers exist as a hypothetical workaround, however users have reported limited success with these tools, usually because they use software openGL renderers which do not support the openGL features required by Polyscope.
 
-In implementation terms, this limitation comes from needing to be able initialize an OpenGL 3.3 core-profile context using [GLFW](https://www.glfw.org/). Currently, GLFW can only create an openGL context when a display is present. If you find a good workaround for Polyscope on headless machines, please share! One day, we hope to implement an alternate EGL backend, which would support headless machines.
+In implementation terms, this limitation comes from needing to initialize an OpenGL 3.3 core-profile context using [GLFW](https://www.glfw.org/). Currently, GLFW can only create an openGL context when a display is present. If you find a good workaround for Polyscope on headless machines, please share! One day, we hope to implement an alternate EGL backend, which would support headless machines.
 
 
 ### **Rendering figures for papers and presentations**

@@ -1,5 +1,4 @@
-
-## Scalar Quantity Options
+### Scalar Quantity Options
 
 These options and behaviors are available for all types of scalar quantities on any structure.
 
