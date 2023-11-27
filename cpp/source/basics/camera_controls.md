@@ -18,7 +18,7 @@ polyscope::view::lookAt(glm::vec3{10., 10., 0.}, glm::vec3{0., 2., 0.});
 polyscope::show();
 ```
 
-### Options
+## View options
 
 ??? func "`#!cpp void view::setNavigateStyle(NavigateStyle newStyle)`"
 
@@ -183,3 +183,170 @@ Also, in the Polyscope GUI, this string can be copied to the clipboard at any ti
     ```cpp
     polyscope::view::setViewFromJson(myString);
     ```
+
+---
+## Camera Parameters
+
+`CameraParameters` objects describe a camera view in Polyscope, including its _intrinsics_ (the field of view and aspect ratio), and _extrinsics_ (the location and orientation). These parameters are used both for manipulations of the interactive viewport, as well as creating [Camera View structures]([[url.prefix]]/structures/camera_view/basics) which are visualized as part of the content in your scene.
+
+**Example:**
+```cpp
+// construct camera parameters 
+polyscope::CameraParameters params(
+            polyscope::CameraIntrinsics::fromFoVDegVerticalAndAspect(60, 2.),
+            polyscope::CameraExtrinsics::fromVectors(
+                glm::vec3{2., 2., 2.},      // world-space position
+                glm::vec3{-1., 0., 0.},     // world-space look direction
+                glm::vec3{0., 1., 0.}       // world-space up direction
+            )
+        );
+
+// set the viewport view to those parameters
+polyscope::view::setViewToCamera(params);
+
+// or, use the parameters to create a camera view
+polyscope::CameraView* cam = polyscope::registerCameraView("cam1", params);
+```
+
+### Camera Intrinsics
+
+A `CameraIntrinsics` object describes the field of view and aspect ratio of a camera. It **does not** describe a "pixel resolution" for a camera---you could have many images of different resolutions all associated with the same camera, as long as the aspect ratios are right.
+
+Camera intrinsics can be created by specifying any pair of vertical field of view, horizontal field of view, and aspect ratio.
+
+??? func "`#!cpp static CameraIntrinsics CameraIntrinsics::fromFoVDegVerticalAndAspect(const float& fovVertDeg, const float& aspectRatioWidthOverHeight)`"
+
+    Construct camera intrinsics.
+
+    - `fovVertDeg` vertical field of view in degrees
+    - `aspectRatioWidthOverHeight` aspect ratio, as `width / height`
+
+    This is a **static named constructor**. Call it like
+    ```cpp
+    CameraIntrinsics camInt = CameraIntrinsics::fromFoVDegVerticalAndAspect(20., 2.);
+    ```
+
+??? func "`#!cpp static CameraIntrinsics CameraIntrinsics::fromFoVDegHorizontalAndAspect(const float& fovHorzDeg, const float& aspectRatioWidthOverHeight)`"
+
+    Construct camera intrinsics.
+
+    - `fovHorzDeg` horizontal field of view in degrees
+    - `aspectRatioWidthOverHeight` aspect ratio, as `width / height`
+
+    This is a **static named constructor**. Call it like
+    ```cpp
+    CameraIntrinsics camInt = CameraIntrinsics::fromFoVDegHorizontalAndAspect(20., 2.);
+    ```
+
+??? func "`#!cpp static CameraIntrinsics CameraIntrinsics::fromFoVDegHorizontalAndVertical(const float& fovHorzDeg, const float& fovVertDeg)`"
+
+    Construct camera intrinsics.
+
+    - `fovHorzDeg` horizontal field of view in degrees
+    - `fovVertDeg` vertical field of view in degrees
+
+    This is a **static named constructor**. Call it like
+    ```cpp
+    CameraIntrinsics camInt = CameraIntrinsics::fromFoVDegHorizontalAndVertical(20., 30.);
+    ```
+
+Various getters access the properties of an intrinsics object:
+```cpp
+float CameraIntrinsics::getFoVVerticalDegrees()             // vertical FoV
+float CameraIntrinsics::getAspectRatioWidthOverHeight()     // horizontal FoV
+```
+
+### Camera Extrinsics
+
+A `CameraExtrinsics` object describes the location and orientation of a camera. It can be defined by the forward/up/right axes of the camera in world coordinates, or via an extrinsic matrix, typically denoted `E`, which maps points in world coordinates to points in the camera's local coordinate system. Polyscope uses openGL conventions for camera space, such that the camera points toward the -Z axis, with +Y pointing up and +X pointing right.
+
+Camera extrinsics can be created by specifying frame axes or an extrinsic matrix.
+
+??? func "`#!cpp static CameraExtrinsics CameraExtrinsics::fromVectors(const T1& root, const T2& lookDir, const T3& upDir)`"
+
+    Construct camera extrinsics.
+
+    - `root` the world-space position of the camera
+    - `lookDir` a world-space unit vector along which the camera looks
+    - `upDir` a world-space unit vector defining the up axis for the camera
+
+    These are all 3D vectors, and can be any type which is accessible via Polyscope's [data adaptors](/data_adaptors/).
+
+    This is a **static named constructor**. Call it like
+    ```cpp
+    CameraExtrinsics camExt = CameraExtrinsics::fromVectors(rootVec, lookDir, upDir);
+    ```
+
+??? func "`#!cpp static CameraExtrinsics CameraExtrinsics::fromMatrix(const glm::mat4& E)`"
+
+    Construct camera extrinsics.
+
+    - `E` is a 4x4 matrix mapping points in world-space to local camera space. Polyscope's camera space uses openGL convention.
+
+    This is a **static named constructor**. Call it like
+    ```cpp
+    CameraExtrinsics camExt = CameraExtrinsics::fromMatrix(E_mat);
+    ```
+
+Various getters access the properties of an extrinsics object:
+```cpp
+glm::vec3       CameraExtrinsics::getT()
+glm::mat3x3     CameraExtrinsics::getR()
+glm::mat4x4     CameraExtrinsics::getViewMat() // synonym for getE()
+glm::mat4x4     CameraExtrinsics::getE()
+glm::vec3       CameraExtrinsics::getPosition()
+glm::vec3       CameraExtrinsics::getLookDir()
+glm::vec3       CameraExtrinsics::getUpDir()
+glm::vec3       CameraExtrinsics::getRightDir()
+std::tuple<glm::vec3, glm::vec3, glm::vec3> CameraExtrinsics::getCameraFrame() // <look, up, right> world-space vectors
+```
+### Camera Parameters
+
+The `CameraParameters` object combines a set of intrinsics and extrinsics to fully define a camera.
+
+
+??? func "`#!cpp CameraParameters(const CameraIntrinsics& intrinsics, const CameraExtrinsics& extrinsics)`"
+
+    Construct camera parameters from intrinsics and extrinsics.
+
+    This is a plain old constructor. Call it like
+    ```cpp
+    CameraExtrinsics camExt = CameraExtrinsics::fromMatrix(E_mat);
+    CameraIntrinsics camInt = CameraIntrinsics::fromFoVDegHorizontalAndVertical(20., 30.);
+    CameraParameters camParam(camInt, camExt);
+    ```
+
+
+Various getters access the properties of the parameters object. All getters for the intrinsics and extrinsics are also forwarded to the combined parameters class.
+```cpp
+// intrinsics
+float CameraParameters::getFoVVerticalDegrees()             // vertical FoV
+float CameraParameters::getAspectRatioWidthOverHeight()     // horizontal FoV
+
+// extrinsics
+glm::vec3       CameraParameters::getT()
+glm::mat3x3     CameraParameters::getR()
+glm::mat4x4     CameraParameters::getViewMat() // synonym for getE()
+glm::mat4x4     CameraParameters::getE()
+glm::vec3       CameraParameters::getPosition()
+glm::vec3       CameraParameters::getLookDir()
+glm::vec3       CameraParameters::getUpDir()
+glm::vec3       CameraParameters::getRightDir()
+std::tuple<glm::vec3, glm::vec3, glm::vec3> CameraParameters::getCameraFrame() // <look, up, right> world-space vectors
+```
+
+
+#### Generating pixel rays
+
+It is often necessary to generate the world-space ray corresponding to each pixel of an image in a camera view. The base point for these rays is easy, it is just `params.getPosition()`. However the ray directions vary-per pixel; the `CameraParameters` object has two helpers to automatically construct these rays.
+
+??? func "`#!cpp std::vector<glm::vec3> CameraParameters::generateCameraRays(size_t dimX, size_t dimY, ImageOrigin origin = ImageOrigin::UpperLeft)`"
+
+    Fill a buffer with rays corresponding to an image with the given resolution. The result is a `dimX*dimY`-length buffer. Ray origins are all implicitly given by `this->getPosition()`.
+
+
+??? func "`#!cpp std::array<glm::vec3, 4> CameraParameters::generateCameraRayCorners()`"
+
+    Generate the rays corresponding to the [upperleft, upperright, lowerleft, lowerright] corners of the camera's view. 
+
+    This method is useful because the caller can easily linearly interpolate the normalize get ray directions for all pixels in an image, but this method just needs to return a small amount of data. This makes it easy to e.g. generate rays for a real-time renderer on a GPU, without transferring a whole buffer of ray directions for each frame.

@@ -46,6 +46,8 @@ ps.show()
     2D point clouds are also supported, see [2D data](../../../features/2D_data).
 
 
+As with all structures, there is also `get_point_cloud("name")`, `has_point_cloud("name")`, and `remove_point_cloud("name")`.
+
 ### Updating a point cloud
 
 The locations of the points in a point cloud can be updated with the member function `update_point_positions(newPositions)`. All quantities will be preserved. Changing the _number_ of points in the cloud is not supported, you will need to register a new cloud (perhaps with the same name to overwrite this one).

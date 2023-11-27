@@ -78,8 +78,7 @@ nav:
     - 'Initializing' : 'basics/initializing.md'
     - 'Program Options' : 'basics/program_options.md'
     - 'Scene Options' : 'basics/scene_options.md'
-    - 'Camera Controls' : 'basics/camera_controls.md'
-    - 'Parameters' : 'basics/parameters.md'
+    - 'Camera Controls & Parameters' : 'basics/camera_controls.md'
   - Structures and Quantities: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Point Cloud:
@@ -88,6 +87,11 @@ nav:
       - 'Color Quantities' : 'structures/point_cloud/color_quantities.md'
       - 'Vector Quantities' : 'structures/point_cloud/vector_quantities.md'
       - 'Variable Radius' : 'structures/point_cloud/variable_radius.md'
+    - Curve Network:
+      - 'Basics' : 'structures/curve_network/basics.md'
+      - 'Scalar Quantities' : 'structures/curve_network/scalar_quantities.md'
+      - 'Color Quantities' : 'structures/curve_network/color_quantities.md'
+      - 'Vector Quantities' : 'structures/curve_network/vector_quantities.md'
     - Surface Mesh:
       - 'Basics' : 'structures/surface_mesh/basics.md'
       - 'Scalar Quantities' : 'structures/surface_mesh/scalar_quantities.md'
@@ -96,16 +100,13 @@ nav:
       - 'Vector Quantities' : 'structures/surface_mesh/vector_quantities.md'
       - 'Parameterization Quantities' : 'structures/surface_mesh/parameterization_quantities.md'
       - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'
-    - Curve Network:
-      - 'Basics' : 'structures/curve_network/basics.md'
-      - 'Scalar Quantities' : 'structures/curve_network/scalar_quantities.md'
-      - 'Color Quantities' : 'structures/curve_network/color_quantities.md'
-      - 'Vector Quantities' : 'structures/curve_network/vector_quantities.md'
     - Volume Mesh:
       - 'Basics' : 'structures/volume_mesh/basics.md'
       - 'Scalar Quantities' : 'structures/volume_mesh/scalar_quantities.md'
       - 'Color Quantities' : 'structures/volume_mesh/color_quantities.md'
       - 'Vector Quantities' : 'structures/volume_mesh/vector_quantities.md'
+    - Camera View:
+      - 'Basics' : 'structures/camera_view/basics.md'
     - Floating Quantities:
       - 'Basics' : 'structures/floating_quantities/basics.md'
       - 'Images' : 'structures/floating_quantities/images.md'
@@ -113,6 +114,7 @@ nav:
   - Features: 
     - 'Screenshots' : 'features/screenshots.md'
     - 'Callbacks & Custom UIs' : 'features/callbacks_and_UIs.md'
+    - 'Parameters' : 'basics/parameters.md'
     - 'Messages' : 'features/messages.md'
     - 'Materials' : 'features/materials.md'
     - 'Color Maps' : 'features/color_maps.md'

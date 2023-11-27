@@ -2,13 +2,13 @@ Images are rectangular grids of pixel values.
 
 **Sample:** An image quantity of a majestic cat, shown here in the ImGui window display mode.
 
-![image example](/media/image_example.jpg)
+![image example]([[url.prefix]]/media/image_example.jpg)
 
 !!! info "Floating Quantities"
 
     Images are _floating quantities_, which means they can be added to the scene at the root level, or added to any kind of structure.
 
-    See the [floating quantity introduction](/structures/floating_quantities/basics/) for more info.
+    See the [floating quantity introduction]([[url.prefix]]/structures/floating_quantities/basics/) for more info.
 
 
 **Example:**
@@ -52,7 +52,7 @@ ps.show()
 
 !!! tip "Images vs. Render Images"
 
-    If your image happens to represent a rendering of the scene from the user's viewport (for example, from custom renderer code), check out the [Render Image](/structures/floating_quantities/render_images/) quantity, which offers additional functionality for view-rendered images such as depth-compositing them into the scene to layer and blend with other content.
+    If your image happens to represent a rendering of the scene from the user's viewport (for example, from custom renderer code), check out the [Render Image]([[url.prefix]]/structures/floating_quantities/render_images/) quantity, which offers additional functionality for view-rendered images such as depth-compositing them into the scene to layer and blend with other content.
 
 
 !!! tip "Camera Views"

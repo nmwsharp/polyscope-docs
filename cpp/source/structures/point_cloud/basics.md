@@ -33,7 +33,7 @@ psCloud->setPointRenderMode(polyscope::PointRenderMode::Quad);
 polyscope::show()
 ```
 
-??? func "`#!cpp polyscope::registerPointCloud(std::string name, const T& pointPositions)`"
+??? func "`#!cpp PointCloud* registerPointCloud(std::string name, const T& pointPositions)`"
 
     Add a new point cloud structure to Polyscope.
 
@@ -41,6 +41,8 @@ polyscope::show()
 
     Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D point cloud, `registerPointCloud2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
+
+As with all structures, there is also `getPointCloud("name")`, `hasPointCloud("name")`, and `removePointCloud("name")`.
 
 ### Updating a point cloud
 

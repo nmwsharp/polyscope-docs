@@ -4,7 +4,7 @@ Render images always show the image in fullscreen viewport. Additional, depth an
 
 **Sample:** A colored box and scalar torus, displayed as render images from a user's custom implicit surface renderer.
 
-![sample render image](/media/render_image_implicit_example.jpg)
+![sample render image]([[url.prefix]]/media/render_image_implicit_example.jpg)
 
 
 !!! info "Floating Quantities"
@@ -13,7 +13,7 @@ Render images always show the image in fullscreen viewport. Additional, depth an
 
     It is most common to add render image quantities at the root level. However, it might still be useful to add render images to structures, to associate the rendering with a particular structure, e.g. as a separate rendering of each point cloud in the scene.
 
-    See the [floating quantity introduction](/structures/floating_quantities/basics/) for more info.
+    See the [floating quantity introduction]([[url.prefix]]/structures/floating_quantities/basics/) for more info.
 
 
 ## Image Origin
@@ -25,7 +25,7 @@ Most of the time, `ImageOrigin::UpperLeft` is the right choice.
 ---
 ## Depth Render Image Quantity
 
-A depth render image quantity takes a depth value per-pixel, and (optionally) a world-space normal per-pixel. The depth image will be rendered with surface shading using Polyscope's [materials](/features/materials/).
+A depth render image quantity takes a depth value per-pixel, and (optionally) a world-space normal per-pixel. The depth image will be rendered with surface shading using Polyscope's [materials]([[url.prefix]]/features/materials/).
 
 **Example:**
 ```cpp
@@ -65,7 +65,7 @@ This can be called at the root level, like `polyscope::addDepthRenderImageQuanti
 ---
 ## Color Render Image Quantity
 
-A color render image quantity takes a depth value per-pixel, (optionally) a world-space normal per-pixel, and a color value per-pixel. The depth image will be rendered with surface shading using Polyscope's [materials](/features/materials/), colored according to the given color.
+A color render image quantity takes a depth value per-pixel, (optionally) a world-space normal per-pixel, and a color value per-pixel. The depth image will be rendered with surface shading using Polyscope's [materials]([[url.prefix]]/features/materials/), colored according to the given color.
 
 !!! info "Color vs. Raw Color Render Images"
 
@@ -108,7 +108,7 @@ This can be called at the root level, like `polyscope::addColorRenderImageQuanti
 ---
 ## Scalar Render Image Quantity
 
-A scalar render image quantity takes a depth value per-pixel, (optionally) a world-space normal per-pixel, and a scalar value per-pixel. The depth image will be rendered with surface shading using Polyscope's [materials](/features/materials/), with the scalar value shaded and colormapped as a scalar quantity.
+A scalar render image quantity takes a depth value per-pixel, (optionally) a world-space normal per-pixel, and a scalar value per-pixel. The depth image will be rendered with surface shading using Polyscope's [materials]([[url.prefix]]/features/materials/), with the scalar value shaded and colormapped as a scalar quantity.
 
 **Example:**
 ```cpp
@@ -163,7 +163,7 @@ polyscope::show(3);
 
 !!! info "Color vs. Raw Color Render Images"
 
-    A _color_ render image applies [materials](/features/materials/) shading and lighting to the image, just like Polyscope usually does for meshes and other objects. A _raw color_ render image does not do any additional shading, and simply displays the given colors directly onto the screen.
+    A _color_ render image applies [materials]([[url.prefix]]/features/materials/) shading and lighting to the image, just like Polyscope usually does for meshes and other objects. A _raw color_ render image does not do any additional shading, and simply displays the given colors directly onto the screen.
 
 This can be called at the root level, like `polyscope::addRawColorRenderImageQuantity()`, or on a structure, like `cameraView->addRawColorRenderImageQuantity()`.
 
