@@ -1,6 +1,6 @@
 Images are rectangular grids of pixel values.
 
-**Sample:** An image quantity of a majestic cat, here as shown in the ImGui window display mode.
+**Sample:** An image quantity of a majestic cat, shown here in the ImGui window display mode.
 
 ![image example](/media/image_example.jpg)
 
@@ -21,7 +21,8 @@ polyscope::init();
 // Buffer layouts are assumed to be [rows, columns, components]
 // As always, Polyscope's data adaptors allow it to directly read from many
 // containers: std::vector<>, Eigen::MatrixXd, raw buffers, etc.
-int width, height, nComp;
+int width = 1024;
+int height = 768;
 std::vector<std::array<float, 3>> imageColor(width * height);
 std::vector<std::array<float, 4>> imageColorAlpha(width * height);
 std::vector<float> imageScalar(width * height);
@@ -46,7 +47,7 @@ scalarImage->setMapRange({0.0, 10.0});
 
 // == Add images associated with a structure
 // Here, a camera view, you could also use a point cloud, or a mesh, etc
-polyscope::CameraView* targetView = polyscope::getCameraView("my view"); // some view you have registered
+polyscope::CameraView* targetView = polyscope::getCameraView("my view"); // some structure you previously registered
 
 polyscope::ColorImageQuanitity* colorImageView =
 targetView->addColorImageQuantity("test color image", width, height, imageColor, 
@@ -81,6 +82,7 @@ When registering an image quantity, you also need to specify whether the image s
 
 Most of the time, `ImageOrigin::UpperLeft` is the right choice.
 
+---
 ## Scalar Image Quantity
 
 These can be called at the root level, like `polyscope::addScalarImageQuantity()`, or on a structure, like `cameraView->addScalarImageQuantity()`.
@@ -97,6 +99,7 @@ These can be called at the root level, like `polyscope::addScalarImageQuantity()
 
 {!common/scalar_quantity.md!}
 
+---
 ## Color Image Quantity
 
 These can be called at the root level, like `polyscope::addColorImageQuantity()`, or on a structure, like `cameraView->addColorImageQuantity()`.
@@ -126,6 +129,7 @@ By default, alpha values are interpreted to be non-premultiplied. Use  `colorAlp
 {!common/color_quantity.md!}
 
 
+---
 ## Image Options
 
 These options are common to all images

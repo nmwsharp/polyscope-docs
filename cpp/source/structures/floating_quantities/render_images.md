@@ -22,6 +22,7 @@ When registering an image quantity, you also need to specify whether the image s
 
 Most of the time, `ImageOrigin::UpperLeft` is the right choice.
 
+---
 ## Depth Render Image Quantity
 
 A depth render image quantity takes a depth value per-pixel, and (optionally) a world-space normal per-pixel. The depth image will be rendered with surface shading using Polyscope's [materials](/features/materials/).
@@ -61,6 +62,7 @@ This can be called at the root level, like `polyscope::addDepthRenderImageQuanti
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
 
 
+---
 ## Color Render Image Quantity
 
 A color render image quantity takes a depth value per-pixel, (optionally) a world-space normal per-pixel, and a color value per-pixel. The depth image will be rendered with surface shading using Polyscope's [materials](/features/materials/), colored according to the given color.
@@ -103,6 +105,7 @@ This can be called at the root level, like `polyscope::addColorRenderImageQuanti
 
 {!common/color_quantity.md!}
 
+---
 ## Scalar Render Image Quantity
 
 A scalar render image quantity takes a depth value per-pixel, (optionally) a world-space normal per-pixel, and a scalar value per-pixel. The depth image will be rendered with surface shading using Polyscope's [materials](/features/materials/), with the scalar value shaded and colormapped as a scalar quantity.
@@ -127,7 +130,7 @@ This can be called at the root level, like `polyscope::addScalarRenderImageQuant
 
 ??? func "`#!cpp ScalarRenderImageQuantity* addScalarRenderImageQuantity(std::string name, size_t dimX, size_t dimY, const T1& depthData, const T2& normalData, const T3& scalarData, ImageOrigin imageOrigin, DataType type = DataType::STANDARD)`"
 
-    Add a depth render image, annotated with additional color values per-pixel.
+    Add a depth render image, annotated with additional scalar values per-pixel.
 
     - `width` and `height` are dimensions in pixels
     - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array . The length should be `width * height`.
@@ -140,6 +143,7 @@ This can be called at the root level, like `polyscope::addScalarRenderImageQuant
 
 {!common/scalar_quantity.md!}
 
+---
 ## Raw Color Render Image Quantity
 
 A raw color render image quantity takes a depth value per-pixel and a color value per-pixel. The colors will be directly displayed onscreen, with depth compositing into the scene.
@@ -177,6 +181,7 @@ This can be called at the root level, like `polyscope::addRawColorRenderImageQua
     RGB values are interpreted in the range `[0,1]`.
 
 
+---
 ## Raw Color Alpha Render Image Quantity
 
 Just like the above `ColorRenderImageQuantity`, but with an additional alpha channel which gets alpha-composited onto the scene.
@@ -209,6 +214,7 @@ polyscope::show(3);
 
 By default, alpha values are interpreted to be non-premultiplied. Use  `rawColorAlphaRenderImage->setIsPremultiplied(true);` to directly pass premultiplied alpha images.
 
+---
 ## Render Image Options
 
 These options are common to all render images

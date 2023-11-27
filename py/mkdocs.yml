@@ -106,6 +106,10 @@ nav:
       - 'Scalar Quantities' : 'structures/volume_mesh/scalar_quantities.md'
       - 'Color Quantities' : 'structures/volume_mesh/color_quantities.md'
       - 'Vector Quantities' : 'structures/volume_mesh/vector_quantities.md'
+    - Floating Quantities:
+      - 'Basics' : 'structures/floating_quantities/basics.md'
+      - 'Images' : 'structures/floating_quantities/images.md'
+      - 'Render Images' : 'structures/floating_quantities/render_images.md'
   - Features: 
     - 'Screenshots' : 'features/screenshots.md'
     - 'Callbacks & Custom UIs' : 'features/callbacks_and_UIs.md'
