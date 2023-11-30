@@ -43,6 +43,20 @@ polyscope::show();
     `backend` is an optional specifier for which [rendering backend]([[url.prefix]]/building#backends) to use, passing `""` selects a reasonable default backend. Generally, you should not need to manually set the backend.
 
 
+??? func "`#!cpp checkInitialized()`"
+
+    ##### checkInitialized()
+
+    Check if polyscope has been initialized, if not an error is thrown. 
+
+
+??? func "`#!cpp isInitialized()`"
+
+    ##### isInitialized()
+
+    Returns true if the state of polyscope is initialized and false if not.
+
+
 ??? func "`#!cpp show()`"
     
     ##### show()
