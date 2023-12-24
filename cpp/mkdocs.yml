@@ -71,8 +71,8 @@ nav:
     - 'about/license.md'
     - 'Dependencies' : 'about/dependencies.md'
     - 'about/contributing.md'
-  - FAQ, Tips, and Tricks: 'FAQ/index.md'
   - Building: 'building/index.md'
+  - FAQ, Tips, and Tricks: 'FAQ/index.md'
   - Data Adaptors : 'data_adaptors.md'
   - Basics: 
     - 'Basic Flow' : 'basics/flow.md'
@@ -107,6 +107,9 @@ nav:
       - 'Scalar Quantities' : 'structures/volume_mesh/scalar_quantities.md'
       - 'Color Quantities' : 'structures/volume_mesh/color_quantities.md'
       - 'Vector Quantities' : 'structures/volume_mesh/vector_quantities.md'
+    - Volume Grid:
+      - 'Basics' : 'structures/volume_grid/basics.md'
+      - 'Scalar Quantities' : 'structures/volume_grid/scalar_quantities.md'
     - Camera View:
       - 'Basics' : 'structures/camera_view/basics.md'
     - Floating Quantities:
@@ -125,6 +128,7 @@ nav:
     - 'Slice Planes' : 'features/slice_planes.md'
     - '2D Data' : 'features/2D_data.md'
     - 'Groups' : 'features/groups.md'
+    - 'Implicit Helpers' : 'features/implicit_helpers.md'
   - Integrations: 
       - 'Geometry Central' : 'integrations/geometry_central/index.md'
       - 'libIGL' : 'integrations/libIGL/index.md'

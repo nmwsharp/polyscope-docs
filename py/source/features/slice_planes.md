@@ -1,7 +1,7 @@
 Geometric data often has complex internal structures. Slice planes can be added to the scene to cull away parts of an object and inspect its interior. These planes can be manipulated either programmatically or manually in the GUI.
 
 <video width=100% autoplay muted loop>
-  <source src="/media/movies/slice_slide.mp4" type="video/mp4">
+  <source src="[[url.prefix]]/media/movies/slice_slide.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

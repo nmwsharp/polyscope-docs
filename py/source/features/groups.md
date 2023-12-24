@@ -1,7 +1,7 @@
 To manage large numbers of structures, or manage structures which are related to each other, you can gather them in **groups**. A group is a collection of structures which can be enabled/disabled together and hidden from the UI if needed. A structure can be in 0, 1, or many groups. Groups can also hold other groups, allowing nested organization.
 
 <video width=100% autoplay muted loop>
-  <source src="/media/groups_demo.mp4" type="video/mp4">
+  <source src="[[url.prefix]]/media/groups_demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

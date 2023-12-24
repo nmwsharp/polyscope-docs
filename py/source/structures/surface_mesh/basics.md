@@ -43,7 +43,7 @@ Surface meshes are registered with Polyscope by passing the location of each ver
     - `smooth_shade` boolean, if `True` use smooth shading (default: `False` for flat shading)
     - `material` string, name of material to use for the mesh
 
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](../../../basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
     
     2D vertex positions are also supported, see [2D data](../../../features/2D_data).
 
@@ -63,6 +63,13 @@ The locations of the vertices in a mesh can be updated with the member function 
 ??? func "`#!python SurfaceMesh.update_vertex_positions(newPos)`"
 
     Update the vertex positions in a surface mesh structure. `newPos` must be valid input as to initially construct the vertex positions, with the same number of vertices.
+
+### Picking
+
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. By default only mesh vertices and faces can be selected. Edges, corners, and halfedges, become selectable only once they are used by some quantity, for instance once a per-corner quantity is registered, then it becomes possible to click on corners.
+
+If desired, you can manually override this behavior by calling `mesh.mark_edges_as_used()`, to make the structure act as if edges are in use and make the pickable, etc. The same goes for `mesh.mark_corners_as_used()` and `mesh.mark_halfedges_as_used()`. If you mark edges or halfedges as used, you much also set their element ordering as described in the [indexing conventions](../indexing_convention/).
+
 
 ### Back face policies
 

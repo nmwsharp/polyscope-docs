@@ -41,7 +41,7 @@ ps.show()
     - `color` float 3-tuple, default color values for the points as rgb in [0,1]
     - `material` string, name of material to use for cloud
 
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](../../../basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
     
     2D point clouds are also supported, see [2D data](../../../features/2D_data).
 

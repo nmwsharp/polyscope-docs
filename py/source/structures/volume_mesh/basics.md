@@ -68,7 +68,7 @@ Volume meshes are registered with Polyscope by passing the location of each vert
     - `edge_width` float, width of edges in rendered mesh; default sets `0` to disable edges, `1` is a reasonable value to enable
     - `material` string, name of material to use for the mesh
 
-    if not specified, these optional parameters will assume a reasonable default value, or a [persistant value](../../../basics/parameters/#persistent-values) if previously set.
+    if not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
 
 
 ---

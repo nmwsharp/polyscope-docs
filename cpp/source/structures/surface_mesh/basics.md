@@ -66,6 +66,12 @@ The locations of the vertices in a mesh can be updated with the member function 
     Note: `updateVertexPositions2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
 
+### Picking
+
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. By default only mesh vertices and faces can be selected. Edges, corners, and halfedges, become selectable only once they are used by some quantity, for instance once a per-corner quantity is registered, then it becomes possible to click on corners.
+
+If desired, you can manually override this behavior by calling `SurfaceMesh::markEdgesAsUsed()`, to make the structure act as if edges are in use and make the pickable, etc. The same goes for `SurfaceMesh::markCornersAsUsed()` and `SurfaceMesh::markHalfedgesAsUsed()`. If you mark edges or halfedges as used, you much also set their element ordering as described in the [indexing conventions](../indexing_convention/).
+
 ### Back face policies
 
 The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the "outward" direction. Faces which are viewed from behind are referred to as _back faces_; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how back faces are displayed.
