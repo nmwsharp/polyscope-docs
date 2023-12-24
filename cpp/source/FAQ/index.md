@@ -3,14 +3,25 @@ hide:
   - toc
 ---
 
-### **Contents**
+- **System**
 
-- [How do I take a screenshot / save an image?](#how-do-i-take-a-screenshot-save-an-image)
-- [How do I run Polyscope on a remote or headless server?](#how-do-i-run-polyscope-on-a-remote-or-headless-server)
-- [Rendering figures for papers and presentations](#rendering-figures-for-papers-and-presentations)
-- [Positioning objects in the scene and reading back results](#positioning-objects-in-the-scene-and-reading-back-results)
-- [Managing large numbers of structures and quantities](#managing-large-numbers-of-structures-and-quantities)
-- [Visualizing colors as exact RGB values, without any shading or tonemapping](#visualizing-colors-as-exact-rgb-values-without-any-shading-or-tonemapping)
+    - [How do I run Polyscope on a remote or headless server?](#how-do-i-run-polyscope-on-a-remote-or-headless-server)
+
+- **Interface**
+
+    - [How do I take a screenshot / save an image?](#how-do-i-take-a-screenshot-save-an-image)
+    - [Positioning objects in the scene and reading back results](#positioning-objects-in-the-scene-and-reading-back-results)
+    - [Managing large numbers of structures and quantities](#managing-large-numbers-of-structures-and-quantities)
+
+- **Appearance**
+
+    - [Visualizing colors as exact RGB values, without any shading or tonemapping](#visualizing-colors-as-exact-rgb-values-without-any-shading-or-tonemapping)
+    - [Rendering figures for papers and presentations](#rendering-figures-for-papers-and-presentations)
+
+- **Working with Data**
+
+- **Miscellaneous**
+
 
 <!-- TODO -->
 <!-- - How run polyscope in a docker container -->
@@ -19,8 +30,10 @@ hide:
 <!-- - How do I do more advanced interaction? (use imgui) -->
 <!-- - How do I make sure vector lengths are consistently scaled? -->
 <!-- - How do I make sure color map limits are consistent? -->
+<!-- - reproducible visualizations / length scale  -->
 <!-- - How do I set and restore camera poses/views (json & copy-paste) -->
 <!-- - give focus on show -->
+<!-- - implicits -->
 
 
 ### **How do I take a screenshot / save an image?**
@@ -55,9 +68,9 @@ Polyscope generally scales just fine with 100s or even 1000s of distinctly named
 
 Every structure has controls in its options UI menu under `Options --> Structure Selection` and `Options --> Quantity Selection` which can be used to enable/disable all structures and quantities, or isolate to viewing a single structure.
 
-Use [Groups](/features/groups/) to group your structures in to categories which can be enabled/disabled all together. Notice the `hide descendants` and `show details` options on groups, which can totally hide structures from the UI while still offering some control via the group.
+Use [Groups]([[url.prefix]]/features/groups/) to group your structures in to categories which can be enabled/disabled all together. Notice the `hide descendants` and `show details` options on groups, which can totally hide structures from the UI while still offering some control via the group.
 
-You can always use the [Custom UIs](/features/callbacks_and_UIs/) to create your own interface buttons and selectors which programmatically enable or disable registered objects or adjust their settings.
+You can always use the [Custom UIs]([[url.prefix]]/features/callbacks_and_UIs/) to create your own interface buttons and selectors which programmatically enable or disable registered objects or adjust their settings.
 
 
 ### **Visualizing colors as exact RGB values, without any shading or tonemapping**
