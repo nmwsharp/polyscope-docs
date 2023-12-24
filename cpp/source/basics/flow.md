@@ -2,52 +2,52 @@ This page describes the basic control flow to initialize Polyscope and invoke it
 
 Polyscope needs to be initialized exactly once by calling `init()`, typically near the beginning of your program. You can then register structures to the scene, and show the window using either of two methods.
 
-!!! note "Two ways to structure your program"
+## Program Structure
 
-    There are two separate ways to structure your program's control flow with polyscope.
+There are two separate ways to structure your program's control flow with polyscope.
 
-    **Option 1: show()** The simpler, and more-common approach is to call `show()`, which will run Polyscope's window continuously. The `show()` function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via [the `userCallback`]([[url.prefix]]/features/callbacks_and_UIs).
+**Option 1: show()** The simpler, and more-common approach is to call `show()`, which will run Polyscope's window continuously. The `show()` function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via [the `userCallback`]([[url.prefix]]/features/callbacks_and_UIs).
 
-    ```cpp
-    #include "polyscope/polyscope.h"
-    polyscope::init();
+```cpp
+#include "polyscope/polyscope.h"
+polyscope::init();
+
+/* 
+ * ... your code ...
+ * ... add visualizations to Polyscope, etc ...
+ */
+
+// if desired, set up a userCallback to execute your code each
+// frame and add ImGui UI elements
+
+polyscope::show(); // shows the UI, blocks until the UI exits
+
+// If desired, add more visualizations, then show the UI again.
+// Data is preserved between calls to show() unless explicitly removed.
+// ... your code ...
+polyscope::show();
+```
+
+**Option 2: frameTick()** An alternate approach is to manually call `frameTick()` in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. [The `userCallback`]([[url.prefix]]/features/callbacks_and_UIs) is still necessary to add ImGui UI elements.
+
+```cpp
+#include "polyscope/polyscope.h"
+polyscope::init();
+
+// if desired, set up a userCallback to add ImGui UI elements
+
+while(/* program runs */) {
 
     /* 
      * ... your code ...
      * ... add visualizations to Polyscope, etc ...
      */
-    
-    // if desired, set up a userCallback to execute your code each
-    // frame and add ImGui UI elements
 
-    polyscope::show(); // shows the UI, blocks until the UI exits
+    polyscope::frameTick(); // renders one UI frame, returns immediately
+}
+```
 
-    // If desired, add more visualizations, then show the UI again.
-    // Data is preserved between calls to show() unless explicitly removed.
-    // ... your code ...
-    polyscope::show();
-    ```
-    
-    **Option 2: frameTick()** An alternate approach is to manually call `frameTick()` in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. [The `userCallback`]([[url.prefix]]/features/callbacks_and_UIs) is still necessary to add ImGui UI elements.
-    
-    ```cpp
-    #include "polyscope/polyscope.h"
-    polyscope::init();
-
-    // if desired, set up a userCallback to add ImGui UI elements
-
-    while(/* program runs */) {
-
-        /* 
-         * ... your code ...
-         * ... add visualizations to Polyscope, etc ...
-         */
-
-        polyscope::frameTick(); // renders one UI frame, returns immediately
-    }
-    ```
-
-    Either way, `init()` must be called before you do anything with Polyscope.
+Either way, `init()` must be called before you do anything with Polyscope.
 
 !!! info "Where to make ImGui calls"
 

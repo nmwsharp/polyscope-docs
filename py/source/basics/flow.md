@@ -2,47 +2,47 @@ This page describes the basic control flow to initialize Polyscope and invoke it
 
 Polyscope needs to be initialized exactly once by calling `init()`, typically near the beginning of your program. You can then register structures to the scene, and show the window using either of two methods.
 
-!!! note "Two ways to structure your program"
+## Program Structure
 
-    There are two separate ways to structure your program's control flow with polyscope.
+There are two separate ways to structure your program's control flow with polyscope.
 
-    **Option 1: show()** The simpler, and more-common approach is to call `show()`, which will run Polyscope's window continuously. The `show()` function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via [the `user_callback`]([[url.prefix]]/features/callbacks_and_UIs).
+**Option 1: show()** The simpler, and more-common approach is to call `show()`, which will run Polyscope's window continuously. The `show()` function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via [the `user_callback`]([[url.prefix]]/features/callbacks_and_UIs).
 
-    ```python
-    import polyscope as ps
+```python
+import polyscope as ps
 
-    ps.init()
+ps.init()
 
-    # ... your code ...
-    # ... add visualizations to Polyscope, etc ...
-    
-    # if desired, set up a user_callback to execute your code each
-    # frame and add ImGui UI elements
+# ... your code ...
+# ... add visualizations to Polyscope, etc ...
 
-    ps.show() # shows the UI, blocks until the UI exits
+# if desired, set up a user_callback to execute your code each
+# frame and add ImGui UI elements
 
-    # If desired, add more visualizations, then show the UI again.
-    # Data is preserved between calls to show() unless explicitly removed.
-    # ... your code ...
-    ps.show()
-    ```
-    
-    **Option 2: frame_tick()** An alternate approach is to manually call `frame_tick()` in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. [The `user_callback`]([[url.prefix]]/features/callbacks_and_UIs) is still necessary to add ImGui UI elements.
-    
-    ```python
-    import polyscope as ps
+ps.show() # shows the UI, blocks until the UI exits
 
-    # if desired, set up a user_callback to add ImGui UI elements
+# If desired, add more visualizations, then show the UI again.
+# Data is preserved between calls to show() unless explicitly removed.
+# ... your code ...
+ps.show()
+```
 
-    while(continue_program):
+**Option 2: frame_tick()** An alternate approach is to manually call `frame_tick()` in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. [The `user_callback`]([[url.prefix]]/features/callbacks_and_UIs) is still necessary to add ImGui UI elements.
 
-        #  ... your code ...
-        #  ... add visualizations to Polyscope, etc ...
+```python
+import polyscope as ps
 
-        ps.frame_tick() # renders one UI frame, returns immediately
-    ```
+# if desired, set up a user_callback to add ImGui UI elements
 
-    Either way, `init()` must be called before you do anything with Polyscope.
+while(continue_program):
+
+    #  ... your code ...
+    #  ... add visualizations to Polyscope, etc ...
+
+    ps.frame_tick() # renders one UI frame, returns immediately
+```
+
+Either way, `init()` must be called before you do anything with Polyscope.
 
 !!! info "Where to make ImGui calls"
 
