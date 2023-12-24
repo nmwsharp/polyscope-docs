@@ -25,6 +25,14 @@ In Polyscope, we often want to adjust set custom colors for rendered objects. Th
 
 Materials which which support this blending are denoted by `(rgb)` in the options menu.  Ordinary static matcaps consisting of a single image can still be used as materials, but will ignore any color maps or other options.
 
+## Preserving colors with the flat material
+
+Generally, Polyscope applies material shading and tone-mapping to render 3D content. However, this means that data such as colors and tonemapped scalars will be a somewhat different color on-screen compared to what is in the data.
+
+The `flat` material is special: it not only applies flat coloring with no shading effects, but furthermore cancels-out tonemapping and other effects to ensure that the color you see onscreen is exactly the same as the data specified.
+
+Use the `flat` material any time you need exact color reproduction.
+
 ## Built-in materials
 
 Polyscope supports the following built-in materials:
