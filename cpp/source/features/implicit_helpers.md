@@ -11,7 +11,7 @@ _Implicit_ functions take an xyz position as input, and return a value. Polyscop
 
     The first individual version is simplest, and fits the usual definition of an implicit function. However, Polyscope might need to invoke the callback function millions of times, which can introduce excessive performance overhead, especially if the underlying function is being evaluated on a GPU, or via bindings to another language. For this reason, the batch version is also available, to perform many evaluations with each invocation and amortize the overhead.
 
-## Directly Rendering Implicit Functions
+## Directly Rendering Implicit Isosurfaces
 
 Polyscope can directly render images of an isosurface of an implicit function in space, from the current viewport or from a defined camera view. The resulting renders are added as [Render Images]([[url.prefix]]/structures/floating_quantities/render_images), which support material shading, colormapping, transparency, and depth-compositing with other content in the scene.
 
