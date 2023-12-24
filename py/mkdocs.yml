@@ -96,7 +96,7 @@ nav:
       - 'Basics' : 'structures/surface_mesh/basics.md'
       - 'Scalar Quantities' : 'structures/surface_mesh/scalar_quantities.md'
       - 'Color Quantities' : 'structures/surface_mesh/color_quantities.md'
-      - 'Distance Quantities' : 'structures/surface_mesh/distance_quantities.md'
+      - 'Texture Map Quantities' : 'structures/surface_mesh/texture_map_quantities.md'
       - 'Vector Quantities' : 'structures/surface_mesh/vector_quantities.md'
       - 'Parameterization Quantities' : 'structures/surface_mesh/parameterization_quantities.md'
       - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'
