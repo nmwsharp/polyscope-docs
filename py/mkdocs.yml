@@ -75,7 +75,7 @@ nav:
   - FAQ, Tips, and Tricks: 'FAQ/index.md'
   - Installing : 'installing/index.md'
   - Basics: 
-    - 'Initializing' : 'basics/initializing.md'
+    - 'Basic Flow' : 'basics/flow.md'
     - 'Program Options' : 'basics/program_options.md'
     - 'Scene Options' : 'basics/scene_options.md'
     - 'Camera Controls & Parameters' : 'basics/camera_controls.md'
