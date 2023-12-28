@@ -1,5 +1,12 @@
-- **Version 2.0.0** Dec, 2023  Backlog of many changes. Large backend rewrite, several new structures and features.
-    - Add 
+- **Version 2.0.0** Dec 2023 `71a1e64` Backlog of many changes. Large backend rewrite, several new structures and features.
+    - Add a Camera View structure for displaying images and rendered views of a scene
+    - Add a Volume Grid structure for values defined on regular grids
+    - Add helpers for directly visualizing implicit functions
+    - Add support for visualizing images (and the concept of Floating Quantities)
+    - Add `frameTick()` as an alternate method for basic control flow
+    - Add texture map support for surface meshes
+    - Add support for true-color rendering with the `flat` material
+    - More helpers for manipulating views and mouse clicks
     - Write the backed to use a new `ManagedBuffer` abstraction to generalize data management, avoid duplicate buffers on the GPU
     - Add a shader cache
     - Add `view::setFrontDir` to set the default front-facing camera view direction. Change the default to be +Z front.
