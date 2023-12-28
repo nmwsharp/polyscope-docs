@@ -1914,6 +1914,7 @@ The array adaptors will pick up this function and use it to access your type.</p
 <li>any user-defined function (see below)</li>
 <li>a <code>.rows()</code> member function (like <code>inputData.rows()</code>)</li>
 <li>a <code>.size()</code> member function (like <code>inputData.size()</code>)</li>
+<li>for tuple <code>{ptr,size}</code> entries, try checking the second tuple entry</li>
 </ul>
 <details class="note">
 <summary>extending array size</summary>
@@ -1944,6 +1945,7 @@ The array adaptors will pick up this function and use it to access your type.</p
 <li>bracketed index access (like <code>array[i]</code>)</li>
 <li>parenthesis index access (like <code>array(i)</code>)</li>
 <li>for-each iteration (like <code>array.begin()</code>, <code>array.end()</code>)</li>
+<li>reading from a tuple of {data pointer (e.g. float*), size (int)}, where ptr points to a flat buffer of data (like <code>std::make_tuple(&amp;data[0], data_size)</code>)</li>
 </ul>
 <details class="note">
 <summary>extending scalar array access</summary>
@@ -1981,6 +1983,7 @@ The array adaptors will pick up this function and use it to access your type.</p
 <li>outer type bracket-accessible, inner type anything convertible to Vector2/3 (like <code>array[i].x</code>)</li>
 <li>outer type iterable, inner type anything convertible to Vector2/3 (like <code>for(auto vec : array)</code> and <code>vec.u</code>).</li>
 <li>outer type iterable, inner type bracket-accessible (like <code>for(auto vec : array)</code> and <code>vec[7]</code>)</li>
+<li>reading from a tuple of {data pointer (e.g. float*), size (int)}, where ptr points to a flat buffer of data (like <code>std::make_tuple(&amp;data[0], data_size)</code>). The buffer should have length <code>size*D</code>, laid out as <code>[x0 y0 z0 x1 y1 z1 ...]</code>.</li>
 </ul>
 <p>Notice that two these options make use of the <a href="#fixed-size-vector-types">fixed-sized vector adaptors</a>. Once Polyscope can read the elements of <code>SOME_VEC3_TYPE</code>, it can also read from <code>std::vector&lt;SOME_VEC3_TYPE&gt;</code>, etc.</p>
 <p>The sizes of the inner vector type are generally not checked by Polyscope, so be sure you&rsquo;re passing in something with the right dimensions! If a function expects an array of 3D vectors, don&rsquo;t give it an array of 2D vectors.</p>
