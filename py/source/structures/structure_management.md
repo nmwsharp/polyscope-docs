@@ -10,14 +10,6 @@ ps.get_surface_mesh("my mesh").add_scalar_quantity("some values", values)
 ```
 This avoids the need to pass a reference to the structure you created around your entire codebase. Alternately, one can directly use the handle returned by `register_surface_mesh()`, instead of keying on a name string.
 
-The following structures available in Polyscope. Many more structures are in development!
-
-- [Surface Mesh](../surface_mesh/basics)
-- [Point Cloud](../point_cloud/basics)
-- [Curve Network](../curve_network/basics)
-- [Volume Mesh](../volume_mesh/basics)
-- _in progress_: Camera View
-
 
 ## Registering structures
 

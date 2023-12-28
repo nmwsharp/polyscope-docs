@@ -3,12 +3,9 @@ hide:
   - toc
 ---
 
-- **System**
-
-    - [How do I run Polyscope on a remote or headless server?](#how-do-i-run-polyscope-on-a-remote-or-headless-server)
-
 - **Interface**
 
+    - [Saving and restoring camera poses](#saving-and-restoring-camera-poses)
     - [How do I take a screenshot / save an image?](#how-do-i-take-a-screenshot-save-an-image)
     - [Positioning objects in the scene and reading back results](#positioning-objects-in-the-scene-and-reading-back-results)
     - [Managing large numbers of structures and quantities](#managing-large-numbers-of-structures-and-quantities)
@@ -18,9 +15,13 @@ hide:
     - [Visualizing colors as exact RGB values, without any shading or tonemapping](#visualizing-colors-as-exact-rgb-values-without-any-shading-or-tonemapping)
     - [Rendering figures for papers and presentations](#rendering-figures-for-papers-and-presentations)
 
-- **Working with Data**
+- **System**
 
-- **Miscellaneous**
+    - [How do I run Polyscope on a remote or headless server?](#how-do-i-run-polyscope-on-a-remote-or-headless-server)
+
+<!-- - **Working with Data** -->
+
+<!-- - **Miscellaneous** -->
 
 
 <!-- TODO -->
@@ -35,32 +36,20 @@ hide:
 <!-- - give focus on show -->
 <!-- - implicits -->
 
+### **Saving and restoring camera poses**
+
+Use `lookAt()` and [other functions]([[url.prefix]]/basics/camera_controls/) to manually specify the viewing camera pose. 
+
+Or, you can interactively position the camera in the scene, [copy it to your clipboard as a json string]([[url.prefix]]/basics/camera_controls/#savingrestoring-views) with `ctrl-c`, then restore it from the clipboard with `ctrl-v`. These strings can also be saved and restored programmatically.
 
 ### **How do I take a screenshot / save an image?**
 
-TODO ANSWER
-
-
-### **How do I run Polyscope on a remote or headless server?**
-
-It may not not be possible to use Polyscope on a remote headless machine which does not have a physical monitor. 
-
-If the machine _does_ have a display attached, there should be no problem. You can run and initialize Polyscope, and even if you are working remotely via script or SSH you can programmatically capture screenshots of the rendered scene. 
-
-However, Polyscope will only work if it can create an operating system-level display window, which generally means having a physical monitor attached. Various virtual windowing systems and X-servers exist as a hypothetical workaround, however users have reported limited success with these tools, usually because they use software openGL renderers which do not support the openGL features required by Polyscope.
-
-In implementation terms, this limitation comes from needing to initialize an OpenGL 3.3 core-profile context using [GLFW](https://www.glfw.org/). Currently, GLFW can only create an openGL context when a display is present. If you find a good workaround for Polyscope on headless machines, please share! One day, we hope to implement an alternate EGL backend, which would support headless machines.
-
-
-### **Rendering figures for papers and presentations**
-
-TODO ANSWER
-
+See [Screenshots]([[url.prefix]]/features/screenshots/). Call `polyscope::screenshot()`, or click the `[screenshot]` button in the upper-left corner of the UI.
 
 ### **Positioning objects in the scene and reading back results**
 
-TODO ANSWER
-
+See [Transforms]([[url.prefix]]/structures/structure_management/#transforms) for various options and to set and get per-structure transformations.
+In the GUI, you can use the `[Options] --> [Transform]` menu to enable a widget to interactively transform each object within the scene.
 
 ### **Managing large numbers of structures and quantities**
 
@@ -72,9 +61,25 @@ Use [Groups]([[url.prefix]]/features/groups/) to group your structures in to cat
 
 You can always use the [Custom UIs]([[url.prefix]]/features/callbacks_and_UIs/) to create your own interface buttons and selectors which programmatically enable or disable registered objects or adjust their settings.
 
+### **Rendering figures for papers and presentations**
+
+Several settings can be customized to give a more polished appearance. Consider:
+
+- Adjusting the [ground plane]([[url.prefix]]/features/ground_and_shadows/) to shadow-only for ground shadows 
+- Increasing [antialiasing]([[url.prefix]]/basics/program_options/#ssaa-anti-aliasing-factor) rate
+- Saving [screenshots]([[url.prefix]]/features/screenshots/) with transparency for compositing
 
 ### **Visualizing colors as exact RGB values, without any shading or tonemapping**
 
-TODO ANSWER
+Normally, colors are shaded and tone-mapped for rendering, which means the colors and colormapped-values you specify are not exactly the colors Polyscope renders to the screen. Use the [flat material]([[url.prefix]]/features/materials/#preserving-colors-with-the-flat-material) to circumvent these effects, and ensure that colors are flat-shaded to the screen with exactly the RGB values specified.
 
-[flat material]([[url.prefix]]/features/materials/#preserving-colors-with-the-flat-material)
+### **How do I run Polyscope on a remote or headless server?**
+
+It may not not be possible to use Polyscope on a remote headless machine which does not have a physical monitor. 
+
+If the machine _does_ have a display attached, there should be no problem. You can run and initialize Polyscope, and even if you are working remotely via script or SSH you can programmatically capture screenshots of the rendered scene. 
+
+However, Polyscope will only work if it can create an operating system-level display window, which generally means having a physical monitor attached. Various virtual windowing systems and X-servers exist as a hypothetical workaround, however users have reported limited success with these tools, usually because they use software openGL renderers which do not support the openGL features required by Polyscope.
+
+In implementation terms, this limitation comes from needing to initialize an OpenGL 3.3 core-profile context using [GLFW](https://www.glfw.org/). Currently, GLFW can only create an openGL context when a display is present. If you find a good workaround for Polyscope on headless machines, please share! One day, we hope to implement an alternate EGL backend, which would support headless machines.
+

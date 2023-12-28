@@ -16,14 +16,6 @@ This avoids the need to pass a pointer to the structure you created around your 
 
     As a general policy, Polyscope always manages its own memory, and will take care of deleting anything it allocated. Whenever a routine returns a pointer (like `getStructure()`), it is a _non-owning_ pointer. You **should never** `delete` one of these pointers. To delete a structure and free memory, see the `removeStructure()` methods below.
 
-The following structures available in Polyscope. Many more structures are in development!
-
-- [Surface Mesh](../surface_mesh/basics)
-- [Point Cloud](../point_cloud/basics)
-- [Curve Network](../curve_network/basics)
-- [Volume Mesh](../volume_mesh/basics)
-- _in progress_: Camera View
-
 
 ## Registering structures
 
