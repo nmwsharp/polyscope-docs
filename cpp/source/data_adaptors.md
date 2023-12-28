@@ -83,6 +83,7 @@ Polyscope will attempt to read the length of an input array in the following way
   - any user-defined function (see below)
   - a `.rows()` member function (like `inputData.rows()`)
   - a `.size()` member function (like `inputData.size()`)
+  - for tuple `{ptr,size}` entries, try checking the second tuple entry
 
 ??? note "extending array size"
 
@@ -121,6 +122,7 @@ Polyscope will attempt to access an input scalar array in the following ways, in
   - bracketed index access (like `array[i]`)
   - parenthesis index access (like `array(i)`)
   - for-each iteration (like `array.begin()`, `array.end()`)
+  - reading from a tuple of {data pointer (e.g. float*), size (int)}, where ptr points to a flat buffer of data (like `std::make_tuple(&data[0], data_size)`)
 
 ??? note "extending scalar array access"
 
@@ -166,6 +168,7 @@ Polyscope will attempt to access an input array of vectors in the following ways
    - outer type bracket-accessible, inner type anything convertible to Vector2/3 (like `array[i].x`)
    - outer type iterable, inner type anything convertible to Vector2/3 (like `for(auto vec : array)` and `vec.u`).
    - outer type iterable, inner type bracket-accessible (like `for(auto vec : array)` and `vec[7]`)
+   - reading from a tuple of {data pointer (e.g. float*), size (int)}, where ptr points to a flat buffer of data (like `std::make_tuple(&data[0], data_size)`). The buffer should have length `size*D`, laid out as `[x0 y0 z0 x1 y1 z1 ...]`.
 
 Notice that two these options make use of the [fixed-sized vector adaptors](#fixed-size-vector-types). Once Polyscope can read the elements of `SOME_VEC3_TYPE`, it can also read from `std::vector<SOME_VEC3_TYPE>`, etc.
 
