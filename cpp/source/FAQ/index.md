@@ -9,6 +9,7 @@ hide:
     - [How do I take a screenshot / save an image?](#how-do-i-take-a-screenshot-save-an-image)
     - [Positioning objects in the scene and reading back results](#positioning-objects-in-the-scene-and-reading-back-results)
     - [Managing large numbers of structures and quantities](#managing-large-numbers-of-structures-and-quantities)
+    - [How do I set up mouse click interactions and callbacks](#how-do-i-set-up-mouse-click-interactions-and-callbacks)
 
 - **Appearance**
 
@@ -60,6 +61,10 @@ Every structure has controls in its options UI menu under `Options --> Structure
 Use [Groups]([[url.prefix]]/features/groups/) to group your structures in to categories which can be enabled/disabled all together. Notice the `hide descendants` and `show details` options on groups, which can totally hide structures from the UI while still offering some control via the group.
 
 You can always use the [Custom UIs]([[url.prefix]]/features/callbacks_and_UIs/) to create your own interface buttons and selectors which programmatically enable or disable registered objects or adjust their settings.
+
+### **How do I set up mouse click interactions and callbacks**
+
+See [Mouse Interactions]([[url.prefix]]/features/callbacks_and_UIs/#mouse-interactions). There are no special callbacks for creating mouse events. Instead, you can implement almost any behavior you want via ImGui's built-in functions. There are also a few polyscope-specific functions to get information about scene at the location you clicked, such as constructing rays and querying depth.
 
 ### **Rendering figures for papers and presentations**
 
