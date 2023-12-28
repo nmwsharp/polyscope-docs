@@ -125,6 +125,52 @@ int main(int argc, char** argv) {
 
     Default: `false`.
 
+
+### Mouse Interactions
+
+You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. Generally, you can use the mouse-related functions available via `ImGui` to implement a wide variety of behaviors.
+
+**Example:** print a variety of info about a mouse click
+```cpp
+
+ImGuiIO& io = ImGui::GetIO();
+if (io.MouseClicked[0]) { // if the left mouse button was clicked
+  // gather values
+  glm::vec2 screenCoords{io.MousePos.x, io.MousePos.y};
+  glm::vec3 worldRay = polyscope::view::screenCoordsToWorldRay(screenCoords);
+  glm::vec3 worldPos = polyscope::view::screenCoordsToWorldPosition(screenCoords);
+  std::pair<polyscope::Structure*, size_t> pickPair =
+      polyscope::pick::evaluatePickQuery(screenCoords.x, screenCoords.y);
+
+  // print some values
+  std::cout << "    io.MousePos.x: " << io.MousePos.x << " io.MousePos.y: " << io.MousePos.y << std::endl;
+  std::cout << "    screenCoords.x: " << screenCoords.x << " screenCoords.y: " << screenCoords.y << std::endl;
+  std::cout << "    worldRay: ";
+  polyscope::operator<<(std::cout, worldRay) << std::endl;
+  std::cout << "    worldPos: ";
+  polyscope::operator<<(std::cout, worldPos) << std::endl;
+  if (pickPair.first == nullptr) {
+    std::cout << "    structure: " << "none" << std::endl;
+  } else {
+    std::cout << "    structure: " << pickPair.first << " element id: " << pickPair.second << std::endl;
+  }
+}
+```
+
+??? func "`#!cpp glm::vec3 view::screenCoordsToWorldRay(glm::vec2 screenCoords)`"
+    
+    ##### screen coords to world ray
+
+    Convert a click location to a ray in world-space.
+
+
+??? func "`#!cpp glm::vec3 screenCoordsToWorldPosition(glm::vec2 screenCoords)`"
+    
+    ##### screen coords to world position
+
+    Convert a click location to a location in world-space, by reading from the scene's depth buffer.
+
+
 ### Custom UIs
 
 

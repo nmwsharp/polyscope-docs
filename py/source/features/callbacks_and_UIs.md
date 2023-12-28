@@ -242,3 +242,38 @@ ps.show()
     If true, the Polyscope window will request focus from the window manager whenever `show()` is called. If false, the focus state will be left unchanged.
 
     Default: `False`.
+
+
+### Mouse Interactions
+
+You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. Generally, you can use the mouse-related functions available via `ImGui` to implement a wide variety of behaviors.
+
+**Example:** print a variety of info about a mouse click
+```python
+import polyscope as ps
+import polyscope.imgui as psim
+
+io = psim.GetIO()
+if io.MouseClicked[0]:
+    screen_coords = io.MousePos
+    world_ray = polyscope.screen_coords_to_world_ray(screen_coords)
+    world_pos = polyscope.screen_coords_to_world_position(screen_coords)
+
+    print(f"Click coords: {screen_coords}")
+    print(f"  world ray: {world_ray}")
+    print(f"  world pos: {world_pos}")
+```
+
+??? func "`#!python screen_coords_to_world_ray(screen_coords)`"
+    
+    ##### screen coords to world ray
+
+    Convert a click location to a ray in world-space.
+
+
+??? func "`#!python screen_coords_to_world_position(screen_coords)`"
+    
+    ##### screen coords to world position
+
+    Convert a click location to a location in world-space, by reading from the scene's depth buffer.
+
