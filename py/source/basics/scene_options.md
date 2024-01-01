@@ -77,3 +77,16 @@ ps.set_bounding_box(low, high)
     If false, these parameters will be left unchanged.  If set to false before the first structure is registered, you are **required** to set the bounding box and length scale manually.
 
     Takes a boolean.  Default: `true`.
+
+## Other Options
+
+??? func "`#!python set_background_color(new_color)`"
+
+    ##### background color
+
+    Set the background color of the rendered scne.
+
+    The input should be a 3-tuple RGB or a 4-tuple RGBA of floats, with values on on `[0,1]`.
+
+    Default: `{1., 1., 1., 1.}`.
+

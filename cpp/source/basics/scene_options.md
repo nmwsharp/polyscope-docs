@@ -68,3 +68,13 @@ polyscope::state::boundingBox =
     If false, these parameters will be left unchanged.  If set to false before the first structure is registered, you are **required** to set the bounding box and length scale manually.
 
     Default: `true`.
+
+## Other Options
+
+??? func "`#!cpp glm::vec4 view::bgColor`"
+    
+    ##### background color
+
+    Set the background color of the rendered scne. Values should be RGBA on `[0,1]`.
+
+    Default: `{1., 1., 1., 1.}`.
