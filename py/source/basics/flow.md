@@ -32,6 +32,8 @@ ps.show()
 ```python
 import polyscope as ps
 
+ps.init()
+
 # if desired, set up a user_callback to add ImGui UI elements
 
 while(continue_program):
