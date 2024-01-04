@@ -1551,6 +1551,8 @@
 <p><strong>Option 2: frame_tick()</strong> An alternate approach is to manually call <code>frame_tick()</code> in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. <a href="/py//features/callbacks_and_UIs">The <code>user_callback</code></a> is still necessary to add ImGui UI elements.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 
+<span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
 <span class="c1"># if desired, set up a user_callback to add ImGui UI elements</span>
 
 <span class="k">while</span><span class="p">(</span><span class="n">continue_program</span><span class="p">):</span>
