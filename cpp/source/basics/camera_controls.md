@@ -340,9 +340,9 @@ std::tuple<glm::vec3, glm::vec3, glm::vec3> CameraParameters::getCameraFrame() /
 
 It is often necessary to generate the world-space ray corresponding to each pixel of an image in a camera view. The base point for these rays is easy, it is just `params.getPosition()`. However the ray directions vary-per pixel; the `CameraParameters` object has two helpers to automatically construct these rays.
 
-??? func "`#!cpp std::vector<glm::vec3> CameraParameters::generateCameraRays(size_t dimX, size_t dimY, ImageOrigin origin = ImageOrigin::UpperLeft)`"
+??? func "`#!cpp std::vector<glm::vec3> CameraParameters::generateCameraRays(size_t w, size_t h, ImageOrigin origin = ImageOrigin::UpperLeft)`"
 
-    Fill a buffer with rays corresponding to an image with the given resolution. The result is a `dimX*dimY`-length buffer. Ray origins are all implicitly given by `this->getPosition()`.
+    Fill a buffer with rays corresponding to an image with the given resolution. The result is a `w*h`-length buffer, flattened such that each row is stored contiguously. Ray origins are all implicitly given by `this->getPosition()`.
 
 
 ??? func "`#!cpp std::array<glm::vec3, 4> CameraParameters::generateCameraRayCorners()`"

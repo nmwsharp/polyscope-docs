@@ -306,7 +306,7 @@ It is often necessary to generate the world-space ray corresponding to each pixe
 
 ??? func "`#!python CameraParameters.generate_camera_rays(dims, image_origin='upper_left')`"
 
-    Generate an array of rays corresponding to an image with the given resolution `dims=(dimX,dimY)`. The result is a `[dimX,dimY,3]` numpy buffer. Ray origins are all implicitly given by `params.get_position()`.
+    Generate an array of rays corresponding to an image with the given resolution `dims=(w,h)`. The result is a `[h,w,3]` numpy buffer. Ray origins are all implicitly given by `params.get_position()`.
 
     **Example:**
     ```python

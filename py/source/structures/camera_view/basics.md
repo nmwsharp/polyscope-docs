@@ -36,9 +36,9 @@ cam.set_widget_color((0.25, 0.25, 0.25))   # color of widget lines
 
 
 # Add an image to be displayed in the camera frame
-dimX = 600
-dimY = 300
-cam.add_scalar_image_quantity("scalar_img", np.zeros((dimX, dimY)),
+w = 600
+h = 300
+cam.add_scalar_image_quantity("scalar_img", np.zeros((h, w)),
                               enabled=True, show_in_camera_billboard=True)
 
 ps.show(3)

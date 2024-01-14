@@ -18,21 +18,20 @@ import polyscope as ps
 ps.init()
 
 # Your image data, must be populated somehow
-dimX = 1024
-dimY = 768
+w = 1024
+h = 768
 
 # == Add images at the root level of the scene
 # try out a few of the options while we're at it
 
-ps.add_color_image_quantity("color_img", np.zeros((dimX, dimY, 3)), enabled=True, 
+ps.add_color_image_quantity("color_img", np.zeros((h, w, 3)), enabled=True, 
                             show_fullscreen=True, show_in_camera_billboard=False, transparency=0.5)
         
-ps.add_color_alpha_image_quantity("color_alpha_img", np.zeros((dimX, dimY, 4)), enabled=True, 
+ps.add_color_alpha_image_quantity("color_alpha_img", np.zeros((h, w, 4)), enabled=True, 
                                   show_in_imgui_window=True, show_in_camera_billboard=False,
                                   is_premultiplied=True, image_origin='lower_left')
 
-ps.add_scalar_image_quantity("scalar_img", np.zeros((dimX, dimY)), enabled=True, 
-                             image_origin='lower_left', 
+ps.add_scalar_image_quantity("scalar_img", np.zeros((h, w)), enabled=True, 
                              datatype='symmetric', vminmax=(-3.,.3), cmap='reds')
 
 
@@ -40,7 +39,7 @@ ps.add_scalar_image_quantity("scalar_img", np.zeros((dimX, dimY)), enabled=True,
 # Here, a camera view, you could also use a point cloud, or a mesh, etc
 cam = ps.get_camera_view("my view"); # some structure you previously registered
 
-cam.add_color_image_quantity("color_img", np.zeros((dimX, dimY, 3)), enabled=True,
+cam.add_color_image_quantity("color_img", np.zeros((h, w, 3)), enabled=True,
                              show_in_camera_billboard=True)
                              # when adding an image to a camera view, we can display it
                              # in the camera billboard
@@ -78,7 +77,7 @@ These can be called at the root level, like `ps.add_scalar_image_quantity()`, or
     Add an image of scalar values
 
     - `name` string, a name for the quantity
-    - `values` an `WxH` numpy array, with scalar values
+    - `values` an `HxW` numpy array, with scalar values
     
     This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
 
@@ -94,7 +93,7 @@ These can be called at the root level, like `ps.add_color_image_quantity()`, or 
     Add an image of rgb color values
 
     - `name` string, a name for the quantity
-    - `values_rgb` an `WxHx3` numpy array, with color values
+    - `values_rgb` an `HxWx3` numpy array, with color values
     
     RGB values are interpreted in the range `[0,1]`.
 
@@ -103,7 +102,7 @@ These can be called at the root level, like `ps.add_color_image_quantity()`, or 
     Add an image of rgb color values
 
     - `name` string, a name for the quantity
-    - `values_rgba` an `WxHx4` numpy array, with color values
+    - `values_rgba` an `HxWx4` numpy array, with color values
     
     RGB values are interpreted in the range `[0,1]`.
 

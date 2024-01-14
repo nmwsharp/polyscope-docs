@@ -32,10 +32,10 @@ A depth render image quantity takes a depth value per-pixel, and (optionally) a 
 import polyscope as ps
 import numpy as np
 
-dimX = 1024
-dimY = 768
-depths = np.zeros((dimX, dimY))
-normals = np.ones((dimX, dimY, 3))
+w = 1024
+h = 768
+depths = np.zeros((h, w))
+normals = np.ones((h, w, 3))
         
 ps.add_depth_render_image_quantity("render_img", depths, normals, 
                                    enabled=True, image_origin='upper_left', 
@@ -52,8 +52,8 @@ If normals are not given, they will be computed internally via screen-space deri
     Add a depth render image.
 
     - `name` string, a name for the quantity
-    - `depths` an `WxH` numpy array, with scalar depth values
-    - `normals` an `WxHx3` numpy array, with world-space normals values, or `None` to automatically compute normals
+    - `depths` an `HxW` numpy array, with scalar depth values
+    - `normals` an `HxWx3` numpy array, with world-space normals values, or `None` to automatically compute normals
     
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
 
@@ -74,11 +74,11 @@ A color render image quantity takes a depth value per-pixel, (optionally) a worl
 import polyscope as ps
 import numpy as np
 
-dimX = 1024
-dimY = 768
-depths = np.zeros((dimX, dimY))
-normals = np.ones((dimX, dimY, 3))
-colors = np.ones((dimX, dimY, 3))
+w = 1024
+h = 768
+depths = np.zeros((h, w))
+normals = np.ones((h, w, 3))
+colors = np.ones((h, w, 3))
 
 ps.add_color_render_image_quantity("render_img", depths, normals, colors, 
                                    enabled=True, image_origin='upper_left', 
@@ -92,9 +92,9 @@ If normals are not given, they will be computed internally via screen-space deri
     Add a depth render image, annotated with additional color values per-pixel.
 
     - `name` string, a name for the quantity
-    - `depths` an `WxH` numpy array, with scalar depth values
-    - `normals` an `WxHx3` numpy array, with world-space normals values, or `None` to automatically compute normals
-    - `colors` an `WxHx3` numpy array, with colors
+    - `depths` an `HxW` numpy array, with scalar depth values
+    - `normals` an `HxWx3` numpy array, with world-space normals values, or `None` to automatically compute normals
+    - `colors` an `HxWx3` numpy array, with colors
     
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
 
@@ -114,11 +114,11 @@ A scalar render image quantity takes a depth value per-pixel, (optionally) a wor
 import polyscope as ps
 import numpy as np
 
-dimX = 1024
-dimY = 768
-depths = np.zeros((dimX, dimY))
-normals = np.ones((dimX, dimY, 3))
-scalars = np.ones((dimX, dimY))
+w = 1024
+h = 768
+depths = np.zeros((h, w))
+normals = np.ones((h, w, 3))
+scalars = np.ones((h, w))
 
 ps.add_scalar_render_image_quantity("render_img3", depths, normals, scalars, 
                                      enabled=True, image_origin='upper_left', 
@@ -133,9 +133,9 @@ If normals are not given, they will be computed internally via screen-space deri
     Add a depth render image, annotated with additional scalar values per-pixel.
 
     - `name` string, a name for the quantity
-    - `depths` an `WxH` numpy array, with scalar depth values
-    - `normals` an `WxHx3` numpy array, with world-space normals values, or `None` to automatically compute normals
-    - `scalars` an `WxH` numpy array, with scalar values
+    - `depths` an `HxW` numpy array, with scalar depth values
+    - `normals` an `HxWx3` numpy array, with world-space normals values, or `None` to automatically compute normals
+    - `scalars` an `HxW` numpy array, with scalar values
     
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
 
@@ -153,10 +153,10 @@ A raw color render image quantity takes a depth value per-pixel and a color valu
 import polyscope as ps
 import numpy as np
 
-dimX = 1024
-dimY = 768
-depths = np.zeros((dimX, dimY))
-colors = np.ones((dimX, dimY, 3))
+w = 1024
+h = 768
+depths = np.zeros((h, w))
+colors = np.ones((h, w, 3))
 
 ps.add_raw_color_render_image_quantity("render_img3", depths, colors, 
                                        enabled=True, allow_fullscreen_compositing=True)
@@ -172,8 +172,8 @@ ps.add_raw_color_render_image_quantity("render_img3", depths, colors,
     Add a raw color render image described by pixel color and depth.
 
     - `name` string, a name for the quantity
-    - `depths` an `WxH` numpy array, with scalar depth values
-    - `colors` an `WxHx3` numpy array, with colors
+    - `depths` an `HxW` numpy array, with scalar depth values
+    - `colors` an `HxWx3` numpy array, with colors
     
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
 
@@ -192,10 +192,10 @@ Just like the above `ColorRenderImageQuantity`, but with an additional alpha cha
 import polyscope as ps
 import numpy as np
 
-dimX = 1024
-dimY = 768
-depths = np.zeros((dimX, dimY))
-color_alphas = np.ones((dimX, dimY, 4))
+w = 1024
+h = 768
+depths = np.zeros((h, w))
+color_alphas = np.ones((h, w, 4))
 
 ps.add_raw_color_alpha_render_image_quantity("render_img3", depths, color_alphas, 
                                              enabled=True, image_origin='upper_left', 
@@ -207,8 +207,8 @@ ps.add_raw_color_alpha_render_image_quantity("render_img3", depths, color_alphas
     Add a raw color render image described by RGBA pixel color and depth.
 
     - `name` string, a name for the quantity
-    - `depths` an `WxH` numpy array, with scalar depth values
-    - `colors_alphas` an `WxHx4` numpy array, with colors
+    - `depths` an `HxW` numpy array, with scalar depth values
+    - `colors_alphas` an `HxWx4` numpy array, with colors
     
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
 

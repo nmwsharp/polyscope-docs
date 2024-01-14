@@ -75,6 +75,11 @@ polyscope::show();
     Image quantities get special functionality when added to `CameraView` structures: they can additionally be displayed in the camera frame, aligned with the view of the scene.
 
 
+!!! tip "Image Array Layout"
+
+    Images are always passed as arrays of length `width*height`, flattened such that the _rows_ are stored contiguously. For multi-channel image data like colors or normals, this becomes a `width*height` array of tuples, or a `width*height x 3` matrix, etc. The `ImageOrigin` enum controls the row layout order; most commonly the first element is the upper-left of the image.
+
+    Remember that Polyscope's [data adaptors]([[url.prefix]]/data_adaptors) allow many container types to be used as input. For instance, an RGB color image could be stored as a such as `std::vector<std::array<float,3>>`, with `.size() == width*height`, or an `Eigen::MatrixXd` with dimensions `width*height x 3`, etc.
 
 ## Image Origin
 
@@ -93,7 +98,7 @@ These can be called at the root level, like `polyscope::addScalarImageQuantity()
     Add an image of scalar values
 
     - `width` and `height` are dimensions in pixels
-    - `values` is a flattened array of scalars per pixel. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array . The length should be `width * height`.
+    - `values` is a **flattened** array of scalars values per pixel. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. See the note above about image array layouts.
     - `imageOrigin` is the row origin convention, see above
     - `type` is the scalar datatype as for other scalar quantities
 
@@ -109,7 +114,7 @@ These can be called at the root level, like `polyscope::addColorImageQuantity()`
     Add an image of rgb color values
 
     - `width` and `height` are dimensions in pixels
-    - `values_rgb` is a flattened array of rgb values per pixel. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be `width * height`.
+    - `values_rgb` is a **flattened** array of rgb values per pixel. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. See the note above about image array layouts.
     - `imageOrigin` is the row origin convention, see above
     
     RGB values are interpreted in the range `[0,1]`.
@@ -119,7 +124,7 @@ These can be called at the root level, like `polyscope::addColorImageQuantity()`
     Add an image of rgb color values
 
     - `width` and `height` are dimensions in pixels
-    - `values_rgba` is a flattened array of rgba values per pixel. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 4-vector array of `float`s. The length should be `width * height`.
+    - `values_rgba` is a **flattened** array of rgba values per pixel. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 4-vector array of `float`s. See the note above about image array layouts.
     - `imageOrigin` is the row origin convention, see above
     
     RGB values are interpreted in the range `[0,1]`.

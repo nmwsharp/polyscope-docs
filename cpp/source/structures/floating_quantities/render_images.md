@@ -16,6 +16,12 @@ Render images always show the image in fullscreen viewport. Additional, depth an
     See the [floating quantity introduction]([[url.prefix]]/structures/floating_quantities/basics/) for more info.
 
 
+!!! tip "Image Array Layout"
+
+    Images are always passed as arrays of length `width*height`, flattened such that the _rows_ are stored contiguously. For multi-channel image data like colors or normals, this becomes a `width*height` array of tuples, or a `width*height x 3` matrix, etc. The `ImageOrigin` enum controls the row layout order; most commonly the first element is the upper-left of the image.
+
+    Remember that Polyscope's [data adaptors]([[url.prefix]]/data_adaptors) allow many container types to be used as input. For instance, an RGB color image could be stored as a such as `std::vector<std::array<float,3>>`, with `.size() == width*height`, or an `Eigen::MatrixXd` with dimensions `width*height x 3`, etc.
+
 ## Image Origin
 
 When registering an image quantity, you also need to specify whether the image should be interpreted such that the first row is the "top" row of the image (`ImageOrigin::UpperLeft`), or the first row is the "bottom" row of the image (`ImageOrigin::LowerLeft`). This is a confusing issue, as there are many overlapping conventions of coordinate systems and buffer layouts for images.
@@ -29,18 +35,18 @@ A depth render image quantity takes a depth value per-pixel, and (optionally) a 
 
 **Example:**
 ```cpp
-size_t dimX = 1024; size_t dimY = 768;
-std::vector<float> depthVals(dimX * dimY, 0.44); // placeholder data
-std::vector<std::array<float, 3>> normalVals(dimX * dimY, std::array<float, 3>{0.44, 0.55, 0.66});
+size_t width = 1024; size_t height = 768;
+std::vector<float> depthVals(width * height, 0.44); // placeholder data
+std::vector<std::array<float, 3>> normalVals(width * height, std::array<float, 3>{0.44, 0.55, 0.66});
 std::vector<std::array<float, 3>> normalValsEmpty;
 
 polyscope::DepthRenderImageQuantity* im = polyscope::addDepthRenderImageQuantity(
-    "render im depth", dimX, dimY, depthVals, normalVals, polyscope::ImageOrigin::UpperLeft);
+    "render im depth", width, height, depthVals, normalVals, polyscope::ImageOrigin::UpperLeft);
 im->setEnabled(true);
 
 // with no normals
 polyscope::DepthRenderImageQuantity* imNoNormal = polyscope::addDepthRenderImageQuantity(
-    "render im depth no normal", dimX, dimY, depthVals, normalValsEmpty, polyscope::ImageOrigin::UpperLeft);
+    "render im depth no normal", width, height, depthVals, normalValsEmpty, polyscope::ImageOrigin::UpperLeft);
 imNoNormal->setEnabled(true);
     
 polyscope::show(3);
@@ -50,13 +56,13 @@ If normals are not given, they will be computed internally via screen-space deri
 
 This can be called at the root level, like `polyscope::addDepthRenderImageQuantity()`, or on a structure, like `cameraView->addDepthRenderImageQuantity()`.
 
-??? func "`#!cpp DepthRenderImageQuantity* addDepthRenderImageQuantity(std::string name, size_t dimX, size_t dimY, const T1& depthData, const T2& normalData, ImageOrigin imageOrigin)`"
+??? func "`#!cpp DepthRenderImageQuantity* addDepthRenderImageQuantity(std::string name, size_t width, size_t height, const T1& depthData, const T2& normalData, ImageOrigin imageOrigin)`"
 
     Add a depth render image.
 
     - `width` and `height` are dimensions in pixels
-    - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array . The length should be `width * height`.
-    - `normalData` is an optional flattened array of world-space normals per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be `width * height`. If not given, pass an empty array.
+    - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. See the note above about image array layouts.
+    - `normalData` is an optional flattened array of world-space normals per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. See the note above about image array layouts. If not given, pass an empty array.
     - `imageOrigin` is the row origin convention, see above
 
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
@@ -73,13 +79,13 @@ A color render image quantity takes a depth value per-pixel, (optionally) a worl
 
 **Example:**
 ```cpp
-size_t dimX = 1024; size_t dimY = 768;
-std::vector<float> depthVals(dimX * dimY, 0.44); // placeholder data
-std::vector<std::array<float, 3>> normalVals(dimX * dimY, std::array<float, 3>{0.44, 0.55, 0.66});
-std::vector<std::array<float, 3>> colorVals(dimX * dimY, std::array<float, 3>{0.44, 0.55, 0.66});
+size_t width = 1024; size_t height = 768;
+std::vector<float> depthVals(width * height, 0.44); // placeholder data
+std::vector<std::array<float, 3>> normalVals(width * height, std::array<float, 3>{0.44, 0.55, 0.66});
+std::vector<std::array<float, 3>> colorVals(width * height, std::array<float, 3>{0.44, 0.55, 0.66});
 
 polyscope::ColorRenderImageQuantity* im = polyscope::addColorRenderImageQuantity(
-    "render im color", dimX, dimY, depthVals, normalVals, colorVals, polyscope::ImageOrigin::UpperLeft);
+    "render im color", width, height, depthVals, normalVals, colorVals, polyscope::ImageOrigin::UpperLeft);
 im->setEnabled(true);
 
 polyscope::show(3);
@@ -89,14 +95,14 @@ If normals are not given, they will be computed internally via screen-space deri
 
 This can be called at the root level, like `polyscope::addColorRenderImageQuantity()`, or on a structure, like `cameraView->addColorRenderImageQuantity()`.
 
-??? func "`#!cpp ColorRenderImageQuantity* addColorRenderImageQuantity(std::string name, size_t dimX, size_t dimY, const T1& depthData, const T2& normalData, const T3& colorData, ImageOrigin imageOrigin)`"
+??? func "`#!cpp ColorRenderImageQuantity* addColorRenderImageQuantity(std::string name, size_t width, size_t height, const T1& depthData, const T2& normalData, const T3& colorData, ImageOrigin imageOrigin)`"
 
     Add a depth render image, annotated with additional color values per-pixel.
 
     - `width` and `height` are dimensions in pixels
-    - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array . The length should be `width * height`.
-    - `normalData` is an optional flattened array of world-space normals per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be `width * height`. If not given, pass an empty array.
-    - `colorData` is a flattened array of colors per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be `width * height`.
+    - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array . See the note above about image array layouts.
+    - `normalData` is an optional flattened array of world-space normals per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. See the note above about image array layouts. If not given, pass an empty array.
+    - `colorData` is a flattened array of colors per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. See the note above about image array layouts.
     - `imageOrigin` is the row origin convention, see above
 
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
@@ -112,13 +118,13 @@ A scalar render image quantity takes a depth value per-pixel, (optionally) a wor
 
 **Example:**
 ```cpp
-size_t dimX = 1024; size_t dimY = 768;
-std::vector<float> depthVals(dimX * dimY, 0.44); // placeholder data
-std::vector<std::array<float, 3>> normalVals(dimX * dimY, std::array<float, 3>{0.44, 0.55, 0.66});
-std::vector<float> scalarVals(dimX * dimY, 0.44);
+size_t width = 1024; size_t height = 768;
+std::vector<float> depthVals(width * height, 0.44); // placeholder data
+std::vector<std::array<float, 3>> normalVals(width * height, std::array<float, 3>{0.44, 0.55, 0.66});
+std::vector<float> scalarVals(width * height, 0.44);
 
 polyscope::ScalarRenderImageQuantity* im = polyscope::addScalarRenderImageQuantity(
-    "render im scalar", dimX, dimY, depthVals, normalVals, scalarVals, polyscope::ImageOrigin::UpperLeft);
+    "render im scalar", width, height, depthVals, normalVals, scalarVals, polyscope::ImageOrigin::UpperLeft);
 im->setEnabled(true);
 
 polyscope::show(3);
@@ -128,14 +134,14 @@ If normals are not given, they will be computed internally via screen-space deri
 
 This can be called at the root level, like `polyscope::addScalarRenderImageQuantity()`, or on a structure, like `cameraView->addScalarRenderImageQuantity()`.
 
-??? func "`#!cpp ScalarRenderImageQuantity* addScalarRenderImageQuantity(std::string name, size_t dimX, size_t dimY, const T1& depthData, const T2& normalData, const T3& scalarData, ImageOrigin imageOrigin, DataType type = DataType::STANDARD)`"
+??? func "`#!cpp ScalarRenderImageQuantity* addScalarRenderImageQuantity(std::string name, size_t width, size_t height, const T1& depthData, const T2& normalData, const T3& scalarData, ImageOrigin imageOrigin, DataType type = DataType::STANDARD)`"
 
     Add a depth render image, annotated with additional scalar values per-pixel.
 
     - `width` and `height` are dimensions in pixels
-    - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array . The length should be `width * height`.
-    - `normalData` is an optional flattened array of world-space normals per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be `width * height`. If not given, pass an empty array.
-    - `colorData` is a flattened array of colors per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be `width * height`.
+    - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. See the note above about image array layouts.
+    - `normalData` is an optional flattened array of world-space normals per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. See the note above about image array layouts.
+    - `colorData` is a flattened array of colors per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. See the note above about image array layouts.    
     - `imageOrigin` is the row origin convention, see above
     - `type` is the scalar datatype as for other scalar quantities
 
@@ -150,12 +156,12 @@ A raw color render image quantity takes a depth value per-pixel and a color valu
 
 **Example:**
 ```cpp
-size_t dimX = 1024; size_t dimY = 768;
-std::vector<float> depthVals(dimX * dimY, 0.44); // placeholder data
-std::vector<std::array<float, 3>> colorVals(dimX * dimY, std::array<float, 3>{0.44, 0.55, 0.66});
+size_t width = 1024; size_t height = 768;
+std::vector<float> depthVals(width * height, 0.44); // placeholder data
+std::vector<std::array<float, 3>> colorVals(width * height, std::array<float, 3>{0.44, 0.55, 0.66});
 
 polyscope::RawColorRenderImageQuantity* im = polyscope::addRawColorRenderImageQuantity(
-    "render im raw color", dimX, dimY, depthVals, colorVals, polyscope::ImageOrigin::UpperLeft);
+    "render im raw color", width, height, depthVals, colorVals, polyscope::ImageOrigin::UpperLeft);
 im->setEnabled(true);
 
 polyscope::show(3);
@@ -167,13 +173,13 @@ polyscope::show(3);
 
 This can be called at the root level, like `polyscope::addRawColorRenderImageQuantity()`, or on a structure, like `cameraView->addRawColorRenderImageQuantity()`.
 
-??? func "`#!cpp RawColorRenderImageQuantity* addRawColorRenderImageQuantity(std::string name, size_t dimX, size_t dimY, const T1& depthData, const T2& colorData, ImageOrigin imageOrigin)`"
+??? func "`#!cpp RawColorRenderImageQuantity* addRawColorRenderImageQuantity(std::string name, size_t width, size_t height, const T1& depthData, const T2& colorData, ImageOrigin imageOrigin)`"
 
     Add a raw color render image described by pixel color and depth.
 
     - `width` and `height` are dimensions in pixels
-    - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array . The length should be `width * height`.
-    - `colorData` is a flattened array of colors per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. The length should be `width * height`.
+    - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. See the note above about image array layouts.
+    - `colorData` is a flattened array of colors per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 3-vector array of `float`s. See the note above about image array layouts.
     - `imageOrigin` is the row origin convention, see above
 
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
@@ -188,24 +194,24 @@ Just like the above `ColorRenderImageQuantity`, but with an additional alpha cha
 
 **Example:**
 ```cpp
-size_t dimX = 1024; size_t dimY = 768;
-std::vector<float> depthVals(dimX * dimY, 0.44); // placeholder data
-std::vector<std::array<float, 4>> colorAlphaVals(dimX * dimY, std::array<float, 4>{0.44, 0.55, 0.66, 0.77});
+size_t width = 1024; size_t height = 768;
+std::vector<float> depthVals(width * height, 0.44); // placeholder data
+std::vector<std::array<float, 4>> colorAlphaVals(width * height, std::array<float, 4>{0.44, 0.55, 0.66, 0.77});
 
 polyscope::RawColorAlphaRenderImageQuantity* im = polyscope::addRawColorAlphaRenderImageQuantity(
-    "render im raw color alpha", dimX, dimY, depthVals, colorAlphaVals, polyscope::ImageOrigin::UpperLeft);
+    "render im raw color alpha", width, height, depthVals, colorAlphaVals, polyscope::ImageOrigin::UpperLeft);
 im->setEnabled(true);
 im->setIsPremultiplied(true);
 polyscope::show(3);
 ```
 
-??? func "`#!cpp RawColorAlphaRenderImageQuantity* addRawColorAlphaRenderImageQuantity(std::string name, size_t dimX, size_t dimY, const T1& depthData, const T2& colorData, ImageOrigin imageOrigin)`"
+??? func "`#!cpp RawColorAlphaRenderImageQuantity* addRawColorAlphaRenderImageQuantity(std::string name, size_t width, size_t height, const T1& depthData, const T2& colorData, ImageOrigin imageOrigin)`"
 
     Add a raw color render image described by RGBA pixel color and depth.
 
     - `width` and `height` are dimensions in pixels
-    - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array . The length should be `width * height`.
-    - `colorData` is a flattened array of rgba colors per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 4-vector array of `float`s. The length should be `width * height`.
+    - `depthData` is a flattened array of depth scalars per pixel. Use `inf` for any pixels which missed the scene. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. See the note above about image array layouts.
+    - `colorData` is a flattened array of rgba colors per pixel.  The type should be [adaptable]([[url.prefix]]/data_adaptors) to a 4-vector array of `float`s. See the note above about image array layouts.
     - `imageOrigin` is the row origin convention, see above
 
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
