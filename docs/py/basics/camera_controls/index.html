@@ -1906,7 +1906,7 @@ ps.set_navigation_style(&ldquo;free&rdquo;)</p>
 <p>It is often necessary to generate the world-space ray corresponding to each pixel of an image in a camera view. The base point for these rays is easy, it is just <code>params.get_position()</code>. However the ray directions vary-per pixel; the <code>CameraParameters</code> object has two helpers to automatically construct these rays.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">CameraParameters</span><span class="o">.</span><span class="n">generate_camera_rays</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">)</span></code></summary>
-<p>Generate an array of rays corresponding to an image with the given resolution <code>dims=(dimX,dimY)</code>. The result is a <code>[dimX,dimY,3]</code> numpy buffer. Ray origins are all implicitly given by <code>params.get_position()</code>.</p>
+<p>Generate an array of rays corresponding to an image with the given resolution <code>dims=(w,h)</code>. The result is a <code>[h,w,3]</code> numpy buffer. Ray origins are all implicitly given by <code>params.get_position()</code>.</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="n">rays</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">generate_camera_rays</span><span class="p">((</span><span class="mi">300</span><span class="p">,</span><span class="mi">200</span><span class="p">))</span>
 </code></pre></div></p>

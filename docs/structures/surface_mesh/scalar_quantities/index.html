@@ -1745,6 +1745,27 @@
 <td><code class="highlight"><span class="n">setMapRange</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">)</span></code> and <code class="highlight"><span class="n">resetMapRange</span><span class="p">()</span></code></td>
 <td>no</td>
 </tr>
+<tr>
+<td>isolines enabled</td>
+<td>are isolines shaded (default=<code>false</code>)</td>
+<td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">getIsolinesEnabled</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setIsolinesEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>isoline width</td>
+<td>width of isoline stripes, in data units</td>
+<td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineWidth</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setIsolineWidth</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>isoline darkness</td>
+<td>darkness of isoline stripes (default=<code>0.7</code>)</td>
+<td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineDarkness</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setIsolineDarkness</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+</tr>
 </tbody>
 </table>
 <p><em>(all setters return <code>this</code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>

@@ -1510,9 +1510,9 @@
 
 
 <span class="c1"># Add an image to be displayed in the camera frame</span>
-<span class="n">dimX</span> <span class="o">=</span> <span class="mi">600</span>
-<span class="n">dimY</span> <span class="o">=</span> <span class="mi">300</span>
-<span class="n">cam</span><span class="o">.</span><span class="n">add_scalar_image_quantity</span><span class="p">(</span><span class="s2">&quot;scalar_img&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">)),</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">cam</span><span class="o">.</span><span class="n">add_scalar_image_quantity</span><span class="p">(</span><span class="s2">&quot;scalar_img&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)),</span>
                               <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_in_camera_billboard</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>

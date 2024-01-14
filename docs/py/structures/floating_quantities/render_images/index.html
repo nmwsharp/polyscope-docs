@@ -1602,10 +1602,10 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">dimX</span> <span class="o">=</span> <span class="mi">1024</span>
-<span class="n">dimY</span> <span class="o">=</span> <span class="mi">768</span>
-<span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">))</span>
-<span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">768</span>
+<span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+<span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">add_depth_render_image_quantity</span><span class="p">(</span><span class="s2">&quot;render_img&quot;</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> 
                                    <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">,</span> 
@@ -1620,8 +1620,8 @@
 <p>Add a depth render image.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>
-<li><code>depths</code> an <code>WxH</code> numpy array, with scalar depth values</li>
-<li><code>normals</code> an <code>WxHx3</code> numpy array, with world-space normals values, or <code>None</code> to automatically compute normals</li>
+<li><code>depths</code> an <code>HxW</code> numpy array, with scalar depth values</li>
+<li><code>normals</code> an <code>HxWx3</code> numpy array, with world-space normals values, or <code>None</code> to automatically compute normals</li>
 </ul>
 <p>Depth values should be radial ray distance from the camera origin, <em>not</em> perpendicular distance from the image plane.</p>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
@@ -1637,11 +1637,11 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">dimX</span> <span class="o">=</span> <span class="mi">1024</span>
-<span class="n">dimY</span> <span class="o">=</span> <span class="mi">768</span>
-<span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">))</span>
-<span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">768</span>
+<span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+<span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">add_color_render_image_quantity</span><span class="p">(</span><span class="s2">&quot;render_img&quot;</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> 
                                    <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">,</span> 
@@ -1653,9 +1653,9 @@
 <p>Add a depth render image, annotated with additional color values per-pixel.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>
-<li><code>depths</code> an <code>WxH</code> numpy array, with scalar depth values</li>
-<li><code>normals</code> an <code>WxHx3</code> numpy array, with world-space normals values, or <code>None</code> to automatically compute normals</li>
-<li><code>colors</code> an <code>WxHx3</code> numpy array, with colors</li>
+<li><code>depths</code> an <code>HxW</code> numpy array, with scalar depth values</li>
+<li><code>normals</code> an <code>HxWx3</code> numpy array, with world-space normals values, or <code>None</code> to automatically compute normals</li>
+<li><code>colors</code> an <code>HxWx3</code> numpy array, with colors</li>
 </ul>
 <p>Depth values should be radial ray distance from the camera origin, <em>not</em> perpendicular distance from the image plane.</p>
 <p>RGB values are interpreted in the range <code>[0,1]</code>.</p>
@@ -1675,11 +1675,11 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">dimX</span> <span class="o">=</span> <span class="mi">1024</span>
-<span class="n">dimY</span> <span class="o">=</span> <span class="mi">768</span>
-<span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">))</span>
-<span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">scalars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">768</span>
+<span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+<span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">scalars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">add_scalar_render_image_quantity</span><span class="p">(</span><span class="s2">&quot;render_img3&quot;</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">scalars</span><span class="p">,</span> 
                                      <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">,</span> 
@@ -1691,9 +1691,9 @@
 <p>Add a depth render image, annotated with additional scalar values per-pixel.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>
-<li><code>depths</code> an <code>WxH</code> numpy array, with scalar depth values</li>
-<li><code>normals</code> an <code>WxHx3</code> numpy array, with world-space normals values, or <code>None</code> to automatically compute normals</li>
-<li><code>scalars</code> an <code>WxH</code> numpy array, with scalar values</li>
+<li><code>depths</code> an <code>HxW</code> numpy array, with scalar depth values</li>
+<li><code>normals</code> an <code>HxWx3</code> numpy array, with world-space normals values, or <code>None</code> to automatically compute normals</li>
+<li><code>scalars</code> an <code>HxW</code> numpy array, with scalar values</li>
 </ul>
 <p>Depth values should be radial ray distance from the camera origin, <em>not</em> perpendicular distance from the image plane.</p>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
@@ -1706,6 +1706,13 @@
 <li><code>datatype</code>, one of <code>"standard"</code>, <code>"symmetric"</code>, or <code>"magnitude"</code>, affects default colormap and map range</li>
 <li><code>vminmax</code>, a 2-tuple of floats, specifying the min and max range for colormap limits; the default is <code>None</code>, which computes the min and max of the data</li>
 <li><code>cmap</code>, which <a href="../../../features/color_maps">colormap</a> to use</li>
+<li>isoline keywords (darker-shaded stripes showing isocontours of the scalar field):<ul>
+<li><code>isolines_enabled</code> are isolines enabled (default: <code>False</code>)</li>
+<li><code>isoline_width</code> how wide should the darkend stripes be, in data units (default: dynamically estimated)</li>
+<li><code>isoline_width_relative</code> if true, interpret the width value as relative to the world coordinate length scale (default: <code>False</code>)</li>
+<li><code>isoline_darkness</code> how much darker should the alternating stripes be (default: <code>0.7</code>)</li>
+</ul>
+</li>
 </ul>
 <p>If not specified, these optional parameters will assume a reasonable default value, or a <a href="../../../basics/parameters/#persistent-values">persistent value</a> if previously set.</p>
 <hr />
@@ -1715,10 +1722,10 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">dimX</span> <span class="o">=</span> <span class="mi">1024</span>
-<span class="n">dimY</span> <span class="o">=</span> <span class="mi">768</span>
-<span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">))</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">768</span>
+<span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">add_raw_color_render_image_quantity</span><span class="p">(</span><span class="s2">&quot;render_img3&quot;</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> 
                                        <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_fullscreen_compositing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1732,8 +1739,8 @@
 <p>Add a raw color render image described by pixel color and depth.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>
-<li><code>depths</code> an <code>WxH</code> numpy array, with scalar depth values</li>
-<li><code>colors</code> an <code>WxHx3</code> numpy array, with colors</li>
+<li><code>depths</code> an <code>HxW</code> numpy array, with scalar depth values</li>
+<li><code>colors</code> an <code>HxWx3</code> numpy array, with colors</li>
 </ul>
 <p>Depth values should be radial ray distance from the camera origin, <em>not</em> perpendicular distance from the image plane.</p>
 <p>RGB values are interpreted in the range <code>[0,1]</code>.</p>
@@ -1746,10 +1753,10 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">dimX</span> <span class="o">=</span> <span class="mi">1024</span>
-<span class="n">dimY</span> <span class="o">=</span> <span class="mi">768</span>
-<span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">))</span>
-<span class="n">color_alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">dimX</span><span class="p">,</span> <span class="n">dimY</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">768</span>
+<span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+<span class="n">color_alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">add_raw_color_alpha_render_image_quantity</span><span class="p">(</span><span class="s2">&quot;render_img3&quot;</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">color_alphas</span><span class="p">,</span> 
                                              <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">,</span> 
@@ -1760,8 +1767,8 @@
 <p>Add a raw color render image described by RGBA pixel color and depth.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>
-<li><code>depths</code> an <code>WxH</code> numpy array, with scalar depth values</li>
-<li><code>colors_alphas</code> an <code>WxHx4</code> numpy array, with colors</li>
+<li><code>depths</code> an <code>HxW</code> numpy array, with scalar depth values</li>
+<li><code>colors_alphas</code> an <code>HxWx4</code> numpy array, with colors</li>
 </ul>
 <p>Depth values should be radial ray distance from the camera origin, <em>not</em> perpendicular distance from the image plane.</p>
 <p>RGB values are interpreted in the range <code>[0,1]</code>.</p>

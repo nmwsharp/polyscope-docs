@@ -1741,6 +1741,11 @@
 <p class="admonition-title">Camera Views</p>
 <p>Image quantities get special functionality when added to <code>CameraView</code> structures: they can additionally be displayed in the camera frame, aligned with the view of the scene.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Image Array Layout</p>
+<p>Images are always passed as arrays of length <code>width*height</code>, flattened such that the <em>rows</em> are stored contiguously. For multi-channel image data like colors or normals, this becomes a <code>width*height</code> array of tuples, or a <code>width*height x 3</code> matrix, etc. The <code>ImageOrigin</code> enum controls the row layout order; most commonly the first element is the upper-left of the image.</p>
+<p>Remember that Polyscope&rsquo;s <a href="/data_adaptors">data adaptors</a> allow many container types to be used as input. For instance, an RGB color image could be stored as a such as <code>std::vector&lt;std::array&lt;float,3&gt;&gt;</code>, with <code>.size() == width*height</code>, or an <code>Eigen::MatrixXd</code> with dimensions <code>width*height x 3</code>, etc.</p>
+</div>
 <h2 id="image-origin">Image Origin</h2>
 <p>When registering an image quantity, you also need to specify whether the image should be interpreted such that the first row is the &ldquo;top&rdquo; row of the image (<code>ImageOrigin::UpperLeft</code>), or the first row is the &ldquo;bottom&rdquo; row of the image (<code>ImageOrigin::LowerLeft</code>). This is a confusing issue, as there are many overlapping conventions of coordinate systems and buffer layouts for images.</p>
 <p>Most of the time, <code>ImageOrigin::UpperLeft</code> is the right choice.</p>
@@ -1752,7 +1757,7 @@
 <p>Add an image of scalar values</p>
 <ul>
 <li><code>width</code> and <code>height</code> are dimensions in pixels</li>
-<li><code>values</code> is a flattened array of scalars per pixel. The type should be <a href="/data_adaptors">adaptable</a> to a <code>float</code> scalar array . The length should be <code>width * height</code>.</li>
+<li><code>values</code> is a <strong>flattened</strong> array of scalars values per pixel. The type should be <a href="/data_adaptors">adaptable</a> to a <code>float</code> scalar array. See the note above about image array layouts.</li>
 <li><code>imageOrigin</code> is the row origin convention, see above</li>
 <li><code>type</code> is the scalar datatype as for other scalar quantities</li>
 </ul>
@@ -1791,6 +1796,27 @@
 <td><code class="highlight"><span class="n">setMapRange</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">)</span></code> and <code class="highlight"><span class="n">resetMapRange</span><span class="p">()</span></code></td>
 <td>no</td>
 </tr>
+<tr>
+<td>isolines enabled</td>
+<td>are isolines shaded (default=<code>false</code>)</td>
+<td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">getIsolinesEnabled</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setIsolinesEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>isoline width</td>
+<td>width of isoline stripes, in data units</td>
+<td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineWidth</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setIsolineWidth</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>isoline darkness</td>
+<td>darkness of isoline stripes (default=<code>0.7</code>)</td>
+<td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineDarkness</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setIsolineDarkness</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+</tr>
 </tbody>
 </table>
 <p><em>(all setters return <code>this</code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>
@@ -1802,7 +1828,7 @@
 <p>Add an image of rgb color values</p>
 <ul>
 <li><code>width</code> and <code>height</code> are dimensions in pixels</li>
-<li><code>values_rgb</code> is a flattened array of rgb values per pixel. The type should be <a href="/data_adaptors">adaptable</a> to a 3-vector array of <code>float</code>s. The length should be <code>width * height</code>.</li>
+<li><code>values_rgb</code> is a <strong>flattened</strong> array of rgb values per pixel. The type should be <a href="/data_adaptors">adaptable</a> to a 3-vector array of <code>float</code>s. See the note above about image array layouts.</li>
 <li><code>imageOrigin</code> is the row origin convention, see above</li>
 </ul>
 <p>RGB values are interpreted in the range <code>[0,1]</code>.</p>
@@ -1812,7 +1838,7 @@
 <p>Add an image of rgb color values</p>
 <ul>
 <li><code>width</code> and <code>height</code> are dimensions in pixels</li>
-<li><code>values_rgba</code> is a flattened array of rgba values per pixel. The type should be <a href="/data_adaptors">adaptable</a> to a 4-vector array of <code>float</code>s. The length should be <code>width * height</code>.</li>
+<li><code>values_rgba</code> is a <strong>flattened</strong> array of rgba values per pixel. The type should be <a href="/data_adaptors">adaptable</a> to a 4-vector array of <code>float</code>s. See the note above about image array layouts.</li>
 <li><code>imageOrigin</code> is the row origin convention, see above</li>
 </ul>
 <p>RGB values are interpreted in the range <code>[0,1]</code>.</p>
