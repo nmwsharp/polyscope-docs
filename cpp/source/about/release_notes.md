@@ -1,3 +1,6 @@
+- **Version 2.1.0** Jan 2023  `acc6afc`
+    - Make scalar minimax limits persistent
+
 - **Version 2.0.0** Dec 2023 `71a1e64` Backlog of many changes. Large backend rewrite, several new structures and features.
     - Add a Camera View structure for displaying images and rendered views of a scene
     - Add a Volume Grid structure for values defined on regular grids

@@ -1,3 +1,8 @@
+- **Version 2.1.0** Jan 2023  
+    - Fix bugs in image dimensions and volume grid adders
+    - Add bindings for scalar quantity isolines
+    - Make scalar minimax limits persistent
+
 - **Version 2.0.0** Dec 2023  Backlog of many changes. Large backend rewrite, several new structures and features.
     - Add a Camera View structure for displaying images and rendered views of a scene
     - Add a Volume Grid structure for values defined on regular grids
