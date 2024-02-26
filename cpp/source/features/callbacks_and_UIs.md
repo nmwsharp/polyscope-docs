@@ -140,7 +140,9 @@ if (io.MouseClicked[0]) { // if the left mouse button was clicked
   glm::vec3 worldRay = polyscope::view::screenCoordsToWorldRay(screenCoords);
   glm::vec3 worldPos = polyscope::view::screenCoordsToWorldPosition(screenCoords);
   std::pair<polyscope::Structure*, size_t> pickPair =
-      polyscope::pick::evaluatePickQuery(screenCoords.x, screenCoords.y);
+      polyscope::pick::evaluatePickQuery(
+        io.DisplayFramebufferScale.x * screenCoords.x,
+        io.DisplayFramebufferScale.y * screenCoords.y);
 
   // print some values
   std::cout << "    io.MousePos.x: " << io.MousePos.x << " io.MousePos.y: " << io.MousePos.y << std::endl;
