@@ -29,12 +29,12 @@ std::vector<float> imageScalar(width * height);
 
 // == Add images at the root level of the scene
 
-polyscope::ColorImageQuanitity* colorImage =
+polyscope::ColorImageQuantity* colorImage =
 polyscope::addColorImageQuantity("test color image", width, height, imageColor, 
                                   polyscope::ImageOrigin::UpperLeft);
 polyscope::addColorAlphaImageQuantity("test color alpha image", width, height, imageColorAlpha,
                                       polyscope::ImageOrigin::UpperLeft);
-polyscope::ColorImageQuanitity* scalarImage =
+polyscope::ColorImageQuantity* scalarImage =
 polyscope::addScalarImageQuantity("test scalar image", width, height, imageScalar,
                                   polyscope::ImageOrigin::UpperLeft);
 
@@ -49,7 +49,7 @@ scalarImage->setMapRange({0.0, 10.0});
 // Here, a camera view, you could also use a point cloud, or a mesh, etc
 polyscope::CameraView* targetView = polyscope::getCameraView("my view"); // some structure you previously registered
 
-polyscope::ColorImageQuanitity* colorImageView =
+polyscope::ColorImageQuantity* colorImageView =
 targetView->addColorImageQuantity("test color image", width, height, imageColor, 
                                   polyscope::ImageOrigin::UpperLeft);
 targetView->addColorAlphaImageQuantity("test color alpha image", width, height, imageColorAlpha,
