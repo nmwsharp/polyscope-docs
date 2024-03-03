@@ -15,6 +15,8 @@ Images are rectangular grids of pixel values.
 
 ```cpp
 #include "polyscope/image_quantity.h"
+#include "polyscope/camera_view.h"
+
 polyscope::init();
 
 // Your image data, must be populated somehow
@@ -34,7 +36,7 @@ polyscope::addColorImageQuantity("test color image", width, height, imageColor,
                                   polyscope::ImageOrigin::UpperLeft);
 polyscope::addColorAlphaImageQuantity("test color alpha image", width, height, imageColorAlpha,
                                       polyscope::ImageOrigin::UpperLeft);
-polyscope::ColorImageQuantity* scalarImage =
+polyscope::ScalarImageQuantity* scalarImage =
 polyscope::addScalarImageQuantity("test scalar image", width, height, imageScalar,
                                   polyscope::ImageOrigin::UpperLeft);
 
