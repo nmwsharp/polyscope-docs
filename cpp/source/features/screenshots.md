@@ -54,4 +54,10 @@ polyscope::screenshot();
     
     If `transparentBG` is `true`, the background will be rendered as transparent.
 
+??? func "`#!cpp std::vector<unsigned char> screenshotToBuffer(bool transparentBG = true)`"
+    
+    ##### screenshot to buffer
 
+    Take a screenshot from the current view and return it as a buffer. The dimensions are `view::bufferWidth` * `view::bufferHeight`, with entries RGBA at 1 byte each.
+    
+    If `transparentBG` is `true`, the background will be rendered as transparent.

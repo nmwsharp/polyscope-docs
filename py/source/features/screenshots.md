@@ -45,3 +45,12 @@ ps.screenshot()
     Set the extension used when taking automatically-numbered screenshots, either with `screenshot()` or by clicking the GUI button.
 
     The extension should be `.png`, or `.jpg`.
+
+
+??? func "`#!python screenshot_to_buffer(transparent_bg=True, vertical_flip=True)`"
+
+    ##### screenshot to buffer
+
+    Take a screenshot of the current view and return it as a numpy array of (h,w,4).
+
+    The openGL buffer layout is vertically-flipped from the usual image convention in Python. The if `vertical_flip=True`, the buffer is flipped vertically before returning to match the usual convention.
