@@ -36,7 +36,7 @@ ps.init()
 
 # if desired, set up a user_callback to add ImGui UI elements
 
-while(continue_program):
+while(not ps.window_requests_close()):
 
     #  ... your code ...
     #  ... add visualizations to Polyscope, etc ...
@@ -114,3 +114,11 @@ Either way, `init()` must be called before you do anything with Polyscope.
     If any ImGui UI elements are to be created, they must be created inside of a `user_callback()` (which will be internally executed by Polyscope within each `frame_tick()`, you may **not** make ImGui calls arbitrarily throughout your code.
 
     The `frame_tick()` function can be called anywhere within your program's control flow, including from multiple call sites. You may also interleave or nest calls to `frame_tick()` and `show()` to use both kinds of control flow within a program.
+
+??? func "`#!python window_requests_close()`"
+    
+    ##### window_requests_close()
+
+    Returns `True` if the user has tried to exit the window at the OS level, e.g. by clicking the close button. 
+
+    Useful for deciding when to exit your control loop when using `frame_tick()`.

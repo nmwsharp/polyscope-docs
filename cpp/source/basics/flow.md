@@ -36,8 +36,7 @@ polyscope::init();
 
 // if desired, set up a userCallback to add ImGui UI elements
 
-while(/* program runs */) {
-
+while (!polyscope::windowRequestsClose()) { /* program runs */
     /* 
      * ... your code ...
      * ... add visualizations to Polyscope, etc ...
@@ -120,3 +119,12 @@ Either way, `init()` must be called before you do anything with Polyscope.
     If any ImGui UI elements are to be created, they must be created inside of a `userCallback()` (which will be internally executed by Polyscope within each `frameTick()`, you may **not** make ImGui calls arbitrarily throughout your code.
 
     The `frameTick()` function can be called anywhere within your program's control flow, including from multiple call sites. You may also interleave or nest calls to `frameTick()` and `show()` to use both kinds of control flow within a program.
+
+
+??? func "`#!cpp bool windowRequestsClose()`"
+    
+    ##### windowRequestsClose()
+
+    Returns `true` if the user has tried to exit the window at the OS level, e.g. by clicking the close button. 
+
+    Useful for deciding when to exit your control loop when using `frameTick()`.
