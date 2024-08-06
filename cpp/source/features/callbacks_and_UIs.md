@@ -139,8 +139,8 @@ if (io.MouseClicked[0]) { // if the left mouse button was clicked
   glm::vec2 screenCoords{io.MousePos.x, io.MousePos.y};
   glm::vec3 worldRay = polyscope::view::screenCoordsToWorldRay(screenCoords);
   glm::vec3 worldPos = polyscope::view::screenCoordsToWorldPosition(screenCoords);
-  std::pair<polyscope::Structure*, size_t> pickPair =
-      polyscope::pick::evaluatePickQuery(screenCoords.x, screenCoords.y);
+  std::pair<polyscope::Structure*, size_t> pickPair = 
+    polyscope::pick::pickAtScreenCoords(screenCoords);
 
   // print some values
   std::cout << "    io.MousePos.x: " << io.MousePos.x << " io.MousePos.y: " << io.MousePos.y << std::endl;
@@ -164,12 +164,19 @@ if (io.MouseClicked[0]) { // if the left mouse button was clicked
     Convert a click location to a ray in world-space.
 
 
-??? func "`#!cpp glm::vec3 screenCoordsToWorldPosition(glm::vec2 screenCoords)`"
+??? func "`#!cpp glm::vec3 view::screenCoordsToWorldPosition(glm::vec2 screenCoords)`"
     
     ##### screen coords to world position
 
     Convert a click location to a location in world-space, by reading from the scene's depth buffer.
 
+
+??? func "`#!cpp std::pair<polyscope::Structure*, size_t> pick::pickAtScreenCoords(glm::vec2 screenCoords)`"
+    
+    ##### pick at screen coords
+
+    Evaluate a "pick" query to get the object onscreen at a given location. Returns a pointer to the structure (or `nullptr` if none), and an index to an element within the structure. The meaning of this index is specific to the structure, for instance for surface meshes it is a packed layout of vertices, then faces, etc.
+    
 
 ### Custom UIs
 
