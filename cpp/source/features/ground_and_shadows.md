@@ -20,6 +20,10 @@ The ground plane and shadow settings can also be manually adjusted in the GUI un
 
 polyscope::init();
 
+// set the ground location manually
+polyscope::options::groundPlaneHeightMode = polyscope::GroundPlaneHeightMode::Manual;
+polyscope::options::groundPlaneHeight = 0.; // in world coordinates along the up axis
+
 // set soft shadows on the ground
 polyscope::options::groundPlaneMode = polyscope::GroundPlaneMode::ShadowOnly;
 polyscope::view::upDir = UpDir::ZUp;                 // set +Z as up direction
@@ -61,15 +65,44 @@ The `options::shadowBlurIters` and `options::shadowDarkness` parameters below ad
 
 The orientation of the ground plane is determined by the [up direction for the scene]([[url.prefix]]/basics/camera_controls/#up-direction), which can be set along any of the coordinate directions such as `+X`, `-Z`, etc.
 
-The height of the ground plane is set by default from the bounding box of the scene. The `options::groundPlaneHeightFactor` can be set to adjust the relative offset of the ground plane from the bounding box.
+By default, the height of the ground plane is set automatically to the bottom of the bounding box for the scene content (and can optionally be relatively offset via `groundPlaneHeightFactor`).
+
+Alternately, the height can be specified to a fixed location in world coordinates like:
+```cpp
+polyscope::options::groundPlaneHeightMode = polyscope::GroundPlaneHeightMode::Manual;
+polyscope::options::groundPlaneHeight = 0.; // in world coordinates along the up axis
+```
+
+??? func "`#!cpp GroundPlaneMode options::groundPlaneHeightMode`"
+    
+    Set how the height of the ground plane is computed, one of:
+
+    - `GroundPlaneHeightMode::Automatic` anchored to the bottom of the scene bounding box, optionally offset by `groundPlaneHeightFactor`
+    - `GroundPlaneHeightMode::Manual` in absolute world coordinates, at the location `groundPlaneHeight`
+
+
+    Default: `GroundPlaneHeightMode::Automatic`.
+
+
+??? func "`#!cpp ScaledValue<float> options::groundPlaneHeight`"
+
+    The location of the ground plane, in world coordinates.
+    
+    This parameter only has an effect if `options::groundPlaneHeightMode == GroundPlaneHeightMode::Manual`.
+    
+    Default: `0`. 
+
 
 ??? func "`#!cpp ScaledValue<float> options::groundPlaneHeightFactor`"
 
     The offset of the ground plane from the bottom of the bounding box for the scene. Use postive/negative values to shift the ground plane up/down.
 
+    This parameter only has an effect if `options::groundPlaneHeightMode == GroundPlaneHeightMode::Automatic`.
+
     This parameter is a [scaled value]([[url.prefix]]/basics/parameters/#scaled-values). You can assign to it like a normal float, `options::groundPlaneHeightFactor = 0.5`, and the resulting value will be _relative_ to the scene length scale. Alternately, absolute values can also be used, as described on the linked page.
 
     Default: `0`. 
+
 
 
 

@@ -7,6 +7,7 @@ Visualize scalar (real or integer)-valued data at the elements of a surface mesh
 
 // (external library, used as an example)
 #include "geometrycentral/surface/vertex_position_geometry.h"
+using namespace geometrycentral::surface;
 
 polyscope::init();
 

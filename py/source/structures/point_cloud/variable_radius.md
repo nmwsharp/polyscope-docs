@@ -1,4 +1,4 @@
-By default, all points in the cloud have the same radius. However, any point cloud scalar quantity can be additionally interpreted as the radius of the points. This can also be set manually in the GUI via the point cloud [Options] --> [Variable Radius].
+By default, all points in the cloud have the same radius. However, any point cloud scalar quantity can be additionally interpreted as the radius of the points. This can also be set manually in the GUI via the point cloud `[Options] --> [Variable Radius]`.
 
 ![point cloud radius demo]([[url.prefix]]/media/point_cloud_radius.jpg)
 
@@ -9,7 +9,7 @@ import numpy as np
 
 # ... setup, register a point cloud, etc ...
 
-// Get a reference to your point cloud
+# Get a reference to your point cloud
 ps_cloud = ps.get_point_cloud("your point cloud name")
 
 # Add a random scalar quantity
@@ -43,16 +43,9 @@ Any negative values in the scalar quantity will be clamped to `0`. By default, v
     This usually gives a reasonable visualization, but makes it difficult to set a precise radius in world units.  To properly reproduce a radius in world-coordinate units, you can circumvent autoscaling like `cloud.set_point_radius_quantity(q, autoscale=False)`. This will prevent the auto-scaling of the radii, and also ignore the structure's point radius parameter.
 
 
-    def 
-        self.bound_cloud.set_point_radius_quantity(quantity_name, autoscale)
-    
-    def 
-        self.bound_cloud.clear_point_radius_quantity()
-
-
 ??? func "`#!python PointCloud.set_point_radius_quantity(quantity_name, autoscale=True)`"
 
-    Set the point radius from a quantity by name. The quantity must be a point cloud scalar quantity add to this cloud.
+    Set the point radius from a quantity by name. The quantity must be a point cloud scalar quantity added to this cloud.
     
     When using a radius which is a physical length in world coordinates, set `autoscale` to `False` to skip rescaling and ignore the structure's point radius parameter.
 

@@ -18,9 +18,11 @@ import polyscope as ps
 
 ps.init()
 
+# set the ground height to a fixed location manually
+ps.set_ground_height(0.) # in world coordinates
+
 # set soft shadows on the ground
 ps.set_ground_plane_mode("shadow_only")  # set +Z as up direction
-ps.set_ground_plane_height_factor(-0.25) # adjust the plane height
 ps.set_shadow_darkness(0.1)              # lighter shadows
 
 
@@ -61,12 +63,38 @@ The `shadow_blur_iters` and `shadow_darkness` parameters below adjust the visual
 
 The orientation of the ground plane is determined by the [up direction for the scene]([[url.prefix]]/basics/camera_controls/#up-direction), which can be set along any of the coordinate directions such as `+X`, `-Z`, etc.
 
-The height of the ground plane is set by default from the bounding box of the scene. The `options::groundPlaneHeightFactor` can be set to adjust the relative offset of the ground plane from the bounding box.
+By default, the height of the ground plane is set automatically to the bottom of the bounding box for the scene content (and can optionally be relatively offset via `set_ground_plane_height_factor()`).
+
+Alternately, the height can be specified to a fixed location in world coordinates like:
+```python
+ps.set_ground_height(0.) # in world coordinates along the up axis
+```
+
+??? func "`#!python set_ground_plane_height(x)`"
+
+    Set the location of the ground plane, in world coordinates.
+
+    Calling this function also implicitly sets `set_ground_plane_height_mode('manual')`
+    
+    Default: `0`. 
+
 
 ??? func "`#!python set_ground_plane_height_factor(x, is_relative=True)`"
 
     The offset of the ground plane from the bottom of the bounding box for the scene. Use postive/negative values to shift the ground plane up/down.
+    
+    Calling this function also implicitly sets `set_ground_plane_height_mode('automatic')`
 
     This parameter is a [scaled value]([[url.prefix]]/basics/parameters/#scaled-values). By default, values will be interpreted relative to the scene length scale, whereas calling `set_ground_plane_height_factor(0.1, is_relative=False)` will specify a value in absolute units.
 
     Default: `0`. 
+
+??? func "`#!python set_ground_plane_height_mode(mode_str)`"
+
+    Set which policy is used to determine the ground plane height.
+
+    - `automatic` anchored to the bottom of the scene bounding box, optionally offset by `set_ground_plane_height_factor()`
+    - `manual` in absolute world coordinates, at the location `set_ground_height()`
+
+
+    Default: `automatic`.
