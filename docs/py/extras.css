@@ -1,0 +1,96 @@
+/* Adjust fonts */
+
+html {
+    /* a bit less goofily large than the material default */
+    font-size: 125%;
+}
+
+/* justify and slightly increase spacing */
+p {
+  text-align: justify;
+  line-height: 1.25;
+}
+ul {
+  text-align: justify;
+  line-height: 1.25;
+}
+li {
+  text-align: justify;
+  line-height: 1.25;
+}
+
+/* Emphasise sections of nav on left hand side */
+
+nav.md-nav {
+  padding-left: 5px;
+}
+
+nav.md-nav--secondary {
+    border-left: revert !important;
+}
+
+
+/* Decrease spacing on the left side nav bar */
+.md-nav__link {
+  margin-top: 0.25rem;
+  text-align: left;
+}
+
+/* Make the headings in the left side nav bar dark */
+.md-nav__item--section > .md-nav__link[for] {
+	color: #000;
+}
+.md-nav__title {
+	color: #000;
+}
+
+
+/* Darker hlines */
+
+[data-md-color-scheme="default"] .md-typeset hr {
+    border-bottom-color: rgb(0, 0, 0);
+    border-bottom-width: 1pt;
+}
+
+/* Custom "function" box admonitions */
+
+.md-typeset .admonition.func, .md-typeset details.func {
+    border-left: .2rem solid #d12;
+}
+.md-typeset .admonition.func>.admonition-title, .md-typeset details.func>.admonition-title, .md-typeset details.func>summary {
+    border-bottom: .1rem solid rgba(245, 245, 245, 1);
+    background-color: rgba(245, 245, 245, 1);
+    border-left: .2rem solid #d12;
+}
+.md-typeset .admonition.func>.admonition-title:before, .md-typeset details.func>.admonition-title:before, .md-typeset details.func>summary:before {
+    color: #d12;
+    background-color: #d12;
+    content: "code"}
+
+/* Custom buttons at the top to select language version */
+
+.lang-button {
+	border-style: solid;
+	border-width: 2px;
+	border-color: white;
+  border-radius: 8px;
+	color: white;
+	padding: 0.5em;
+  font-weight: 500;
+	text-align: center;
+	display: inline-block;
+	font-size: 140%;
+	padding: 3px;
+  margin-left: 0.5rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.lang-button-inactive {
+	opacity: 0.45;
+}
+
+.lang-button-inactive:hover {
+	opacity: 1.0;
+}
+
