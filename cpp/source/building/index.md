@@ -1,12 +1,17 @@
 Polyscope uses CMake to configure its build system. 
 
-### Unix-like environments (macOS,Linux,WSL)
+## Adding Polyscope to your CMake
 
-If you're using CMake in a Unix-like environment, integrating Polyscope in to your codebase should be as simple as running
+
+### Subdirectory method
+
+First clone Polyscope's source code, using the following commands, or equivalent actions in a GUI. (Be sure to get the submodules, or you will have problems with empty directories! The `--recurse-submodules` below is important.)
+
 ```sh
 git clone --recurse-submodules https://github.com/nmwsharp/polyscope.git
 ```
-and adding
+
+Then, add the following lines to your `CMakeLists.txt`:
 ```
 add_subdirectory("path/to/polyscope")
 
@@ -14,18 +19,33 @@ add_subdirectory("path/to/polyscope")
 
 target_link_libraries(YOUR_TARGET polyscope)
 ```
-to your `CMakeLists.txt`. If you place polyscope outside of your project's source tree, you may need 
-`add_subdirectory("path/to/polyscope" "polyscope")` to also set a library build directory.
+If you place polyscope outside of your project's source tree, you may need `add_subdirectory("path/to/polyscope" "polyscope")` to also set a library build directory.
 
 See these repositories for some simple examples of using Polyscope with an existing codebase or library:
 
 - with [geometry-central](http://geometry-central.net) -- [example project](https://github.com/nmwsharp/gc-polyscope-project-template)
 - with [libIGL](https://libigl.github.io/) -- [example project](https://github.com/nmwsharp/libigl-polyscope-project-template)
 
+### FetchContent 
+
+Alternately, CMake's `FetchContent` functionality can be used to automatically download dependencies at configure-time as-needed, so you do not need to manually . You can use it by adding this to your `CMakeLists.txt`:
+
+```
+include(FetchContent)
+
+FetchContent_Declare(
+   polyscope
+   GIT_REPOSITORY https://github.com/nmwsharp/polyscope.git
+   GIT_TAG        master
+)
+
+FetchContent_MakeAvailable(polyscope)
+target_link_libraries(YOUR_TARGET_NAME polyscope)
+```
 
 ### Building in Windows
 
-If you are using Cygwin, WSL, or some other unix-emulation environment on Windows, just follow the Unix instructions above (though be wary that these tools often do not have good openGL and windowing support, which can be a problem at runtime for a graphical application like Polyscope). 
+If you are using Cygwin, WSL, or some other unix-emulation environment on Windows, just follow the instructions above (though be wary that these tools often do not have good openGL and windowing support, which can be a problem at runtime for a graphical application like Polyscope). 
 
 Additionally, Polyscope builds out of the box on Visual Studio 2019 (earlier versions have not been tested). Simply run CMake (either with the GUI or terminal interface) on Polyscope's CMakeLists.txt to generate Visual Studio project and solution files. 
 
