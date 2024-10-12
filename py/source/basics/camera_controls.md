@@ -144,6 +144,25 @@ ps.show()
     ps.reset_camera_to_home_view()
     ```
 
+??? func "`#!python get_view_camera_parameters()`"
+
+    ##### get camera params for view
+
+    Get the camera parameters (intrinsic and extrinsics) that describe the current viewport view. 
+
+    See the section below for additional methods to get values from the camera parameters.
+
+    Example:
+    ```python
+    curr_params = ps.get_view_camera_parameters()
+
+    # get some data from the parameters
+    view_mat = curr_params.get_view_mat()
+    fov_vert_deg = curr_params.get_fov_vertical_deg()
+    aspect = curr_params.get_aspect()
+    pos = curr_params.get_position()
+    ```
+
 #### Orthographic view
 
 By default, Polyscope's view uses [perspective projection](https://en.wikipedia.org/wiki/3D_projection#Perspective_projection). Perspective projections roughly correspond to how images are usually perceived by our eyes and cameras.
@@ -212,6 +231,9 @@ params = ps.CameraParameters(intrinsics, extrinsics)
 
 # set the viewport view to those parameters
 ps.set_view_camera_parameters(params)
+
+# get the current viewport view
+curr_params = ps.get_view_camera_parameters()
 
 # or, use the parameters to create a camera view
 cam = ps.register_camera_view("cam1", params)

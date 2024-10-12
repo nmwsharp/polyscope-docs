@@ -133,6 +133,27 @@ polyscope::show();
     polyscope::view::resetCameraToHomeView();
     ```
 
+
+??? func "`#!cpp CameraParameters getCameraParametersForCurrentView()`"
+
+    ##### get camera params for view
+
+    Get the camera parameters (intrinsic and extrinsics) that describe the current viewport view. 
+
+    See the section below for additional methods to get values from the camera parameters.
+
+    Example:
+    ```cpp
+    polyscope::CameraParameters currParams = 
+        polyscope::view::getCameraParametersForCurrentView();
+
+    // get some data from the parameters
+    float fovVert = currParams.getFoVVerticalDegrees();
+    float aspect = currParams.getAspectRatioWidthOverHeight();
+    glm::mat4x4 view_mat = currParams.getViewMat();
+    glm::vec3 pos = currParams.getPosition();
+    ```
+
 #### Orthographic view
 
 By default, Polyscope's view uses [perspective projection](https://en.wikipedia.org/wiki/3D_projection#Perspective_projection). Perspective projections roughly correspond to how images are usually perceived by our eyes and cameras.
@@ -203,6 +224,10 @@ polyscope::CameraParameters params(
 
 // set the viewport view to those parameters
 polyscope::view::setViewToCamera(params);
+
+// get the current viewport view
+polyscope::CameraParameters currParams = 
+    polyscope::view::getCameraParametersForCurrentView();
 
 // or, use the parameters to create a camera view
 polyscope::CameraView* cam = polyscope::registerCameraView("cam1", params);
