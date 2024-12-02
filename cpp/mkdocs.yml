@@ -78,7 +78,7 @@ nav:
     - 'Basic Flow' : 'basics/flow.md'
     - 'Program Options' : 'basics/program_options.md'
     - 'Scene Options' : 'basics/scene_options.md'
-    - 'Camera Controls & Parameters' : 'basics/camera_controls.md'
+    - 'Managing Views and Cameras' : 'basics/camera_controls.md'
   - Structures and Quantities: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Point Cloud:

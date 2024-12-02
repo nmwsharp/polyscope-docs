@@ -1,37 +1,168 @@
-These settings affect the 3D camera view in polyscope. It is often convenient to set them just before calling `polyscope::init`, but they may set be anywhere.
+These functions control the current viewing camera in for the Polyscope scene, as well as more-generally managing camera parameters across visualizations, such as for [Camera View structures]([[url.prefix]]/structures/camera_view/basics).
 
+**Example of common camera operations:**
 ```cpp
 #include "polyscope/polyscope.h"
 
-// a few camera options
+// change the default up-direction or front-direction for the scene
 polyscope::view::setUpDir(polyscope::UpDir::ZUp);
 polyscope::view::setFrontDir(polyscope::FrontDir::NegYFront);
+
+// change the navigation style (default is Turntable)
 polyscope::view::setNavigateStyle(polyscope::NavigateStyle::Free);
 
-// initialize
-polyscope::init();
+// get the current camera matrix or position
+glm::mat4 viewMat = polyscope::view::getCameraViewMatrix();
+glm::vec3 pos = polyscope::view::getCameraWorldPosition();
 
-// set the camera pose explicitly
+// set the current camera matrix or position
+polyscope::view::setCameraViewMatrix(viewMat);
+polyscope::view::setCameraWorldPosition(pos);
+
+// set the current camera pose to look-at something in the scene
 polyscope::view::lookAt(glm::vec3{10., 10., 0.}, glm::vec3{0., 2., 0.});
 
-// show the GUI
-polyscope::show();
+// manipulate the current camera with the CameraParameters object,
+// which standardizes all camera information
+polyscope::CameraParameters currParams = 
+    polyscope::view::getCameraParametersForCurrentView();
+polyscope::view::setCameraParametersForCurrentView(cam_params):
+
+// you can even use the parameters to create a camera view structure,
+// which visualize views of the scene as a frame and can hold image
+// quantities
+polyscope::CameraView* cam = polyscope::registerCameraView("cam1", params) 
 ```
 
-## View options
+## Manipulating the Current View
+
+These settings affect the 3D camera view in polyscope. It is often convenient to set them just before calling `polyscope::init()`, but they may set be anywhere.
+
+**View Getters:**
+```cpp
+// call like polyscope::view::getCameraFrame() etc
+
+CameraParameters getCameraParametersForCurrentView(); // contains all of this info
+
+// (these friendly helpers get the same info as ^^^)
+glm::mat4 getCameraViewMatrix();
+void setCameraViewMatrix(glm::mat4 newMat);
+glm::mat4 getCameraPerspectiveMatrix();
+glm::vec3 getCameraWorldPosition();
+void getCameraFrame(glm::vec3& lookDir, glm::vec3& upDir, glm::vec3& rightDir);
+glm::vec3 getUpVec();
+glm::vec3 getFrontVec();
+```
+
+??? func "`#!cpp CameraParameters getCameraParametersForCurrentView()`"
+
+    Get the camera parameters (intrinsic and extrinsics) that describe the current viewport view. 
+
+    See the section below for additional methods to get values from the camera parameters.
+
+    Example:
+    ```cpp
+    polyscope::CameraParameters currParams = 
+        polyscope::view::getCameraParametersForCurrentView();
+
+    // get some data from the parameters
+    float fovVert = currParams.getFoVVerticalDegrees();
+    float aspect = currParams.getAspectRatioWidthOverHeight();
+    glm::mat4x4 view_mat = currParams.getViewMat();
+    glm::vec3 pos = currParams.getPosition();
+    ```
+
+
+**View Setters:**
+```cpp
+// call like polyscope::view::setCameraViewMatrix() etc
+
+void setViewToCamera(const CameraParameters& p); // contains all of this info
+
+// (these friendly helpers set the same info as ^^^)
+void setCameraViewMatrix(glm::mat4 newMat);
+void lookAt(glm::vec3 cameraLocation, glm::vec3 target, bool flyTo = false);
+void lookAt(glm::vec3 cameraLocation, glm::vec3 target, glm::vec3 upDir, bool flyTo = false);
+```
+
+??? func "`#!cpp void setCameraParametersForCurrentView(const CameraParameters& params)`"
+
+    Set the camera parameters (intrinsic and extrinsics) that describe the current viewport view. 
+
+    See the section below for additional methods to construct these camera parameters.
+
+    Example:
+    ```cpp
+    polyscope::CameraParameters newParams(
+            polyscope::CameraIntrinsics::fromFoVDegVerticalAndAspect(60, 2.),
+            polyscope::CameraExtrinsics::fromVectors(
+                glm::vec3{2., 2., 2.},      // world-space position
+                glm::vec3{-1., 0., 0.},     // world-space look direction
+                glm::vec3{0., 1., 0.}       // world-space up direction
+            )
+        );
+
+    polyscope::view::setCameraParametersForCurrentView(newParams);
+    ```
+
+### Look-At
+
+The look-at functions are particularly easy to use to position the camera towards content of interest.
+
+??? func "`#!cpp void lookAt(glm::vec3 cameraLocation, glm::vec3 target, bool flyTo = false)`"
+
+    Set the camera to be located at the 3D position `cameraLocation` and looking at the 3D position `target`, both in world coordinates. The up direction for the camera is set to be the scene's up direction. If `flyTo=true`, the camera will smoothly animate to the new configuration.
+
+    Example:
+    ```cpp
+    polyscope::view::lookAt(glm::vec3{10., 10., 0.}, glm::vec3{0., 2., 0.});
+    ```
+
+??? func "`#!cpp void lookAt(glm::vec3 cameraLocation, glm::vec3 target, glm::vec3 upDir, bool flyTo = false)`"
+    
+    Set the camera to be located at the 3D position `cameraLocation` and looking at the 3D position `target`, oriented with the up direction `upDir`, all in world coordinates. If `flyTo=true`, the camera will smoothly animate to the new configuration.
+
+    Note that setting the up direction for the camera view with this function is separate from the scene's `view::upDir` parameter, which affects things like ground plane placement, and manual view manipulation.
+
+    Example:
+    ```cpp
+    polyscope::view::lookAt(glm::vec3{10., 10., 0.}, glm::vec3{0., 2., 0.}, glm::vec3{0., 0., 1.});
+    ```
+
+### Home View
+
+The home view is a reasonable default camera view, computed based on the up- and front- direction, as well as the scene extents which may be computed automatically from data you have registered.
+
+By default, the camera is located at the home view when the scene is first opened. You can also return it to that view at any time with `resetCameraToHomeView()`.
+
+??? func "`#!cpp void resetCameraToHomeView()`"
+
+    Reset the camera view to the home view (a reasonable default view scaled to the scene).
+
+    **Note:** The "home" view is dependent on the data in the scene; it is computed from the bounding boxes of all registered structures to ensure that everything is nicely scaled and in view. As such, one should generally call this function _after_ registering data.
+
+    Example:
+    ```cpp
+    polyscope::view::resetCameraToHomeView();
+    ```
+
+
+## Navigation Style
+
+The navigation style affects how the user's mouse interactions navigate the scene. The default is a Turntable rotating around the current canonical `Up` direction.
+
+**Navigation Styles Enum**:
+
+- `NavigateStyle::Turntable` The up direction (see below) is always fixed vertically, with rotation along the azumith and altitude directions.
+- `NavigateStyle::Free` The camera is free to take any orientation, rotation is always about relative to the current camera.
+- `NavigateStyle::Planar` The camera is locked in to a 2D view of the XY plane, with no rotation (see [2D data]([[url.prefix]]/features/2D_data)).
+
 
 ??? func "`#!cpp void view::setNavigateStyle(NavigateStyle newStyle)`"
-
-    ##### navigation style
    
     The style of the camera navigation. Affects what happens when you drag to rotate around the 3D view with your mouse.
 
-    This value can be manually set under the `view` menu of the ui. Programmatically, the enum `view::NavigateStyle` contains various settings:
-
-    - `NavigateStyle::Turntable` The up direction (see below) is always fixed vertically, with rotation along the azumith and altitude directions.
-    - `NavigateStyle::Free` The camera is free to take any orientation, rotation is always about relative to the current camera.
-    - `NavigateStyle::Planar` The camera is locked in to a 2D view of the XY plane, with no rotation (see [2D data]([[url.prefix]]/features/2D_data)).
-
+    This value can be manually set under the `view` menu of the ui. 
 
     Example:
     ```cpp
@@ -42,10 +173,13 @@ polyscope::show();
 
     Get the current navigation style (see explanation in the setter above)
 
+## Canonical Up and Front
+
+Unfortunately, no one can agree which cartesian direction is "up" in a 3D scene. Polyscope does not assume any particular up direction, it can be configured (default is `Y-up`).
+
+This effects many defaults of the scene, such as how the camera is oriented and where the ground plane is placed. 
 
 ??? func "`#!cpp void view::setUpDir(UpDir newDir)`"
-
-    ##### up direction
 
     Set the default "up" direction for the scene. This setting affects default orientation of the view, the behavior of some navigation styles (esp. `Turntable`), and the orientation of the ground plane.
 
@@ -69,9 +203,9 @@ polyscope::show();
 
     Get the current up direction (see explanation in the setter above).
 
-??? func "`#!cpp void view::setFrontDir(FrontDir newDir)`"
+A default front direction can also be configured, which effects the placement of the home camera location.
 
-    ##### front direction
+??? func "`#!cpp void view::setFrontDir(FrontDir newDir)`"
 
     Set the default "front" direction for the scene. This setting affects default orientation of the view; the starting camera looks at the front of the data.
 
@@ -97,64 +231,9 @@ polyscope::show();
 
     Get the current front direction (see explanation in the setter above).
 
-??? func "`#!cpp void lookAt(glm::vec3 cameraLocation, glm::vec3 target, bool flyTo = false)`"
-    
-    ##### look at
-
-    Set the camera to be located at the 3D position `cameraLocation` and looking at the 3D position `target`, both in world coordinates. The up direction for the camera is set to be the scene's up direction. If `flyTo=true`, the camera will smoothly animate to the new configuration.
-
-    Example:
-    ```cpp
-    polyscope::view::lookAt(glm::vec3{10., 10., 0.}, glm::vec3{0., 2., 0.});
-    ```
-
-??? func "`#!cpp void lookAt(glm::vec3 cameraLocation, glm::vec3 target, glm::vec3 upDir, bool flyTo = false)`"
-    
-    Set the camera to be located at the 3D position `cameraLocation` and looking at the 3D position `target`, oriented with the up direction `upDir`, all in world coordinates. If `flyTo=true`, the camera will smoothly animate to the new configuration.
-
-    Note that setting the up direction for the camera view with this function is separate from the scene's `view::upDir` parameter, which affects things like ground plane placement, and manual view manipulation.
-
-    Example:
-    ```cpp
-    polyscope::view::lookAt(glm::vec3{10., 10., 0.}, glm::vec3{0., 2., 0.}, glm::vec3{0., 0., 1.});
-    ```
 
 
-??? func "`#!cpp void resetCameraToHomeView()`"
-
-    ##### reset camera to home view
-
-    Reset the camera view to the home view (a reasonable default view scaled to the scene).
-
-    **Note:** The "home" view is dependent on the data in the scene; it is computed from the bounding boxes of all registered structures to ensure that everything is nicely scaled and in view. As such, one should generally call this function _after_ registering data.
-
-    Example:
-    ```cpp
-    polyscope::view::resetCameraToHomeView();
-    ```
-
-
-??? func "`#!cpp CameraParameters getCameraParametersForCurrentView()`"
-
-    ##### get camera params for view
-
-    Get the camera parameters (intrinsic and extrinsics) that describe the current viewport view. 
-
-    See the section below for additional methods to get values from the camera parameters.
-
-    Example:
-    ```cpp
-    polyscope::CameraParameters currParams = 
-        polyscope::view::getCameraParametersForCurrentView();
-
-    // get some data from the parameters
-    float fovVert = currParams.getFoVVerticalDegrees();
-    float aspect = currParams.getAspectRatioWidthOverHeight();
-    glm::mat4x4 view_mat = currParams.getViewMat();
-    glm::vec3 pos = currParams.getPosition();
-    ```
-
-#### Orthographic view
+## Perspective and Orthographic Views
 
 By default, Polyscope's view uses [perspective projection](https://en.wikipedia.org/wiki/3D_projection#Perspective_projection). Perspective projections roughly correspond to how images are usually perceived by our eyes and cameras.
 
@@ -167,8 +246,6 @@ In perspective mode, zooming (for instance, by manually scrolling the mouse) tra
 
 ??? func "`#!cpp ProjectionMode view::projectionMode`"
 
-    ##### set projection mode
-
     Set the camera view projection to be either orthographic or perspective (default).
 
     Example:
@@ -180,7 +257,7 @@ In perspective mode, zooming (for instance, by manually scrolling the mouse) tra
     polyscope::view::projectionMode = polyscope::ProjectionMode::Perspective;
     ```
 
-#### Saving/restoring views
+## Saving/Restoring views
 
 The current camera view (location, direction, camera parameters, and window size) can be saved or loaded from a json string. This is useful for quickly setting up repeatable visualizations.
 
@@ -205,8 +282,7 @@ Also, in the Polyscope GUI, this string can be copied to the clipboard at any ti
     polyscope::view::setViewFromJson(myString);
     ```
 
----
-## Camera Parameters
+## Camera Parameters Objects
 
 `CameraParameters` objects describe a camera view in Polyscope, including its _intrinsics_ (the field of view and aspect ratio), and _extrinsics_ (the location and orientation). These parameters are used both for manipulations of the interactive viewport, as well as creating [Camera View structures]([[url.prefix]]/structures/camera_view/basics) which are visualized as part of the content in your scene.
 
@@ -233,7 +309,7 @@ polyscope::CameraParameters currParams =
 polyscope::CameraView* cam = polyscope::registerCameraView("cam1", params);
 ```
 
-### Camera Intrinsics
+### Intrinsics
 
 A `CameraIntrinsics` object describes the field of view and aspect ratio of a camera. It **does not** describe a "pixel resolution" for a camera---you could have many images of different resolutions all associated with the same camera, as long as the aspect ratios are right.
 
@@ -281,7 +357,7 @@ float CameraIntrinsics::getFoVVerticalDegrees()             // vertical FoV
 float CameraIntrinsics::getAspectRatioWidthOverHeight()     // horizontal FoV
 ```
 
-### Camera Extrinsics
+### Extrinsics
 
 A `CameraExtrinsics` object describes the location and orientation of a camera. It can be defined by the forward/up/right axes of the camera in world coordinates, or via an extrinsic matrix, typically denoted `E`, which maps points in world coordinates to points in the camera's local coordinate system. Polyscope uses openGL conventions for camera space, such that the camera points toward the -Z axis, with +Y pointing up and +X pointing right.
 

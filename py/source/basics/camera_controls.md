@@ -1,55 +1,177 @@
-These settings affect the 3D camera view in polyscope. It is often convenient to set them just before calling `polyscope.init()`, but they may generally be set anywhere.
+These functions control the current viewing camera in for the Polyscope scene, as well as more-generally managing camera parameters across visualizations, such as for [Camera View structures]([[url.prefix]]/structures/camera_view/basics).
+
 
 ```python
 import polyscope as ps
 import numpy as np
 
+# change the default up-direction or front-direction for the scene
 ps.set_up_dir("z_up")
 ps.set_front_dir("neg_y_front")
+
+# change the navigation style (default is Turntable)
 ps.set_navigation_style("free")
 
-# initialize
-ps.init()
+# get the current camera view matrix
+view_mat = ps.get_camera_view_matrix()
    
-# set the camera pose explicitly
-ps.look_at((0., 0., 5.), (1., 1., 1.))
 
+# set the current camera view matrix
+ps.set_camera_view_matrix(view_mat)
+
+# set the current camera pose to look-at something in the scene
+ps.look_at((0., 0., 5.), (1., 1., 1.))
 # (alternately, use numpy vectors)
 ps.look_at(np.array((0., 0., 5.)), np.array((1., 1., 1.)))
 
-# show the GUI
-ps.show()
+# manipulate the current camera with the CameraParameters object,
+# which standardizes all camera information
+cam_params = ps.get_view_camera_parameters()
+ps.set_view_camera_parameters(cam_params)
+
+# you can even use the parameters to create a camera view structure,
+# which visualize views of the scene as a frame and can hold image
+# quantities
+ps_cam = ps.register_camera_view("cam1", cam_params) 
 ```
 
-### Options
+## Manipulating the Current View
+
+These settings affect the 3D camera view in polyscope. It is often convenient to set them just before calling `ps.init()`, but they may set be anywhere.
+
+**View Getters:**
+```python
+# call like ps.get_camera_view_matrix() etc
+polyscope.get_view_camera_parameters() # contains all of this info
+
+# (these friendly helpers get the same info as ^^^)
+polyscope.get_camera_view_matrix()
+```
+
+??? func "`#!python get_view_camera_parameters()`"
+
+    Get the camera parameters (intrinsic and extrinsics) that describe the current viewport view. 
+
+    See the section below for additional methods to get values from the camera parameters.
+
+    Example:
+    ```python
+    curr_params = ps.get_view_camera_parameters()
+
+    # get some data from the parameters
+    view_mat = curr_params.get_view_mat()
+    fov_vert_deg = curr_params.get_fov_vertical_deg()
+    aspect = curr_params.get_aspect()
+    pos = curr_params.get_position()
+    ```
+
+**View Setters:**
+```py
+# call like ps.set_camera_view_matrix() etc
+polyscope.set_view_camera_parameters(params) # contains all of this info
+
+## (these friendly helpers set the same info as ^^^)
+polyscope.set_camera_view_matrix(mat)
+polyscope.look_at(camera_location, target, fly_to=False)
+polyscope.look_at_dir(camera_location, target, up_dir, fly_to=False)
+```
+
+??? func "`#!python set_view_camera_parameters(params)`"
+
+    Set the camera parameters (intrinsic and extrinsics) that describe the current viewport view. 
+
+    See the section below for additional methods to construct these camera parameters.
+
+    Example:
+    ```python
+    intrinsics = ps.CameraIntrinsics(fov_vertical_deg=60., aspect=2.)
+    extrinsics = ps.CameraExtrinsics(root=(2., 2., 2.), look_dir=(-1., 0., 0.), up_dir=(0.,1.,0.))
+    new_params = ps.CameraParameters(intrinsics, extrinsics)
+
+    ps.set_view_camera_parameters(new_params)
+    ```
+
+### Look-At
+
+The look-at functions are particularly easy to use to position the camera towards content of interest.
+
+??? func "`#!python look_at(camera_location, target, fly_to=False)`"
+
+    Set the camera to be located at the 3D position `camera_location` and looking at the 3D position `target`, both in world coordinates. The up direction for the camera is set to be the scene's up direction. If `fly_to=True`, the camera will smoothly animate to the new configuration.
+
+    The input 3D vectors can be tuples, length-3 numpy arrays, or really anything that can be indexed for three components.
+
+    Example:
+    ```python
+    polyscope.look_at((0., 0., 5.), (1., 1., 1.))
+    ```
+
+??? func "`#!python look_at_dir(camera_location, target, up_dir, fly_to=False)`"
+    
+    Set the camera to be located at the 3D position `camera_location` and looking at the 3D position `target`, oriented with the up direction `up_dir`, all in world coordinates. If `fly_to=True`, the camera will smoothly animate to the new configuration.
+
+    Note that setting the up direction for the camera view with this function is separate from the scene's up direction with `set_up_dir()`, which affects things like ground plane placement, and manual view manipulation.
+
+    The input 3D vectors can be tuples, length-3 numpy arrays, or really anything that can be indexed for three components.
+
+    Example:
+    ```python
+    polyscope.look_at_dir((0., 0., 5.), (1., 1., 1.), (-1., -1., 0.))
+    ```
+
+### Home View
+
+The home view is a reasonable default camera view, computed based on the up- and front- direction, as well as the scene extents which may be computed automatically from data you have registered.
+
+By default, the camera is located at the home view when the scene is first opened. You can also return it to that view at any time with `reset_camera_to_home_view()`.
+
+??? func "`#!python reset_camera_to_home_view()`"
+
+    Reset the camera view to the home view (a reasonable default view scaled to the scene).
+
+    **Note:** The "home" view is dependent on the data in the scene; it is computed from the bounding boxes of all registered structures to ensure that everything is nicely scaled and in view. As such, one should generally call this function _after_ registering data.
+
+    Example:
+    ```python
+    ps.reset_camera_to_home_view()
+    ```
+
+
+
+## Navigation Style
+
+The navigation style affects how the user's mouse interactions navigate the scene. The default is a Turntable rotating around the current canonical `Up` direction.
+
+**Navigation Style Strings**:
+
+- `'turntable'` The up direction (see below) is always fixed vertically, with rotation along the azumith and altitude directions.
+- `'free'` The camera is free to take any orientation, rotation is always about relative to the current camera.
+- `'planar'` The camera is locked in to a 2D view of the XY plane, with no rotation (see [2D data]([[url.prefix]]/features/2D_data)).
+
 
 ??? func "`#!python set_navigation_style(s)`"
 
-    ##### navigation style
-   
     The style of the camera navigation. Affects what happens when you drag to rotate around the 3D view with your mouse.
 
-    This value can be manually set under the `view` menu of the ui. Programmatically, pass a string for the following settings:
-
-    - `'turntable'` The up direction (see below) is always fixed vertically, with rotation along the azumith and altitude directions.
-    - `'free'` The camera is free to take any orientation, rotation is always about relative to the current camera.
-    - `'planar'` The camera is locked in to a 2D view of the XY plane, with no rotation (see [2D data]([[url.prefix]]/features/2D_data)).
-
-    Default: `'turntable'`.
+    This value can be manually set under the `view` menu of the ui. 
 
     Example:
     ```python
     import polyscope as ps
     ps.set_navigation_style("free")
+    ```
 
 ??? func "`#!python get_navigation_style()`"
 
     Get the current navigation style (see explanation in the setter above). Returns a string.
 
+## Canonical Up and Front
+
+Unfortunately, no one can agree which cartesian direction is "up" in a 3D scene. Polyscope does not assume any particular up direction, it can be configured (default is `Y-up`).
+
+This effects many defaults of the scene, such as how the camera is oriented and where the ground plane is placed. 
 
 ??? func "`#!python set_up_dir(s)`"
-
-    ##### up direction
     
     Set the default "up" direction for the scene. This setting affects default orientation of the view, the behavior of some navigation styles (esp. `Turntable`), and the orientation of the ground plane.
 
@@ -74,9 +196,9 @@ ps.show()
 
     Get the current up direction (see explanation in the setter above). Returns a string.
 
-??? func "`#!python set_front_dir(s)`"
+A default front direction can also be configured, which effects the placement of the home camera location.
 
-    ##### front direction
+??? func "`#!python set_front_dir(s)`"
 
     Set the default "front" direction for the scene. This setting affects default orientation of the view; the starting camera looks at the front of the data.
 
@@ -105,65 +227,7 @@ ps.show()
     Get the current front direction (see explanation in the setter above). Returns a string.
 
 
-??? func "`#!python look_at(camera_location, target, fly_to=False)`"
-
-    ##### look at
-
-    Set the camera to be located at the 3D position `camera_location` and looking at the 3D position `target`, both in world coordinates. The up direction for the camera is set to be the scene's up direction. If `fly_to=True`, the camera will smoothly animate to the new configuration.
-
-    The input 3D vectors can be tuples, length-3 numpy arrays, or really anything that can be indexed for three components.
-
-    Example:
-    ```python
-    polyscope.look_at((0., 0., 5.), (1., 1., 1.))
-    ```
-
-??? func "`#!python look_at_dir(camera_location, target, up_dir, fly_to=False)`"
-    
-    Set the camera to be located at the 3D position `camera_location` and looking at the 3D position `target`, oriented with the up direction `up_dir`, all in world coordinates. If `fly_to=True`, the camera will smoothly animate to the new configuration.
-
-    Note that setting the up direction for the camera view with this function is separate from the scene's up direction with `set_up_dir()`, which affects things like ground plane placement, and manual view manipulation.
-
-    The input 3D vectors can be tuples, length-3 numpy arrays, or really anything that can be indexed for three components.
-
-    Example:
-    ```python
-    polyscope.look_at_dir((0., 0., 5.), (1., 1., 1.), (-1., -1., 0.))
-    ```
-
-??? func "`#!python reset_camera_to_home_view()`"
-
-    ##### reset camera to home view
-
-    Reset the camera view to the home view (a reasonable default view scaled to the scene).
-
-    **Note:** The "home" view is dependent on the data in the scene; it is computed from the bounding boxes of all registered structures to ensure that everything is nicely scaled and in view. As such, one should generally call this function _after_ registering data.
-
-    Example:
-    ```python
-    ps.reset_camera_to_home_view()
-    ```
-
-??? func "`#!python get_view_camera_parameters()`"
-
-    ##### get camera params for view
-
-    Get the camera parameters (intrinsic and extrinsics) that describe the current viewport view. 
-
-    See the section below for additional methods to get values from the camera parameters.
-
-    Example:
-    ```python
-    curr_params = ps.get_view_camera_parameters()
-
-    # get some data from the parameters
-    view_mat = curr_params.get_view_mat()
-    fov_vert_deg = curr_params.get_fov_vertical_deg()
-    aspect = curr_params.get_aspect()
-    pos = curr_params.get_position()
-    ```
-
-#### Orthographic view
+## Perspective and Orthographic Views
 
 By default, Polyscope's view uses [perspective projection](https://en.wikipedia.org/wiki/3D_projection#Perspective_projection). Perspective projections roughly correspond to how images are usually perceived by our eyes and cameras.
 
@@ -176,8 +240,6 @@ In perspective mode, zooming (for instance, by manually scrolling the mouse) tra
 
 ??? func "`#!python set_view_projection_mode(mode_name)`"
 
-    ##### set projection mode
-
     Set the camera view projection to be either orthographic or perspective (default).
 
     Example:
@@ -189,7 +251,7 @@ In perspective mode, zooming (for instance, by manually scrolling the mouse) tra
     ps.set_view_projection_mode("perspective")
     ```
 
-#### Saving/restoring views
+## Saving/Restoring Views
 
 The current camera view (location, direction, camera parameters, and window size) can be saved or loaded from a json string. This is useful for quickly setting up repeatable visualizations.
 
@@ -215,8 +277,7 @@ Also, in the Polyscope GUI, this string can be copied to the clipboard at any ti
     ps.set_view_from_json(my_str);
     ```
 
----
-## Camera Parameters
+## Camera Parameters Objects
 
 `CameraParameters` objects describe a camera view in Polyscope, including its _intrinsics_ (the field of view and aspect ratio), and _extrinsics_ (the location and orientation). These parameters are used both for manipulations of the interactive viewport, as well as creating [Camera View structures]([[url.prefix]]/structures/camera_view/basics) which are visualized as part of the content in your scene.
 
