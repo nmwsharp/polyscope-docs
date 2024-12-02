@@ -104,6 +104,26 @@ Each structure has an associated spatial _transform_ applied to it for display i
 
 The transform can be controlled in the UI via the structure's `[Options] --> [Transform]` menu.
 
+??? func "`#!python Structure.get_transform()`"
+
+    Get the current transformation matrix. Returns a 4x4 numpy matrix.
+
+??? func "`#!python Structure.set_transform(transform)`"
+    
+    Set a particular transform matrix. Takes a 4x4 numpy array.
+
+??? func "`#!python Structure.get_position()`"
+
+    Get the translation component of the transformation matrix, the position to which the structure's origin is translated. Returns a length-3 numpy vector.
+
+??? func "`#!python Structure.set_position(vec)`"
+
+    Set the transformation matrix such that structure is transformed to the position `vec`. Takes a length-3 numpy vector.
+
+??? func "`#!python Structure.translate(vec)`"
+    
+    Translate the transformation matrix by offset `vec`. Takes a length-3 numpy vector.
+
 ??? func "`#!python Structure.center_bounding_box()`"
 
     Set the transformation such that the structure's bounding box is centered at the world origin.
@@ -116,25 +136,6 @@ The transform can be controlled in the UI via the structure's `[Options] --> [Tr
     
     Reset the structure's transform to be the identity transform (i.e. to do nothing).
 
-??? func "`#!python Structure.set_transparency(transform)`"
-    
-    Set a particular transform matrix. Takes a 4x4 numpy array.
-
-??? func "`#!python Structure.set_position(vec)`"
-
-    Set the transformation matrix such that structure is transformed to the position `vec`. Takes a length-3 numpy vector.
-
-??? func "`#!python Structure.translate(vec)`"
-    
-    Translate the transformation matrix by offset `vec`. Takes a length-3 numpy vector.
-
-??? func "`#!python Structure.get_transform()`"
-
-    Get the current transformation matrix. Returns a 4x4 numpy matrix.
-
-??? func "`#!python Structure.get_position()`"
-
-    Get the translation component of the transformation matrix, the position to which the structure's origin is translated. Returns a length-3 numpy vector.
 
     
 #### Slice planes
