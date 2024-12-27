@@ -82,6 +82,7 @@ dims = (200,300)
 vals = np.random.rand(*dims) # dummy placeholder image data
 ps_mesh.add_scalar_quantity("test_vals", vals, 
                              defined_on='texture', param_name="test_param", 
+                             filter_mode='nearest',
                              vminmax=(-5., 5.), enabled=True)
 
 ps.show()
@@ -91,5 +92,6 @@ Texture image data is added via `add_scalar_quantity()`, with `defined_on='textu
     
 The texture image data, dimension, and origin conventions are the same as those used to define [images]([[url.prefix]]/structures/floating_quantities/images/). See there for details.
 
+The filter mode can be set as an additional argument to adjust how values are sampled from the texture. `filter_mode='linear'` (default) will smoothly linearly interpolate values, while `filter_mode='nearest'` will use nearest-neighbor sampling, which can be useful for sharp edges and crisp boundaries.
 
 {!common/scalar_quantity.md!}

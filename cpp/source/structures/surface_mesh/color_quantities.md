@@ -57,6 +57,7 @@ size_t dimY = 150;
 std::vector<glm::vec3> colorsTex(dimX * dimY, glm::vec3{.2, .3, .4});
 polyscope::SurfaceTextureColorQuantity* qColor =
   psMesh->addTextureColorQuantity("tColor", *qParam, dimX, dimY, colorsTex, polyscope::ImageOrigin::UpperLeft);
+qColor->setFilterMode(FilterMode::Nearest); // change filter for sampling
 qColor->setEnabled(true);
 
 polyscope::show(3);
@@ -75,6 +76,15 @@ polyscope::show(3);
     
     Like above, but takes the reference to the parameterization quantity by name.
 
+
+The `FilterMode` can be set to adjust how values are sampled from the texture. `FilterMode::Linear` (default) will smoothly linearly interpolate values, while `FilterMode::Nearest` will use nearest-neighbor sampling, which can be useful for sharp edges and crisp boundaries.
+
+??? func "`#!cpp SurfaceTextureColorQuantity::setFilterMode(FilterMode mode)`"
+
+    Set the filtering mode used to sample from the map. 
+
+    - `FilterMode::Linear` (default) for smooth linear interpolation
+    - `FilterMode::Nearest` for sharp nearest-neighbor sampling
 
 
 {!common/color_quantity.md!}

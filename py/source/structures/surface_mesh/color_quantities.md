@@ -70,8 +70,7 @@ ps_mesh.add_parameterization_quantity("test_param", param_vals,
 dims = (200,300,3)
 color_vals = np.random.rand(*dims) # dummy placeholder image data
 ps_mesh.add_color_quantity("test_vals", color_vals, 
-                           defined_on='texture', param_name="test_param", 
-                           enabled=True)
+                           defined_on='texture', param_name="test_param", filter_mode='nearest', enabled=True)
 
 ps.show()
 ```
@@ -79,6 +78,9 @@ ps.show()
 Texture image data is added via `add_color_quantity()`, with `defined_on='texture'` and `param_name=...` specifying the name of the [parameterization UV map]([[url.prefix]]/structures/surface_mesh/parameterization_quantities/) with coordinates on `[0,1]` which will be used to sample from the image.
     
 The texture image data, dimension, and origin conventions are the same as those used to define [images]([[url.prefix]]/structures/floating_quantities/images/). See there for details.
+
+The filter mode can be set as an additional argument to adjust how values are sampled from the texture. `filter_mode='linear'` (default) will smoothly linearly interpolate values, while `filter_mode='nearest'` will use nearest-neighbor sampling, which can be useful for sharp edges and crisp boundaries.
+
     
     
 {!common/color_quantity.md!}

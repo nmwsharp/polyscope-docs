@@ -93,6 +93,7 @@ size_t dimY = 150;
 std::vector<float> valuesTex(dimX * dimY, 0.77);
 polyscope::SurfaceTextureScalarQuantity* qScalar =
   psMesh->addTextureScalarQuantity("tScalar", *qParam, dimX, dimY, valuesTex, polyscope::ImageOrigin::UpperLeft);
+qScalar->setFilterMode(FilterMode::Nearest); // change filter for sampling
 qScalar->setEnabled(true);
 
 polyscope::show(3);
@@ -110,6 +111,16 @@ polyscope::show(3);
 ??? func "`#!cpp SurfaceMesh::addTextureScalarQuantity(std::string name, std::string paramName, size_t dimX, size_t dimY, const T& data, ImageOrigin imageOrigin, DataType type = DataType::STANDARD)`"
     
     Like above, but takes the reference to the parameterization quantity by name.
+
+
+The `FilterMode` can be set to adjust how values are sampled from the texture. `FilterMode::Linear` (default) will smoothly linearly interpolate values, while `FilterMode::Nearest` will use nearest-neighbor sampling, which can be useful for sharp edges and crisp boundaries.
+
+??? func "`#!cpp SurfaceTextureScalarQuantity::setFilterMode(FilterMode mode)`"
+
+    Set the filtering mode used to sample from the map. 
+
+    - `FilterMode::Linear` (default) for smooth linear interpolation
+    - `FilterMode::Nearest` for sharp nearest-neighbor sampling
 
 
 {!common/scalar_quantity.md!}
