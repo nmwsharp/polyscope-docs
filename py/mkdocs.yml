@@ -79,6 +79,7 @@ nav:
     - 'Program Options' : 'basics/program_options.md'
     - 'Scene Options' : 'basics/scene_options.md'
     - 'Managing Views & Cameras' : 'basics/camera_controls.md'
+    - 'Interactive UIs & Animation' : 'basics/interactive_UIs_and_animation.md'
   - Structures and Quantities: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Point Cloud:
@@ -118,7 +119,6 @@ nav:
       - 'Render Images' : 'structures/floating_quantities/render_images.md'
   - Features: 
     - 'Screenshots' : 'features/screenshots.md'
-    - 'Callbacks & Custom UIs' : 'features/callbacks_and_UIs.md'
     - 'Parameters' : 'basics/parameters.md'
     - 'Messages' : 'features/messages.md'
     - 'Materials' : 'features/materials.md'

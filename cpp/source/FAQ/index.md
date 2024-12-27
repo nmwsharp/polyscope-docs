@@ -9,6 +9,11 @@ hide:
     - [How do I take a screenshot / save an image?](#how-do-i-take-a-screenshot-save-an-image)
     - [Positioning objects in the scene and reading back results](#positioning-objects-in-the-scene-and-reading-back-results)
     - [Managing large numbers of structures and quantities](#managing-large-numbers-of-structures-and-quantities)
+
+- **Interactions**
+
+    - [How do I show animated data?](#how-do-i-show-animated-data)
+    - [How do I create custom UIs with buttons, sliders, text boxes, etc?](#how-do-i-create-custom-uis-with-buttons-sliders-text-boxes-etc)
     - [How do I set up mouse click interactions and callbacks](#how-do-i-set-up-mouse-click-interactions-and-callbacks)
 
 - **Appearance**
@@ -62,9 +67,17 @@ Use [Groups]([[url.prefix]]/features/groups/) to group your structures in to cat
 
 You can always use the [Custom UIs]([[url.prefix]]/features/callbacks_and_UIs/) to create your own interface buttons and selectors which programmatically enable or disable registered objects or adjust their settings.
 
+### **How do I show animated data**
+
+There is no explicit built-in functionality for animated or time-series data, but it is easy and common to [do it yourself with a per-frame callback function]([[url.prefix]]/basics/interactive_UIs_and_animation/).
+
+### **How do I create custom UIs with buttons, sliders, text boxes, etc**
+
+Polyscope integrates with the excellent [Dear ImGui](https://github.com/ocornut/imgui) library for UI elements. See the [interactions page]([[url.prefix]]/basics/interactive_UIs_and_animation/) for how to use ImGui functions within polyscope, and see the ImGui docs for everything ImGui can do.
+
 ### **How do I set up mouse click interactions and callbacks**
 
-See [Mouse Interactions]([[url.prefix]]/features/callbacks_and_UIs/#mouse-interactions). There are no special callbacks for creating mouse events. Instead, you can implement almost any behavior you want via ImGui's built-in functions. There are also a few polyscope-specific functions to get information about scene at the location you clicked, such as constructing rays and querying depth.
+See [Mouse Interactions]([[url.prefix]]/basics/interactive_UIs_and_animation/#mouse-interactions). There are no special callbacks for creating mouse events. Instead, you can implement almost any behavior you want via ImGui's built-in functions. There are also a few polyscope-specific functions to get information about scene at the location you clicked, such as constructing rays and querying depth.
 
 ### **Rendering figures for papers and presentations**
 
