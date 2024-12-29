@@ -83,6 +83,7 @@ Currently, only a single "real" backend is supported. However, an additional "mo
 | **Backend** | **CMake option** | **String name** | **Description**
 --- | --- | --- | ---
 OpenGL3 & GLFW |  `POLYSCOPE_BACKEND_OPENGL3_GLFW` | `openGL3_glfw` | The standard rendering engine for Polyscope
+OpenGL3 & EGL |  `POLYSCOPE_BACKEND_OPENGL3_EGL` | `openGL3_egl` | An EGL backend which supports headless rendering, Linux only
 mock |  `POLYSCOPE_BACKEND_OPENGL_MOCK` | `openGL_mock` | Fake backend which stubs out all calls to the rendering engine, but still performs many useful internal checks.
 
 By default the CMake script builds all (both) backends. But for instance, the OpenGL3 backend could be excluded from the build with
