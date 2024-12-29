@@ -220,6 +220,22 @@ if (io.MouseClicked[0]) { // if the left mouse button was clicked
 }
 ```
 
+!!! Note "Temporarily disable default mouse camera movement"
+
+    If you implement your own interactions like clicking-and-dragging objects onscreen, you'll find that the Polyscope view camera unintentionally moves in response to these motions. You can temporarily disable the camera motion like:
+
+    ```cpp
+    if(doing_interaction && ImGui::IsMouseClicked(1)) {
+        polyscope::state::doDefaultMouseInteraction = false;
+        // ... do your interaction
+    }
+
+    if(!doing_interaction) {
+        // re-enable the default mouse motions after you're done
+        polyscope::state::doDefaultMouseInteraction = true;
+    }
+    ```
+
 ??? func "`#!cpp glm::vec3 view::screenCoordsToWorldRay(glm::vec2 screenCoords)`"
 
     Convert a click location to a ray in world-space.
@@ -229,6 +245,11 @@ if (io.MouseClicked[0]) { // if the left mouse button was clicked
 
     Convert a click location to a location in world-space, by reading from the scene's depth buffer.
 
+??? func "`#!cpp bool state::doDefaultMouseInteraction`"
+
+    Use this option to (temporarily) disable Polyscope's default mouse clicking/panning/zooming response to mouse movements, so that they will not conflict with your own implemented operations
+
+    If `true`, Polyscope will perform its usual responses to mouse operations, `false` will disable.
 
 ### Picking
 

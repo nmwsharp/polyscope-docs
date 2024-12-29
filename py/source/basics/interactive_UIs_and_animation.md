@@ -361,6 +361,21 @@ if io.MouseClicked[0]:
     print(f"  world pos: {world_pos}")
 ```
 
+!!! Note "Temporarily disable default mouse camera movement"
+
+    If you implement your own interactions like clicking-and-dragging objects onscreen, you'll find that the Polyscope view camera unintentionally moves in response to these motions. You can temporarily disable the camera motion like:
+
+    ```python
+    if doing_interaction and psim.IsMouseClicked(1): 
+        ps.set_do_default_mouse_interaction(False)
+        # ... do your interaction
+
+    if not doing_interaction:
+        # re-enable the default mouse motions after you're done
+        ps.set_do_default_mouse_interaction(True)
+    ```
+
+
 ??? func "`#!python screen_coords_to_world_ray(screen_coords)`"
 
     Convert a click location to a ray in world-space.
@@ -369,6 +384,12 @@ if io.MouseClicked[0]:
 ??? func "`#!python screen_coords_to_world_position(screen_coords)`"
 
     Convert a click location to a location in world-space, by reading from the scene's depth buffer.
+
+??? func "`#!python set_do_default_mouse_interaction(b)`"
+
+    Use this function to (temporarily) disable Polyscope's default mouse clicking/panning/zooming response to mouse movements, so that they will not conflict with your own implemented operations
+
+    If `True`, Polyscope will perform its usual responses to mouse operations, `False` will disable.
 
 
 ## Overriding Built-In UI Behavior
