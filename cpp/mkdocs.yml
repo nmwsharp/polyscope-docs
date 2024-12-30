@@ -120,6 +120,7 @@ nav:
       - 'Render Images' : 'structures/floating_quantities/render_images.md'
   - Features: 
     - 'Screenshots' : 'features/screenshots.md'
+    - 'Headless Rendering' : 'features/headless_rendering.md'
     - 'Parameters' : 'basics/parameters.md'
     - 'Messages' : 'features/messages.md'
     - 'Materials' : 'features/materials.md'
