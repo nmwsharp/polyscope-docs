@@ -67,6 +67,14 @@ polyscope::init();
     If true, the rendering subsystem will eagerly check for and report errors. This comes at some small performance cost, but can help catch problems.
 
     Default: `true` when compiled in `Debug` mode, `false` in `Release` mode.
+
+??? func "`#!cpp bool options::warnForInvalidValues`"
+    
+    ##### warn for invalid values
+
+    If true, polyscope will give warnings when any added values are `inf` or `NaN`. Most (but not quite all) floating-point buffers of data such as vertex positions, scalar/color/vector quantities, etc are checked.
+
+    Default: `true` 
     
 
 ??? func "`#!cpp int options::ssaaFactor`"

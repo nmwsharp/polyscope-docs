@@ -69,7 +69,15 @@ ps.init()
 
     If true, the rendering subsystem will eagerly check for and report errors. This comes at some small performance cost, but can help catch problems.
 
-    Default: `True` when compiled in `Debug` mode, `False` in `Release` mode (this python library is generally compiled in release mode)
+    Default: `True` when compiled in `Debug` mode, `False` in `Release` mode (
+
+??? func "`#!python set_warn_for_invalid_values(b)`"
+    
+    ##### warn for invalid values
+
+    If true, polyscope will give warnings when any added values are `inf` or `NaN`. Most (but not quite all) floating-point buffers of data such as vertex positions, scalar/color/vector quantities, etc are checked.
+
+    Default: `True` 
 
 ??? func "`#!python set_SSAA_factor(n)`"
     
