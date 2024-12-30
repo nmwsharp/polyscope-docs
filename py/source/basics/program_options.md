@@ -108,7 +108,11 @@ ps.init()
 
     Polyscope can read and write to a preferences file to save state between invocations. For now, this is primarily used to restore the window position on the desktop. The preference file is a `json`-formatted plaintext file called `.polyscope.ini`.
 
-    This option controls the use of the preferences file. If `False`, if will be neither written nor read. Default: `True`.
+    This option controls the use of the preferences file. If `False`, if will be neither written nor read. Default: `False`.
+    
+    !!! note
+    
+        Dec 2024 this setting was changed to _disabled_ by default. It is a cause of rare-but-tricky bugs on some platforms, such as saving a window location from one monitor, then attempting to re-load the setting on a smaller monitor causing the window to be placed offscreen.
 
 
 ??? func "`#!python set_always_redraw(b)`"
