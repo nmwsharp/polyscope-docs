@@ -43,6 +43,8 @@ polyscope::error("Resistance is futile.");
 // After the error is dismissed, the program will terminate.
 polyscope::terminatingError("Resistance is futile.");
 
+// Disable the in-window popups, just print to stdout
+polyscope::options::displayMessagePopups = false;
 ```
 
 
@@ -97,3 +99,13 @@ polyscope::terminatingError("Resistance is futile.");
     ##### terminating error
     
     Generate an error, which is immediately shown in the GUI. After the error dialog is dismissed in the GUI, the program terminates.
+
+### Options
+
+??? func "`#!cpp bool options::displayMessagePopups`"
+
+    ##### display message popups
+
+    If `true`, warning and error popup dialogs are shown in the UI **and** printed to stdout. If `false`, they are only printed to stdout (assuming `verbosity > 0`).
+
+    Default: `true`

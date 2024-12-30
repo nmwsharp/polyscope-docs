@@ -78,6 +78,12 @@ ps.init()
     If true, polyscope will give warnings when any added values are `inf` or `NaN`. Most (but not quite all) floating-point buffers of data such as vertex positions, scalar/color/vector quantities, etc are checked.
 
     Default: `True` 
+    
+    Also, if you like the warnings but do not want them displayed with a dialog, you can disable the popup dialogs while retaining the check with:
+
+    ```python
+    ps.set_display_message_popups(False)
+    ```
 
 ??? func "`#!python set_SSAA_factor(n)`"
     

@@ -36,6 +36,9 @@ ps.show()
 # The UI will block and show this error immediately. After 
 # the error is dismissed, the call will return.
 ps.error("Resistance is futile.");
+
+# Disable the in-window popups, just print to stdout
+ps.set_display_message_popups(False)
 ```
 
 
@@ -62,3 +65,14 @@ ps.error("Resistance is futile.");
     ##### error
   
     Generate an error, which is immediately shown in the GUI. After the error dialog is dismissed in the GUI, this function returns.
+
+
+### Options
+
+??? func "`#!python set_display_message_popups(b)`"
+
+    ##### display message popups
+
+    If `True`, warning and error popup dialogs are shown in the UI **and** printed to stdout. If `False`, they are only printed to stdout (assuming `verbosity > 0`).
+
+    Default: `True`
