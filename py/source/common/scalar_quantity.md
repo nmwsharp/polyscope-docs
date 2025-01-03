@@ -10,8 +10,10 @@ Keyword arguments:
   - `cmap`, which [colormap](../../../features/color_maps) to use
   - isoline keywords (darker-shaded stripes showing isocontours of the scalar field):
       - `isolines_enabled` are isolines enabled (default: `False`)
-      - `isoline_width` how wide should the darkend stripes be, in data units (default: dynamically estimated)
-      - `isoline_width_relative` if true, interpret the width value as relative to the world coordinate length scale (default: `False`)
+      - `isoline_style` one of `stripe`, `'contour` (default: `stripe`)
+      - `isoline_period` how wide should the darkend stripes be, in data units (default: dynamically estimated)
+      - `isoline_period_relative` if true, interpret the width value as relative to the world coordinate length scale (default: `False`)
       - `isoline_darkness` how much darker should the alternating stripes be (default: `0.7`)
+      - `isoline_contour_thickness` how thick should the contour lines be (default: `0.3`)
 
 If not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
