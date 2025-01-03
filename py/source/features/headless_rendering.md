@@ -74,3 +74,15 @@ Unless you really know what you are doing, you probably do not want to call `sho
 
     This is set to `False` by default, because sometimes misconfigured or low-capability machines will have no di
 
+
+??? func "`#!python set_egl_device_index(i)`"
+    
+    ##### set_egl_device_index()
+
+    Pass an index to manually specify which EGL device to use for headless EGL rendering. If set to `-1` (default), Polyscope will try all devices, with some heuristics to attempt to use hardware renderers before software renderers.
+
+    Default: `-1`
+
+    If you are trying to figure out which device index to use, set Polyscope's verbosity to a large value (`> 5`). At high verbosity, Polyscope will print the list of found EGL devices and their indices when attempting initialization.
+
+
