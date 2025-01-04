@@ -55,6 +55,10 @@ Once you have initialized the backend and added your data as usual, you can pref
 
 Unless you really know what you are doing, you probably do not want to call `show()` -- by default this would initiate a render loop which spins endlessly with no effect. However it is still permitted to do so, e.g. if you set a user callback which has side effects.
 
+!!! note "ImGui not rendered"
+
+    In headless mode, the ImGui UI is not actually drawn to the screen. You can still issue ImGui calls in your code if you would like, but they will never have any effect.
+
 ## Options
 
 ??? func "`#!python is_headless()`"
