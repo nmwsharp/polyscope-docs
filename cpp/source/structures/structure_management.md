@@ -152,6 +152,14 @@ The transform can be controlled in the UI via the structure's `[Options] --> [Tr
     
     Reset the structure's transform to be the identity transform (i.e. to do nothing).
 
+??? func "`#!cpp void Structure::setTransformGizmoEnabled(bool newVal)`"
+    
+    Enable/disable the interactive onscreen widget which lets the user adjust an object's transform.
+
+??? func "`#!cpp bool Structure::getTransformGizmoEnabled()`"
+    
+    Get the enabled state of the interactive onscreen widget which lets the user adjust an object's transform.
+
 
 
     

@@ -136,6 +136,14 @@ The transform can be controlled in the UI via the structure's `[Options] --> [Tr
     
     Reset the structure's transform to be the identity transform (i.e. to do nothing).
 
+??? func "`#!python void Structure.set_transform_gizmo_enabled(b)`"
+    
+    Enable/disable the interactive onscreen widget which lets the user adjust an object's transform. Takes a boolean as input.
+
+??? func "`#!python Structure.get_transform_gizmo_enabled()`"
+    
+    Get the enabled state of the interactive onscreen widget which lets the user adjust an object's transform.  Returns a boolean.
+
 
     
 #### Slice planes
