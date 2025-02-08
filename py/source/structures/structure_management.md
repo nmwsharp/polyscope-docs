@@ -62,6 +62,11 @@ ps.remove_surface_mesh("my_mesh")
 ps.remove_all_structures()
 ```
 
+??? func "`#!python remove_all_structures()`"
+
+    Remove all structures from the scene.
+
+
 ## Structure options
 
 These basic options are shared by all structures.  Structure options are managed as [persistent values]([[url.prefix]]/basics/parameters/#persistent-values), and thus will persist if a new structure is registered with the same name.
@@ -94,7 +99,7 @@ Transparency can be controlled in the UI via the structure's `[Options] --> [Tra
 
 ??? func "`#!python Structure.set_transparency(alpha)`"
 
-    Set the transparancy for the structure. Takes a float.
+    Set the transparency for the structure. Takes a float.
     
     Can also be set when registering, like `register_point_cloud(..., transparency=0.5)`.
 

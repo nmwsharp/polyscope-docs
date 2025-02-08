@@ -83,6 +83,11 @@ If no longer needed, structures can be removed by name or by pointer. Removing a
     
     Identical to `removeStructure(Struture*)`, but accepts a name instead. Will fail unless there is exactly one structure with the given name across all structure types.
 
+
+??? func "`#!cpp void removeAllStructures()`"
+
+    Remove all structures from the scene.
+
 ## Structure options
 
 These basic options are shared by all structures.  Structure options are managed as [persistent values]([[url.prefix]]/basics/parameters/#persistent-values), and thus will persist if a new structure is registered with the same name.
