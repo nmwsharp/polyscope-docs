@@ -75,12 +75,6 @@ polyscope::init();
     If true, polyscope will give warnings when any added values are `inf` or `NaN`. Most (but not quite all) floating-point buffers of data such as vertex positions, scalar/color/vector quantities, etc are checked.
 
     Default: `true` 
-
-    Also, if you like the warnings but do not want them displayed with a dialog, you can disable the popup dialogs while retaining the check with:
-
-    ```cpp
-    polyscope::options::displayMessagePopups = false;
-    ```
     
 
 ??? func "`#!cpp int options::ssaaFactor`"
