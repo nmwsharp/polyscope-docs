@@ -343,25 +343,10 @@ ps.show()
 
 ## Mouse Interactions
 
-You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. Generally, you can use the mouse-related functions available via `ImGui` to implement a wide variety of behaviors.
+You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. ImGui exposes the state of the mouse and whether a click occurred via `psim.GetIO()`.
 
-**Example:** print a variety of info about a mouse click
-```python
-import polyscope as ps
-import polyscope.imgui as psim
 
-io = psim.GetIO()
-if io.MouseClicked[0]:
-    screen_coords = io.MousePos
-    world_ray = polyscope.screen_coords_to_world_ray(screen_coords)
-    world_pos = polyscope.screen_coords_to_world_position(screen_coords)
-
-    print(f"Click coords: {screen_coords}")
-    print(f"  world ray: {world_ray}")
-    print(f"  world pos: {world_pos}")
-```
-
-!!! Note "Temporarily disable default mouse camera movement"
+??? Note "Temporarily disable default mouse camera movement"
 
     If you implement your own interactions like clicking-and-dragging objects onscreen, you'll find that the Polyscope view camera unintentionally moves in response to these motions. You can temporarily disable the camera motion like:
 
@@ -375,11 +360,9 @@ if io.MouseClicked[0]:
         ps.set_do_default_mouse_interaction(True)
     ```
 
-
 ??? func "`#!python screen_coords_to_world_ray(screen_coords)`"
 
     Convert a click location to a ray in world-space.
-
 
 ??? func "`#!python screen_coords_to_world_position(screen_coords)`"
 
@@ -390,6 +373,60 @@ if io.MouseClicked[0]:
     Use this function to (temporarily) disable Polyscope's default mouse clicking/panning/zooming response to mouse movements, so that they will not conflict with your own implemented operations
 
     If `True`, Polyscope will perform its usual responses to mouse operations, `False` will disable.
+
+
+### Picking, Selection, and Querying the Scene
+
+"Picking" refers to querying the content under the cursor in the rendered image.  Polyscope implements render buffer-based picking, to efficiently get the object and element under the cursor even on large complex scenes.
+
+??? func "`#!python pick(screen_coords=None, buffer_inds=None)`"
+
+    Evaluate a "pick" query to get the contents of the rendered view at a specified location.  One of `screen_coords` or `buffer_inds` should be passed as the input location, but not both.  The return is a `PickResult` class, see below. 
+
+    Screen coordinates and buffer indices both refer to a location in the rendered 2d image. Screen coordinates are real-valued, whereas buffer indices are integer. On some platforms they may be identical, but on others with high-DPI screens, they may differ. In the common-case of getting mouse positions from ImGui, you want screen coords.
+
+
+**Example:** picking a faces from a mesh
+```python
+# inside the user-callback, or other code which runs each frame
+myMesh = # ...  your added mesh ... */
+
+# make only faces clickable in the mesh
+myMesh.set_selection_mode('faces_only')
+
+# get the mouse location from ImGui
+io = psim.GetIO()
+if io.MouseClicked[0]: # if clicked
+  screen_coords = io.MousePos
+  pick_result = polyscope.pick(screen_coords=screen_coords)
+
+  # check out pick_result.is_hit, pick_result.structureName, pick_result.depth, etc
+
+  # get additional information if we clicked on a mesh
+  if(pick_result.isHit and pick_result.structure_name == "myMesh"):
+    print(pick_result.structure_data) # additional dictionary of element type, coords, etc.
+  
+
+```
+
+A pick query returns a combined struct with info such as what structure was clicked on, and depth of the point in the scene.
+
+```python
+class PickResult:
+    self.is_hit =               # did we hit anything?
+    self.structure_type_name =  # structure type which was hit, like "Point Cloud"
+    self.structure_name =       # name of structure which was hit, like "my_points"
+    self.screen_coords =        # coordinates of the query location
+    self.buffer_inds =          # render buffer indices of the query location
+    self.position =             # 3d position which was hit, in world space
+    self.depth =                # depth to the hit, in world units
+    self.local_index =          # structure-specific index of the element which was hit
+    self.structure_data =       # a dictionary of additional fields for the clicked structure
+```
+
+Additionally, many structures will report additional information about the pick, in the `structure_data` field. For instance, a `SurfaceMesh` gives info on whether a vertex/face/edge/etc was clicked on, the index of that element, and barycentric coordinates of the click within a face.
+
+Polyscope also maintains a stateful selection, displayed in the UI to provide information about the content of the scene. It can be accessed via `get_selection()`, `reset_selection()`, `have_selection()`.
 
 
 ## Overriding Built-In UI Behavior

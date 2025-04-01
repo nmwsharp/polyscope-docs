@@ -6,7 +6,7 @@ Polyscope does not impose any requirements on the meshes visualized. They may be
 
 ![surface_mesh_demo]([[url.prefix]]/media/mesh_demo.gif)
 
-### Registering a surface mesh
+## Registering a surface mesh
 
 Example: registering a mesh
 ```python
@@ -56,7 +56,7 @@ Surface meshes are registered with Polyscope by passing the location of each ver
     The default ordering is probably the same as yours for data on **vertices, faces, and corners**. However, data on **edges and halfedges** is much more likely to require setting an ordering.
 
 
-### Updating a mesh
+## Updating a mesh
 
 The locations of the vertices in a mesh can be updated with the member function `update_vertex_positions(newPositions)`. All quantities will be preserved. Changing the connectivity or element counts in a mesh is not supported, you will need to register a new mesh (perhaps with the same name to overwrite).
 
@@ -64,14 +64,22 @@ The locations of the vertices in a mesh can be updated with the member function 
 
     Update the vertex positions in a surface mesh structure. `newPos` must be valid input as to initially construct the vertex positions, with the same number of vertices.
 
-### Picking
+## Picking and Selection
 
-"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. By default only mesh vertices and faces can be selected. Edges, corners, and halfedges, become selectable only once they are used by some quantity, for instance once a per-corner quantity is registered, then it becomes possible to click on corners.
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  [See the section on picking for more info]([[url.prefix]]/basics/interactive_UIs_and_animation/#picking-selection-and-querying-the-scene).
 
-If desired, you can manually override this behavior by calling `mesh.mark_edges_as_used()`, to make the structure act as if edges are in use and make the pickable, etc. The same goes for `mesh.mark_corners_as_used()` and `mesh.mark_halfedges_as_used()`. If you mark edges or halfedges as used, you much also set their element ordering as described in the [indexing conventions](../indexing_convention/).
+Additional information about a pick which hits a mesh can be retrieved from the `PickResult.structure_data` dictionary field.
 
 
-### Back face policies
+We can also set which mesh elements are selectable (for instance, to make only vertices be returned from pick queries). This option can be set programmatically as `SurfaceMesh.set_selection_mode(newMode)`, or from the UI. The available selection modes are:
+
+- `"auto"`: Vertices and faces can always be selected. Edges, corners, halfedges can only be selected once they are in-use by some quantity. You can manually call `SurfaceMesh.mark_edges_as_used()`, to act as if edges are in use and make them pickable, etc. The same goes for `SurfaceMesh.mark_corners_as_used()` and `SurfaceMesh.mark_halfedges_as_used()`. If you mark edges or halfedges as used, you much also set their element ordering as described in the [indexing conventions](../indexing_convention/).
+
+- `"vertices_only"`: Only vertices can be selected
+
+- `"faces_only"`: Only faces can be selected
+
+## Back face policies
 
 The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the "outward" direction. Faces which are viewed from behind are referred to as _back faces_; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how back faces are displayed.
 
@@ -101,7 +109,7 @@ The choice of these policies can be set as an option for each surface mesh struc
     There is also a corresponding `get_back_face_color()`.
 
 
-### Options
+## Options
 
 Options control the appearance of the mesh. These options can also be passed as keyword arguments to the initial `register_surface_mesh()`, as noted above.  See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.
 
@@ -114,6 +122,8 @@ shade smooth | use smooth shading along faces or simple flat faces | `#!python g
 material | material for structure | `#!python get_material()` | `#!python set_material(newVal)` | [yes](../../../basics/parameters/#persistent-values) |
 back face policy | what [back face policy](#back-face-policies) to use | `#!python get_back_face_policy()` | `#!python set_back_face_policy(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 back face color | [back face color](#back-face-policies) for the `custom` policy | `#!python get_back_face_color()` | `#!python set_back_face_color(val)` | [yes](../../../basics/parameters/#persistent-values)
+selection mode | [what elements can be selected](#picking-and-selection) | `#!python get_selection_mode()` | `#!python set_selection_mode(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+
 
 Example: set options which affect the appearance of the mesh
 ```python

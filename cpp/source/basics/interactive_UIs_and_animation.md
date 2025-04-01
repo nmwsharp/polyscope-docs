@@ -191,36 +191,9 @@ We will not reproduce the ImGui documentation here, visit the ImGui github page 
 
 ## Mouse Interactions
 
-You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. Generally, you can use the mouse-related functions available via `ImGui` to implement a wide variety of behaviors.
+You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. `ImGui` exposes the state of the mouse and whether a click occurred via `ImGui::GetIO()`.
 
-**Example:** print a variety of info about a mouse click
-```cpp
-
-ImGuiIO& io = ImGui::GetIO();
-if (io.MouseClicked[0]) { // if the left mouse button was clicked
-  // gather values
-  glm::vec2 screenCoords{io.MousePos.x, io.MousePos.y};
-  glm::vec3 worldRay = polyscope::view::screenCoordsToWorldRay(screenCoords);
-  glm::vec3 worldPos = polyscope::view::screenCoordsToWorldPosition(screenCoords);
-  std::pair<polyscope::Structure*, size_t> pickPair = 
-    polyscope::pick::pickAtScreenCoords(screenCoords);
-
-  // print some values
-  std::cout << "    io.MousePos.x: " << io.MousePos.x << " io.MousePos.y: " << io.MousePos.y << std::endl;
-  std::cout << "    screenCoords.x: " << screenCoords.x << " screenCoords.y: " << screenCoords.y << std::endl;
-  std::cout << "    worldRay: ";
-  polyscope::operator<<(std::cout, worldRay) << std::endl;
-  std::cout << "    worldPos: ";
-  polyscope::operator<<(std::cout, worldPos) << std::endl;
-  if (pickPair.first == nullptr) {
-    std::cout << "    structure: " << "none" << std::endl;
-  } else {
-    std::cout << "    structure: " << pickPair.first << " element id: " << pickPair.second << std::endl;
-  }
-}
-```
-
-!!! Note "Temporarily disable default mouse camera movement"
+??? Note "Temporarily disable default mouse camera movement"
 
     If you implement your own interactions like clicking-and-dragging objects onscreen, you'll find that the Polyscope view camera unintentionally moves in response to these motions. You can temporarily disable the camera motion like:
 
@@ -240,7 +213,6 @@ if (io.MouseClicked[0]) { // if the left mouse button was clicked
 
     Convert a click location to a ray in world-space.
 
-
 ??? func "`#!cpp glm::vec3 view::screenCoordsToWorldPosition(glm::vec2 screenCoords)`"
 
     Convert a click location to a location in world-space, by reading from the scene's depth buffer.
@@ -251,18 +223,68 @@ if (io.MouseClicked[0]) { // if the left mouse button was clicked
 
     If `true`, Polyscope will perform its usual responses to mouse operations, `false` will disable.
 
-### Picking
+### Picking, Selection, and Querying the Scene
 
 "Picking" refers to querying the content under the cursor in the rendered image.  Polyscope implements render buffer-based picking, to efficiently get the object and element under the cursor even on large complex scenes.
 
-??? func "`#!cpp std::pair<polyscope::Structure*, size_t> pick::pickAtScreenCoords(glm::vec2 screenCoords)`"
+??? func "`#!cpp PickResult pickAtScreenCoords(glm::vec2 screenCoords)`"
 
-    Evaluate a "pick" query to get the object onscreen at a given location. Returns a pointer to the structure (or `nullptr` if none), and an index to an element within the structure. The meaning of this index is specific to the structure, for instance for surface meshes it is a packed layout of vertices, then faces, etc.
-    
-!!! Note 
+    Evaluate a "pick" query to get the contents of the rendered view at a specified location. The return is a `PickResult` struct, see below.
 
-    The picking API will be overhauled in an upcoming release.
+    See also `#!cpp PickResult pickAtBufferInds(glm::ivec2 bufferInds)` for a variant which takes buffer indices as an argument instead.
 
+    Screen coordinates and buffer indices both refer to a location in the rendered 2d image. Screen coordinates are real-valued, whereas buffer indices are integer. On some platforms they may be identical, but on others with high-DPI screens, they may differ. In the common-case of getting mouse positions from ImGui, you want screen coords.
+
+
+**Example:** picking a faces from a mesh
+```cpp
+// inside the user-callback, or other code which runs each frame
+polyscope::SurfaceMesh myMesh = /* ...  your added mesh ... */ ;
+
+// make only faces clickable in the mesh
+myMesh->setSelectionMode(MeshSelectionMode::FacesOnly);
+
+// get the mouse location from ImGui
+ImGuiIO& io = ImGui::GetIO();
+if (io.MouseClicked[0]) { // if clicked
+  glm::vec2 screenCoords{io.MousePos.x, io.MousePos.y};
+  polyscope::PickResult pickResult = polyscope::pickAtScreenCoords(screenCoords);
+
+  // check out pickResult.isHit, pickResult.structureName, pickResult.depth, etc
+
+  // get additional information if we clicked on a mesh
+  if(pickResult.isHit && pickResult.structure == myMesh) {
+    polyscope::SurfaceMeshPickResult meshPickResult = 
+      myMesh->interpretPickResult(pickResult);
+
+    if(meshPickResult.elementType == polyscope::MeshElement::Face) {
+      std::cout << "clicked face " << meshPickResult.index << std::endl;
+    }
+  }
+}
+```
+
+A pick query returns a combined struct with info such as what structure was clicked on, and depth of the point in the scene.
+
+```cpp
+struct PickResult {
+  bool isHit = false;                    // did we hit anything?
+  Structure* structure = nullptr;        // pointer to the structure under the cursor
+  WeakHandle<Structure> structureHandle; // same as .structure, but with lifetime tracking
+  std::string structureType = "";        // structure type which was hit, like "Point Cloud"
+  std::string structureName = "";        // name of structure which was hit, like "my_points"
+  glm::vec2 screenCoords;                // coordinates of the query location
+  glm::ivec2 bufferInds;                 // render buffer indices of the query location
+  glm::vec3 position;                    // 3d position which was hit, in world space
+  float depth;                           // depth to the hit, in world units
+  uint64_t localIndex = INVALID_IND_64;  // structure-specific index of the element which was hit
+};
+```
+
+Additionally, many structures can report additional information about the pick, if they were clicked on, via the `interpretPickResult()` function. For instance, a `SurfaceMesh` can decode whether a vertex/face/edge/etc was clicked on, the index of that element, and barycentric coordinates of the click within a face.
+
+
+Polyscope also maintains a stateful selection, displayed in the UI to provide information about the content of the scene. It can be accessed via `getSelection()`, `resetSelection()`, `haveSelection()`.
 
 ## Overriding Built-In UI Behavior
 

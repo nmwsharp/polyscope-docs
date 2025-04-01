@@ -6,7 +6,7 @@ Polyscope does not impose any requirements on the meshes visualized. They may be
 
 ![surface_mesh_demo]([[url.prefix]]/media/mesh_demo.gif)
 
-### Registering a surface mesh
+## Registering a surface mesh
 
 Example: registering a surface mesh from libIGL
 ```cpp
@@ -52,7 +52,7 @@ Surface meshes are registered with Polyscope by passing the location of each ver
     The default ordering is probably the same as yours for data on **vertices, faces, and corners**. However, data on **edges and halfedges** is much more likely to require setting an ordering.
 
 
-### Updating a mesh
+## Updating a mesh
 
 The locations of the vertices in a mesh can be updated with the member function `updateVertexPositions(newPositions)`. All quantities will be preserved. Changing the connectivity or element counts in a mesh is not supported, you will need to register a new mesh (perhaps with the same name to overwrite).
 
@@ -66,13 +66,38 @@ The locations of the vertices in a mesh can be updated with the member function 
     Note: `updateVertexPositions2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
 
-### Picking
+## Picking and Selection
 
-"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. By default only mesh vertices and faces can be selected. Edges, corners, and halfedges, become selectable only once they are used by some quantity, for instance once a per-corner quantity is registered, then it becomes possible to click on corners.
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  [See the section on picking for more info]([[url.prefix]]/basics/interactive_UIs_and_animation/#picking-selection-and-querying-the-scene).
 
-If desired, you can manually override this behavior by calling `SurfaceMesh::markEdgesAsUsed()`, to make the structure act as if edges are in use and make the pickable, etc. The same goes for `SurfaceMesh::markCornersAsUsed()` and `SurfaceMesh::markHalfedgesAsUsed()`. If you mark edges or halfedges as used, you much also set their element ordering as described in the [indexing conventions](../indexing_convention/).
+Additional information about a pick which hits a mesh can be retrieved by calling `SurfaceMesh::interpretPickResult(pickResult)`. This function should only be called on the structure which was hit.
 
-### Back face policies
+??? func "`#!cpp SurfaceMeshPickResult SurfaceMesh::interpretPickResult(const PickResult& result)`"
+
+    Get additional mesh-specific info about a pick result. This function is only valid to call on the structure which the pick hit.
+    
+    `PickResults` usually come from calling `pickAtScreenCoords()`.
+
+```cpp
+struct SurfaceMeshPickResult {
+  MeshElement elementType;                    // which kind of element did we click
+  int64_t index;                              // index of the clicked element
+  glm::vec3 baryCoords=glm::vec3{-1.,-1.,-1}; // coordinates in face, triangle face hits only
+};
+```
+
+We can also set which mesh elements are selectable (for instance, to make only vertices be returned from pick queries). This option can be set programmatically as `SurfaceMesh::setSelectionMode(MeshSelectionMode newMode)`, or from the UI. The available selection modes are:
+
+
+- `MeshSelectionMode::Auto`: Vertices and faces can always be selected. Edges, corners, halfedges can only be selected once they are in-use by some quantity. You can manually call `SurfaceMesh::markEdgesAsUsed()`, to act as if edges are in use and make them pickable, etc. The same goes for `SurfaceMesh::markCornersAsUsed()` and `SurfaceMesh::markHalfedgesAsUsed()`. If you mark edges or halfedges as used, you much also set their element ordering as described in the [indexing conventions](../indexing_convention/).
+
+- `MeshSelectionMode::VerticesOnly`: Only vertices can be selected
+
+- `MeshSelectionMode::FacesOnly`: Only faces can be selected
+
+
+
+## Back face policies
 
 The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the "outward" direction. Faces which are viewed from behind are referred to as _back faces_; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how back faces are displayed.
 
@@ -99,7 +124,7 @@ The choice of these policies can be set as an option for each surface mesh struc
 
     There is also a corresponding `getBackFaceColor()`.
 
-### Options
+## Options
 
 See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.
 
@@ -112,5 +137,6 @@ edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reas
 material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#!cpp setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 back face policy | what [back face policy](#back-face-policies) to use | `#!cpp BackFacePolicy getBackFacePolicy()` | `#!cpp setBackFacePolicy(BackFacePolicy newPolicy)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 back face color | [back face color](#back-face-policies) for the `Custom` policy| `#!cpp BackFacePolicy getBackFaceColor()` | `#!cpp setBackFaceColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+selection mode | [what elements can be selected](#picking-and-selection) | `#!cpp MeshSelectionMode getSelectionMode()` | `#!cpp setSelectionMode(MeshSelectionMode newMode)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
 _(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_
