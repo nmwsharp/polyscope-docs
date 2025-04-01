@@ -52,7 +52,7 @@ Either way, `init()` must be called before you do anything with Polyscope.
 
     Polyscope includes ImGui, allowing you to build custom UI elements like buttons and fields. 
 
-    Regardless of which control flow method you use, ImGui calls can _only_ be make within [the `userCallback` function]([[url.prefix]]/features/callbacks_and_UIs). Making ImGui calls elsewhere will lead to errors and crashes.
+    Regardless of which control flow method you use, ImGui calls can _only_ be made within [the `userCallback` function]([[url.prefix]]/features/callbacks_and_UIs). Making ImGui calls elsewhere will lead to errors and crashes.
 
 ## Functions
 
