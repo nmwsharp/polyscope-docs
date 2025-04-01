@@ -1,14 +1,15 @@
 Polyscope supports headless rendering on linux machines which do not have displays, such as remote servers and clusters.
 
-For a variety of legacy reasons, openGL-based rendering systems often require a display attached to function. In particular Polyscope's default backend uses GLFW, which can essentially only render on machines which have a physical display attached. It does not matter if the machine has a GPU or not, and connecting via remote SSH with graphical capabilities is generally not sufficient due to required openGL capabilities. This prevents performing any kind of rendering on remote clusters and servers without out a display. This limitation would prevent workflows like running compute jobs on remote clusters and logging images or saving videos rendered via Polyscope---headless rendering offers a solution.
+Polyscope's default interactive backend uses GLFW to create an OpenGL context, which essentially requires that a physical display be attached for any rendering to be performed. This would prevent workflows like running compute jobs on remote clusters and logging images or saving videos rendered via Polyscope---headless rendering offers a solution.
+
 
 !!! warning "What is headless rendering not?"
 
-    Headless rendering just means that Polyscope can run its rendering engine and render images to buffers or files. You can save them, store them, or even log them to viewers like Tensorboard.
+    "Headless" just means that Polyscope can run its rendering engine even when no display is present, rendering images to buffers or files. You can save them, store them, or even log them to viewers like Tensorboard.
 
-    Headless rendering is _not_ the same as displaying the interactive window inside of an iPython notebooks, or remotely running the interactive Polyscope UI in a browser window. There is currently no support for either of these uses (although local iPython always works; the window will be opened outside of the notebook).
+    Headless rendering is _not_ the same as running the UI in a browser tab or a cell of a Jupyter notebook.  There is currently no support for either of these uses (although local Jupyter notebooks work; the window will be opened outside of the notebook).
 
-    Note also that the headless rendering backend is _not_ necessary if you are remotely connecting to a machine which has some kind of display attached; for instance, when remotely connecting to macOS or Windows machines with displays.
+    Also, headless rendering is _not_ necessary if you are remotely connecting to a machine which has a physical display attached; for instance, when remotely connecting to macOS or Windows machines with displays.
 
 !!! note "Unix only"
 
@@ -18,7 +19,9 @@ For a variety of legacy reasons, openGL-based rendering systems often require a 
 
 ## Using headless rendering
 
-Headless rendering requires compiling with- and initializing a separate EGL backend. 
+Headless rendering requires compiling with and initializing a separate EGL backend. 
+
+Your system must have EGL available. It is likely packaged with graphics drivers, or can be installed from a package manager. Another alternative is to fall back on (much slower!) rendering by installing `OSMesa` from your package manager.
 
 At configuration time, the EGL backend must be enabled in CMake for headless support.  The default CMake settings enable it only if you are on Linux and EGL headers seem to be present on your system.  Set the CMake variable `POLYSCOPE_BACKEND_OPENGL3_EGL=ON` to force-enable building with EGL support. 
 
@@ -39,7 +42,9 @@ polyscope::init(); // automatic initialization will use the EGL backend
 
 // ... add structures and quantities to polyscope as usual ...
 
-polyscope::screenshot(); // save screenshots, render movies, etc
+// save screenshots, render movies, etc
+polyscope::screenshot(); 
+std::vector<unsigned char> viz_img = polyscope::screenshotToBuffer();
 ```
 
 Once you have initialized the backend and added your data as usual, you can preform rendering operations such as saving rendered screenshots to disk or to buffer.
@@ -67,7 +72,7 @@ Unless you really know what you are doing, you probably do not want to call `sho
 
     Default: `false`
 
-    This is set to `false` by default, because sometimes misconfigured or low-capability machines will have no di
+    This is set to `false` by default, because sometimes misconfigured or low-capability machines will have no display, and automatically creating headless backends on such machines would confuse new users.
 
 ??? func "`#!cpp int options::eglDeviceIndex`"
     
