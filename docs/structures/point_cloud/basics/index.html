@@ -501,7 +501,21 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -639,6 +653,13 @@
         <li class="md-nav__item">
   <a href="#updating-a-point-cloud" class="md-nav__link">
     Updating a point cloud
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selection-picking" class="md-nav__link">
+    Selection / Picking
   </a>
   
 </li>
@@ -1326,8 +1347,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1614,6 +1635,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#selection-picking" class="md-nav__link">
+    Selection / Picking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#point-render-mode" class="md-nav__link">
     Point render mode
   </a>
@@ -1688,6 +1716,16 @@
 <li><code>newPositions</code> is the vector array of 3D point locations. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 3-vectors.  The length must be equal to the current number of points.</li>
 </ul>
 <p>Note: <code>updatePointPositions2D</code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
+</details>
+<h3 id="selection-picking">Selection / Picking</h3>
+<p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call <code>interpretPickResult()</code> to get additional info about a click. See <a href="/basics/interactive_UIs_and_animation/#selection-picking">the overview of Selection / Picking</a> for general information.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">PointCloudPickResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w"> </span><span class="c1">// index of the clicked point</span>
+<span class="p">};</span>
+</code></pre></div>
+<details class="func">
+<summary><code class="highlight"><span class="n">PointCloudPickResult</span><span class="w"> </span><span class="n">PointCloud</span><span class="o">::</span><span class="n">interpretPickResult</span><span class="p">(</span><span class="n">PickResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span></code></summary>
+<p>Get additional information about a click.</p>
 </details>
 <h3 id="point-render-mode">Point render mode</h3>
 <p>By default, Polyscope renders point clouds with a sphere for each point. However, for large point clouds (for instance, &gt; 500,000 points, or on low-end hardware), this sphere rendering may become prohibitively expensive and lead to a laggy interface. As an alternative, points can be rendered as a small quad per-point, which is more efficient (for instance, it renders in real-time with 20,000,000+ points on my mid-range GPU).</p>

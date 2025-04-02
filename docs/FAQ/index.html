@@ -459,6 +459,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-do-i-show-animated-data" class="md-nav__link">
+    How do I show animated data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-create-custom-uis-with-buttons-sliders-text-boxes-etc" class="md-nav__link">
+    How do I create custom UIs with buttons, sliders, text boxes, etc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-do-i-set-up-mouse-click-interactions-and-callbacks" class="md-nav__link">
     How do I set up mouse click interactions and callbacks
   </a>
@@ -589,7 +603,21 @@
   
     <li class="md-nav__item">
       <a href="../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1348,8 +1376,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1650,6 +1678,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-do-i-show-animated-data" class="md-nav__link">
+    How do I show animated data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-create-custom-uis-with-buttons-sliders-text-boxes-etc" class="md-nav__link">
+    How do I create custom UIs with buttons, sliders, text boxes, etc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-do-i-set-up-mouse-click-interactions-and-callbacks" class="md-nav__link">
     How do I set up mouse click interactions and callbacks
   </a>
@@ -1702,6 +1744,13 @@
 <li><a href="#how-do-i-take-a-screenshot-save-an-image">How do I take a screenshot / save an image?</a></li>
 <li><a href="#positioning-objects-in-the-scene-and-reading-back-results">Positioning objects in the scene and reading back results</a></li>
 <li><a href="#managing-large-numbers-of-structures-and-quantities">Managing large numbers of structures and quantities</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Interactions</strong></p>
+<ul>
+<li><a href="#how-do-i-show-animated-data">How do I show animated data?</a></li>
+<li><a href="#how-do-i-create-custom-uis-with-buttons-sliders-text-boxes-etc">How do I create custom UIs with buttons, sliders, text boxes, etc?</a></li>
 <li><a href="#how-do-i-set-up-mouse-click-interactions-and-callbacks">How do I set up mouse click interactions and callbacks</a></li>
 </ul>
 </li>
@@ -1748,8 +1797,12 @@ In the GUI, you can use the <code>[Options] --&gt; [Transform]</code> menu to en
 <p>Every structure has controls in its options UI menu under <code>Options --&gt; Structure Selection</code> and <code>Options --&gt; Quantity Selection</code> which can be used to enable/disable all structures and quantities, or isolate to viewing a single structure.</p>
 <p>Use <a href="/features/groups/">Groups</a> to group your structures in to categories which can be enabled/disabled all together. Notice the <code>hide descendants</code> and <code>show details</code> options on groups, which can totally hide structures from the UI while still offering some control via the group.</p>
 <p>You can always use the <a href="/features/callbacks_and_UIs/">Custom UIs</a> to create your own interface buttons and selectors which programmatically enable or disable registered objects or adjust their settings.</p>
+<h3 id="how-do-i-show-animated-data"><strong>How do I show animated data</strong></h3>
+<p>There is no explicit built-in functionality for animated or time-series data, but it is easy and common to <a href="/basics/interactive_UIs_and_animation/">do it yourself with a per-frame callback function</a>.</p>
+<h3 id="how-do-i-create-custom-uis-with-buttons-sliders-text-boxes-etc"><strong>How do I create custom UIs with buttons, sliders, text boxes, etc</strong></h3>
+<p>Polyscope integrates with the excellent <a href="https://github.com/ocornut/imgui">Dear ImGui</a> library for UI elements. See the <a href="/basics/interactive_UIs_and_animation/">interactions page</a> for how to use ImGui functions within polyscope, and see the ImGui docs for everything ImGui can do.</p>
 <h3 id="how-do-i-set-up-mouse-click-interactions-and-callbacks"><strong>How do I set up mouse click interactions and callbacks</strong></h3>
-<p>See <a href="/features/callbacks_and_UIs/#mouse-interactions">Mouse Interactions</a>. There are no special callbacks for creating mouse events. Instead, you can implement almost any behavior you want via ImGui&rsquo;s built-in functions. There are also a few polyscope-specific functions to get information about scene at the location you clicked, such as constructing rays and querying depth.</p>
+<p>See <a href="/basics/interactive_UIs_and_animation/#mouse-interactions">Mouse Interactions</a>. There are no special callbacks for creating mouse events. Instead, you can implement almost any behavior you want via ImGui&rsquo;s built-in functions. There are also a few polyscope-specific functions to get information about scene at the location you clicked, such as constructing rays and querying depth.</p>
 <h3 id="rendering-figures-for-papers-and-presentations"><strong>Rendering figures for papers and presentations</strong></h3>
 <p>Several settings can be customized to give a more polished appearance. Consider:</p>
 <ul>

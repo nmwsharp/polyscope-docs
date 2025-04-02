@@ -501,7 +501,21 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1326,8 +1340,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1703,8 +1717,18 @@
 <h3 id="slice-planes">Slice planes</h3>
 <p><a href="/features/slice_planes">Slice planes</a> are particularly useful for inspecting the internal structure of a volume grid, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.</p>
 <h3 id="picking">Picking</h3>
-<p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene. Picking volume grid elements works a little differently from other structures. For most structures, each click selects an element of the structure. However for volume grids, clicking on the structure once initiates picking, then the UI continuously displays data for the location under your mouse cursor. You can always deselect the volume grid elements by clicking somewhere off the grid.</p>
+<p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene.  See <a href="/basics/interactive_UIs_and_animation/#selection-picking">the overview of Selection / Picking</a> for general information. </p>
 <p>By default, if you have only registered data defined on nodes, then only nodes can be picked (and vice-versa for cells). You can override this behavior by calling <code>VolumeGrid::markNodesAsUsed()</code>, to act as if a node quantity had been added, and likewise for <code>VolumeGrid::markCellsAsUsed()</code>.</p>
+<p>As with other structures, you can call <code>interpretPickResult()</code> to get additional info about a click. </p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">VolumeGridPickResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">VolumeGridElement</span><span class="w"> </span><span class="n">elementType</span><span class="p">;</span><span class="w"> </span><span class="c1">// which kind of element did we click (enum values: {NODE, CELL})</span>
+<span class="w">  </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w">                 </span><span class="c1">// index of the clicked element</span>
+<span class="p">};</span>
+</code></pre></div>
+<details class="func">
+<summary><code class="highlight"><span class="n">CurveNetworkPickResult</span><span class="w"> </span><span class="n">CurveNetwork</span><span class="o">::</span><span class="n">interpretPickResult</span><span class="p">(</span><span class="n">PickResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span></code></summary>
+<p>Get additional information about a click.</p>
+</details>
 <h3 id="options">Options</h3>
 <p>See <a href="/structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>

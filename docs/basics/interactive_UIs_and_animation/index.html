@@ -8,20 +8,20 @@
       
       
       
-        <link rel="canonical" href="https://polyscope.run/features/callbacks_and_UIs/">
+        <link rel="canonical" href="https://polyscope.run/basics/interactive_UIs_and_animation/">
       
       
-        <link rel="prev" href="../screenshots/">
+        <link rel="prev" href="../camera_controls/">
       
       
-        <link rel="next" href="../../basics/parameters/">
+        <link rel="next" href="../../structures/structure_management/">
       
       <link rel="icon" href="../../media/icons/material/baseline_highlight_black_18dp.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
     
     
       
-        <title>Callbacks & Custom UIs - Polyscope - C++</title>
+        <title>Interactive UIs & Animation - Polyscope - C++</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#intro" class="md-skip">
+        <a href="#basic-flow-for-interactive-uis-and-animation" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Callbacks & Custom UIs
+              Interactive UIs & Animation
             
           </span>
         </div>
@@ -427,16 +427,18 @@
 
   
   
+    
+  
   
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
       
       
       
@@ -445,7 +447,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Basics
@@ -458,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/flow/" class="md-nav__link">
+      <a href="../flow/" class="md-nav__link">
         Basic Flow
       </a>
     </li>
@@ -472,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/program_options/" class="md-nav__link">
+      <a href="../program_options/" class="md-nav__link">
         Program Options
       </a>
     </li>
@@ -486,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/scene_options/" class="md-nav__link">
+      <a href="../scene_options/" class="md-nav__link">
         Scene Options
       </a>
     </li>
@@ -500,9 +502,128 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+      <a href="../camera_controls/" class="md-nav__link">
+        Managing Views & Cameras
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Interactive UIs & Animation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Interactive UIs & Animation
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-flow-for-interactive-uis-and-animation" class="md-nav__link">
+    Basic Flow for Interactive UIs and Animation
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Flow for Interactive UIs and Animation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-main-loops" class="md-nav__link">
+    Custom main loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-show" class="md-nav__link">
+    Nested show
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-animated-data" class="md-nav__link">
+    Updating Animated Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-uis-with-imgui" class="md-nav__link">
+    Custom UIs with ImGui
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mouse-interactions" class="md-nav__link">
+    Mouse Interactions
+  </a>
+  
+    <nav class="md-nav" aria-label="Mouse Interactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#picking-selection-and-querying-the-scene" class="md-nav__link">
+    Picking, Selection, and Querying the Scene
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overriding-built-in-ui-behavior" class="md-nav__link">
+    Overriding Built-In UI Behavior
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1215,18 +1336,16 @@
 
   
   
-    
-  
   
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
       
       
       
@@ -1235,7 +1354,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Features
@@ -1248,7 +1367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../screenshots/" class="md-nav__link">
+      <a href="../../features/screenshots/" class="md-nav__link">
         Screenshots
       </a>
     </li>
@@ -1260,170 +1379,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Callbacks & Custom UIs
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Callbacks & Custom UIs
+    <li class="md-nav__item">
+      <a href="../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#intro" class="md-nav__link">
-    Intro
-  </a>
-  
-    <nav class="md-nav" aria-label="Intro">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#user-callback" class="md-nav__link">
-    user callback
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    Example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#options" class="md-nav__link">
-    Options
-  </a>
-  
-    <nav class="md-nav" aria-label="Options">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#open-imgui-window-for-user-callback" class="md-nav__link">
-    open imgui window for user callback
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invoke-user-callback-for-nested-show" class="md-nav__link">
-    invoke user callback for nested show
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#give-focus-on-show" class="md-nav__link">
-    give focus on show
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mouse-interactions" class="md-nav__link">
-    Mouse Interactions
-  </a>
-  
-    <nav class="md-nav" aria-label="Mouse Interactions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#screen-coords-to-world-ray" class="md-nav__link">
-    screen coords to world ray
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#screen-coords-to-world-position" class="md-nav__link">
-    screen coords to world position
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pick-at-screen-coords" class="md-nav__link">
-    pick at screen coords
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-uis" class="md-nav__link">
-    Custom UIs
-  </a>
-  
-    <nav class="md-nav" aria-label="Custom UIs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#imgui-style-callback" class="md-nav__link">
-    imgui style callback
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#imgui-fonts-callback" class="md-nav__link">
-    imgui fonts callback
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-gui" class="md-nav__link">
-    build gui
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1435,7 +1395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/parameters/" class="md-nav__link">
+      <a href="../parameters/" class="md-nav__link">
         Parameters
       </a>
     </li>
@@ -1449,7 +1409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../messages/" class="md-nav__link">
+      <a href="../../features/messages/" class="md-nav__link">
         Messages
       </a>
     </li>
@@ -1463,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../materials/" class="md-nav__link">
+      <a href="../../features/materials/" class="md-nav__link">
         Materials
       </a>
     </li>
@@ -1477,7 +1437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../color_maps/" class="md-nav__link">
+      <a href="../../features/color_maps/" class="md-nav__link">
         Color Maps
       </a>
     </li>
@@ -1491,7 +1451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../transparency/" class="md-nav__link">
+      <a href="../../features/transparency/" class="md-nav__link">
         Transparency
       </a>
     </li>
@@ -1505,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ground_and_shadows/" class="md-nav__link">
+      <a href="../../features/ground_and_shadows/" class="md-nav__link">
         Ground and Shadows
       </a>
     </li>
@@ -1519,7 +1479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../slice_planes/" class="md-nav__link">
+      <a href="../../features/slice_planes/" class="md-nav__link">
         Slice Planes
       </a>
     </li>
@@ -1533,7 +1493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2D_data/" class="md-nav__link">
+      <a href="../../features/2D_data/" class="md-nav__link">
         2D Data
       </a>
     </li>
@@ -1547,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../groups/" class="md-nav__link">
+      <a href="../../features/groups/" class="md-nav__link">
         Groups
       </a>
     </li>
@@ -1561,7 +1521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../implicit_helpers/" class="md-nav__link">
+      <a href="../../features/implicit_helpers/" class="md-nav__link">
         Implicit Helpers
       </a>
     </li>
@@ -1693,63 +1653,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#intro" class="md-nav__link">
-    Intro
+  <a href="#basic-flow-for-interactive-uis-and-animation" class="md-nav__link">
+    Basic Flow for Interactive UIs and Animation
   </a>
   
-    <nav class="md-nav" aria-label="Intro">
+    <nav class="md-nav" aria-label="Basic Flow for Interactive UIs and Animation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#user-callback" class="md-nav__link">
-    user callback
+  <a href="#custom-main-loops" class="md-nav__link">
+    Custom main loops
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    Example
+          <li class="md-nav__item">
+  <a href="#nested-show" class="md-nav__link">
+    Nested show
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#options" class="md-nav__link">
     Options
   </a>
   
-    <nav class="md-nav" aria-label="Options">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#open-imgui-window-for-user-callback" class="md-nav__link">
-    open imgui window for user callback
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invoke-user-callback-for-nested-show" class="md-nav__link">
-    invoke user callback for nested show
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#give-focus-on-show" class="md-nav__link">
-    give focus on show
-  </a>
-  
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-animated-data" class="md-nav__link">
+    Updating Animated Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-uis-with-imgui" class="md-nav__link">
+    Custom UIs with ImGui
+  </a>
   
 </li>
       
@@ -1762,22 +1709,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#screen-coords-to-world-ray" class="md-nav__link">
-    screen coords to world ray
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#screen-coords-to-world-position" class="md-nav__link">
-    screen coords to world position
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pick-at-screen-coords" class="md-nav__link">
-    pick at screen coords
+  <a href="#picking-selection-and-querying-the-scene" class="md-nav__link">
+    Picking, Selection, and Querying the Scene
   </a>
   
 </li>
@@ -1788,36 +1721,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#custom-uis" class="md-nav__link">
-    Custom UIs
+  <a href="#overriding-built-in-ui-behavior" class="md-nav__link">
+    Overriding Built-In UI Behavior
   </a>
-  
-    <nav class="md-nav" aria-label="Custom UIs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#imgui-style-callback" class="md-nav__link">
-    imgui style callback
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#imgui-fonts-callback" class="md-nav__link">
-    imgui fonts callback
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-gui" class="md-nav__link">
-    build gui
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1836,97 +1742,78 @@
                   
 
 
-  <h1>Callbacks & Custom UIs</h1>
+  <h1>Interactive UIs & Animation</h1>
 
-<h3 id="intro">Intro</h3>
-<p>When <code>polyscope::show()</code> has been called, Polyscope will optionally invoke user-supplied callback function as each frame of the interface is redrawn. This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.</p>
-<p>See <a href="https://github.com/ocornut/imgui">Dear ImGui</a> for documentation of UI commands.</p>
-<details class="func">
-<summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">userCallback</span></code></summary>
-<h5 id="user-callback">user callback</h5>
-<p>A function which will be invoked on every main loop iteration by Polyscope, once <code>show()</code> has been called.</p>
-<p>If null, nothing will be invoked.</p>
-</details>
-<h3 id="example">Example</h3>
-<p>The code below creates the following UI using a callback.</p>
+<p>Polyscope enables you to create custom interactive UIs with your own GUI elements such as buttons, sliders, and textboxes which execute user-defined code. </p>
+<p>Likewise, there is no explicit built-in functionality for time-varying data in Polyscope, but you can easily create custom UIs to display and update your content.</p>
+<p>In either case, you can create interactive UI elements with the excellent <a href="https://github.com/ocornut/imgui">Dear ImGui</a> library, see below for more.</p>
 <p><img alt="callback ui demo" src="/media/callback_ui_demo.png" /></p>
+<h2 id="basic-flow-for-interactive-uis-and-animation">Basic Flow for Interactive UIs and Animation</h2>
+<p>The first step is to get your code executing every frame while the Polyscope window is open and running.</p>
+<p>You can specify a callback function which Polyscope will invoke on each frame while the window is active.  This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.  With this approach, you simplify set the desired callback function, and then call <code>polyscope::show()</code> as usual.</p>
+<p>Your callback function should have no arguments and no return value. To use state inside your callback, either access it statically, or capture-bind the state like a lambda.</p>
+<p><strong>Example:</strong> Minimal callback setup
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/point_cloud.h&quot;</span>
 
-<span class="c1">// Parameters which we will set in the callback UI.</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">nPts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
-<span class="kt">float</span><span class="w"> </span><span class="n">anotherParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
+<span class="c1">// Track state statically outside of your callback (or bind like a lambda)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">myVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">mySubroutine</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">myCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// gets executed per-frame</span>
 
-<span class="w">  </span><span class="c1">// do something useful...</span>
+<span class="w">  </span><span class="c1">// Update content in the scene</span>
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">&quot;this frame point&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">my_points</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// Register a structure</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">points</span><span class="p">;</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nPts</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">points</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span>
-<span class="w">        </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">(),</span><span class="w"> </span>
-<span class="w">                   </span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">(),</span><span class="w"> </span>
-<span class="w">                   </span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span>
-<span class="w">                  </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">&quot;my point cloud&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// Your callback functions</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">myCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="c1">// Since options::openImGuiWindowForUserCallback == true by default, </span>
-<span class="w">  </span><span class="c1">// we can immediately start using ImGui commands to build a UI</span>
-
-<span class="w">  </span><span class="n">ImGui</span><span class="o">::</span><span class="n">PushItemWidth</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// Make ui elements 100 pixels wide,</span>
-<span class="w">                             </span><span class="c1">// instead of full width. Must have </span>
-<span class="w">                             </span><span class="c1">// matching PopItemWidth() below.</span>
-
-<span class="w">  </span><span class="n">ImGui</span><span class="o">::</span><span class="n">InputInt</span><span class="p">(</span><span class="s">&quot;num points&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nPts</span><span class="p">);</span><span class="w">             </span><span class="c1">// set a int variable</span>
-<span class="w">  </span><span class="n">ImGui</span><span class="o">::</span><span class="n">InputFloat</span><span class="p">(</span><span class="s">&quot;param value&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">anotherParam</span><span class="p">);</span><span class="w">  </span><span class="c1">// set a float variable</span>
+<span class="w">  </span><span class="c1">// Build a UI element to edit a parameter, which will </span>
+<span class="w">  </span><span class="c1">// appear in the onscreen panel</span>
+<span class="w">  </span><span class="n">ImGui</span><span class="o">::</span><span class="n">InputInt</span><span class="p">(</span><span class="s">&quot;my val&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">myVal</span><span class="p">);</span><span class="w"> </span>
 
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ImGui</span><span class="o">::</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;run subroutine&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// executes when button is pressed</span>
-<span class="w">    </span><span class="n">mySubroutine</span><span class="p">();</span>
+<span class="w">    </span><span class="n">callSomeOtherFunction</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="n">ImGui</span><span class="o">::</span><span class="n">SameLine</span><span class="p">();</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ImGui</span><span class="o">::</span><span class="n">Button</span><span class="p">(</span><span class="s">&quot;hi&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;hi&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">ImGui</span><span class="o">::</span><span class="n">PopItemWidth</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="cm">/*</span>
-<span class="cm">    ...your program setup...</span>
-<span class="cm">  */</span><span class="w"> </span>
-
-<span class="w">  </span><span class="c1">// Initialize polyscope</span>
 <span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
-
-<span class="w">  </span><span class="c1">// Specify the callback</span>
-<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">userCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myCallback</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// Give control to the polyscope gui</span>
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">userCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myCallback</span><span class="p">;</span><span class="w"> </span><span class="c1">// specify the callback</span>
 <span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
-
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></p>
+<details class="func">
+<summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">userCallback</span></code></summary>
+<p>A function which will be invoked on every main loop iteration by Polyscope, once <code>show()</code> has been called.</p>
+<p>If null, nothing will be invoked, set the callback to <code>nullptr</code> to clear it.</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">callback sets up ImGui internally</p>
+<p>By default, when the user callback executes, Polyscope will internally set up an <code>ImGui</code> pane for you to create UI elements in. You can immediately make calls like <code>ImGui::Button()</code> in the callback without any additional ImGui bookkeeping.</p>
+<p>This behavior is configurable with an option below.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Updating data from main loop with <code>frameTick()</code></p>
+<h5 id="custom-main-loops">Custom main loops</h5>
+<p>As described in <a href="/basics/flow/#program-structure">program structure</a>, it is alternately possible to run the Polyscope window not by calling <code>show()</code>, but by writing your own main loop, and calling <code>frameTick()</code> on each iteration.</p>
+<p>If you choose this route, you can also modify scene content by simple issuing polyscope calls like <code>registerSurfaceMesh()</code> at any point in your main loop.</p>
+<p><strong>However, you cannot issue ImGui calls at any point in your main loop.</strong> This limitation is because Polyscope needs to set up the ImGui context, which is not available as your main loop executes.</p>
+<p>Fortunately, you can still use the user callback to create ImGui UIs. You can specify your callback function as above, and it will be executed each frame, even when running Polyscope from your own main loop.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nested calls to <code>show()</code></p>
+<h5 id="nested-show">Nested show</h5>
+<p>When creating custom UIs, you may find you want to call <code>show()</code> to open the interactive window, <em>within a frame which is already executing the main loop</em>.</p>
+<p>For example, you might create a button which calls a user-specified function. Within that function, if you hit a bug, you could register some extra data to understand the problem, call <code>show()</code> to investigate, then exit the window and continue running the outer program loop.</p>
+<p><strong>This is a supported workflow!</strong> It should be possible to arbitrarily recurse into the show function, interacting with the scene even as an outer loop is executing.</p>
+<p>By default the user callback will not be executed within any of these nested calls to show, only the outermost one (configurable with an option below). Be careful not write an recursion of calling <code>show()</code>!</p>
+</div>
 <h3 id="options">Options</h3>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">openImGuiWindowForUserCallback</span></code></summary>
-<h5 id="open-imgui-window-for-user-callback">open imgui window for user callback</h5>
 <p>If true, an ImGui window will be created and docked to the side of the UI when the <a href="../callbacks_and_UIs">user callback function</a> is invoked. This means you can immediately start making ui calls like <code>ImGui::Button("do stuff")</code>. </p>
 <p>If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).</p>
 <p>Default: <code>true</code>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">invokeUserCallbackForNestedShow</span></code></summary>
-<h5 id="invoke-user-callback-for-nested-show">invoke user callback for nested show</h5>
 <p>Suppose you call <code>polyscope::show()</code>, and within your callback, another instance of <code>polyscope::show()</code> is called&mdash;this is a nested show.</p>
 <p>Depending on the situation, you might or might not want your <code>userCallback</code> to continue being executed on each render loop iteration of this nested viewer; this setting exposes the option.</p>
 <p>If true, your callback will be executed as normal for every main loop iteration, even in nested show windows.</p>
@@ -1935,52 +1822,155 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">giveFocusOnShow</span></code></summary>
-<h5 id="give-focus-on-show">give focus on show</h5>
 <p>If true, the Polyscope window will request focus from the window manager whenever <code>show()</code> is called. If false, the focus state will be left unchanged.</p>
 <p>Default: <code>false</code>.</p>
 </details>
-<h3 id="mouse-interactions">Mouse Interactions</h3>
-<p>You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. Generally, you can use the mouse-related functions available via <code>ImGui</code> to implement a wide variety of behaviors.</p>
-<p><strong>Example:</strong> print a variety of info about a mouse click
-<div class="highlight"><pre><span></span><code><span class="n">ImGuiIO</span><span class="o">&amp;</span><span class="w"> </span><span class="n">io</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImGui</span><span class="o">::</span><span class="n">GetIO</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">io</span><span class="p">.</span><span class="n">MouseClicked</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// if the left mouse button was clicked</span>
-<span class="w">  </span><span class="c1">// gather values</span>
-<span class="w">  </span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">screenCoords</span><span class="p">{</span><span class="n">io</span><span class="p">.</span><span class="n">MousePos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">MousePos</span><span class="p">.</span><span class="n">y</span><span class="p">};</span>
-<span class="w">  </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">worldRay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">screenCoordsToWorldRay</span><span class="p">(</span><span class="n">screenCoords</span><span class="p">);</span>
-<span class="w">  </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">worldPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">screenCoordsToWorldPosition</span><span class="p">(</span><span class="n">screenCoords</span><span class="p">);</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">polyscope</span><span class="o">::</span><span class="n">Structure</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pickPair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">pick</span><span class="o">::</span><span class="n">pickAtScreenCoords</span><span class="p">(</span><span class="n">screenCoords</span><span class="p">);</span>
+<h2 id="updating-animated-data">Updating Animated Data</h2>
+<p>Once you have code executing per-frame, you can issue Polyscope commands on each invocation to update the data.</p>
+<p>The simplest approach is to just re-call structure-registration or quantity-adder functions with the updated data. Adding new structures/quantities with the same name will replace any existing ones, they will even <a href="/basics/parameters/#persistent-values">inherit any options which have been set</a>. This should be fast enough for small-medium sized data at interactive rates.</p>
+<p>Additionally, some structures have special more-efficient functions which update the structure in-place, if you are not changing the number of elements (e.g. <a href="/structures/surface_mesh/basics/#updating-a-mesh"><code>SurfaceMesh::updateVertexPositions()</code></a>). Currently, if you are changing the number of elements (number of points in a point cloud, or number of vertices or connectivity of a mesh), you have no choice but to register a whole new structure.</p>
+<p><strong>Example:</strong> A typical basic setup for playing time-series data</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/point_cloud.h&quot;</span>
 
-<span class="w">  </span><span class="c1">// print some values</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;    io.MousePos.x: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">MousePos</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; io.MousePos.y: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">MousePos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;    screenCoords.x: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">screenCoords</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; screenCoords.y: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">screenCoords</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;    worldRay: &quot;</span><span class="p">;</span>
-<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">,</span><span class="w"> </span><span class="n">worldRay</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;    worldPos: &quot;</span><span class="p">;</span>
-<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">,</span><span class="w"> </span><span class="n">worldPos</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pickPair</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;    structure: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;    structure: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pickPair</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; element id: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pickPair</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="c1">// a list of your data for each frame</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">perFramePoints</span><span class="p">;</span><span class="w"> </span>
+
+<span class="c1">// UI state</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">currFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">autoPlaying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">myCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// gets executed per-frame</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">updateFrameData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">ImGui</span><span class="o">::</span><span class="n">Checkbox</span><span class="p">(</span><span class="s">&quot;Autoplay&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">autoPlaying</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Advance the frame</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">autoPlaying</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">updateFrameData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">currFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">currFrame</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">perFramePoints</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Slider to manually scrub through frames  </span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">sliderUpdated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImGui</span><span class="o">::</span><span class="n">SliderInt</span><span class="p">(</span><span class="s">&quot;Curr Frame&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">currFrame</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">perFramePoints</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="mi">-1</span><span class="p">);</span>
+<span class="w">  </span><span class="n">updateFrameData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">updateFrameData</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">sliderUpdated</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// Update the scene content if-needed</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">updateFrameData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">&quot;frame points&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">perFramePoints</span><span class="p">[</span><span class="n">currFrame</span><span class="p">]);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></p>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="c1">// Create sample point cloud data</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">nFrames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nFrames</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">points</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">points</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.5</span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">perFramePoints</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">points</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// set the scene scale manually so it doesn&#39;t jump around </span>
+<span class="w">  </span><span class="c1">// as the data changes</span>
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">automaticallyComputeSceneExtents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">lengthScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.</span><span class="p">;</span>
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">boundingBox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mf">-1.</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">1.</span><span class="p">,</span><span class="w"> </span><span class="mf">1.</span><span class="p">,</span><span class="w"> </span><span class="mf">1.</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">userCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myCallback</span><span class="p">;</span><span class="w"> </span><span class="c1">// specify the callback</span>
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="custom-uis-with-imgui">Custom UIs with ImGui</h2>
+<p>Polyscope integrates with the <a href="https://github.com/ocornut/imgui">Dear ImGui</a> library, a widely-used framework for creating prototype/demo UIs and widgets. It implements a huge variety of GUI elements including buttons, sliders, text boxes, color pickers, trees, tables, etc.</p>
+<p>We will not reproduce the ImGui documentation here, visit the ImGui github page for more information on how to use it, mainly in the source files <code>imgui.h</code> and <code>imgui_demo.cpp</code>. Or search for examples across the web!</p>
+<p><img alt="callback ui demo" src="/media/imgui_py_demo.png" /></p>
+<h2 id="mouse-interactions">Mouse Interactions</h2>
+<p>You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. <code>ImGui</code> exposes the state of the mouse and whether a click occurred via <code>ImGui::GetIO()</code>.</p>
+<details class="note">
+<summary>Temporarily disable default mouse camera movement</summary>
+<p>If you implement your own interactions like clicking-and-dragging objects onscreen, you&rsquo;ll find that the Polyscope view camera unintentionally moves in response to these motions. You can temporarily disable the camera motion like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">doing_interaction</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ImGui</span><span class="o">::</span><span class="n">IsMouseClicked</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">doDefaultMouseInteraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// ... do your interaction</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">doing_interaction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// re-enable the default mouse motions after you&#39;re done</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">doDefaultMouseInteraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
 <details class="func">
 <summary><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">screenCoordsToWorldRay</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">screenCoords</span><span class="p">)</span></code></summary>
-<h5 id="screen-coords-to-world-ray">screen coords to world ray</h5>
 <p>Convert a click location to a ray in world-space.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">screenCoordsToWorldPosition</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">screenCoords</span><span class="p">)</span></code></summary>
-<h5 id="screen-coords-to-world-position">screen coords to world position</h5>
 <p>Convert a click location to a location in world-space, by reading from the scene&rsquo;s depth buffer.</p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">polyscope</span><span class="o">::</span><span class="n">Structure</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pick</span><span class="o">::</span><span class="n">pickAtScreenCoords</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">screenCoords</span><span class="p">)</span></code></summary>
-<h5 id="pick-at-screen-coords">pick at screen coords</h5>
-<p>Evaluate a &ldquo;pick&rdquo; query to get the object onscreen at a given location. Returns a pointer to the structure (or <code>nullptr</code> if none), and an index to an element within the structure. The meaning of this index is specific to the structure, for instance for surface meshes it is a packed layout of vertices, then faces, etc.</p>
+<summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">doDefaultMouseInteraction</span></code></summary>
+<p>Use this option to (temporarily) disable Polyscope&rsquo;s default mouse clicking/panning/zooming response to mouse movements, so that they will not conflict with your own implemented operations</p>
+<p>If <code>true</code>, Polyscope will perform its usual responses to mouse operations, <code>false</code> will disable.</p>
 </details>
-<h3 id="custom-uis">Custom UIs</h3>
+<h3 id="picking-selection-and-querying-the-scene">Picking, Selection, and Querying the Scene</h3>
+<p>&ldquo;Picking&rdquo; refers to querying the content under the cursor in the rendered image.  Polyscope implements render buffer-based picking, to efficiently get the object and element under the cursor even on large complex scenes. </p>
+<details class="func">
+<summary><code class="highlight"><span class="n">PickResult</span><span class="w"> </span><span class="n">pickAtScreenCoords</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">screenCoords</span><span class="p">)</span></code></summary>
+<p>Evaluate a &ldquo;pick&rdquo; query to get the contents of the rendered view at a specified location. The return is a <code>PickResult</code> struct, see below.</p>
+<p>See also <code class="highlight"><span class="n">PickResult</span><span class="w"> </span><span class="n">pickAtBufferInds</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">ivec2</span><span class="w"> </span><span class="n">bufferInds</span><span class="p">)</span></code> for a variant which takes buffer indices as an argument instead.</p>
+<p>Screen coordinates and buffer indices both refer to a location in the rendered 2d image. Screen coordinates are real-valued, whereas buffer indices are integer. On some platforms they may be identical, but on others with high-DPI screens, they may differ. In the common-case of getting mouse positions from ImGui, you want screen coords.</p>
+</details>
+<p><strong>Example:</strong> picking a faces from a mesh
+<div class="highlight"><pre><span></span><code><span class="c1">// inside the user-callback, or other code which runs each frame</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMesh</span><span class="w"> </span><span class="n">myMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* ...  your added mesh ... */</span><span class="w"> </span><span class="p">;</span>
+
+<span class="c1">// make only faces clickable in the mesh</span>
+<span class="n">myMesh</span><span class="o">-&gt;</span><span class="n">setSelectionMode</span><span class="p">(</span><span class="n">MeshSelectionMode</span><span class="o">::</span><span class="n">FacesOnly</span><span class="p">);</span>
+
+<span class="c1">// get the mouse location from ImGui</span>
+<span class="n">ImGuiIO</span><span class="o">&amp;</span><span class="w"> </span><span class="n">io</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImGui</span><span class="o">::</span><span class="n">GetIO</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">io</span><span class="p">.</span><span class="n">MouseClicked</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// if clicked</span>
+<span class="w">  </span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">screenCoords</span><span class="p">{</span><span class="n">io</span><span class="p">.</span><span class="n">MousePos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">MousePos</span><span class="p">.</span><span class="n">y</span><span class="p">};</span>
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">PickResult</span><span class="w"> </span><span class="n">pickResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">pickAtScreenCoords</span><span class="p">(</span><span class="n">screenCoords</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// check out pickResult.isHit, pickResult.structureName, pickResult.depth, etc</span>
+
+<span class="w">  </span><span class="c1">// get additional information if we clicked on a mesh</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">pickResult</span><span class="p">.</span><span class="n">isHit</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pickResult</span><span class="p">.</span><span class="n">structure</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">myMesh</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMeshPickResult</span><span class="w"> </span><span class="n">meshPickResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="w">      </span><span class="n">myMesh</span><span class="o">-&gt;</span><span class="n">interpretPickResult</span><span class="p">(</span><span class="n">pickResult</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">meshPickResult</span><span class="p">.</span><span class="n">elementType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">MeshElement</span><span class="o">::</span><span class="n">Face</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;clicked face &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">meshPickResult</span><span class="p">.</span><span class="n">index</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>A pick query returns a combined struct with info such as what structure was clicked on, and depth of the point in the scene.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">PickResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">isHit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w">                    </span><span class="c1">// did we hit anything?</span>
+<span class="w">  </span><span class="n">Structure</span><span class="o">*</span><span class="w"> </span><span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w">        </span><span class="c1">// pointer to the structure under the cursor</span>
+<span class="w">  </span><span class="n">WeakHandle</span><span class="o">&lt;</span><span class="n">Structure</span><span class="o">&gt;</span><span class="w"> </span><span class="n">structureHandle</span><span class="p">;</span><span class="w"> </span><span class="c1">// same as .structure, but with lifetime tracking</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">structureType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w">        </span><span class="c1">// structure type which was hit, like &quot;Point Cloud&quot;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">structureName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w">        </span><span class="c1">// name of structure which was hit, like &quot;my_points&quot;</span>
+<span class="w">  </span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">screenCoords</span><span class="p">;</span><span class="w">                </span><span class="c1">// coordinates of the query location</span>
+<span class="w">  </span><span class="n">glm</span><span class="o">::</span><span class="n">ivec2</span><span class="w"> </span><span class="n">bufferInds</span><span class="p">;</span><span class="w">                 </span><span class="c1">// render buffer indices of the query location</span>
+<span class="w">  </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">position</span><span class="p">;</span><span class="w">                    </span><span class="c1">// 3d position which was hit, in world space</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">depth</span><span class="p">;</span><span class="w">                           </span><span class="c1">// depth to the hit, in world units</span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">localIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INVALID_IND_64</span><span class="p">;</span><span class="w">  </span><span class="c1">// structure-specific index of the element which was hit</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Additionally, many structures can report additional information about the pick, if they were clicked on, via the <code>interpretPickResult()</code> function. For instance, a <code>SurfaceMesh</code> can decode whether a vertex/face/edge/etc was clicked on, the index of that element, and barycentric coordinates of the click within a face.</p>
+<p>Polyscope also maintains a stateful selection, displayed in the UI to provide information about the content of the scene. It can be accessed via <code>getSelection()</code>, <code>resetSelection()</code>, <code>haveSelection()</code>.</p>
+<h2 id="overriding-built-in-ui-behavior">Overriding Built-In UI Behavior</h2>
 <p>If desired, you can circumvent Polyscope&rsquo;s standard ImGui style and UI panes, in ordered to build dramatically customized applications.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2005,12 +1995,10 @@
 </code></pre></div></p>
 <details class="func">
 <summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">configureImGuiStyleCallback</span></code></summary>
-<h5 id="imgui-style-callback">imgui style callback</h5>
 <p>A callback function which will be invoked when an ImGui context is created (which may happen several times as Polyscope runs). By default, this is set to invoke <code>configureImGuiStyle()</code> from Polyscope&rsquo;s <code>imgui_config.cpp</code>, but you may assign your own function to create custom styles. If this callback is null, the default ImGui style will be used.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ImFontAtlas</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">ImFont</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">ImFont</span><span class="o">*&gt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">prepareImGuiFontsCallback</span></code></summary>
-<h5 id="imgui-fonts-callback">imgui fonts callback</h5>
 <p>A callback function which will be invoked exactly once during initialization to construct a font atlas for ImGui to use. The callback should return a tuple of three pointers: a newly created global shared font atlas, a regular font, and a mono font. By default, this is set to invoke <code>prepareImGuiFonts()</code> from Polyscope&rsquo;s <code>imgui_config.cpp</code>, but you may assign your own function to create custom styles. If this callback is null, default fonts will be used.</p>
 <p>This callback is invoked when <code>polycope::init()</code> is called, so if you are going to customize it you <strong>must</strong> do so before <code>init()</code>.</p>
 <p>The default implementation of this callback looks something like the following. You can customize your own version of this function to modify any Polyscope fonts, or if you simply want to load additional fonts, do so at the commented note below.</p>
@@ -2046,12 +2034,11 @@
 <p>The option <code>buildGui</code> can be used to entirely disable all of Polyscope&rsquo;s ImGui UI elements, allowing you to build your own UI. Polyscope will still initialize ImGui and invoke its drawing routines each frame.</p>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">buildGui</span></code></summary>
-<h5 id="build-gui">build gui</h5>
 <p>This option can be used to disable all of Polyscope&rsquo;s ImGui UI elements, which may be useful for advanced applications which wish to build a fully-custom UI on top of Polyscope.</p>
 <p>If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.</p>
 <p>Default: <code>true</code>.</p>
 </details>
-<p>The functions <code>buildPolyscopeGui()</code>, <code>buildStructureGui()</code>, <code>buildPickGui()</code>, and <code>buildUserGuiAndInvokeCallback()</code> can be used to manually build pieces of the UI one at a time.</p>
+<p>The functions <code>buildPolyscopeGui()</code>, <code>buildStructureGui()</code>, <code>buildPickGui()</code>, and <code>buildUserGuiAndInvokeCallback()</code> can be used to manually build pieces of the UI one at a time. If you are giving control to the UI via <code>show()</code>, you call the first 3 to reproduce the standard UI.</p>
 
 
 

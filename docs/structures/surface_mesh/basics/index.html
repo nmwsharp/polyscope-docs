@@ -501,7 +501,21 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -849,12 +863,18 @@
     Updating a mesh
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#picking" class="md-nav__link">
-    Picking
+    <nav class="md-nav" aria-label="Updating a mesh">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selection-picking" class="md-nav__link">
+    Selection / Picking
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1333,8 +1353,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1618,12 +1638,18 @@
     Updating a mesh
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#picking" class="md-nav__link">
-    Picking
+    <nav class="md-nav" aria-label="Updating a mesh">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selection-picking" class="md-nav__link">
+    Selection / Picking
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1660,7 +1686,7 @@
 <p>Surface meshes are one of the core structures in Polyscope. In addition to simply displaying the mesh, Polyscope can show any number of scalar, vector,color, and other kinds of quantities associated with the vertices/faces/edges/etc of the mesh.</p>
 <p>Polyscope does not impose any requirements on the meshes visualized. They may be polygonal or nonmanifold.  As always, try clicking on the vertices or faces of a mesh see the data associated with that mesh element.</p>
 <p><img alt="surface_mesh_demo" src="/media/mesh_demo.gif" /></p>
-<h3 id="registering-a-surface-mesh">Registering a surface mesh</h3>
+<h2 id="registering-a-surface-mesh">Registering a surface mesh</h2>
 <p>Example: registering a surface mesh from libIGL
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
@@ -1701,7 +1727,7 @@
 <p>Polyscope quantities are ordered arrays of data, but not everyone can agree on the ordering of elements in a mesh. See <a href="../indexing_convention/">indexing conventions</a>.</p>
 <p>The default ordering is probably the same as yours for data on <strong>vertices, faces, and corners</strong>. However, data on <strong>edges and halfedges</strong> is much more likely to require setting an ordering.</p>
 </div>
-<h3 id="updating-a-mesh">Updating a mesh</h3>
+<h2 id="updating-a-mesh">Updating a mesh</h2>
 <p>The locations of the vertices in a mesh can be updated with the member function <code>updateVertexPositions(newPositions)</code>. All quantities will be preserved. Changing the connectivity or element counts in a mesh is not supported, you will need to register a new mesh (perhaps with the same name to overwrite).</p>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">updateVertexPositions</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">V</span><span class="o">&amp;</span><span class="w"> </span><span class="n">newPositions</span><span class="p">)</span></code></summary>
@@ -1711,10 +1737,36 @@
 </ul>
 <p>Note: <code>updateVertexPositions2D</code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
 </details>
-<h3 id="picking">Picking</h3>
-<p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene. By default only mesh vertices and faces can be selected. Edges, corners, and halfedges, become selectable only once they are used by some quantity, for instance once a per-corner quantity is registered, then it becomes possible to click on corners.</p>
-<p>If desired, you can manually override this behavior by calling <code>SurfaceMesh::markEdgesAsUsed()</code>, to make the structure act as if edges are in use and make the pickable, etc. The same goes for <code>SurfaceMesh::markCornersAsUsed()</code> and <code>SurfaceMesh::markHalfedgesAsUsed()</code>. If you mark edges or halfedges as used, you much also set their element ordering as described in the <a href="../indexing_convention/">indexing conventions</a>.</p>
-<h3 id="back-face-policies">Back face policies</h3>
+<h3 id="selection-picking">Selection / Picking</h3>
+<p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene. As with other structures, you can call <code>interpretPickResult()</code> to get additional info about a click. See <a href="/basics/interactive_UIs_and_animation/#selection-picking">the overview of Selection / Picking</a> for general information about selection. </p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">SurfaceMeshPickResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">MeshElement</span><span class="w"> </span><span class="n">elementType</span><span class="p">;</span><span class="w">  </span><span class="c1">// which kind of element did we click (enum values: [VERTEX, FACE, EDGE, HALFEDGE, CORNER])</span>
+<span class="w">  </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w">            </span><span class="c1">// index of the clicked element</span>
+<span class="w">  </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">baryCoords</span><span class="p">;</span><span class="w">     </span><span class="c1">// coordinates in face, populated only for triangular face picks</span>
+<span class="p">};</span>
+</code></pre></div>
+<details class="func">
+<summary><code class="highlight"><span class="n">SurfaceMeshPickResult</span><span class="w"> </span><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">interpretPickResult</span><span class="p">(</span><span class="n">PickResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span></code></summary>
+<p>Get additional information about a click on a mesh.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">SurfaceMeshPickResult</span><span class="w"> </span><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">interpretPickResult</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PickResult</span><span class="o">&amp;</span><span class="w"> </span><span class="n">result</span><span class="p">)</span></code></summary>
+<p>Get additional mesh-specific info about a pick result. This function is only valid to call on the structure which the pick hit.</p>
+<p><code>PickResults</code> usually come from calling <code>pickAtScreenCoords()</code>.</p>
+</details>
+<p>We can also set which mesh elements are selectable (for instance, to make only vertices be returned from pick queries). This option can be set programmatically as <code>SurfaceMesh::setSelectionMode(MeshSelectionMode newMode)</code>, or from the UI. The available selection modes are:</p>
+<ul>
+<li>
+<p><code>MeshSelectionMode::Auto</code>: Vertices and faces can always be selected. Edges, corners, halfedges can only be selected once they are in-use by some quantity. You can manually call <code>SurfaceMesh::markEdgesAsUsed()</code>, to act as if edges are in use and make them pickable, etc. The same goes for <code>SurfaceMesh::markCornersAsUsed()</code> and <code>SurfaceMesh::markHalfedgesAsUsed()</code>. If you mark edges or halfedges as used, you much also set their element ordering as described in the <a href="../indexing_convention/">indexing conventions</a>.</p>
+</li>
+<li>
+<p><code>MeshSelectionMode::VerticesOnly</code>: Only vertices can be selected</p>
+</li>
+<li>
+<p><code>MeshSelectionMode::FacesOnly</code>: Only faces can be selected</p>
+</li>
+</ul>
+<h2 id="back-face-policies">Back face policies</h2>
 <p>The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the &ldquo;outward&rdquo; direction. Faces which are viewed from behind are referred to as <em>back faces</em>; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how back faces are displayed.</p>
 <p><img alt="backface policies diagram" src="../../../media/backface_diagram.png" /></p>
 <ul>
@@ -1737,7 +1789,7 @@
 <p>Set the color to be used for custom back face coloring. Has no effect unless the back face policy is <code>BackFacePolicy::Custom</code>.</p>
 <p>There is also a corresponding <code>getBackFaceColor()</code>.</p>
 </details>
-<h3 id="options">Options</h3>
+<h2 id="options">Options</h2>
 <p>See <a href="/structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>
 <thead>
@@ -1797,6 +1849,13 @@
 <td><a href="#back-face-policies">back face color</a> for the <code>Custom</code> policy</td>
 <td><code class="highlight"><span class="n">BackFacePolicy</span><span class="w"> </span><span class="n">getBackFaceColor</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setBackFaceColor</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">val</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>selection mode</td>
+<td><a href="#picking-and-selection">what elements can be selected</a></td>
+<td><code class="highlight"><span class="n">MeshSelectionMode</span><span class="w"> </span><span class="n">getSelectionMode</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setSelectionMode</span><span class="p">(</span><span class="n">MeshSelectionMode</span><span class="w"> </span><span class="n">newMode</span><span class="p">)</span></code></td>
 <td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 </tbody>

@@ -501,7 +501,21 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1315,8 +1329,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1672,6 +1686,7 @@
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">colorsTex</span><span class="p">(</span><span class="n">dimX</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dimY</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span><span class="mf">.3</span><span class="p">,</span><span class="w"> </span><span class="mf">.4</span><span class="p">});</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceTextureColorQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">qColor</span><span class="w"> </span><span class="o">=</span>
 <span class="w">  </span><span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">addTextureColorQuantity</span><span class="p">(</span><span class="s">&quot;tColor&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">qParam</span><span class="p">,</span><span class="w"> </span><span class="n">dimX</span><span class="p">,</span><span class="w"> </span><span class="n">dimY</span><span class="p">,</span><span class="w"> </span><span class="n">colorsTex</span><span class="p">,</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">ImageOrigin</span><span class="o">::</span><span class="n">UpperLeft</span><span class="p">);</span>
+<span class="n">qColor</span><span class="o">-&gt;</span><span class="n">setFilterMode</span><span class="p">(</span><span class="n">FilterMode</span><span class="o">::</span><span class="n">Nearest</span><span class="p">);</span><span class="w"> </span><span class="c1">// change filter for sampling</span>
 <span class="n">qColor</span><span class="o">-&gt;</span><span class="n">setEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
@@ -1691,6 +1706,15 @@
 <details class="func">
 <summary><code class="highlight"><span class="n">SurfaceTextureColorQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">addTextureColorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">paramName</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">dimX</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">dimY</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">colors</span><span class="p">,</span><span class="w"> </span><span class="n">ImageOrigin</span><span class="w"> </span><span class="n">imageOrigin</span><span class="p">)</span></code></summary>
 <p>Like above, but takes the reference to the parameterization quantity by name.</p>
+</details>
+<p>The <code>FilterMode</code> can be set to adjust how values are sampled from the texture. <code>FilterMode::Linear</code> (default) will smoothly linearly interpolate values, while <code>FilterMode::Nearest</code> will use nearest-neighbor sampling, which can be useful for sharp edges and crisp boundaries.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">SurfaceTextureColorQuantity</span><span class="o">::</span><span class="n">setFilterMode</span><span class="p">(</span><span class="n">FilterMode</span><span class="w"> </span><span class="n">mode</span><span class="p">)</span></code></summary>
+<p>Set the filtering mode used to sample from the map. </p>
+<ul>
+<li><code>FilterMode::Linear</code> (default) for smooth linear interpolation</li>
+<li><code>FilterMode::Nearest</code> for sharp nearest-neighbor sampling</li>
+</ul>
 </details>
 <h3 id="color-quantity-options">Color Quantity Options</h3>
 <p>These options and behaviors are available for all types of color quantities on any structure.</p>

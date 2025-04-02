@@ -1,0 +1,2049 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://polyscope.run/py/basics/interactive_UIs_and_animation/">
+      
+      
+        <link rel="prev" href="../camera_controls/">
+      
+      
+        <link rel="next" href="../../structures/structure_management/">
+      
+      <link rel="icon" href="../../media/icons/material/baseline_highlight_black_18dp.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+    
+    
+      
+        <title>Interactive UIs & Animation - Polyscope - Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ffa9267a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300i,400,400i,700,700i%7CInconsolata:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"PT Serif";--md-code-font:"Inconsolata"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extras.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-flow-for-interactive-uis-and-animation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../.."
+      title="Polyscope - Python"
+      class="md-header__button md-logo"
+      aria-label="Polyscope - Python"
+      data-md-component="logo"
+    >
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 10 6 5h12l-3 5H9m9-6H6V2h12v2M9 22V11h6v11H9m3-9a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1Z"/></svg>
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Polyscope - Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interactive UIs & Animation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+    <!-- ADDED BY NSHARP language selector -->
+    <div class="md-flex__cell md-flex__cell--shrink">
+      <a href="https://polyscope.run" class="lang-button lang-button-inactive">
+        C++
+      </a>
+    </div>
+    <div class="md-flex__cell md-flex__cell--shrink">
+      <a href="https://polyscope.run/py" class="lang-button">
+        Python
+      </a>
+    </div>
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nmwsharp/polyscope" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nmwsharp/polyscope
+  </div>
+</a>
+      </div>
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Polyscope - Python" class="md-nav__button md-logo" aria-label="Polyscope - Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 10 6 5h12l-3 5H9m9-6H6V2h12v2M9 22V11h6v11H9m3-9a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1Z"/></svg>
+
+    </a>
+    Polyscope - Python
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nmwsharp/polyscope" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nmwsharp/polyscope
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/release_notes/" class="md-nav__link">
+        Release notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/dependencies/" class="md-nav__link">
+        Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing/" class="md-nav__link">
+        Installing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ/" class="md-nav__link">
+        FAQ, Tips, and Tricks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flow/" class="md-nav__link">
+        Basic Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_options/" class="md-nav__link">
+        Program Options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scene_options/" class="md-nav__link">
+        Scene Options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../camera_controls/" class="md-nav__link">
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Interactive UIs & Animation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Interactive UIs & Animation
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-flow-for-interactive-uis-and-animation" class="md-nav__link">
+    Basic Flow for Interactive UIs and Animation
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Flow for Interactive UIs and Animation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-main-loops" class="md-nav__link">
+    Custom main loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-show" class="md-nav__link">
+    Nested show
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-animated-data" class="md-nav__link">
+    Updating Animated Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-uis-with-imgui" class="md-nav__link">
+    Custom UIs with ImGui
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mouse-interactions" class="md-nav__link">
+    Mouse Interactions
+  </a>
+  
+    <nav class="md-nav" aria-label="Mouse Interactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#picking-selection-and-querying-the-scene" class="md-nav__link">
+    Picking, Selection, and Querying the Scene
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overriding-built-in-ui-behavior" class="md-nav__link">
+    Overriding Built-In UI Behavior
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Structures and Quantities
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Structures and Quantities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/structure_management/" class="md-nav__link">
+        Structure Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          Point Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Point Cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/point_cloud/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/point_cloud/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/point_cloud/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/point_cloud/vector_quantities/" class="md-nav__link">
+        Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
+        Variable Radius
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/point_cloud/variable_transparency/" class="md-nav__link">
+        Variable Transparency
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+          Curve Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Curve Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
+        Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+          Surface Mesh
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          Surface Mesh
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/surface_mesh/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/surface_mesh/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/surface_mesh/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/surface_mesh/texture_map_quantities/" class="md-nav__link">
+        Texture Map Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/surface_mesh/vector_quantities/" class="md-nav__link">
+        Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/surface_mesh/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/surface_mesh/indexing_convention/" class="md-nav__link">
+        Indexing Convention
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/surface_mesh/variable_transparency/" class="md-nav__link">
+        Variable Transparency
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          Volume Mesh
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Volume Mesh
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/volume_mesh/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/volume_mesh/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/volume_mesh/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/volume_mesh/vector_quantities/" class="md-nav__link">
+        Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+          Volume Grid
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_6">
+          <span class="md-nav__icon md-icon"></span>
+          Volume Grid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/volume_grid/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/volume_grid/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+          Camera View
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_7">
+          <span class="md-nav__icon md-icon"></span>
+          Camera View
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/camera_view/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+          Floating Quantities
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_8">
+          <span class="md-nav__icon md-icon"></span>
+          Floating Quantities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/floating_quantities/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/floating_quantities/images/" class="md-nav__link">
+        Images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/floating_quantities/render_images/" class="md-nav__link">
+        Render Images
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/screenshots/" class="md-nav__link">
+        Screenshots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameters/" class="md-nav__link">
+        Parameters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/messages/" class="md-nav__link">
+        Messages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/materials/" class="md-nav__link">
+        Materials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/color_maps/" class="md-nav__link">
+        Color Maps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/transparency/" class="md-nav__link">
+        Transparency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/ground_and_shadows/" class="md-nav__link">
+        Ground and Shadows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/slice_planes/" class="md-nav__link">
+        Slice Planes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/2D_data/" class="md-nav__link">
+        2D Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/groups/" class="md-nav__link">
+        Groups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/implicit_helpers/" class="md-nav__link">
+        Implicit Helpers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-flow-for-interactive-uis-and-animation" class="md-nav__link">
+    Basic Flow for Interactive UIs and Animation
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Flow for Interactive UIs and Animation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-main-loops" class="md-nav__link">
+    Custom main loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-show" class="md-nav__link">
+    Nested show
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-animated-data" class="md-nav__link">
+    Updating Animated Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-uis-with-imgui" class="md-nav__link">
+    Custom UIs with ImGui
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mouse-interactions" class="md-nav__link">
+    Mouse Interactions
+  </a>
+  
+    <nav class="md-nav" aria-label="Mouse Interactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#picking-selection-and-querying-the-scene" class="md-nav__link">
+    Picking, Selection, and Querying the Scene
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overriding-built-in-ui-behavior" class="md-nav__link">
+    Overriding Built-In UI Behavior
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Interactive UIs & Animation</h1>
+
+<p>Polyscope enables you to create custom interactive UIs with your own GUI elements such as buttons, sliders, and textboxes which execute user-defined code. </p>
+<p>Likewise, there is no explicit built-in functionality for time-varying data in Polyscope, but you can easily create custom UIs to display and update your content.</p>
+<p>In either case, you can create interactive UI elements with the excellent <a href="https://github.com/ocornut/imgui">Dear ImGui</a> library, see below for more.</p>
+<p><img alt="callback ui demo" src="/py//media/callback_ui_demo.png" /></p>
+<h2 id="basic-flow-for-interactive-uis-and-animation">Basic Flow for Interactive UIs and Animation</h2>
+<p>The first step is to get your code executing every frame while the Polyscope window is open and running.</p>
+<p>You can specify a callback function which Polyscope will invoke on each frame while the window is active.  This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.  With this approach, you simplify set the desired callback function, and then call <code>polyscope.show()</code> as usual.</p>
+<p>Your callback function should have no arguments and no return value. To use state inside your callback, access it directly from the outer scope where your function was defined.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="c1"># track state</span>
+<span class="n">my_val</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span> <span class="nf">my_other_function</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">callback</span><span class="p">():</span>
+    <span class="c1"># Executed every frame</span>
+
+    <span class="c1"># Update content in the scene</span>
+    <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;this frame point&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+    <span class="c1"># access state from the outer scope</span>
+    <span class="k">global</span> <span class="n">my_val</span> <span class="c1"># note: python has weird rules about &#39;global&#39; vs &#39;nonlocal&#39;</span>
+
+    <span class="c1"># Build a UI element to edit a parameter, which will </span>
+    <span class="c1"># appear in the onscreen panel</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">my_val</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputInt</span><span class="p">(</span><span class="s2">&quot;my val&quot;</span><span class="p">,</span> <span class="n">my_val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;run subroutine&quot;</span><span class="p">):</span>
+        <span class="n">my_other_function</span><span class="p">()</span>
+
+<span class="n">ps</span><span class="o">.</span><span class="n">set_user_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></p>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_user_callback</span><span class="p">(</span><span class="n">func</span><span class="p">)</span></code></summary>
+<p>Set a function which will be called by polyscope on every UI draw iteration. The argument should be a Python function, which takes no arguments.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">clear_user_callback</span><span class="p">()</span></code></summary>
+<p>Clear the callback function.</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">callback sets up ImGui internally</p>
+<p>By default, when the user callback executes, Polyscope will internally set up an <code>ImGui</code> pane for you to create UI elements in. You can immediately make calls like <code>psim.Button()</code> in the callback without any additional ImGui bookkeeping.</p>
+<p>This behavior is configurable with an option below.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Updating data from main loop with <code>frame_tick()</code></p>
+<h5 id="custom-main-loops">Custom main loops</h5>
+<p>As described in <a href="/py//basics/flow/#program-structure">program structure</a>, it is alternately possible to run the Polyscope window not by calling <code>show()</code>, but by writing your own main loop, and calling <code>frame_tick()</code> on each iteration.</p>
+<p>If you choose this route, you can also modify scene content by simple issuing polyscope calls like <code>register_surface_mesh()</code> at any point in your main loop.</p>
+<p><strong>However, you cannot issue ImGui calls at any point in your main loop.</strong> This limitation is because Polyscope needs to set up the ImGui context, which is not available as your main loop executes.</p>
+<p>Fortunately, you can still use the user callback to create ImGui UIs. You can specify your callback function as above, and it will be executed each frame, even when running Polyscope from your own main loop.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nested calls to <code>show()</code></p>
+<h5 id="nested-show">Nested show</h5>
+<p>When creating custom UIs, you may find you want to call <code>show()</code> to open the interactive window, <em>within a frame which is already executing the main loop</em>.</p>
+<p>For example, you might create a button which calls a user-specified function. Within that function, if you hit a bug, you could register some extra data to understand the problem, call <code>show()</code> to investigate, then exit the window and continue running the outer program loop.</p>
+<p><strong>This is a supported workflow!</strong> It should be possible to arbitrarily recurse into the show function, interacting with the scene even as an outer loop is executing.</p>
+<p>By default the user callback will not be executed within any of these nested calls to show, only the outermost one (configurable with an option below). Be careful not write an recursion of calling <code>show()</code>!</p>
+</div>
+<h3 id="options">Options</h3>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_open_imgui_window_for_user_callback</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
+<p>If true, an ImGui window will be created and docked to the side of the UI when the <a href="../../features/callbacks_and_UIs">user callback function</a> is invoked. This means you can immediately start making ui calls like <code>polyscope.imgui.Button("do stuff")</code>. </p>
+<p>If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).</p>
+<p>Default: <code>True</code>.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_invoke_user_callback_for_nested_show</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
+<p>Suppose you call <code>polyscope.show()</code>, and within your callback, another instance of <code>polyscope.show()</code> is called&mdash;this is a nested show.</p>
+<p>Depending on the situation, you might or might not want your user callback to continue being executed on each render loop iteration of this nested viewer; this setting exposes the option.</p>
+<p>If true, your callback will be executed as normal for every main loop iteration, even in nested show windows.</p>
+<p>If false, your callback will only be executed for initial, outermost calls to <code>polyscope.show()</code>.</p>
+<p>Default: <code>False</code>.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_give_focus_on_show</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
+<p>If true, the Polyscope window will request focus from the window manager whenever <code>show()</code> is called. If false, the focus state will be left unchanged.</p>
+<p>Default: <code>False</code>.</p>
+</details>
+<h2 id="updating-animated-data">Updating Animated Data</h2>
+<p>Once you have code executing per-frame, you can issue Polyscope commands on each invocation to update the data.</p>
+<p>The simplest approach is to just re-call structure-registration or quantity-adder functions with the updated data. Adding new structures/quantities with the same name will replace any existing ones, they will even <a href="/py//basics/parameters/#persistent-values">inherit any options which have been set</a>. This should be fast enough for small-medium sized data at interactive rates.</p>
+<p>Additionally, some structures have special more-efficient functions which update the structure in-place, if you are not changing the number of elements (e.g. <a href="/py//structures/surface_mesh/basics/#updating-a-mesh"><code>SurfaceMesh.update_vertex_positions()</code></a>). Currently, if you are changing the number of elements (number of points in a point cloud, or number of vertices or connectivity of a mesh), you have no choice but to register a whole new structure.</p>
+<p><strong>Example:</strong> A typical basic setup for playing time-series data</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># a list of your data for each frame</span>
+<span class="n">n_timestep</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">n_pts</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">per_frame_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_timestep</span><span class="p">,</span> <span class="n">n_pts</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># random sample data</span>
+
+<span class="c1"># UI state</span>
+<span class="n">curr_frame</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">auto_playing</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">myCallback</span><span class="p">():</span> <span class="c1"># gets executed per-frame</span>
+
+  <span class="c1"># Python scope resolution quirks</span>
+  <span class="c1"># may need `nonlocal` rather than `global`` if your callback is </span>
+  <span class="c1"># defined inside another function</span>
+  <span class="k">global</span> <span class="n">curr_frame</span><span class="p">,</span> <span class="n">auto_playing</span>
+
+  <span class="n">update_frame_data</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">auto_playing</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">&quot;Autoplay&quot;</span><span class="p">,</span> <span class="n">auto_playing</span><span class="p">)</span>
+
+  <span class="c1"># Advance the frame</span>
+  <span class="k">if</span> <span class="n">auto_playing</span><span class="p">:</span>
+    <span class="n">update_frame_data</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">curr_frame</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_frame</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n_timestep</span>
+
+  <span class="c1"># Slider to manually scrub through frames  </span>
+  <span class="n">slider_updated</span><span class="p">,</span> <span class="n">curr_frame</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderInt</span><span class="p">(</span><span class="s2">&quot;Curr Frame&quot;</span><span class="p">,</span> <span class="n">curr_frame</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_timestep</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">update_frame_data</span> <span class="o">=</span> <span class="n">update_frame_data</span> <span class="ow">or</span> <span class="n">slider_updated</span>
+
+  <span class="c1"># Update the scene content if-needed</span>
+  <span class="k">if</span> <span class="n">update_frame_data</span><span class="p">:</span>
+    <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;frame points&quot;</span><span class="p">,</span> <span class="n">per_frame_points</span><span class="p">[</span><span class="n">curr_frame</span><span class="p">,:,:])</span>
+
+<span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="c1"># set the scene scale manually so it doesn&#39;t jump around </span>
+<span class="c1"># as the data changes</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_automatically_compute_scene_extents</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_length_scale</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_bounding_box</span><span class="p">((</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">))</span>
+
+<span class="n">ps</span><span class="o">.</span><span class="n">set_user_callback</span><span class="p">(</span><span class="n">myCallback</span><span class="p">)</span> <span class="c1"># specify the per-frame function</span>
+
+<span class="c1"># give control to the main loop, blocks until window is exited</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="custom-uis-with-imgui">Custom UIs with ImGui</h2>
+<p>Polyscope integrates with the <a href="https://github.com/ocornut/imgui">Dear ImGui</a> library, a widely-used framework for creating prototype/demo UIs and widgets. It implements a huge variety of GUI elements including buttons, sliders, text boxes, color pickers, trees, tables, etc.</p>
+<p>The Polyscope python package includes bindings to a significant subset of ImGui in the <code>polyscope.imgui</code> submodule. </p>
+<p>These bindings are not yet exhaustively documented, but they follow the naming conventions of ImGui as closely as possible for simplicity. Documentation of ImGui functions and parameters lives <a href="https://github.com/ocornut/imgui/blob/master/imgui.h">here</a>, and  you can find the list of bound functions, types, and enums <a href="https://github.com/nmwsharp/polyscope-py/blob/master/src/cpp/imgui.cpp">here</a>. Common usage should be covered by the example below.</p>
+<p><strong>Example:</strong> Create the following UI in a Python callback</p>
+<p><img alt="callback ui demo" src="/py//media/imgui_py_demo.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
+
+<span class="c1"># A bunch of parameters which we will manipulate via the UI defined below.</span>
+<span class="c1"># There is nothing special about these variables, you could manipulate any other </span>
+<span class="c1"># kind of Python values the same way, such as entries in a dict, or class members.</span>
+<span class="n">is_true1</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">is_true2</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">ui_int</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">ui_float1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.2</span>
+<span class="n">ui_float2</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">ui_color3</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ui_color4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ui_angle_rad</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">ui_text</span> <span class="o">=</span> <span class="s2">&quot;some input text&quot;</span>
+<span class="n">ui_options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;option A&quot;</span><span class="p">,</span> <span class="s2">&quot;option B&quot;</span><span class="p">,</span> <span class="s2">&quot;option C&quot;</span><span class="p">]</span>
+<span class="n">ui_options_selected</span> <span class="o">=</span> <span class="n">ui_options</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
+    <span class="c1"># ... do something important here ...</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;executing function&quot;</span><span class="p">)</span>
+
+<span class="c1"># Define our callback function, which Polyscope will repeatedly execute while running the UI.</span>
+<span class="c1"># We can write any code we want here, but in particular it is an opportunity to create ImGui </span>
+<span class="c1"># interface elements and define a custom UI.</span>
+<span class="k">def</span> <span class="nf">callback</span><span class="p">():</span>
+
+    <span class="c1"># If we want to use local variables &amp; assign to them in the UI code below, </span>
+    <span class="c1"># we need to mark them as nonlocal. This is because of how Python scoping </span>
+    <span class="c1"># rules work, not anything particular about Polyscope or ImGui.</span>
+    <span class="c1"># Of course, you can also use any other kind of python variable as a controllable </span>
+    <span class="c1"># value in the UI, such as a value from a dictionary, or a class member. Just be </span>
+    <span class="c1"># sure to assign the result of the ImGui call to the value, as in the examples below.</span>
+    <span class="c1"># </span>
+    <span class="c1"># If these variables are defined at the top level of a Python script file (i.e., not</span>
+    <span class="c1"># inside any method), you will need to use the `global` keyword instead of `nonlocal`.</span>
+    <span class="k">nonlocal</span> <span class="n">is_true1</span><span class="p">,</span> <span class="n">is_true2</span><span class="p">,</span> <span class="n">ui_int</span><span class="p">,</span> <span class="n">ui_float1</span><span class="p">,</span> <span class="n">ui_float2</span><span class="p">,</span> <span class="n">ui_color3</span><span class="p">,</span> <span class="n">ui_color4</span><span class="p">,</span> <span class="n">ui_text</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">,</span> <span class="n">ui_angle_rad</span>
+
+
+    <span class="c1"># == Settings</span>
+
+    <span class="c1"># Use settings like this to change the UI appearance.</span>
+    <span class="c1"># Note that it is a push/pop pair, with the matching pop() below.</span>
+    <span class="n">psim</span><span class="o">.</span><span class="n">PushItemWidth</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+
+
+    <span class="c1"># == Show text in the UI</span>
+
+    <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">&quot;Some sample text&quot;</span><span class="p">)</span>
+    <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">&quot;An important value: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+    <span class="n">psim</span><span class="o">.</span><span class="n">Separator</span><span class="p">()</span>
+
+
+    <span class="c1"># == Buttons</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;A button&quot;</span><span class="p">)):</span>
+        <span class="c1"># This code is executed when the button is pressed</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+
+    <span class="c1"># By default, each element goes on a new line. Use this </span>
+    <span class="c1"># to put the next element on the _same_ line.</span>
+    <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
+
+    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Another button&quot;</span><span class="p">)):</span>
+        <span class="c1"># This code is executed when the button is pressed</span>
+        <span class="n">my_function</span><span class="p">()</span>
+
+
+    <span class="c1"># == Set parameters</span>
+
+    <span class="c1"># These commands allow the user to adjust the value of variables.</span>
+    <span class="c1"># It is important that we assign the return result to the variable to</span>
+    <span class="c1"># update it. </span>
+    <span class="c1"># For most elements, the return is actually a tuple `(changed, newval)`, </span>
+    <span class="c1"># where `changed` indicates whether the setting was modified on this </span>
+    <span class="c1"># frame, and `newval` gives the new value of the variable (or the same </span>
+    <span class="c1"># old value if unchanged).</span>
+    <span class="c1">#</span>
+    <span class="c1"># For numeric inputs, ctrl-click on the box to type in a value.</span>
+
+    <span class="c1"># Checkbox</span>
+    <span class="n">changed</span><span class="p">,</span> <span class="n">is_true1</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">&quot;flag1&quot;</span><span class="p">,</span> <span class="n">is_true1</span><span class="p">)</span> 
+    <span class="k">if</span><span class="p">(</span><span class="n">changed</span><span class="p">):</span> <span class="c1"># optionally, use this conditional to take action on the new value</span>
+        <span class="k">pass</span> 
+    <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
+    <span class="n">changed</span><span class="p">,</span> <span class="n">is_true2</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">&quot;flag2&quot;</span><span class="p">,</span> <span class="n">is_true2</span><span class="p">)</span> 
+
+    <span class="c1"># Input ints</span>
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_int</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputInt</span><span class="p">(</span><span class="s2">&quot;ui_int&quot;</span><span class="p">,</span> <span class="n">ui_int</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step_fast</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> 
+
+    <span class="c1"># Input floats using two different styles of widget</span>
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_float1</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputFloat</span><span class="p">(</span><span class="s2">&quot;ui_float1&quot;</span><span class="p">,</span> <span class="n">ui_float1</span><span class="p">)</span> 
+    <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_float2</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderFloat</span><span class="p">(</span><span class="s2">&quot;ui_float2&quot;</span><span class="p">,</span> <span class="n">ui_float2</span><span class="p">,</span> <span class="n">v_min</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">v_max</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Input colors</span>
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_color3</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">ColorEdit3</span><span class="p">(</span><span class="s2">&quot;ui_color3&quot;</span><span class="p">,</span> <span class="n">ui_color3</span><span class="p">)</span>
+    <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_color4</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">ColorEdit4</span><span class="p">(</span><span class="s2">&quot;ui_color4&quot;</span><span class="p">,</span> <span class="n">ui_color4</span><span class="p">)</span>
+
+    <span class="c1"># Input text</span>
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_text</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputText</span><span class="p">(</span><span class="s2">&quot;enter text&quot;</span><span class="p">,</span> <span class="n">ui_text</span><span class="p">)</span>
+
+    <span class="c1"># Combo box to choose from options</span>
+    <span class="c1"># There, the options are a list of strings in `ui_options`,</span>
+    <span class="c1"># and the currently selected element is stored in `ui_options_selected`.</span>
+    <span class="n">psim</span><span class="o">.</span><span class="n">PushItemWidth</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">changed</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">BeginCombo</span><span class="p">(</span><span class="s2">&quot;Pick one&quot;</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">changed</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">ui_options</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">selected</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Selectable</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="o">==</span><span class="n">val</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">selected</span><span class="p">:</span>
+                <span class="n">ui_options_selected</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="n">psim</span><span class="o">.</span><span class="n">EndCombo</span><span class="p">()</span>
+    <span class="n">psim</span><span class="o">.</span><span class="n">PopItemWidth</span><span class="p">()</span>
+
+
+    <span class="c1"># Use tree headers to logically group options</span>
+
+    <span class="c1"># This a stateful option to set the tree node below to be open initially.</span>
+    <span class="c1"># The second argument is a flag, which works like a bitmask.</span>
+    <span class="c1"># Many ImGui elements accept flags to modify their behavior.</span>
+    <span class="n">psim</span><span class="o">.</span><span class="n">SetNextItemOpen</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">psim</span><span class="o">.</span><span class="n">ImGuiCond_FirstUseEver</span><span class="p">)</span>
+
+    <span class="c1"># The body is executed only when the sub-menu is open. Note the push/pop pair!</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">TreeNode</span><span class="p">(</span><span class="s2">&quot;Collapsible sub-menu&quot;</span><span class="p">)):</span>
+
+        <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">&quot;Detailed information&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;sub-button&quot;</span><span class="p">)):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+
+        <span class="c1"># There are many different UI elements offered by ImGui, many of which</span>
+        <span class="c1"># are bound in python by Polyscope. See ImGui&#39;s documentation in `imgui.h`,</span>
+        <span class="c1"># or the polyscope bindings in `polyscope/src/cpp/imgui.cpp`.</span>
+        <span class="n">changed</span><span class="p">,</span> <span class="n">ui_angle_rad</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderAngle</span><span class="p">(</span><span class="s2">&quot;ui_float2&quot;</span><span class="p">,</span> <span class="n">ui_angle_rad</span><span class="p">,</span> 
+                <span class="n">v_degrees_min</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">v_degrees_max</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+        <span class="n">psim</span><span class="o">.</span><span class="n">TreePop</span><span class="p">()</span>
+
+    <span class="n">psim</span><span class="o">.</span><span class="n">PopItemWidth</span><span class="p">()</span>
+
+
+<span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span> 
+<span class="n">ps</span><span class="o">.</span><span class="n">set_user_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="mouse-interactions">Mouse Interactions</h2>
+<p>You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. ImGui exposes the state of the mouse and whether a click occurred via <code>psim.GetIO()</code>.</p>
+<details class="note">
+<summary>Temporarily disable default mouse camera movement</summary>
+<p>If you implement your own interactions like clicking-and-dragging objects onscreen, you&rsquo;ll find that the Polyscope view camera unintentionally moves in response to these motions. You can temporarily disable the camera motion like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">doing_interaction</span> <span class="ow">and</span> <span class="n">psim</span><span class="o">.</span><span class="n">IsMouseClicked</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span> 
+    <span class="n">ps</span><span class="o">.</span><span class="n">set_do_default_mouse_interaction</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># ... do your interaction</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">doing_interaction</span><span class="p">:</span>
+    <span class="c1"># re-enable the default mouse motions after you&#39;re done</span>
+    <span class="n">ps</span><span class="o">.</span><span class="n">set_do_default_mouse_interaction</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">screen_coords_to_world_ray</span><span class="p">(</span><span class="n">screen_coords</span><span class="p">)</span></code></summary>
+<p>Convert a click location to a ray in world-space.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">screen_coords_to_world_position</span><span class="p">(</span><span class="n">screen_coords</span><span class="p">)</span></code></summary>
+<p>Convert a click location to a location in world-space, by reading from the scene&rsquo;s depth buffer.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_do_default_mouse_interaction</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
+<p>Use this function to (temporarily) disable Polyscope&rsquo;s default mouse clicking/panning/zooming response to mouse movements, so that they will not conflict with your own implemented operations</p>
+<p>If <code>True</code>, Polyscope will perform its usual responses to mouse operations, <code>False</code> will disable.</p>
+</details>
+<h3 id="picking-selection-and-querying-the-scene">Picking, Selection, and Querying the Scene</h3>
+<p>&ldquo;Picking&rdquo; refers to querying the content under the cursor in the rendered image.  Polyscope implements render buffer-based picking, to efficiently get the object and element under the cursor even on large complex scenes.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">pick</span><span class="p">(</span><span class="n">screen_coords</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">buffer_inds</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
+<p>Evaluate a &ldquo;pick&rdquo; query to get the contents of the rendered view at a specified location.  One of <code>screen_coords</code> or <code>buffer_inds</code> should be passed as the input location, but not both.  The return is a <code>PickResult</code> class, see below. </p>
+<p>Screen coordinates and buffer indices both refer to a location in the rendered 2d image. Screen coordinates are real-valued, whereas buffer indices are integer. On some platforms they may be identical, but on others with high-DPI screens, they may differ. In the common-case of getting mouse positions from ImGui, you want screen coords.</p>
+</details>
+<p><strong>Example:</strong> picking a faces from a mesh
+<div class="highlight"><pre><span></span><code><span class="c1"># inside the user-callback, or other code which runs each frame</span>
+<span class="n">myMesh</span> <span class="o">=</span> <span class="c1"># ...  your added mesh ... */</span>
+
+<span class="c1"># make only faces clickable in the mesh</span>
+<span class="n">myMesh</span><span class="o">.</span><span class="n">set_selection_mode</span><span class="p">(</span><span class="s1">&#39;faces_only&#39;</span><span class="p">)</span>
+
+<span class="c1"># get the mouse location from ImGui</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">GetIO</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">io</span><span class="o">.</span><span class="n">MouseClicked</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="c1"># if clicked</span>
+  <span class="n">screen_coords</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">MousePos</span>
+  <span class="n">pick_result</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="n">screen_coords</span><span class="o">=</span><span class="n">screen_coords</span><span class="p">)</span>
+
+  <span class="c1"># check out pick_result.is_hit, pick_result.structureName, pick_result.depth, etc</span>
+
+  <span class="c1"># get additional information if we clicked on a mesh</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">pick_result</span><span class="o">.</span><span class="n">isHit</span> <span class="ow">and</span> <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_name</span> <span class="o">==</span> <span class="s2">&quot;myMesh&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pick_result</span><span class="o">.</span><span class="n">structure_data</span><span class="p">)</span> <span class="c1"># additional dictionary of element type, coords, etc.</span>
+</code></pre></div></p>
+<p>A pick query returns a combined struct with info such as what structure was clicked on, and depth of the point in the scene.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PickResult</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">is_hit</span> <span class="o">=</span>               <span class="c1"># did we hit anything?</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">structure_type_name</span> <span class="o">=</span>  <span class="c1"># structure type which was hit, like &quot;Point Cloud&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">structure_name</span> <span class="o">=</span>       <span class="c1"># name of structure which was hit, like &quot;my_points&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">screen_coords</span> <span class="o">=</span>        <span class="c1"># coordinates of the query location</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">buffer_inds</span> <span class="o">=</span>          <span class="c1"># render buffer indices of the query location</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span>             <span class="c1"># 3d position which was hit, in world space</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">=</span>                <span class="c1"># depth to the hit, in world units</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">local_index</span> <span class="o">=</span>          <span class="c1"># structure-specific index of the element which was hit</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">structure_data</span> <span class="o">=</span>       <span class="c1"># a dictionary of additional fields for the clicked structure</span>
+</code></pre></div>
+<p>Additionally, many structures will report additional information about the pick, in the <code>structure_data</code> field. For instance, a <code>SurfaceMesh</code> gives info on whether a vertex/face/edge/etc was clicked on, the index of that element, and barycentric coordinates of the click within a face.</p>
+<p>Polyscope also maintains a stateful selection, displayed in the UI to provide information about the content of the scene. It can be accessed via <code>get_selection()</code>, <code>reset_selection()</code>, <code>have_selection()</code>.</p>
+<h2 id="overriding-built-in-ui-behavior">Overriding Built-In UI Behavior</h2>
+<p>If desired, you can circumvent Polyscope&rsquo;s standard ImGui style and UI panes, in ordered to build dramatically customized applications.</p>
+<p>The option <code>build_gui</code> can be used to entirely disable all of Polyscope&rsquo;s ImGui UI elements, allowing you to build your own UI. Polyscope will still initialize ImGui and invoke its drawing routines each frame.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_build_gui</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
+<p>This option can be used to disable all of Polyscope&rsquo;s ImGui UI elements, which may be useful for advanced applications which wish to build a fully-custom UI on top of Polyscope.</p>
+<p>If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.</p>
+<p>Default: <code>True</code>.</p>
+</details>
+<p>The functions <code>build_polyscope_gui()</code>, <code>build_structure_gui()</code>, <code>build_pick_gui()</code>, and <code>build_user_gui_and_invoke_callback()</code>
+ can be used to manually build pieces of the UI one at a time. If you are giving control to the UI via <code>show()</code>, you call the first 3 to reproduce the standard UI.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../extra.js"></script>
+      
+    
+  </body>
+</html>

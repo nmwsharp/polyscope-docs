@@ -501,7 +501,21 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1019,6 +1033,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#selection-picking" class="md-nav__link">
+    Selection / Picking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#options" class="md-nav__link">
     Options
   </a>
@@ -1326,8 +1347,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1621,6 +1642,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#selection-picking" class="md-nav__link">
+    Selection / Picking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#options" class="md-nav__link">
     Options
   </a>
@@ -1751,6 +1779,17 @@
 <h3 id="slice-planes">Slice planes</h3>
 <p><a href="/features/slice_planes">Slice planes</a> are particularly useful for inspecting the internal structure of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.</p>
 <p>Slice planes have <a href="/features/slice_planes/#inspecting-volume-meshes">special functionality</a> for volume mesh vertex values&mdash;they can <em>inspect</em> quantities on volume meshes and render them on the interior of the volume. See the slice plane documentation for details.</p>
+<h3 id="selection-picking">Selection / Picking</h3>
+<p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call <code>interpretPickResult()</code> to get additional info about a click. See <a href="/basics/interactive_UIs_and_animation/#selection-picking">the overview of Selection / Picking</a> for general information.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">VolumeMeshPickResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">VolumeMeshElement</span><span class="w"> </span><span class="n">elementType</span><span class="p">;</span><span class="w"> </span><span class="c1">// which kind of element did we click (enum values: {VERTEX, EDGE, FACE, CELL})</span>
+<span class="w">  </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w">                 </span><span class="c1">// index of the clicked element</span>
+<span class="p">};</span>
+</code></pre></div>
+<details class="func">
+<summary><code class="highlight"><span class="n">VolumeMeshPickResult</span><span class="w"> </span><span class="n">VolumeMesh</span><span class="o">::</span><span class="n">interpretPickResult</span><span class="p">(</span><span class="n">PickResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span></code></summary>
+<p>Get additional information about a click.</p>
+</details>
 <h3 id="options">Options</h3>
 <p>See <a href="/structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>
