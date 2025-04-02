@@ -22,7 +22,7 @@ Headless rendering requires compiling with and initializing a separate EGL backe
 
 Fortunately, the linux Polyscope wheels published on `pip` are already built with support for EGL.
 
-Your system must also have EGL available at runtime. It is likely packaged with graphics drivers, or can be installed from a package manager. Another alternative is to fall back on (much slower!) rendering by installing `OSMesa` from your package manager.
+Your system must also have EGL available at runtime. It is likely packaged with graphics drivers, or can be installed from a package manager. Another alternative is to fall back on (much slower!) software rendering by installing `OSMesa` from your package manager.
 
 ??? note "For developers: compiling with EGL support"
 

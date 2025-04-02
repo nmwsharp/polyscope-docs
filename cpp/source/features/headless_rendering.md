@@ -21,7 +21,7 @@ Polyscope's default interactive backend uses GLFW to create an OpenGL context, w
 
 Headless rendering requires compiling with and initializing a separate EGL backend. 
 
-Your system must have EGL available. It is likely packaged with graphics drivers, or can be installed from a package manager. Another alternative is to fall back on (much slower!) rendering by installing `OSMesa` from your package manager.
+Your system must have EGL available. It is likely packaged with graphics drivers, or can be installed from a package manager. Another alternative is to fall back on (much slower!) software rendering by installing `OSMesa` from your package manager.
 
 At configuration time, the EGL backend must be enabled in CMake for headless support.  The default CMake settings enable it only if you are on Linux and EGL headers seem to be present on your system.  Set the CMake variable `POLYSCOPE_BACKEND_OPENGL3_EGL=ON` to force-enable building with EGL support. 
 
