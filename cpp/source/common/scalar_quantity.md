@@ -1,3 +1,9 @@
+### Categorical Scalars
+
+Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.
+
+Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set `DataType::CATEGORICAL`. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.
+
 ### Scalar Quantity Options
 
 These options and behaviors are available for all types of scalar quantities on any structure.
