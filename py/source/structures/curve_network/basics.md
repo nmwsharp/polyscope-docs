@@ -8,9 +8,9 @@ Try clicking on a node or edge to see the data associated with that point!
 
 ### Registering a curve network
 
-Curve network structures can be registered with Polyscope by passing the node position and edge indices. Polyscope also makes it easy to automatically construct lines and loops by just passing `edges='line'` or `edges='loop'`.
+Curve network structures can be registered with Polyscope by passing the node position and edge indices. 
 
-Example: a network of random curves 
+**Example:** a network of random curves 
 ```python
 import numpy as np
 import polyscope as ps
@@ -25,6 +25,14 @@ ps_net = ps.register_curve_network("my network", nodes, edges)
 ps.show()
 ```
 
+!!! Note  "Convenience adders for common cases"
+
+    Rather than passing a vector of edge indices, there are also built-in helpers for common cases of connectivity, like a single continuous sequential line or loop, or a collection of line segments. To use them, pass the string `line`, `loop`, or `segments` in places of edge indices, like `register_curve_network("name", nodes, edges='segments')`.
+
+    - `edges='line'` The nodes will be connected together sequentially, forming a single curve
+    - `edges='loop'` The nodes will be connected together sequentially, including the last to the first, to form a closed loop
+    - `edges='segments'` The `2N` nodes will be connected to form a set of `N` line segments, interleaved as in `[start_0 end_0 start_1 end_1 ...]`
+
 
 ???+ func "`#!python register_curve_network(name, nodes, edges, enabled=None, radius=None, color=None, material=None)`"
 
@@ -32,7 +40,7 @@ ps.show()
 
     - `name` string, a name for the structure
     - `nodes`, an `Nx3` numpy float array of node locations (or `Nx2` for 2D)
-    - `edges`, an `Ex2` numpy integer array of edge connections, as 0-based indices in to the nodes array, OR the string `line`/`loop`,  to generate node connectivity as a line or loop, respectively.
+    - `edges`, an `Ex2` numpy integer array of edge connections, as 0-based indices in to the nodes array, OR the string `line`/`loop`/'segments',  to generate node connectivity as a line or loop, respectively.
 
     Additional optional keyword arguments:
 

@@ -28,6 +28,15 @@ polyscope::registerCurveNetwork("my network", nodes, edges);
 polyscope::show();
 ```
 
+!!! Note  "Convenience adders for common cases"
+
+    Rather than passing a vector of edge indices, there are also built-in helpers for common cases of connectivity, like a single continuous sequential line or loop, or a collection of line segments. To use them, call the alternate adders such as `registerCurveNetworkLine("name", nodes)`, which do not require a vector of edge indices.
+
+    - `line` The nodes will be connected together sequentially, forming a single curve
+    - `loop` The nodes will be connected together sequentially, including the last to the first, to form a closed loop
+    - `segments` The `2N` nodes will be connected to form a set of `N` line segments, interleaved as in `[start_0 end_0 start_1 end_1 ...]`
+
+
 ??? func "`#!cpp CurveNetwork* polyscope::registerCurveNetwork(std::string name, const P& nodes, const E& edges)`"
 
     Add a new curve network to polyscope
@@ -40,7 +49,7 @@ polyscope::show();
 
 ??? func "`#!cpp CurveNetwork* polyscope::registerCurveNetworkLine(std::string name, const P& nodes)`"
 
-    Add a new curve network to polyscope from a **polyline** of points. The connectivity will be automatically created to connect the points in order.
+    Add a new curve network to Polyscope from a **polyline** of points. The connectivity will be automatically created to connect the points in order.
 
     - `nodes` is the array of 3D point locations. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of nodes.
 
@@ -49,7 +58,15 @@ polyscope::show();
 
 ??? func "`#!cpp CurveNetwork* polyscope::registerCurveNetworkLoop(std::string name, const P& nodes)`"
 
-    Add a new curve network to polyscope from a **closed loop** of points. The connectivity will be automatically created to connect the points in order.
+    Add a new curve network to Polyscope from a **closed loop** of points. The connectivity will be automatically created to connect the points in order.
+
+    - `nodes` is the array of 3D point locations. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of nodes.
+
+    Note: the inner vector type of the `points` input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D curve network, `registerCurveNetworkLoop2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
+
+??? func "`#!cpp CurveNetwork* polyscope::registerCurveNetworkSegments(std::string name, const P& nodes)`"
+
+    Add a new curve network to Polyscope from an interleaved set of lines. If `2N` nodes are passed, then `N` line segments will be created, connecting the points in an interleaved order like `[start_0 end_0 start_1 end_1 ...]`.
 
     - `nodes` is the array of 3D point locations. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 3-vectors. The length will be the number of nodes.
 
