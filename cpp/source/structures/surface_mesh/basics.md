@@ -68,26 +68,7 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 ### Selection / Picking
 
-"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. By default, mesh vertices and faces can be selected. Edges, corners, and halfedges, become selectable only once they are used by some quantity, for instance once a per-corner quantity is registered, then it becomes possible to click on corners.
-
-You can adjust this behavior via the `MeshSelectionMode` setting and enum:
-
-- `MeshSelectionMode::Auto` both vertices and faces are always selectable, and edges/halfedges/corners are selectable only if they have been used
-- `MeshSelectionMode::VerticesOnly` only vertices can be selected
-- `MeshSelectionMode::FacesOnly` only face scan be selected
-
-If desired, you can further manually override the `Auto` behavior by calling `SurfaceMesh::markEdgesAsUsed()`, to make the structure act as if edges are in use and make them pickable, etc. The same goes for `SurfaceMesh::markCornersAsUsed()` and `SurfaceMesh::markHalfedgesAsUsed()`. If you mark edges or halfedges as used, you much also set their element ordering as described in the [indexing conventions](../indexing_convention/).
-
-??? func "`#!cpp SurfaceMesh* SurfaceMesh::setSelectionMode(MeshSelectionMode newMode)`"
-
-    Set the mode for which mesh elements are selectable 
-
-    - `newMode` is an enum giving the new mode, one of `MeshSelectionMode::Auto`, `MeshSelectionMode::VerticesOnly`, or `MeshSelectionMode::FacesOnly` as described above
-
-    There is also a corresponding `getMeshSelectionMode()`.
-
-
-As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information about selection. 
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information about selection. 
 
 ```cpp
 struct SurfaceMeshPickResult {
@@ -108,16 +89,8 @@ struct SurfaceMeshPickResult {
     
     `PickResults` usually come from calling `pickAtScreenCoords()`.
 
-```cpp
-struct SurfaceMeshPickResult {
-  MeshElement elementType;                    // which kind of element did we click
-  int64_t index;                              // index of the clicked element
-  glm::vec3 baryCoords=glm::vec3{-1.,-1.,-1}; // coordinates in face, triangle face hits only
-};
-```
 
 We can also set which mesh elements are selectable (for instance, to make only vertices be returned from pick queries). This option can be set programmatically as `SurfaceMesh::setSelectionMode(MeshSelectionMode newMode)`, or from the UI. The available selection modes are:
-
 
 - `MeshSelectionMode::Auto`: Vertices and faces can always be selected. Edges, corners, halfedges can only be selected once they are in-use by some quantity. You can manually call `SurfaceMesh::markEdgesAsUsed()`, to act as if edges are in use and make them pickable, etc. The same goes for `SurfaceMesh::markCornersAsUsed()` and `SurfaceMesh::markHalfedgesAsUsed()`. If you mark edges or halfedges as used, you much also set their element ordering as described in the [indexing conventions](../indexing_convention/).
 
