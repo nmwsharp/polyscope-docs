@@ -486,21 +486,7 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Managing Views & Cameras
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
-        Interactive UIs & Animation
+        Camera Controls & Parameters
       </a>
     </li>
   
@@ -1304,8 +1290,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/headless_rendering/" class="md-nav__link">
-        Headless Rendering
+      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
+        Callbacks & Custom UIs
       </a>
     </li>
   
@@ -1525,10 +1511,10 @@
 <p>Try clicking on a node or edge to see the data associated with that point!</p>
 <p><img alt="curve_network_demo" src="../../../media/curve_network_demo.gif" /></p>
 <h3 id="registering-a-curve-network">Registering a curve network</h3>
-<p>Curve network structures can be registered with Polyscope by passing the node position and edge indices. </p>
-<p><strong>Example:</strong> a network of random curves 
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<p>Curve network structures can be registered with Polyscope by passing the node position and edge indices. Polyscope also makes it easy to automatically construct lines and loops by just passing <code>edges='line'</code> or <code>edges='loop'</code>.</p>
+<p>Example: a network of random curves 
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># generate some random nodes and edges between them</span>
@@ -1539,22 +1525,13 @@
 <span class="n">ps_net</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">&quot;my network&quot;</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
-<div class="admonition note">
-<p class="admonition-title">Convenience adders for common cases</p>
-<p>Rather than passing a vector of edge indices, there are also built-in helpers for common cases of connectivity, like a single continuous sequential line or loop, or a collection of line segments. To use them, pass the string <code>line</code>, <code>loop</code>, or <code>segments</code> in places of edge indices, like <code>register_curve_network("name", nodes, edges='segments')</code>.</p>
-<ul>
-<li><code>edges='line'</code> The nodes will be connected together sequentially, forming a single curve</li>
-<li><code>edges='loop'</code> The nodes will be connected together sequentially, including the last to the first, to form a closed loop</li>
-<li><code>edges='segments'</code> The <code>2N</code> nodes will be connected to form a set of <code>N</code> line segments, interleaved as in <code>[start_0 end_0 start_1 end_1 ...]</code></li>
-</ul>
-</div>
 <details class="func" open="open">
 <summary><code class="highlight"><span class="n">register_curve_network</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
 <p>Add a new curve network structure to Polyscope.</p>
 <ul>
 <li><code>name</code> string, a name for the structure</li>
 <li><code>nodes</code>, an <code>Nx3</code> numpy float array of node locations (or <code>Nx2</code> for 2D)</li>
-<li><code>edges</code>, an <code>Ex2</code> numpy integer array of edge connections, as 0-based indices in to the nodes array, OR the string <code>line</code>/<code>loop</code>/&rsquo;segments&rsquo;,  to generate node connectivity as a line or loop, respectively.</li>
+<li><code>edges</code>, an <code>Ex2</code> numpy integer array of edge connections, as 0-based indices in to the nodes array, OR the string <code>line</code>/<code>loop</code>,  to generate node connectivity as a line or loop, respectively.</li>
 </ul>
 <p>Additional optional keyword arguments:</p>
 <ul>

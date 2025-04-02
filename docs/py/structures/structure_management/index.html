@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://polyscope.run/py/structures/structure_management/">
       
       
-        <link rel="prev" href="../../basics/interactive_UIs_and_animation/">
+        <link rel="prev" href="../../basics/camera_controls/">
       
       
         <link rel="next" href="../point_cloud/basics/">
@@ -486,21 +486,7 @@
   
     <li class="md-nav__item">
       <a href="../../basics/camera_controls/" class="md-nav__link">
-        Managing Views & Cameras
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../basics/interactive_UIs_and_animation/" class="md-nav__link">
-        Interactive UIs & Animation
+        Camera Controls & Parameters
       </a>
     </li>
   
@@ -1339,8 +1325,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/headless_rendering/" class="md-nav__link">
-        Headless Rendering
+      <a href="../../features/callbacks_and_UIs/" class="md-nav__link">
+        Callbacks & Custom UIs
       </a>
     </li>
   
@@ -1608,7 +1594,7 @@ This avoids the need to pass a reference to the structure you created around you
 <p>Each structure offers a <code>register___(name, ...)</code> function (like <code>register_point_cloud()</code>) which accepts the name of the structure and the data necessary to construct it. These functions will return a structure object which may be used to add quantities to the structure. See the relevant sections for documentation on each of these register functions.</p>
 <h2 id="accessing-structures">Accessing structures</h2>
 <p>Polyscope offers two patterns for calling methods on a registered structure: you can either use the handle returned after structure creation, or refer to the structure by name.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 
 <span class="c1"># register a structure</span>
 <span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
@@ -1623,7 +1609,7 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <p>As before, each structure offers a <code>get___(name)</code> method, like <code>get_surface_mesh(name)</code> which can be used to get a handle to the structure of that type by name.</p>
 <h2 id="removing-structures">Removing structures</h2>
 <p>If no longer needed, structures can be removed by name or by handle. Removing a structure frees memory for the underlying objects, invalidating all references to the structure and its quantities.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 
 <span class="c1"># register a structure and some data</span>
 <span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
@@ -1672,26 +1658,6 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <p>Each structure has an associated spatial <em>transform</em> applied to it for display in the scene. The transform encodes a translation, rotation, and scaling represented as a 4x4 homogeneous matrix. Initially this transformation is just the identity transform (it does nothing), but it can be adjusted to position the structures in your scene.</p>
 <p>The transform can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Transform]</code> menu.</p>
 <details class="func">
-<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span></code></summary>
-<p>Get the current transformation matrix. Returns a 4x4 numpy matrix.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span></code></summary>
-<p>Set a particular transform matrix. Takes a 4x4 numpy array.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span></code></summary>
-<p>Get the translation component of the transformation matrix, the position to which the structure&rsquo;s origin is translated. Returns a length-3 numpy vector.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></code></summary>
-<p>Set the transformation matrix such that structure is transformed to the position <code>vec</code>. Takes a length-3 numpy vector.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></code></summary>
-<p>Translate the transformation matrix by offset <code>vec</code>. Takes a length-3 numpy vector.</p>
-</details>
-<details class="func">
 <summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">center_bounding_box</span><span class="p">()</span></code></summary>
 <p>Set the transformation such that the structure&rsquo;s bounding box is centered at the world origin.</p>
 </details>
@@ -1704,12 +1670,24 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <p>Reset the structure&rsquo;s transform to be the identity transform (i.e. to do nothing).</p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="n">void</span> <span class="n">Structure</span><span class="o">.</span><span class="n">set_transform_gizmo_enabled</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
-<p>Enable/disable the interactive onscreen widget which lets the user adjust an object&rsquo;s transform. Takes a boolean as input.</p>
+<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_transparency</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span></code></summary>
+<p>Set a particular transform matrix. Takes a 4x4 numpy array.</p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_transform_gizmo_enabled</span><span class="p">()</span></code></summary>
-<p>Get the enabled state of the interactive onscreen widget which lets the user adjust an object&rsquo;s transform.  Returns a boolean.</p>
+<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></code></summary>
+<p>Set the transformation matrix such that structure is transformed to the position <code>vec</code>. Takes a length-3 numpy vector.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></code></summary>
+<p>Translate the transformation matrix by offset <code>vec</code>. Takes a length-3 numpy vector.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span></code></summary>
+<p>Get the current transformation matrix. Returns a 4x4 numpy matrix.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span></code></summary>
+<p>Get the translation component of the transformation matrix, the position to which the structure&rsquo;s origin is translated. Returns a length-3 numpy vector.</p>
 </details>
 <h4 id="slice-planes">Slice planes</h4>
 <p>Options relating to <a href="/py//features/slice_planes/">slice planes</a> which may be present in the scene.</p>

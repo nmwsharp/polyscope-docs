@@ -501,21 +501,7 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Managing Views & Cameras
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
-        Interactive UIs & Animation
+        Camera Controls & Parameters
       </a>
     </li>
   
@@ -1333,8 +1319,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/headless_rendering/" class="md-nav__link">
-        Headless Rendering
+      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
+        Callbacks & Custom UIs
       </a>
     </li>
   
@@ -1663,15 +1649,6 @@
 <span class="c1">// visualize!</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 </code></pre></div></p>
-<div class="admonition note">
-<p class="admonition-title">Convenience adders for common cases</p>
-<p>Rather than passing a vector of edge indices, there are also built-in helpers for common cases of connectivity, like a single continuous sequential line or loop, or a collection of line segments. To use them, call the alternate adders such as <code>registerCurveNetworkLine("name", nodes)</code>, which do not require a vector of edge indices.</p>
-<ul>
-<li><code>line</code> The nodes will be connected together sequentially, forming a single curve</li>
-<li><code>loop</code> The nodes will be connected together sequentially, including the last to the first, to form a closed loop</li>
-<li><code>segments</code> The <code>2N</code> nodes will be connected to form a set of <code>N</code> line segments, interleaved as in <code>[start_0 end_0 start_1 end_1 ...]</code></li>
-</ul>
-</div>
 <details class="func">
 <summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">*</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCurveNetwork</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">E</span><span class="o">&amp;</span><span class="w"> </span><span class="n">edges</span><span class="p">)</span></code></summary>
 <p>Add a new curve network to polyscope</p>
@@ -1687,7 +1664,7 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">*</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCurveNetworkLine</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">nodes</span><span class="p">)</span></code></summary>
-<p>Add a new curve network to Polyscope from a <strong>polyline</strong> of points. The connectivity will be automatically created to connect the points in order.</p>
+<p>Add a new curve network to polyscope from a <strong>polyline</strong> of points. The connectivity will be automatically created to connect the points in order.</p>
 <ul>
 <li><code>nodes</code> is the array of 3D point locations. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 3-vectors. The length will be the number of nodes.</li>
 </ul>
@@ -1695,15 +1672,7 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">*</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCurveNetworkLoop</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">nodes</span><span class="p">)</span></code></summary>
-<p>Add a new curve network to Polyscope from a <strong>closed loop</strong> of points. The connectivity will be automatically created to connect the points in order.</p>
-<ul>
-<li><code>nodes</code> is the array of 3D point locations. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 3-vectors. The length will be the number of nodes.</li>
-</ul>
-<p>Note: the inner vector type of the <code>points</code> input <em>must</em> be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D curve network, <code>registerCurveNetworkLoop2D</code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">*</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCurveNetworkSegments</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">nodes</span><span class="p">)</span></code></summary>
-<p>Add a new curve network to Polyscope from an interleaved set of lines. If <code>2N</code> nodes are passed, then <code>N</code> line segments will be created, connecting the points in an interleaved order like <code>[start_0 end_0 start_1 end_1 ...]</code>.</p>
+<p>Add a new curve network to polyscope from a <strong>closed loop</strong> of points. The connectivity will be automatically created to connect the points in order.</p>
 <ul>
 <li><code>nodes</code> is the array of 3D point locations. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 3-vectors. The length will be the number of nodes.</li>
 </ul>

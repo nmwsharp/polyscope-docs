@@ -486,21 +486,7 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Managing Views & Cameras
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
-        Interactive UIs & Animation
+        Camera Controls & Parameters
       </a>
     </li>
   
@@ -1311,8 +1297,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/headless_rendering/" class="md-nav__link">
-        Headless Rendering
+      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
+        Callbacks & Custom UIs
       </a>
     </li>
   
@@ -1543,9 +1529,9 @@
 
 <h3 id="registering-a-volume-mesh">Registering a volume mesh</h3>
 <p><strong>Example</strong>: registering a tetrahedral mesh</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">igl</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">igl</span>
 
 <span class="n">verts</span><span class="p">,</span> <span class="n">tets</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">igl</span><span class="o">.</span><span class="n">read_mesh</span><span class="p">(</span><span class="s2">&quot;my_mesh.mesh&quot;</span><span class="p">)</span>
 <span class="n">ps_vol</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_volume_mesh</span><span class="p">(</span><span class="s2">&quot;test volume mesh&quot;</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">tets</span><span class="o">=</span><span class="n">tets</span><span class="p">)</span>
@@ -1660,8 +1646,8 @@
 </tbody>
 </table>
 <p><strong>Example</strong>: set options which affect the appearance of the mesh
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 
 <span class="c1"># a simple inline mesh</span>
 <span class="n">verts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
