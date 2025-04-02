@@ -79,11 +79,6 @@ ps.init()
 
     Default: `True` 
     
-    Also, if you like the warnings but do not want them displayed with a dialog, you can disable the popup dialogs while retaining the check with:
-
-    ```python
-    ps.set_display_message_popups(False)
-    ```
 
 ??? func "`#!python set_SSAA_factor(n)`"
     

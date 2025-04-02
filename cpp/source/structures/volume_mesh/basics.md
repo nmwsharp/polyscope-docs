@@ -107,6 +107,21 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 Slice planes have [special functionality]([[url.prefix]]/features/slice_planes/#inspecting-volume-meshes) for volume mesh vertex values---they can _inspect_ quantities on volume meshes and render them on the interior of the volume. See the slice plane documentation for details.
 
+### Selection / Picking
+
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information.
+
+```cpp
+struct VolumeMeshPickResult {
+  VolumeMeshElement elementType; // which kind of element did we click (enum values: {VERTEX, EDGE, FACE, CELL})
+  int64_t index;                 // index of the clicked element
+};
+```
+
+??? func "`#!cpp VolumeMeshPickResult VolumeMesh::interpretPickResult(PickResult result)`"
+
+    Get additional information about a click.
+
 ### Options
 
 See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.

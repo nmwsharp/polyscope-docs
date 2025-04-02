@@ -80,6 +80,20 @@ You can update the parameters associated with a camera view to move it within th
     - `params` is a [Camera Parameters]([[url.prefix]]/basics/camera_controls/#camera-parameters).
 
 
+## Selection / Picking
+
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information.
+
+```cpp
+struct CameraViewPickResult {
+  // currently nothing, just following the same pattern as other structures
+};
+```
+
+??? func "`#!cpp CameraViewPickResult CameraView::interpretPickResult(PickResult result)`"
+
+    Get additional information about a click.
+
 ## Options
 
 See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.

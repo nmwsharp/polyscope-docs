@@ -66,11 +66,22 @@ The locations of the vertices in a mesh can be updated with the member function 
     Note: `updateVertexPositions2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
 
-## Picking and Selection
+### Selection / Picking
 
-"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  [See the section on picking for more info]([[url.prefix]]/basics/interactive_UIs_and_animation/#picking-selection-and-querying-the-scene).
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information about selection. 
 
-Additional information about a pick which hits a mesh can be retrieved by calling `SurfaceMesh::interpretPickResult(pickResult)`. This function should only be called on the structure which was hit.
+```cpp
+struct SurfaceMeshPickResult {
+  MeshElement elementType;  // which kind of element did we click (enum values: [VERTEX, FACE, EDGE, HALFEDGE, CORNER])
+  int64_t index;            // index of the clicked element
+  glm::vec3 baryCoords;     // coordinates in face, populated only for triangular face picks
+};
+```
+
+??? func "`#!cpp SurfaceMeshPickResult SurfaceMesh::interpretPickResult(PickResult result)`"
+
+    Get additional information about a click on a mesh.
+
 
 ??? func "`#!cpp SurfaceMeshPickResult SurfaceMesh::interpretPickResult(const PickResult& result)`"
 
@@ -78,16 +89,8 @@ Additional information about a pick which hits a mesh can be retrieved by callin
     
     `PickResults` usually come from calling `pickAtScreenCoords()`.
 
-```cpp
-struct SurfaceMeshPickResult {
-  MeshElement elementType;                    // which kind of element did we click
-  int64_t index;                              // index of the clicked element
-  glm::vec3 baryCoords=glm::vec3{-1.,-1.,-1}; // coordinates in face, triangle face hits only
-};
-```
 
 We can also set which mesh elements are selectable (for instance, to make only vertices be returned from pick queries). This option can be set programmatically as `SurfaceMesh::setSelectionMode(MeshSelectionMode newMode)`, or from the UI. The available selection modes are:
-
 
 - `MeshSelectionMode::Auto`: Vertices and faces can always be selected. Edges, corners, halfedges can only be selected once they are in-use by some quantity. You can manually call `SurfaceMesh::markEdgesAsUsed()`, to act as if edges are in use and make them pickable, etc. The same goes for `SurfaceMesh::markCornersAsUsed()` and `SurfaceMesh::markHalfedgesAsUsed()`. If you mark edges or halfedges as used, you much also set their element ordering as described in the [indexing conventions](../indexing_convention/).
 

@@ -72,6 +72,21 @@ polyscope::show();
 
     Note: the inner vector type of the `points` input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to register a 2D curve network, `registerCurveNetworkLoop2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
+### Selection / Picking
+
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information.
+
+```cpp
+struct CurveNetworkPickResult {
+  CurveNetworkElement elementType; // which kind of element did we click (enum values: {NODE, EDGE})
+  int64_t index;                   // index of the clicked element
+  float tEdge = -1;                // if the pick is an edge, the t-value in [0,1] along the edge
+};
+```
+
+??? func "`#!cpp CurveNetworkPickResult CurveNetwork::interpretPickResult(PickResult result)`"
+
+    Get additional information about a click.
 
 ### Updating a curve network
 

@@ -225,7 +225,7 @@ You can implement custom mouse behaviors on clicks and other actions within your
 
 ### Picking, Selection, and Querying the Scene
 
-"Picking" refers to querying the content under the cursor in the rendered image.  Polyscope implements render buffer-based picking, to efficiently get the object and element under the cursor even on large complex scenes.
+"Picking" refers to querying the content under the cursor in the rendered image.  Polyscope implements render buffer-based picking, to efficiently get the object and element under the cursor even on large complex scenes. 
 
 ??? func "`#!cpp PickResult pickAtScreenCoords(glm::vec2 screenCoords)`"
 

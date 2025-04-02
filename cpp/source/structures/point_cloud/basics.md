@@ -57,6 +57,21 @@ The locations of the points in a point cloud can be updated with the member func
 
     Note: `updatePointPositions2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
+
+### Selection / Picking
+
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information.
+
+```cpp
+struct PointCloudPickResult {
+  int64_t index; // index of the clicked point
+};
+```
+
+??? func "`#!cpp PointCloudPickResult PointCloud::interpretPickResult(PickResult result)`"
+
+    Get additional information about a click.
+
 ### Point render mode
 
 By default, Polyscope renders point clouds with a sphere for each point. However, for large point clouds (for instance, > 500,000 points, or on low-end hardware), this sphere rendering may become prohibitively expensive and lead to a laggy interface. As an alternative, points can be rendered as a small quad per-point, which is more efficient (for instance, it renders in real-time with 20,000,000+ points on my mid-range GPU).
