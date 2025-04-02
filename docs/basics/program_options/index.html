@@ -547,6 +547,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#warn-for-invalid-values" class="md-nav__link">
+    warn for invalid values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ssaa-anti-aliasing-factor" class="md-nav__link">
     SSAA anti-aliasing factor
   </a>
@@ -637,7 +644,21 @@
   
     <li class="md-nav__item">
       <a href="../camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1396,8 +1417,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1711,6 +1732,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#warn-for-invalid-values" class="md-nav__link">
+    warn for invalid values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ssaa-anti-aliasing-factor" class="md-nav__link">
     SSAA anti-aliasing factor
   </a>
@@ -1842,6 +1870,15 @@
 <p>Default: <code>true</code> when compiled in <code>Debug</code> mode, <code>false</code> in <code>Release</code> mode.</p>
 </details>
 <details class="func">
+<summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">warnForInvalidValues</span></code></summary>
+<h5 id="warn-for-invalid-values">warn for invalid values</h5>
+<p>If true, polyscope will give warnings when any added values are <code>inf</code> or <code>NaN</code>. Most (but not quite all) floating-point buffers of data such as vertex positions, scalar/color/vector quantities, etc are checked.</p>
+<p>Default: <code>true</code> </p>
+<p>Also, if you like the warnings but do not want them displayed with a dialog, you can disable the popup dialogs while retaining the check with:</p>
+<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">displayMessagePopups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</code></pre></div>
+</details>
+<details class="func">
 <summary><code class="highlight"><span class="kt">int</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">ssaaFactor</span></code></summary>
 <h5 id="ssaa-anti-aliasing-factor">SSAA anti-aliasing factor</h5>
 <p>Enable super-sampling anti-aliasing for a prettier rendered scene. SSAA renders the scene at multiple samples for each pixel, then averages them to resolve final pixel values. </p>
@@ -1857,7 +1894,11 @@
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">usePrefsFile</span></code></summary>
 <h5 id="use-prefs-file">use prefs file</h5>
 <p>Polyscope can read and write to a preferences file to save state between invocations. For now, this is primarily used to restore the window position on the desktop. The preference file is a <code>json</code>-formatted plaintext file called <code>.polyscope.ini</code>.</p>
-<p>This option controls the use of the preferences file. If <code>false</code>, if will be neither written nor read. Default: <code>true</code>.</p>
+<p>This option controls the use of the preferences file. If <code>false</code>, if will be neither written nor read. Default: <code>false</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dec 2024 this setting was changed to <em>disabled</em> by default. It is a cause of rare-but-tricky bugs on some platforms, such as saving a window location from one monitor, then attempting to re-load the setting on a smaller monitor causing the window to be placed offscreen.</p>
+</div>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">alwaysRedraw</span></code></summary>

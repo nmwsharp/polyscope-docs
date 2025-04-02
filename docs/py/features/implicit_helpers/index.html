@@ -484,7 +484,21 @@
   
     <li class="md-nav__item">
       <a href="../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1231,8 +1245,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1581,16 +1595,16 @@
 <p>If you want real-time implicit rendering, you will need to perform that rendering outside of Polyscope. However, the resulting renders can still be added to Polyscope as a <a href="/py//structures/floating_quantities/render_images">Render Image</a> to take advantage of Polyscope&rsquo;s functionality. You can even use direct GPU interop (beta feature!) to do so with minimal realtime overhead.</p>
 </div>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># define some implicit functions</span>
-<span class="k">def</span> <span class="nf">sphere_sdf</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span> <span class="c1"># takes [N,3] query pos array, returns [N,] SDF values</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sphere_sdf</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span> <span class="c1"># takes [N,3] query pos array, returns [N,] SDF values</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.</span>
     <span class="k">return</span> <span class="n">res</span>
-<span class="k">def</span> <span class="nf">color_func</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span> <span class="c1"># takes [N,3] query pos array, returns [N,3] color values</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">color_func</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span> <span class="c1"># takes [N,3] query pos array, returns [N,3] color values</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.3</span>
     <span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">pts</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">return</span> <span class="n">A</span>

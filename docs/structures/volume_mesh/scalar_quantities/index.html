@@ -501,7 +501,21 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1022,6 +1036,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#categorical-scalars" class="md-nav__link">
+    Categorical Scalars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scalar-quantity-options" class="md-nav__link">
     Scalar Quantity Options
   </a>
@@ -1315,8 +1336,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1601,6 +1622,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#categorical-scalars" class="md-nav__link">
+    Categorical Scalars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scalar-quantity-options" class="md-nav__link">
     Scalar Quantity Options
   </a>
@@ -1666,6 +1694,9 @@
 </details>
 <h3 id="inspecting-with-slice-planes">Inspecting with slice planes</h3>
 <p>Slice planes have <a href="/features/slice_planes/#inspecting-volume-meshes">special functionality</a> for volume mesh vertex values&mdash;they can <em>inspect</em> quantities on volume meshes and render them on the interior of the volume. See the slice plane documentation for details.</p>
+<h3 id="categorical-scalars">Categorical Scalars</h3>
+<p>Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.</p>
+<p>Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set <code>DataType::CATEGORICAL</code>. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.</p>
 <h3 id="scalar-quantity-options">Scalar Quantity Options</h3>
 <p>These options and behaviors are available for all types of scalar quantities on any structure.</p>
 <table>
@@ -1708,10 +1739,17 @@
 <td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
-<td>isoline width</td>
-<td>width of isoline stripes, in data units</td>
-<td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineWidth</span><span class="p">()</span></code></td>
-<td><code class="highlight"><span class="n">setIsolineWidth</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td>isoline style</td>
+<td>stripes or thin contour lines</td>
+<td><code class="highlight"><span class="n">IsolineStyle</span><span class="w"> </span><span class="n">getIsolineStyle</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setIsolineStyle</span><span class="p">(</span><span class="n">IsolineStyle</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>isoline period</td>
+<td>period of isoline stripes, in data units</td>
+<td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolinePeriod</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setIsolinePeriod</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
 <td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
@@ -1719,6 +1757,13 @@
 <td>darkness of isoline stripes (default=<code>0.7</code>)</td>
 <td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineDarkness</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolineDarkness</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>contour thickness</td>
+<td>thickness of isoline contour lines (default=<code>0.3</code>)</td>
+<td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineContourThickness</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setIsolineContourThickness</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
 <td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 </tbody>

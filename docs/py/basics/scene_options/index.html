@@ -559,7 +559,21 @@
   
     <li class="md-nav__item">
       <a href="../camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1304,8 +1318,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1541,7 +1555,7 @@
   <h1>Scene Options</h1>
 
 <p>These are settings which affect the visual display of the scene.  It is often convenient to set them just before calling <code>polyscope.init()</code>, but they may generally be set anywhere.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="c1"># enable auto centering and scaling</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_autocenter_structures</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -1569,7 +1583,7 @@
 <p>However, sometimes it important to fix these extents rather than automatically computing them from data. One such case is producing precisely consistent visualizations across many inputs which might have slightly different extents. Another is when outlier data makes the automatically-computed extents egregiously large. The settings below can be used to manually adjust these extents.</p>
 <p>These parameters can be adjust in the UI under <code>[View] --&gt; [Scene Extents]</code>.</p>
 <p><strong>Example: </strong> fix the length scale to the unit bounding box
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_automatically_compute_scene_extents</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>

@@ -14,14 +14,14 @@
         <link rel="prev" href="../scene_options/">
       
       
-        <link rel="next" href="../../structures/structure_management/">
+        <link rel="next" href="../interactive_UIs_and_animation/">
       
       <link rel="icon" href="../../media/icons/material/baseline_highlight_black_18dp.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
     
     
       
-        <title>Camera Controls & Parameters - Polyscope - Python</title>
+        <title>Managing Views & Cameras - Polyscope - Python</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#options" class="md-skip">
+        <a href="#manipulating-the-current-view" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Camera Controls & Parameters
+              Managing Views & Cameras
             
           </span>
         </div>
@@ -495,12 +495,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Camera Controls & Parameters
+          Managing Views & Cameras
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Camera Controls & Parameters
+        Managing Views & Cameras
       </a>
       
         
@@ -517,71 +517,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#options" class="md-nav__link">
-    Options
+  <a href="#manipulating-the-current-view" class="md-nav__link">
+    Manipulating the Current View
   </a>
   
-    <nav class="md-nav" aria-label="Options">
+    <nav class="md-nav" aria-label="Manipulating the Current View">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#navigation-style" class="md-nav__link">
-    navigation style
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#up-direction" class="md-nav__link">
-    up direction
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#front-direction" class="md-nav__link">
-    front direction
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#look-at" class="md-nav__link">
-    look at
+    Look-At
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#reset-camera-to-home-view" class="md-nav__link">
-    reset camera to home view
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#orthographic-view" class="md-nav__link">
-    Orthographic view
-  </a>
-  
-    <nav class="md-nav" aria-label="Orthographic view">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set-projection-mode" class="md-nav__link">
-    set projection mode
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#savingrestoring-views" class="md-nav__link">
-    Saving/restoring views
+  <a href="#home-view" class="md-nav__link">
+    Home View
   </a>
   
 </li>
@@ -592,11 +544,39 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#camera-parameters" class="md-nav__link">
-    Camera Parameters
+  <a href="#navigation-style" class="md-nav__link">
+    Navigation Style
   </a>
   
-    <nav class="md-nav" aria-label="Camera Parameters">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-up-and-front" class="md-nav__link">
+    Canonical Up and Front
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perspective-and-orthographic-views" class="md-nav__link">
+    Perspective and Orthographic Views
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#savingrestoring-views" class="md-nav__link">
+    Saving/Restoring Views
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera-parameters-objects" class="md-nav__link">
+    Camera Parameters Objects
+  </a>
+  
+    <nav class="md-nav" aria-label="Camera Parameters Objects">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -614,7 +594,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#camera-parameters_1" class="md-nav__link">
+  <a href="#camera-parameters" class="md-nav__link">
     Camera Parameters
   </a>
   
@@ -642,6 +622,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
+      </a>
     </li>
   
 
@@ -1385,8 +1379,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1564,71 +1558,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#options" class="md-nav__link">
-    Options
+  <a href="#manipulating-the-current-view" class="md-nav__link">
+    Manipulating the Current View
   </a>
   
-    <nav class="md-nav" aria-label="Options">
+    <nav class="md-nav" aria-label="Manipulating the Current View">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#navigation-style" class="md-nav__link">
-    navigation style
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#up-direction" class="md-nav__link">
-    up direction
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#front-direction" class="md-nav__link">
-    front direction
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#look-at" class="md-nav__link">
-    look at
+    Look-At
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#reset-camera-to-home-view" class="md-nav__link">
-    reset camera to home view
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#orthographic-view" class="md-nav__link">
-    Orthographic view
-  </a>
-  
-    <nav class="md-nav" aria-label="Orthographic view">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set-projection-mode" class="md-nav__link">
-    set projection mode
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#savingrestoring-views" class="md-nav__link">
-    Saving/restoring views
+  <a href="#home-view" class="md-nav__link">
+    Home View
   </a>
   
 </li>
@@ -1639,11 +1585,39 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#camera-parameters" class="md-nav__link">
-    Camera Parameters
+  <a href="#navigation-style" class="md-nav__link">
+    Navigation Style
   </a>
   
-    <nav class="md-nav" aria-label="Camera Parameters">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-up-and-front" class="md-nav__link">
+    Canonical Up and Front
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perspective-and-orthographic-views" class="md-nav__link">
+    Perspective and Orthographic Views
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#savingrestoring-views" class="md-nav__link">
+    Saving/Restoring Views
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera-parameters-objects" class="md-nav__link">
+    Camera Parameters Objects
+  </a>
+  
+    <nav class="md-nav" aria-label="Camera Parameters Objects">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1661,7 +1635,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#camera-parameters_1" class="md-nav__link">
+  <a href="#camera-parameters" class="md-nav__link">
     Camera Parameters
   </a>
   
@@ -1700,99 +1674,89 @@
                   
 
 
-  <h1>Camera Controls & Parameters</h1>
+  <h1>Managing Views & Cameras</h1>
 
-<p>These settings affect the 3D camera view in polyscope. It is often convenient to set them just before calling <code>polyscope.init()</code>, but they may generally be set anywhere.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<p>These functions control the current viewing camera in for the Polyscope scene, as well as more-generally managing camera parameters across visualizations, such as for <a href="/py//structures/camera_view/basics">Camera View structures</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
+<span class="c1"># change the default up-direction or front-direction for the scene</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_up_dir</span><span class="p">(</span><span class="s2">&quot;z_up&quot;</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_front_dir</span><span class="p">(</span><span class="s2">&quot;neg_y_front&quot;</span><span class="p">)</span>
+
+<span class="c1"># change the navigation style (default is Turntable)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_navigation_style</span><span class="p">(</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
 
-<span class="c1"># initialize</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="c1"># get the current camera view matrix</span>
+<span class="n">view_mat</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_camera_view_matrix</span><span class="p">()</span>
 
-<span class="c1"># set the camera pose explicitly</span>
+
+<span class="c1"># set the current camera view matrix</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_camera_view_matrix</span><span class="p">(</span><span class="n">view_mat</span><span class="p">)</span>
+
+<span class="c1"># set the current camera pose to look-at something in the scene</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">look_at</span><span class="p">((</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">))</span>
-
 <span class="c1"># (alternately, use numpy vectors)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">look_at</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)))</span>
 
-<span class="c1"># show the GUI</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># manipulate the current camera with the CameraParameters object,</span>
+<span class="c1"># which standardizes all camera information</span>
+<span class="n">cam_params</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_view_camera_parameters</span><span class="p">()</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_view_camera_parameters</span><span class="p">(</span><span class="n">cam_params</span><span class="p">)</span>
+
+<span class="c1"># you can even use the parameters to create a camera view structure,</span>
+<span class="c1"># which visualize views of the scene as a frame and can hold image</span>
+<span class="c1"># quantities</span>
+<span class="n">ps_cam</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_camera_view</span><span class="p">(</span><span class="s2">&quot;cam1&quot;</span><span class="p">,</span> <span class="n">cam_params</span><span class="p">)</span> 
 </code></pre></div>
-<h3 id="options">Options</h3>
+<h2 id="manipulating-the-current-view">Manipulating the Current View</h2>
+<p>These settings affect the 3D camera view in polyscope. It is often convenient to set them just before calling <code>ps.init()</code>, but they may set be anywhere.</p>
+<p><strong>View Getters:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># call like ps.get_camera_view_matrix() etc</span>
+<span class="n">polyscope</span><span class="o">.</span><span class="n">get_view_camera_parameters</span><span class="p">()</span> <span class="c1"># contains all of this info</span>
+
+<span class="c1"># (these friendly helpers get the same info as ^^^)</span>
+<span class="n">polyscope</span><span class="o">.</span><span class="n">get_camera_view_matrix</span><span class="p">()</span>
+</code></pre></div></p>
 <details class="func">
-<summary><code class="highlight"><span class="n">set_navigation_style</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></summary>
-<h5 id="navigation-style">navigation style</h5>
-<p>The style of the camera navigation. Affects what happens when you drag to rotate around the 3D view with your mouse.</p>
-<p>This value can be manually set under the <code>view</code> menu of the ui. Programmatically, pass a string for the following settings:</p>
-<ul>
-<li><code>'turntable'</code> The up direction (see below) is always fixed vertically, with rotation along the azumith and altitude directions.</li>
-<li><code>'free'</code> The camera is free to take any orientation, rotation is always about relative to the current camera.</li>
-<li><code>'planar'</code> The camera is locked in to a 2D view of the XY plane, with no rotation (see <a href="/py//features/2D_data">2D data</a>).</li>
-</ul>
-<p>Default: <code>'turntable'</code>.</p>
+<summary><code class="highlight"><span class="n">get_view_camera_parameters</span><span class="p">()</span></code></summary>
+<p>Get the camera parameters (intrinsic and extrinsics) that describe the current viewport view. </p>
+<p>See the section below for additional methods to get values from the camera parameters.</p>
 <p>Example:
-```python
-import polyscope as ps
-ps.set_navigation_style(&ldquo;free&rdquo;)</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">get_navigation_style</span><span class="p">()</span></code></summary>
-<p>Get the current navigation style (see explanation in the setter above). Returns a string.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">set_up_dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></summary>
-<h5 id="up-direction">up direction</h5>
-<p>Set the default &ldquo;up&rdquo; direction for the scene. This setting affects default orientation of the view, the behavior of some navigation styles (esp. <code>Turntable</code>), and the orientation of the ground plane.</p>
-<p>This value can be manually set under the <code>view</code> menu of the ui. Programmatically, the setting strings are:</p>
-<ul>
-<li><code>'x_up'</code> The positive X-axis is up.</li>
-<li><code>'neg_x_up'</code> The negative X-axis is up.</li>
-<li><code>'y_up'</code> The positive Y-axis is up.</li>
-<li><code>'neg_y_up'</code> The negative Y-axis is up.</li>
-<li><code>'z_up'</code> The positive Z-axis is up.</li>
-<li><code>'neg_z_up'</code> The negative Z-axis is up.</li>
-</ul>
-<p>Default: <code>'y_up'</code>.</p>
-<p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_up_dir</span><span class="p">(</span><span class="s2">&quot;z_up&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">curr_params</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_view_camera_parameters</span><span class="p">()</span>
+
+<span class="c1"># get some data from the parameters</span>
+<span class="n">view_mat</span> <span class="o">=</span> <span class="n">curr_params</span><span class="o">.</span><span class="n">get_view_mat</span><span class="p">()</span>
+<span class="n">fov_vert_deg</span> <span class="o">=</span> <span class="n">curr_params</span><span class="o">.</span><span class="n">get_fov_vertical_deg</span><span class="p">()</span>
+<span class="n">aspect</span> <span class="o">=</span> <span class="n">curr_params</span><span class="o">.</span><span class="n">get_aspect</span><span class="p">()</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">curr_params</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span>
 </code></pre></div></p>
 </details>
+<p><strong>View Setters:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># call like ps.set_camera_view_matrix() etc</span>
+<span class="n">polyscope</span><span class="o">.</span><span class="n">set_view_camera_parameters</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="c1"># contains all of this info</span>
+
+<span class="c1">## (these friendly helpers set the same info as ^^^)</span>
+<span class="n">polyscope</span><span class="o">.</span><span class="n">set_camera_view_matrix</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+<span class="n">polyscope</span><span class="o">.</span><span class="n">look_at</span><span class="p">(</span><span class="n">camera_location</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">fly_to</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">polyscope</span><span class="o">.</span><span class="n">look_at_dir</span><span class="p">(</span><span class="n">camera_location</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">up_dir</span><span class="p">,</span> <span class="n">fly_to</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div></p>
 <details class="func">
-<summary><code class="highlight"><span class="n">get_up_dir</span><span class="p">()</span></code></summary>
-<p>Get the current up direction (see explanation in the setter above). Returns a string.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">set_front_dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></summary>
-<h5 id="front-direction">front direction</h5>
-<p>Set the default &ldquo;front&rdquo; direction for the scene. This setting affects default orientation of the view; the starting camera looks at the front of the data.</p>
-<p>This value is interpeted as if the scene were a cube, and you are specifying which face of the cube is the &lsquo;front&rsquo;. So <code>z_front</code> means the +Z face of the cube is the front face, and thus our camera initially points down the -Z axis to look at it.</p>
-<p>This value can be manually set under the <code>view</code> menu of the ui. Programmatically, the setting strings are:</p>
-<ul>
-<li><code>'x_front'</code> The positive X-axis is the front.</li>
-<li><code>'neg_x_front'</code> The negative X-axis is the front.</li>
-<li><code>'y_front'</code> The positive Y-axis is the front.</li>
-<li><code>'neg_y_front'</code> The negative Y-axis is the front.</li>
-<li><code>'z_front'</code> The positive Z-axis is the front.</li>
-<li><code>'neg_z_front'</code> The negative Z-axis is the front.</li>
-</ul>
-<p>Default: <code>z_front</code>.</p>
+<summary><code class="highlight"><span class="n">set_view_camera_parameters</span><span class="p">(</span><span class="n">params</span><span class="p">)</span></code></summary>
+<p>Set the camera parameters (intrinsic and extrinsics) that describe the current viewport view. </p>
+<p>See the section below for additional methods to construct these camera parameters.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_front_dir</span><span class="p">(</span><span class="s2">&quot;z_front&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">intrinsics</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraIntrinsics</span><span class="p">(</span><span class="n">fov_vertical_deg</span><span class="o">=</span><span class="mf">60.</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+<span class="n">extrinsics</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraExtrinsics</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">),</span> <span class="n">look_dir</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span> <span class="n">up_dir</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span>
+<span class="n">new_params</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraParameters</span><span class="p">(</span><span class="n">intrinsics</span><span class="p">,</span> <span class="n">extrinsics</span><span class="p">)</span>
+
+<span class="n">ps</span><span class="o">.</span><span class="n">set_view_camera_parameters</span><span class="p">(</span><span class="n">new_params</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
-<details class="func">
-<summary><code class="highlight"><span class="n">get_front_dir</span><span class="p">()</span></code></summary>
-<p>Get the current front direction (see explanation in the setter above). Returns a string.</p>
-</details>
+<h3 id="look-at">Look-At</h3>
+<p>The look-at functions are particularly easy to use to position the camera towards content of interest.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">look_at</span><span class="p">(</span><span class="n">camera_location</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">fly_to</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code></summary>
-<h5 id="look-at">look at</h5>
 <p>Set the camera to be located at the 3D position <code>camera_location</code> and looking at the 3D position <code>target</code>, both in world coordinates. The up direction for the camera is set to be the scene&rsquo;s up direction. If <code>fly_to=True</code>, the camera will smoothly animate to the new configuration.</p>
 <p>The input 3D vectors can be tuples, length-3 numpy arrays, or really anything that can be indexed for three components.</p>
 <p>Example:
@@ -1808,23 +1772,94 @@ ps.set_navigation_style(&ldquo;free&rdquo;)</p>
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">.</span><span class="n">look_at_dir</span><span class="p">((</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">))</span>
 </code></pre></div></p>
 </details>
+<h3 id="home-view">Home View</h3>
+<p>The home view is a reasonable default camera view, computed based on the up- and front- direction, as well as the scene extents which may be computed automatically from data you have registered.</p>
+<p>By default, the camera is located at the home view when the scene is first opened. You can also return it to that view at any time with <code>reset_camera_to_home_view()</code>.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">reset_camera_to_home_view</span><span class="p">()</span></code></summary>
-<h5 id="reset-camera-to-home-view">reset camera to home view</h5>
 <p>Reset the camera view to the home view (a reasonable default view scaled to the scene).</p>
 <p><strong>Note:</strong> The &ldquo;home&rdquo; view is dependent on the data in the scene; it is computed from the bounding boxes of all registered structures to ensure that everything is nicely scaled and in view. As such, one should generally call this function <em>after</em> registering data.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">reset_camera_to_home_view</span><span class="p">()</span>
 </code></pre></div></p>
 </details>
-<h4 id="orthographic-view">Orthographic view</h4>
+<h2 id="navigation-style">Navigation Style</h2>
+<p>The navigation style affects how the user&rsquo;s mouse interactions navigate the scene. The default is a Turntable rotating around the current canonical <code>Up</code> direction.</p>
+<p><strong>Navigation Style Strings</strong>:</p>
+<ul>
+<li><code>'turntable'</code> The up direction (see below) is always fixed vertically, with rotation along the azumith and altitude directions.</li>
+<li><code>'free'</code> The camera is free to take any orientation, rotation is always about relative to the current camera.</li>
+<li><code>'planar'</code> The camera is locked in to a 2D view of the XY plane, with no rotation (see <a href="/py//features/2D_data">2D data</a>).</li>
+</ul>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_navigation_style</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></summary>
+<p>The style of the camera navigation. Affects what happens when you drag to rotate around the 3D view with your mouse.</p>
+<p>This value can be manually set under the <code>view</code> menu of the ui. </p>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_navigation_style</span><span class="p">(</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">get_navigation_style</span><span class="p">()</span></code></summary>
+<p>Get the current navigation style (see explanation in the setter above). Returns a string.</p>
+</details>
+<h2 id="canonical-up-and-front">Canonical Up and Front</h2>
+<p>Unfortunately, no one can agree which cartesian direction is &ldquo;up&rdquo; in a 3D scene. Polyscope does not assume any particular up direction, it can be configured (default is <code>Y-up</code>).</p>
+<p>This effects many defaults of the scene, such as how the camera is oriented and where the ground plane is placed. </p>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_up_dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></summary>
+<p>Set the default &ldquo;up&rdquo; direction for the scene. This setting affects default orientation of the view, the behavior of some navigation styles (esp. <code>Turntable</code>), and the orientation of the ground plane.</p>
+<p>This value can be manually set under the <code>view</code> menu of the ui. Programmatically, the setting strings are:</p>
+<ul>
+<li><code>'x_up'</code> The positive X-axis is up.</li>
+<li><code>'neg_x_up'</code> The negative X-axis is up.</li>
+<li><code>'y_up'</code> The positive Y-axis is up.</li>
+<li><code>'neg_y_up'</code> The negative Y-axis is up.</li>
+<li><code>'z_up'</code> The positive Z-axis is up.</li>
+<li><code>'neg_z_up'</code> The negative Z-axis is up.</li>
+</ul>
+<p>Default: <code>'y_up'</code>.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_up_dir</span><span class="p">(</span><span class="s2">&quot;z_up&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">get_up_dir</span><span class="p">()</span></code></summary>
+<p>Get the current up direction (see explanation in the setter above). Returns a string.</p>
+</details>
+<p>A default front direction can also be configured, which effects the placement of the home camera location.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_front_dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></summary>
+<p>Set the default &ldquo;front&rdquo; direction for the scene. This setting affects default orientation of the view; the starting camera looks at the front of the data.</p>
+<p>This value is interpeted as if the scene were a cube, and you are specifying which face of the cube is the &lsquo;front&rsquo;. So <code>z_front</code> means the +Z face of the cube is the front face, and thus our camera initially points down the -Z axis to look at it.</p>
+<p>This value can be manually set under the <code>view</code> menu of the ui. Programmatically, the setting strings are:</p>
+<ul>
+<li><code>'x_front'</code> The positive X-axis is the front.</li>
+<li><code>'neg_x_front'</code> The negative X-axis is the front.</li>
+<li><code>'y_front'</code> The positive Y-axis is the front.</li>
+<li><code>'neg_y_front'</code> The negative Y-axis is the front.</li>
+<li><code>'z_front'</code> The positive Z-axis is the front.</li>
+<li><code>'neg_z_front'</code> The negative Z-axis is the front.</li>
+</ul>
+<p>Default: <code>z_front</code>.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_front_dir</span><span class="p">(</span><span class="s2">&quot;z_front&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">get_front_dir</span><span class="p">()</span></code></summary>
+<p>Get the current front direction (see explanation in the setter above). Returns a string.</p>
+</details>
+<h2 id="perspective-and-orthographic-views">Perspective and Orthographic Views</h2>
 <p>By default, Polyscope&rsquo;s view uses <a href="https://en.wikipedia.org/wiki/3D_projection#Perspective_projection">perspective projection</a>. Perspective projections roughly correspond to how images are usually perceived by our eyes and cameras.</p>
 <p>Alternately <a href="https://en.wikipedia.org/wiki/3D_projection#Orthographic_projection">orthographic projection</a> is also supported. Orthographic projections are common in engineering and architecture, because they have the property that distances are preserved in the projected image, regardless of whether the object is near or far from the camera.</p>
 <p><img alt="image of perspective and orthographic projection" src="/py//media/projection_diagram.jpg" /></p>
 <p>In perspective mode, zooming (for instance, by manually scrolling the mouse) translates the camera forward in space. In orthographic mode, it instead adjusts the field of view without moving the camera. This is because counter-intuitively, translating the camera forward does not actually change the view in an orthographic projection!</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">set_view_projection_mode</span><span class="p">(</span><span class="n">mode_name</span><span class="p">)</span></code></summary>
-<h5 id="set-projection-mode">set projection mode</h5>
 <p>Set the camera view projection to be either orthographic or perspective (default).</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="c1"># Enable the orthographic view</span>
@@ -1834,14 +1869,14 @@ ps.set_navigation_style(&ldquo;free&rdquo;)</p>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_view_projection_mode</span><span class="p">(</span><span class="s2">&quot;perspective&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
-<h4 id="savingrestoring-views">Saving/restoring views</h4>
+<h2 id="savingrestoring-views">Saving/Restoring Views</h2>
 <p>The current camera view (location, direction, camera parameters, and window size) can be saved or loaded from a json string. This is useful for quickly setting up repeatable visualizations.</p>
 <p>Also, in the Polyscope GUI, this string can be copied to the clipboard at any time via the &ldquo;copy&rdquo; hotkey (ctrl-C or cmd-C), or loaded from your current clipboard using the &ldquo;paste&rdquo; hotkey (ctrl-V or cmd-V).</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">get_view_as_json</span><span class="p">()</span></code></summary>
 <p>Get the current view parameters specified as a json string. Returns a string.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">my_str</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_view_as_json</span><span class="p">()</span>
 </code></pre></div></p>
 </details>
@@ -1852,11 +1887,10 @@ ps.set_navigation_style(&ldquo;free&rdquo;)</p>
 <div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">set_view_from_json</span><span class="p">(</span><span class="n">my_str</span><span class="p">);</span>
 </code></pre></div></p>
 </details>
-<hr />
-<h2 id="camera-parameters">Camera Parameters</h2>
+<h2 id="camera-parameters-objects">Camera Parameters Objects</h2>
 <p><code>CameraParameters</code> objects describe a camera view in Polyscope, including its <em>intrinsics</em> (the field of view and aspect ratio), and <em>extrinsics</em> (the location and orientation). These parameters are used both for manipulations of the interactive viewport, as well as creating <a href="/py//structures/camera_view/basics">Camera View structures</a> which are visualized as part of the content in your scene.</p>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="c1"># construct camera parameters</span>
 <span class="n">intrinsics</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraIntrinsics</span><span class="p">(</span><span class="n">fov_vertical_deg</span><span class="o">=</span><span class="mf">60.</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
@@ -1865,6 +1899,9 @@ ps.set_navigation_style(&ldquo;free&rdquo;)</p>
 
 <span class="c1"># set the viewport view to those parameters</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_view_camera_parameters</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># get the current viewport view</span>
+<span class="n">curr_params</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_view_camera_parameters</span><span class="p">()</span>
 
 <span class="c1"># or, use the parameters to create a camera view</span>
 <span class="n">cam</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_camera_view</span><span class="p">(</span><span class="s2">&quot;cam1&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
@@ -1903,7 +1940,7 @@ ps.set_navigation_style(&ldquo;free&rdquo;)</p>
 <div class="highlight"><pre><span></span><code><span class="n">extrinsics</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraExtrinsics</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">),</span> <span class="n">look_dir</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span> <span class="n">up_dir</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span>
 </code></pre></div></p>
 </details>
-<h3 id="camera-parameters_1">Camera Parameters</h3>
+<h3 id="camera-parameters">Camera Parameters</h3>
 <p>The <code>CameraParameters</code> object combines a set of intrinsics and extrinsics to fully define a camera.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">CameraParameters</span><span class="p">(</span><span class="n">intrinsics</span><span class="p">,</span> <span class="n">extrinsics</span><span class="p">)</span></code></summary>

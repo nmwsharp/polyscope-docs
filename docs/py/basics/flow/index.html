@@ -573,7 +573,21 @@
   
     <li class="md-nav__item">
       <a href="../camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1318,8 +1332,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1573,7 +1587,7 @@
 <h2 id="program-structure">Program Structure</h2>
 <p>There are two separate ways to structure your program&rsquo;s control flow with polyscope.</p>
 <p><strong>Option 1: show()</strong> The simpler, and more-common approach is to call <code>show()</code>, which will run Polyscope&rsquo;s window continuously. The <code>show()</code> function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via <a href="/py//features/callbacks_and_UIs">the <code>user_callback</code></a>.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -1591,7 +1605,7 @@
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <p><strong>Option 2: frame_tick()</strong> An alternate approach is to manually call <code>frame_tick()</code> in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. <a href="/py//features/callbacks_and_UIs">The <code>user_callback</code></a> is still necessary to add ImGui UI elements.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -1608,7 +1622,7 @@
 <div class="admonition info">
 <p class="admonition-title">Where to make ImGui calls</p>
 <p>Polyscope includes ImGui, allowing you to build custom UI elements like buttons and fields. </p>
-<p>Regardless of which control flow method you use, ImGui calls can <em>only</em> be make within <a href="/py//features/callbacks_and_UIs">the <code>user_callback</code> function</a>. Making ImGui calls elsewhere will lead to errors and crashes.</p>
+<p>Regardless of which control flow method you use, ImGui calls can <em>only</em> be made within <a href="/py//features/callbacks_and_UIs">the <code>userCallback</code> function</a>. Making ImGui calls elsewhere will lead to errors and crashes.</p>
 </div>
 <h2 id="functions">Functions</h2>
 <details class="func">

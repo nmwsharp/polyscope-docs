@@ -486,7 +486,21 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1286,8 +1300,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1504,8 +1518,8 @@
 
 <p>Visualize color rgb-valued data at the elements of a surface mesh.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="n">N_vert</span> <span class="o">=</span> <span class="mi">100</span>
@@ -1543,8 +1557,8 @@
 <p>Texture images define data by storing it an image grid, and using coordinates defined on the face-corners or vertices of a mesh to sample values from the image for each point on the surface.</p>
 <p>To visualize color data defined in texture maps, first add a <a href="/py//structures/surface_mesh/parameterization_quantities/">Parameterization Quantity</a> (aka UV map) defining the coordinates. Then, add a buffer of image data to be sampled from.</p>
 <p><strong>Example</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -1564,13 +1578,13 @@
 <span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">color_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">dims</span><span class="p">)</span> <span class="c1"># dummy placeholder image data</span>
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">&quot;test_vals&quot;</span><span class="p">,</span> <span class="n">color_vals</span><span class="p">,</span> 
-                           <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;texture&#39;</span><span class="p">,</span> <span class="n">param_name</span><span class="o">=</span><span class="s2">&quot;test_param&quot;</span><span class="p">,</span> 
-                           <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                           <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;texture&#39;</span><span class="p">,</span> <span class="n">param_name</span><span class="o">=</span><span class="s2">&quot;test_param&quot;</span><span class="p">,</span> <span class="n">filter_mode</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
 <p>Texture image data is added via <code>add_color_quantity()</code>, with <code>defined_on='texture'</code> and <code>param_name=...</code> specifying the name of the <a href="/py//structures/surface_mesh/parameterization_quantities/">parameterization UV map</a> with coordinates on <code>[0,1]</code> which will be used to sample from the image.</p>
 <p>The texture image data, dimension, and origin conventions are the same as those used to define <a href="/py//structures/floating_quantities/images/">images</a>. See there for details.</p>
+<p>The filter mode can be set as an additional argument to adjust how values are sampled from the texture. <code>filter_mode='linear'</code> (default) will smoothly linearly interpolate values, while <code>filter_mode='nearest'</code> will use nearest-neighbor sampling, which can be useful for sharp edges and crisp boundaries.</p>
 <h3 id="color-quantity-options">Color Quantity Options</h3>
 <p>When adding a color quantity, the following keyword options can be set. These are available for all kinds of color quantities on all structures.</p>
 <p>Keyword arguments:</p>

@@ -532,6 +532,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#warn-for-invalid-values" class="md-nav__link">
+    warn for invalid values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ssaa-anti-aliasing-factor" class="md-nav__link">
     SSAA anti-aliasing factor
   </a>
@@ -622,7 +629,21 @@
   
     <li class="md-nav__item">
       <a href="../camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1367,8 +1388,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1589,6 +1610,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#warn-for-invalid-values" class="md-nav__link">
+    warn for invalid values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ssaa-anti-aliasing-factor" class="md-nav__link">
     SSAA anti-aliasing factor
   </a>
@@ -1667,7 +1695,7 @@
   <h1>Program Options</h1>
 
 <p>These are general settings which affect polyscope&rsquo;s behavior as a library. It is often convenient to set them just before calling <code>polyscope.init()</code>, but they may generally be set anywhere.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="c1"># a few options</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_program_name</span><span class="p">(</span><span class="s2">&quot;important app&quot;</span><span class="p">)</span>
@@ -1683,7 +1711,7 @@
 <h5 id="program-name">program name</h5>
 <p>A general name to use when referring to the program in window headings, etc. Default: <code>Polyscope</code>.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_program_name</span><span class="p">(</span><span class="s2">&quot;important app&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
@@ -1697,7 +1725,7 @@
 <li><code>&gt;= 2</code> print a lot</li>
 </ul>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_verbosity</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
@@ -1706,7 +1734,7 @@
 <h5 id="print-prefix">print prefix</h5>
 <p>A string used as a prefix for all messages printed to the terminal by polyscope.  Default: <code>[polyscope]</code>.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_print_prefix</span><span class="p">(</span><span class="s2">&quot;[MYAPP] &quot;</span><span class="p">);</span>
 <span class="c1"># prints now look like &quot;[MYAPP] loaded openGL&quot;</span>
 </code></pre></div></p>
@@ -1720,7 +1748,16 @@
 <summary><code class="highlight"><span class="n">set_enable_render_error_checks</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
 <h5 id="render-error-checks">render error checks</h5>
 <p>If true, the rendering subsystem will eagerly check for and report errors. This comes at some small performance cost, but can help catch problems.</p>
-<p>Default: <code>True</code> when compiled in <code>Debug</code> mode, <code>False</code> in <code>Release</code> mode (this python library is generally compiled in release mode)</p>
+<p>Default: <code>True</code> when compiled in <code>Debug</code> mode, <code>False</code> in <code>Release</code> mode (</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_warn_for_invalid_values</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
+<h5 id="warn-for-invalid-values">warn for invalid values</h5>
+<p>If true, polyscope will give warnings when any added values are <code>inf</code> or <code>NaN</code>. Most (but not quite all) floating-point buffers of data such as vertex positions, scalar/color/vector quantities, etc are checked.</p>
+<p>Default: <code>True</code> </p>
+<p>Also, if you like the warnings but do not want them displayed with a dialog, you can disable the popup dialogs while retaining the check with:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">set_display_message_popups</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">set_SSAA_factor</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code></summary>
@@ -1738,7 +1775,11 @@
 <summary><code class="highlight"><span class="n">set_use_prefs_file</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
 <h5 id="use-prefs-file">use prefs file</h5>
 <p>Polyscope can read and write to a preferences file to save state between invocations. For now, this is primarily used to restore the window position on the desktop. The preference file is a <code>json</code>-formatted plaintext file called <code>.polyscope.ini</code>.</p>
-<p>This option controls the use of the preferences file. If <code>False</code>, if will be neither written nor read. Default: <code>True</code>.</p>
+<p>This option controls the use of the preferences file. If <code>False</code>, if will be neither written nor read. Default: <code>False</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dec 2024 this setting was changed to <em>disabled</em> by default. It is a cause of rare-but-tricky bugs on some platforms, such as saving a window location from one monitor, then attempting to re-load the setting on a smaller monitor causing the window to be placed offscreen.</p>
+</div>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">set_always_redraw</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>

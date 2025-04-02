@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://polyscope.run/structures/structure_management/">
       
       
-        <link rel="prev" href="../../basics/camera_controls/">
+        <link rel="prev" href="../../basics/interactive_UIs_and_animation/">
       
       
         <link rel="next" href="../point_cloud/basics/">
@@ -501,7 +501,21 @@
   
     <li class="md-nav__item">
       <a href="../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1361,8 +1375,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1805,6 +1819,26 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <p>Each structure has an associated spatial <em>transform</em> applied to it for display in the scene. The transform encodes a translation, rotation, and scaling represented as a 4x4 homogeneous matrix. Initially this transformation is just the identity transform (it does nothing), but it can be adjusted to position the structures in your scene.</p>
 <p>The transform can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Transform]</code> menu.</p>
 <details class="func">
+<summary><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">mat4x4</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getTransform</span><span class="p">()</span></code></summary>
+<p>Get the current transformation matrix. </p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">setTransform</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">mat4x4</span><span class="w"> </span><span class="n">transform</span><span class="p">)</span></code></summary>
+<p>Set a particular transform matrix. </p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getPosition</span><span class="p">()</span></code></summary>
+<p>Get the translation component of the transformation matrix, the position to which the structure&rsquo;s origin is translated.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">setPosition</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">vec</span><span class="p">)</span></code></summary>
+<p>Set the transformation matrix such that structure is transformed to the position <code>vec</code>.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">translate</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">vec</span><span class="p">)</span></code></summary>
+<p>Translate the transformation matrix by offset <code>vec</code>.</p>
+</details>
+<details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">centerBoundingBox</span><span class="p">()</span></code></summary>
 <p>Set the transformation such that the structure&rsquo;s bounding box is centered at the world origin.</p>
 </details>
@@ -1817,24 +1851,12 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <p>Reset the structure&rsquo;s transform to be the identity transform (i.e. to do nothing).</p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">setTransform</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">mat4x4</span><span class="w"> </span><span class="n">transform</span><span class="p">)</span></code></summary>
-<p>Set a particular transform matrix. </p>
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">setTransformGizmoEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></summary>
+<p>Enable/disable the interactive onscreen widget which lets the user adjust an object&rsquo;s transform.</p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">setPosition</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">vec</span><span class="p">)</span></code></summary>
-<p>Set the transformation matrix such that structure is transformed to the position <code>vec</code>.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">translate</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">vec</span><span class="p">)</span></code></summary>
-<p>Translate the transformation matrix by offset <code>vec</code>.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">mat4x4</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getTransform</span><span class="p">()</span></code></summary>
-<p>Get the current transformation matrix. </p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getPosition</span><span class="p">()</span></code></summary>
-<p>Get the translation component of the transformation matrix, the position to which the structure&rsquo;s origin is translated.</p>
+<summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getTransformGizmoEnabled</span><span class="p">()</span></code></summary>
+<p>Get the enabled state of the interactive onscreen widget which lets the user adjust an object&rsquo;s transform.</p>
 </details>
 <h4 id="slice-planes">Slice planes</h4>
 <p>Options relating to <a href="/features/slice_planes/">slice planes</a> which may be present in the scene.</p>

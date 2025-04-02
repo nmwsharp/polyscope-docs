@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://polyscope.run/py/features/callbacks_and_UIs/">
+        <link rel="canonical" href="https://polyscope.run/py/features/headless_rendering/">
       
       
         <link rel="prev" href="../screenshots/">
@@ -21,7 +21,7 @@
     
     
       
-        <title>Callbacks & Custom UIs - Polyscope - Python</title>
+        <title>Headless Rendering - Polyscope - Python</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setting-a-per-frame-callback" class="md-skip">
+        <a href="#using-headless-rendering" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Callbacks & Custom UIs
+              Headless Rendering
             
           </span>
         </div>
@@ -486,7 +486,21 @@
   
     <li class="md-nav__item">
       <a href="../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1241,12 +1255,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Callbacks & Custom UIs
+          Headless Rendering
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Callbacks & Custom UIs
+        Headless Rendering
       </a>
       
         
@@ -1263,35 +1277,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-a-per-frame-callback" class="md-nav__link">
-    Setting a per-frame callback
-  </a>
-  
-    <nav class="md-nav" aria-label="Setting a per-frame callback">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set_user_callback" class="md-nav__link">
-    set_user_callback
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clear_user_callback" class="md-nav__link">
-    clear_user_callback
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-custom-uis" class="md-nav__link">
-    Creating custom UIs
+  <a href="#using-headless-rendering" class="md-nav__link">
+    Using headless rendering
   </a>
   
 </li>
@@ -1305,56 +1292,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build-gui" class="md-nav__link">
-    build gui
+  <a href="#is_headless" class="md-nav__link">
+    is_headless()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#open-imgui-window-for-user-callback" class="md-nav__link">
-    open imgui window for user callback
+  <a href="#set_allow_headless_backends" class="md-nav__link">
+    set_allow_headless_backends
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#invoke-user-callback-for-nested-show" class="md-nav__link">
-    invoke user callback for nested show
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#give-focus-on-show" class="md-nav__link">
-    give focus on show
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mouse-interactions" class="md-nav__link">
-    Mouse Interactions
-  </a>
-  
-    <nav class="md-nav" aria-label="Mouse Interactions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#screen-coords-to-world-ray" class="md-nav__link">
-    screen coords to world ray
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#screen-coords-to-world-position" class="md-nav__link">
-    screen coords to world position
+  <a href="#set_egl_device_index" class="md-nav__link">
+    set_egl_device_index()
   </a>
   
 </li>
@@ -1544,35 +1497,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-a-per-frame-callback" class="md-nav__link">
-    Setting a per-frame callback
-  </a>
-  
-    <nav class="md-nav" aria-label="Setting a per-frame callback">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set_user_callback" class="md-nav__link">
-    set_user_callback
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clear_user_callback" class="md-nav__link">
-    clear_user_callback
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-custom-uis" class="md-nav__link">
-    Creating custom UIs
+  <a href="#using-headless-rendering" class="md-nav__link">
+    Using headless rendering
   </a>
   
 </li>
@@ -1586,56 +1512,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build-gui" class="md-nav__link">
-    build gui
+  <a href="#is_headless" class="md-nav__link">
+    is_headless()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#open-imgui-window-for-user-callback" class="md-nav__link">
-    open imgui window for user callback
+  <a href="#set_allow_headless_backends" class="md-nav__link">
+    set_allow_headless_backends
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#invoke-user-callback-for-nested-show" class="md-nav__link">
-    invoke user callback for nested show
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#give-focus-on-show" class="md-nav__link">
-    give focus on show
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mouse-interactions" class="md-nav__link">
-    Mouse Interactions
-  </a>
-  
-    <nav class="md-nav" aria-label="Mouse Interactions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#screen-coords-to-world-ray" class="md-nav__link">
-    screen coords to world ray
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#screen-coords-to-world-position" class="md-nav__link">
-    screen coords to world position
+  <a href="#set_egl_device_index" class="md-nav__link">
+    set_egl_device_index()
   </a>
   
 </li>
@@ -1660,245 +1552,73 @@
                   
 
 
-  <h1>Callbacks & Custom UIs</h1>
+  <h1>Headless Rendering</h1>
 
-<p>When <code>polyscope.show()</code> has been called, Polyscope will optionally invoke user-supplied callback function as each frame of the interface is redrawn. This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.</p>
-<h3 id="setting-a-per-frame-callback">Setting a per-frame callback</h3>
-<p>Pass in a Python function (with no arguments and no return value), and Polyscope will execute it as each frame of the interface is drawn.</p>
-<p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-
-<span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">callback</span><span class="p">():</span>
-    <span class="c1"># Executed every frame</span>
-    <span class="c1"># Do computation here, define custom UIs, etc.</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;executing callback&quot;</span><span class="p">)</span>
-
-<span class="n">ps</span><span class="o">.</span><span class="n">set_user_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
-
-<span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">ps</span><span class="o">.</span><span class="n">clear_user_callback</span><span class="p">()</span>
-</code></pre></div></p>
-<details class="func">
-<summary><code class="highlight"><span class="n">set_user_callback</span><span class="p">(</span><span class="n">func</span><span class="p">)</span></code></summary>
-<h5 id="set_user_callback">set_user_callback</h5>
-<p>Set a function which will be called by polyscope on every UI draw iteration. The argument should be a Python function, which takes no arguments.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">clear_user_callback</span><span class="p">()</span></code></summary>
-<h5 id="clear_user_callback">clear_user_callback</h5>
-<p>Clear the callback function.</p>
-</details>
-<h3 id="creating-custom-uis">Creating custom UIs</h3>
-<p>One of the most important uses of the per-frame callback is to define custom UIs. You can use these UIs to add buttons which execute custom functions, adjust the value of parameters, display information, etc.</p>
-<p>Polyscope uses <a href="https://github.com/ocornut/imgui">Dear ImGui</a> as an immediate-mode UI framework. Please see the documentation there to understand the basic paradigm and capabilities. The Polyscope python package includes bindings to a significant subset of ImGui in the <code>polyscope.imgui</code> submodule. </p>
-<p>These bindings are not yet exhaustively documented, but they follow the naming conventions of ImGui as closely as possible for simplicity. Documentation of ImGui functions and parameters lives <a href="https://github.com/ocornut/imgui/blob/master/imgui.h">here</a>, and  you can find the list of bound functions, types, and enums <a href="https://github.com/nmwsharp/polyscope-py/blob/master/src/cpp/imgui.cpp">here</a>. Common usage should be covered by the example below.</p>
-<p><strong>Example:</strong> Create the following UI in a Python callback</p>
-<p><img alt="callback ui demo" src="/py//media/imgui_py_demo.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
-
-<span class="c1"># A bunch of parameters which we will manipulate via the UI defined below.</span>
-<span class="c1"># There is nothing special about these variables, you could manipulate any other </span>
-<span class="c1"># kind of Python values the same way, such as entries in a dict, or class members.</span>
-<span class="n">is_true1</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">is_true2</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">ui_int</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">ui_float1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.2</span>
-<span class="n">ui_float2</span> <span class="o">=</span> <span class="mf">0.8</span>
-<span class="n">ui_color3</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ui_color4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
-<span class="n">ui_angle_rad</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">ui_text</span> <span class="o">=</span> <span class="s2">&quot;some input text&quot;</span>
-<span class="n">ui_options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;option A&quot;</span><span class="p">,</span> <span class="s2">&quot;option B&quot;</span><span class="p">,</span> <span class="s2">&quot;option C&quot;</span><span class="p">]</span>
-<span class="n">ui_options_selected</span> <span class="o">=</span> <span class="n">ui_options</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
-    <span class="c1"># ... do something important here ...</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;executing function&quot;</span><span class="p">)</span>
-
-<span class="c1"># Define our callback function, which Polyscope will repeatedly execute while running the UI.</span>
-<span class="c1"># We can write any code we want here, but in particular it is an opportunity to create ImGui </span>
-<span class="c1"># interface elements and define a custom UI.</span>
-<span class="k">def</span> <span class="nf">callback</span><span class="p">():</span>
-
-    <span class="c1"># If we want to use local variables &amp; assign to them in the UI code below, </span>
-    <span class="c1"># we need to mark them as nonlocal. This is because of how Python scoping </span>
-    <span class="c1"># rules work, not anything particular about Polyscope or ImGui.</span>
-    <span class="c1"># Of course, you can also use any other kind of python variable as a controllable </span>
-    <span class="c1"># value in the UI, such as a value from a dictionary, or a class member. Just be </span>
-    <span class="c1"># sure to assign the result of the ImGui call to the value, as in the examples below.</span>
-    <span class="c1"># </span>
-    <span class="c1"># If these variables are defined at the top level of a Python script file (i.e., not</span>
-    <span class="c1"># inside any method), you will need to use the `global` keyword instead of `nonlocal`.</span>
-    <span class="k">nonlocal</span> <span class="n">is_true1</span><span class="p">,</span> <span class="n">is_true2</span><span class="p">,</span> <span class="n">ui_int</span><span class="p">,</span> <span class="n">ui_float1</span><span class="p">,</span> <span class="n">ui_float2</span><span class="p">,</span> <span class="n">ui_color3</span><span class="p">,</span> <span class="n">ui_color4</span><span class="p">,</span> <span class="n">ui_text</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">,</span> <span class="n">ui_angle_rad</span>
-
-
-    <span class="c1"># == Settings</span>
-
-    <span class="c1"># Use settings like this to change the UI appearance.</span>
-    <span class="c1"># Note that it is a push/pop pair, with the matching pop() below.</span>
-    <span class="n">psim</span><span class="o">.</span><span class="n">PushItemWidth</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
-
-
-    <span class="c1"># == Show text in the UI</span>
-
-    <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">&quot;Some sample text&quot;</span><span class="p">)</span>
-    <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">&quot;An important value: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
-    <span class="n">psim</span><span class="o">.</span><span class="n">Separator</span><span class="p">()</span>
-
-
-    <span class="c1"># == Buttons</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;A button&quot;</span><span class="p">)):</span>
-        <span class="c1"># This code is executed when the button is pressed</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
-
-    <span class="c1"># By default, each element goes on a new line. Use this </span>
-    <span class="c1"># to put the next element on the _same_ line.</span>
-    <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
-
-    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Another button&quot;</span><span class="p">)):</span>
-        <span class="c1"># This code is executed when the button is pressed</span>
-        <span class="n">my_function</span><span class="p">()</span>
-
-
-    <span class="c1"># == Set parameters</span>
-
-    <span class="c1"># These commands allow the user to adjust the value of variables.</span>
-    <span class="c1"># It is important that we assign the return result to the variable to</span>
-    <span class="c1"># update it. </span>
-    <span class="c1"># For most elements, the return is actually a tuple `(changed, newval)`, </span>
-    <span class="c1"># where `changed` indicates whether the setting was modified on this </span>
-    <span class="c1"># frame, and `newval` gives the new value of the variable (or the same </span>
-    <span class="c1"># old value if unchanged).</span>
-    <span class="c1">#</span>
-    <span class="c1"># For numeric inputs, ctrl-click on the box to type in a value.</span>
-
-    <span class="c1"># Checkbox</span>
-    <span class="n">changed</span><span class="p">,</span> <span class="n">is_true1</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">&quot;flag1&quot;</span><span class="p">,</span> <span class="n">is_true1</span><span class="p">)</span> 
-    <span class="k">if</span><span class="p">(</span><span class="n">changed</span><span class="p">):</span> <span class="c1"># optionally, use this conditional to take action on the new value</span>
-        <span class="k">pass</span> 
-    <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
-    <span class="n">changed</span><span class="p">,</span> <span class="n">is_true2</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">&quot;flag2&quot;</span><span class="p">,</span> <span class="n">is_true2</span><span class="p">)</span> 
-
-    <span class="c1"># Input ints</span>
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_int</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputInt</span><span class="p">(</span><span class="s2">&quot;ui_int&quot;</span><span class="p">,</span> <span class="n">ui_int</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step_fast</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> 
-
-    <span class="c1"># Input floats using two different styles of widget</span>
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_float1</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputFloat</span><span class="p">(</span><span class="s2">&quot;ui_float1&quot;</span><span class="p">,</span> <span class="n">ui_float1</span><span class="p">)</span> 
-    <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_float2</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderFloat</span><span class="p">(</span><span class="s2">&quot;ui_float2&quot;</span><span class="p">,</span> <span class="n">ui_float2</span><span class="p">,</span> <span class="n">v_min</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">v_max</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="c1"># Input colors</span>
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_color3</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">ColorEdit3</span><span class="p">(</span><span class="s2">&quot;ui_color3&quot;</span><span class="p">,</span> <span class="n">ui_color3</span><span class="p">)</span>
-    <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_color4</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">ColorEdit4</span><span class="p">(</span><span class="s2">&quot;ui_color4&quot;</span><span class="p">,</span> <span class="n">ui_color4</span><span class="p">)</span>
-
-    <span class="c1"># Input text</span>
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_text</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputText</span><span class="p">(</span><span class="s2">&quot;enter text&quot;</span><span class="p">,</span> <span class="n">ui_text</span><span class="p">)</span>
-
-    <span class="c1"># Combo box to choose from options</span>
-    <span class="c1"># There, the options are a list of strings in `ui_options`,</span>
-    <span class="c1"># and the currently selected element is stored in `ui_options_selected`.</span>
-    <span class="n">psim</span><span class="o">.</span><span class="n">PushItemWidth</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-    <span class="n">changed</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">BeginCombo</span><span class="p">(</span><span class="s2">&quot;Pick one&quot;</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">changed</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">ui_options</span><span class="p">:</span>
-            <span class="n">_</span><span class="p">,</span> <span class="n">selected</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Selectable</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="o">==</span><span class="n">val</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">selected</span><span class="p">:</span>
-                <span class="n">ui_options_selected</span> <span class="o">=</span> <span class="n">val</span>
-        <span class="n">psim</span><span class="o">.</span><span class="n">EndCombo</span><span class="p">()</span>
-    <span class="n">psim</span><span class="o">.</span><span class="n">PopItemWidth</span><span class="p">()</span>
-
-
-    <span class="c1"># Use tree headers to logically group options</span>
-
-    <span class="c1"># This a stateful option to set the tree node below to be open initially.</span>
-    <span class="c1"># The second argument is a flag, which works like a bitmask.</span>
-    <span class="c1"># Many ImGui elements accept flags to modify their behavior.</span>
-    <span class="n">psim</span><span class="o">.</span><span class="n">SetNextItemOpen</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">psim</span><span class="o">.</span><span class="n">ImGuiCond_FirstUseEver</span><span class="p">)</span>
-
-    <span class="c1"># The body is executed only when the sub-menu is open. Note the push/pop pair!</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">TreeNode</span><span class="p">(</span><span class="s2">&quot;Collapsible sub-menu&quot;</span><span class="p">)):</span>
-
-        <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">&quot;Detailed information&quot;</span><span class="p">)</span>
-
-        <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;sub-button&quot;</span><span class="p">)):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
-
-        <span class="c1"># There are many different UI elements offered by ImGui, many of which</span>
-        <span class="c1"># are bound in python by Polyscope. See ImGui&#39;s documentation in `imgui.h`,</span>
-        <span class="c1"># or the polyscope bindings in `polyscope/src/cpp/imgui.cpp`.</span>
-        <span class="n">changed</span><span class="p">,</span> <span class="n">ui_angle_rad</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderAngle</span><span class="p">(</span><span class="s2">&quot;ui_float2&quot;</span><span class="p">,</span> <span class="n">ui_angle_rad</span><span class="p">,</span> 
-                <span class="n">v_degrees_min</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">v_degrees_max</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-
-        <span class="n">psim</span><span class="o">.</span><span class="n">TreePop</span><span class="p">()</span>
-
-    <span class="n">psim</span><span class="o">.</span><span class="n">PopItemWidth</span><span class="p">()</span>
-
-
-<span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span> 
-<span class="n">ps</span><span class="o">.</span><span class="n">set_user_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<p>Polyscope supports headless rendering on linux machines which do not have displays, such as remote servers and clusters.</p>
+<p>Polyscope&rsquo;s default interactive backend uses GLFW to create an OpenGL context, which essentially requires that a physical display be attached for any rendering to be performed. This would prevent workflows like running compute jobs on remote clusters and logging images or saving videos rendered via Polyscope&mdash;headless rendering offers a solution.</p>
+<div class="admonition warning">
+<p class="admonition-title">What is headless rendering not?</p>
+<p>&ldquo;Headless&rdquo; just means that Polyscope can run its rendering engine even when no display is present, rendering images to buffers or files. You can save them, store them, or even log them to viewers like Tensorboard.</p>
+<p>Headless rendering is <em>not</em> the same as running the UI in a browser tab or a cell of a Jupyter notebook.  There is currently no support for either of these uses (although local Jupyter notebooks work; the window will be opened outside of the notebook).</p>
+<p>Also, headless rendering is <em>not</em> necessary if you are remotely connecting to a machine which has a physical display attached; for instance, when remotely connecting to macOS or Windows machines with displays.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Unix only</p>
+<p>Headless rendering is only supported on Unix/Linux, because EGL is only available there.</p>
+</div>
+<h2 id="using-headless-rendering">Using headless rendering</h2>
+<p>Headless rendering requires compiling with and initializing a separate EGL backend.  </p>
+<p>Fortunately, the linux Polyscope wheels published on <code>pip</code> are already built with support for EGL.</p>
+<p>Your system must also have EGL available at runtime. It is likely packaged with graphics drivers, or can be installed from a package manager. Another alternative is to fall back on (much slower!) rendering by installing <code>OSMesa</code> from your package manager.</p>
+<details class="note">
+<summary>For developers: compiling with EGL support</summary>
+<p>If you are manually compiling Polyscope&rsquo;s python bindings, you must ensure EGL support is enabled. The default CMake settings enable it only if you are on Linux and EGL headers seem to be present on your system.</p>
+<p>Set the CMake variable <code>POLYSCOPE_BACKEND_OPENGL3_EGL=ON</code> to force-enable building with EGL support. </p>
+<div class="highlight"><pre><span></span><code><span class="err">cmake</span><span class="w"> </span><span class="err">..</span><span class="w"> </span><span class="err">-DPOLYSCOPE_BACKEND_OPENGL3_EGL=ON</span>
 </code></pre></div>
-<h3 id="options">Options</h3>
-<details class="func">
-<summary><code class="highlight"><span class="n">set_build_gui</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
-<h5 id="build-gui">build gui</h5>
-<p>This option can be used to disable all of Polyscope&rsquo;s ImGui UI elements, which may be useful for advanced applications which wish to build a fully-custom UI on top of Polyscope.</p>
-<p>If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.</p>
-<p>Default: <code>True</code>.</p>
 </details>
-<details class="func">
-<summary><code class="highlight"><span class="n">set_open_imgui_window_for_user_callback</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
-<h5 id="open-imgui-window-for-user-callback">open imgui window for user callback</h5>
-<p>If true, an ImGui window will be created and docked to the side of the UI when the <a href="../../features/callbacks_and_UIs">user callback function</a> is invoked. This means you can immediately start making ui calls like <code>polyscope.imgui.Button("do stuff")</code>. </p>
-<p>If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).</p>
-<p>Default: <code>True</code>.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">set_invoke_user_callback_for_nested_show</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
-<h5 id="invoke-user-callback-for-nested-show">invoke user callback for nested show</h5>
-<p>Suppose you call <code>polyscope.show()</code>, and within your callback, another instance of <code>polyscope.show()</code> is called&mdash;this is a nested show.</p>
-<p>Depending on the situation, you might or might not want your user callback to continue being executed on each render loop iteration of this nested viewer; this setting exposes the option.</p>
-<p>If true, your callback will be executed as normal for every main loop iteration, even in nested show windows.</p>
-<p>If false, your callback will only be executed for initial, outermost calls to <code>polyscope.show()</code>.</p>
-<p>Default: <code>False</code>.</p>
-</details>
-<details class="func">
-<summary><code class="highlight"><span class="n">set_give_focus_on_show</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
-<h5 id="give-focus-on-show">give focus on show</h5>
-<p>If true, the Polyscope window will request focus from the window manager whenever <code>show()</code> is called. If false, the focus state will be left unchanged.</p>
-<p>Default: <code>False</code>.</p>
-</details>
-<h3 id="mouse-interactions">Mouse Interactions</h3>
-<p>You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. Generally, you can use the mouse-related functions available via <code>ImGui</code> to implement a wide variety of behaviors.</p>
-<p><strong>Example:</strong> print a variety of info about a mouse click
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
+<p>At runtime, you must tell Polyscope to initialize with the EGL engine. The simplest way to do this is to specify it explicitly when you call <code>init()</code>. Alternately, the default automatic initialization scheme will select the EGL headless backend if no others are available, but only if you enable the headless backends option first.</p>
+<p><strong>Example:</strong> headless usage
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
-<span class="n">io</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">GetIO</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">io</span><span class="o">.</span><span class="n">MouseClicked</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-    <span class="n">screen_coords</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">MousePos</span>
-    <span class="n">world_ray</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">screen_coords_to_world_ray</span><span class="p">(</span><span class="n">screen_coords</span><span class="p">)</span>
-    <span class="n">world_pos</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">screen_coords_to_world_position</span><span class="p">(</span><span class="n">screen_coords</span><span class="p">)</span>
+<span class="c1"># explicit initialization</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;openGL3_egl&quot;</span><span class="p">)</span>
+<span class="c1"># OR</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_allow_headless_backends</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># enable headless backends</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span> <span class="c1"># automatic initialization will use the EGL backend</span>
+          <span class="c1"># if it is available and there is no display</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Click coords: </span><span class="si">{</span><span class="n">screen_coords</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  world ray: </span><span class="si">{</span><span class="n">world_ray</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  world pos: </span><span class="si">{</span><span class="n">world_pos</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># ... add structures and quantities to polyscope as usual ...</span>
+
+<span class="c1"># save screenshots, render movies, etc</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span> 
+<span class="n">viz_img</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">screenshot_to_buffer</span><span class="p">()</span> 
 </code></pre></div></p>
+<p>Once you have initialized the backend and added your data as usual, you can preform rendering operations such as saving rendered screenshots to disk or to buffer.</p>
+<p>Unless you really know what you are doing, you probably do not want to call <code>show()</code> &ndash; by default this would initiate a render loop which spins endlessly with no effect. However it is still permitted to do so, e.g. if you set a user callback which has side effects.</p>
+<div class="admonition note">
+<p class="admonition-title">ImGui not rendered</p>
+<p>In headless mode, the ImGui UI is not actually drawn to the screen. You can still issue ImGui calls in your code if you would like, but they will never have any effect.</p>
+</div>
+<h2 id="options">Options</h2>
 <details class="func">
-<summary><code class="highlight"><span class="n">screen_coords_to_world_ray</span><span class="p">(</span><span class="n">screen_coords</span><span class="p">)</span></code></summary>
-<h5 id="screen-coords-to-world-ray">screen coords to world ray</h5>
-<p>Convert a click location to a ray in world-space.</p>
+<summary><code class="highlight"><span class="n">is_headless</span><span class="p">()</span></code></summary>
+<h5 id="is_headless">is_headless()</h5>
+<p>Returns <code>True</code> if polyscope is currently running in headless mode. May only be called after initialization.</p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="n">screen_coords_to_world_position</span><span class="p">(</span><span class="n">screen_coords</span><span class="p">)</span></code></summary>
-<h5 id="screen-coords-to-world-position">screen coords to world position</h5>
-<p>Convert a click location to a location in world-space, by reading from the scene&rsquo;s depth buffer.</p>
+<summary><code class="highlight"><span class="n">set_allow_headless_backends</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
+<h5 id="set_allow_headless_backends">set_allow_headless_backends</h5>
+<p>If <code>True</code> default automatic initialization is allowed to initialize with a headless backend, if that is the only option.</p>
+<p>Default: <code>False</code></p>
+<p>This is set to <code>false</code> by default, because sometimes misconfigured or low-capability machines will have no display, and automatically creating headless backends on such machines would confuse new users.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_egl_device_index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></summary>
+<h5 id="set_egl_device_index">set_egl_device_index()</h5>
+<p>Pass an index to manually specify which EGL device to use for headless EGL rendering. If set to <code>-1</code> (default), Polyscope will try all devices, with some heuristics to attempt to use hardware renderers before software renderers.</p>
+<p>Default: <code>-1</code></p>
+<p>If you are trying to figure out which device index to use, set Polyscope&rsquo;s verbosity to a large value (<code>&gt; 5</code>). At high verbosity, Polyscope will print the list of found EGL devices and their indices when attempting initialization.</p>
 </details>
 
 

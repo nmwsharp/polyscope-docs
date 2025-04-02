@@ -486,7 +486,21 @@
   
     <li class="md-nav__item">
       <a href="../../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1083,6 +1097,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#categorical-scalars" class="md-nav__link">
+    Categorical Scalars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scalar-quantity-options" class="md-nav__link">
     Scalar Quantity Options
   </a>
@@ -1293,8 +1314,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../features/callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1486,6 +1507,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#categorical-scalars" class="md-nav__link">
+    Categorical Scalars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scalar-quantity-options" class="md-nav__link">
     Scalar Quantity Options
   </a>
@@ -1519,8 +1547,8 @@
 <p>Visualize scalar-valued data at the nodes or cells of a volume grid.</p>
 <p><img alt="volume grid node cell values" src="/py//media/volume_grid_cell_scalar.jpg" /></p>
 <p><strong>Example:</strong> registering a volume grid and adding a scalar quantity
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -1569,19 +1597,24 @@
 </ul>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
+<h3 id="categorical-scalars">Categorical Scalars</h3>
+<p>Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.</p>
+<p>Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set <code>datatype='categorical'</code>. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.</p>
 <h3 id="scalar-quantity-options">Scalar Quantity Options</h3>
 <p>When adding a scalar quantity, the following keyword options can be set. These are available for all kinds of scalar quantities on all structures.</p>
 <p>Keyword arguments:</p>
 <ul>
 <li><code>enabled</code> boolean, whether the quantity is initially enabled (note that generally only one quantitiy can be shown at a time; the most recent will be used)</li>
-<li><code>datatype</code>, one of <code>"standard"</code>, <code>"symmetric"</code>, or <code>"magnitude"</code>, affects default colormap and map range</li>
+<li><code>datatype</code>, one of <code>"standard"</code>, <code>"symmetric"</code>, <code>"magnitude"</code>, or <code>"categorical"</code>, affects default colormap and map range, and the categorical policies mentioned above</li>
 <li><code>vminmax</code>, a 2-tuple of floats, specifying the min and max range for colormap limits; the default is <code>None</code>, which computes the min and max of the data</li>
 <li><code>cmap</code>, which <a href="../../../features/color_maps">colormap</a> to use</li>
 <li>isoline keywords (darker-shaded stripes showing isocontours of the scalar field):<ul>
 <li><code>isolines_enabled</code> are isolines enabled (default: <code>False</code>)</li>
-<li><code>isoline_width</code> how wide should the darkend stripes be, in data units (default: dynamically estimated)</li>
-<li><code>isoline_width_relative</code> if true, interpret the width value as relative to the world coordinate length scale (default: <code>False</code>)</li>
+<li><code>isoline_style</code> one of <code>stripe</code>, <code>'contour</code> (default: <code>stripe</code>)</li>
+<li><code>isoline_period</code> how wide should the darkend stripes be, in data units (default: dynamically estimated)</li>
+<li><code>isoline_period_relative</code> if true, interpret the width value as relative to the world coordinate length scale (default: <code>False</code>)</li>
 <li><code>isoline_darkness</code> how much darker should the alternating stripes be (default: <code>0.7</code>)</li>
+<li><code>isoline_contour_thickness</code> how thick should the contour lines be (default: <code>0.3</code>)</li>
 </ul>
 </li>
 </ul>

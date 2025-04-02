@@ -14,7 +14,7 @@
         <link rel="prev" href="../../structures/floating_quantities/render_images/">
       
       
-        <link rel="next" href="../callbacks_and_UIs/">
+        <link rel="next" href="../headless_rendering/">
       
       <link rel="icon" href="../../media/icons/material/baseline_highlight_black_18dp.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
@@ -486,7 +486,21 @@
   
     <li class="md-nav__item">
       <a href="../../basics/camera_controls/" class="md-nav__link">
-        Camera Controls & Parameters
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
       </a>
     </li>
   
@@ -1277,8 +1291,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../callbacks_and_UIs/" class="md-nav__link">
-        Callbacks & Custom UIs
+      <a href="../headless_rendering/" class="md-nav__link">
+        Headless Rendering
       </a>
     </li>
   
@@ -1490,7 +1504,7 @@
 <p>Screenshots can be taken manually by pressing the <code>[screenshot]</code> button in the options GUI window, or programmatically using the functions below. Clicking the GUI button generates a numbered screenshot file in the current directory; the arrow to the side of the button can be used to adjust file format and transparency settings for these screenshots.</p>
 <p>It is <strong>not</strong> necessary to call <code>show()</code> before taking screenshots. You can set up you scene and programmatically <a href="/py//basics/camera_controls">configure the camera view</a>, then call <code>screenshot()</code> to save a rendered image to disk, all without any user interaction.</p>
 <p><strong>Example:</strong> Register a mesh, position the camera, and take a screenshot
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="c1"># Initialize</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
