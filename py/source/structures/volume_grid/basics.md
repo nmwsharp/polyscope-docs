@@ -45,14 +45,14 @@ ps.show()
     For locations, the min/max bounds you specify when registering the grid are the locations up the minimum and maximum node (aka cell corner). If you are instead thinking in terms of cell center locations, shift them half-cell-width offset when registering the grid.
 
 
-???+ func "`#!python register_volume_grid(name, gridNodeDim, boundMin, boundMax, enabled=None, color=None, edge_color=None, edge_width=None, cube_size_factor=None, material=None, transparency=None)`"
+???+ func "`#!python register_volume_grid(name, node_dims, bound_low, bound_high, enabled=None, color=None, edge_color=None, edge_width=None, cube_size_factor=None, material=None, transparency=None)`"
 
     Add a new volume grid structure to Polyscope.
 
     - `name` the name of the structure
-    - `gridNodeDim` an integer 3-tuple giving the number of nodes in the grid along each dimension
-    - `boundMin` a float 3-tuple giving the xyz coordinates for the minimal node corner of the grid
-    - `boundMax` a float 3-tuple giving the xyz coordinates for the maximal node corner of the grid
+    - `node_dims` an integer 3-tuple giving the number of nodes in the grid along each dimension
+    - `bound_low` a float 3-tuple giving the xyz coordinates for the minimal node corner of the grid
+    - `bound_high` a float 3-tuple giving the xyz coordinates for the maximal node corner of the grid
     
     Additional optional keyword arguments:
 
