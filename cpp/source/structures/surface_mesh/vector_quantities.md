@@ -102,4 +102,4 @@ _One forms_ are tangent vector-like quantities represented as integrated scalars
 
     Remember, before passing edge-valued data, be sure your [indexing convention](../indexing_convention) matches what Polyscope expects.
 
-{!common/vector_quantity.md!}
+[[% include 'common/vector_quantity.md' %]]

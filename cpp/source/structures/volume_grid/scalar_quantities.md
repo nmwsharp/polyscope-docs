@@ -86,7 +86,7 @@ polyscope::show();
     
     - `func` is a function which performs a batch of evaluations of the implicit function. It should have a signature like `void(float* in_pos_ptr, float* out_val_ptr, size_t N)`. The first arg is a length-3N array of positions for queries, and the second is an (already-allocated) length-N output array of floats to write the result to. The last arg is the numbrer of queries `N`.
 
-{!common/scalar_quantity.md!}
+[[% include 'common/scalar_quantity.md' %]]
 
 ### Visualizing Isosurfaces
 

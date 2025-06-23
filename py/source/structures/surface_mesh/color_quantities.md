@@ -83,4 +83,4 @@ The filter mode can be set as an additional argument to adjust how values are sa
 
     
     
-{!common/color_quantity.md!}
+[[% include 'common/color_quantity.md' %]]

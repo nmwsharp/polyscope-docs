@@ -81,7 +81,7 @@ These can be called at the root level, like `ps.add_scalar_image_quantity()`, or
     
     This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
 
-{!common/scalar_quantity.md!}
+[[% include 'common/scalar_quantity.md' %]]
 
 ---
 ## Color Image Quantity
@@ -109,7 +109,7 @@ These can be called at the root level, like `ps.add_color_image_quantity()`, or 
 
 By default, alpha values are interpreted to be non-premultiplied. Use the keyword argument `is_premultiplied=True` to directly pass premultiplied alpha images.
 
-{!common/color_quantity.md!}
+[[% include 'common/color_quantity.md' %]]
 
 
 ---

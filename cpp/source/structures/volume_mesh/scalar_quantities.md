@@ -50,4 +50,4 @@ polyscope::show();
 Slice planes have [special functionality]([[url.prefix]]/features/slice_planes/#inspecting-volume-meshes) for volume mesh vertex values---they can _inspect_ quantities on volume meshes and render them on the interior of the volume. See the slice plane documentation for details.
 
 
-{!common/scalar_quantity.md!}
+[[% include 'common/scalar_quantity.md' %]]

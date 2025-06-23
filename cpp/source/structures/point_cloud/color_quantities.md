@@ -22,4 +22,4 @@ polyscope::getPointCloud(pointCloudName)->addColorQuantity("random color", randC
     RGB values are interpreted in the range `[0,1]`.
 
 
-{!common/color_quantity.md!}
+[[% include 'common/color_quantity.md' %]]

@@ -123,4 +123,4 @@ The `FilterMode` can be set to adjust how values are sampled from the texture. `
     - `FilterMode::Nearest` for sharp nearest-neighbor sampling
 
 
-{!common/scalar_quantity.md!}
+[[% include 'common/scalar_quantity.md' %]]

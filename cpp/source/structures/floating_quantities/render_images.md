@@ -109,7 +109,7 @@ This can be called at the root level, like `polyscope::addColorRenderImageQuanti
     
     RGB values are interpreted in the range `[0,1]`.
 
-{!common/color_quantity.md!}
+[[% include 'common/color_quantity.md' %]]
 
 ---
 ## Scalar Render Image Quantity
@@ -147,7 +147,7 @@ This can be called at the root level, like `polyscope::addScalarRenderImageQuant
 
     Depth values should be radial ray distance from the camera origin, _not_ perpendicular distance from the image plane.
 
-{!common/scalar_quantity.md!}
+[[% include 'common/scalar_quantity.md' %]]
 
 ---
 ## Raw Color Render Image Quantity

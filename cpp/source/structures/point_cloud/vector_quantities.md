@@ -9,4 +9,4 @@ Visualize vector-valued data at the points of a point cloud.
 
     Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D point cloud), `addVectorQuantity2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
-{!common/vector_quantity.md!}
+[[% include 'common/vector_quantity.md' %]]

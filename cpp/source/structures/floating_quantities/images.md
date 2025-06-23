@@ -104,7 +104,7 @@ These can be called at the root level, like `polyscope::addScalarImageQuantity()
     - `imageOrigin` is the row origin convention, see above
     - `type` is the scalar datatype as for other scalar quantities
 
-{!common/scalar_quantity.md!}
+[[% include 'common/scalar_quantity.md' %]]
 
 ---
 ## Color Image Quantity
@@ -133,7 +133,7 @@ These can be called at the root level, like `polyscope::addColorImageQuantity()`
 
 By default, alpha values are interpreted to be non-premultiplied. Use  `colorAlphaImage->setIsPremultiplied(true);` to directly pass premultiplied alpha images.
 
-{!common/color_quantity.md!}
+[[% include 'common/color_quantity.md' %]]
 
 
 ---

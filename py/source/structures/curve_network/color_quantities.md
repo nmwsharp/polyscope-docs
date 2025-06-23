@@ -38,4 +38,4 @@ ps.show()
     
     This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
     
-{!common/color_quantity.md!}
+[[% include 'common/color_quantity.md' %]]

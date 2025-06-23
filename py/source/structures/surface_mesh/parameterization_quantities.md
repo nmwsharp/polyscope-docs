@@ -81,4 +81,4 @@ Additionally, the seams of a parameterization can be visualized as a [curve netw
     
     - `create_curve_network_from_seams` is the **string** name of the the curve network quantity that will be created. Passing `""` generates a default fname
 
-{!common/parameterization_quantity.md!}
+[[% include 'common/parameterization_quantity.md' %]]

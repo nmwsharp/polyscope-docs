@@ -17,5 +17,5 @@ Typically parameterizations are used on meshes (which is also supported in Polys
     
 
 
-{!common/parameterization_quantity.md!}
+[[% include 'common/parameterization_quantity.md' %]]
 

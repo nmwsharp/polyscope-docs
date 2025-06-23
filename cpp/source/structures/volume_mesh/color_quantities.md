@@ -41,4 +41,4 @@ polyscope::show();
     RGB values are interpreted in the range `[0,1]`.
 
 
-{!common/color_quantity.md!}
+[[% include 'common/color_quantity.md' %]]

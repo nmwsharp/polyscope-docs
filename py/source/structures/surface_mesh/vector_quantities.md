@@ -77,4 +77,4 @@ _One forms_ are tangent vector-like quantities represented as integrated scalars
     This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
    
 
-{!common/vector_quantity.md!}
+[[% include 'common/vector_quantity.md' %]]

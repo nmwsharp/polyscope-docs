@@ -30,4 +30,4 @@ polyscope::getCurveNetwork(curveNetworkName)->addNodeScalarQuantity("sample valu
     - `values` is the array of scalars at edges . The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. The length should be the number of edges in the curve network.
 
 
-{!common/scalar_quantity.md!}
+[[% include 'common/scalar_quantity.md' %]]

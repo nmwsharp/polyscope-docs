@@ -49,4 +49,4 @@ polyscope::show();
     Note: the inner vector type of the input _must_ be 3D dimensional, or you risk compiler errors, segfaults, or worse.
 
 
-{!common/vector_quantity.md!}
+[[% include 'common/vector_quantity.md' %]]

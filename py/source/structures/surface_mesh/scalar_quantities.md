@@ -94,4 +94,4 @@ The texture image data, dimension, and origin conventions are the same as those 
 
 The filter mode can be set as an additional argument to adjust how values are sampled from the texture. `filter_mode='linear'` (default) will smoothly linearly interpolate values, while `filter_mode='nearest'` will use nearest-neighbor sampling, which can be useful for sharp edges and crisp boundaries.
 
-{!common/scalar_quantity.md!}
+[[% include 'common/scalar_quantity.md' %]]

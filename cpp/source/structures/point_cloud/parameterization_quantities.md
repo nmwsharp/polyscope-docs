@@ -25,4 +25,4 @@ Typically parameterizations are used on meshes (which is also supported in Polys
     - `type` the default interpretation of the coordinate scale, see below
 
 
-{!common/parameterization_quantity.md!}
+[[% include 'common/parameterization_quantity.md' %]]

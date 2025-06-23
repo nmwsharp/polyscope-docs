@@ -102,7 +102,7 @@ If normals are not given, they will be computed internally via screen-space deri
     
     This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
 
-{!common/color_quantity.md!}
+[[% include 'common/color_quantity.md' %]]
 
 ---
 ## Scalar Render Image Quantity
@@ -141,7 +141,7 @@ If normals are not given, they will be computed internally via screen-space deri
 
     This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
 
-{!common/scalar_quantity.md!}
+[[% include 'common/scalar_quantity.md' %]]
 
 ---
 ## Raw Color Render Image Quantity

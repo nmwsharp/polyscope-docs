@@ -20,4 +20,4 @@ polyscope::getPointCloud(pointCloudName)->addScalarQuantity("xC", xC);
     - `values` is the array of scalars at points. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. The length should be the number of points in the point cloud.
 
 
-{!common/scalar_quantity.md!}
+[[% include 'common/scalar_quantity.md' %]]

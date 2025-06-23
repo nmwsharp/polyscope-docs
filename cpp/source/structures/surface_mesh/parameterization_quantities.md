@@ -89,4 +89,4 @@ Additionally, the seams of a parameterization can be visualized as a [curve netw
     - `structureName` the name of the new curve network structure. If left as the empty string (default) a name will be generated.
 
 
-{!common/parameterization_quantity.md!}
+[[% include 'common/parameterization_quantity.md' %]]
