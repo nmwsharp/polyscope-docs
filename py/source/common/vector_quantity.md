@@ -9,5 +9,6 @@ Keyword arguments:
   - `length` float, a (relative) length for the vectors
   - `radius` float, a (relative) radius for the vectors
   - `color` 3-tuple, color for the vectors
+  - `material` string, shading material for the vectors
 
 If not specified, these optional parameters will assume a reasonable default value, or a [persistent value](../../../basics/parameters/#persistent-values) if previously set.
