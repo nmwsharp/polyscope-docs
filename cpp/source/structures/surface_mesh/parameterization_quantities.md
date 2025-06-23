@@ -33,25 +33,60 @@ polyscope::getSurfaceMesh("input mesh")
 
 ## Adding
 
-??? func "`#!cpp SurfaceMesh::addParameterizationQuantity(std::string name, const T& coords)`"
+??? func "`#!cpp SurfaceMesh::addParameterizationQuantity(std::string name, const T& coords, ParamCoordsType type=ParamCoordsType::UNIT)`"
 
     Add a new parameterization quantity to the structure, defined at the corners of a mesh.
 
     - `coords` is the array of 2D UV coordinates at corners. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 2-vectors. The length should be the number of corners in the mesh.
 
+    - `type` the default interpretation of the coordinate scale, see below
 
-??? func "`#!cpp SurfaceMesh::addVertexParameterizationQuantity(std::string name, const T& coords)`"
+??? func "`#!cpp SurfaceMesh::addVertexParameterizationQuantity(std::string name, const T& coords, ParamCoordsType type=ParamCoordsType::UNIT)`"
 
     Add a new parameterization quantity to the structure, defined at the vertices of a mesh.
 
     - `coords` is the array of 2D UV coordinates at vertices. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 2-vectors. The length should be the number of vertices in the mesh.
 
+    - `type` the default interpretation of the coordinate scale, see below
 
-??? func "`#!cpp SurfaceMesh::addLocalParameterizationQuantity(std::string name, const T& coords)`"
+??? func "`#!cpp SurfaceMesh::addLocalParameterizationQuantity(std::string name, const T& coords, ParamCoordsType type=ParamCoordsType::WORLD)`"
 
     Add a new parameterization quantity to the structure, defined at the vertices of a mesh. this is similar to `addVertexParameterizationQuantity`, but has preset settings for `style` and `type` which are suitable for local parameterizations about a point.
 
     - `coords` is the array of 2D UV coordinates at vertices. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 2-vectors. The length should be the number of vertices in the mesh.
+
+    - `type` the default interpretation of the coordinate scale, see below
+
+## Visualizing islands and seams
+
+<!-- TODO add an image -->
+
+For parameterizations on surface meshes, additional features are available to visualize UV island and seams. The term _islands_ refers to connected components of faces in the 2D parameterization, and the term _seams_ refers to the subset of edges separating adjacent faces which are not connected.
+    
+UV islands can be colored per-island with the `ParamVizStyle::CHECKER_ISLANDS` style. Each face should have a distinct integer indicating which island it is a part of, which the caller must compute and pass via the function below (Polyscope does not compute it automatically). 
+
+??? func "`#!cpp void SurfaceParameterizationQuantity::setIslandLabels(const T& labels)`"
+
+    #### setIslandLabels
+
+    Set an integer value per-face of the mesh, which can be used to color islands distinctly in the `ParamVizStyle::CHECKER_ISLANDS` style. Each face should have a distinct integer indicating which island it is a part of, which V
+    
+    Technically this can be any integer per-face, although it is generally useful for visualizing islands.
+
+    - `labels` is the array of face labels. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of integers.  The length must be equal to the number of faces in the mesh.
+    
+    This will have no effect unless you also set `ParamVizStyle::CHECKER_ISLANDS`.
+
+
+Additionally, the seams of a parameterization can be visualized as a [curve network]([[url.prefix]]/structures/curve_network/basics). These seams are computed automatically by Polyscope, the curve network is created by calling the function below, and is otherwise an ordinary curve network.
+
+??? func "`#!cpp CurveNetwork* SurfaceParameterizationQuantity::createCurveNetworkFromSeams(std::string structureName="")`"
+    
+    #### createCurveNetworkFromSeams
+
+    Create a [curve network]([[url.prefix]]/structures/curve_network/basics) from the seams of a UV map.
+    
+    - `structureName` the name of the new curve network structure. If left as the empty string (default) a name will be generated.
 
 
 {!common/parameterization_quantity.md!}

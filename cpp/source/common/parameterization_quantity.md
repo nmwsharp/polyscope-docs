@@ -13,6 +13,7 @@ The `enum class ParamVizStyle` has options for how parameterizations are visuali
 - `GRID`: a grid with thin lines
 - `LOCAL_CHECK`: a checkboard over a radial colormap, centered around `(0,0)`
 - `LOCAL_RAD`: distance stripes over a radial colormap, centered around `(0,0)`
+- `CHECKER_ISLANDS`: a checkerboard where islands are colored according to the island labels integer, which must be given explicitly (meshes only)
 
 The function `SurfaceParameterizationQuantity::setStyle(ParamVizStyle newStyle)` can be used to programmatically change the style.
 
@@ -25,6 +26,8 @@ The `enum class ParamCoordsType` has options that control how parameter coordina
 
 These enums can be passed as an optional third argument when a parameterization is registered.
 
+
+### Options
 
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
