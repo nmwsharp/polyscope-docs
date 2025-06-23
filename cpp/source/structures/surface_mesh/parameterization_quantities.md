@@ -63,13 +63,13 @@ polyscope::getSurfaceMesh("input mesh")
 
 For parameterizations on surface meshes, additional features are available to visualize UV island and seams. The term _islands_ refers to connected components of faces in the 2D parameterization, and the term _seams_ refers to the subset of edges separating adjacent faces which are not connected.
     
-UV islands can be colored per-island with the `ParamVizStyle::CHECKER_ISLANDS` style. Each face should have a distinct integer indicating which island it is a part of, which the caller must compute and pass via the function below (Polyscope does not compute it automatically). 
+UV islands can be colored per-island with the `ParamVizStyle::CHECKER_ISLANDS` style. Each face should have an integer indicating which island it is a part of, which the caller must compute and pass via the function below (Polyscope does not compute it automatically). 
 
 ??? func "`#!cpp void SurfaceParameterizationQuantity::setIslandLabels(const T& labels)`"
 
     #### setIslandLabels
 
-    Set an integer value per-face of the mesh, which can be used to color islands distinctly in the `ParamVizStyle::CHECKER_ISLANDS` style. Each face should have a distinct integer indicating which island it is a part of, which V
+    Set an integer value per-face of the mesh, which can be used to color islands distinctly in the `ParamVizStyle::CHECKER_ISLANDS` style. Each face should have an integer indicating which island it is a part of, numbered however you like.
     
     Technically this can be any integer per-face, although it is generally useful for visualizing islands.
 
