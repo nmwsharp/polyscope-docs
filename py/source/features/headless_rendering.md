@@ -51,8 +51,8 @@ ps.init() # automatic initialization will use the EGL backend
 # ... add structures and quantities to polyscope as usual ...
 
 # save screenshots, render movies, etc
-ps.screenshot() 
-viz_img = ps.screenshot_to_buffer() 
+ps.screenshot()                     # saves to file
+viz_img = ps.screenshot_to_buffer() # returns an image array
 ```
 
 Once you have initialized the backend and added your data as usual, you can preform rendering operations such as saving rendered screenshots to disk or to buffer.

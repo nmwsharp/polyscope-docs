@@ -43,8 +43,8 @@ polyscope::init(); // automatic initialization will use the EGL backend
 // ... add structures and quantities to polyscope as usual ...
 
 // save screenshots, render movies, etc
-polyscope::screenshot(); 
-std::vector<unsigned char> viz_img = polyscope::screenshotToBuffer();
+polyscope::screenshot();  // saves to a file
+std::vector<unsigned char> viz_img = polyscope::screenshotToBuffer(); // returns an image array
 ```
 
 Once you have initialized the backend and added your data as usual, you can preform rendering operations such as saving rendered screenshots to disk or to buffer.
