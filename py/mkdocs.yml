@@ -12,6 +12,8 @@ markdown_extensions:
   - pymdownx.emoji
   - pymdownx.tabbed:
         alternate_style: true 
+  - toc:
+      permalink: true
     
 
 extra:
@@ -66,7 +68,7 @@ site_dir: 'site_build'
 nav:
   - Home: 'index.md'
   - About: 
-    - 'about/release_notes.md'
+    - 'Release Notes' : 'about/release_notes.md'
     - 'about/license.md'
     - 'Dependencies' : 'about/dependencies.md'
     - 'about/contributing.md'

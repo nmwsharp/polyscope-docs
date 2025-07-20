@@ -12,6 +12,8 @@ markdown_extensions:
   - pymdownx.emoji
   - pymdownx.tabbed:
         alternate_style: true 
+  - toc:
+      permalink: true
 
 extra:
   search:

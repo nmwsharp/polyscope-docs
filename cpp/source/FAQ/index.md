@@ -24,7 +24,7 @@ hide:
 
 - **System**
 
-    - [How do I run Polyscope on a remote or headless server?](#how-do-i-run-polyscope-on-a-remote-or-headless-server)
+    - [How do I run Polyscope remotely / on a headless server / in a notebook?](#how-do-i-run-polyscope-remotely-in-a-browser-via-a-notebook-or-on-headless-server)
 
 <!-- - **Working with Data** -->
 
@@ -82,7 +82,7 @@ Polyscope integrates with the excellent [Dear ImGui](https://github.com/ocornut/
 
 ### **How do I set up mouse click interactions and callbacks**
 
-See [Mouse Interactions]([[url.prefix]]/basics/interactive_UIs_and_animation/#mouse-interactions). There are no special callbacks for creating mouse events. Instead, you can implement almost any behavior you want via ImGui's built-in functions. There are also a few polyscope-specific functions to get information about scene at the location you clicked, such as constructing rays and querying depth.
+See [Mouse Interactions]([[url.prefix]]/basics/interactive_UIs_and_animation/#mouse-interactions). Polyscope follows an immediate-mode philosophy for interactions: rather than registering many callbacks for various IO events, you can test for mouse and keyboard state in your main loop, or in the per-frame callback (which is the only callback), to implement any behavior your would like. ImGui offers many functions for testing mouse/keyboard state, and there are also a few polyscope-specific functions to get information about scene at the location you clicked, such as constructing rays and querying depth.
 
 ### **Rendering figures for papers and presentations**
 
@@ -96,13 +96,8 @@ Several settings can be customized to give a more polished appearance. Consider:
 
 Normally, colors are shaded and tone-mapped for rendering, which means the colors and colormapped-values you specify are not exactly the colors Polyscope renders to the screen. Use the [flat material]([[url.prefix]]/features/materials/#preserving-colors-with-the-flat-material) to circumvent these effects, and ensure that colors are flat-shaded to the screen with exactly the RGB values specified.
 
-### **How do I run Polyscope on a remote or headless server?**
+### **How do I run Polyscope remotely in a browser, via a notebook, or on headless server?**
 
-It may not not be possible to use Polyscope on a remote headless machine which does not have a physical monitor. 
+See [headless rendering]([[url.prefix]]/features/headless_rendering/). 
 
-If the machine _does_ have a display attached, there should be no problem. You can run and initialize Polyscope, and even if you are working remotely via script or SSH you can programmatically capture screenshots of the rendered scene. 
-
-However, Polyscope will only work if it can create an operating system-level display window, which generally means having a physical monitor attached. Various virtual windowing systems and X-servers exist as a hypothetical workaround, however users have reported limited success with these tools, usually because they use software openGL renderers which do not support the openGL features required by Polyscope.
-
-In implementation terms, this limitation comes from needing to initialize an OpenGL 3.3 core-profile context using [GLFW](https://www.glfw.org/). Currently, GLFW can only create an openGL context when a display is present. If you find a good workaround for Polyscope on headless machines, please share! One day, we hope to implement an alternate EGL backend, which would support headless machines.
-
+In short, Polyscope _does_ support headless rendering: it can be used on remote serves with no display attached to render images and videos to files or buffers, by initializing with a special EGL backend. However, Polyscope _does not_ currently support any kind of client-server mode, or execution in the browser from remote machines, etc. It must be executing locally on the machine which you are using it from.  
