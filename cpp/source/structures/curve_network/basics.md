@@ -101,6 +101,18 @@ The locations of the nodes in a curve network can be updated with the member fun
 
     Note: `updatePointPositions2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
+### Adjusting the node and edge radius
+
+Set the radius of the nodes and edges in the curve network with `CurveNetwork::setRadius(newRad)`. By default, the radius is a [relative value]([[url.prefix]]/basics/parameters/#scaled-values) which gets scaled by the content in the scene, so for example a default of `0.02` will always be a reasonable size no matter what the scale of the content in your scene is. Or, set `isRelative=false` to set an absolute radius in world units.
+
+??? func "`#!cpp void CurveNetwork::setRadius(double newVal, bool isRelative=true)`"
+
+    Update the radius for the nodes and edges in the curve network.
+
+    By default the radius is interpreted as a relative value, setting `isRelative=false` will treat is as an absolute length in world units.
+
+To set a variable radius which is different for each node and/or edge in the curve network, see the [variable radius page]([[url.prefix]]/structures/curve_network/variable_radius/).
+
 
 ### Options
 

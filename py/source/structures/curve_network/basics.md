@@ -65,6 +65,19 @@ The locations of the nodes in a curve network can be updated with the member fun
     Update the node positions in a curve network structure. `newPos` must be valid input as to initially construct the nodes of the network, with the same number of nodes as the network curently has.
 
 
+### Adjusting the node and edge radius
+
+Set the radius of the nodes and edges in the curve network with `CurveNetwork.set_radius(newRad)`, or in the constructor. By default, the radius is a [relative value]([[url.prefix]]/basics/parameters/#scaled-values) which gets scaled by the content in the scene, so for example a default of `0.02` will always be a reasonable size no matter what the scale of the content in your scene is. Or, set `relative=False` to set an absolute radius in world units.
+
+??? func "`#!python CurveNetwork.set_radius(newVal, relative=True)`"
+
+    Update the radius for the nodes and edges in the curve network.
+
+    By default the radius is interpreted as a relative value, setting `relative=False` will treat is as an absolute length in world units.
+
+To set a variable radius which is different for each node and/or edge in the curve network, see the [variable radius page]([[url.prefix]]/structures/curve_network/variable_radius/).
+
+
 ### Options
 
 Options control the appearance of the curve network. These options can also be passed as keyword arguments to the initial `register_curve_network()`, as noted above.  See [structure management]([[url.prefix]]/structures/structure_management/#structure-options) for options common to all structures such as enabling/disabling, transforms, and transparency.

@@ -69,13 +69,13 @@ ps.show()
 
 Set the radius of the points with `PointCloud.set_radius(newRad)`, or in the constructor. By default, the radius is a [relative value]([[url.prefix]]/basics/parameters/#scaled-values) which gets scaled by the content in the scene, so for example a default of `0.02` will always be a reasonable size no matter what the scale of the content in your scene is. Or, set `relative=False` to set an absolute radius in world units.
 
-To set a variable radius which is different for each point in the point cloud, see the [variable radius page]([[url.prefix]]/structures/point_cloud/variable_radius/).
-
 ??? func "`#!python PointCloud.set_radius(newVal, relative=True)`"
 
     Update the radius for points in the point cloud.
 
     By default the radius is interpreted as a relative value, setting `relative=False` will treat is as an absolute length in world units.
+
+To set a variable radius which is different for each point in the point cloud, see the [variable radius page]([[url.prefix]]/structures/point_cloud/variable_radius/).
 
 
 ### Point render mode

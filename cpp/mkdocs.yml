@@ -95,6 +95,7 @@ nav:
       - 'Scalar Quantities' : 'structures/curve_network/scalar_quantities.md'
       - 'Color Quantities' : 'structures/curve_network/color_quantities.md'
       - 'Vector Quantities' : 'structures/curve_network/vector_quantities.md'
+      - 'Variable Radius' : 'structures/curve_network/variable_radius.md'
     - Surface Mesh:
       - 'Basics' : 'structures/surface_mesh/basics.md'
       - 'Scalar Quantities' : 'structures/surface_mesh/scalar_quantities.md'
