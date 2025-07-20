@@ -3,9 +3,10 @@ hide:
   - toc
 ---
 
-- **Interface**
+- **Interface and Camera Controls**
 
     - [Saving and restoring camera poses](#saving-and-restoring-camera-poses)
+    - [Centering the view on an area of interest](#centering-the-view-on-an-area-of-interest)
     - [How do I take a screenshot / save an image?](#how-do-i-take-a-screenshot-save-an-image)
     - [Positioning objects in the scene and reading back results](#positioning-objects-in-the-scene-and-reading-back-results)
     - [Managing large numbers of structures and quantities](#managing-large-numbers-of-structures-and-quantities)
@@ -47,6 +48,10 @@ hide:
 Use `lookAt()` and [other functions]([[url.prefix]]/basics/camera_controls/) to manually specify the viewing camera pose. 
 
 Or, you can interactively position the camera in the scene, [copy it to your clipboard as a json string]([[url.prefix]]/basics/camera_controls/#savingrestoring-views) with `ctrl-c`, then restore it from the clipboard with `ctrl-v`. These strings can also be saved and restored programmatically.
+
+### **Centering the view on an area of interest**
+
+See [camera controls]([[url.prefix]]/basics/camera_controls/#centering-the-view-on-scene-content). You can use ctrl+shift+click (cmd+shift+click on macOS) to orbit the view about a point of interest, as well as zooming in relative to that point.
 
 ### **How do I take a screenshot / save an image?**
 

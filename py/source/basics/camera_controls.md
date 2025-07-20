@@ -251,6 +251,29 @@ In perspective mode, zooming (for instance, by manually scrolling the mouse) tra
     ps.set_view_projection_mode("perspective")
     ```
 
+## Centering the View on Scene Content
+
+To focus on particular areas of interest, hold ctrl+shift (cmd+shift on macOS) and click in the scene. This will re-center the view in the clicked location. You can also hold ctrl+shift (cmd+shift on macOS) and scroll to zoom relative to selected center location, which makes it easer to zoom in on small details. Use the Reset View button to reset the center of interest.
+
+<video width=100% autoplay muted loop>
+  <source src="[[url.prefix]]/media/rotation_center.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+??? func "`#!py set_view_center(new_center, fly_to=False)`"
+
+    Programmatically set the view center to a location in world-space. For example, with the Turntable view, this changes the center of rotation.
+
+    - `new_center` a 3d vector position in world space as the new center
+    - `fly_to` a boolean indicating whether to animate the update
+    
+    The input 3D vector can be tuples, length-3 numpy arrays, or really anything that can be indexed for three components.
+
+    For some view types, the view must immediately be projected to conform to the new center. If `fly_to=True` this projection will be a smooth flight, otherwise it will be instantaneous.
+
+    There is also a corresponding `get_view_center()` returning a vector.
+
+
 ## Saving/Restoring Views
 
 The current camera view (location, direction, camera parameters, and window size) can be saved or loaded from a json string. This is useful for quickly setting up repeatable visualizations.

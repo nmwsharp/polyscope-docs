@@ -257,6 +257,22 @@ In perspective mode, zooming (for instance, by manually scrolling the mouse) tra
     polyscope::view::projectionMode = polyscope::ProjectionMode::Perspective;
     ```
 
+## Centering the View on Scene Content
+
+To focus on particular areas of interest, hold ctrl+shift (cmd+shift on macOS) and click in the scene. This will re-center the view in the clicked location. You can also hold ctrl+shift (cmd+shift on macOS) and scroll to zoom relative to selected center location, which makes it easer to zoom in on small details. Use the Reset View button to reset the center of interest.
+
+<video width=100% autoplay muted loop>
+  <source src="[[url.prefix]]/media/rotation_center.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+??? func "`#!cpp void setViewCenter(glm::vec3 newCenter, bool flyTo = false)`"
+
+    Programmatically set the view center to a location in world-space. For example, with the Turntable view, this changes the center of rotation.
+
+    For some view types, the view must immediately be projected to conform to the new center. If `flyTo=true` this projection will be a smooth flight, otherwise it will be instantaneous.
+
+
 ## Saving/Restoring views
 
 The current camera view (location, direction, camera parameters, and window size) can be saved or loaded from a json string. This is useful for quickly setting up repeatable visualizations.
