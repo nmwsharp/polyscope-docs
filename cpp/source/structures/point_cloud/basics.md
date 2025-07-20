@@ -58,6 +58,19 @@ The locations of the points in a point cloud can be updated with the member func
     Note: `updatePointPositions2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
 
+### Adjusting the point radius
+
+Set the radius of the points with `PointCloud::setPointRadius(newRad)`. By default, the radius is a [relative value]([[url.prefix]]/basics/parameters/#scaled-values) which gets scaled by the content in the scene, so for example a default of `0.02` will always be a reasonable size no matter what the scale of the content in your scene is. Or, set `isRelative=false` to set an absolute radius in world units.
+
+To set a variable radius which is different for each point in the point cloud, see the [variable radius page]([[url.prefix]]/structures/point_cloud/variable_radius/).
+
+??? func "`#!cpp void PointCloud::setPointRadius(double newVal, bool isRelative=true)`"
+
+    Update the radius for points in the point cloud.
+
+    By default the radius is interpreted as a relative value, setting `isRelative=false` will treat is as an absolute length in world units.
+
+
 ### Selection / Picking
 
 "Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information.

@@ -64,6 +64,20 @@ ps.show()
 
     Update the point positions in a point cloud structure. `newPos` must be valid input as to initially construct a point cloud, with the same number of points.
 
+
+### Adjusting the point radius
+
+Set the radius of the points with `PointCloud.set_radius(newRad)`, or in the constructor. By default, the radius is a [relative value]([[url.prefix]]/basics/parameters/#scaled-values) which gets scaled by the content in the scene, so for example a default of `0.02` will always be a reasonable size no matter what the scale of the content in your scene is. Or, set `relative=False` to set an absolute radius in world units.
+
+To set a variable radius which is different for each point in the point cloud, see the [variable radius page]([[url.prefix]]/structures/point_cloud/variable_radius/).
+
+??? func "`#!python PointCloud.set_radius(newVal, relative=True)`"
+
+    Update the radius for points in the point cloud.
+
+    By default the radius is interpreted as a relative value, setting `relative=False` will treat is as an absolute length in world units.
+
+
 ### Point render mode
 
 By default, Polyscope renders point clouds with a sphere for each point. However, for large point clouds (for instance, > 500,000 points, or on low-end hardware), this sphere rendering may become prohibitively expensive and lead to a laggy interface. As an alternative, points can be rendered as a small quad per-point, which is more efficient (for instance, it renders in real-time with 20,000,000+ points on my mid-range GPU).
