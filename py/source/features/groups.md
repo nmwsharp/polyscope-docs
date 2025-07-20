@@ -121,6 +121,27 @@ ps.show(3)
     The `group` argument can be either a group object or a group name string.
 
 
+### Iterate over children in a group
+
+??? func "`#!python Group.get_child_structure_names()`"
+    
+    ##### get child structure names
+
+    Get a list of the string names of all structures contained in the group.
+
+    Only returns top-level children, does not recurse into sub-groups.
+
+    You can get the underlying structures like `get_surface_mesh(structure_name)`, etc, and process as desired.
+
+??? func "`#!python Group.get_child_group_names()`"
+    
+    ##### get child group names
+
+    Get a list of the group names of all nested groups contained in the group.
+
+    Only returns top-level children, does not recurse into sub-groups.
+
+    You can get the underlying groups like `get_group(group_name)`, etc, and process as desired.
 
 ### Group settings
 

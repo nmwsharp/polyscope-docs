@@ -135,6 +135,33 @@ polyscope::show(3);
     Remove a group as a (nested) member of this group
 
 
+### Iterate over children in a group
+
+You can iterate over the children in a group via the `childrenStructures` and `childrenGroups` members. These members only hold top-level children, any recursion into nested children of nested groups must be done manually.
+
+The lists are lists of `WeakHandle`s, which are a life-tracking references (in-case the underlying structure is unexpectedly deleted).
+
+**Example:**
+```cpp
+polyscope::Group& group = *polyscope::getGroup("my group");
+
+// Iterate over child structures
+for(polyscope::WeakHandle<polyscope::Structure>& wh : group.childrenStructures) {
+    if(wh.isValid()) {
+        polyscope::Structure& myStructure = wh.get();
+        /* do stuff */
+    }
+}
+
+// Iterate over child groups
+for(polyscope::WeakHandle<polyscope::Group>& wh : group.childrenGroups) {
+    if(wh.isValid()) {
+        polyscope::Group& myGroup = wh.get();
+        /* do stuff */
+    }
+}
+```
+
 
 ### Group settings
 
