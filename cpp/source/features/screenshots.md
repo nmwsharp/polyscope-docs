@@ -24,16 +24,52 @@ polyscope::screenshotExtension = ".jpg";
 // Take a screenshot
 // It will be written to your current directory as screenshot_000000.jpg, etc
 polyscope::screenshot();
+
+// Set some options and save a named screenshot
+polyscope::ScreenshotOptions opts;
+opts.transparentBackground = false;
+polyscope::screenshot("my_scene.jpg", opts);
+
+// Get the pixels as a raw buffer
+std::vector<unsigned char> img = polyscope::screenshotToBuffer(opts);
 ```
 
+Options can be set using the `ScreenshotOptions` struct
+```cpp
+struct ScreenshotOptions {
+  bool transparentBackground = true; // is the background transparent
+  bool includeUI = false;            // are ImGUI UI elements (panels, buttons, etc) visible
+};
+```
 
-???+ func "`#!cpp void screenshot(bool transparentBG = true)`"
+- If `transparentBG` is `true`, the background will be rendered as transparent, and set as transparency alpha in the saved image if the file format supports it.
+- If `includeUI` is `true`, the screenshot will be captured with the ImGui UI elements (panels, buttons, etc) visible.
+
+???+ func "`#!cpp void screenshot(const ScreenshotOptions& options)`"
     
     ##### numbered screenshot
 
     Saves a screenshot to the current directory, with file named like `screenshot_000000.png`, numbered automatically in increasing order. The numbering is reset to `0` for each run of the program; existing files will be silently overwritten.
 
-    If `transparentBG` is `true`, the background will be rendered as transparent, and set as transparency alpha in the saved image if the file format supports it.
+    Se the options struct above for available options.
+
+??? func "`#!cpp void screenshot(std::string filename, const ScreenshotOptions& options)`"
+    
+    ##### named screenshot
+
+    Saves a screenshot to the path given as `filename`, with format inferred from the file extension. 
+
+    The extension should be `.png`, or `.jpg`.
+    
+    Se the options struct above for available options.
+
+??? func "`#!cpp std::vector<unsigned char> screenshotToBuffer(const ScreenshotOptions& options)`"
+    
+    ##### screenshot to buffer
+
+    Take a screenshot from the current view and return it as a buffer. The dimensions are `view::bufferWidth` * `view::bufferHeight`, with entries RGBA at 1 byte each.
+    
+    Se the options struct above for available options.
 
 ??? func "`#!cpp std::string options::screenshotExtension`"
     
@@ -42,22 +78,3 @@ polyscope::screenshot();
     Set the extension used when taking automatically-numbered screenshots, either with `screenshot()` or by clicking the GUI button.
 
     The extension should be `.png`, or `.jpg`.
-
-
-??? func "`#!cpp void screenshot(std::string filename, bool transparentBG = true)`"
-    
-    ##### named screenshot
-
-    Saves a screenshot to the path given as `filename`, with format inferred from the file extension. 
-
-    The extension should be `.png`, or `.jpg`.
-    
-    If `transparentBG` is `true`, the background will be rendered as transparent.
-
-??? func "`#!cpp std::vector<unsigned char> screenshotToBuffer(bool transparentBG = true)`"
-    
-    ##### screenshot to buffer
-
-    Take a screenshot from the current view and return it as a buffer. The dimensions are `view::bufferWidth` * `view::bufferHeight`, with entries RGBA at 1 byte each.
-    
-    If `transparentBG` is `true`, the background will be rendered as transparent.

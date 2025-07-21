@@ -25,9 +25,12 @@ ps.set_screenshot_extension(".jpg");
 # Take a screenshot
 # It will be written to your current directory as screenshot_000000.jpg, etc
 ps.screenshot()
+
+# Get the screenshot image as a numpy array
+img = ps.screenshot_to_buffer()
 ```
 
-???+ func "`#!python screenshot(filename=None, transparent_bg=True)`"
+???+ func "`#!python screenshot(filename=None, transparent_bg=True, include_UI=False)`"
 
     Saves a screenshot to the path given as `filename`, with format inferred from the file extension. 
 
@@ -36,6 +39,8 @@ ps.screenshot()
     If no name is is given, screenshots are saved to the current directory, with file named like `screenshot_000000.png` numbered automatically in increasing order. The numbering is reset to `0` for each run of the program; existing files will be silently overwritten.
 
     If `transparent_bg` is `true`, the background will be rendered as transparent, and set as transparency alpha in the saved image if the file format supports it.
+
+    If `include_UI` is true, the screenshot with be captured with the ImGui UI (panels, buttons, etc) visible (default: `False`).
 
 
 ??? func "`#!python set_screenshot_extension(ext)`"
@@ -47,10 +52,12 @@ ps.screenshot()
     The extension should be `.png`, or `.jpg`.
 
 
-??? func "`#!python screenshot_to_buffer(transparent_bg=True, vertical_flip=True)`"
+??? func "`#!python screenshot_to_buffer(transparent_bg=True, vertical_flip=True, include_UI=False)`"
 
     ##### screenshot to buffer
 
     Take a screenshot of the current view and return it as a numpy array of (h,w,4).
+
+    See `screenshot()` for the meaning of most arguments.
 
     The openGL buffer layout is vertically-flipped from the usual image convention in Python. The if `vertical_flip=True`, the buffer is flipped vertically before returning to match the usual convention.
