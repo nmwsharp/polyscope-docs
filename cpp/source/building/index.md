@@ -59,7 +59,7 @@ Polyscope has been verified to compile in Visual Studio 2019 & 2017; other versi
 
 ### Dependencies
 
-Polyscope packages all of its source code dependencies with the repository.
+Polyscope packages all of its source code dependencies with the repository. You may need to install a few standard OS-level packages for things like openGL and windowing support.
 
 #### Ubuntu
 
@@ -67,12 +67,9 @@ On Ubuntu and friends, you may want to `apt-get install xorg-dev libglu1-mesa-de
 
 #### MacOS
 
-On MacOS it may be necessary to install X11 dependencies, this can be done using Homebrew and [xquartz](https://www.xquartz.org/) package with the command: `brew install --cask xquartz`. If you are not using CMake you will need to link against the `OpenGL`, `CoreVideo`, `Cocoa` and `IOKit` MacOS frameworks explicitly. A sample command to link your application with `g++` on MacOS is:
+On MacOS it may be necessary to install X11 dependencies. There are many ways to get these, one way is to use Homebrew and install the `xquartz` package like: `brew install --cask xquartz`. 
 
-```sh
-g++ <object files> -framework OpenGL -framework CoreVideo -framework Cocoa -framework IOKit \
-     -L/opt/X11/lib/ <Other Unix Linking flags (libraries + directories)>
-```
+If you are not using CMake, you will need to link against the `OpenGL`, `CoreVideo`, `Cocoa` and `IOKit` MacOS frameworks explicitly. A sample command to link your application with `g++` on MacOS is: `g++ <object files> -framework OpenGL -framework CoreVideo -framework Cocoa -framework IOKit -L/opt/X11/lib/ ...(other flags)...`.
 
 ### Backends
 
