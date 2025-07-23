@@ -5,6 +5,7 @@ Polyscope stands on the shoulders of many outstanding open-source projects. Thes
 --- | --- | ---
 GLFW | Window and input management with openGL | [glfw.org](http://www.glfw.org)
 Dear ImGui | GUI interface (buttons, text boxes, etc) | [github.com/ocornut/imgui](https://github.com/ocornut/imgui)
+ImPlot | Extension of ImGui for 2D plots (lines, scatter, etc) | [github.com/epezent/implot](https://github.com/epezent/implot)
 glad | OpenGL loader (used on Windows/Linux) | [github.com/Dav1dde/glad](https://github.com/Dav1dde/glad)
 glm | Vector math and glsl utilities | [glm.g-truc.net](https://glm.g-truc.net/)
 stb | Header-only libraries, esp. image loading | [github.com/nothings/stb](https://github.com/nothings/stb)
