@@ -9,7 +9,7 @@ The Polyscope scene view includes a ground plane which optionally supports refle
 - `tile_reflection` a tiled ground plane with a reflection of the scene (default)
 - `shadow_only` a transparent ground plane with a soft vertical shadow of the scene
 
-The ground plane and shadow settings can also be manually adjusted in the GUI under the `[Appearance] --> [Ground Plane]` menu.
+The ground plane and shadow settings can also be manually adjusted in the GUI under the `[Appearance] --> [Ground Plane]` menu. The ground plane does not support all [transparency modes]([[url.prefix]]/features/transparency): with simple transparency it is disabled, and pretty transparency there are no reflections or shadows.
 
 **Example:** adjust the ground plane & shadow appearance
 
