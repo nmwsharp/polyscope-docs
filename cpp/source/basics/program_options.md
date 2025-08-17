@@ -93,6 +93,17 @@ polyscope::init();
 
     The main loop will not run at more than `maxFPS` iterations per second. `-1` disables, running the loop as fast as possible. Default: `60`.
 
+    This behavior may be affected by the [`options::frameTickLimitFPSMode` setting]([[url.prefix]]/basics/flow/#frameticklimitfpsmode).
+
+??? func "`#!cpp bool options::enableVSync`"
+    
+    ##### enable vsync
+
+    VSync synchronizes the rendering process with your display's framerate, which may fix some visual artifacts. It also typically causes rendering to block to match the refresh rate of your monitor.
+
+    Default: `false` on Windows and `true` on other platforms.
+    
+    This behavior may be affected by the [`options::frameTickLimitFPSMode` setting]([[url.prefix]]/basics/flow/#frameticklimitfpsmode).
 
 ??? func "`#!cpp bool options::usePrefsFile`"
     

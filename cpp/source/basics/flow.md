@@ -4,12 +4,13 @@ Polyscope needs to be initialized exactly once by calling `init()`, typically ne
 
 ## Program Structure
 
-There are two separate ways to structure your program's control flow with polyscope.
+There are two separate ways to structure your program's control flow with polyscope.  Either way, `init()` must be called first.
 
 **Option 1: show()** The simpler, and more-common approach is to call `show()`, which will run Polyscope's window continuously. The `show()` function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via [the `userCallback`]([[url.prefix]]/features/callbacks_and_UIs).
 
 ```cpp
 #include "polyscope/polyscope.h"
+
 polyscope::init();
 
 /* 
@@ -32,21 +33,23 @@ polyscope::show();
 
 ```cpp
 #include "polyscope/polyscope.h"
+
 polyscope::init();
 
 // if desired, set up a userCallback to add ImGui UI elements
 
-while (!polyscope::windowRequestsClose()) { /* program runs */
+while(!polyscope::windowRequestsClose() && /* your conditions */) {
     /* 
      * ... your code ...
      * ... add visualizations to Polyscope, etc ...
      */
 
-    polyscope::frameTick(); // renders one UI frame, returns immediately
+    polyscope::frameTick(); // renders one UI frame
 }
 ```
 
-Either way, `init()` must be called before you do anything with Polyscope.
+When using `frameTick()`, see the setting `options::frameTickLimitFPSMode` to customize the rate at which this loop executes, e.g. to lock it to a fixed rate like 60 fps. By default, it will execute as quickly as possible, but Polyscope will only actually render when needed to hit the target framerate.
+
 
 !!! info "Where to make ImGui calls"
 
@@ -102,7 +105,7 @@ Either way, `init()` must be called before you do anything with Polyscope.
     ```cpp
     polyscope::init();
 
-    while(/* program runs */) {
+    while(!polyscope::windowRequestsClose() && /* your conditions */) {
 
         /* 
          * ... your code ...
@@ -128,3 +131,16 @@ Either way, `init()` must be called before you do anything with Polyscope.
     Returns `true` if the user has tried to exit the window at the OS level, e.g. by clicking the close button. 
 
     Useful for deciding when to exit your control loop when using `frameTick()`.
+
+
+??? func "`#!cpp options::frameTickLimitFPSMode`"
+    
+    ##### frameTickLimitFPSMode
+
+    Set how the frames per second settings such as `options::maxFPS` and `options::enableVSync` should be respected when using `frameTick()` to run the main loop. (see [program options]([[url.prefix]]/basics/program_options) for more details on those settings)
+
+      - `LimitFPSMode::IgnoreLimits`: Any FPS/vsync limits will be ignored, `frameTick()` will execute as fast as possible, rendering each time and immediately returning.
+      - `LimitFPSMode::BlockToHitTarget`: Any FPS/vsync will be respected, and the call to `frameTick()` will block to sleep as needed to hit the target framerate, similar to `show()`. This is usually what you want for simple interactive visualization applications.
+      - `LimitFPSMode::SkipFramesToHitTarget`: Any FPS/vsync will be respected for rendering, but the call to `frameTick()` will always return as quickly as possible, skipping rendering and any callbacks when not needed to hit the framerate so your main loop may iterate much faster. This is useful when you want to call `frameTick()` in a very tight loop without slowing down your program, such as in a training or optimization loop. (**default**)
+
+    **frame tick only!** This setting only has any effect if you are using `frameTick()` to run your main loop. If you used `show()`, it is ignored, and you can adjust the FPS with the `options::maxFPS` setting.

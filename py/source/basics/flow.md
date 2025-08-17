@@ -4,7 +4,7 @@ Polyscope needs to be initialized exactly once by calling `init()`, typically ne
 
 ## Program Structure
 
-There are two separate ways to structure your program's control flow with polyscope.
+There are two separate ways to structure your program's control flow with polyscope.  Either way, `init()` must be called first.
 
 **Option 1: show()** The simpler, and more-common approach is to call `show()`, which will run Polyscope's window continuously. The `show()` function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via [the `user_callback`]([[url.prefix]]/features/callbacks_and_UIs).
 
@@ -44,7 +44,8 @@ while(not ps.window_requests_close()):
     ps.frame_tick() # renders one UI frame, returns immediately
 ```
 
-Either way, `init()` must be called before you do anything with Polyscope.
+When using `frame_tick()`, see the setting `set_frame_tick_limit_fps_mode()` to customize the rate at which this loop executes, e.g. to lock it to a fixed rate like 60 fps. By default, it will execute as quickly as possible, but Polyscope will only actually render when needed to hit the target framerate.
+
 
 !!! info "Where to make ImGui calls"
 
@@ -98,7 +99,7 @@ Either way, `init()` must be called before you do anything with Polyscope.
     ```python
     ps.init()
 
-    while(continue_program):
+    while(not ps.window_requests_close()):
 
         # 
         # ... your code ...
@@ -122,3 +123,17 @@ Either way, `init()` must be called before you do anything with Polyscope.
     Returns `True` if the user has tried to exit the window at the OS level, e.g. by clicking the close button. 
 
     Useful for deciding when to exit your control loop when using `frame_tick()`.
+
+??? func "`#!python set_frame_tick_limit_fps_mode(mode_str)`"
+    
+    ##### frame_tick_limit_fps_mode
+
+    Set how the frames per second settings such as `set_max_fps()` and `set_enable_vsync()` should be respected when using `frame_tick()` to run the main loop. (see [program options]([[url.prefix]]/basics/program_options) for more details on those settings)
+
+    The argument is one of the following strings:
+
+      - `'ignore_limits'`: Any FPS/vsync limits will be ignored, `frame_tick()` will execute as fast as possible, rendering each time and immediately returning.
+      - `'block_to_hit_target'`: Any FPS/vsync will be respected, and the call to `frame_tick()` will block to sleep as needed to hit the target framerate, similar to `show()`. This is usually what you want for simple interactive visualization applications.
+      - `'skip_frames_to_hit_target'`: Any FPS/vsync will be respected for rendering, but the call to `frame_tick()` will always return as quickly as possible, skipping rendering and any callbacks when not needed to hit the framerate so your main loop may iterate much faster. This is useful when you want to call `frame_tick()` in a very tight loop without slowing down your program, such as in a training or optimization loop. (**default**)
+
+    **frame tick only!** This setting only has any effect if you are using `frame_tick()` to run your main loop. If you used `show()`, it is ignored, and you can adjust the FPS with the `set_max_fps()` setting.
