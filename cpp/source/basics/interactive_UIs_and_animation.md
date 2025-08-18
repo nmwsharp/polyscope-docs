@@ -270,9 +270,11 @@ A pick query returns a combined struct with info such as what structure was clic
 struct PickResult {
   bool isHit = false;                    // did we hit anything?
   Structure* structure = nullptr;        // pointer to the structure under the cursor
+  Quantity* quantity = nullptr;          // pointer to the quantity under the cursor (most quantities cannot be picked, you pick the structure instead)
   WeakHandle<Structure> structureHandle; // same as .structure, but with lifetime tracking
   std::string structureType = "";        // structure type which was hit, like "Point Cloud"
   std::string structureName = "";        // name of structure which was hit, like "my_points"
+  std::string quantityName = "";         // name of quantity which was hit (most quantities cannot be picked, you pick the structure instead)
   glm::vec2 screenCoords;                // coordinates of the query location
   glm::ivec2 bufferInds;                 // render buffer indices of the query location
   glm::vec3 position;                    // 3d position which was hit, in world space

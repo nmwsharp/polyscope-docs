@@ -413,15 +413,16 @@ A pick query returns a combined struct with info such as what structure was clic
 
 ```python
 class PickResult:
-    self.is_hit =               # did we hit anything?
-    self.structure_type_name =  # structure type which was hit, like "Point Cloud"
-    self.structure_name =       # name of structure which was hit, like "my_points"
-    self.screen_coords =        # coordinates of the query location
-    self.buffer_inds =          # render buffer indices of the query location
-    self.position =             # 3d position which was hit, in world space
-    self.depth =                # depth to the hit, in world units
-    self.local_index =          # structure-specific index of the element which was hit
-    self.structure_data =       # a dictionary of additional fields for the clicked structure
+    self.is_hit = ...               # did we hit anything?
+    self.structure_type_name = ...  # structure type which was hit, like "Point Cloud"
+    self.structure_name = ...       # name of structure which was hit, like "my_points"
+    self.quantity_name = ...        # name of quantity which was hit (most quantities cannot be picked, you pick the structure instead)
+    self.screen_coords = ...        # coordinates of the query location
+    self.buffer_inds = ...          # render buffer indices of the query location
+    self.position = ...             # 3d position which was hit, in world space
+    self.depth = ...                # depth to the hit, in world units
+    self.local_index = ...          # structure-specific index of the element which was hit
+    self.structure_data = ...       # a dictionary of additional fields for the clicked structure
 ```
 
 Additionally, many structures will report additional information about the pick, in the `structure_data` field. For instance, a `SurfaceMesh` gives info on whether a vertex/face/edge/etc was clicked on, the index of that element, and barycentric coordinates of the click within a face.
