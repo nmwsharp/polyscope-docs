@@ -40,21 +40,21 @@ These settings affect the 3D camera view in polyscope. It is often convenient to
 
 **View Getters:**
 ```cpp
-// call like polyscope::view::getCameraFrame() etc
-
-CameraParameters getCameraParametersForCurrentView(); // contains all of this info
+CameraParameters view::getCameraParametersForCurrentView(); // contains all of this info
 
 // (these friendly helpers get the same info as ^^^)
-glm::mat4 getCameraViewMatrix();
-void setCameraViewMatrix(glm::mat4 newMat);
-glm::mat4 getCameraPerspectiveMatrix();
-glm::vec3 getCameraWorldPosition();
-void getCameraFrame(glm::vec3& lookDir, glm::vec3& upDir, glm::vec3& rightDir);
-glm::vec3 getUpVec();
-glm::vec3 getFrontVec();
+glm::mat4 view::getCameraViewMatrix();
+void view::setCameraViewMatrix(glm::mat4 newMat);
+glm::mat4 view::getCameraPerspectiveMatrix();
+glm::vec3 view::getCameraWorldPosition();
+void view::getCameraFrame(glm::vec3& lookDir, glm::vec3& upDir, glm::vec3& rightDir);
+glm::vec3 view::getUpVec();
+glm::vec3 view::getFrontVec();
+float view::getVerticalFieldOfViewDegrees();
+float view::getAspectRatioWidthOverHeight();
 ```
 
-??? func "`#!cpp CameraParameters getCameraParametersForCurrentView()`"
+??? func "`#!cpp CameraParameters view::getCameraParametersForCurrentView()`"
 
     Get the camera parameters (intrinsic and extrinsics) that describe the current viewport view. 
 
@@ -75,17 +75,17 @@ glm::vec3 getFrontVec();
 
 **View Setters:**
 ```cpp
-// call like polyscope::view::setCameraViewMatrix() etc
-
-void setViewToCamera(const CameraParameters& p); // contains all of this info
+void view::setViewToCamera(const CameraParameters& p); // contains all of this info
 
 // (these friendly helpers set the same info as ^^^)
-void setCameraViewMatrix(glm::mat4 newMat);
-void lookAt(glm::vec3 cameraLocation, glm::vec3 target, bool flyTo = false);
-void lookAt(glm::vec3 cameraLocation, glm::vec3 target, glm::vec3 upDir, bool flyTo = false);
+void view::setCameraViewMatrix(glm::mat4 newMat);
+void view::lookAt(glm::vec3 cameraLocation, glm::vec3 target, bool flyTo = false);
+void view::lookAt(glm::vec3 cameraLocation, glm::vec3 target, glm::vec3 upDir, bool flyTo = false);
+void view::setVerticalFieldOfViewDegrees(float newVal);
+// there is no aspect ratio setter: it is determined by the window size
 ```
 
-??? func "`#!cpp void setCameraParametersForCurrentView(const CameraParameters& params)`"
+??? func "`#!cpp void view::setCameraParametersForCurrentView(const CameraParameters& params)`"
 
     Set the camera parameters (intrinsic and extrinsics) that describe the current viewport view. 
 
@@ -109,7 +109,7 @@ void lookAt(glm::vec3 cameraLocation, glm::vec3 target, glm::vec3 upDir, bool fl
 
 The look-at functions are particularly easy to use to position the camera towards content of interest.
 
-??? func "`#!cpp void lookAt(glm::vec3 cameraLocation, glm::vec3 target, bool flyTo = false)`"
+??? func "`#!cpp void view::lookAt(glm::vec3 cameraLocation, glm::vec3 target, bool flyTo = false)`"
 
     Set the camera to be located at the 3D position `cameraLocation` and looking at the 3D position `target`, both in world coordinates. The up direction for the camera is set to be the scene's up direction. If `flyTo=true`, the camera will smoothly animate to the new configuration.
 
@@ -118,7 +118,7 @@ The look-at functions are particularly easy to use to position the camera toward
     polyscope::view::lookAt(glm::vec3{10., 10., 0.}, glm::vec3{0., 2., 0.});
     ```
 
-??? func "`#!cpp void lookAt(glm::vec3 cameraLocation, glm::vec3 target, glm::vec3 upDir, bool flyTo = false)`"
+??? func "`#!cpp void view::lookAt(glm::vec3 cameraLocation, glm::vec3 target, glm::vec3 upDir, bool flyTo = false)`"
     
     Set the camera to be located at the 3D position `cameraLocation` and looking at the 3D position `target`, oriented with the up direction `upDir`, all in world coordinates. If `flyTo=true`, the camera will smoothly animate to the new configuration.
 
@@ -133,9 +133,9 @@ The look-at functions are particularly easy to use to position the camera toward
 
 The home view is a reasonable default camera view, computed based on the up- and front- direction, as well as the scene extents which may be computed automatically from data you have registered.
 
-By default, the camera is located at the home view when the scene is first opened. You can also return it to that view at any time with `resetCameraToHomeView()`.
+By default, the camera is located at the home view when the scene is first opened. You can also return it to that view at any time with `view::resetCameraToHomeView()`.
 
-??? func "`#!cpp void resetCameraToHomeView()`"
+??? func "`#!cpp void view::resetCameraToHomeView()`"
 
     Reset the camera view to the home view (a reasonable default view scaled to the scene).
 
@@ -266,7 +266,7 @@ To focus on particular areas of interest, hold ctrl+shift (cmd+shift on macOS) a
   Your browser does not support the video tag.
 </video>
 
-??? func "`#!cpp void setViewCenter(glm::vec3 newCenter, bool flyTo = false)`"
+??? func "`#!cpp void view::setViewCenter(glm::vec3 newCenter, bool flyTo = false)`"
 
     Programmatically set the view center to a location in world-space. For example, with the Turntable view, this changes the center of rotation.
 
@@ -279,7 +279,7 @@ The current camera view (location, direction, camera parameters, and window size
 
 Also, in the Polyscope GUI, this string can be copied to the clipboard at any time via the "copy" hotkey (ctrl-C or cmd-C), or loaded from your current clipboard using the "paste" hotkey (ctrl-V or cmd-V).
 
-??? func "`#!cpp std::string getViewAsJson()`"
+??? func "`#!cpp std::string view::getViewAsJson()`"
 
     Get the current view parameters specified as a json string.
 
@@ -289,7 +289,7 @@ Also, in the Polyscope GUI, this string can be copied to the clipboard at any ti
     ```
     
 
-??? func "`#!cpp void setViewFromJson(std::string jsonString, bool animateFlight=false)`"
+??? func "`#!cpp void view::setViewFromJson(std::string jsonString, bool animateFlight=false)`"
 
     Set the current view to match the parameters specified in the json string.
 

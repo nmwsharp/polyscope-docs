@@ -46,6 +46,8 @@ polyscope.get_view_camera_parameters() # contains all of this info
 
 # (these friendly helpers get the same info as ^^^)
 polyscope.get_camera_view_matrix()
+polyscope.get_vertical_fov_degrees()
+polyscope.get_aspect_ratio_width_over_height()
 ```
 
 ??? func "`#!python get_view_camera_parameters()`"
@@ -74,6 +76,8 @@ polyscope.set_view_camera_parameters(params) # contains all of this info
 polyscope.set_camera_view_matrix(mat)
 polyscope.look_at(camera_location, target, fly_to=False)
 polyscope.look_at_dir(camera_location, target, up_dir, fly_to=False)
+polyscope.set_vertical_fov_degrees(fov)
+# there is no aspect ratio setter: it is determined by the window size
 ```
 
 ??? func "`#!python set_view_camera_parameters(params)`"
