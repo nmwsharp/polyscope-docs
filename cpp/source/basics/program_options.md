@@ -126,6 +126,22 @@ polyscope::init();
 
     If this option is `true`, the scene will be redrawn on every main loop iteration no matter what, circumventing the lazy drawing features. Default: `false`.
 
+??? func "`#!cpp float options::uiScale`"
+    
+    ##### ui scale
+
+    A scale factor for all UI elements (text, buttons, panels). Can be useful for increase font sizes on high DPI screens. `2.0` means make everything twice as large.
+
+    This factor should also be incorporated into any user-defined widths in custom UIs, to ensure spacing remains correct as scaling is changed, like:
+
+    ```
+    ImGui::PushItemWidth(100 * polyscope::options::uiScale);
+    ```
+
+    If `-1`, a sensible value will be guessed at initialization time. This value is saved and restored between settings if the preferences file is enabled.
+
+    Default: `-1.`
+
 ??? func "`#!cpp bool options::buildGui`"
     
     ##### build gui

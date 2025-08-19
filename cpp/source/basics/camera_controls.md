@@ -4,6 +4,9 @@ These functions control the current viewing camera in for the Polyscope scene, a
 ```cpp
 #include "polyscope/polyscope.h"
 
+// set the size of the window
+polyscope::view::setWindowSize(600, 800);
+
 // change the default up-direction or front-direction for the scene
 polyscope::view::setUpDir(polyscope::UpDir::ZUp);
 polyscope::view::setFrontDir(polyscope::FrontDir::NegYFront);
@@ -33,6 +36,35 @@ polyscope::view::setCameraParametersForCurrentView(cam_params):
 // quantities
 polyscope::CameraView* cam = polyscope::registerCameraView("cam1", params) 
 ```
+
+## Window Controls
+
+Get and set the size of the window which appears on the user's display.
+
+??? func "`#!cpp void view::setWindowSize(int width, int height)`"
+
+    Set the size of the window.
+
+    Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the logical size.
+
+??? func "`#!cpp std::tuple<int, int> getWindowSize()`"
+
+    Get the current size of the window.
+
+    Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the logical size.
+
+??? func "`#!cpp std::tuple<int, int> getBufferSize()`"
+
+    Get the current pixel buffer resolution of the window.
+
+    Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the pixel buffer size.
+
+??? func "`#!cpp void view::setWindowResizable(bool newVal)`"
+
+    If `false`, the window will be locked to size and the OS will not allow it to be resized. (Default: `true`)
+
+    There is also a corresponding `getWindowResizable()`.
+
 
 ## Manipulating the Current View
 

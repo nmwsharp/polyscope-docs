@@ -88,6 +88,22 @@ If no longer needed, structures can be removed by name or by pointer. Removing a
 
     Remove all structures from the scene.
 
+## Quantities
+
+Quantities, like scalar functions, color fields, vector fields, and more, can be associated with structures. See the available options for each kind of structure.
+
+Quantities can be removed from a structure by name.
+
+??? func "`#!cpp void Structure::removeQuantity(std::string name, bool errorIfAbsent = false)`"
+
+    Remove a quantity from the structure by name.
+
+
+??? func "`#!cpp void Structure::removeAllQuantities()`"
+
+    Remove all quantities which have been added to the structure.
+
+
 ## Structure options
 
 These basic options are shared by all structures.  Structure options are managed as [persistent values]([[url.prefix]]/basics/parameters/#persistent-values), and thus will persist if a new structure is registered with the same name.

@@ -67,6 +67,23 @@ ps.remove_all_structures()
     Remove all structures from the scene.
 
 
+## Quantities
+
+Quantities, like scalar functions, color fields, vector fields, and more, can be associated with structures. See the available options for each kind of structure.
+
+Quantities can be removed from a structure by name.
+
+
+??? func "`#!python Structure.remove_quantity(name, error_if_absent=False)`"
+
+    Remove a quantity from the structure by name.
+
+
+??? func "`#!python Structure.remove_all_quantities()`"
+
+    Remove all quantities which have been added to the structure.
+
+
 ## Structure options
 
 These basic options are shared by all structures.  Structure options are managed as [persistent values]([[url.prefix]]/basics/parameters/#persistent-values), and thus will persist if a new structure is registered with the same name.

@@ -35,6 +35,35 @@ ps.set_view_camera_parameters(cam_params)
 ps_cam = ps.register_camera_view("cam1", cam_params) 
 ```
 
+## Window Controls
+
+Get and set the size of the window which appears on the user's display.
+
+??? func "`#!python set_window_size(width, height)`"
+
+    Set the size of the window.
+
+    Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the logical size.
+
+??? func "`#!python get_window_size()`"
+
+    Get the current size of the window. Returns a `(width, height)` tuple.
+
+    Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the logical size.
+
+??? func "`#!python get_buffer_size()`"
+
+    Get the current pixel buffer resolution of the window. Returns a `(width, height)` tuple.
+
+    Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the pixel buffer size.
+
+??? func "`#!python set_window_resizable(is_resizable)`"
+
+    If `false`, the window will be locked to size and the OS will not allow it to be resized. (Default: `true`)
+
+    There is also a corresponding `get_window_resizable()`.
+
+
 ## Manipulating the Current View
 
 These settings affect the 3D camera view in polyscope. It is often convenient to set them just before calling `ps.init()`, but they may set be anywhere.
