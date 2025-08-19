@@ -662,6 +662,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -768,6 +782,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1688,9 +1716,9 @@
 <p class="admonition-title">Unix only</p>
 <p>Headless rendering is only supported on Unix/Linux, because EGL is only available there.</p>
 </div>
-<h2 id="using-headless-rendering">Using headless rendering</h2>
+<h2 id="using-headless-rendering">Using headless rendering<a class="headerlink" href="#using-headless-rendering" title="Permanent link">&para;</a></h2>
 <p>Headless rendering requires compiling with and initializing a separate EGL backend. </p>
-<p>Your system must have EGL available. It is likely packaged with graphics drivers, or can be installed from a package manager. Another alternative is to fall back on (much slower!) rendering by installing <code>OSMesa</code> from your package manager.</p>
+<p>Your system must have EGL available. It is likely packaged with graphics drivers, or can be installed from a package manager. Another alternative is to fall back on (much slower!) software rendering by installing <code>OSMesa</code> from your package manager.</p>
 <p>At configuration time, the EGL backend must be enabled in CMake for headless support.  The default CMake settings enable it only if you are on Linux and EGL headers seem to be present on your system.  Set the CMake variable <code>POLYSCOPE_BACKEND_OPENGL3_EGL=ON</code> to force-enable building with EGL support. </p>
 <div class="highlight"><pre><span></span><code><span class="err">cmake</span><span class="w"> </span><span class="err">..</span><span class="w"> </span><span class="err">-DPOLYSCOPE_BACKEND_OPENGL3_EGL=ON</span>
 </code></pre></div>
@@ -1706,8 +1734,8 @@
 <span class="c1">// ... add structures and quantities to polyscope as usual ...</span>
 
 <span class="c1">// save screenshots, render movies, etc</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">screenshot</span><span class="p">();</span><span class="w"> </span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">viz_img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">screenshotToBuffer</span><span class="p">();</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">screenshot</span><span class="p">();</span><span class="w">  </span><span class="c1">// saves to a file</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">viz_img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">screenshotToBuffer</span><span class="p">();</span><span class="w"> </span><span class="c1">// returns an image array</span>
 </code></pre></div></p>
 <p>Once you have initialized the backend and added your data as usual, you can preform rendering operations such as saving rendered screenshots to disk or to buffer.</p>
 <p>Unless you really know what you are doing, you probably do not want to call <code>show()</code> &ndash; by default this would initiate a render loop which spins endlessly with no effect. However it is still permitted to do so, e.g. if you set a user callback which has side effects.</p>
@@ -1715,22 +1743,22 @@
 <p class="admonition-title">ImGui not rendered</p>
 <p>In headless mode, the ImGui UI is not actually drawn to the screen. You can still issue ImGui calls in your code if you would like, but they will never have any effect.</p>
 </div>
-<h2 id="options">Options</h2>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h2>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">isHeadless</span><span class="p">()</span></code></summary>
-<h5 id="isheadless">isHeadless()</h5>
+<h5 id="isheadless">isHeadless()<a class="headerlink" href="#isheadless" title="Permanent link">&para;</a></h5>
 <p>Returns <code>true</code> if polyscope is currently running in headless mode. May only be called after initialization.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">allowHeadlessBackends</span></code></summary>
-<h5 id="allowheadlessbackends">allowHeadlessBackends</h5>
+<h5 id="allowheadlessbackends">allowHeadlessBackends<a class="headerlink" href="#allowheadlessbackends" title="Permanent link">&para;</a></h5>
 <p>If <code>true</code> default automatic initialization is allowed to initialize with a headless backend, if that is the only option.</p>
 <p>Default: <code>false</code></p>
 <p>This is set to <code>false</code> by default, because sometimes misconfigured or low-capability machines will have no display, and automatically creating headless backends on such machines would confuse new users.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">int</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">eglDeviceIndex</span></code></summary>
-<h5 id="egldeviceindex">eglDeviceIndex</h5>
+<h5 id="egldeviceindex">eglDeviceIndex<a class="headerlink" href="#egldeviceindex" title="Permanent link">&para;</a></h5>
 <p>Pass an index to manually specify which EGL device to use for headless EGL rendering. If set to <code>-1</code> (default), Polyscope will try all devices, with some heuristics to attempt to use hardware renderers before software renderers.</p>
 <p>Default: <code>-1</code></p>
 <p>If you are trying to figure out which device index to use, set Polyscope&rsquo;s verbosity to a large value (<code>&gt; 5</code>). At high verbosity, Polyscope will print the list of found EGL devices and their indices when attempting initialization.</p>

@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -647,6 +647,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -753,6 +767,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1526,7 +1554,7 @@
 
   <h1>Color Maps</h1>
 
-<h2 id="built-in-color-maps">Built-in color maps</h2>
+<h2 id="built-in-color-maps">Built-in color maps<a class="headerlink" href="#built-in-color-maps" title="Permanent link">&para;</a></h2>
 <p>Different color maps are appropriate for different situations:</p>
 <ul>
 <li><em>sequential</em> maps data in to a linear range (when it doesn&rsquo;t fall in to one of the more specific categories below).</li>
@@ -1598,12 +1626,12 @@
 </tr>
 </tbody>
 </table>
-<h2 id="loading-custom-color-maps">Loading custom color maps</h2>
+<h2 id="loading-custom-color-maps">Loading custom color maps<a class="headerlink" href="#loading-custom-color-maps" title="Permanent link">&para;</a></h2>
 <p>Custom colormaps can be loaded at runtime from image files and used anywhere colormaps are used. Loading can be performed with the UI from <code>[Appearance] --&gt; [Color maps] --&gt; [Load color map]</code>, or programatically using the function below. The input should be a horizontally-oriented image file like the one below; the centermost row of pixels will be read to generate the color map. Most common image formats are accepted (anyting <code>stb_image</code> can read).</p>
 <p><img alt="sample colormap" src="/py//media/sample_colormap.png" /></p>
 <details class="func">
 <summary><code class="highlight"><span class="n">load_color_map</span><span class="p">(</span><span class="n">cmap_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></code></summary>
-<h5 id="load_color_map">load_color_map</h5>
+<h5 id="load_color_map">load_color_map<a class="headerlink" href="#load_color_map" title="Permanent link">&para;</a></h5>
 <p>Load a new colormap from the image file <code>filename</code>, which will be assigned the name <code>cmap_name</code>.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>

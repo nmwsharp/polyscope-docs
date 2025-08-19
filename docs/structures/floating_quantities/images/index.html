@@ -664,6 +664,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -770,6 +784,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1790,11 +1818,11 @@
 <p>Images are always passed as arrays of length <code>width*height</code>, flattened such that the <em>rows</em> are stored contiguously. For multi-channel image data like colors or normals, this becomes a <code>width*height</code> array of tuples, or a <code>width*height x 3</code> matrix, etc. The <code>ImageOrigin</code> enum controls the row layout order; most commonly the first element is the upper-left of the image.</p>
 <p>Remember that Polyscope&rsquo;s <a href="/data_adaptors">data adaptors</a> allow many container types to be used as input. For instance, an RGB color image could be stored as a such as <code>std::vector&lt;std::array&lt;float,3&gt;&gt;</code>, with <code>.size() == width*height</code>, or an <code>Eigen::MatrixXd</code> with dimensions <code>width*height x 3</code>, etc.</p>
 </div>
-<h2 id="image-origin">Image Origin</h2>
+<h2 id="image-origin">Image Origin<a class="headerlink" href="#image-origin" title="Permanent link">&para;</a></h2>
 <p>When registering an image quantity, you also need to specify whether the image should be interpreted such that the first row is the &ldquo;top&rdquo; row of the image (<code>ImageOrigin::UpperLeft</code>), or the first row is the &ldquo;bottom&rdquo; row of the image (<code>ImageOrigin::LowerLeft</code>). This is a confusing issue, as there are many overlapping conventions of coordinate systems and buffer layouts for images.</p>
 <p>Most of the time, <code>ImageOrigin::UpperLeft</code> is the right choice.</p>
 <hr />
-<h2 id="scalar-image-quantity">Scalar Image Quantity</h2>
+<h2 id="scalar-image-quantity">Scalar Image Quantity<a class="headerlink" href="#scalar-image-quantity" title="Permanent link">&para;</a></h2>
 <p>These can be called at the root level, like <code>polyscope::addScalarImageQuantity()</code>, or on a structure, like <code>cameraView-&gt;addScalarImageQuantity()</code>.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">ScalarImageQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">addScalarImageQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="n">ImageOrigin</span><span class="w"> </span><span class="n">imageOrigin</span><span class="p">,</span><span class="w"> </span><span class="n">DataType</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary>
@@ -1806,10 +1834,10 @@
 <li><code>type</code> is the scalar datatype as for other scalar quantities</li>
 </ul>
 </details>
-<h3 id="categorical-scalars">Categorical Scalars</h3>
+<h3 id="categorical-scalars">Categorical Scalars<a class="headerlink" href="#categorical-scalars" title="Permanent link">&para;</a></h3>
 <p>Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.</p>
 <p>Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set <code>DataType::CATEGORICAL</code>. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.</p>
-<h3 id="scalar-quantity-options">Scalar Quantity Options</h3>
+<h3 id="scalar-quantity-options">Scalar Quantity Options<a class="headerlink" href="#scalar-quantity-options" title="Permanent link">&para;</a></h3>
 <p>These options and behaviors are available for all types of scalar quantities on any structure.</p>
 <table>
 <thead>
@@ -1827,14 +1855,14 @@
 <td>is the quantity enabled?</td>
 <td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">isEnabled</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>color map</td>
-<td>the <a href="[[url.prefix]]/features/color_maps">color map</a> to use</td>
+<td>the <a href="/features/color_maps">color map</a> to use</td>
 <td><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getColorMap</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setColorMap</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">newMap</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>map range</td>
@@ -1848,41 +1876,41 @@
 <td>are isolines shaded (default=<code>false</code>)</td>
 <td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">getIsolinesEnabled</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolinesEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>isoline style</td>
 <td>stripes or thin contour lines</td>
 <td><code class="highlight"><span class="n">IsolineStyle</span><span class="w"> </span><span class="n">getIsolineStyle</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolineStyle</span><span class="p">(</span><span class="n">IsolineStyle</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>isoline period</td>
 <td>period of isoline stripes, in data units</td>
 <td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolinePeriod</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolinePeriod</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>isoline darkness</td>
 <td>darkness of isoline stripes (default=<code>0.7</code>)</td>
 <td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineDarkness</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolineDarkness</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>contour thickness</td>
 <td>thickness of isoline contour lines (default=<code>0.3</code>)</td>
 <td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineContourThickness</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolineContourThickness</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 </tbody>
 </table>
 <p><em>(all setters return <code>this</code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>
 <hr />
-<h2 id="color-image-quantity">Color Image Quantity</h2>
+<h2 id="color-image-quantity">Color Image Quantity<a class="headerlink" href="#color-image-quantity" title="Permanent link">&para;</a></h2>
 <p>These can be called at the root level, like <code>polyscope::addColorImageQuantity()</code>, or on a structure, like <code>cameraView-&gt;addColorImageQuantity()</code>.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">ColorImageQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">addColorImageQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">values_rgb</span><span class="p">,</span><span class="w"> </span><span class="n">ImageOrigin</span><span class="w"> </span><span class="n">imageOrigin</span><span class="p">)</span></code></summary>
@@ -1905,7 +1933,7 @@
 <p>RGB values are interpreted in the range <code>[0,1]</code>.</p>
 </details>
 <p>By default, alpha values are interpreted to be non-premultiplied. Use  <code>colorAlphaImage-&gt;setIsPremultiplied(true);</code> to directly pass premultiplied alpha images.</p>
-<h3 id="color-quantity-options">Color Quantity Options</h3>
+<h3 id="color-quantity-options">Color Quantity Options<a class="headerlink" href="#color-quantity-options" title="Permanent link">&para;</a></h3>
 <p>These options and behaviors are available for all types of color quantities on any structure.</p>
 <table>
 <thead>
@@ -1923,13 +1951,13 @@
 <td>is the quantity enabled?</td>
 <td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">isEnabled</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 </tbody>
 </table>
 <p><em>(all setters return <code>this</code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>
 <hr />
-<h2 id="image-options">Image Options</h2>
+<h2 id="image-options">Image Options<a class="headerlink" href="#image-options" title="Permanent link">&para;</a></h2>
 <p>These options are common to all images</p>
 <table>
 <thead>

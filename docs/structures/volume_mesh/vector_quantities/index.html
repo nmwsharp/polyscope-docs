@@ -664,6 +664,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -770,6 +784,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1650,7 +1678,7 @@
 <span class="c1">// Show the GUI</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 </code></pre></div></p>
-<h3 id="add-vectors-to-elements">Add vectors to elements</h3>
+<h3 id="add-vectors-to-elements">Add vectors to elements<a class="headerlink" href="#add-vectors-to-elements" title="Permanent link">&para;</a></h3>
 <details class="func" open="open">
 <summary><code class="highlight"><span class="n">VolumeMesh</span><span class="o">::</span><span class="n">addVertexVectorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vectors</span><span class="p">,</span><span class="w"> </span><span class="n">VectorType</span><span class="w"> </span><span class="n">vectorType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VectorType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary>
 <p>Add a vector quantity defined at the vertices of the mesh.</p>
@@ -1669,7 +1697,7 @@
 </ul>
 <p>Note: the inner vector type of the input <em>must</em> be 3D dimensional, or you risk compiler errors, segfaults, or worse.</p>
 </details>
-<h3 id="vector-quantity-options">Vector Quantity Options</h3>
+<h3 id="vector-quantity-options">Vector Quantity Options<a class="headerlink" href="#vector-quantity-options" title="Permanent link">&para;</a></h3>
 <p>These options and behaviors are available for all types of vector quantities on any structure.</p>
 <table>
 <thead>
@@ -1687,35 +1715,35 @@
 <td>is the quantity enabled?</td>
 <td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">isEnabled</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>vector radius</td>
 <td>the radius vectors are drawn with</td>
 <td><code class="highlight"><span class="kt">double</span><span class="w"> </span><span class="n">getVectorRadius</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setVectorRadius</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRelative</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>vector length</td>
 <td>vectors will be scaled so the longest is this long. ignored if <code>VectorType::Ambient</code></td>
 <td><code class="highlight"><span class="kt">double</span><span class="w"> </span><span class="n">getVectorLengthScale</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setVectorLengthScale</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRelative</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>vector color</td>
 <td>the color to draw the vectors with</td>
 <td><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">getVectorColor</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setVectorColor</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">val</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>material</td>
-<td>what <a href="[[url.prefix]]/features/materials">material</a> to use</td>
+<td>what <a href="/features/materials">material</a> to use</td>
 <td><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getMaterial</span><span class="p">()</span></code></td>
 <td><code>setMaterial(std::string name)</code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 </tbody>
 </table>

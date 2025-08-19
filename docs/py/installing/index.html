@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -732,6 +732,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -838,6 +852,20 @@
     <li class="md-nav__item">
       <a href="../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1581,14 +1609,14 @@
   <h1>Installing</h1>
 
 <p>Polyscope supports Python 3.5-3.9 with prebuilt binaries on all major operating systems. At runtime, your environment must support OpenGL &gt;= <code>3.3 core</code>, and have the ability to open windows in a display. This includes nearly all modern desktop/laptop computers, but not all headless servers and virtual machines.</p>
-<h2 id="installing-from-pypi-with-pip">Installing from PyPi with pip</h2>
+<h2 id="installing-from-pypi-with-pip">Installing from PyPi with pip<a class="headerlink" href="#installing-from-pypi-with-pip" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>polyscope
 <span class="c1"># or maybe</span>
 python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>polyscope
 </code></pre></div>
 Using <code>python -m pip install</code> rather than just <code>pip install</code> helps when your system has multiple version of Python installed, ensuring the correct <code>pip</code> is used. Just be sure <code>python</code> refers to the install of Python you intend to use.</p>
 <p>Ideally, this install will resolve to a precompiled wheel for your platform&mdash;see <a href="#troubleshooting">troubleshooting</a> if not. Otherwise, the setup script will compile the Polyscope C++ library from source, which may take a few minutes, and requires a suitable C++ toolchain (see <a href="#building-from-source">building from source</a>).</p>
-<h4 id="troubleshooting">Troubleshooting</h4>
+<h4 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h4>
 <p>On common platforms, <code>pip</code> should always be able to install from a binary <code>.whl</code> file. If it fails to select a binary wheel, it will try to compile from source, leading to long install times or compilation errors if your toolchain is not configured.</p>
 <p>Here are some common fixes: </p>
 <ul>
@@ -1596,15 +1624,15 @@ Using <code>python -m pip install</code> rather than just <code>pip install</cod
 <li>Very old versions of <code>pip</code> may not be able to use the precompiled wheels. Upgrade <code>pip</code> with <code>python -m pip install pip --upgrade</code>.</li>
 <li>Precompiled wheels are available on pip for Python 3.5-3.9 (aka most common versions), check yours with <code>python --version</code>, and update your Python install if needed.</li>
 </ul>
-<h4 id="source-installs-with-pypi">Source installs with PyPI</h4>
+<h4 id="source-installs-with-pypi">Source installs with PyPI<a class="headerlink" href="#source-installs-with-pypi" title="Permanent link">&para;</a></h4>
 <p>Despite our best efforts, the precompiled binaries still may not work on some platforms. You can intentionally instruct <code>pip</code> to build the library from source using:
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>polyscope<span class="w"> </span>--no-binary<span class="w"> </span>polyscope
 </code></pre></div>
 This may take a few minutes, and requires a suitable C++ toolchain (see <a href="#building-from-source">building from source</a>).</p>
-<h2 id="installing-from-conda">Installing from Conda</h2>
+<h2 id="installing-from-conda">Installing from Conda<a class="headerlink" href="#installing-from-conda" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>polyscope
 </code></pre></div>
-<h2 id="installing-manually">Installing manually</h2>
+<h2 id="installing-manually">Installing manually<a class="headerlink" href="#installing-manually" title="Permanent link">&para;</a></h2>
 <p>To manually download the sources:</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/nmwsharp/polyscope-py.git
 <span class="nb">cd</span><span class="w"> </span>polyscope-py
@@ -1615,9 +1643,9 @@ This may take a few minutes, and requires a suitable C++ toolchain (see <a href=
 <p>Or manually installed with the setup script using
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>setup.py<span class="w"> </span>install
 </code></pre></div></p>
-<h2 id="building-from-source">Building from source</h2>
+<h2 id="building-from-source">Building from source<a class="headerlink" href="#building-from-source" title="Permanent link">&para;</a></h2>
 <p>If a pre-compiled wheel is not available, the setup scripts (either run automatically via <code>pip</code> or manually with <code>setup.py</code>) will need to compile the underlying C++ library. Your system must have a suitable C++ compiler available to build Polyscope, as well as build tools like CMake installed. The <a href="https://polyscope.run/building/">Polyscope C++ repository</a> has a few more details about compiling. Polyscope is a 3D graphics program, so it may be difficult to build on servers without graphics support, or extremely old machines. In particular, OpenGL &gt;= <code>3.3 core</code> is a strict requirement.</p>
-<h2 id="development-builds">Development builds</h2>
+<h2 id="development-builds">Development builds<a class="headerlink" href="#development-builds" title="Permanent link">&para;</a></h2>
 <p>To compile Polyscope locally without <code>setup.py</code> (e.g., if you are developing the library) use</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/nmwsharp/polyscope-py.git
 <span class="nb">cd</span><span class="w"> </span>polyscope-py

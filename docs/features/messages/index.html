@@ -662,6 +662,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -768,6 +782,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1742,7 +1770,7 @@
 
   <h1>Messages</h1>
 
-<h2 id="using-messages">Using messages</h2>
+<h2 id="using-messages">Using messages<a class="headerlink" href="#using-messages" title="Permanent link">&para;</a></h2>
 <p>We&rsquo;ve all been there: a crucial error message gets printed to the terminal, but lost in a tempest of text&mdash;noticing that error message could have saved two hours of debugging.  Polyscope contains a simple system for showing message dialogs in the UI which are sure to be noticed but stay out of the way.</p>
 <p>There are a few levels of messages available:</p>
 <ul>
@@ -1785,15 +1813,15 @@
 <span class="c1">// Disable the in-window popups, just print to stdout</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">displayMessagePopups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 </code></pre></div></p>
-<h3 id="messages">Messages</h3>
+<h3 id="messages">Messages<a class="headerlink" href="#messages" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">info</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span></code></summary>
-<h5 id="info">info</h5>
+<h5 id="info">info<a class="headerlink" href="#info" title="Permanent link">&para;</a></h5>
 <p>Simply logs a message to <code>stdout</code>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">baseMessage</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">detailMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span></code></summary>
-<h5 id="warning">warning</h5>
+<h5 id="warning">warning<a class="headerlink" href="#warning" title="Permanent link">&para;</a></h5>
 <p>Create a warning message, to be displayed the next time the UI gets flow control. </p>
 <p>When issuing a one-off warning, the <code>detailMessage</code> field need not be used.  However, if issuing warnings in a loop, warnings with the same <code>baseMessage</code> are batched together, so the UI doesn&rsquo;t get completely overwhelmed.</p>
 <p>Example:
@@ -1819,18 +1847,18 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">error</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span></code></summary>
-<h5 id="error">error</h5>
+<h5 id="error">error<a class="headerlink" href="#error" title="Permanent link">&para;</a></h5>
 <p>Generate an error, which is immediately shown in the GUI. After the error dialog is dismissed in the GUI, this function returns.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">terminatingError</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span></code></summary>
-<h5 id="terminating-error">terminating error</h5>
+<h5 id="terminating-error">terminating error<a class="headerlink" href="#terminating-error" title="Permanent link">&para;</a></h5>
 <p>Generate an error, which is immediately shown in the GUI. After the error dialog is dismissed in the GUI, the program terminates.</p>
 </details>
-<h3 id="options">Options</h3>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">displayMessagePopups</span></code></summary>
-<h5 id="display-message-popups">display message popups</h5>
+<h5 id="display-message-popups">display message popups<a class="headerlink" href="#display-message-popups" title="Permanent link">&para;</a></h5>
 <p>If <code>true</code>, warning and error popup dialogs are shown in the UI <strong>and</strong> printed to stdout. If <code>false</code>, they are only printed to stdout (assuming <code>verbosity &gt; 0</code>).</p>
 <p>Default: <code>true</code></p>
 </details>

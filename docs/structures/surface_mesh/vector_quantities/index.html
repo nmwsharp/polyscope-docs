@@ -664,6 +664,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -770,6 +784,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1653,7 +1681,7 @@
   <h1>Vector Quantities</h1>
 
 <p>Visualize vector-valued data at the elements of a surface mesh.</p>
-<h3 id="ambient-vectors">Ambient vectors</h3>
+<h3 id="ambient-vectors">Ambient vectors<a class="headerlink" href="#ambient-vectors" title="Permanent link">&para;</a></h3>
 <p><em>Ambient</em> vectors are &ldquo;standard&rdquo; vectors, which have X-Y-Z vector coordinates in world space.</p>
 <p><img alt="face_vector_demo" src="../../../media/face_vectors_demo.png" /></p>
 <details class="func">
@@ -1674,7 +1702,7 @@
 </ul>
 <p>Note: the inner vector type of the input <em>must</em> be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D mesh), <code>addFaceVectorQuantity2D</code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
 </details>
-<h3 id="tangent-vectors">Tangent vectors</h3>
+<h3 id="tangent-vectors">Tangent vectors<a class="headerlink" href="#tangent-vectors" title="Permanent link">&para;</a></h3>
 <p><em>Tangent</em> vectors lie flat against the surface of a mesh. They are defined as 2D vector in a local 2D coordinate system at each vertex or face. We need to specify the vector itself as well as the basis vectors for the local coordinate systems.</p>
 <p>Example: visualizing tangent vectors with geometry-central
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
@@ -1734,7 +1762,7 @@
 <li><code>vectorType</code> indicates how to interpret vector data. The default setting is as a freely-scaled value, which will be automatically scaled to be visible. Passing <code>VectorType::AMBIENT</code> ensures vectors have the proper world-space length.</li>
 </ul>
 </details>
-<h3 id="one-forms">One forms</h3>
+<h3 id="one-forms">One forms<a class="headerlink" href="#one-forms" title="Permanent link">&para;</a></h3>
 <p><em>One forms</em> are tangent vector-like quantities represented as integrated scalars along edges. They commonly arise, for example, as a gradient which is difference of scalar values at vertices.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addOneFormTangentVectorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">O</span><span class="o">&amp;</span><span class="w"> </span><span class="n">orientations</span><span class="p">)</span></code></summary>
@@ -1745,7 +1773,7 @@
 </ul>
 <p>Remember, before passing edge-valued data, be sure your <a href="../indexing_convention">indexing convention</a> matches what Polyscope expects.</p>
 </details>
-<h3 id="vector-quantity-options">Vector Quantity Options</h3>
+<h3 id="vector-quantity-options">Vector Quantity Options<a class="headerlink" href="#vector-quantity-options" title="Permanent link">&para;</a></h3>
 <p>These options and behaviors are available for all types of vector quantities on any structure.</p>
 <table>
 <thead>
@@ -1763,35 +1791,35 @@
 <td>is the quantity enabled?</td>
 <td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">isEnabled</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>vector radius</td>
 <td>the radius vectors are drawn with</td>
 <td><code class="highlight"><span class="kt">double</span><span class="w"> </span><span class="n">getVectorRadius</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setVectorRadius</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRelative</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>vector length</td>
 <td>vectors will be scaled so the longest is this long. ignored if <code>VectorType::Ambient</code></td>
 <td><code class="highlight"><span class="kt">double</span><span class="w"> </span><span class="n">getVectorLengthScale</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setVectorLengthScale</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRelative</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>vector color</td>
 <td>the color to draw the vectors with</td>
 <td><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">getVectorColor</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setVectorColor</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">val</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>material</td>
-<td>what <a href="[[url.prefix]]/features/materials">material</a> to use</td>
+<td>what <a href="/features/materials">material</a> to use</td>
 <td><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getMaterial</span><span class="p">()</span></code></td>
 <td><code>setMaterial(std::string name)</code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 </tbody>
 </table>

@@ -539,6 +539,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#frameticklimitfpsmode" class="md-nav__link">
+    frameTickLimitFPSMode
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -749,6 +756,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -855,6 +876,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1682,6 +1717,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#frameticklimitfpsmode" class="md-nav__link">
+    frameTickLimitFPSMode
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1706,10 +1748,11 @@
 
 <p>This page describes the basic control flow to initialize Polyscope and invoke it from you program. See the <em>structures and quantities</em> sections on the left for the various kinds of data you can add to Polyscope.</p>
 <p>Polyscope needs to be initialized exactly once by calling <code>init()</code>, typically near the beginning of your program. You can then register structures to the scene, and show the window using either of two methods.</p>
-<h2 id="program-structure">Program Structure</h2>
-<p>There are two separate ways to structure your program&rsquo;s control flow with polyscope.</p>
+<h2 id="program-structure">Program Structure<a class="headerlink" href="#program-structure" title="Permanent link">&para;</a></h2>
+<p>There are two separate ways to structure your program&rsquo;s control flow with polyscope.  Either way, <code>init()</code> must be called first.</p>
 <p><strong>Option 1: show()</strong> The simpler, and more-common approach is to call <code>show()</code>, which will run Polyscope&rsquo;s window continuously. The <code>show()</code> function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via <a href="/features/callbacks_and_UIs">the <code>userCallback</code></a>.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
+
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
 <span class="cm">/* </span>
@@ -1729,37 +1772,38 @@
 </code></pre></div>
 <p><strong>Option 2: frameTick()</strong> An alternate approach is to manually call <code>frameTick()</code> in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. <a href="/features/callbacks_and_UIs">The <code>userCallback</code></a> is still necessary to add ImGui UI elements.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
+
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
 <span class="c1">// if desired, set up a userCallback to add ImGui UI elements</span>
 
-<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">polyscope</span><span class="o">::</span><span class="n">windowRequestsClose</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* program runs */</span>
+<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">polyscope</span><span class="o">::</span><span class="n">windowRequestsClose</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="cm">/* your conditions */</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="cm">/* </span>
 <span class="cm">     * ... your code ...</span>
 <span class="cm">     * ... add visualizations to Polyscope, etc ...</span>
 <span class="cm">     */</span>
 
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">frameTick</span><span class="p">();</span><span class="w"> </span><span class="c1">// renders one UI frame, returns immediately</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">frameTick</span><span class="p">();</span><span class="w"> </span><span class="c1">// renders one UI frame</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Either way, <code>init()</code> must be called before you do anything with Polyscope.</p>
+<p>When using <code>frameTick()</code>, see the setting <code>options::frameTickLimitFPSMode</code> to customize the rate at which this loop executes, e.g. to lock it to a fixed rate like 60 fps. By default, it will execute as quickly as possible, but Polyscope will only actually render when needed to hit the target framerate.</p>
 <div class="admonition info">
 <p class="admonition-title">Where to make ImGui calls</p>
 <p>Polyscope includes ImGui, allowing you to build custom UI elements like buttons and fields. </p>
 <p>Regardless of which control flow method you use, ImGui calls can <em>only</em> be made within <a href="/features/callbacks_and_UIs">the <code>userCallback</code> function</a>. Making ImGui calls elsewhere will lead to errors and crashes.</p>
 </div>
-<h2 id="functions">Functions</h2>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
 <p><code class="highlight"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span></code></p>
 <details class="func">
 <summary><code class="highlight"><span class="n">init</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">backend</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span></code></summary>
-<h5 id="init">init()</h5>
+<h5 id="init">init()<a class="headerlink" href="#init" title="Permanent link">&para;</a></h5>
 <p>Initialize polyscope. Should be called exactly once, generally at the beginning of a program. Will throw an error if anything goes wrong during initialization.</p>
 <p>Performs one-time work like setting up openGL and creating a window.</p>
 <p><code>backend</code> is an optional specifier for which <a href="/building#backends">rendering backend</a> to use, passing <code>""</code> selects a reasonable default backend. Generally, you should not need to manually set the backend.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">show</span><span class="p">()</span></code></summary>
-<h5 id="show">show()</h5>
+<h5 id="show">show()<a class="headerlink" href="#show" title="Permanent link">&para;</a></h5>
 <p>Give control to the polyscope GUI. Blocks until the user returns control via the GUI, possibly by exiting the window.</p>
 <p>This function can be called anywhere, and can be called multiple times to re-open the GUI after it has been closed. Existing data will be preserved between calls to <code>frameTick()</code> and <code>show()</code>.</p>
 <p>You can even nest calls to <code>show()</code>&mdash;for instance, if the user clicks a button in your callback which executes some function, you can invoke <code>show()</code> again within that function for immediate debugging. Closing the nested window will then &ldquo;pop back&rdquo; to continue displaying the previously shown GUI.</p>
@@ -1768,18 +1812,18 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">unshow</span><span class="p">()</span></code></summary>
-<h5 id="unshow">unshow()</h5>
+<h5 id="unshow">unshow()<a class="headerlink" href="#unshow" title="Permanent link">&para;</a></h5>
 <p>The opposite of <code>show()</code>. If <code>show()</code> is currently active, this closes the window and causes the call to <code>show()</code> to return. This is equivalent to manually closing the Polyscope window by clicking the window manager&rsquo;s close button.</p>
 <p>Generally it is not necessary to call this function; the user can exit by closing the window. However, <code>unshow()</code> may be useful to programmatically close the window when a condition is met, or via a custom ImGui element.</p>
 <p><code>unshow()</code> does <em>not</em> deinitialize Polyscope. You can still call <code>show()</code> again after.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">frameTick</span><span class="p">()</span></code></summary>
-<h5 id="frametick">frameTick()</h5>
+<h5 id="frametick">frameTick()<a class="headerlink" href="#frametick" title="Permanent link">&para;</a></h5>
 <p>Render one frame of the polyscope UI. This function needs to be called in a tight loop by your code, like:</p>
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
-<span class="k">while</span><span class="p">(</span><span class="cm">/* program runs */</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">polyscope</span><span class="o">::</span><span class="n">windowRequestsClose</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="cm">/* your conditions */</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="cm">/* </span>
 <span class="cm">     * ... your code ...</span>
@@ -1795,9 +1839,20 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">windowRequestsClose</span><span class="p">()</span></code></summary>
-<h5 id="windowrequestsclose">windowRequestsClose()</h5>
+<h5 id="windowrequestsclose">windowRequestsClose()<a class="headerlink" href="#windowrequestsclose" title="Permanent link">&para;</a></h5>
 <p>Returns <code>true</code> if the user has tried to exit the window at the OS level, e.g. by clicking the close button. </p>
 <p>Useful for deciding when to exit your control loop when using <code>frameTick()</code>.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">options</span><span class="o">::</span><span class="n">frameTickLimitFPSMode</span></code></summary>
+<h5 id="frameticklimitfpsmode">frameTickLimitFPSMode<a class="headerlink" href="#frameticklimitfpsmode" title="Permanent link">&para;</a></h5>
+<p>Set how the frames per second settings such as <code>options::maxFPS</code> and <code>options::enableVSync</code> should be respected when using <code>frameTick()</code> to run the main loop. (see <a href="/basics/program_options">program options</a> for more details on those settings)</p>
+<ul>
+<li><code>LimitFPSMode::IgnoreLimits</code>: Any FPS/vsync limits will be ignored, <code>frameTick()</code> will execute as fast as possible, rendering each time and immediately returning.</li>
+<li><code>LimitFPSMode::BlockToHitTarget</code>: Any FPS/vsync will be respected, and the call to <code>frameTick()</code> will block to sleep as needed to hit the target framerate, similar to <code>show()</code>. This is usually what you want for simple interactive visualization applications.</li>
+<li><code>LimitFPSMode::SkipFramesToHitTarget</code>: Any FPS/vsync will be respected for rendering, but the call to <code>frameTick()</code> will always return as quickly as possible, skipping rendering and any callbacks when not needed to hit the framerate so your main loop may iterate much faster. This is useful when you want to call <code>frameTick()</code> in a very tight loop without slowing down your program, such as in a training or optimization loop. (<strong>default</strong>)</li>
+</ul>
+<p><strong>frame tick only!</strong> This setting only has any effect if you are using <code>frameTick()</code> to run your main loop. If you used <code>show()</code>, it is ignored, and you can adjust the FPS with the <code>options::maxFPS</code> setting.</p>
 </details>
 
 

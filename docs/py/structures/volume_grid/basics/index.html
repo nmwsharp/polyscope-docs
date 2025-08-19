@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -649,6 +649,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -755,6 +769,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1534,7 +1562,7 @@
                   
 
 
-<h1 id="volume-grids">Volume Grids</h1>
+<h1 id="volume-grids">Volume Grids<a class="headerlink" href="#volume-grids" title="Permanent link">&para;</a></h1>
 <p>Volume grid structures visualize data defined on an axis-aligned regularly-spaced 3D grid. </p>
 <p>As usual, first you register a volume grid, then add one or more quantities defined on that grid. Registering the grid itself just means specifying the locations of its extremal corners and the grid resolution. Then you can add data, such as scalar data as linearly-interpolated values per-node or as piecewise-constant values per-cell. Slice planes can also be used inspect the interior of the grid, isosurfaces can be extracted from scalar functions at nodes, and more. </p>
 <video width=100% autoplay muted loop>
@@ -1565,7 +1593,7 @@
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
-<h3 id="registering-a-volume-grid">Registering a volume grid</h3>
+<h3 id="registering-a-volume-grid">Registering a volume grid<a class="headerlink" href="#registering-a-volume-grid" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Specifying node vs. cells</p>
 <p>Volume grid dimensions and locations are always defined in terms of <em>nodes</em> (aka cell corners). The dimension is the number of <em>nodes</em> along each axis, and the location is defined by the extremal <em>nodes</em>.</p>
@@ -1573,13 +1601,13 @@
 <p>For locations, the min/max bounds you specify when registering the grid are the locations up the minimum and maximum node (aka cell corner). If you are instead thinking in terms of cell center locations, shift them half-cell-width offset when registering the grid.</p>
 </div>
 <details class="func" open="open">
-<summary><code class="highlight"><span class="n">register_volume_grid</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">gridNodeDim</span><span class="p">,</span> <span class="n">boundMin</span><span class="p">,</span> <span class="n">boundMax</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cube_size_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transparency</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">register_volume_grid</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">node_dims</span><span class="p">,</span> <span class="n">bound_low</span><span class="p">,</span> <span class="n">bound_high</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cube_size_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transparency</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
 <p>Add a new volume grid structure to Polyscope.</p>
 <ul>
 <li><code>name</code> the name of the structure</li>
-<li><code>gridNodeDim</code> an integer 3-tuple giving the number of nodes in the grid along each dimension</li>
-<li><code>boundMin</code> a float 3-tuple giving the xyz coordinates for the minimal node corner of the grid</li>
-<li><code>boundMax</code> a float 3-tuple giving the xyz coordinates for the maximal node corner of the grid</li>
+<li><code>node_dims</code> an integer 3-tuple giving the number of nodes in the grid along each dimension</li>
+<li><code>bound_low</code> a float 3-tuple giving the xyz coordinates for the minimal node corner of the grid</li>
+<li><code>bound_high</code> a float 3-tuple giving the xyz coordinates for the maximal node corner of the grid</li>
 </ul>
 <p>Additional optional keyword arguments:</p>
 <ul>
@@ -1593,12 +1621,12 @@
 <p>if not specified, these optional parameters will assume a reasonable default value, or a <a href="../../../basics/parameters/#persistent-values">persistent value</a> if previously set.</p>
 </details>
 <hr />
-<h3 id="slice-planes">Slice planes</h3>
+<h3 id="slice-planes">Slice planes<a class="headerlink" href="#slice-planes" title="Permanent link">&para;</a></h3>
 <p><a href="/py//features/slice_planes">Slice planes</a> are particularly useful for inspecting the internal structure of a volume grid, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.</p>
-<h3 id="picking">Picking</h3>
+<h3 id="picking">Picking<a class="headerlink" href="#picking" title="Permanent link">&para;</a></h3>
 <p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene. Picking volume grid elements works a little differently from other structures. For most structures, each click selects an element of the structure. However for volume grids, clicking on the structure once initiates picking, then the UI continuously displays data for the location under your mouse cursor. You can always deselect the volume grid elements by clicking somewhere off the grid.</p>
 <p>By default, if you have only registered data defined on nodes, then only nodes can be picked (and vice-versa for cells). You can override this behavior by calling <code>volume_grid.mark_nodes_as_used()</code>, to act as if a node quantity had been added, and likewise for <code>volume_grid.mark_cells_as_used()</code>.</p>
-<h3 id="options">Options</h3>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
 <p>See <a href="/py//structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>
 <thead>

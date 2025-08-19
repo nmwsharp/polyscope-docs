@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -647,6 +647,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -753,6 +767,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1570,7 +1598,7 @@
 
 <p>Polyscope uses <em>matcaps</em> to render the appearance of objects in the scene, as opposed to more traditional configurations of lights and shading models, etc. A matcap is a small image of a material, which is sampled by the renderer to query the materials&rsquo; appearance from a some angle. Scene information like lighting is implicitly baked in to the matcap image.</p>
 <p>Most objects in Polyscope (surface meshes, point clouds, vectors, etc) expose a <code class="highlight"><span class="n">material</span><span class="o">=</span><span class="s1">&#39;matname&#39;</span></code> option to choose a material for the object&rsquo;s appearance. Additionally, materials can generally be set in the UI from <code>[Options] --&gt; [Material]</code>.</p>
-<h2 id="blended-materials">Blended materials</h2>
+<h2 id="blended-materials">Blended materials<a class="headerlink" href="#blended-materials" title="Permanent link">&para;</a></h2>
 <p>In Polyscope, we often want to adjust set custom colors for rendered objects. This can be a constant color for the object (to distinguish structures in a scene), or a varying color across a surface (when color-mapping scalar quantities).  Traditionally, matcaps don&rsquo;t really support setting an albedo color like this, but we achieve the effect in Polyscope by blending between basis matcaps.</p>
 <details class="info" open="open">
 <summary>How it works</summary>
@@ -1585,11 +1613,11 @@
 <p>Intuitively, this strategy presumes the underlying material has a light response which is a linear function of the color, plus another component which is independent of the color.  Crucially, Polyscope uses a linear lighting workflow and performs this blending on linear matcaps before tone-mapping, which is necessary for the results to look reasonable across the full color space.</p>
 </details>
 <p>Materials which which support this blending are denoted by <code>(rgb)</code> in the options menu.  Ordinary static matcaps consisting of a single image can still be used as materials, but will ignore any color maps or other options.</p>
-<h2 id="preserving-colors-with-the-flat-material">Preserving colors with the flat material</h2>
+<h2 id="preserving-colors-with-the-flat-material">Preserving colors with the flat material<a class="headerlink" href="#preserving-colors-with-the-flat-material" title="Permanent link">&para;</a></h2>
 <p>Generally, Polyscope applies material shading and tone-mapping to render 3D content. However, this means that data such as colors and tonemapped scalars will be a somewhat different color on-screen compared to what is in the data.</p>
 <p>The <code>flat</code> material is special: it not only applies flat coloring with no shading effects, but furthermore cancels-out tonemapping and other effects to ensure that the color you see onscreen is exactly the same as the data specified.</p>
 <p>Use the <code>flat</code> material any time you need exact color reproduction.</p>
-<h2 id="built-in-materials">Built-in materials</h2>
+<h2 id="built-in-materials">Built-in materials<a class="headerlink" href="#built-in-materials" title="Permanent link">&para;</a></h2>
 <p>Polyscope supports the following built-in materials:</p>
 <table>
 <thead>
@@ -1651,12 +1679,12 @@
 </tr>
 </tbody>
 </table>
-<h2 id="loading-custom-materials">Loading custom materials</h2>
+<h2 id="loading-custom-materials">Loading custom materials<a class="headerlink" href="#loading-custom-materials" title="Permanent link">&para;</a></h2>
 <p>Custom matcaps can be loaded at runtime from image files and used anywhere materials are used. Loading can be performed with the UI from <code>[Appearance] --&gt; [Materials] --&gt; [Load material]</code>, or programatically using the function below. For blendable matcaps, if the single filename <code>mat.hdr</code> is given, Polyscope will try to load <code>mat_r.hdr</code>, <code>mat_g.hdr</code>, etc.</p>
 <p>Ideally, matcap images should be linear <code>.hdr</code> images for best results, but any image will work. If other image formats are given, the input is assumed to be non-linear and will be inverse-tonemapped with <code>intensity=1</code> and <code>gamma=2.2</code> before use.  Most common image formats are accepted (anything <code>stb_image</code> can read).</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">load_static_material</span><span class="p">(</span><span class="n">mat_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></code></summary>
-<h5 id="load_static_material">load_static_material</h5>
+<h5 id="load_static_material">load_static_material<a class="headerlink" href="#load_static_material" title="Permanent link">&para;</a></h5>
 <p>Load a new static (non-blendable) material from a single image file <code>filename</code>. The new material will be called <code>mat_nam</code>.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -1666,7 +1694,7 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">load_blendable_material</span><span class="p">(</span><span class="n">mat_name</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filename_base</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filename_ext</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
-<h5 id="load_blendable_material">load_blendable_material</h5>
+<h5 id="load_blendable_material">load_blendable_material<a class="headerlink" href="#load_blendable_material" title="Permanent link">&para;</a></h5>
 <p>Load a new blendable material, which will be called <code>matName</code>.</p>
 <p>There are two different ways to specify which files to load the material images from:</p>
 <ul>

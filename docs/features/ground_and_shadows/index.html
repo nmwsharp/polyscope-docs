@@ -662,6 +662,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -768,6 +782,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1624,14 +1652,14 @@
 
 <p>The Polyscope scene view includes a ground plane which optionally supports reflection and soft-shadow effects. This section outlines the various modes and options available for the ground plane.</p>
 <p><img alt="ground modes" src="/media/ground_plane_options.jpg" /></p>
-<h2 id="ground-plane-and-shadow-modes">Ground plane and shadow modes</h2>
+<h2 id="ground-plane-and-shadow-modes">Ground plane and shadow modes<a class="headerlink" href="#ground-plane-and-shadow-modes" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>GroundPlaneMode::None</code> no ground plane, nor reflection/shadows are shown</li>
 <li><code>GroundPlaneMode::Tile</code> a tiled ground plane </li>
 <li><code>GroundPlaneMode::TileReflection</code> a tiled ground plane with a reflection of the scene (default)</li>
 <li><code>GroundPlaneMode::ShadowOnly</code> a transparent ground plane with a soft vertical shadow of the scene</li>
 </ul>
-<p>The ground plane and shadow settings can also be manually adjusted in the GUI under the <code>[Appearance] --&gt; [Ground Plane]</code> menu.</p>
+<p>The ground plane and shadow settings can also be manually adjusted in the GUI under the <code>[Appearance] --&gt; [Ground Plane]</code> menu. The ground plane does not support all <a href="/features/transparency">transparency modes</a>: with simple transparency it is disabled, and pretty transparency there are no reflections or shadows.</p>
 <p><strong>Example:</strong> adjust the ground plane &amp; shadow appearance</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
 
@@ -1672,7 +1700,7 @@
 <p>How dark the shadows are. <code>0</code> is totally transparent (white), and <code>1</code> is fully black. When taking screenshots with transparency, these will become alpha transparency values for the shadowed regions.</p>
 <p>Default: <code>.25</code>. </p>
 </details>
-<h2 id="ground-plane-positioning">Ground plane positioning</h2>
+<h2 id="ground-plane-positioning">Ground plane positioning<a class="headerlink" href="#ground-plane-positioning" title="Permanent link">&para;</a></h2>
 <p>The orientation of the ground plane is determined by the <a href="/basics/camera_controls/#up-direction">up direction for the scene</a>, which can be set along any of the coordinate directions such as <code>+X</code>, <code>-Z</code>, etc.</p>
 <p>By default, the height of the ground plane is set automatically to the bottom of the bounding box for the scene content (and can optionally be relatively offset via <code>groundPlaneHeightFactor</code>).</p>
 <p>Alternately, the height can be specified to a fixed location in world coordinates like:

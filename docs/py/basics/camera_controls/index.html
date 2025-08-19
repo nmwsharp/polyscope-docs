@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#manipulating-the-current-view" class="md-skip">
+        <a href="#window-controls" class="md-skip">
           Skip to content
         </a>
       
@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -517,6 +517,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#window-controls" class="md-nav__link">
+    Window Controls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manipulating-the-current-view" class="md-nav__link">
     Manipulating the Current View
   </a>
@@ -560,6 +567,13 @@
         <li class="md-nav__item">
   <a href="#perspective-and-orthographic-views" class="md-nav__link">
     Perspective and Orthographic Views
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centering-the-view-on-scene-content" class="md-nav__link">
+    Centering the View on Scene Content
   </a>
   
 </li>
@@ -781,6 +795,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -887,6 +915,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1558,6 +1600,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#window-controls" class="md-nav__link">
+    Window Controls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manipulating-the-current-view" class="md-nav__link">
     Manipulating the Current View
   </a>
@@ -1601,6 +1650,13 @@
         <li class="md-nav__item">
   <a href="#perspective-and-orthographic-views" class="md-nav__link">
     Perspective and Orthographic Views
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centering-the-view-on-scene-content" class="md-nav__link">
+    Centering the View on Scene Content
   </a>
   
 </li>
@@ -1709,7 +1765,29 @@
 <span class="c1"># quantities</span>
 <span class="n">ps_cam</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_camera_view</span><span class="p">(</span><span class="s2">&quot;cam1&quot;</span><span class="p">,</span> <span class="n">cam_params</span><span class="p">)</span> 
 </code></pre></div>
-<h2 id="manipulating-the-current-view">Manipulating the Current View</h2>
+<h2 id="window-controls">Window Controls<a class="headerlink" href="#window-controls" title="Permanent link">&para;</a></h2>
+<p>Get and set the size of the window which appears on the user&rsquo;s display.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_window_size</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span></code></summary>
+<p>Set the size of the window.</p>
+<p>Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the logical size.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">get_window_size</span><span class="p">()</span></code></summary>
+<p>Get the current size of the window. Returns a <code>(width, height)</code> tuple.</p>
+<p>Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the logical size.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">get_buffer_size</span><span class="p">()</span></code></summary>
+<p>Get the current pixel buffer resolution of the window. Returns a <code>(width, height)</code> tuple.</p>
+<p>Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the pixel buffer size.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_window_resizable</span><span class="p">(</span><span class="n">is_resizable</span><span class="p">)</span></code></summary>
+<p>If <code>false</code>, the window will be locked to size and the OS will not allow it to be resized. (Default: <code>true</code>)</p>
+<p>There is also a corresponding <code>get_window_resizable()</code>.</p>
+</details>
+<h2 id="manipulating-the-current-view">Manipulating the Current View<a class="headerlink" href="#manipulating-the-current-view" title="Permanent link">&para;</a></h2>
 <p>These settings affect the 3D camera view in polyscope. It is often convenient to set them just before calling <code>ps.init()</code>, but they may set be anywhere.</p>
 <p><strong>View Getters:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1"># call like ps.get_camera_view_matrix() etc</span>
@@ -1717,6 +1795,8 @@
 
 <span class="c1"># (these friendly helpers get the same info as ^^^)</span>
 <span class="n">polyscope</span><span class="o">.</span><span class="n">get_camera_view_matrix</span><span class="p">()</span>
+<span class="n">polyscope</span><span class="o">.</span><span class="n">get_vertical_fov_degrees</span><span class="p">()</span>
+<span class="n">polyscope</span><span class="o">.</span><span class="n">get_aspect_ratio_width_over_height</span><span class="p">()</span>
 </code></pre></div></p>
 <details class="func">
 <summary><code class="highlight"><span class="n">get_view_camera_parameters</span><span class="p">()</span></code></summary>
@@ -1740,6 +1820,8 @@
 <span class="n">polyscope</span><span class="o">.</span><span class="n">set_camera_view_matrix</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 <span class="n">polyscope</span><span class="o">.</span><span class="n">look_at</span><span class="p">(</span><span class="n">camera_location</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">fly_to</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">polyscope</span><span class="o">.</span><span class="n">look_at_dir</span><span class="p">(</span><span class="n">camera_location</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">up_dir</span><span class="p">,</span> <span class="n">fly_to</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">polyscope</span><span class="o">.</span><span class="n">set_vertical_fov_degrees</span><span class="p">(</span><span class="n">fov</span><span class="p">)</span>
+<span class="c1"># there is no aspect ratio setter: it is determined by the window size</span>
 </code></pre></div></p>
 <details class="func">
 <summary><code class="highlight"><span class="n">set_view_camera_parameters</span><span class="p">(</span><span class="n">params</span><span class="p">)</span></code></summary>
@@ -1753,7 +1835,7 @@
 <span class="n">ps</span><span class="o">.</span><span class="n">set_view_camera_parameters</span><span class="p">(</span><span class="n">new_params</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
-<h3 id="look-at">Look-At</h3>
+<h3 id="look-at">Look-At<a class="headerlink" href="#look-at" title="Permanent link">&para;</a></h3>
 <p>The look-at functions are particularly easy to use to position the camera towards content of interest.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">look_at</span><span class="p">(</span><span class="n">camera_location</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">fly_to</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code></summary>
@@ -1772,7 +1854,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">.</span><span class="n">look_at_dir</span><span class="p">((</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">))</span>
 </code></pre></div></p>
 </details>
-<h3 id="home-view">Home View</h3>
+<h3 id="home-view">Home View<a class="headerlink" href="#home-view" title="Permanent link">&para;</a></h3>
 <p>The home view is a reasonable default camera view, computed based on the up- and front- direction, as well as the scene extents which may be computed automatically from data you have registered.</p>
 <p>By default, the camera is located at the home view when the scene is first opened. You can also return it to that view at any time with <code>reset_camera_to_home_view()</code>.</p>
 <details class="func">
@@ -1783,7 +1865,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">reset_camera_to_home_view</span><span class="p">()</span>
 </code></pre></div></p>
 </details>
-<h2 id="navigation-style">Navigation Style</h2>
+<h2 id="navigation-style">Navigation Style<a class="headerlink" href="#navigation-style" title="Permanent link">&para;</a></h2>
 <p>The navigation style affects how the user&rsquo;s mouse interactions navigate the scene. The default is a Turntable rotating around the current canonical <code>Up</code> direction.</p>
 <p><strong>Navigation Style Strings</strong>:</p>
 <ul>
@@ -1804,7 +1886,7 @@
 <summary><code class="highlight"><span class="n">get_navigation_style</span><span class="p">()</span></code></summary>
 <p>Get the current navigation style (see explanation in the setter above). Returns a string.</p>
 </details>
-<h2 id="canonical-up-and-front">Canonical Up and Front</h2>
+<h2 id="canonical-up-and-front">Canonical Up and Front<a class="headerlink" href="#canonical-up-and-front" title="Permanent link">&para;</a></h2>
 <p>Unfortunately, no one can agree which cartesian direction is &ldquo;up&rdquo; in a 3D scene. Polyscope does not assume any particular up direction, it can be configured (default is <code>Y-up</code>).</p>
 <p>This effects many defaults of the scene, such as how the camera is oriented and where the ground plane is placed. </p>
 <details class="func">
@@ -1853,7 +1935,7 @@
 <summary><code class="highlight"><span class="n">get_front_dir</span><span class="p">()</span></code></summary>
 <p>Get the current front direction (see explanation in the setter above). Returns a string.</p>
 </details>
-<h2 id="perspective-and-orthographic-views">Perspective and Orthographic Views</h2>
+<h2 id="perspective-and-orthographic-views">Perspective and Orthographic Views<a class="headerlink" href="#perspective-and-orthographic-views" title="Permanent link">&para;</a></h2>
 <p>By default, Polyscope&rsquo;s view uses <a href="https://en.wikipedia.org/wiki/3D_projection#Perspective_projection">perspective projection</a>. Perspective projections roughly correspond to how images are usually perceived by our eyes and cameras.</p>
 <p>Alternately <a href="https://en.wikipedia.org/wiki/3D_projection#Orthographic_projection">orthographic projection</a> is also supported. Orthographic projections are common in engineering and architecture, because they have the property that distances are preserved in the projected image, regardless of whether the object is near or far from the camera.</p>
 <p><img alt="image of perspective and orthographic projection" src="/py//media/projection_diagram.jpg" /></p>
@@ -1869,7 +1951,25 @@
 <span class="n">ps</span><span class="o">.</span><span class="n">set_view_projection_mode</span><span class="p">(</span><span class="s2">&quot;perspective&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
-<h2 id="savingrestoring-views">Saving/Restoring Views</h2>
+<h2 id="centering-the-view-on-scene-content">Centering the View on Scene Content<a class="headerlink" href="#centering-the-view-on-scene-content" title="Permanent link">&para;</a></h2>
+<p>To focus on particular areas of interest, hold ctrl+shift (cmd+shift on macOS) and click in the scene. This will re-center the view in the clicked location. You can also hold ctrl+shift (cmd+shift on macOS) and scroll to zoom relative to selected center location, which makes it easer to zoom in on small details. Use the Reset View button to reset the center of interest.</p>
+<video width=100% autoplay muted loop>
+  <source src="/py//media/rotation_center.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<details class="func">
+<summary><code class="highlight"><span class="n">set_view_center</span><span class="p">(</span><span class="n">new_center</span><span class="p">,</span> <span class="n">fly_to</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code></summary>
+<p>Programmatically set the view center to a location in world-space. For example, with the Turntable view, this changes the center of rotation.</p>
+<ul>
+<li><code>new_center</code> a 3d vector position in world space as the new center</li>
+<li><code>fly_to</code> a boolean indicating whether to animate the update</li>
+</ul>
+<p>The input 3D vector can be tuples, length-3 numpy arrays, or really anything that can be indexed for three components.</p>
+<p>For some view types, the view must immediately be projected to conform to the new center. If <code>fly_to=True</code> this projection will be a smooth flight, otherwise it will be instantaneous.</p>
+<p>There is also a corresponding <code>get_view_center()</code> returning a vector.</p>
+</details>
+<h2 id="savingrestoring-views">Saving/Restoring Views<a class="headerlink" href="#savingrestoring-views" title="Permanent link">&para;</a></h2>
 <p>The current camera view (location, direction, camera parameters, and window size) can be saved or loaded from a json string. This is useful for quickly setting up repeatable visualizations.</p>
 <p>Also, in the Polyscope GUI, this string can be copied to the clipboard at any time via the &ldquo;copy&rdquo; hotkey (ctrl-C or cmd-C), or loaded from your current clipboard using the &ldquo;paste&rdquo; hotkey (ctrl-V or cmd-V).</p>
 <details class="func">
@@ -1887,7 +1987,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">set_view_from_json</span><span class="p">(</span><span class="n">my_str</span><span class="p">);</span>
 </code></pre></div></p>
 </details>
-<h2 id="camera-parameters-objects">Camera Parameters Objects</h2>
+<h2 id="camera-parameters-objects">Camera Parameters Objects<a class="headerlink" href="#camera-parameters-objects" title="Permanent link">&para;</a></h2>
 <p><code>CameraParameters</code> objects describe a camera view in Polyscope, including its <em>intrinsics</em> (the field of view and aspect ratio), and <em>extrinsics</em> (the location and orientation). These parameters are used both for manipulations of the interactive viewport, as well as creating <a href="/py//structures/camera_view/basics">Camera View structures</a> which are visualized as part of the content in your scene.</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -1906,7 +2006,7 @@
 <span class="c1"># or, use the parameters to create a camera view</span>
 <span class="n">cam</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_camera_view</span><span class="p">(</span><span class="s2">&quot;cam1&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </code></pre></div></p>
-<h3 id="camera-intrinsics">Camera Intrinsics</h3>
+<h3 id="camera-intrinsics">Camera Intrinsics<a class="headerlink" href="#camera-intrinsics" title="Permanent link">&para;</a></h3>
 <p>A <code>CameraIntrinsics</code> object describes the field of view and aspect ratio of a camera. It <strong>does not</strong> describe a &ldquo;pixel resolution&rdquo; for a camera&mdash;you could have many images of different resolutions all associated with the same camera, as long as the aspect ratios are right.</p>
 <p>Camera intrinsics can be created by specifying any pair of vertical field of view, horizontal field of view, and aspect ratio.</p>
 <details class="func">
@@ -1921,7 +2021,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">intrinsics</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraIntrinsics</span><span class="p">(</span><span class="n">fov_vertical_deg</span><span class="o">=</span><span class="mf">60.</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
-<h3 id="camera-extrinsics">Camera Extrinsics</h3>
+<h3 id="camera-extrinsics">Camera Extrinsics<a class="headerlink" href="#camera-extrinsics" title="Permanent link">&para;</a></h3>
 <p>A <code>CameraExtrinsics</code> object describes the location and orientation of a camera. It can be defined by the forward/up/right axes of the camera in world coordinates, or via an extrinsic matrix, typically denoted <code>E</code>, which maps points in world coordinates to points in the camera&rsquo;s local coordinate system. Polyscope uses openGL conventions for camera space, such that the camera points toward the -Z axis, with +Y pointing up and +X pointing right.</p>
 <p>Camera extrinsics can be created by specifying frame axes or an extrinsic matrix.</p>
 <details class="func">
@@ -1940,7 +2040,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">extrinsics</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraExtrinsics</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">),</span> <span class="n">look_dir</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span> <span class="n">up_dir</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span>
 </code></pre></div></p>
 </details>
-<h3 id="camera-parameters">Camera Parameters</h3>
+<h3 id="camera-parameters">Camera Parameters<a class="headerlink" href="#camera-parameters" title="Permanent link">&para;</a></h3>
 <p>The <code>CameraParameters</code> object combines a set of intrinsics and extrinsics to fully define a camera.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">CameraParameters</span><span class="p">(</span><span class="n">intrinsics</span><span class="p">,</span> <span class="n">extrinsics</span><span class="p">)</span></code></summary>
@@ -1967,7 +2067,7 @@
 <span class="n">CameraParameters</span><span class="o">.</span><span class="n">get_right_dir</span><span class="p">()</span>
 <span class="n">CameraParameters</span><span class="o">.</span><span class="n">get_camera_frame</span><span class="p">()</span> <span class="c1"># &lt;look, up, right&gt; world-space vectors</span>
 </code></pre></div></p>
-<h4 id="generating-pixel-rays">Generating pixel rays</h4>
+<h4 id="generating-pixel-rays">Generating pixel rays<a class="headerlink" href="#generating-pixel-rays" title="Permanent link">&para;</a></h4>
 <p>It is often necessary to generate the world-space ray corresponding to each pixel of an image in a camera view. The base point for these rays is easy, it is just <code>params.get_position()</code>. However the ray directions vary-per pixel; the <code>CameraParameters</code> object has two helpers to automatically construct these rays.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">CameraParameters</span><span class="o">.</span><span class="n">generate_camera_rays</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">)</span></code></summary>

@@ -568,6 +568,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#enable-vsync" class="md-nav__link">
+    enable vsync
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#use-prefs-file" class="md-nav__link">
     use prefs file
   </a>
@@ -577,6 +584,13 @@
           <li class="md-nav__item">
   <a href="#always-redraw" class="md-nav__link">
     always redraw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-scale" class="md-nav__link">
+    ui scale
   </a>
   
 </li>
@@ -805,6 +819,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -911,6 +939,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1753,6 +1795,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#enable-vsync" class="md-nav__link">
+    enable vsync
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#use-prefs-file" class="md-nav__link">
     use prefs file
   </a>
@@ -1762,6 +1811,13 @@
           <li class="md-nav__item">
   <a href="#always-redraw" class="md-nav__link">
     always redraw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-scale" class="md-nav__link">
+    ui scale
   </a>
   
 </li>
@@ -1827,10 +1883,10 @@
 <span class="c1">// initialize</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 </code></pre></div>
-<h3 id="options">Options</h3>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">programName</span></code></summary>
-<h5 id="program-name">program name</h5>
+<h5 id="program-name">program name<a class="headerlink" href="#program-name" title="Permanent link">&para;</a></h5>
 <p>A general name to use when referring to the program in window headings, etc. Default: <code>Polyscope</code>.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">programName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;important app&quot;</span><span class="p">;</span>
@@ -1838,7 +1894,7 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">int</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">verbosity</span></code></summary>
-<h5 id="verbosity">verbosity</h5>
+<h5 id="verbosity">verbosity<a class="headerlink" href="#verbosity" title="Permanent link">&para;</a></h5>
 <p>How much useful info should polyscope print to <code>std::cout</code>? Default: <code>1</code>.</p>
 <ul>
 <li><code>0</code> print nothing</li>
@@ -1851,7 +1907,7 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">printPrefix</span></code></summary>
-<h5 id="print-prefix">print prefix</h5>
+<h5 id="print-prefix">print prefix<a class="headerlink" href="#print-prefix" title="Permanent link">&para;</a></h5>
 <p>A string used as a prefix for all messages printed to the terminal by polyscope.  Default: <code>[polyscope]</code>.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">printPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;[MYAPP] &quot;</span><span class="p">;</span>
@@ -1860,36 +1916,44 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">errorsThrowExceptions</span></code></summary>
-<h5 id="errors-throw-execptions">errors throw execptions</h5>
+<h5 id="errors-throw-execptions">errors throw execptions<a class="headerlink" href="#errors-throw-execptions" title="Permanent link">&para;</a></h5>
 <p>If true, errors in polyscope throw execptions. If false, a <code>polyscope::error</code> is shown in the UI, but processing attempts to continue. Default: <code>false</code>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">enableRenderErrorChecks</span></code></summary>
-<h5 id="render-error-checks">render error checks</h5>
+<h5 id="render-error-checks">render error checks<a class="headerlink" href="#render-error-checks" title="Permanent link">&para;</a></h5>
 <p>If true, the rendering subsystem will eagerly check for and report errors. This comes at some small performance cost, but can help catch problems.</p>
 <p>Default: <code>true</code> when compiled in <code>Debug</code> mode, <code>false</code> in <code>Release</code> mode.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">warnForInvalidValues</span></code></summary>
-<h5 id="warn-for-invalid-values">warn for invalid values</h5>
+<h5 id="warn-for-invalid-values">warn for invalid values<a class="headerlink" href="#warn-for-invalid-values" title="Permanent link">&para;</a></h5>
 <p>If true, polyscope will give warnings when any added values are <code>inf</code> or <code>NaN</code>. Most (but not quite all) floating-point buffers of data such as vertex positions, scalar/color/vector quantities, etc are checked.</p>
 <p>Default: <code>true</code> </p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">int</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">ssaaFactor</span></code></summary>
-<h5 id="ssaa-anti-aliasing-factor">SSAA anti-aliasing factor</h5>
+<h5 id="ssaa-anti-aliasing-factor">SSAA anti-aliasing factor<a class="headerlink" href="#ssaa-anti-aliasing-factor" title="Permanent link">&para;</a></h5>
 <p>Enable super-sampling anti-aliasing for a prettier rendered scene. SSAA renders the scene at multiple samples for each pixel, then averages them to resolve final pixel values. </p>
 <p>Cost scales quadratically with the value of this parameter, so it will quickly become expensive. Reasonable values are in the range <code>1</code> to <code>4</code>. Using <code>2</code> is generally sufficient for anti-aliasing.</p>
 <p>Default: <code>1</code> (no anti-aliasing)</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">int</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">maxFPS</span></code></summary>
-<h5 id="max-fps">max fps</h5>
+<h5 id="max-fps">max fps<a class="headerlink" href="#max-fps" title="Permanent link">&para;</a></h5>
 <p>The main loop will not run at more than <code>maxFPS</code> iterations per second. <code>-1</code> disables, running the loop as fast as possible. Default: <code>60</code>.</p>
+<p>This behavior may be affected by the <a href="/basics/flow/#frameticklimitfpsmode"><code>options::frameTickLimitFPSMode</code> setting</a>.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">enableVSync</span></code></summary>
+<h5 id="enable-vsync">enable vsync<a class="headerlink" href="#enable-vsync" title="Permanent link">&para;</a></h5>
+<p>VSync synchronizes the rendering process with your display&rsquo;s framerate, which may fix some visual artifacts. It also typically causes rendering to block to match the refresh rate of your monitor.</p>
+<p>Default: <code>false</code> on Windows and <code>true</code> on other platforms.</p>
+<p>This behavior may be affected by the <a href="/basics/flow/#frameticklimitfpsmode"><code>options::frameTickLimitFPSMode</code> setting</a>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">usePrefsFile</span></code></summary>
-<h5 id="use-prefs-file">use prefs file</h5>
+<h5 id="use-prefs-file">use prefs file<a class="headerlink" href="#use-prefs-file" title="Permanent link">&para;</a></h5>
 <p>Polyscope can read and write to a preferences file to save state between invocations. For now, this is primarily used to restore the window position on the desktop. The preference file is a <code>json</code>-formatted plaintext file called <code>.polyscope.ini</code>.</p>
 <p>This option controls the use of the preferences file. If <code>false</code>, if will be neither written nor read. Default: <code>false</code>.</p>
 <div class="admonition note">
@@ -1899,13 +1963,23 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">alwaysRedraw</span></code></summary>
-<h5 id="always-redraw">always redraw</h5>
+<h5 id="always-redraw">always redraw<a class="headerlink" href="#always-redraw" title="Permanent link">&para;</a></h5>
 <p>Polyscope is designed to use lazy rendering: the scene is only re-drawn if it has changed since the last time it was drawn. This can dramatically reduce resource consumption, and keeps the immediate GUI responsive even on scenes which are irresponsibly large for the machine&rsquo;s graphics capabilities.</p>
 <p>If this option is <code>true</code>, the scene will be redrawn on every main loop iteration no matter what, circumventing the lazy drawing features. Default: <code>false</code>.</p>
 </details>
 <details class="func">
+<summary><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">uiScale</span></code></summary>
+<h5 id="ui-scale">ui scale<a class="headerlink" href="#ui-scale" title="Permanent link">&para;</a></h5>
+<p>A scale factor for all UI elements (text, buttons, panels). Can be useful for increase font sizes on high DPI screens. <code>2.0</code> means make everything twice as large.</p>
+<p>This factor should also be incorporated into any user-defined widths in custom UIs, to ensure spacing remains correct as scaling is changed, like:</p>
+<div class="highlight"><pre><span></span><code>ImGui::PushItemWidth(100 * polyscope::options::uiScale);
+</code></pre></div>
+<p>If <code>-1</code>, a sensible value will be guessed at initialization time. This value is saved and restored between settings if the preferences file is enabled.</p>
+<p>Default: <code>-1.</code></p>
+</details>
+<details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">buildGui</span></code></summary>
-<h5 id="build-gui">build gui</h5>
+<h5 id="build-gui">build gui<a class="headerlink" href="#build-gui" title="Permanent link">&para;</a></h5>
 <p>This option can be used to disable all of Polyscope&rsquo;s ImGui UI elements, which may be useful for advanced applications which wish to build a fully-custom UI on top of Polyscope.</p>
 <p>If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.</p>
 <p>If desired, the functions <code>buildStrctureGui()</code>, etc can be manually invoked to build pieces of the UI, but know that these are internal details which may change without warning in future verisons.</p>
@@ -1913,14 +1987,14 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">openImGuiWindowForUserCallback</span></code></summary>
-<h5 id="open-imgui-window-for-user-callback">open imgui window for user callback</h5>
+<h5 id="open-imgui-window-for-user-callback">open imgui window for user callback<a class="headerlink" href="#open-imgui-window-for-user-callback" title="Permanent link">&para;</a></h5>
 <p>If true, an ImGui window will be created and docked to the side of the UI when the <a href="../../features/callbacks_and_UIs">user callback function</a> is invoked. This means you can immediately start making ui calls like <code>ImGui::Button("do stuff")</code>. </p>
 <p>If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).</p>
 <p>Default: <code>true</code>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">invokeUserCallbackForNestedShow</span></code></summary>
-<h5 id="invoke-user-callback-for-nested-show">invoke user callback for nested show</h5>
+<h5 id="invoke-user-callback-for-nested-show">invoke user callback for nested show<a class="headerlink" href="#invoke-user-callback-for-nested-show" title="Permanent link">&para;</a></h5>
 <p>Suppose you call <code>polyscope::show()</code>, and within your callback, another instance of <code>polyscope::show()</code> is called&mdash;this is a nested show.</p>
 <p>Depending on the situation, you might or might not want your <code>userCallback</code> to continue being executed on each render loop iteration of this nested viewer; this setting exposes the option.</p>
 <p>If true, your callback will be executed as normal for every main loop iteration, even in nested show windows.</p>
@@ -1929,7 +2003,7 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">giveFocusOnShow</span></code></summary>
-<h5 id="give-focus-on-show">give focus on show</h5>
+<h5 id="give-focus-on-show">give focus on show<a class="headerlink" href="#give-focus-on-show" title="Permanent link">&para;</a></h5>
 <p>If true, the Polyscope window will request focus from the window manager whenever <code>show()</code> is called. If false, the focus state will be left unchanged.</p>
 <p>Default: <code>false</code>.</p>
 </details>

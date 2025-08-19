@@ -662,6 +662,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -768,6 +782,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1715,7 +1743,7 @@
 </ul>
 <p>The first individual version is simplest, and fits the usual definition of an implicit function. However, Polyscope might need to invoke the callback function millions of times, which can introduce excessive performance overhead, especially if the underlying function is being evaluated on a GPU, or via bindings to another language. For this reason, the batch version is also available, to perform many evaluations with each invocation and amortize the overhead.</p>
 </div>
-<h2 id="directly-rendering-implicit-isosurfaces">Directly Rendering Implicit Isosurfaces</h2>
+<h2 id="directly-rendering-implicit-isosurfaces">Directly Rendering Implicit Isosurfaces<a class="headerlink" href="#directly-rendering-implicit-isosurfaces" title="Permanent link">&para;</a></h2>
 <p>Polyscope can directly render images of an isosurface of an implicit function in space, from the current viewport or from a defined camera view. The resulting renders are added as <a href="/structures/floating_quantities/render_images">Render Images</a>, which support material shading, colormapping, transparency, and depth-compositing with other content in the scene.</p>
 <p><img alt="sample render image" src="/media/render_image_implicit_example.jpg" /></p>
 <div class="admonition warning">
@@ -1753,7 +1781,7 @@
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 </code></pre></div>
 There is also an alternate version of every render function that takes an additional first argument which is a pointer to any structure. The resulting render images will be added to that structure, following the same semantics as <a href="/structures/floating_quantities/basics/">floating quantities</a>.</p>
-<h4 id="implicit-render-options">Implicit Render Options</h4>
+<h4 id="implicit-render-options">Implicit Render Options<a class="headerlink" href="#implicit-render-options" title="Permanent link">&para;</a></h4>
 <p>The most important option to set the <code>mode</code> for the renderer. There are two choices:</p>
 <ul>
 <li><code>ImplicitRenderMode::SphereMarch</code> should be used if your implicit function is a Signed Distance Function (SDF). That is, its magnitude gives the distance to the surface, or at least a conservative bound on the distance. This allows the renderer to take large steps based on the SDF value.</li>
@@ -1809,7 +1837,7 @@ There is also an alternate version of every render function that takes an additi
 <span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nMaxSteps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
-<h4 id="render-depth-images">Render Depth Images</h4>
+<h4 id="render-depth-images">Render Depth Images<a class="headerlink" href="#render-depth-images" title="Permanent link">&para;</a></h4>
 <p>Render a depth <a href="/structures/floating_quantities/render_images">Render Image</a> of the 0 isosurface of a function. The resulting surface will be shaded with materials and lighting.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">DepthRenderImageQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">renderImplicitSurface</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Func</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">ImplicitRenderMode</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="n">ImplicitRenderOpts</span><span class="w"> </span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImplicitRenderOpts</span><span class="p">())</span></code></summary>
@@ -1827,7 +1855,7 @@ There is also an alternate version of every render function that takes an additi
 <p>The 0 isolevel is always used. To render a different isolevel, add a constant offset shift to your function before passing it in.</p>
 <p>See the &ldquo;Individual vs. Batch&rdquo; popout at the top for a description of the expected signatures for function arguments.</p>
 </details>
-<h4 id="render-scalar-images">Render Scalar Images</h4>
+<h4 id="render-scalar-images">Render Scalar Images<a class="headerlink" href="#render-scalar-images" title="Permanent link">&para;</a></h4>
 <p>Render a scalar <a href="/structures/floating_quantities/render_images">Render Image</a> of the 0 isosurface of a function. The resulting surface will be shaded with materials and lighting. An additional implicit function defines a scalar value which will be shaded with colormapping on the isosurface.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">ScalarRenderImageQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">renderImplicitSurfaceScalar</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Func</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">FuncScalar</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">funcScalar</span><span class="p">,</span><span class="w"> </span><span class="n">ImplicitRenderMode</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="n">ImplicitRenderOpts</span><span class="w"> </span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImplicitRenderOpts</span><span class="p">(),</span><span class="w"> </span><span class="n">DataType</span><span class="w"> </span><span class="n">dataType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary>
@@ -1847,7 +1875,7 @@ There is also an alternate version of every render function that takes an additi
 <p>The 0 isolevel is always used. To render a different isolevel, add a constant offset shift to your function before passing it in.</p>
 <p>See the &ldquo;Individual vs. Batch&rdquo; popout at the top for a description of the expected signatures for function arguments.</p>
 </details>
-<h4 id="render-color-images">Render Color Images</h4>
+<h4 id="render-color-images">Render Color Images<a class="headerlink" href="#render-color-images" title="Permanent link">&para;</a></h4>
 <p>Render a color <a href="/structures/floating_quantities/render_images">Render Image</a> of the 0 isosurface of a function. The resulting surface will be shaded with materials and lighting. An additional implicit function defines a color value which will be shaded with colormapping on the isosurface.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">ColorRenderImageQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">renderImplicitSurfaceColor</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Func</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">FuncColor</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">funcColor</span><span class="p">,</span><span class="w"> </span><span class="n">ImplicitRenderMode</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="n">ImplicitRenderOpts</span><span class="w"> </span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImplicitRenderOpts</span><span class="p">())</span></code></summary>
@@ -1867,7 +1895,7 @@ There is also an alternate version of every render function that takes an additi
 <p>The 0 isolevel is always used. To render a different isolevel, add a constant offset shift to your function before passing it in.</p>
 <p>See the &ldquo;Individual vs. Batch&rdquo; popout at the top for a description of the expected signatures for function arguments.</p>
 </details>
-<h4 id="render-raw-color-images">Render Raw Color Images</h4>
+<h4 id="render-raw-color-images">Render Raw Color Images<a class="headerlink" href="#render-raw-color-images" title="Permanent link">&para;</a></h4>
 <p>Render a raw color <a href="/structures/floating_quantities/render_images">Render Image</a> of the 0 isosurface of a function. An additional implicit function defines a color value which will be used on the isosurface. The difference between <em>color</em> and <em>raw color</em> images is that plain <code>Color</code> rendered images apply lighting and material shading to the colors (like a <code>SurfaceMesh</code> would), whereas <code>RawColor</code> images really just directly display the given color as the pixel values.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">RawColorRenderImageQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">renderImplicitSurfaceRawColor</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Func</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">FuncColor</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">funcColor</span><span class="p">,</span><span class="w"> </span><span class="n">ImplicitRenderMode</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="n">ImplicitRenderOpts</span><span class="w"> </span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImplicitRenderOpts</span><span class="p">())</span></code></summary>
@@ -1887,7 +1915,7 @@ There is also an alternate version of every render function that takes an additi
 <p>The 0 isolevel is always used. To render a different isolevel, add a constant offset shift to your function before passing it in.</p>
 <p>See the &ldquo;Individual vs. Batch&rdquo; popout at the top for a description of the expected signatures for function arguments.</p>
 </details>
-<h2 id="implicit-volumes">Implicit Volumes</h2>
+<h2 id="implicit-volumes">Implicit Volumes<a class="headerlink" href="#implicit-volumes" title="Permanent link">&para;</a></h2>
 <p>In addition rendering isosurfaces, Polyscope can automatically register the implicit function as a volumetric grid of values. See the <a href="/structures/volume_grid/scalar_quantities/#add-implicit-scalars">volume grid scalar quantity</a> for details.</p>
 
 

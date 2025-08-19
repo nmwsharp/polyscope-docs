@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://polyscope.run/structures/surface_mesh/basics/">
       
       
-        <link rel="prev" href="../../curve_network/vector_quantities/">
+        <link rel="prev" href="../../curve_network/variable_radius/">
       
       
         <link rel="next" href="../scalar_quantities/">
@@ -664,6 +664,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -770,6 +784,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1682,11 +1710,11 @@
                   
 
 
-<h1 id="surface-meshes">Surface Meshes</h1>
+<h1 id="surface-meshes">Surface Meshes<a class="headerlink" href="#surface-meshes" title="Permanent link">&para;</a></h1>
 <p>Surface meshes are one of the core structures in Polyscope. In addition to simply displaying the mesh, Polyscope can show any number of scalar, vector,color, and other kinds of quantities associated with the vertices/faces/edges/etc of the mesh.</p>
 <p>Polyscope does not impose any requirements on the meshes visualized. They may be polygonal or nonmanifold.  As always, try clicking on the vertices or faces of a mesh see the data associated with that mesh element.</p>
 <p><img alt="surface_mesh_demo" src="/media/mesh_demo.gif" /></p>
-<h2 id="registering-a-surface-mesh">Registering a surface mesh</h2>
+<h2 id="registering-a-surface-mesh">Registering a surface mesh<a class="headerlink" href="#registering-a-surface-mesh" title="Permanent link">&para;</a></h2>
 <p>Example: registering a surface mesh from libIGL
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
@@ -1727,7 +1755,7 @@
 <p>Polyscope quantities are ordered arrays of data, but not everyone can agree on the ordering of elements in a mesh. See <a href="../indexing_convention/">indexing conventions</a>.</p>
 <p>The default ordering is probably the same as yours for data on <strong>vertices, faces, and corners</strong>. However, data on <strong>edges and halfedges</strong> is much more likely to require setting an ordering.</p>
 </div>
-<h2 id="updating-a-mesh">Updating a mesh</h2>
+<h2 id="updating-a-mesh">Updating a mesh<a class="headerlink" href="#updating-a-mesh" title="Permanent link">&para;</a></h2>
 <p>The locations of the vertices in a mesh can be updated with the member function <code>updateVertexPositions(newPositions)</code>. All quantities will be preserved. Changing the connectivity or element counts in a mesh is not supported, you will need to register a new mesh (perhaps with the same name to overwrite).</p>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">updateVertexPositions</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">V</span><span class="o">&amp;</span><span class="w"> </span><span class="n">newPositions</span><span class="p">)</span></code></summary>
@@ -1737,7 +1765,7 @@
 </ul>
 <p>Note: <code>updateVertexPositions2D</code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
 </details>
-<h3 id="selection-picking">Selection / Picking</h3>
+<h3 id="selection-picking">Selection / Picking<a class="headerlink" href="#selection-picking" title="Permanent link">&para;</a></h3>
 <p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene. As with other structures, you can call <code>interpretPickResult()</code> to get additional info about a click. See <a href="/basics/interactive_UIs_and_animation/#selection-picking">the overview of Selection / Picking</a> for general information about selection. </p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">SurfaceMeshPickResult</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">MeshElement</span><span class="w"> </span><span class="n">elementType</span><span class="p">;</span><span class="w">  </span><span class="c1">// which kind of element did we click (enum values: [VERTEX, FACE, EDGE, HALFEDGE, CORNER])</span>
@@ -1766,7 +1794,7 @@
 <p><code>MeshSelectionMode::FacesOnly</code>: Only faces can be selected</p>
 </li>
 </ul>
-<h2 id="back-face-policies">Back face policies</h2>
+<h2 id="back-face-policies">Back face policies<a class="headerlink" href="#back-face-policies" title="Permanent link">&para;</a></h2>
 <p>The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the &ldquo;outward&rdquo; direction. Faces which are viewed from behind are referred to as <em>back faces</em>; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how back faces are displayed.</p>
 <p><img alt="backface policies diagram" src="../../../media/backface_diagram.png" /></p>
 <ul>
@@ -1789,7 +1817,7 @@
 <p>Set the color to be used for custom back face coloring. Has no effect unless the back face policy is <code>BackFacePolicy::Custom</code>.</p>
 <p>There is also a corresponding <code>getBackFaceColor()</code>.</p>
 </details>
-<h2 id="options">Options</h2>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h2>
 <p>See <a href="/structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>
 <thead>

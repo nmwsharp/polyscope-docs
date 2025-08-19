@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://polyscope.run/py/structures/surface_mesh/basics/">
       
       
-        <link rel="prev" href="../../curve_network/vector_quantities/">
+        <link rel="prev" href="../../curve_network/variable_radius/">
       
       
         <link rel="next" href="../scalar_quantities/">
@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -649,6 +649,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -755,6 +769,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1548,11 +1576,11 @@
                   
 
 
-<h1 id="surface-meshes">Surface Meshes</h1>
+<h1 id="surface-meshes">Surface Meshes<a class="headerlink" href="#surface-meshes" title="Permanent link">&para;</a></h1>
 <p>Surface meshes are one of the core structures in Polyscope. In addition to simply displaying the mesh, Polyscope can show any number of scalar, vector,color, and other kinds of quantities associated with the vertices/faces/etc of the mesh.</p>
 <p>Polyscope does not impose any requirements on the meshes visualized. They may be polygonal or nonmanifold, and all faces need not have the same degree.  As always, try clicking on the vertices or faces of a mesh see the data associated with that mesh element.</p>
 <p><img alt="surface_mesh_demo" src="/py//media/mesh_demo.gif" /></p>
-<h2 id="registering-a-surface-mesh">Registering a surface mesh</h2>
+<h2 id="registering-a-surface-mesh">Registering a surface mesh<a class="headerlink" href="#registering-a-surface-mesh" title="Permanent link">&para;</a></h2>
 <p>Example: registering a mesh
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -1593,13 +1621,13 @@
 <p>Polyscope quantities are ordered arrays of data, but not everyone can agree on the ordering of elements in a mesh. See <a href="../indexing_convention/">indexing conventions</a>.</p>
 <p>The default ordering is probably the same as yours for data on <strong>vertices, faces, and corners</strong>. However, data on <strong>edges and halfedges</strong> is much more likely to require setting an ordering.</p>
 </div>
-<h2 id="updating-a-mesh">Updating a mesh</h2>
+<h2 id="updating-a-mesh">Updating a mesh<a class="headerlink" href="#updating-a-mesh" title="Permanent link">&para;</a></h2>
 <p>The locations of the vertices in a mesh can be updated with the member function <code>update_vertex_positions(newPositions)</code>. All quantities will be preserved. Changing the connectivity or element counts in a mesh is not supported, you will need to register a new mesh (perhaps with the same name to overwrite).</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">update_vertex_positions</span><span class="p">(</span><span class="n">newPos</span><span class="p">)</span></code></summary>
 <p>Update the vertex positions in a surface mesh structure. <code>newPos</code> must be valid input as to initially construct the vertex positions, with the same number of vertices.</p>
 </details>
-<h2 id="picking-and-selection">Picking and Selection</h2>
+<h2 id="picking-and-selection">Picking and Selection<a class="headerlink" href="#picking-and-selection" title="Permanent link">&para;</a></h2>
 <p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene.  <a href="/py//basics/interactive_UIs_and_animation/#picking-selection-and-querying-the-scene">See the section on picking for more info</a>.</p>
 <p>Additional information about a pick which hits a mesh can be retrieved from the <code>PickResult.structure_data</code> dictionary field.</p>
 <p>We can also set which mesh elements are selectable (for instance, to make only vertices be returned from pick queries). This option can be set programmatically as <code>SurfaceMesh.set_selection_mode(newMode)</code>, or from the UI. The available selection modes are:</p>
@@ -1614,7 +1642,7 @@
 <p><code>"faces_only"</code>: Only faces can be selected</p>
 </li>
 </ul>
-<h2 id="back-face-policies">Back face policies</h2>
+<h2 id="back-face-policies">Back face policies<a class="headerlink" href="#back-face-policies" title="Permanent link">&para;</a></h2>
 <p>The faces of a mesh are implicitly given an outward orientation by the order in which the vertices are listed. The standard convention, which Polyscope respects, is that a counter-clockwise ordering of vertices defines the &ldquo;outward&rdquo; direction. Faces which are viewed from behind are referred to as <em>back faces</em>; they can arise when a surface is viewed from the inside, or if a mesh is not properly oriented. Polyscope offers several options for how back faces are displayed.</p>
 <p><img alt="backface policies diagram" src="../../../media/backface_diagram.png" /></p>
 <ul>
@@ -1638,7 +1666,7 @@
 <p>Set the color to be used for custom back face coloring as a 3-tuple of floats on [0,1]. Has no effect unless the back face policy is <code>custom</code>.</p>
 <p>There is also a corresponding <code>get_back_face_color()</code>.</p>
 </details>
-<h2 id="options">Options</h2>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h2>
 <p>Options control the appearance of the mesh. These options can also be passed as keyword arguments to the initial <code>register_surface_mesh()</code>, as noted above.  See <a href="/py//structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>
 <thead>

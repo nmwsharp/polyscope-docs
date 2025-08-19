@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -649,6 +649,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -755,6 +769,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1645,11 +1673,11 @@
 <p class="admonition-title">Camera Views</p>
 <p>Image quantities get special functionality when added to <code>CameraView</code> structures: they can additionally be displayed in the camera frame, aligned with the view of the scene.</p>
 </div>
-<h2 id="image-origin">Image Origin</h2>
+<h2 id="image-origin">Image Origin<a class="headerlink" href="#image-origin" title="Permanent link">&para;</a></h2>
 <p>When registering an image quantity, you can also specify whether the image should be interpreted such that the first row is the &ldquo;top&rdquo; row of the image (<code>'upper_left'</code>), or the first row is the &ldquo;bottom&rdquo; row of the image (<code>'lower_left'</code>). This is a confusing issue, as there are many overlapping conventions of coordinate systems and buffer layouts for images.</p>
 <p>Most of the time, <code>'upper_left'</code> (the default) is the right choice.</p>
 <hr />
-<h2 id="scalar-image-quantity">Scalar Image Quantity</h2>
+<h2 id="scalar-image-quantity">Scalar Image Quantity<a class="headerlink" href="#scalar-image-quantity" title="Permanent link">&para;</a></h2>
 <p>These can be called at the root level, like <code>ps.add_scalar_image_quantity()</code>, or on a structure, like <code>cam_view.add_scalar_image_quantity()</code>.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">add_scalar_image_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></summary>
@@ -1660,10 +1688,10 @@
 </ul>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
-<h3 id="categorical-scalars">Categorical Scalars</h3>
+<h3 id="categorical-scalars">Categorical Scalars<a class="headerlink" href="#categorical-scalars" title="Permanent link">&para;</a></h3>
 <p>Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.</p>
 <p>Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set <code>datatype='categorical'</code>. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.</p>
-<h3 id="scalar-quantity-options">Scalar Quantity Options</h3>
+<h3 id="scalar-quantity-options">Scalar Quantity Options<a class="headerlink" href="#scalar-quantity-options" title="Permanent link">&para;</a></h3>
 <p>When adding a scalar quantity, the following keyword options can be set. These are available for all kinds of scalar quantities on all structures.</p>
 <p>Keyword arguments:</p>
 <ul>
@@ -1683,7 +1711,7 @@
 </ul>
 <p>If not specified, these optional parameters will assume a reasonable default value, or a <a href="../../../basics/parameters/#persistent-values">persistent value</a> if previously set.</p>
 <hr />
-<h2 id="color-image-quantity">Color Image Quantity</h2>
+<h2 id="color-image-quantity">Color Image Quantity<a class="headerlink" href="#color-image-quantity" title="Permanent link">&para;</a></h2>
 <p>These can be called at the root level, like <code>ps.add_color_image_quantity()</code>, or on a structure, like <code>cam_view.add_color_image_quantity()</code>.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">add_color_image_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values_rgb</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></summary>
@@ -1704,7 +1732,7 @@
 <p>RGB values are interpreted in the range <code>[0,1]</code>.</p>
 </details>
 <p>By default, alpha values are interpreted to be non-premultiplied. Use the keyword argument <code>is_premultiplied=True</code> to directly pass premultiplied alpha images.</p>
-<h3 id="color-quantity-options">Color Quantity Options</h3>
+<h3 id="color-quantity-options">Color Quantity Options<a class="headerlink" href="#color-quantity-options" title="Permanent link">&para;</a></h3>
 <p>When adding a color quantity, the following keyword options can be set. These are available for all kinds of color quantities on all structures.</p>
 <p>Keyword arguments:</p>
 <ul>
@@ -1712,7 +1740,7 @@
 </ul>
 <p>If not specified, these optional parameters will assume a reasonable default value, or a <a href="../../../basics/parameters/#persistent-values">persistent value</a> if previously set.</p>
 <hr />
-<h2 id="image-options">Image Options</h2>
+<h2 id="image-options">Image Options<a class="headerlink" href="#image-options" title="Permanent link">&para;</a></h2>
 <p>These options are common to all images</p>
 <p>Keyword arguments:</p>
 <ul>

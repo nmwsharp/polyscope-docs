@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -647,6 +647,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -753,6 +767,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1502,7 +1530,7 @@
 
 <p>Many structures and quantities in Polyscope have optional values which can be set to control their appearance or behavior, such as the radius of points in a point cloud or the color of a mesh. These values can generally be manually adjusted in the GUI, or set programmatically in code.</p>
 <p>This page documents special features in Polyscope which provide extra functionality while setting these parameters.</p>
-<h2 id="persistent-values">Persistent values</h2>
+<h2 id="persistent-values">Persistent values<a class="headerlink" href="#persistent-values" title="Permanent link">&para;</a></h2>
 <p>In Polyscope, if you manually set the color of points in a point cloud (for instance), then register a new point cloud with the same name overwriting the original, the new point cloud will inherit the old point cloud&rsquo;s color. This functionality, and other similar behavior, is implemented via <em>persistent values</em>.</p>
 <p>Persistent values are lightweight wrappers around a variable which on-construction look up the variable in a global cache, and if a cache entry exists take the cached value instead. Any time the variable is written to, its value is recorded in the global cache. Generally, the cache key includes the name of a structure (and quantity if applicable), so a cached variable will only be picked up when names match.</p>
 <p>Generally, the user should not manually interact with persistent values ever, all you need to know is that some variables may &ldquo;magically&rdquo; remember their old values by pulling them from a cache.
@@ -1517,7 +1545,7 @@
 <span class="c1"># since this point cloud has the same name</span>
 </code></pre></div>
 Note that this persistence behavior applies even when variables are manually manipulated in the GUI.</p>
-<h2 id="scaled-values">Scaled values</h2>
+<h2 id="scaled-values">Scaled values<a class="headerlink" href="#scaled-values" title="Permanent link">&para;</a></h2>
 <p>Specifying appearance (such as the radius of points in a point cloud) in global length units can be inconvenient; its generally much easier to set values relatively, which respect to some reasonable length scale.
 Many Polyscope parameters take a <code>relative</code> option, which is usually <code>True</code> by default, to set lengths relatively.</p>
 <div class="highlight"><pre><span></span><code><span class="n">ps_cloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_point_cloud</span><span class="p">(</span><span class="s2">&quot;my cloud&quot;</span><span class="p">)</span>

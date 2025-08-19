@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -647,6 +647,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -753,6 +767,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1501,9 +1529,9 @@
   <h1>2D Data</h1>
 
 <p>Polyscope is primarily focused on 3D data, but can also be used for 2D visualization. This section descibes a few helpers which make it easier to do so.</p>
-<h3 id="adding-2d-data">Adding 2D data</h3>
+<h3 id="adding-2d-data">Adding 2D data<a class="headerlink" href="#adding-2d-data" title="Permanent link">&para;</a></h3>
 <p>Functions which accept 3D positions (or vectors) as input can alternately takes 2D positions, and append a 0 z-coordinate.  In Python (unlike the C++ api), we can use 2D data by simply passing it as the argument of a function which would otherwise take 3D data. For instance, <code>register_point_cloud(name, data)</code> normally expects <code>data</code> to be a <code>Nx3</code> array of 3D positions, but passing an <code>Nx2</code> array also works just fine.  Any other functions which don&rsquo;t take 3D positions can be used as normal, like <code>add_scalar_quantity()</code>.</p>
-<h3 id="planar-camera-mode">Planar camera mode</h3>
+<h3 id="planar-camera-mode">Planar camera mode<a class="headerlink" href="#planar-camera-mode" title="Permanent link">&para;</a></h3>
 <p>The Polyscope camera can be &ldquo;locked-in&rdquo; to a 2D view by setting the mode to <code>Planar</code>. In the UI, this option is in the main Polyscope window, set to <code>Turntable</code> by default. Setting the camera mode to <code>Planar</code> will also hide the ground plane.</p>
 <p><img alt="planar view setting" src="/py//media/view_planar.png" style="height:200px;" /></p>
 <p>To set this option programmatically, use:

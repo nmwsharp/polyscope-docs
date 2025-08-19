@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#manipulating-the-current-view" class="md-skip">
+        <a href="#window-controls" class="md-skip">
           Skip to content
         </a>
       
@@ -532,6 +532,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#window-controls" class="md-nav__link">
+    Window Controls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manipulating-the-current-view" class="md-nav__link">
     Manipulating the Current View
   </a>
@@ -575,6 +582,13 @@
         <li class="md-nav__item">
   <a href="#perspective-and-orthographic-views" class="md-nav__link">
     Perspective and Orthographic Views
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centering-the-view-on-scene-content" class="md-nav__link">
+    Centering the View on Scene Content
   </a>
   
 </li>
@@ -796,6 +810,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -902,6 +930,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1680,6 +1722,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#window-controls" class="md-nav__link">
+    Window Controls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manipulating-the-current-view" class="md-nav__link">
     Manipulating the Current View
   </a>
@@ -1723,6 +1772,13 @@
         <li class="md-nav__item">
   <a href="#perspective-and-orthographic-views" class="md-nav__link">
     Perspective and Orthographic Views
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centering-the-view-on-scene-content" class="md-nav__link">
+    Centering the View on Scene Content
   </a>
   
 </li>
@@ -1802,6 +1858,9 @@
 <p><strong>Example of common camera operations:</strong>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
 
+<span class="c1">// set the size of the window</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">setWindowSize</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="w"> </span><span class="mi">800</span><span class="p">);</span>
+
 <span class="c1">// change the default up-direction or front-direction for the scene</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">setUpDir</span><span class="p">(</span><span class="n">polyscope</span><span class="o">::</span><span class="n">UpDir</span><span class="o">::</span><span class="n">ZUp</span><span class="p">);</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">setFrontDir</span><span class="p">(</span><span class="n">polyscope</span><span class="o">::</span><span class="n">FrontDir</span><span class="o">::</span><span class="n">NegYFront</span><span class="p">);</span>
@@ -1831,24 +1890,46 @@
 <span class="c1">// quantities</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">CameraView</span><span class="o">*</span><span class="w"> </span><span class="n">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCameraView</span><span class="p">(</span><span class="s">&quot;cam1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span>
 </code></pre></div></p>
-<h2 id="manipulating-the-current-view">Manipulating the Current View</h2>
+<h2 id="window-controls">Window Controls<a class="headerlink" href="#window-controls" title="Permanent link">&para;</a></h2>
+<p>Get and set the size of the window which appears on the user&rsquo;s display.</p>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">setWindowSize</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">)</span></code></summary>
+<p>Set the size of the window.</p>
+<p>Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the logical size.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getWindowSize</span><span class="p">()</span></code></summary>
+<p>Get the current size of the window.</p>
+<p>Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the logical size.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getBufferSize</span><span class="p">()</span></code></summary>
+<p>Get the current pixel buffer resolution of the window.</p>
+<p>Note that for some platforms, on high-DPI screens the pixel buffer resolution may be different from the logical size. This is the pixel buffer size.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">setWindowResizable</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></summary>
+<p>If <code>false</code>, the window will be locked to size and the OS will not allow it to be resized. (Default: <code>true</code>)</p>
+<p>There is also a corresponding <code>getWindowResizable()</code>.</p>
+</details>
+<h2 id="manipulating-the-current-view">Manipulating the Current View<a class="headerlink" href="#manipulating-the-current-view" title="Permanent link">&para;</a></h2>
 <p>These settings affect the 3D camera view in polyscope. It is often convenient to set them just before calling <code>polyscope::init()</code>, but they may set be anywhere.</p>
 <p><strong>View Getters:</strong>
-<div class="highlight"><pre><span></span><code><span class="c1">// call like polyscope::view::getCameraFrame() etc</span>
-
-<span class="n">CameraParameters</span><span class="w"> </span><span class="nf">getCameraParametersForCurrentView</span><span class="p">();</span><span class="w"> </span><span class="c1">// contains all of this info</span>
+<div class="highlight"><pre><span></span><code><span class="n">CameraParameters</span><span class="w"> </span><span class="nf">view::getCameraParametersForCurrentView</span><span class="p">();</span><span class="w"> </span><span class="c1">// contains all of this info</span>
 
 <span class="c1">// (these friendly helpers get the same info as ^^^)</span>
-<span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="nf">getCameraViewMatrix</span><span class="p">();</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">setCameraViewMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">newMat</span><span class="p">);</span>
-<span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="nf">getCameraPerspectiveMatrix</span><span class="p">();</span>
-<span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="nf">getCameraWorldPosition</span><span class="p">();</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">getCameraFrame</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">lookDir</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">upDir</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rightDir</span><span class="p">);</span>
-<span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="nf">getUpVec</span><span class="p">();</span>
-<span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="nf">getFrontVec</span><span class="p">();</span>
+<span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="nf">view::getCameraViewMatrix</span><span class="p">();</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">view::setCameraViewMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">newMat</span><span class="p">);</span>
+<span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="nf">view::getCameraPerspectiveMatrix</span><span class="p">();</span>
+<span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="nf">view::getCameraWorldPosition</span><span class="p">();</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">view::getCameraFrame</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">lookDir</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">upDir</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rightDir</span><span class="p">);</span>
+<span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="nf">view::getUpVec</span><span class="p">();</span>
+<span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="nf">view::getFrontVec</span><span class="p">();</span>
+<span class="kt">float</span><span class="w"> </span><span class="nf">view::getVerticalFieldOfViewDegrees</span><span class="p">();</span>
+<span class="kt">float</span><span class="w"> </span><span class="nf">view::getAspectRatioWidthOverHeight</span><span class="p">();</span>
 </code></pre></div></p>
 <details class="func">
-<summary><code class="highlight"><span class="n">CameraParameters</span><span class="w"> </span><span class="n">getCameraParametersForCurrentView</span><span class="p">()</span></code></summary>
+<summary><code class="highlight"><span class="n">CameraParameters</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">getCameraParametersForCurrentView</span><span class="p">()</span></code></summary>
 <p>Get the camera parameters (intrinsic and extrinsics) that describe the current viewport view. </p>
 <p>See the section below for additional methods to get values from the camera parameters.</p>
 <p>Example:
@@ -1863,17 +1944,17 @@
 </code></pre></div></p>
 </details>
 <p><strong>View Setters:</strong>
-<div class="highlight"><pre><span></span><code><span class="c1">// call like polyscope::view::setCameraViewMatrix() etc</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">setViewToCamera</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CameraParameters</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">);</span><span class="w"> </span><span class="c1">// contains all of this info</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">view::setViewToCamera</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CameraParameters</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">);</span><span class="w"> </span><span class="c1">// contains all of this info</span>
 
 <span class="c1">// (these friendly helpers set the same info as ^^^)</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">setCameraViewMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">newMat</span><span class="p">);</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">cameraLocation</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flyTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">cameraLocation</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">upDir</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flyTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">view::setCameraViewMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">newMat</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">view::lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">cameraLocation</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flyTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">view::lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">cameraLocation</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">upDir</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flyTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">view::setVerticalFieldOfViewDegrees</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">);</span>
+<span class="c1">// there is no aspect ratio setter: it is determined by the window size</span>
 </code></pre></div></p>
 <details class="func">
-<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">setCameraParametersForCurrentView</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CameraParameters</span><span class="o">&amp;</span><span class="w"> </span><span class="n">params</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">setCameraParametersForCurrentView</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CameraParameters</span><span class="o">&amp;</span><span class="w"> </span><span class="n">params</span><span class="p">)</span></code></summary>
 <p>Set the camera parameters (intrinsic and extrinsics) that describe the current viewport view. </p>
 <p>See the section below for additional methods to construct these camera parameters.</p>
 <p>Example:
@@ -1889,35 +1970,35 @@
 <span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">setCameraParametersForCurrentView</span><span class="p">(</span><span class="n">newParams</span><span class="p">);</span>
 </code></pre></div></p>
 </details>
-<h3 id="look-at">Look-At</h3>
+<h3 id="look-at">Look-At<a class="headerlink" href="#look-at" title="Permanent link">&para;</a></h3>
 <p>The look-at functions are particularly easy to use to position the camera towards content of interest.</p>
 <details class="func">
-<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">cameraLocation</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flyTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">cameraLocation</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flyTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span></code></summary>
 <p>Set the camera to be located at the 3D position <code>cameraLocation</code> and looking at the 3D position <code>target</code>, both in world coordinates. The up direction for the camera is set to be the scene&rsquo;s up direction. If <code>flyTo=true</code>, the camera will smoothly animate to the new configuration.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="mf">10.</span><span class="p">,</span><span class="w"> </span><span class="mf">10.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">},</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">2.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">});</span>
 </code></pre></div></p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">cameraLocation</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">upDir</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flyTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">cameraLocation</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">upDir</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flyTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span></code></summary>
 <p>Set the camera to be located at the 3D position <code>cameraLocation</code> and looking at the 3D position <code>target</code>, oriented with the up direction <code>upDir</code>, all in world coordinates. If <code>flyTo=true</code>, the camera will smoothly animate to the new configuration.</p>
 <p>Note that setting the up direction for the camera view with this function is separate from the scene&rsquo;s <code>view::upDir</code> parameter, which affects things like ground plane placement, and manual view manipulation.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="mf">10.</span><span class="p">,</span><span class="w"> </span><span class="mf">10.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">},</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">2.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">},</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">1.</span><span class="p">});</span>
 </code></pre></div></p>
 </details>
-<h3 id="home-view">Home View</h3>
+<h3 id="home-view">Home View<a class="headerlink" href="#home-view" title="Permanent link">&para;</a></h3>
 <p>The home view is a reasonable default camera view, computed based on the up- and front- direction, as well as the scene extents which may be computed automatically from data you have registered.</p>
-<p>By default, the camera is located at the home view when the scene is first opened. You can also return it to that view at any time with <code>resetCameraToHomeView()</code>.</p>
+<p>By default, the camera is located at the home view when the scene is first opened. You can also return it to that view at any time with <code>view::resetCameraToHomeView()</code>.</p>
 <details class="func">
-<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">resetCameraToHomeView</span><span class="p">()</span></code></summary>
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">resetCameraToHomeView</span><span class="p">()</span></code></summary>
 <p>Reset the camera view to the home view (a reasonable default view scaled to the scene).</p>
 <p><strong>Note:</strong> The &ldquo;home&rdquo; view is dependent on the data in the scene; it is computed from the bounding boxes of all registered structures to ensure that everything is nicely scaled and in view. As such, one should generally call this function <em>after</em> registering data.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">resetCameraToHomeView</span><span class="p">();</span>
 </code></pre></div></p>
 </details>
-<h2 id="navigation-style">Navigation Style</h2>
+<h2 id="navigation-style">Navigation Style<a class="headerlink" href="#navigation-style" title="Permanent link">&para;</a></h2>
 <p>The navigation style affects how the user&rsquo;s mouse interactions navigate the scene. The default is a Turntable rotating around the current canonical <code>Up</code> direction.</p>
 <p><strong>Navigation Styles Enum</strong>:</p>
 <ul>
@@ -1937,7 +2018,7 @@
 <summary><code class="highlight"><span class="n">NavigateStyle</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">getNavigateStyle</span><span class="p">()</span></code></summary>
 <p>Get the current navigation style (see explanation in the setter above)</p>
 </details>
-<h2 id="canonical-up-and-front">Canonical Up and Front</h2>
+<h2 id="canonical-up-and-front">Canonical Up and Front<a class="headerlink" href="#canonical-up-and-front" title="Permanent link">&para;</a></h2>
 <p>Unfortunately, no one can agree which cartesian direction is &ldquo;up&rdquo; in a 3D scene. Polyscope does not assume any particular up direction, it can be configured (default is <code>Y-up</code>).</p>
 <p>This effects many defaults of the scene, such as how the camera is oriented and where the ground plane is placed. </p>
 <details class="func">
@@ -1984,7 +2065,7 @@
 <summary><code class="highlight"><span class="n">FrontDir</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">getFrontDir</span><span class="p">()</span></code></summary>
 <p>Get the current front direction (see explanation in the setter above).</p>
 </details>
-<h2 id="perspective-and-orthographic-views">Perspective and Orthographic Views</h2>
+<h2 id="perspective-and-orthographic-views">Perspective and Orthographic Views<a class="headerlink" href="#perspective-and-orthographic-views" title="Permanent link">&para;</a></h2>
 <p>By default, Polyscope&rsquo;s view uses <a href="https://en.wikipedia.org/wiki/3D_projection#Perspective_projection">perspective projection</a>. Perspective projections roughly correspond to how images are usually perceived by our eyes and cameras.</p>
 <p>Alternately <a href="https://en.wikipedia.org/wiki/3D_projection#Orthographic_projection">orthographic projection</a> is also supported. Orthographic projections are common in engineering and architecture, because they have the property that distances are preserved in the projected image, regardless of whether the object is near or far from the camera.</p>
 <p><img alt="image of perspective and orthographic projection" src="/media/projection_diagram.jpg" /></p>
@@ -2000,24 +2081,36 @@
 <span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">projectionMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">ProjectionMode</span><span class="o">::</span><span class="n">Perspective</span><span class="p">;</span>
 </code></pre></div></p>
 </details>
-<h2 id="savingrestoring-views">Saving/Restoring views</h2>
+<h2 id="centering-the-view-on-scene-content">Centering the View on Scene Content<a class="headerlink" href="#centering-the-view-on-scene-content" title="Permanent link">&para;</a></h2>
+<p>To focus on particular areas of interest, hold ctrl+shift (cmd+shift on macOS) and click in the scene. This will re-center the view in the clicked location. You can also hold ctrl+shift (cmd+shift on macOS) and scroll to zoom relative to selected center location, which makes it easer to zoom in on small details. Use the Reset View button to reset the center of interest.</p>
+<video width=100% autoplay muted loop>
+  <source src="/media/rotation_center.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">setViewCenter</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">newCenter</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flyTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span></code></summary>
+<p>Programmatically set the view center to a location in world-space. For example, with the Turntable view, this changes the center of rotation.</p>
+<p>For some view types, the view must immediately be projected to conform to the new center. If <code>flyTo=true</code> this projection will be a smooth flight, otherwise it will be instantaneous.</p>
+</details>
+<h2 id="savingrestoring-views">Saving/Restoring views<a class="headerlink" href="#savingrestoring-views" title="Permanent link">&para;</a></h2>
 <p>The current camera view (location, direction, camera parameters, and window size) can be saved or loaded from a json string. This is useful for quickly setting up repeatable visualizations.</p>
 <p>Also, in the Polyscope GUI, this string can be copied to the clipboard at any time via the &ldquo;copy&rdquo; hotkey (ctrl-C or cmd-C), or loaded from your current clipboard using the &ldquo;paste&rdquo; hotkey (ctrl-V or cmd-V).</p>
 <details class="func">
-<summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getViewAsJson</span><span class="p">()</span></code></summary>
+<summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">getViewAsJson</span><span class="p">()</span></code></summary>
 <p>Get the current view parameters specified as a json string.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">myString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">getViewAsJson</span><span class="p">();</span>
 </code></pre></div></p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">setViewFromJson</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">jsonString</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">animateFlight</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">setViewFromJson</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">jsonString</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">animateFlight</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span></code></summary>
 <p>Set the current view to match the parameters specified in the json string.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">setViewFromJson</span><span class="p">(</span><span class="n">myString</span><span class="p">);</span>
 </code></pre></div></p>
 </details>
-<h2 id="camera-parameters-objects">Camera Parameters Objects</h2>
+<h2 id="camera-parameters-objects">Camera Parameters Objects<a class="headerlink" href="#camera-parameters-objects" title="Permanent link">&para;</a></h2>
 <p><code>CameraParameters</code> objects describe a camera view in Polyscope, including its <em>intrinsics</em> (the field of view and aspect ratio), and <em>extrinsics</em> (the location and orientation). These parameters are used both for manipulations of the interactive viewport, as well as creating <a href="/structures/camera_view/basics">Camera View structures</a> which are visualized as part of the content in your scene.</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">// construct camera parameters </span>
@@ -2040,7 +2133,7 @@
 <span class="c1">// or, use the parameters to create a camera view</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">CameraView</span><span class="o">*</span><span class="w"> </span><span class="n">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCameraView</span><span class="p">(</span><span class="s">&quot;cam1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
 </code></pre></div></p>
-<h3 id="intrinsics">Intrinsics</h3>
+<h3 id="intrinsics">Intrinsics<a class="headerlink" href="#intrinsics" title="Permanent link">&para;</a></h3>
 <p>A <code>CameraIntrinsics</code> object describes the field of view and aspect ratio of a camera. It <strong>does not</strong> describe a &ldquo;pixel resolution&rdquo; for a camera&mdash;you could have many images of different resolutions all associated with the same camera, as long as the aspect ratios are right.</p>
 <p>Camera intrinsics can be created by specifying any pair of vertical field of view, horizontal field of view, and aspect ratio.</p>
 <details class="func">
@@ -2080,7 +2173,7 @@
 <div class="highlight"><pre><span></span><code><span class="kt">float</span><span class="w"> </span><span class="n">CameraIntrinsics</span><span class="o">::</span><span class="n">getFoVVerticalDegrees</span><span class="p">()</span><span class="w">             </span><span class="c1">// vertical FoV</span>
 <span class="kt">float</span><span class="w"> </span><span class="n">CameraIntrinsics</span><span class="o">::</span><span class="n">getAspectRatioWidthOverHeight</span><span class="p">()</span><span class="w">     </span><span class="c1">// horizontal FoV</span>
 </code></pre></div></p>
-<h3 id="extrinsics">Extrinsics</h3>
+<h3 id="extrinsics">Extrinsics<a class="headerlink" href="#extrinsics" title="Permanent link">&para;</a></h3>
 <p>A <code>CameraExtrinsics</code> object describes the location and orientation of a camera. It can be defined by the forward/up/right axes of the camera in world coordinates, or via an extrinsic matrix, typically denoted <code>E</code>, which maps points in world coordinates to points in the camera&rsquo;s local coordinate system. Polyscope uses openGL conventions for camera space, such that the camera points toward the -Z axis, with +Y pointing up and +X pointing right.</p>
 <p>Camera extrinsics can be created by specifying frame axes or an extrinsic matrix.</p>
 <details class="func">
@@ -2117,7 +2210,7 @@
 <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w">       </span><span class="n">CameraExtrinsics</span><span class="o">::</span><span class="n">getRightDir</span><span class="p">()</span>
 <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CameraExtrinsics</span><span class="o">::</span><span class="n">getCameraFrame</span><span class="p">()</span><span class="w"> </span><span class="c1">// &lt;look, up, right&gt; world-space vectors</span>
 </code></pre></div></p>
-<h3 id="camera-parameters">Camera Parameters</h3>
+<h3 id="camera-parameters">Camera Parameters<a class="headerlink" href="#camera-parameters" title="Permanent link">&para;</a></h3>
 <p>The <code>CameraParameters</code> object combines a set of intrinsics and extrinsics to fully define a camera.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">CameraParameters</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CameraIntrinsics</span><span class="o">&amp;</span><span class="w"> </span><span class="n">intrinsics</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">CameraExtrinsics</span><span class="o">&amp;</span><span class="w"> </span><span class="n">extrinsics</span><span class="p">)</span></code></summary>
@@ -2144,7 +2237,7 @@
 <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w">       </span><span class="n">CameraParameters</span><span class="o">::</span><span class="n">getRightDir</span><span class="p">()</span>
 <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CameraParameters</span><span class="o">::</span><span class="n">getCameraFrame</span><span class="p">()</span><span class="w"> </span><span class="c1">// &lt;look, up, right&gt; world-space vectors</span>
 </code></pre></div></p>
-<h4 id="generating-pixel-rays">Generating pixel rays</h4>
+<h4 id="generating-pixel-rays">Generating pixel rays<a class="headerlink" href="#generating-pixel-rays" title="Permanent link">&para;</a></h4>
 <p>It is often necessary to generate the world-space ray corresponding to each pixel of an image in a camera view. The base point for these rays is easy, it is just <code>params.getPosition()</code>. However the ray directions vary-per pixel; the <code>CameraParameters</code> object has two helpers to automatically construct these rays.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CameraParameters</span><span class="o">::</span><span class="n">generateCameraRays</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">ImageOrigin</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImageOrigin</span><span class="o">::</span><span class="n">UpperLeft</span><span class="p">)</span></code></summary>

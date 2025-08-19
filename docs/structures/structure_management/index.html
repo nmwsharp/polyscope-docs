@@ -625,6 +625,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#quantities" class="md-nav__link">
+    Quantities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#structure-options" class="md-nav__link">
     Structure options
   </a>
@@ -763,6 +770,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -869,6 +890,20 @@
     <li class="md-nav__item">
       <a href="../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1675,6 +1710,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#quantities" class="md-nav__link">
+    Quantities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#structure-options" class="md-nav__link">
     Structure options
   </a>
@@ -1732,7 +1774,7 @@
 
   <h1>Structure Management</h1>
 
-<h2 id="intro">Intro</h2>
+<h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
 <p>A <strong>structure</strong> is a geometric object visualized in Polyscope, like a mesh or a point cloud. The first step in seeing your data in Polyscope is to register one or more structures to add them to the visualization. Then, <em>quantities</em> can be added to these structures, like scalar functions, colors, or vector fields.</p>
 <p>Each structure should be given a name which is unique among structures of that type. You can then use this name as a handle to perform operations on the structure; For instance, you can register a mesh with:
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
@@ -1745,7 +1787,7 @@ This avoids the need to pass a pointer to the structure you created around your 
 <p class="admonition-title">Memory management</p>
 <p>As a general policy, Polyscope always manages its own memory, and will take care of deleting anything it allocated. Whenever a routine returns a pointer (like <code>getStructure()</code>), it is a <em>non-owning</em> pointer. You <strong>should never</strong> <code>delete</code> one of these pointers. To delete a structure and free memory, see the <code>removeStructure()</code> methods below.</p>
 </div>
-<h2 id="registering-structures">Registering structures</h2>
+<h2 id="registering-structures">Registering structures<a class="headerlink" href="#registering-structures" title="Permanent link">&para;</a></h2>
 <p>Each structure offers a <code>register___(name, ...)</code> function (like <code>registerPointCloud()</code>) which accepts the name of the structure and the data necessary to construct it. These functions will return a <code>Structure*</code> pointer which may be used to add quantities to the structure. See the relevant sections for documentation on each of these register functions.</p>
 <p>The general form for registering structures is below; it may be useful if you are implementing your own structures.</p>
 <details class="func">
@@ -1754,7 +1796,7 @@ This avoids the need to pass a pointer to the structure you created around your 
 <p>Polyscope takes ownership of the memory when the structure is registered, and will <code>delete</code> it when no longer needed.</p>
 <p>Note: most users will create structures via the individual <code>registerPointCloud()</code> (etc) functions, rather than this general form.</p>
 </details>
-<h2 id="accessing-structures">Accessing structures</h2>
+<h2 id="accessing-structures">Accessing structures<a class="headerlink" href="#accessing-structures" title="Permanent link">&para;</a></h2>
 <p>Polyscope offers two patterns for calling methods on a registered structure: you can either use the pointer returned after structure creation, or refer to the structure by name.</p>
 <p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
 
@@ -1777,7 +1819,7 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <p>If not such structure is available, <code>nullptr</code> will be returned.</p>
 <p>Note: most users will get structures via the individual <code>getPointCloud()</code> (etc) functions, rather than this general form.</p>
 </details>
-<h2 id="removing-structures">Removing structures</h2>
+<h2 id="removing-structures">Removing structures<a class="headerlink" href="#removing-structures" title="Permanent link">&para;</a></h2>
 <p>If no longer needed, structures can be removed by name or by pointer. Removing a structure frees memory for the underlying objects, invalidating all references to the structure and its quantities.</p>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">removeStructure</span><span class="p">(</span><span class="n">Structure</span><span class="o">*</span><span class="w"> </span><span class="n">structure</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">errorIfAbsent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span></code></summary>
@@ -1796,9 +1838,20 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">removeAllStructures</span><span class="p">()</span></code></summary>
 <p>Remove all structures from the scene.</p>
 </details>
-<h2 id="structure-options">Structure options</h2>
+<h2 id="quantities">Quantities<a class="headerlink" href="#quantities" title="Permanent link">&para;</a></h2>
+<p>Quantities, like scalar functions, color fields, vector fields, and more, can be associated with structures. See the available options for each kind of structure.</p>
+<p>Quantities can be removed from a structure by name.</p>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">removeQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">errorIfAbsent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span></code></summary>
+<p>Remove a quantity from the structure by name.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">removeAllQuantities</span><span class="p">()</span></code></summary>
+<p>Remove all quantities which have been added to the structure.</p>
+</details>
+<h2 id="structure-options">Structure options<a class="headerlink" href="#structure-options" title="Permanent link">&para;</a></h2>
 <p>These basic options are shared by all structures.  Structure options are managed as <a href="/basics/parameters/#persistent-values">persistent values</a>, and thus will persist if a new structure is registered with the same name.</p>
-<h4 id="enabled">Enabled</h4>
+<h4 id="enabled">Enabled<a class="headerlink" href="#enabled" title="Permanent link">&para;</a></h4>
 <p>If a structure is disabled, it will be hidden from view, along with any quantities associated with that structure.</p>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">isEnabled</span><span class="p">()</span></code></summary>
@@ -1808,7 +1861,7 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></summary>
 <p>Set the structure to be enabled or disabled.</p>
 </details>
-<h4 id="transparency">Transparency</h4>
+<h4 id="transparency">Transparency<a class="headerlink" href="#transparency" title="Permanent link">&para;</a></h4>
 <p>Set the transparency parameter for the structure. <code>1</code> is fully opaque (the default), and <code>0</code> is fully transparent. When the first structure has transparency applied, transparent rendering will be automatically enabled.</p>
 <p>Transparency can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Transparency]</code> menu.</p>
 <details class="func">
@@ -1819,7 +1872,7 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">setTransparency</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="p">)</span></code></summary>
 <p>Set the transparancy for the structure.</p>
 </details>
-<h4 id="transforms">Transforms</h4>
+<h4 id="transforms">Transforms<a class="headerlink" href="#transforms" title="Permanent link">&para;</a></h4>
 <p>Each structure has an associated spatial <em>transform</em> applied to it for display in the scene. The transform encodes a translation, rotation, and scaling represented as a 4x4 homogeneous matrix. Initially this transformation is just the identity transform (it does nothing), but it can be adjusted to position the structures in your scene.</p>
 <p>The transform can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Transform]</code> menu.</p>
 <details class="func">
@@ -1862,7 +1915,7 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getTransformGizmoEnabled</span><span class="p">()</span></code></summary>
 <p>Get the enabled state of the interactive onscreen widget which lets the user adjust an object&rsquo;s transform.</p>
 </details>
-<h4 id="slice-planes">Slice planes</h4>
+<h4 id="slice-planes">Slice planes<a class="headerlink" href="#slice-planes" title="Permanent link">&para;</a></h4>
 <p>Options relating to <a href="/features/slice_planes/">slice planes</a> which may be present in the scene.</p>
 <p>Slice plane options can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Slice Planes]</code> menu.</p>
 <details class="func">

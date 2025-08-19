@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -603,6 +603,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#quantities" class="md-nav__link">
+    Quantities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#structure-options" class="md-nav__link">
     Structure options
   </a>
@@ -741,6 +748,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -847,6 +868,20 @@
     <li class="md-nav__item">
       <a href="../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1539,6 +1574,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#quantities" class="md-nav__link">
+    Quantities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#structure-options" class="md-nav__link">
     Structure options
   </a>
@@ -1604,9 +1646,9 @@ Then, in a distant part of your code, add a scalar function to it with:
 <div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">get_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;some values&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
 </code></pre></div>
 This avoids the need to pass a reference to the structure you created around your entire codebase. Alternately, one can directly use the handle returned by <code>register_surface_mesh()</code>, instead of keying on a name string.</p>
-<h2 id="registering-structures">Registering structures</h2>
+<h2 id="registering-structures">Registering structures<a class="headerlink" href="#registering-structures" title="Permanent link">&para;</a></h2>
 <p>Each structure offers a <code>register___(name, ...)</code> function (like <code>register_point_cloud()</code>) which accepts the name of the structure and the data necessary to construct it. These functions will return a structure object which may be used to add quantities to the structure. See the relevant sections for documentation on each of these register functions.</p>
-<h2 id="accessing-structures">Accessing structures</h2>
+<h2 id="accessing-structures">Accessing structures<a class="headerlink" href="#accessing-structures" title="Permanent link">&para;</a></h2>
 <p>Polyscope offers two patterns for calling methods on a registered structure: you can either use the handle returned after structure creation, or refer to the structure by name.</p>
 <p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 
@@ -1621,7 +1663,7 @@ This avoids the need to pass a reference to the structure you created around you
 </code></pre></div>
 The former is concise and programmatic, while the latter avoids the need to keep track of a variable.</p>
 <p>As before, each structure offers a <code>get___(name)</code> method, like <code>get_surface_mesh(name)</code> which can be used to get a handle to the structure of that type by name.</p>
-<h2 id="removing-structures">Removing structures</h2>
+<h2 id="removing-structures">Removing structures<a class="headerlink" href="#removing-structures" title="Permanent link">&para;</a></h2>
 <p>If no longer needed, structures can be removed by name or by handle. Removing a structure frees memory for the underlying objects, invalidating all references to the structure and its quantities.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 
@@ -1647,9 +1689,20 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <summary><code class="highlight"><span class="n">remove_all_structures</span><span class="p">()</span></code></summary>
 <p>Remove all structures from the scene.</p>
 </details>
-<h2 id="structure-options">Structure options</h2>
+<h2 id="quantities">Quantities<a class="headerlink" href="#quantities" title="Permanent link">&para;</a></h2>
+<p>Quantities, like scalar functions, color fields, vector fields, and more, can be associated with structures. See the available options for each kind of structure.</p>
+<p>Quantities can be removed from a structure by name.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">remove_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">error_if_absent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code></summary>
+<p>Remove a quantity from the structure by name.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">remove_all_quantities</span><span class="p">()</span></code></summary>
+<p>Remove all quantities which have been added to the structure.</p>
+</details>
+<h2 id="structure-options">Structure options<a class="headerlink" href="#structure-options" title="Permanent link">&para;</a></h2>
 <p>These basic options are shared by all structures.  Structure options are managed as <a href="/py//basics/parameters/#persistent-values">persistent values</a>, and thus will persist if a new structure is registered with the same name.</p>
-<h4 id="enabled">Enabled</h4>
+<h4 id="enabled">Enabled<a class="headerlink" href="#enabled" title="Permanent link">&para;</a></h4>
 <p>If a structure is disabled, it will be hidden from view, along with any quantities associated with that structure.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">is_enabled</span><span class="p">()</span></code></summary>
@@ -1660,7 +1713,7 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <p>Set the structure to be enabled or disabled. Takes a boolean.</p>
 <p>Can also be set when registering, like <code>register_point_cloud(..., enabled=True)</code>.</p>
 </details>
-<h4 id="transparency">Transparency</h4>
+<h4 id="transparency">Transparency<a class="headerlink" href="#transparency" title="Permanent link">&para;</a></h4>
 <p>Set the transparency parameter for the structure. <code>1</code> is fully opaque (the default), and <code>0</code> is fully transparent. When the first structure has transparency applied, transparent rendering will be automatically enabled.</p>
 <p>Transparency can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Transparency]</code> menu.</p>
 <details class="func">
@@ -1672,7 +1725,7 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <p>Set the transparency for the structure. Takes a float.</p>
 <p>Can also be set when registering, like <code>register_point_cloud(..., transparency=0.5)</code>.</p>
 </details>
-<h4 id="transforms">Transforms</h4>
+<h4 id="transforms">Transforms<a class="headerlink" href="#transforms" title="Permanent link">&para;</a></h4>
 <p>Each structure has an associated spatial <em>transform</em> applied to it for display in the scene. The transform encodes a translation, rotation, and scaling represented as a 4x4 homogeneous matrix. Initially this transformation is just the identity transform (it does nothing), but it can be adjusted to position the structures in your scene.</p>
 <p>The transform can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Transform]</code> menu.</p>
 <details class="func">
@@ -1715,7 +1768,7 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">get_transform_gizmo_enabled</span><span class="p">()</span></code></summary>
 <p>Get the enabled state of the interactive onscreen widget which lets the user adjust an object&rsquo;s transform.  Returns a boolean.</p>
 </details>
-<h4 id="slice-planes">Slice planes</h4>
+<h4 id="slice-planes">Slice planes<a class="headerlink" href="#slice-planes" title="Permanent link">&para;</a></h4>
 <p>Options relating to <a href="/py//features/slice_planes/">slice planes</a> which may be present in the scene.</p>
 <p>Slice plane options can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Slice Planes]</code> menu.</p>
 <details class="func">

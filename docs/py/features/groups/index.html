@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -647,6 +647,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -753,6 +767,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1492,6 +1520,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#iterate-over-children-in-a-group" class="md-nav__link">
+    Iterate over children in a group
+  </a>
+  
+    <nav class="md-nav" aria-label="Iterate over children in a group">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-child-structure-names" class="md-nav__link">
+    get child structure names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-child-group-names" class="md-nav__link">
+    get child group names
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#group-settings" class="md-nav__link">
     Group settings
   </a>
@@ -1668,6 +1723,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#iterate-over-children-in-a-group" class="md-nav__link">
+    Iterate over children in a group
+  </a>
+  
+    <nav class="md-nav" aria-label="Iterate over children in a group">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-child-structure-names" class="md-nav__link">
+    get child structure names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-child-group-names" class="md-nav__link">
+    get child group names
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#group-settings" class="md-nav__link">
     Group settings
   </a>
@@ -1758,77 +1840,92 @@
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="create-get-and-remove-groups">Create, get, and remove groups</h3>
+<h3 id="create-get-and-remove-groups">Create, get, and remove groups<a class="headerlink" href="#create-get-and-remove-groups" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="n">create_group</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code></summary>
-<h5 id="create-group">create group</h5>
+<h5 id="create-group">create group<a class="headerlink" href="#create-group" title="Permanent link">&para;</a></h5>
 <p>Create a new group and return it. Group name must be a unique string (no other group may have that name).</p>
 <p>Returns the new group object.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">get_group</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code></summary>
-<h5 id="get-group">get group</h5>
+<h5 id="get-group">get group<a class="headerlink" href="#get-group" title="Permanent link">&para;</a></h5>
 <p>Get an existing group by name. </p>
 <p>Returns the group object.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">remove_group</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">error_if_absent</span><span class="o">=</span><span class="n">true</span><span class="p">)</span></code></summary>
-<h5 id="remove-group">remove group</h5>
+<h5 id="remove-group">remove group<a class="headerlink" href="#remove-group" title="Permanent link">&para;</a></h5>
 <p>Remove an existing group. </p>
 <p>The <code>group</code> argument can be either a group object or a group name string.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">removeAllGroups</span><span class="p">()</span></code></summary>
-<h5 id="remove-all-groups">remove all groups</h5>
+<h5 id="remove-all-groups">remove all groups<a class="headerlink" href="#remove-all-groups" title="Permanent link">&para;</a></h5>
 <p>Removes all existing groups.</p>
 </details>
-<h3 id="group-membership">Group membership</h3>
+<h3 id="group-membership">Group membership<a class="headerlink" href="#group-membership" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">add_to_group</span><span class="p">(</span><span class="n">group</span><span class="p">)</span></code></summary>
-<h5 id="add-structure-to-group">add structure to group</h5>
+<h5 id="add-structure-to-group">add structure to group<a class="headerlink" href="#add-structure-to-group" title="Permanent link">&para;</a></h5>
 <p>Add a structure as a member of a group.</p>
 <p>The <code>group</code> argument can be either a group object or a group name string.</p>
 <p>Note that this is a member function of a <strong>structure</strong> object, like <code>pointCloud.add_to_group(group)</code>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">.</span><span class="n">add_child_structure</span><span class="p">(</span><span class="n">newChild</span><span class="p">)</span></code></summary>
-<h5 id="add-child-structure">add child structure</h5>
+<h5 id="add-child-structure">add child structure<a class="headerlink" href="#add-child-structure" title="Permanent link">&para;</a></h5>
 <p>Add a structure as a member of this group</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">.</span><span class="n">remove_child_structure</span><span class="p">(</span><span class="n">child</span><span class="p">)</span></code></summary>
-<h5 id="remove-child-structure">remove child structure</h5>
+<h5 id="remove-child-structure">remove child structure<a class="headerlink" href="#remove-child-structure" title="Permanent link">&para;</a></h5>
 <p>Remove a structure as a member of this group</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">.</span><span class="n">add_child_group</span><span class="p">(</span><span class="n">newChild</span><span class="p">)</span></code></summary>
-<h5 id="add-child-group">add child group</h5>
+<h5 id="add-child-group">add child group<a class="headerlink" href="#add-child-group" title="Permanent link">&para;</a></h5>
 <p>Add a group as a (nested) member of this group</p>
 <p>The <code>group</code> argument can be either a group object or a group name string.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">.</span><span class="n">remove_child_group</span><span class="p">(</span><span class="n">child</span><span class="p">)</span></code></summary>
-<h5 id="remove-child-group">remove child group</h5>
+<h5 id="remove-child-group">remove child group<a class="headerlink" href="#remove-child-group" title="Permanent link">&para;</a></h5>
 <p>Remove a group as a (nested) member of this group</p>
 <p>The <code>group</code> argument can be either a group object or a group name string.</p>
 </details>
-<h3 id="group-settings">Group settings</h3>
+<h3 id="iterate-over-children-in-a-group">Iterate over children in a group<a class="headerlink" href="#iterate-over-children-in-a-group" title="Permanent link">&para;</a></h3>
+<details class="func">
+<summary><code class="highlight"><span class="n">Group</span><span class="o">.</span><span class="n">get_child_structure_names</span><span class="p">()</span></code></summary>
+<h5 id="get-child-structure-names">get child structure names<a class="headerlink" href="#get-child-structure-names" title="Permanent link">&para;</a></h5>
+<p>Get a list of the string names of all structures contained in the group.</p>
+<p>Only returns top-level children, does not recurse into sub-groups.</p>
+<p>You can get the underlying structures like <code>get_surface_mesh(structure_name)</code>, etc, and process as desired.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">Group</span><span class="o">.</span><span class="n">get_child_group_names</span><span class="p">()</span></code></summary>
+<h5 id="get-child-group-names">get child group names<a class="headerlink" href="#get-child-group-names" title="Permanent link">&para;</a></h5>
+<p>Get a list of the group names of all nested groups contained in the group.</p>
+<p>Only returns top-level children, does not recurse into sub-groups.</p>
+<p>You can get the underlying groups like <code>get_group(group_name)</code>, etc, and process as desired.</p>
+</details>
+<h3 id="group-settings">Group settings<a class="headerlink" href="#group-settings" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">(</span><span class="n">newVal</span><span class="p">)</span></code></summary>
-<h5 id="set-enabled">set enabled</h5>
+<h5 id="set-enabled">set enabled<a class="headerlink" href="#set-enabled" title="Permanent link">&para;</a></h5>
 <p>Set all descendants of a group to be enabled or disabled (applies to direct members of a group, as well as recursively to all members-of-members for nested groups).</p>
 <p>The <code>newVal</code> argument is a bool.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">.</span><span class="n">set_show_child_details</span><span class="p">(</span><span class="n">newVal</span><span class="p">)</span></code></summary>
-<h5 id="show-ui-details">show UI details</h5>
+<h5 id="show-ui-details">show UI details<a class="headerlink" href="#show-ui-details" title="Permanent link">&para;</a></h5>
 <p>If true, the Groups section of the ImGui UI panel will show each childs structure info as a submenu under the group. If false, only the group name and toggle checkbox will be shown.</p>
 <p>The <code>newVal</code> argument is a bool.</p>
 <p>(Default: true)</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">.</span><span class="n">set_hide_descendants_from_structure_lists</span><span class="p">(</span><span class="n">newVal</span><span class="p">)</span></code></summary>
-<h5 id="hide-from-structure-list">hide from structure list</h5>
+<h5 id="hide-from-structure-list">hide from structure list<a class="headerlink" href="#hide-from-structure-list" title="Permanent link">&para;</a></h5>
 <p>If true, the structures which are members of this group (or descendants in any nested groups) will be hidden from the ImGui UI panel structure list.</p>
 <p>The <code>newVal</code> argument is a bool.</p>
 <p>(Default: false)</p>

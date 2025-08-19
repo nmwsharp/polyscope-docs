@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -643,6 +643,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#adjusting-the-point-radius" class="md-nav__link">
+    Adjusting the point radius
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#point-render-mode" class="md-nav__link">
     Point render mode
   </a>
@@ -701,6 +708,20 @@
     <li class="md-nav__item">
       <a href="../vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
       </a>
     </li>
   
@@ -819,6 +840,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1506,6 +1541,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#adjusting-the-point-radius" class="md-nav__link">
+    Adjusting the point radius
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#point-render-mode" class="md-nav__link">
     Point render mode
   </a>
@@ -1534,11 +1576,11 @@
                   
 
 
-<h1 id="point-clouds">Point Clouds</h1>
+<h1 id="point-clouds">Point Clouds<a class="headerlink" href="#point-clouds" title="Permanent link">&para;</a></h1>
 <p>Point clouds are one of the core structures in Polyscope. In addition to simply displaying the points, Polyscope can show any number of scalar, vector, or color quantities associated with the points.</p>
 <p>As always, try clicking on a point to see the data associated with that point.</p>
 <p><img alt="point_cloud_demo" src="../../../media/point_cloud_demo.gif" /></p>
-<h3 id="registering-a-point-cloud">Registering a point cloud</h3>
+<h3 id="registering-a-point-cloud">Registering a point cloud<a class="headerlink" href="#registering-a-point-cloud" title="Permanent link">&para;</a></h3>
 <p>Example: a point cloud of random points
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -1574,7 +1616,7 @@
 <p>2D point clouds are also supported, see <a href="../../../features/2D_data">2D data</a>.</p>
 </details>
 <p>As with all structures, there is also <code>get_point_cloud("name")</code>, <code>has_point_cloud("name")</code>, and <code>remove_point_cloud("name")</code>.</p>
-<h3 id="updating-a-point-cloud">Updating a point cloud</h3>
+<h3 id="updating-a-point-cloud">Updating a point cloud<a class="headerlink" href="#updating-a-point-cloud" title="Permanent link">&para;</a></h3>
 <p>The locations of the points in a point cloud can be updated with the member function <code>update_point_positions(newPositions)</code>. All quantities will be preserved. Changing the <em>number</em> of points in the cloud is not supported, you will need to register a new cloud (perhaps with the same name to overwrite this one).</p>
 <p>Example: update positions (continued from above)
 <div class="highlight"><pre><span></span><code><span class="n">new_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -1585,7 +1627,15 @@
 <summary><code class="highlight"><span class="n">PointCloud</span><span class="o">.</span><span class="n">update_point_positions</span><span class="p">(</span><span class="n">newPos</span><span class="p">)</span></code></summary>
 <p>Update the point positions in a point cloud structure. <code>newPos</code> must be valid input as to initially construct a point cloud, with the same number of points.</p>
 </details>
-<h3 id="point-render-mode">Point render mode</h3>
+<h3 id="adjusting-the-point-radius">Adjusting the point radius<a class="headerlink" href="#adjusting-the-point-radius" title="Permanent link">&para;</a></h3>
+<p>Set the radius of the points with <code>PointCloud.set_radius(newRad)</code>, or in the constructor. By default, the radius is a <a href="/py//basics/parameters/#scaled-values">relative value</a> which gets scaled by the content in the scene, so for example a default of <code>0.02</code> will always be a reasonable size no matter what the scale of the content in your scene is. Or, set <code>relative=False</code> to set an absolute radius in world units.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">PointCloud</span><span class="o">.</span><span class="n">set_radius</span><span class="p">(</span><span class="n">newVal</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></summary>
+<p>Update the radius for points in the point cloud.</p>
+<p>By default the radius is interpreted as a relative value, setting <code>relative=False</code> will treat is as an absolute length in world units.</p>
+</details>
+<p>To set a variable radius which is different for each point in the point cloud, see the <a href="/py//structures/point_cloud/variable_radius/">variable radius page</a>.</p>
+<h3 id="point-render-mode">Point render mode<a class="headerlink" href="#point-render-mode" title="Permanent link">&para;</a></h3>
 <p>By default, Polyscope renders point clouds with a sphere for each point. However, for large point clouds (for instance, &gt; 500,000 points, or on low-end hardware), this sphere rendering may become prohibitively expensive and lead to a laggy interface. As an alternative, points can be rendered as a small quad per-point, which is more efficient (for instance, it renders in real-time with 20,000,000+ points on my mid-range GPU).</p>
 <p><img alt="point render mode diagram" src="../../../media/point_render_mode_diagram.jpg" /></p>
 <p>The point render mode setting specifies which style is used:</p>
@@ -1599,7 +1649,7 @@
 <p>As usual, this can also be set as a keyword argument when the point cloud is registered, like <code class="highlight"><span class="n">register_point_cloud</span><span class="p">(</span><span class="s1">&#39;my points&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">point_render_mode</span><span class="o">=</span><span class="s1">&#39;quad&#39;</span><span class="p">)</span></code>.</p>
 <p>There is also a corresponding <code>get_point_render_mode()</code>.</p>
 </details>
-<h3 id="options">Options</h3>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
 <p>Options control the appearance of the cloud. These options can also be passed as keyword arguments to the initial <code>register_point_cloud()</code>, as noted above.  See <a href="/py//structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>
 <thead>

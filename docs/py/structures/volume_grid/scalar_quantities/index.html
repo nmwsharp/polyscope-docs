@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -649,6 +649,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -755,6 +769,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1572,7 +1600,7 @@
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
-<h3 id="add-scalars">Add scalars</h3>
+<h3 id="add-scalars">Add scalars<a class="headerlink" href="#add-scalars" title="Permanent link">&para;</a></h3>
 <details class="func" open="open">
 <summary><code class="highlight"><span class="n">VolumeGrid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;nodes&#39;</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">scalar_args</span><span class="p">)</span></code></summary>
 <p>Add a scalar quantity defined at the nodes of the grid.</p>
@@ -1583,7 +1611,7 @@
 </ul>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
-<h3 id="add-implicit-scalars">Add implicit scalars</h3>
+<h3 id="add-implicit-scalars">Add implicit scalars<a class="headerlink" href="#add-implicit-scalars" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Implicit helpers</p>
 <p>Implicit helpers offer an easier way to interface your data with Polyscope. You define a callback function which can be called at a batch of xyz coordinates to return a batch of values, and pass that function as input. Polyscope then automatically takes care of calling the function at the appropriate locations to sample the function onto the grid.</p>
@@ -1597,10 +1625,10 @@
 </ul>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
-<h3 id="categorical-scalars">Categorical Scalars</h3>
+<h3 id="categorical-scalars">Categorical Scalars<a class="headerlink" href="#categorical-scalars" title="Permanent link">&para;</a></h3>
 <p>Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.</p>
 <p>Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set <code>datatype='categorical'</code>. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.</p>
-<h3 id="scalar-quantity-options">Scalar Quantity Options</h3>
+<h3 id="scalar-quantity-options">Scalar Quantity Options<a class="headerlink" href="#scalar-quantity-options" title="Permanent link">&para;</a></h3>
 <p>When adding a scalar quantity, the following keyword options can be set. These are available for all kinds of scalar quantities on all structures.</p>
 <p>Keyword arguments:</p>
 <ul>
@@ -1619,7 +1647,7 @@
 </li>
 </ul>
 <p>If not specified, these optional parameters will assume a reasonable default value, or a <a href="../../../basics/parameters/#persistent-values">persistent value</a> if previously set.</p>
-<h3 id="visualizing-isosurfaces">Visualizing Isosurfaces</h3>
+<h3 id="visualizing-isosurfaces">Visualizing Isosurfaces<a class="headerlink" href="#visualizing-isosurfaces" title="Permanent link">&para;</a></h3>
 <p>For a scalar values at nodes, we can additionally extract isosurfaces (aka levelsets) via the marching cubes algorithm, and visualize them as surface meshes.</p>
 <p><img alt="volume grid node scalar values" src="/py//media/volume_grid_node_scalar.jpg" /></p>
 <p><strong>Example:</strong> visualizing scalar isosurfaces

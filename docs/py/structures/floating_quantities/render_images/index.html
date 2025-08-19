@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -649,6 +649,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -755,6 +769,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1648,11 +1676,11 @@
 <p>It is most common to add render image quantities at the root level. However, it might still be useful to add render images to structures, to associate the rendering with a particular structure, e.g. as a separate rendering of each point cloud in the scene.</p>
 <p>See the <a href="/py//structures/floating_quantities/basics/">floating quantity introduction</a> for more info.</p>
 </div>
-<h2 id="image-origin">Image Origin</h2>
+<h2 id="image-origin">Image Origin<a class="headerlink" href="#image-origin" title="Permanent link">&para;</a></h2>
 <p>When registering an image quantity, you can also specify whether the image should be interpreted such that the first row is the &ldquo;top&rdquo; row of the image (<code>'upper_left'</code>), or the first row is the &ldquo;bottom&rdquo; row of the image (<code>'lower_left'</code>). This is a confusing issue, as there are many overlapping conventions of coordinate systems and buffer layouts for images.</p>
 <p>Most of the time, <code>'upper_left'</code> (the default) is the right choice.</p>
 <hr />
-<h2 id="depth-render-image-quantity">Depth Render Image Quantity</h2>
+<h2 id="depth-render-image-quantity">Depth Render Image Quantity<a class="headerlink" href="#depth-render-image-quantity" title="Permanent link">&para;</a></h2>
 <p>A depth render image quantity takes a depth value per-pixel, and (optionally) a world-space normal per-pixel. The depth image will be rendered with surface shading using Polyscope&rsquo;s <a href="/py//features/materials/">materials</a>.</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -1683,7 +1711,7 @@
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
 <hr />
-<h2 id="color-render-image-quantity">Color Render Image Quantity</h2>
+<h2 id="color-render-image-quantity">Color Render Image Quantity<a class="headerlink" href="#color-render-image-quantity" title="Permanent link">&para;</a></h2>
 <p>A color render image quantity takes a depth value per-pixel, (optionally) a world-space normal per-pixel, and a color value per-pixel. The depth image will be rendered with surface shading using Polyscope&rsquo;s <a href="/py//features/materials/">materials</a>, colored according to the given color.</p>
 <div class="admonition info">
 <p class="admonition-title">Color vs. Raw Color Render Images</p>
@@ -1717,7 +1745,7 @@
 <p>RGB values are interpreted in the range <code>[0,1]</code>.</p>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
-<h3 id="color-quantity-options">Color Quantity Options</h3>
+<h3 id="color-quantity-options">Color Quantity Options<a class="headerlink" href="#color-quantity-options" title="Permanent link">&para;</a></h3>
 <p>When adding a color quantity, the following keyword options can be set. These are available for all kinds of color quantities on all structures.</p>
 <p>Keyword arguments:</p>
 <ul>
@@ -1725,7 +1753,7 @@
 </ul>
 <p>If not specified, these optional parameters will assume a reasonable default value, or a <a href="../../../basics/parameters/#persistent-values">persistent value</a> if previously set.</p>
 <hr />
-<h2 id="scalar-render-image-quantity">Scalar Render Image Quantity</h2>
+<h2 id="scalar-render-image-quantity">Scalar Render Image Quantity<a class="headerlink" href="#scalar-render-image-quantity" title="Permanent link">&para;</a></h2>
 <p>A scalar render image quantity takes a depth value per-pixel, (optionally) a world-space normal per-pixel, and a scalar value per-pixel. The depth image will be rendered with surface shading using Polyscope&rsquo;s <a href="/py//features/materials/">materials</a>, with the scalar value shaded and colormapped as a scalar quantity.</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -1754,10 +1782,10 @@
 <p>Depth values should be radial ray distance from the camera origin, <em>not</em> perpendicular distance from the image plane.</p>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
-<h3 id="categorical-scalars">Categorical Scalars</h3>
+<h3 id="categorical-scalars">Categorical Scalars<a class="headerlink" href="#categorical-scalars" title="Permanent link">&para;</a></h3>
 <p>Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.</p>
 <p>Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set <code>datatype='categorical'</code>. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.</p>
-<h3 id="scalar-quantity-options">Scalar Quantity Options</h3>
+<h3 id="scalar-quantity-options">Scalar Quantity Options<a class="headerlink" href="#scalar-quantity-options" title="Permanent link">&para;</a></h3>
 <p>When adding a scalar quantity, the following keyword options can be set. These are available for all kinds of scalar quantities on all structures.</p>
 <p>Keyword arguments:</p>
 <ul>
@@ -1777,7 +1805,7 @@
 </ul>
 <p>If not specified, these optional parameters will assume a reasonable default value, or a <a href="../../../basics/parameters/#persistent-values">persistent value</a> if previously set.</p>
 <hr />
-<h2 id="raw-color-render-image-quantity">Raw Color Render Image Quantity</h2>
+<h2 id="raw-color-render-image-quantity">Raw Color Render Image Quantity<a class="headerlink" href="#raw-color-render-image-quantity" title="Permanent link">&para;</a></h2>
 <p>A raw color render image quantity takes a depth value per-pixel and a color value per-pixel. The colors will be directly displayed onscreen, with depth compositing into the scene.</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -1808,7 +1836,7 @@
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
 <hr />
-<h2 id="raw-color-alpha-render-image-quantity">Raw Color Alpha Render Image Quantity</h2>
+<h2 id="raw-color-alpha-render-image-quantity">Raw Color Alpha Render Image Quantity<a class="headerlink" href="#raw-color-alpha-render-image-quantity" title="Permanent link">&para;</a></h2>
 <p>Just like the above <code>ColorRenderImageQuantity</code>, but with an additional alpha channel which gets alpha-composited onto the scene.</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -1837,7 +1865,7 @@
 </details>
 <p>By default, alpha values are interpreted to be non-premultiplied. Use <code>is_premultiplied=True</code> to directly pass premultiplied alpha images.</p>
 <hr />
-<h2 id="render-image-options">Render Image Options</h2>
+<h2 id="render-image-options">Render Image Options<a class="headerlink" href="#render-image-options" title="Permanent link">&para;</a></h2>
 <p>These options are common to all render images</p>
 <p>Keyword arguments:</p>
 <ul>

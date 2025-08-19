@@ -710,6 +710,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -816,6 +830,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1643,10 +1671,10 @@
 <li><code>values</code> is the array of scalars at points. The type should be <a href="/data_adaptors">adaptable</a> to a <code>float</code> scalar array. The length should be the number of points in the point cloud.</li>
 </ul>
 </details>
-<h3 id="categorical-scalars">Categorical Scalars</h3>
+<h3 id="categorical-scalars">Categorical Scalars<a class="headerlink" href="#categorical-scalars" title="Permanent link">&para;</a></h3>
 <p>Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.</p>
 <p>Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set <code>DataType::CATEGORICAL</code>. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.</p>
-<h3 id="scalar-quantity-options">Scalar Quantity Options</h3>
+<h3 id="scalar-quantity-options">Scalar Quantity Options<a class="headerlink" href="#scalar-quantity-options" title="Permanent link">&para;</a></h3>
 <p>These options and behaviors are available for all types of scalar quantities on any structure.</p>
 <table>
 <thead>
@@ -1664,14 +1692,14 @@
 <td>is the quantity enabled?</td>
 <td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">isEnabled</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>color map</td>
-<td>the <a href="[[url.prefix]]/features/color_maps">color map</a> to use</td>
+<td>the <a href="/features/color_maps">color map</a> to use</td>
 <td><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getColorMap</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setColorMap</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">newMap</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>map range</td>
@@ -1685,35 +1713,35 @@
 <td>are isolines shaded (default=<code>false</code>)</td>
 <td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">getIsolinesEnabled</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolinesEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>isoline style</td>
 <td>stripes or thin contour lines</td>
 <td><code class="highlight"><span class="n">IsolineStyle</span><span class="w"> </span><span class="n">getIsolineStyle</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolineStyle</span><span class="p">(</span><span class="n">IsolineStyle</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>isoline period</td>
 <td>period of isoline stripes, in data units</td>
 <td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolinePeriod</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolinePeriod</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>isoline darkness</td>
 <td>darkness of isoline stripes (default=<code>0.7</code>)</td>
 <td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineDarkness</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolineDarkness</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>contour thickness</td>
 <td>thickness of isoline contour lines (default=<code>0.3</code>)</td>
 <td><code class="highlight"><span class="kt">float</span><span class="w"> </span><span class="n">getIsolineContourThickness</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setIsolineContourThickness</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 </tbody>
 </table>

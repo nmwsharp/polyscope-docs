@@ -662,6 +662,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -768,6 +782,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1847,26 +1875,26 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Slice planes can also be manipulated in the GUI under <code>[View] --&gt; [Slice Planes]</code>, where you can add and remove slice planes and control whether they are active and widgets are visible. When a plane is active in the scene, you can drag the 3D widget to adjust its pose. Additionally, for each structure, <code>[Options] --&gt; [Slice Planes]</code> allows you to toggle whether the slice plane effects that structure.</p>
-<h3 id="creating-and-modifying-slice-planes">Creating and modifying slice planes</h3>
+<h3 id="creating-and-modifying-slice-planes">Creating and modifying slice planes<a class="headerlink" href="#creating-and-modifying-slice-planes" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="n">SlicePlane</span><span class="o">*</span><span class="w"> </span><span class="n">addSceneSlicePlane</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">initiallyVisible</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span></code></summary>
-<h5 id="add-slice-plane">add slice plane</h5>
+<h5 id="add-slice-plane">add slice plane<a class="headerlink" href="#add-slice-plane" title="Permanent link">&para;</a></h5>
 <p>Add a new slice plane to the scene. An arbitrary number of slices planes may be added.</p>
 <p>If <code>initiallyVisible = false</code>, then the widget and plane grid will be disabled by default, which is usually what one wants when creating a slice plane programatically.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">removeLastSceneSlicePlane</span><span class="p">()</span></code></summary>
-<h5 id="remove-slice-plane">remove slice plane</h5>
+<h5 id="remove-slice-plane">remove slice plane<a class="headerlink" href="#remove-slice-plane" title="Permanent link">&para;</a></h5>
 <p>Remove the most recently created slice plane.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">SlicePlane</span><span class="o">::</span><span class="n">name</span></code></summary>
-<h5 id="name">name</h5>
+<h5 id="name">name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h5>
 <p>The unique name of the slice plane, which can be accessed like <code>myPlane-&gt;name</code>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">SlicePlane</span><span class="o">::</span><span class="n">setPose</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">planePosition</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">planeNormal</span><span class="p">)</span></code></summary>
-<h5 id="set-pose">set pose</h5>
+<h5 id="set-pose">set pose<a class="headerlink" href="#set-pose" title="Permanent link">&para;</a></h5>
 <p>Set the position and orientation of the slice plane.</p>
 <ul>
 <li><code>planePosition</code> is any 3D position which the plane touches (the center of the plane)</li>
@@ -1875,7 +1903,7 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">SlicePlane</span><span class="o">::</span><span class="n">setActive</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></summary>
-<h5 id="active">active</h5>
+<h5 id="active">active<a class="headerlink" href="#active" title="Permanent link">&para;</a></h5>
 <p>Set the slice plane to be active or not. If inactive, the slice plane will not have any effect on any structures in the scene, nor will it be shown in the GUI view.</p>
 </details>
 <details class="func">
@@ -1884,7 +1912,7 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">SlicePlane</span><span class="o">::</span><span class="n">setDrawPlane</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></summary>
-<h5 id="draw-plane">draw plane</h5>
+<h5 id="draw-plane">draw plane<a class="headerlink" href="#draw-plane" title="Permanent link">&para;</a></h5>
 <p>Set the slice plane to draw its plane (as a colored, semi-transparent grid). If <code>false</code> the slice plane will still slice objects, but the plane itself will not be rendered.</p>
 </details>
 <details class="func">
@@ -1893,7 +1921,7 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">SlicePlane</span><span class="o">::</span><span class="n">setDrawWidget</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></summary>
-<h5 id="draw-widget">draw widget</h5>
+<h5 id="draw-widget">draw widget<a class="headerlink" href="#draw-widget" title="Permanent link">&para;</a></h5>
 <p>Set the slice plane to draw its control widget (a grey and colored cube with handles for translations and rotations). If <code>false</code> the slice plane will still slice objects, but the widget will not be rendered.</p>
 <p>Note that regardless of this setting, the widget will not be visible in any screenshots by default, because it is treated as part of the GUI interface, like the ImGUI widow panes.</p>
 </details>
@@ -1901,7 +1929,7 @@
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">SlicePlane</span><span class="o">::</span><span class="n">getDrawWidget</span><span class="p">()</span></code></summary>
 <p>Test whether the slice plane is drawing its widget.</p>
 </details>
-<h3 id="per-structure-ignore-slice-planes">Per-structure ignore slice planes</h3>
+<h3 id="per-structure-ignore-slice-planes">Per-structure ignore slice planes<a class="headerlink" href="#per-structure-ignore-slice-planes" title="Permanent link">&para;</a></h3>
 <p>By default, every slice plane affects all content in the scene. However, we can also make a particular structure ignore a given slice plane, so that it only slices through some of the objects in the scene. This can be set in the GUI for each structure under <code>[Options] --&gt; [Slice Planes]</code>, or programatically with the function below.</p>
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMesh</span><span class="o">*</span><span class="w"> </span><span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">);</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">SlicePlane</span><span class="o">*</span><span class="w"> </span><span class="n">psPlane</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">addSceneSlicePlane</span><span class="p">();</span>
@@ -1909,14 +1937,14 @@
 </code></pre></div>
 <details class="func">
 <summary><code class="highlight"><span class="n">Structure</span><span class="o">*</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">setIgnoreSlicePlane</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">newValue</span><span class="p">)</span></code></summary>
-<h5 id="ignore-plane">ignore plane</h5>
+<h5 id="ignore-plane">ignore plane<a class="headerlink" href="#ignore-plane" title="Permanent link">&para;</a></h5>
 <p>Set a slice plane to be ignored by the structure. If <code>newValue</code> is <code>true</code> the slice plane will be ignored, and if <code>false</code> it will be respected.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getIgnoreSlicePlane</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span></code></summary>
 <p>Get if a slice plane is currently being ignored by the structure.</p>
 </details>
-<h3 id="cull-whole-elements">Cull whole elements</h3>
+<h3 id="cull-whole-elements">Cull whole elements<a class="headerlink" href="#cull-whole-elements" title="Permanent link">&para;</a></h3>
 <p>For some structures, slice planes can be set to discretely cull away whole elements, rather than slicing directly through the middle of an element.  This option can be set in the GUI for each structure under <code>[Options] --&gt; [Slice Planes]</code>, or programatically with the function below.</p>
 <p><img alt="cull whole elements settings" src="/media/cull_whole_elements.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMesh</span><span class="o">*</span><span class="w"> </span><span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">);</span>
@@ -1925,7 +1953,7 @@
 </code></pre></div>
 <details class="func">
 <summary><code class="highlight"><span class="n">Structure</span><span class="o">*</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">setCullWholeElements</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></summary>
-<h5 id="set-cull-whole-elements">set cull whole elements</h5>
+<h5 id="set-cull-whole-elements">set cull whole elements<a class="headerlink" href="#set-cull-whole-elements" title="Permanent link">&para;</a></h5>
 <p>If <code>true</code>, slice planes will affect this structure by culling whole elements (tets, triangles, points, etc), rather than slicing through the middle of the elements.</p>
 <p>Note that not all structures may support culling whole elements. If not supported, this setting will do nothing.</p>
 <p>Default: false.</p>
@@ -1934,7 +1962,7 @@
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getCullWholeElements</span><span class="p">()</span></code></summary>
 <p>Get whether the cull whole elements setting is applied.</p>
 </details>
-<h3 id="inspecting-volume-meshes">Inspecting volume meshes</h3>
+<h3 id="inspecting-volume-meshes">Inspecting volume meshes<a class="headerlink" href="#inspecting-volume-meshes" title="Permanent link">&para;</a></h3>
 <p><img alt="slice plane volume inspect image" src="/media/slice_plane_volume_inspect.png" /></p>
 <p>Slice planes can also <em>inspect</em> volume meshes, rendering a surface where the structure is cut by the plane. Not only does this help to visualize the interior of the shape, but scalar and color quantities can be drawn along the plane to better inspect values on the interior of the mesh.</p>
 <p>This can also be set in the UI under <code>[View] --&gt; [Slice Planes] --&gt; [Inspect]</code>. This option will only be available when there is at least one volume mesh in the scene.</p>

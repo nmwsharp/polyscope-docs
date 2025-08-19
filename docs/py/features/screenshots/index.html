@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -647,6 +647,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -753,6 +767,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1523,24 +1551,33 @@
 <span class="c1"># Take a screenshot</span>
 <span class="c1"># It will be written to your current directory as screenshot_000000.jpg, etc</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+
+<span class="c1"># Get the screenshot image as a numpy array</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">screenshot_to_buffer</span><span class="p">()</span>
 </code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">include_UI may not match</p>
+<p>The screenshot <code>include_UI=True</code> setting is imperfect, the UI will be visible, but may be in a different state compared to what you see in your own window. This is a known bug, and we hope to fix it in future version.</p>
+</div>
 <details class="func" open="open">
-<summary><code class="highlight"><span class="n">screenshot</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transparent_bg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">screenshot</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transparent_bg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_UI</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code></summary>
 <p>Saves a screenshot to the path given as <code>filename</code>, with format inferred from the file extension. </p>
 <p>The extension should be one of <code>.png</code>, or <code>.jpg</code>.</p>
 <p>If no name is is given, screenshots are saved to the current directory, with file named like <code>screenshot_000000.png</code> numbered automatically in increasing order. The numbering is reset to <code>0</code> for each run of the program; existing files will be silently overwritten.</p>
 <p>If <code>transparent_bg</code> is <code>true</code>, the background will be rendered as transparent, and set as transparency alpha in the saved image if the file format supports it.</p>
+<p>If <code>include_UI</code> is true, the screenshot with be captured with the ImGui UI (panels, buttons, etc) visible (default: <code>False</code>).</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">set_screenshot_extension</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span></code></summary>
-<h5 id="screenshot-extension">screenshot extension</h5>
+<h5 id="screenshot-extension">screenshot extension<a class="headerlink" href="#screenshot-extension" title="Permanent link">&para;</a></h5>
 <p>Set the extension used when taking automatically-numbered screenshots, either with <code>screenshot()</code> or by clicking the GUI button.</p>
 <p>The extension should be <code>.png</code>, or <code>.jpg</code>.</p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="n">screenshot_to_buffer</span><span class="p">(</span><span class="n">transparent_bg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vertical_flip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></summary>
-<h5 id="screenshot-to-buffer">screenshot to buffer</h5>
+<summary><code class="highlight"><span class="n">screenshot_to_buffer</span><span class="p">(</span><span class="n">transparent_bg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vertical_flip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_UI</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code></summary>
+<h5 id="screenshot-to-buffer">screenshot to buffer<a class="headerlink" href="#screenshot-to-buffer" title="Permanent link">&para;</a></h5>
 <p>Take a screenshot of the current view and return it as a numpy array of (h,w,4).</p>
+<p>See <code>screenshot()</code> for the meaning of most arguments.</p>
 <p>The openGL buffer layout is vertically-flipped from the usual image convention in Python. The if <code>vertical_flip=True</code>, the buffer is flipped vertically before returning to match the usual convention.</p>
 </details>
 

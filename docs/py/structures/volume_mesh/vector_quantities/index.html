@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -649,6 +649,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -755,6 +769,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1519,7 +1547,7 @@
 <span class="c1"># Show the GUI</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
-<h3 id="add-vectors-to-elements">Add vectors to elements</h3>
+<h3 id="add-vectors-to-elements">Add vectors to elements<a class="headerlink" href="#add-vectors-to-elements" title="Permanent link">&para;</a></h3>
 <details class="func" open="open">
 <summary><code class="highlight"><span class="n">VolumeMesh</span><span class="o">.</span><span class="n">add_vector_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;vertices&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vectortype</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
 <p>Add a vector quantity to the mesh.</p>
@@ -1530,7 +1558,7 @@
 </ul>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
-<h3 id="vector-quantity-options">Vector Quantity Options</h3>
+<h3 id="vector-quantity-options">Vector Quantity Options<a class="headerlink" href="#vector-quantity-options" title="Permanent link">&para;</a></h3>
 <p>When adding a vector quantity, the following keyword options can be set. These are available for all kinds of vector quantities on all structures.</p>
 <p>Keyword arguments:</p>
 <ul>
@@ -1539,6 +1567,7 @@
 <li><code>length</code> float, a (relative) length for the vectors</li>
 <li><code>radius</code> float, a (relative) radius for the vectors</li>
 <li><code>color</code> 3-tuple, color for the vectors</li>
+<li><code>material</code> string, shading material for the vectors</li>
 </ul>
 <p>If not specified, these optional parameters will assume a reasonable default value, or a <a href="../../../basics/parameters/#persistent-values">persistent value</a> if previously set.</p>
 

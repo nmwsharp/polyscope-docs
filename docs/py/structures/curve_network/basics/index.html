@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -649,6 +649,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -761,6 +775,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#adjusting-the-node-and-edge-radius" class="md-nav__link">
+    Adjusting the node and edge radius
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#options" class="md-nav__link">
     Options
   </a>
@@ -812,6 +833,20 @@
     <li class="md-nav__item">
       <a href="../vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1499,6 +1534,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#adjusting-the-node-and-edge-radius" class="md-nav__link">
+    Adjusting the node and edge radius
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#options" class="md-nav__link">
     Options
   </a>
@@ -1520,11 +1562,11 @@
                   
 
 
-<h1 id="curve-networks">Curve Networks</h1>
+<h1 id="curve-networks">Curve Networks<a class="headerlink" href="#curve-networks" title="Permanent link">&para;</a></h1>
 <p>Curve networks are collections of nodes sitting in space, connected by edges. In addition to displaying the nodes and edges of the network itself, Polyscope can show any number of scalar, vector, or color quantities associated with the nodes or edges of the network.</p>
 <p>Try clicking on a node or edge to see the data associated with that point!</p>
 <p><img alt="curve_network_demo" src="../../../media/curve_network_demo.gif" /></p>
-<h3 id="registering-a-curve-network">Registering a curve network</h3>
+<h3 id="registering-a-curve-network">Registering a curve network<a class="headerlink" href="#registering-a-curve-network" title="Permanent link">&para;</a></h3>
 <p>Curve network structures can be registered with Polyscope by passing the node position and edge indices. </p>
 <p><strong>Example:</strong> a network of random curves 
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1566,13 +1608,21 @@
 <p>if not specified, these optional parameters will assume a reasonable default value, or a <a href="../../../basics/parameters/#persistent-values">persistent value</a> if previously set.</p>
 <p>2D node positions are also supported, see <a href="../../../features/2D_data">2D data</a>.</p>
 </details>
-<h3 id="updating-a-curve-network">Updating a curve network</h3>
+<h3 id="updating-a-curve-network">Updating a curve network<a class="headerlink" href="#updating-a-curve-network" title="Permanent link">&para;</a></h3>
 <p>The locations of the nodes in a curve network can be updated with the member function <code>update_node_positions(newPositions)</code>. All quantities will be preserved. Changing the connectivity or number of nodes/edges is not supported, you will need to register a new curve network (perhaps with the same name to overwrite).</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">.</span><span class="n">update_node_positions</span><span class="p">(</span><span class="n">newPos</span><span class="p">)</span></code></summary>
 <p>Update the node positions in a curve network structure. <code>newPos</code> must be valid input as to initially construct the nodes of the network, with the same number of nodes as the network curently has.</p>
 </details>
-<h3 id="options">Options</h3>
+<h3 id="adjusting-the-node-and-edge-radius">Adjusting the node and edge radius<a class="headerlink" href="#adjusting-the-node-and-edge-radius" title="Permanent link">&para;</a></h3>
+<p>Set the radius of the nodes and edges in the curve network with <code>CurveNetwork.set_radius(newRad)</code>, or in the constructor. By default, the radius is a <a href="/py//basics/parameters/#scaled-values">relative value</a> which gets scaled by the content in the scene, so for example a default of <code>0.02</code> will always be a reasonable size no matter what the scale of the content in your scene is. Or, set <code>relative=False</code> to set an absolute radius in world units.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">.</span><span class="n">set_radius</span><span class="p">(</span><span class="n">newVal</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></summary>
+<p>Update the radius for the nodes and edges in the curve network.</p>
+<p>By default the radius is interpreted as a relative value, setting <code>relative=False</code> will treat is as an absolute length in world units.</p>
+</details>
+<p>To set a variable radius which is different for each node and/or edge in the curve network, see the <a href="/py//structures/curve_network/variable_radius/">variable radius page</a>.</p>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
 <p>Options control the appearance of the curve network. These options can also be passed as keyword arguments to the initial <code>register_curve_network()</code>, as noted above.  See <a href="/py//structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>
 <thead>

@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#styles" class="md-skip">
+        <a href="#visualizing-islands-and-seams" class="md-skip">
           Skip to content
         </a>
       
@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -649,6 +649,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -755,6 +769,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -903,23 +931,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#visualizing-islands-and-seams" class="md-nav__link">
+    Visualizing islands and seams
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizing islands and seams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#island_labels" class="md-nav__link">
+    island_labels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcurvenetworkfromseams" class="md-nav__link">
+    createCurveNetworkFromSeams
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#styles" class="md-nav__link">
     Styles
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#types" class="md-nav__link">
     Types
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#parameterization-quantity-options" class="md-nav__link">
     Parameterization Quantity Options
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1479,23 +1534,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#visualizing-islands-and-seams" class="md-nav__link">
+    Visualizing islands and seams
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizing islands and seams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#island_labels" class="md-nav__link">
+    island_labels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcurvenetworkfromseams" class="md-nav__link">
+    createCurveNetworkFromSeams
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#styles" class="md-nav__link">
     Styles
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#types" class="md-nav__link">
     Types
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#parameterization-quantity-options" class="md-nav__link">
     Parameterization Quantity Options
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1553,7 +1635,7 @@
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </code></pre></div></p>
 <details class="func" open="open">
-<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_parameterization_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;vertices&#39;</span><span class="p">,</span> <span class="n">coords_type</span><span class="o">=</span><span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">viz_style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">checker_colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">checker_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_parameterization_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;vertices&#39;</span><span class="p">,</span> <span class="n">coords_type</span><span class="o">=</span><span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">viz_style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">checker_colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">checker_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">island_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">create_curve_network_from_seams</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
 <p>Add a parameterization quantity to the mesh.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>
@@ -1562,7 +1644,31 @@
 </ul>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
-<h3 id="styles">Styles</h3>
+<h2 id="visualizing-islands-and-seams">Visualizing islands and seams<a class="headerlink" href="#visualizing-islands-and-seams" title="Permanent link">&para;</a></h2>
+<!-- TODO add an image -->
+
+<p>For parameterizations on surface meshes, additional features are available to visualize UV island and seams. The term <em>islands</em> refers to connected components of faces in the 2D parameterization, and the term <em>seams</em> refers to the subset of edges separating adjacent faces which are not connected.</p>
+<p>UV islands can be colored per-island with the <code>viz_style="checker_islands"</code> style. Each face should have a distinct integer indicating which island it is a part of, which the caller must compute and pass via the optional argument below (Polyscope does not compute it automatically). </p>
+<details class="func">
+<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_parameterization_quantity</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">island_labels</span><span class="o">=</span><span class="n">island_labels</span><span class="p">)</span></code></summary>
+<h4 id="island_labels">island_labels<a class="headerlink" href="#island_labels" title="Permanent link">&para;</a></h4>
+<p>Set an integer value per-face of the mesh, which can be used to color islands distinctly in the <code>"checker_islands"</code> style. Each face should have an integer indicating which island it is a part of, numbered however you like.</p>
+<p>Technically this can be any integer per-face, although it is generally useful for visualizing islands.</p>
+<ul>
+<li><code>island_labels</code> is the array of face labels, an <code>Fx1</code> numpy array of integers per-face</li>
+</ul>
+<p>This will have no effect unless you also set <code>viz_style="checker_islands"</code>.</p>
+</details>
+<p>Additionally, the seams of a parameterization can be visualized as a <a href="/py//structures/curve_network/basics">curve network</a>. These seams are computed automatically by Polyscope, the curve network is created by calling the function below, and is otherwise an ordinary curve network.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_parameterization_quantity</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">create_curve_network_from_seams</span><span class="o">=</span><span class="s2">&quot;seam_curves&quot;</span><span class="p">)</span></code></summary>
+<h4 id="createcurvenetworkfromseams">createCurveNetworkFromSeams<a class="headerlink" href="#createcurvenetworkfromseams" title="Permanent link">&para;</a></h4>
+<p>Create a <a href="/py//structures/curve_network/basics">curve network</a> from the seams of a UV map.</p>
+<ul>
+<li><code>create_curve_network_from_seams</code> is the <strong>string</strong> name of the the curve network quantity that will be created. Passing <code>""</code> generates a default fname</li>
+</ul>
+</details>
+<h3 id="styles">Styles<a class="headerlink" href="#styles" title="Permanent link">&para;</a></h3>
 <p>Several styles are available for how a parameterization is displayed. </p>
 <p>The <code>viz_style</code> option determines how parameterizations are visualized:</p>
 <ul>
@@ -1571,13 +1677,13 @@
 <li><code>local_check</code>: a checkerboard over a radial colormap, centered around <code>(0,0)</code></li>
 <li><code>local_rad</code>: distance stripes over a radial colormap, centered around <code>(0,0)</code></li>
 </ul>
-<h3 id="types">Types</h3>
+<h3 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h3>
 <p>The <code>coords_type</code> options determines how parameter coordinates are interpreted for scaling:</p>
 <ul>
 <li><code>unit</code>: UV coords are assumed to lie on the <code>[0,1]</code> interval</li>
 <li><code>world</code>: UV coords are assumed to be scaled like the world-space positions of the mesh</li>
 </ul>
-<h3 id="parameterization-quantity-options">Parameterization Quantity Options</h3>
+<h3 id="parameterization-quantity-options">Parameterization Quantity Options<a class="headerlink" href="#parameterization-quantity-options" title="Permanent link">&para;</a></h3>
 <p>When adding a parameterization quantity, the following keyword options can be set. These are available for all kinds of parameterization quantities on all structures.</p>
 <p>Keyword arguments:</p>
 <ul>

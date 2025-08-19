@@ -664,6 +664,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -770,6 +784,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1656,7 +1684,7 @@
                   
 
 
-<h1 id="camera-views">Camera Views</h1>
+<h1 id="camera-views">Camera Views<a class="headerlink" href="#camera-views" title="Permanent link">&para;</a></h1>
 <p>Use camera view structures to represent pinhole cameras in a 3D scene. Given camera locations, orientations, and field of view (intrinsics + extrinsics), Polyscope will draw a camera frame on the scene. Images quantities can be associated with the cameras and displayed on the camera frame. You can even align the interactive viewport with a selected camera.</p>
 <video width=100% autoplay muted loop>
   <source src="/media/camera_view_demo.mp4" type="video/mp4">
@@ -1702,7 +1730,7 @@
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="registering-a-camera-view">Registering a Camera View</h2>
+<h2 id="registering-a-camera-view">Registering a Camera View<a class="headerlink" href="#registering-a-camera-view" title="Permanent link">&para;</a></h2>
 <p>Camera views are created from <a href="/basics/camera_controls/#camera-parameters">Camera Parameters</a>.</p>
 <p>Note that we <strong>do not</strong> specify an image resolution for the camera view. It can hold images of any resolution, as long as the aspect ratio is right.</p>
 <details class="func">
@@ -1713,7 +1741,7 @@
 </ul>
 </details>
 <p>As with all structures, there is also <code>getCameraView("name")</code>, <code>hasCameraView("name")</code>, and <code>removeCameraView("name")</code>.</p>
-<h2 id="updating-a-camera-view">Updating a Camera View</h2>
+<h2 id="updating-a-camera-view">Updating a Camera View<a class="headerlink" href="#updating-a-camera-view" title="Permanent link">&para;</a></h2>
 <p>You can update the parameters associated with a camera view to move it within the scene after creation.</p>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">CameraView</span><span class="o">::</span><span class="n">updateCameraParameters</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CameraParameters</span><span class="o">&amp;</span><span class="w"> </span><span class="n">newParams</span><span class="p">)</span></code></summary>
@@ -1722,7 +1750,7 @@
 <li><code>params</code> is a <a href="/basics/camera_controls/#camera-parameters">Camera Parameters</a>.</li>
 </ul>
 </details>
-<h2 id="selection-picking">Selection / Picking</h2>
+<h2 id="selection-picking">Selection / Picking<a class="headerlink" href="#selection-picking" title="Permanent link">&para;</a></h2>
 <p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call <code>interpretPickResult()</code> to get additional info about a click. See <a href="/basics/interactive_UIs_and_animation/#selection-picking">the overview of Selection / Picking</a> for general information.</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">CameraViewPickResult</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// currently nothing, just following the same pattern as other structures</span>
@@ -1732,7 +1760,7 @@
 <summary><code class="highlight"><span class="n">CameraViewPickResult</span><span class="w"> </span><span class="n">CameraView</span><span class="o">::</span><span class="n">interpretPickResult</span><span class="p">(</span><span class="n">PickResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span></code></summary>
 <p>Get additional information about a click.</p>
 </details>
-<h2 id="options">Options</h2>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h2>
 <p>See <a href="/structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>
 <thead>

@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -647,6 +647,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -753,6 +767,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1524,7 +1552,7 @@
 <span class="c1"># open the GUI</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="transparency-modes">Transparency modes</h2>
+<h2 id="transparency-modes">Transparency modes<a class="headerlink" href="#transparency-modes" title="Permanent link">&para;</a></h2>
 <p>In computer graphics, rendering scenes with transparent content is surprisingly difficult and often computationally expensive. Polyscope supports three different modes for transparent rendering:</p>
 <ul>
 <li><code>'none'</code> is the default, which does not use any transparency and ignores any related settings.</li>
@@ -1544,7 +1572,7 @@
 <p>The number of passes used for <code>'pretty'</code> mode. Lower values will reduce the performance impact, but larger values may be necessary to resolve transparency in complex scenes.</p>
 <p>Default: <code>8</code>. </p>
 </details>
-<h2 id="setting-structure-transparency">Setting structure transparency</h2>
+<h2 id="setting-structure-transparency">Setting structure transparency<a class="headerlink" href="#setting-structure-transparency" title="Permanent link">&para;</a></h2>
 <p>Transparency is controlled via a real-valued parameter from <code>0</code> to <code>1</code>, commonly called &ldquo;alpha&rdquo;. Setting transparency to <code>1</code> means completely opaque (the default), whereas <code>0</code> means completely transparent.  This parameter is specified on a per-structure basis via <code>Structure.set_transparency(val)</code>, or by using a <code>transparency</code> keyword argument when registering the structure.  Transparency for each structure can also be modified in the GUI by selecting <code>[Options] --&gt; [Transparency]</code> for the structure.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_transparency</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></code></summary>

@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -649,6 +649,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -755,6 +769,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1556,7 +1584,7 @@
 </ul>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
-<h3 id="tangent-vectors">Tangent vectors</h3>
+<h3 id="tangent-vectors">Tangent vectors<a class="headerlink" href="#tangent-vectors" title="Permanent link">&para;</a></h3>
 <p><em>Tangent</em> vectors lie flat against the surface of a mesh. They are defined as 2D vector in a local 2D coordinate system at each vertex or face. We need to specify the vector itself as well as the basis vectors for the local coordinate systems.</p>
 <details class="func" open="open">
 <summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_tangent_vector_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">basisX</span><span class="p">,</span> <span class="n">basisY</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;vertices&#39;</span><span class="p">,</span> <span class="n">n_sym</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vectortype</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ribbon</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
@@ -1571,7 +1599,7 @@
 </ul>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
-<h3 id="one-forms">One forms</h3>
+<h3 id="one-forms">One forms<a class="headerlink" href="#one-forms" title="Permanent link">&para;</a></h3>
 <p><em>One forms</em> are tangent vector-like quantities represented as integrated scalars along edges. They commonly arise, for example, as a gradient which is difference of scalar values at vertices.</p>
 <details class="func" open="open">
 <summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_one_form_vector_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">orientations</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ribbon</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
@@ -1583,7 +1611,7 @@
 </ul>
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 </details>
-<h3 id="vector-quantity-options">Vector Quantity Options</h3>
+<h3 id="vector-quantity-options">Vector Quantity Options<a class="headerlink" href="#vector-quantity-options" title="Permanent link">&para;</a></h3>
 <p>When adding a vector quantity, the following keyword options can be set. These are available for all kinds of vector quantities on all structures.</p>
 <p>Keyword arguments:</p>
 <ul>
@@ -1592,6 +1620,7 @@
 <li><code>length</code> float, a (relative) length for the vectors</li>
 <li><code>radius</code> float, a (relative) radius for the vectors</li>
 <li><code>color</code> 3-tuple, color for the vectors</li>
+<li><code>material</code> string, shading material for the vectors</li>
 </ul>
 <p>If not specified, these optional parameters will assume a reasonable default value, or a <a href="../../../basics/parameters/#persistent-values">persistent value</a> if previously set.</p>
 

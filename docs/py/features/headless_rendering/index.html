@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -647,6 +647,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -753,6 +767,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1566,10 +1594,10 @@
 <p class="admonition-title">Unix only</p>
 <p>Headless rendering is only supported on Unix/Linux, because EGL is only available there.</p>
 </div>
-<h2 id="using-headless-rendering">Using headless rendering</h2>
+<h2 id="using-headless-rendering">Using headless rendering<a class="headerlink" href="#using-headless-rendering" title="Permanent link">&para;</a></h2>
 <p>Headless rendering requires compiling with and initializing a separate EGL backend.  </p>
 <p>Fortunately, the linux Polyscope wheels published on <code>pip</code> are already built with support for EGL.</p>
-<p>Your system must also have EGL available at runtime. It is likely packaged with graphics drivers, or can be installed from a package manager. Another alternative is to fall back on (much slower!) rendering by installing <code>OSMesa</code> from your package manager.</p>
+<p>Your system must also have EGL available at runtime. It is likely packaged with graphics drivers, or can be installed from a package manager. Another alternative is to fall back on (much slower!) software rendering by installing <code>OSMesa</code> from your package manager.</p>
 <details class="note">
 <summary>For developers: compiling with EGL support</summary>
 <p>If you are manually compiling Polyscope&rsquo;s python bindings, you must ensure EGL support is enabled. The default CMake settings enable it only if you are on Linux and EGL headers seem to be present on your system.</p>
@@ -1591,8 +1619,8 @@
 <span class="c1"># ... add structures and quantities to polyscope as usual ...</span>
 
 <span class="c1"># save screenshots, render movies, etc</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span> 
-<span class="n">viz_img</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">screenshot_to_buffer</span><span class="p">()</span> 
+<span class="n">ps</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>                     <span class="c1"># saves to file</span>
+<span class="n">viz_img</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">screenshot_to_buffer</span><span class="p">()</span> <span class="c1"># returns an image array</span>
 </code></pre></div></p>
 <p>Once you have initialized the backend and added your data as usual, you can preform rendering operations such as saving rendered screenshots to disk or to buffer.</p>
 <p>Unless you really know what you are doing, you probably do not want to call <code>show()</code> &ndash; by default this would initiate a render loop which spins endlessly with no effect. However it is still permitted to do so, e.g. if you set a user callback which has side effects.</p>
@@ -1600,22 +1628,22 @@
 <p class="admonition-title">ImGui not rendered</p>
 <p>In headless mode, the ImGui UI is not actually drawn to the screen. You can still issue ImGui calls in your code if you would like, but they will never have any effect.</p>
 </div>
-<h2 id="options">Options</h2>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h2>
 <details class="func">
 <summary><code class="highlight"><span class="n">is_headless</span><span class="p">()</span></code></summary>
-<h5 id="is_headless">is_headless()</h5>
+<h5 id="is_headless">is_headless()<a class="headerlink" href="#is_headless" title="Permanent link">&para;</a></h5>
 <p>Returns <code>True</code> if polyscope is currently running in headless mode. May only be called after initialization.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">set_allow_headless_backends</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
-<h5 id="set_allow_headless_backends">set_allow_headless_backends</h5>
+<h5 id="set_allow_headless_backends">set_allow_headless_backends<a class="headerlink" href="#set_allow_headless_backends" title="Permanent link">&para;</a></h5>
 <p>If <code>True</code> default automatic initialization is allowed to initialize with a headless backend, if that is the only option.</p>
 <p>Default: <code>False</code></p>
 <p>This is set to <code>false</code> by default, because sometimes misconfigured or low-capability machines will have no display, and automatically creating headless backends on such machines would confuse new users.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">set_egl_device_index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></summary>
-<h5 id="set_egl_device_index">set_egl_device_index()</h5>
+<h5 id="set_egl_device_index">set_egl_device_index()<a class="headerlink" href="#set_egl_device_index" title="Permanent link">&para;</a></h5>
 <p>Pass an index to manually specify which EGL device to use for headless EGL rendering. If set to <code>-1</code> (default), Polyscope will try all devices, with some heuristics to attempt to use hardware renderers before software renderers.</p>
 <p>Default: <code>-1</code></p>
 <p>If you are trying to figure out which device index to use, set Polyscope&rsquo;s verbosity to a large value (<code>&gt; 5</code>). At high verbosity, Polyscope will print the list of found EGL devices and their indices when attempting initialization.</p>

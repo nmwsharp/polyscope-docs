@@ -748,6 +748,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -854,6 +868,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1714,19 +1742,19 @@
 </code></pre></div>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">autocenterStructures</span></code></summary>
-<h5 id="autocenter-structures">autocenter structures</h5>
+<h5 id="autocenter-structures">autocenter structures<a class="headerlink" href="#autocenter-structures" title="Permanent link">&para;</a></h5>
 <p>If true, all structures will have their transform set to center their bounding box immediately after being registered.</p>
 <p>This centers the content nicely in view, but obscures any important absolute world positions.</p>
 <p>Default: <code>false</code>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">autoscaleStructures</span></code></summary>
-<h5 id="autoscale-structures">autoscale structures</h5>
+<h5 id="autoscale-structures">autoscale structures<a class="headerlink" href="#autoscale-structures" title="Permanent link">&para;</a></h5>
 <p>If true, all structures will have their transform set to rescale their length to 1 immediately after being registered.</p>
 <p>This scales the content nicely in view, but obscures any important absolute world positions.</p>
 <p>Default: <code>false</code>.</p>
 </details>
-<h2 id="extents">Extents</h2>
+<h2 id="extents">Extents<a class="headerlink" href="#extents" title="Permanent link">&para;</a></h2>
 <p>By default, Polyscope computes a bounding box and length scale for the structures in the scene, and uses them to adjust the rendered view. For instance, the camera view is initially pointed at the center of the bounding box, and the length scale is used to set reasonable values for the radii of points, curves, and vectors.</p>
 <p>However, sometimes it important to fix these extents rather than automatically computing them from data. One such case is producing precisely consistent visualizations across many inputs which might have slightly different extents. Another is when outlier data makes the automatically-computed extents egregiously large. The settings below can be used to manually adjust these extents.</p>
 <p>These parameters can be adjust in the UI under <code>[View] --&gt; [Scene Extents]</code>.</p>
@@ -1748,15 +1776,15 @@
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">automaticallyComputeSceneExtents</span></code></summary>
-<h5 id="automatically-compute-extents">automatically compute extents</h5>
+<h5 id="automatically-compute-extents">automatically compute extents<a class="headerlink" href="#automatically-compute-extents" title="Permanent link">&para;</a></h5>
 <p>If true, the <code>lengthScale</code> and <code>boundingBox</code> parameters will be automatically computed from the registered structures, and updated whenever a a structure is added or changed.</p>
 <p>If false, these parameters will be left unchanged.  If set to false before the first structure is registered, you are <strong>required</strong> to set the bounding box and length scale manually.</p>
 <p>Default: <code>true</code>.</p>
 </details>
-<h2 id="other-options">Other Options</h2>
+<h2 id="other-options">Other Options<a class="headerlink" href="#other-options" title="Permanent link">&para;</a></h2>
 <details class="func">
 <summary><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">vec4</span><span class="w"> </span><span class="n">view</span><span class="o">::</span><span class="n">bgColor</span></code></summary>
-<h5 id="background-color">background color</h5>
+<h5 id="background-color">background color<a class="headerlink" href="#background-color" title="Permanent link">&para;</a></h5>
 <p>Set the background color of the rendered scne. Values should be RGBA on <code>[0,1]</code>.</p>
 <p>Default: <code>{1., 1., 1., 1.}</code>.</p>
 </details>

@@ -662,6 +662,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -768,6 +782,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1535,6 +1563,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#iterate-over-children-in-a-group" class="md-nav__link">
+    Iterate over children in a group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#group-settings" class="md-nav__link">
     Group settings
   </a>
@@ -1818,6 +1853,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#iterate-over-children-in-a-group" class="md-nav__link">
+    Iterate over children in a group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#group-settings" class="md-nav__link">
     Group settings
   </a>
@@ -1918,83 +1960,105 @@
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 </code></pre></div>
-<h3 id="create-get-and-remove-groups">Create, get, and remove groups</h3>
+<h3 id="create-get-and-remove-groups">Create, get, and remove groups<a class="headerlink" href="#create-get-and-remove-groups" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">*</span><span class="w"> </span><span class="n">createGroup</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span></code></summary>
-<h5 id="create-group">create group</h5>
+<h5 id="create-group">create group<a class="headerlink" href="#create-group" title="Permanent link">&para;</a></h5>
 <p>Create a new group and return it. Group name must be a unique string (no other group may have that name).</p>
 <p>As always, the returned pointer is non-owning. Don&rsquo;t delete it.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">*</span><span class="w"> </span><span class="n">getGroup</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span></code></summary>
-<h5 id="get-group">get group</h5>
+<h5 id="get-group">get group<a class="headerlink" href="#get-group" title="Permanent link">&para;</a></h5>
 <p>Get an existing group by name. </p>
 <p>As always, the returned pointer is non-owning. Don&rsquo;t delete it.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">removeGroup</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">errorIfAbsent</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></summary>
-<h5 id="remove-group-by-name">remove group by name</h5>
+<h5 id="remove-group-by-name">remove group by name<a class="headerlink" href="#remove-group-by-name" title="Permanent link">&para;</a></h5>
 <p>Remove an existing group by name</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">removeGroup</span><span class="p">(</span><span class="n">Group</span><span class="o">*</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">errorIfAbsent</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></summary>
-<h5 id="remove-group-by-reference">remove group by reference</h5>
+<h5 id="remove-group-by-reference">remove group by reference<a class="headerlink" href="#remove-group-by-reference" title="Permanent link">&para;</a></h5>
 <p>Remove an existing group by reference</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">removeAllGroups</span><span class="p">()</span></code></summary>
-<h5 id="remove-all-groups">remove all groups</h5>
+<h5 id="remove-all-groups">remove all groups<a class="headerlink" href="#remove-all-groups" title="Permanent link">&para;</a></h5>
 <p>Removes all existing groups.</p>
 </details>
-<h3 id="group-membership">Group membership</h3>
+<h3 id="group-membership">Group membership<a class="headerlink" href="#group-membership" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">addToGroup</span><span class="p">(</span><span class="n">Group</span><span class="o">&amp;</span><span class="w"> </span><span class="n">group</span><span class="p">)</span></code></summary>
-<h5 id="add-structure-to-group">add structure to group</h5>
+<h5 id="add-structure-to-group">add structure to group<a class="headerlink" href="#add-structure-to-group" title="Permanent link">&para;</a></h5>
 <p>Add a structure as a member of a group.</p>
 <p>Note that this is a member function of a <strong>structure</strong> object, like <code>pointCloud-&gt;addToGroup(group)</code>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">addToGroup</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">groupName</span><span class="p">)</span></code></summary>
-<h5 id="add-structure-to-group_1">add structure to group</h5>
+<h5 id="add-structure-to-group_1">add structure to group<a class="headerlink" href="#add-structure-to-group_1" title="Permanent link">&para;</a></h5>
 <p>Add a structure as a member of a group, via the string name of the group.</p>
 <p>Note that this is a member function of a <strong>structure</strong> object, like <code>pointCloud-&gt;addToGroup(groupName)</code>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Group</span><span class="o">::</span><span class="n">addChildStructure</span><span class="p">(</span><span class="n">Structure</span><span class="o">&amp;</span><span class="w"> </span><span class="n">newChild</span><span class="p">)</span></code></summary>
-<h5 id="add-child-structure">add child structure</h5>
+<h5 id="add-child-structure">add child structure<a class="headerlink" href="#add-child-structure" title="Permanent link">&para;</a></h5>
 <p>Add a structure as a member of this group</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Group</span><span class="o">::</span><span class="n">removeChildStructure</span><span class="p">(</span><span class="n">Structure</span><span class="o">&amp;</span><span class="w"> </span><span class="n">child</span><span class="p">)</span></code></summary>
-<h5 id="remove-child-structure">remove child structure</h5>
+<h5 id="remove-child-structure">remove child structure<a class="headerlink" href="#remove-child-structure" title="Permanent link">&para;</a></h5>
 <p>Remove a structure as a member of this group</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Group</span><span class="o">::</span><span class="n">addChildGroup</span><span class="p">(</span><span class="n">Group</span><span class="o">&amp;</span><span class="w"> </span><span class="n">newChild</span><span class="p">)</span></code></summary>
-<h5 id="add-child-group">add child group</h5>
+<h5 id="add-child-group">add child group<a class="headerlink" href="#add-child-group" title="Permanent link">&para;</a></h5>
 <p>Add a group as a (nested) member of this group</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">Group</span><span class="o">::</span><span class="n">removeChildGroup</span><span class="p">(</span><span class="n">Group</span><span class="o">&amp;</span><span class="w"> </span><span class="n">child</span><span class="p">)</span></code></summary>
-<h5 id="remove-child-group">remove child group</h5>
+<h5 id="remove-child-group">remove child group<a class="headerlink" href="#remove-child-group" title="Permanent link">&para;</a></h5>
 <p>Remove a group as a (nested) member of this group</p>
 </details>
-<h3 id="group-settings">Group settings</h3>
+<h3 id="iterate-over-children-in-a-group">Iterate over children in a group<a class="headerlink" href="#iterate-over-children-in-a-group" title="Permanent link">&para;</a></h3>
+<p>You can iterate over the children in a group via the <code>childrenStructures</code> and <code>childrenGroups</code> members. These members only hold top-level children, any recursion into nested children of nested groups must be done manually.</p>
+<p>The lists are lists of <code>WeakHandle</code>s, which are a life-tracking references (in-case the underlying structure is unexpectedly deleted).</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">Group</span><span class="o">&amp;</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">polyscope</span><span class="o">::</span><span class="n">getGroup</span><span class="p">(</span><span class="s">&quot;my group&quot;</span><span class="p">);</span>
+
+<span class="c1">// Iterate over child structures</span>
+<span class="k">for</span><span class="p">(</span><span class="n">polyscope</span><span class="o">::</span><span class="n">WeakHandle</span><span class="o">&lt;</span><span class="n">polyscope</span><span class="o">::</span><span class="n">Structure</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">wh</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">group</span><span class="p">.</span><span class="n">childrenStructures</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">wh</span><span class="p">.</span><span class="n">isValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">polyscope</span><span class="o">::</span><span class="n">Structure</span><span class="o">&amp;</span><span class="w"> </span><span class="n">myStructure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wh</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+<span class="w">        </span><span class="cm">/* do stuff */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Iterate over child groups</span>
+<span class="k">for</span><span class="p">(</span><span class="n">polyscope</span><span class="o">::</span><span class="n">WeakHandle</span><span class="o">&lt;</span><span class="n">polyscope</span><span class="o">::</span><span class="n">Group</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">wh</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">group</span><span class="p">.</span><span class="n">childrenGroups</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">wh</span><span class="p">.</span><span class="n">isValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">polyscope</span><span class="o">::</span><span class="n">Group</span><span class="o">&amp;</span><span class="w"> </span><span class="n">myGroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wh</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+<span class="w">        </span><span class="cm">/* do stuff */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="group-settings">Group settings<a class="headerlink" href="#group-settings" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">*</span><span class="w"> </span><span class="n">Group</span><span class="o">::</span><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newEnabled</span><span class="p">)</span></code></summary>
-<h5 id="set-enabled">set enabled</h5>
+<h5 id="set-enabled">set enabled<a class="headerlink" href="#set-enabled" title="Permanent link">&para;</a></h5>
 <p>Set all descendants of a group to be enabled or disabled (applies to direct members of a group, as well as recursively to all members-of-members for nested groups).</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">*</span><span class="w"> </span><span class="n">Group</span><span class="o">::</span><span class="n">setShowChildDetails</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></summary>
-<h5 id="show-ui-details">show UI details</h5>
+<h5 id="show-ui-details">show UI details<a class="headerlink" href="#show-ui-details" title="Permanent link">&para;</a></h5>
 <p>If true, the Groups section of the ImGui UI panel will show each childs structure info as a submenu under the group. If false, only the group name and toggle checkbox will be shown.</p>
 <p>(Default: true)</p>
 <p>There is also a corresponding <code>getShowChildDetails()</code>.</p>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">Group</span><span class="o">*</span><span class="w"> </span><span class="n">Group</span><span class="o">::</span><span class="n">setHideDescendantsFromStructureLists</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></summary>
-<h5 id="hide-from-structure-list">hide from structure list</h5>
+<h5 id="hide-from-structure-list">hide from structure list<a class="headerlink" href="#hide-from-structure-list" title="Permanent link">&para;</a></h5>
 <p>If true, the structures which are members of this group (or descendants in any nested groups) will be hidden from the ImGui UI panel structure list.</p>
 <p>(Default: false)</p>
 <p>There is also a corresponding <code>getHideDescendantsFromStructureLists()</code>.</p>

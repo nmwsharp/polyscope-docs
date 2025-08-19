@@ -662,6 +662,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -768,6 +782,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1678,7 +1706,7 @@
 
 <p>This section demonstrates using Polyscope with <a href="https://geometry-central.net">geometry-central</a>! Note that a few useful adaptor functions are included in <code>geometrycentral/surface/meshio.h</code>.</p>
 <p>See <a href="https://github.com/nmwsharp/gc-polyscope-project-template">this repository</a> for a sample project configuration and CMAKE build system.</p>
-<h3 id="registering-a-surface-mesh">Registering a surface mesh</h3>
+<h3 id="registering-a-surface-mesh">Registering a surface mesh<a class="headerlink" href="#registering-a-surface-mesh" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
 
@@ -1709,7 +1737,7 @@
 <p>If you are modifying your mesh, be sure to call <code>mesh-&gt;compress()</code> before registering it with Polyscope.</p>
 </div>
 <p><strong>Note:</strong> Geometry-central meshes must be in &ldquo;compressed mode&rdquo; (with dense indices) to register with Polyscope. If you have deleted elements from your mesh, this may require calling <code>SurfaceMesh::compress()</code> before you register it.</p>
-<h3 id="meshdata-containers">Meshdata containers</h3>
+<h3 id="meshdata-containers">Meshdata containers<a class="headerlink" href="#meshdata-containers" title="Permanent link">&para;</a></h3>
 <p>Geometry-central&rsquo;s <code>Meshdata&lt;&gt;</code> containers can be passed directly to Polyscope for visualization.</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/* (continuing up from the Registering example above) */</span>
 
@@ -1729,7 +1757,7 @@
 <span class="n">polyscope</span><span class="o">::</span><span class="n">getMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexVectorQuantity</span><span class="p">(</span><span class="s">&quot;vertex normals&quot;</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                                       </span><span class="n">posGeom</span><span class="o">-&gt;</span><span class="n">vertexNormals</span><span class="p">);</span>
 </code></pre></div>
-<h4 id="custom-ordering">Custom ordering</h4>
+<h4 id="custom-ordering">Custom ordering<a class="headerlink" href="#custom-ordering" title="Permanent link">&para;</a></h4>
 <p>Geometry-central&rsquo;s ordering of mesh halfedges and corners is different from Polyscope&rsquo;s default ordering (see <a href="../../../structures/surface_mesh/indexing_convention">indexing convention</a>). As such, you must tell Polyscope about this ordering for edge-valued, halfedge-valued or corner-valued visualizations to work properly. The geometry-central function <code>polyscopePermutations(HalfedgeMesh&amp; mesh)</code> from <code>meshio.h</code> generates the ordering data in an approriate form for Polyscope, and can be passed either at construction time or after.</p>
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMesh</span><span class="o">*</span><span class="w"> </span><span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
 <span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">,</span><span class="w"> </span>
@@ -1746,8 +1774,8 @@
 <span class="w">                                   </span><span class="n">mesh</span><span class="o">-&gt;</span><span class="n">getFaceVertexList</span><span class="p">(),</span>
 <span class="w">                                   </span><span class="n">polyscopePermutations</span><span class="p">(</span><span class="o">*</span><span class="n">mesh</span><span class="p">));</span>
 </code></pre></div>
-<h4 id="tangent-vector-data">Tangent vector data</h4>
-<h4 id="1-forms">1-forms</h4>
+<h4 id="tangent-vector-data">Tangent vector data<a class="headerlink" href="#tangent-vector-data" title="Permanent link">&para;</a></h4>
+<h4 id="1-forms">1-forms<a class="headerlink" href="#1-forms" title="Permanent link">&para;</a></h4>
 <p>To communicate the canonical edge orientation when passing a 1-form, use <code>polyscopeEdgeOrientations(mesh)</code> from <code>meshio.h</code>.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometrycentral/surface/meshio.h&quot;</span>

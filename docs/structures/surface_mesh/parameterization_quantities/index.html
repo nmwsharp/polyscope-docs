@@ -664,6 +664,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -770,6 +784,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -925,6 +953,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#visualizing-islands-and-seams" class="md-nav__link">
+    Visualizing islands and seams
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizing islands and seams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setislandlabels" class="md-nav__link">
+    setIslandLabels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcurvenetworkfromseams" class="md-nav__link">
+    createCurveNetworkFromSeams
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#parameterization-quantity-options" class="md-nav__link">
     Parameterization Quantity Options
   </a>
@@ -942,6 +997,13 @@
           <li class="md-nav__item">
   <a href="#types" class="md-nav__link">
     Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    Options
   </a>
   
 </li>
@@ -1621,6 +1683,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#visualizing-islands-and-seams" class="md-nav__link">
+    Visualizing islands and seams
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizing islands and seams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setislandlabels" class="md-nav__link">
+    setIslandLabels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcurvenetworkfromseams" class="md-nav__link">
+    createCurveNetworkFromSeams
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#parameterization-quantity-options" class="md-nav__link">
     Parameterization Quantity Options
   </a>
@@ -1638,6 +1727,13 @@
           <li class="md-nav__item">
   <a href="#types" class="md-nav__link">
     Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    Options
   </a>
   
 </li>
@@ -1692,31 +1788,70 @@
 <span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="o">-&gt;</span><span class="n">addVertexParameterizationQuantity</span><span class="p">(</span><span class="s">&quot;LSCM parameterization&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">V_uv</span><span class="p">);</span>
 </code></pre></div></p>
-<h2 id="adding">Adding</h2>
+<h2 id="adding">Adding<a class="headerlink" href="#adding" title="Permanent link">&para;</a></h2>
 <details class="func">
-<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addParameterizationQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">coords</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addParameterizationQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">coords</span><span class="p">,</span><span class="w"> </span><span class="n">ParamCoordsType</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="n">ParamCoordsType</span><span class="o">::</span><span class="n">UNIT</span><span class="p">)</span></code></summary>
 <p>Add a new parameterization quantity to the structure, defined at the corners of a mesh.</p>
 <ul>
-<li><code>coords</code> is the array of 2D UV coordinates at corners. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 2-vectors. The length should be the number of corners in the mesh.</li>
+<li>
+<p><code>coords</code> is the array of 2D UV coordinates at corners. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 2-vectors. The length should be the number of corners in the mesh.</p>
+</li>
+<li>
+<p><code>type</code> the default interpretation of the coordinate scale, see below</p>
+</li>
 </ul>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addVertexParameterizationQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">coords</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addVertexParameterizationQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">coords</span><span class="p">,</span><span class="w"> </span><span class="n">ParamCoordsType</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="n">ParamCoordsType</span><span class="o">::</span><span class="n">UNIT</span><span class="p">)</span></code></summary>
 <p>Add a new parameterization quantity to the structure, defined at the vertices of a mesh.</p>
 <ul>
-<li><code>coords</code> is the array of 2D UV coordinates at vertices. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 2-vectors. The length should be the number of vertices in the mesh.</li>
+<li>
+<p><code>coords</code> is the array of 2D UV coordinates at vertices. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 2-vectors. The length should be the number of vertices in the mesh.</p>
+</li>
+<li>
+<p><code>type</code> the default interpretation of the coordinate scale, see below</p>
+</li>
 </ul>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addLocalParameterizationQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">coords</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addLocalParameterizationQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">coords</span><span class="p">,</span><span class="w"> </span><span class="n">ParamCoordsType</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="n">ParamCoordsType</span><span class="o">::</span><span class="n">WORLD</span><span class="p">)</span></code></summary>
 <p>Add a new parameterization quantity to the structure, defined at the vertices of a mesh. this is similar to <code>addVertexParameterizationQuantity</code>, but has preset settings for <code>style</code> and <code>type</code> which are suitable for local parameterizations about a point.</p>
 <ul>
-<li><code>coords</code> is the array of 2D UV coordinates at vertices. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 2-vectors. The length should be the number of vertices in the mesh.</li>
+<li>
+<p><code>coords</code> is the array of 2D UV coordinates at vertices. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 2-vectors. The length should be the number of vertices in the mesh.</p>
+</li>
+<li>
+<p><code>type</code> the default interpretation of the coordinate scale, see below</p>
+</li>
 </ul>
 </details>
-<h2 id="parameterization-quantity-options">Parameterization Quantity Options</h2>
+<h2 id="visualizing-islands-and-seams">Visualizing islands and seams<a class="headerlink" href="#visualizing-islands-and-seams" title="Permanent link">&para;</a></h2>
+<!-- TODO add an image -->
+
+<p>For parameterizations on surface meshes, additional features are available to visualize UV island and seams. The term <em>islands</em> refers to connected components of faces in the 2D parameterization, and the term <em>seams</em> refers to the subset of edges separating adjacent faces which are not connected.</p>
+<p>UV islands can be colored per-island with the <code>ParamVizStyle::CHECKER_ISLANDS</code> style. Each face should have an integer indicating which island it is a part of, which the caller must compute and pass via the function below (Polyscope does not compute it automatically). </p>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">SurfaceParameterizationQuantity</span><span class="o">::</span><span class="n">setIslandLabels</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">labels</span><span class="p">)</span></code></summary>
+<h4 id="setislandlabels">setIslandLabels<a class="headerlink" href="#setislandlabels" title="Permanent link">&para;</a></h4>
+<p>Set an integer value per-face of the mesh, which can be used to color islands distinctly in the <code>ParamVizStyle::CHECKER_ISLANDS</code> style. Each face should have an integer indicating which island it is a part of, numbered however you like.</p>
+<p>Technically this can be any integer per-face, although it is generally useful for visualizing islands.</p>
+<ul>
+<li><code>labels</code> is the array of face labels. The type should be <a href="/data_adaptors">adaptable</a> to an array of integers.  The length must be equal to the number of faces in the mesh.</li>
+</ul>
+<p>This will have no effect unless you also set <code>ParamVizStyle::CHECKER_ISLANDS</code>.</p>
+</details>
+<p>Additionally, the seams of a parameterization can be visualized as a <a href="/structures/curve_network/basics">curve network</a>. These seams are computed automatically by Polyscope, the curve network is created by calling the function below, and is otherwise an ordinary curve network.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">*</span><span class="w"> </span><span class="n">SurfaceParameterizationQuantity</span><span class="o">::</span><span class="n">createCurveNetworkFromSeams</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">structureName</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span></code></summary>
+<h4 id="createcurvenetworkfromseams">createCurveNetworkFromSeams<a class="headerlink" href="#createcurvenetworkfromseams" title="Permanent link">&para;</a></h4>
+<p>Create a <a href="/structures/curve_network/basics">curve network</a> from the seams of a UV map.</p>
+<ul>
+<li><code>structureName</code> the name of the new curve network structure. If left as the empty string (default) a name will be generated.</li>
+</ul>
+</details>
+<h2 id="parameterization-quantity-options">Parameterization Quantity Options<a class="headerlink" href="#parameterization-quantity-options" title="Permanent link">&para;</a></h2>
 <p>These options and behaviors are available for all types of parameterization quantities on any structure.</p>
-<h3 id="styles">Styles</h3>
+<h3 id="styles">Styles<a class="headerlink" href="#styles" title="Permanent link">&para;</a></h3>
 <p>Several styles are available for how a parameterization is displayed. </p>
 <p>The <code>enum class ParamVizStyle</code> has options for how parameterizations are visualized:</p>
 <ul>
@@ -1724,15 +1859,17 @@
 <li><code>GRID</code>: a grid with thin lines</li>
 <li><code>LOCAL_CHECK</code>: a checkboard over a radial colormap, centered around <code>(0,0)</code></li>
 <li><code>LOCAL_RAD</code>: distance stripes over a radial colormap, centered around <code>(0,0)</code></li>
+<li><code>CHECKER_ISLANDS</code>: a checkerboard where islands are colored according to the island labels integer, which must be given explicitly (meshes only)</li>
 </ul>
 <p>The function <code>SurfaceParameterizationQuantity::setStyle(ParamVizStyle newStyle)</code> can be used to programmatically change the style.</p>
-<h3 id="types">Types</h3>
+<h3 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h3>
 <p>The <code>enum class ParamCoordsType</code> has options that control how parameter coordinates are interpreted:</p>
 <ul>
 <li><code>UNIT</code>: UV coords are assumed to lie on the <code>[0,1]</code> interval</li>
 <li><code>WORLD</code>: UV coords are assumed to be scaled like the world-space positions of the mesh</li>
 </ul>
 <p>These enums can be passed as an optional third argument when a parameterization is registered.</p>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1749,42 +1886,42 @@
 <td>is the quantity enabled?</td>
 <td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">isEnabled</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>style</td>
 <td>the visualization style (see above)</td>
 <td><code class="highlight"><span class="n">ParamVizStyle</span><span class="w"> </span><span class="n">getStyle</span></code></td>
 <td><code class="highlight"><span class="n">setStyle</span><span class="p">(</span><span class="n">ParamVizStyle</span><span class="w"> </span><span class="n">style</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>checker colors</td>
 <td>two colors to use for checkerboards</td>
 <td><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="n">getCheckerColors</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setCheckerColors</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">colors</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>grid colors</td>
 <td>two colors to use for line and background of grid</td>
 <td><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="n">getGridColors</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setGridColors</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">colors</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>checker size</td>
 <td>the width of checkers / stripes, always used as a relative value, unless the coord tpe is <code>UNIT</code></td>
 <td><code class="highlight"><span class="kt">double</span><span class="w"> </span><span class="n">getCheckerSize</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setCheckerSize</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>color map</td>
-<td>the <a href="[[url.prefix]]/features/color_maps">color map</a> to use for radial displays</td>
+<td>the <a href="/features/color_maps">color map</a> to use for radial displays</td>
 <td><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getColorMap</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setColorMap</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">newMap</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 </tbody>
 </table>

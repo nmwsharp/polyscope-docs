@@ -662,6 +662,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -768,6 +782,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1623,7 +1651,7 @@
   <h1>DGtal</h1>
 
 <p>This section demonstrates using Polyscope with <a href="https://dgtal.org/">DGtal</a> for digital geometry processing. See <a href="https://github.com/dcoeurjo/polyscope-dgtal">this repository</a> for a sample project configuration, CMAKE build system, and a quick demo!</p>
-<h3 id="adding-a-surface">Adding a surface</h3>
+<h3 id="adding-a-surface">Adding a surface<a class="headerlink" href="#adding-a-surface" title="Permanent link">&para;</a></h3>
 <p>These snippets are from the example <a href="https://github.com/dcoeurjo/polyscope-dgtal/blob/master/simpleTest.cpp">here</a>. See that code for full setup and template definitions!
 <div class="highlight"><pre><span></span><code><span class="c1">// Initialize polyscope</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
@@ -1653,7 +1681,7 @@
 </code></pre></div></p>
 <p>The resulting surface:</p>
 <p><img alt="DGtal surface" src="/media/dgtal_surface.jpg" /></p>
-<h3 id="computing-surface-quantities">Computing surface quantities</h3>
+<h3 id="computing-surface-quantities">Computing surface quantities<a class="headerlink" href="#computing-surface-quantities" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// Compute some differential quantities</span>
 <span class="n">params</span><span class="p">(</span><span class="s">&quot;r-radius&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">);</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">normals</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">SHG3</span><span class="o">::</span><span class="n">getCTrivialNormalVectors</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span><span class="w"> </span><span class="n">surfels</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>

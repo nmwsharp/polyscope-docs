@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -649,6 +649,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -755,6 +769,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1563,7 +1591,7 @@
 <span class="c1"># view the mesh with all of these quantities</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </code></pre></div></p>
-<h3 id="add-scalars-to-elements">Add Scalars to Elements</h3>
+<h3 id="add-scalars-to-elements">Add Scalars to Elements<a class="headerlink" href="#add-scalars-to-elements" title="Permanent link">&para;</a></h3>
 <details class="func" open="open">
 <summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;vertices&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="n">vminmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">param_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s2">&quot;upper_left&quot;</span><span class="p">)</span></code></summary>
 <p>Add a scalar quantity to the mesh.</p>
@@ -1575,7 +1603,7 @@
 <p>This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.</p>
 <p>The <code>param_name</code> and <code>image_origin</code> arguments are used only if <code>defined_on='texture'</code>. See below for details.</p>
 </details>
-<h3 id="scalar-texture-maps">Scalar Texture Maps</h3>
+<h3 id="scalar-texture-maps">Scalar Texture Maps<a class="headerlink" href="#scalar-texture-maps" title="Permanent link">&para;</a></h3>
 <p>Texture images define data by storing it an image grid, and using coordinates defined on the face-corners or vertices of a mesh to sample values from the image for each point on the surface.</p>
 <p>To visualize scalar data defined in texture maps, first add a <a href="/py//structures/surface_mesh/parameterization_quantities/">Parameterization Quantity</a> (aka UV map) defining the coordinates. Then, add a buffer of image data to be sampled from.</p>
 <p>The resulting scalar texture supports color mapping and all of the other usual scalar data features.</p>
@@ -1610,10 +1638,10 @@
 <p>Texture image data is added via <code>add_scalar_quantity()</code>, with <code>defined_on='texture'</code> and <code>param_name=...</code> specifying the name of the <a href="/py//structures/surface_mesh/parameterization_quantities/">parameterization UV map</a> with coordinates on <code>[0,1]</code> which will be used to sample from the image.</p>
 <p>The texture image data, dimension, and origin conventions are the same as those used to define <a href="/py//structures/floating_quantities/images/">images</a>. See there for details.</p>
 <p>The filter mode can be set as an additional argument to adjust how values are sampled from the texture. <code>filter_mode='linear'</code> (default) will smoothly linearly interpolate values, while <code>filter_mode='nearest'</code> will use nearest-neighbor sampling, which can be useful for sharp edges and crisp boundaries.</p>
-<h3 id="categorical-scalars">Categorical Scalars</h3>
+<h3 id="categorical-scalars">Categorical Scalars<a class="headerlink" href="#categorical-scalars" title="Permanent link">&para;</a></h3>
 <p>Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.</p>
 <p>Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set <code>datatype='categorical'</code>. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.</p>
-<h3 id="scalar-quantity-options">Scalar Quantity Options</h3>
+<h3 id="scalar-quantity-options">Scalar Quantity Options<a class="headerlink" href="#scalar-quantity-options" title="Permanent link">&para;</a></h3>
 <p>When adding a scalar quantity, the following keyword options can be set. These are available for all kinds of scalar quantities on all structures.</p>
 <p>Keyword arguments:</p>
 <ul>

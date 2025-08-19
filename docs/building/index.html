@@ -767,6 +767,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -873,6 +887,20 @@
     <li class="md-nav__item">
       <a href="../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1743,8 +1771,8 @@
   <h1>Building</h1>
 
 <p>Polyscope uses CMake to configure its build system. </p>
-<h2 id="adding-polyscope-to-your-cmake">Adding Polyscope to your CMake</h2>
-<h3 id="subdirectory-method">Subdirectory method</h3>
+<h2 id="adding-polyscope-to-your-cmake">Adding Polyscope to your CMake<a class="headerlink" href="#adding-polyscope-to-your-cmake" title="Permanent link">&para;</a></h2>
+<h3 id="subdirectory-method">Subdirectory method<a class="headerlink" href="#subdirectory-method" title="Permanent link">&para;</a></h3>
 <p>First clone Polyscope&rsquo;s source code, using the following commands, or equivalent actions in a GUI. (Be sure to get the submodules, or you will have problems with empty directories! The <code>--recurse-submodules</code> below is important.)</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>https://github.com/nmwsharp/polyscope.git
 </code></pre></div>
@@ -1761,7 +1789,7 @@ If you place polyscope outside of your project&rsquo;s source tree, you may need
 <li>with <a href="http://geometry-central.net">geometry-central</a> &ndash; <a href="https://github.com/nmwsharp/gc-polyscope-project-template">example project</a></li>
 <li>with <a href="https://libigl.github.io/">libIGL</a> &ndash; <a href="https://github.com/nmwsharp/libigl-polyscope-project-template">example project</a></li>
 </ul>
-<h3 id="fetchcontent">FetchContent</h3>
+<h3 id="fetchcontent">FetchContent<a class="headerlink" href="#fetchcontent" title="Permanent link">&para;</a></h3>
 <p>Alternately, CMake&rsquo;s <code>FetchContent</code> functionality can be used to automatically download dependencies at configure-time as-needed, so you do not need to manually . You can use it by adding this to your <code>CMakeLists.txt</code>:</p>
 <div class="highlight"><pre><span></span><code>include(FetchContent)
 
@@ -1774,7 +1802,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(polyscope)
 target_link_libraries(YOUR_TARGET_NAME polyscope)
 </code></pre></div>
-<h3 id="building-in-windows">Building in Windows</h3>
+<h3 id="building-in-windows">Building in Windows<a class="headerlink" href="#building-in-windows" title="Permanent link">&para;</a></h3>
 <p>If you are using Cygwin, WSL, or some other unix-emulation environment on Windows, just follow the instructions above (though be wary that these tools often do not have good openGL and windowing support, which can be a problem at runtime for a graphical application like Polyscope). </p>
 <p>Additionally, Polyscope builds out of the box on Visual Studio 2019 (earlier versions have not been tested). Simply run CMake (either with the GUI or terminal interface) on Polyscope&rsquo;s CMakeLists.txt to generate Visual Studio project and solution files. </p>
 <p>To integrate Polyscope with an existing Visual Studio project:</p>
@@ -1783,16 +1811,14 @@ target_link_libraries(YOUR_TARGET_NAME polyscope)
 <li><strong>(otherwise):</strong> first generate the Polyscope project with its <code>CMakeLists.txt</code>, then manually add the <code>polyscope</code> project to your existing Visual Studio solution</li>
 </ul>
 <p>Polyscope has been verified to compile in Visual Studio 2019 &amp; 2017; other versions should work but have not been tested! Polyscope uses only C++11 language features, but does make advanced use of templates (for instance, SFINAE), which some older versions of MSVC do not fully support.  To test Polyscope on your machine, you can compile the demo app with <code>examples/demo-app/CMakeLists.txt</code>.</p>
-<h3 id="dependencies">Dependencies</h3>
-<p>Polyscope packages all of its source code dependencies with the repository.</p>
-<h4 id="ubuntu">Ubuntu</h4>
+<h3 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
+<p>Polyscope packages all of its source code dependencies with the repository. You may need to install a few standard OS-level packages for things like openGL and windowing support.</p>
+<h4 id="ubuntu">Ubuntu<a class="headerlink" href="#ubuntu" title="Permanent link">&para;</a></h4>
 <p>On Ubuntu and friends, you may want to <code>apt-get install xorg-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev</code> to pull graphics and windowing related headers to build.</p>
-<h4 id="macos">MacOS</h4>
-<p>On MacOS it may be necessary to install X11 dependencies, this can be done using Homebrew and <a href="https://www.xquartz.org/">xquartz</a> package with the command: <code>brew install --cask xquartz</code>. If you are not using CMake you will need to link against the <code>OpenGL</code>, <code>CoreVideo</code>, <code>Cocoa</code> and <code>IOKit</code> MacOS frameworks explicitly. A sample command to link your application with <code>g++</code> on MacOS is:</p>
-<div class="highlight"><pre><span></span><code>g++<span class="w"> </span>&lt;object<span class="w"> </span>files&gt;<span class="w"> </span>-framework<span class="w"> </span>OpenGL<span class="w"> </span>-framework<span class="w"> </span>CoreVideo<span class="w"> </span>-framework<span class="w"> </span>Cocoa<span class="w"> </span>-framework<span class="w"> </span>IOKit<span class="w"> </span><span class="se">\</span>
-<span class="w">     </span>-L/opt/X11/lib/<span class="w"> </span>&lt;Other<span class="w"> </span>Unix<span class="w"> </span>Linking<span class="w"> </span>flags<span class="w"> </span><span class="o">(</span>libraries<span class="w"> </span>+<span class="w"> </span>directories<span class="o">)</span>&gt;
-</code></pre></div>
-<h3 id="backends">Backends</h3>
+<h4 id="macos">MacOS<a class="headerlink" href="#macos" title="Permanent link">&para;</a></h4>
+<p>On MacOS it may be necessary to install X11 dependencies. There are many ways to get these, one way is to use Homebrew and install the <code>xquartz</code> package like: <code>brew install --cask xquartz</code>. </p>
+<p>If you are not using CMake, you will need to link against the <code>OpenGL</code>, <code>CoreVideo</code>, <code>Cocoa</code> and <code>IOKit</code> MacOS frameworks explicitly. A sample command to link your application with <code>g++</code> on MacOS is: <code>g++ &lt;object files&gt; -framework OpenGL -framework CoreVideo -framework Cocoa -framework IOKit -L/opt/X11/lib/ ...(other flags)...</code>.</p>
+<h3 id="backends">Backends<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h3>
 <p>Internally, Polyscope has (very preliminary) support for changing the rendering backend. At compile time, CMake flags control which backends Polyscope will be built with, and at runtime one of the available backends can be selected during <code>init()</code>.</p>
 <p>Currently, only a single &ldquo;real&rdquo; backend is supported. However, an additional &ldquo;mock&rdquo; backend enables testing on headless machines.</p>
 <table>
@@ -1829,7 +1855,7 @@ target_link_libraries(YOUR_TARGET_NAME polyscope)
 <div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-DPOLYSCOPE_BACKEND_OPENGL3_GLFW<span class="o">=</span>OFF<span class="w"> </span>..
 </code></pre></div>
 and the mock backend could be used at runtime with <code class="highlight"><span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="s">&quot;openGL_mock&quot;</span><span class="p">)</span></code>.</p>
-<h3 id="tests">Tests</h3>
+<h3 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h3>
 <p>Unit test live in the <code>/test/</code> directory, and cover most of the core functionality of Polyscope. Polyscope uses googletest, which will be downloaded automatically when you build the tests.</p>
 <p>To build and run the tests, use:</p>
 <p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nb">test</span>

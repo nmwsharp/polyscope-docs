@@ -14,7 +14,7 @@
         <link rel="prev" href="../color_quantities/">
       
       
-        <link rel="next" href="../variable_radius/">
+        <link rel="next" href="../parameterization_quantities/">
       
       <link rel="icon" href="../../../media/icons/material/baseline_highlight_black_18dp.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
@@ -703,6 +703,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -809,6 +823,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1620,7 +1648,7 @@
 </ul>
 <p>Note: the inner vector type of the input <em>must</em> be 3D dimensional, or you risk compiler errors, segfaults, or worse. If you want to add 2D vectors (usually to a 2D point cloud), <code>addVectorQuantity2D</code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
 </details>
-<h3 id="vector-quantity-options">Vector Quantity Options</h3>
+<h3 id="vector-quantity-options">Vector Quantity Options<a class="headerlink" href="#vector-quantity-options" title="Permanent link">&para;</a></h3>
 <p>These options and behaviors are available for all types of vector quantities on any structure.</p>
 <table>
 <thead>
@@ -1638,35 +1666,35 @@
 <td>is the quantity enabled?</td>
 <td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">isEnabled</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>vector radius</td>
 <td>the radius vectors are drawn with</td>
 <td><code class="highlight"><span class="kt">double</span><span class="w"> </span><span class="n">getVectorRadius</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setVectorRadius</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRelative</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>vector length</td>
 <td>vectors will be scaled so the longest is this long. ignored if <code>VectorType::Ambient</code></td>
 <td><code class="highlight"><span class="kt">double</span><span class="w"> </span><span class="n">getVectorLengthScale</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setVectorLengthScale</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRelative</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>vector color</td>
 <td>the color to draw the vectors with</td>
 <td><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">getVectorColor</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setVectorColor</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">val</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 <tr>
 <td>material</td>
-<td>what <a href="[[url.prefix]]/features/materials">material</a> to use</td>
+<td>what <a href="/features/materials">material</a> to use</td>
 <td><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getMaterial</span><span class="p">()</span></code></td>
 <td><code>setMaterial(std::string name)</code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 </tbody>
 </table>

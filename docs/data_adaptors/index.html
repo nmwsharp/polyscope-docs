@@ -834,6 +834,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -940,6 +954,20 @@
     <li class="md-nav__item">
       <a href="../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1881,10 +1909,10 @@
 <p><strong>You don&rsquo;t need to do anything special to use these adaptors!</strong> They are applied internally to the arguments of nearly every Polyscope function, like the <code>vertices</code> and <code>faces</code> arguments of <code>registerSurfaceMesh("name", vertices, faces)</code>. This section outlines how the adaptors will try to read from your data, and how to extend them for unusual datatypes which are not automatically handled.</p>
 <p>These functions live in <code>#include "polyscope/standardize_data_array.h"</code>. It&rsquo;s fairly well-commented&mdash;<a href="https://github.com/nmwsharp/polyscope/blob/master/include/polyscope/standardize_data_array.h">check it out</a> to see how all this works under the hood!</p>
 <hr />
-<h2 id="fixed-size-vector-types">Fixed size vector types</h2>
+<h2 id="fixed-size-vector-types">Fixed size vector types<a class="headerlink" href="#fixed-size-vector-types" title="Permanent link">&para;</a></h2>
 <p>These are 2D or 3D vectors whose size are known at compile time, commonly used to represent things like positions (3D), or UV coordinates (2D).</p>
 <p>Examples of 3D vector types that Polyscope can read from out of the box include <code>glm::vec3</code>, <code>Eigen::Vector3d</code>, and <code>std::array&lt;double, 3&gt;</code> (likewise for 2D).</p>
-<h4 id="hierarchy">Hierarchy</h4>
+<h4 id="hierarchy">Hierarchy<a class="headerlink" href="#hierarchy" title="Permanent link">&para;</a></h4>
 <p>Polyscope will attempt to access an <strong>input 2D vector</strong> in the following ways, in order of decreasing precedence:</p>
 <ul>
 <li>any user-defined function (see below)</li>
@@ -1907,7 +1935,7 @@
 </details>
 <details class="note">
 <summary>extending vector access</summary>
-<h4 id="extending">Extending</h4>
+<h4 id="extending">Extending<a class="headerlink" href="#extending" title="Permanent link">&para;</a></h4>
 <p>Suppose you have an in-house vector type which cannot be accessed by any strategy in the hierarchy above. You can define a custom function that accesses the elements of your type:
 <div class="highlight"><pre><span></span><code><span class="n">YOUR_TYPES_SCALAR</span><span class="w"> </span><span class="nf">adaptorF_custom_accessVector2Value</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">YOUR_TYPE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ind</span><span class="p">);</span>
 </code></pre></div>
@@ -1934,9 +1962,9 @@ The array adaptors will pick up this function and use it to access your type.</p
 </code></pre></div></p>
 </details>
 <hr />
-<h2 id="array-size">Array size</h2>
+<h2 id="array-size">Array size<a class="headerlink" href="#array-size" title="Permanent link">&para;</a></h2>
 <p>The three array adaptor variants below (scalar array, vector array, and nested array) all assume the ability to read the size of an input array. </p>
-<h4 id="hierarchy_1">Hierarchy</h4>
+<h4 id="hierarchy_1">Hierarchy<a class="headerlink" href="#hierarchy_1" title="Permanent link">&para;</a></h4>
 <p>Polyscope will attempt to read the length of an input array in the following ways, in decreasing order of precedence:</p>
 <ul>
 <li>any user-defined function (see below)</li>
@@ -1946,7 +1974,7 @@ The array adaptors will pick up this function and use it to access your type.</p
 </ul>
 <details class="note">
 <summary>extending array size</summary>
-<h4 id="extending_1">Extending</h4>
+<h4 id="extending_1">Extending<a class="headerlink" href="#extending_1" title="Permanent link">&para;</a></h4>
 <p>Suppose you have an in-house array type whose length cannot be read by any strategy in the hierarchy above. You can define a custom function that reads the length like:
 <div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="nf">adaptorF_custom_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">YOUR_ARRAY_TYPE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
 </code></pre></div>
@@ -1963,10 +1991,10 @@ The array adaptors will pick up this function and use it to access your type.</p
 </code></pre></div></p>
 </details>
 <hr />
-<h2 id="scalar-arrays">Scalar arrays</h2>
+<h2 id="scalar-arrays">Scalar arrays<a class="headerlink" href="#scalar-arrays" title="Permanent link">&para;</a></h2>
 <p>A scalar array is a long list of values, like a <code>float</code> at each point in a point cloud, or an <code>int</code> at each vertex of a mesh. We will use the type <code>S</code> to refer to the inner scalar type of an array, like <code>float</code> in <code>std::vector&lt;float&gt;</code>.</p>
 <p>Examples of scalar arrays that Polyscope can read from out of the box include <code>std::vector&lt;float&gt;</code>, <code>Eigen::VectorXd</code>, and <code>std::list&lt;int&gt;</code>.</p>
-<h4 id="hierarchy_2">Hierarchy</h4>
+<h4 id="hierarchy_2">Hierarchy<a class="headerlink" href="#hierarchy_2" title="Permanent link">&para;</a></h4>
 <p>Polyscope will attempt to access an input scalar array in the following ways, in order of decreasing precedence:</p>
 <ul>
 <li>any user-defined function (see below)</li>
@@ -1977,7 +2005,7 @@ The array adaptors will pick up this function and use it to access your type.</p
 </ul>
 <details class="note">
 <summary>extending scalar array access</summary>
-<h4 id="extending_2">Extending</h4>
+<h4 id="extending_2">Extending<a class="headerlink" href="#extending_2" title="Permanent link">&para;</a></h4>
 <p>Suppose you have an in-house array type whose elements cannot be accessed by any strategy in the hierarchy above. You can define a custom function that converts your arrays to a <code>std::vector&lt;S&gt;</code> like
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">YOUR_SCALAR_TYPE</span><span class="o">&gt;</span><span class="w"> </span><span class="n">adaptorF_custom_convertToStdVector</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">YOUR_ARRAY_TYPE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </code></pre></div>
@@ -1999,10 +2027,10 @@ The array adaptors will pick up this function and use it to access your type.</p
 </code></pre></div></p>
 </details>
 <hr />
-<h2 id="arrays-of-vectors">Arrays of vectors</h2>
+<h2 id="arrays-of-vectors">Arrays of vectors<a class="headerlink" href="#arrays-of-vectors" title="Permanent link">&para;</a></h2>
 <p>These are arrays of values where each element of the array is itself a fixed-size vector type, like the 3D position of each point in a point cloud, or a list of edges in a graph. Note that these arrays must have an inner dimension which is fixed and known at compile time.</p>
 <p>Examples of vector arrays that Polyscope can read from out of the box include <code>std::vector&lt;glm::vec3&gt;</code>, <code>Eigen::Matrx&lt;N,3&gt;</code>, and <code>std::list&lt;std::array&lt;int,2&gt;&gt;</code>.</p>
-<h4 id="hierarchy_3">Hierarchy</h4>
+<h4 id="hierarchy_3">Hierarchy<a class="headerlink" href="#hierarchy_3" title="Permanent link">&para;</a></h4>
 <p>Polyscope will attempt to access an input array of vectors in the following ways, in order of decreasing precedence:</p>
 <ul>
 <li>any user-defined function (see below)</li>
@@ -2017,7 +2045,7 @@ The array adaptors will pick up this function and use it to access your type.</p
 <p>The sizes of the inner vector type are generally not checked by Polyscope, so be sure you&rsquo;re passing in something with the right dimensions! If a function expects an array of 3D vectors, don&rsquo;t give it an array of 2D vectors.</p>
 <details class="note">
 <summary>extending array-of-vectors access</summary>
-<h4 id="extending_3">Extending</h4>
+<h4 id="extending_3">Extending<a class="headerlink" href="#extending_3" title="Permanent link">&para;</a></h4>
 <p>Suppose you have an in-house array-of-vectors type whose elements cannot be accessed by any strategy in the hierarchy above. You can define a custom function that converts your arrays to a <code>std::vector&lt;S&gt;</code> like
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">SCALAR_T</span><span class="p">,</span><span class="n">N</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">adaptorF_custom_convertArrayOfVectorToStdVector</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">YOUR_ARRAY_TYPE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span>
 </code></pre></div>
@@ -2042,10 +2070,10 @@ The size of the inner vector is not checked, so be sure it&rsquo;s right!</p>
 </code></pre></div></p>
 </details>
 <hr />
-<h2 id="nested-arrays">Nested arrays</h2>
+<h2 id="nested-arrays">Nested arrays<a class="headerlink" href="#nested-arrays" title="Permanent link">&para;</a></h2>
 <p>These are arrays-of-arrays, like the list of vertex indices for each face in a polygon mesh. Unlike the arrays-of-vectors above, the dimensions of the inner arrays need not be known at compile time, and can vary (though arrays with fixed-sized inner dimension are also valid input).</p>
 <p>Examples of vector arrays that Polyscope can read from out of the box include <code>std::vector&lt;std::vector&lt;int&gt;&gt;</code>, <code>Eigen::Matrix&lt;double,N,3&gt;</code>, and <code>std::vector&lt;std::list&lt;size_t&gt;&gt;</code>.</p>
-<h4 id="hierarchy_4">Hierarchy</h4>
+<h4 id="hierarchy_4">Hierarchy<a class="headerlink" href="#hierarchy_4" title="Permanent link">&para;</a></h4>
 <p>Polyscope will attempt to access a nested array in the following ways, in order of decreasing precedence:</p>
 <ul>
 <li>any user defined function</li>
@@ -2057,7 +2085,7 @@ The size of the inner vector is not checked, so be sure it&rsquo;s right!</p>
 <p>Notice that several of these options make use of the <a href="#scalar-arrays">scalar array adaptors</a>. Once Polyscope can read from <code>YOUR_ARRAY&lt;S&gt;</code>, it can also read from <code>std::vector&lt;YOUR_ARRAY&lt;S&gt;&gt;</code>, etc.</p>
 <details class="note">
 <summary>extending nested array access</summary>
-<h4 id="extending_4">Extending</h4>
+<h4 id="extending_4">Extending<a class="headerlink" href="#extending_4" title="Permanent link">&para;</a></h4>
 <p>Suppose you have an in-house nested array type whose elements cannot be accessed by any strategy in the hierarchy above. You can define a custom function that converts your arrays to a <code>std::vector&lt;std::vector&lt;S&gt;&gt;</code> like
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">adaptorF_custom_convertNestedArrayToStdVector</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">YOUR_NESTED_ARRAY</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inputData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </code></pre></div>
@@ -2082,7 +2110,7 @@ The array adaptors will pick up this function and use it to access your type. </
 </code></pre></div></p>
 </details>
 <hr />
-<h2 id="debugging">Debugging</h2>
+<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
 <p>One downside to our &ldquo;clever&rdquo; use of templates is that compiler error messages can be borderline incomprehensible. Generally, the best debugging strategy is to carefully read the documentation and ensure you are passing in data that makes sense. In most cases, the problem is something simple, like passing a 3D vector where a 2D vector is needed, or mixing up the order of arguments.</p>
 <p>However, if you are deep in the weeds trying to debug why your type isn&rsquo;t matching against the template hierarchy (or why a custom function isn&rsquo;t being used), consider adding the define
 <div class="highlight"><pre><span></span><code><span class="cp">#define POLYSCOPE_NO_STANDARDIZE_FALLTHROUGH</span>

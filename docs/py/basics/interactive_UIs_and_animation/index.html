@@ -321,7 +321,7 @@
   
     <li class="md-nav__item">
       <a href="../../about/release_notes/" class="md-nav__link">
-        Release notes
+        Release Notes
       </a>
     </li>
   
@@ -576,6 +576,26 @@
     Custom UIs with ImGui
   </a>
   
+    <nav class="md-nav" aria-label="Custom UIs with ImGui">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2d-plots-with-implot" class="md-nav__link">
+    2D Plots with ImPlot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-custom-ui" class="md-nav__link">
+    Sample Custom UI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -754,6 +774,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -860,6 +894,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1576,6 +1624,26 @@
     Custom UIs with ImGui
   </a>
   
+    <nav class="md-nav" aria-label="Custom UIs with ImGui">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2d-plots-with-implot" class="md-nav__link">
+    2D Plots with ImPlot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-custom-ui" class="md-nav__link">
+    Sample Custom UI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1626,7 +1694,7 @@
 <p>Likewise, there is no explicit built-in functionality for time-varying data in Polyscope, but you can easily create custom UIs to display and update your content.</p>
 <p>In either case, you can create interactive UI elements with the excellent <a href="https://github.com/ocornut/imgui">Dear ImGui</a> library, see below for more.</p>
 <p><img alt="callback ui demo" src="/py//media/callback_ui_demo.png" /></p>
-<h2 id="basic-flow-for-interactive-uis-and-animation">Basic Flow for Interactive UIs and Animation</h2>
+<h2 id="basic-flow-for-interactive-uis-and-animation">Basic Flow for Interactive UIs and Animation<a class="headerlink" href="#basic-flow-for-interactive-uis-and-animation" title="Permanent link">&para;</a></h2>
 <p>The first step is to get your code executing every frame while the Polyscope window is open and running.</p>
 <p>You can specify a callback function which Polyscope will invoke on each frame while the window is active.  This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.  With this approach, you simplify set the desired callback function, and then call <code>polyscope.show()</code> as usual.</p>
 <p>Your callback function should have no arguments and no return value. To use state inside your callback, access it directly from the outer scope where your function was defined.</p>
@@ -1677,7 +1745,7 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Updating data from main loop with <code>frame_tick()</code></p>
-<h5 id="custom-main-loops">Custom main loops</h5>
+<h5 id="custom-main-loops">Custom main loops<a class="headerlink" href="#custom-main-loops" title="Permanent link">&para;</a></h5>
 <p>As described in <a href="/py//basics/flow/#program-structure">program structure</a>, it is alternately possible to run the Polyscope window not by calling <code>show()</code>, but by writing your own main loop, and calling <code>frame_tick()</code> on each iteration.</p>
 <p>If you choose this route, you can also modify scene content by simple issuing polyscope calls like <code>register_surface_mesh()</code> at any point in your main loop.</p>
 <p><strong>However, you cannot issue ImGui calls at any point in your main loop.</strong> This limitation is because Polyscope needs to set up the ImGui context, which is not available as your main loop executes.</p>
@@ -1685,13 +1753,13 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nested calls to <code>show()</code></p>
-<h5 id="nested-show">Nested show</h5>
+<h5 id="nested-show">Nested show<a class="headerlink" href="#nested-show" title="Permanent link">&para;</a></h5>
 <p>When creating custom UIs, you may find you want to call <code>show()</code> to open the interactive window, <em>within a frame which is already executing the main loop</em>.</p>
 <p>For example, you might create a button which calls a user-specified function. Within that function, if you hit a bug, you could register some extra data to understand the problem, call <code>show()</code> to investigate, then exit the window and continue running the outer program loop.</p>
 <p><strong>This is a supported workflow!</strong> It should be possible to arbitrarily recurse into the show function, interacting with the scene even as an outer loop is executing.</p>
 <p>By default the user callback will not be executed within any of these nested calls to show, only the outermost one (configurable with an option below). Be careful not write an recursion of calling <code>show()</code>!</p>
 </div>
-<h3 id="options">Options</h3>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="n">set_open_imgui_window_for_user_callback</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
 <p>If true, an ImGui window will be created and docked to the side of the UI when the <a href="../../features/callbacks_and_UIs">user callback function</a> is invoked. This means you can immediately start making ui calls like <code>polyscope.imgui.Button("do stuff")</code>. </p>
@@ -1711,7 +1779,7 @@
 <p>If true, the Polyscope window will request focus from the window manager whenever <code>show()</code> is called. If false, the focus state will be left unchanged.</p>
 <p>Default: <code>False</code>.</p>
 </details>
-<h2 id="updating-animated-data">Updating Animated Data</h2>
+<h2 id="updating-animated-data">Updating Animated Data<a class="headerlink" href="#updating-animated-data" title="Permanent link">&para;</a></h2>
 <p>Once you have code executing per-frame, you can issue Polyscope commands on each invocation to update the data.</p>
 <p>The simplest approach is to just re-call structure-registration or quantity-adder functions with the updated data. Adding new structures/quantities with the same name will replace any existing ones, they will even <a href="/py//basics/parameters/#persistent-values">inherit any options which have been set</a>. This should be fast enough for small-medium sized data at interactive rates.</p>
 <p>Additionally, some structures have special more-efficient functions which update the structure in-place, if you are not changing the number of elements (e.g. <a href="/py//structures/surface_mesh/basics/#updating-a-mesh"><code>SurfaceMesh.update_vertex_positions()</code></a>). Currently, if you are changing the number of elements (number of points in a point cloud, or number of vertices or connectivity of a mesh), you have no choice but to register a whole new structure.</p>
@@ -1765,14 +1833,20 @@
 <span class="c1"># give control to the main loop, blocks until window is exited</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<h2 id="custom-uis-with-imgui">Custom UIs with ImGui</h2>
+<h2 id="custom-uis-with-imgui">Custom UIs with ImGui<a class="headerlink" href="#custom-uis-with-imgui" title="Permanent link">&para;</a></h2>
 <p>Polyscope integrates with the <a href="https://github.com/ocornut/imgui">Dear ImGui</a> library, a widely-used framework for creating prototype/demo UIs and widgets. It implements a huge variety of GUI elements including buttons, sliders, text boxes, color pickers, trees, tables, etc.</p>
 <p>The Polyscope python package includes bindings to a significant subset of ImGui in the <code>polyscope.imgui</code> submodule. </p>
 <p>These bindings are not yet exhaustively documented, but they follow the naming conventions of ImGui as closely as possible for simplicity. Documentation of ImGui functions and parameters lives <a href="https://github.com/ocornut/imgui/blob/master/imgui.h">here</a>, and  you can find the list of bound functions, types, and enums <a href="https://github.com/nmwsharp/polyscope-py/blob/master/src/cpp/imgui.cpp">here</a>. Common usage should be covered by the example below.</p>
+<h3 id="2d-plots-with-implot">2D Plots with ImPlot<a class="headerlink" href="#2d-plots-with-implot" title="Permanent link">&para;</a></h3>
+<p>Polyscope also provides <a href="https://github.com/epezent/implot">ImPlot</a> for creating little inline 2D plots like line plots, scatter plots, and histograms in the UI panes. As with ImGui, please see ImPlot&rsquo;s pages for documentation. </p>
+<p>Bindings are defined in the <code>polyscope.implot</code> submodule, and again attempt to follow the original ImPlot naming exactly. Many but not all functions are bound, please file an issue for any missed functionality.</p>
+<h3 id="sample-custom-ui">Sample Custom UI<a class="headerlink" href="#sample-custom-ui" title="Permanent link">&para;</a></h3>
 <p><strong>Example:</strong> Create the following UI in a Python callback</p>
 <p><img alt="callback ui demo" src="/py//media/imgui_py_demo.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
 <span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
+<span class="kn">import</span> <span class="nn">polyscope.implot</span> <span class="k">as</span> <span class="nn">psimplot</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># A bunch of parameters which we will manipulate via the UI defined below.</span>
 <span class="c1"># There is nothing special about these variables, you could manipulate any other </span>
@@ -1914,11 +1988,18 @@
     <span class="n">psim</span><span class="o">.</span><span class="n">PopItemWidth</span><span class="p">()</span>
 
 
+    <span class="c1"># Add a plot            </span>
+    <span class="k">if</span> <span class="n">psimplot</span><span class="o">.</span><span class="n">BeginPlot</span><span class="p">(</span><span class="s2">&quot;test line plot&quot;</span><span class="p">):</span>
+        <span class="n">psimplot</span><span class="o">.</span><span class="n">PlotLine</span><span class="p">(</span><span class="s2">&quot;line plot&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">psimplot</span><span class="o">.</span><span class="n">PlotInfLines</span><span class="p">(</span><span class="s2">&quot;horizontal lines&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">psimplot</span><span class="o">.</span><span class="n">ImPlotInfLinesFlags_Horizontal</span><span class="p">)</span>
+        <span class="n">psimplot</span><span class="o">.</span><span class="n">EndPlot</span><span class="p">()</span>
+
+
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span> 
 <span class="n">ps</span><span class="o">.</span><span class="n">set_user_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<h2 id="mouse-interactions">Mouse Interactions</h2>
+<h2 id="mouse-interactions">Mouse Interactions<a class="headerlink" href="#mouse-interactions" title="Permanent link">&para;</a></h2>
 <p>You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. ImGui exposes the state of the mouse and whether a click occurred via <code>psim.GetIO()</code>.</p>
 <details class="note">
 <summary>Temporarily disable default mouse camera movement</summary>
@@ -1945,7 +2026,7 @@
 <p>Use this function to (temporarily) disable Polyscope&rsquo;s default mouse clicking/panning/zooming response to mouse movements, so that they will not conflict with your own implemented operations</p>
 <p>If <code>True</code>, Polyscope will perform its usual responses to mouse operations, <code>False</code> will disable.</p>
 </details>
-<h3 id="picking-selection-and-querying-the-scene">Picking, Selection, and Querying the Scene</h3>
+<h3 id="picking-selection-and-querying-the-scene">Picking, Selection, and Querying the Scene<a class="headerlink" href="#picking-selection-and-querying-the-scene" title="Permanent link">&para;</a></h3>
 <p>&ldquo;Picking&rdquo; refers to querying the content under the cursor in the rendered image.  Polyscope implements render buffer-based picking, to efficiently get the object and element under the cursor even on large complex scenes.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">pick</span><span class="p">(</span><span class="n">screen_coords</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">buffer_inds</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
@@ -1973,19 +2054,20 @@
 </code></pre></div></p>
 <p>A pick query returns a combined struct with info such as what structure was clicked on, and depth of the point in the scene.</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PickResult</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">is_hit</span> <span class="o">=</span>               <span class="c1"># did we hit anything?</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">structure_type_name</span> <span class="o">=</span>  <span class="c1"># structure type which was hit, like &quot;Point Cloud&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">structure_name</span> <span class="o">=</span>       <span class="c1"># name of structure which was hit, like &quot;my_points&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">screen_coords</span> <span class="o">=</span>        <span class="c1"># coordinates of the query location</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">buffer_inds</span> <span class="o">=</span>          <span class="c1"># render buffer indices of the query location</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span>             <span class="c1"># 3d position which was hit, in world space</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">=</span>                <span class="c1"># depth to the hit, in world units</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">local_index</span> <span class="o">=</span>          <span class="c1"># structure-specific index of the element which was hit</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">structure_data</span> <span class="o">=</span>       <span class="c1"># a dictionary of additional fields for the clicked structure</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">is_hit</span> <span class="o">=</span> <span class="o">...</span>               <span class="c1"># did we hit anything?</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">structure_type_name</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># structure type which was hit, like &quot;Point Cloud&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">structure_name</span> <span class="o">=</span> <span class="o">...</span>       <span class="c1"># name of structure which was hit, like &quot;my_points&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">quantity_name</span> <span class="o">=</span> <span class="o">...</span>        <span class="c1"># name of quantity which was hit (most quantities cannot be picked, you pick the structure instead)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">screen_coords</span> <span class="o">=</span> <span class="o">...</span>        <span class="c1"># coordinates of the query location</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">buffer_inds</span> <span class="o">=</span> <span class="o">...</span>          <span class="c1"># render buffer indices of the query location</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="o">...</span>             <span class="c1"># 3d position which was hit, in world space</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">=</span> <span class="o">...</span>                <span class="c1"># depth to the hit, in world units</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">local_index</span> <span class="o">=</span> <span class="o">...</span>          <span class="c1"># structure-specific index of the element which was hit</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">structure_data</span> <span class="o">=</span> <span class="o">...</span>       <span class="c1"># a dictionary of additional fields for the clicked structure</span>
 </code></pre></div>
 <p>Additionally, many structures will report additional information about the pick, in the <code>structure_data</code> field. For instance, a <code>SurfaceMesh</code> gives info on whether a vertex/face/edge/etc was clicked on, the index of that element, and barycentric coordinates of the click within a face.</p>
 <p>Polyscope also maintains a stateful selection, displayed in the UI to provide information about the content of the scene. It can be accessed via <code>get_selection()</code>, <code>reset_selection()</code>, <code>have_selection()</code>.</p>
-<h2 id="overriding-built-in-ui-behavior">Overriding Built-In UI Behavior</h2>
+<h2 id="overriding-built-in-ui-behavior">Overriding Built-In UI Behavior<a class="headerlink" href="#overriding-built-in-ui-behavior" title="Permanent link">&para;</a></h2>
 <p>If desired, you can circumvent Polyscope&rsquo;s standard ImGui style and UI panes, in ordered to build dramatically customized applications.</p>
 <p>The option <code>build_gui</code> can be used to entirely disable all of Polyscope&rsquo;s ImGui UI elements, allowing you to build your own UI. Polyscope will still initialize ImGui and invoke its drawing routines each frame.</p>
 <details class="func">

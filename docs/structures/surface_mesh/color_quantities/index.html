@@ -664,6 +664,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -770,6 +784,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1652,7 +1680,7 @@
 <span class="c1">// Visualize</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addFaceColorQuantity</span><span class="p">(</span><span class="s">&quot;fColor&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fColor</span><span class="p">);</span>
 </code></pre></div></p>
-<h3 id="add-colors-to-elements">Add Colors to Elements</h3>
+<h3 id="add-colors-to-elements">Add Colors to Elements<a class="headerlink" href="#add-colors-to-elements" title="Permanent link">&para;</a></h3>
 <details class="func">
 <summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addVertexColorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">values</span><span class="p">)</span></code></summary>
 <p>Add a color quantity defined at the vertices of the mesh.</p>
@@ -1669,7 +1697,7 @@
 </ul>
 <p>RGB values are interpreted in the range <code>[0,1]</code>.</p>
 </details>
-<h3 id="color-texture-maps">Color Texture Maps</h3>
+<h3 id="color-texture-maps">Color Texture Maps<a class="headerlink" href="#color-texture-maps" title="Permanent link">&para;</a></h3>
 <p>Texture images define data by storing it an image grid, and using coordinates defined on the face-corners or vertices of a mesh to sample values from the image for each point on the surface.</p>
 <p>To visualize color data defined in texture maps, first add a <a href="/structures/surface_mesh/parameterization_quantities/">Parameterization Quantity</a> (aka UV map) defining the coordinates. Then, add a buffer of image data to be sampled from with the function below.</p>
 <p><strong>Example</strong>
@@ -1716,7 +1744,7 @@
 <li><code>FilterMode::Nearest</code> for sharp nearest-neighbor sampling</li>
 </ul>
 </details>
-<h3 id="color-quantity-options">Color Quantity Options</h3>
+<h3 id="color-quantity-options">Color Quantity Options<a class="headerlink" href="#color-quantity-options" title="Permanent link">&para;</a></h3>
 <p>These options and behaviors are available for all types of color quantities on any structure.</p>
 <table>
 <thead>
@@ -1734,7 +1762,7 @@
 <td>is the quantity enabled?</td>
 <td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">isEnabled</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
-<td><a href="[[url.prefix]]/basics/parameters/#persistent-values">yes</a></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
 </tr>
 </tbody>
 </table>

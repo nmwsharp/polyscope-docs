@@ -664,6 +664,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -770,6 +784,20 @@
     <li class="md-nav__item">
       <a href="../../curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1670,14 +1698,14 @@
                   
 
 
-<h1 id="volume-meshes">Volume Meshes</h1>
+<h1 id="volume-meshes">Volume Meshes<a class="headerlink" href="#volume-meshes" title="Permanent link">&para;</a></h1>
 <p>Volumetric meshes, such as tetrahedral (<em>tet</em>) and hexahedral (<em>hex</em>, cube-like) meshes, represent a region of 3D space. Polyscope can display tet and hex meshes, including those which have a mix of hex and tet elements. We&rsquo;ll use the term <em>cell</em> to refer generically to a tet or hex in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values.</p>
 <video width=100% autoplay muted loop>
   <source src="/media/movies/volume_demo_compress.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
-<h3 id="registering-a-volume-mesh">Registering a volume mesh</h3>
+<h3 id="registering-a-volume-mesh">Registering a volume mesh<a class="headerlink" href="#registering-a-volume-mesh" title="Permanent link">&para;</a></h3>
 <p>Example: registering a tetrahedral mesh from libIGL
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/volume_mesh.h&quot;</span>
@@ -1767,7 +1795,7 @@
 <p class="admonition-title">No support for 2D</p>
 <p>Unlike other structures, 2D volume meshes are not supported; they don&rsquo;t make much sense (see <a href="/features/2D_data">2D data</a>).</p>
 </div>
-<h3 id="updating-a-mesh">Updating a mesh</h3>
+<h3 id="updating-a-mesh">Updating a mesh<a class="headerlink" href="#updating-a-mesh" title="Permanent link">&para;</a></h3>
 <p>The locations of the vertices in a mesh can be updated with the member function <code>updateVertexPositions(newPositions)</code>. All quantities will be preserved. Changing the connectivity or element counts in a mesh is not supported, you will need to register a new mesh (perhaps with the same name to overwrite).</p>
 <details class="func">
 <summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">VolumeMesh</span><span class="o">::</span><span class="n">updateVertexPositions</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">V</span><span class="o">&amp;</span><span class="w"> </span><span class="n">newPositions</span><span class="p">)</span></code></summary>
@@ -1776,10 +1804,10 @@
 <li><code>newPositions</code> is the vector array of 3D vertex locations. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 3-vectors.  The length must be equal to the current number of vertices.</li>
 </ul>
 </details>
-<h3 id="slice-planes">Slice planes</h3>
+<h3 id="slice-planes">Slice planes<a class="headerlink" href="#slice-planes" title="Permanent link">&para;</a></h3>
 <p><a href="/features/slice_planes">Slice planes</a> are particularly useful for inspecting the internal structure of a volume mesh, as shown in the demo video at the top. Slice planes can be manipulated programmatically or manually in the GUI; see the slice plane documentation for more details.</p>
 <p>Slice planes have <a href="/features/slice_planes/#inspecting-volume-meshes">special functionality</a> for volume mesh vertex values&mdash;they can <em>inspect</em> quantities on volume meshes and render them on the interior of the volume. See the slice plane documentation for details.</p>
-<h3 id="selection-picking">Selection / Picking</h3>
+<h3 id="selection-picking">Selection / Picking<a class="headerlink" href="#selection-picking" title="Permanent link">&para;</a></h3>
 <p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call <code>interpretPickResult()</code> to get additional info about a click. See <a href="/basics/interactive_UIs_and_animation/#selection-picking">the overview of Selection / Picking</a> for general information.</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">VolumeMeshPickResult</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">VolumeMeshElement</span><span class="w"> </span><span class="n">elementType</span><span class="p">;</span><span class="w"> </span><span class="c1">// which kind of element did we click (enum values: {VERTEX, EDGE, FACE, CELL})</span>
@@ -1790,7 +1818,7 @@
 <summary><code class="highlight"><span class="n">VolumeMeshPickResult</span><span class="w"> </span><span class="n">VolumeMesh</span><span class="o">::</span><span class="n">interpretPickResult</span><span class="p">(</span><span class="n">PickResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span></code></summary>
 <p>Get additional information about a click.</p>
 </details>
-<h3 id="options">Options</h3>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
 <p>See <a href="/structures/structure_management/#structure-options">structure management</a> for options common to all structures such as enabling/disabling, transforms, and transparency.</p>
 <table>
 <thead>

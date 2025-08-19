@@ -662,6 +662,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../structures/point_cloud/variable_radius/" class="md-nav__link">
         Variable Radius
       </a>
@@ -768,6 +782,20 @@
     <li class="md-nav__item">
       <a href="../../structures/curve_network/vector_quantities/" class="md-nav__link">
         Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
       </a>
     </li>
   
@@ -1654,10 +1682,10 @@
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 </code></pre></div></p>
-<h3 id="adding-2d-data">Adding 2D data</h3>
+<h3 id="adding-2d-data">Adding 2D data<a class="headerlink" href="#adding-2d-data" title="Permanent link">&para;</a></h3>
 <p>Functions which accept 3D positions (or vectors) as input have a variant which takes 2D positions, and appends a 0 z-coordinate.  For instance, <code>registerPointCloud()</code> has a matching <code>registerPointCloud2D()</code>, there&rsquo;s <code>registerSurfaceMesh2D</code>, etc. Any other functions which don&rsquo;t take 3D positions can be used as normal, like <code>addScalarQuantity()</code>.</p>
 <p>Note that you definitely <em>should not</em> just call the normal 3D versions with 2D data. If you&rsquo;re lucky, it will fail to compile; if you&rsquo;re unlucky your code may segfault!</p>
-<h3 id="planar-camera-mode">Planar camera mode</h3>
+<h3 id="planar-camera-mode">Planar camera mode<a class="headerlink" href="#planar-camera-mode" title="Permanent link">&para;</a></h3>
 <p>The Polyscope camera can be &ldquo;locked-in&rdquo; to a 2D view by setting the mode to <code>Planar</code>. In the UI, this option is in the main Polyscope window, set to <code>Turntable</code> by default. Setting the camera mode to <code>Planar</code> will also hide the ground plane.</p>
 <p><img alt="planar view setting" src="/media/view_planar.png" style="height:200px;" /></p>
 <p>To set this option programmatically, use:
