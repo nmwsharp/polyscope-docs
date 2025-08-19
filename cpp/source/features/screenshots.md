@@ -45,6 +45,11 @@ struct ScreenshotOptions {
 - If `transparentBG` is `true`, the background will be rendered as transparent, and set as transparency alpha in the saved image if the file format supports it.
 - If `includeUI` is `true`, the screenshot will be captured with the ImGui UI elements (panels, buttons, etc) visible.
 
+!!! warning "includeUI may not match"
+
+    The screenshot `includeUI` setting is imperfect, the UI will be visible, but may be in a different state compared to what you see in your own window. This is a known bug, and we hope to fix it in future version.
+
+
 ???+ func "`#!cpp void screenshot(const ScreenshotOptions& options)`"
     
     ##### numbered screenshot

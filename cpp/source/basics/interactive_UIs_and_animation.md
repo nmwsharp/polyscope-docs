@@ -189,6 +189,11 @@ We will not reproduce the ImGui documentation here, visit the ImGui github page 
 
 ![callback ui demo]([[url.prefix]]/media/imgui_py_demo.png)
 
+
+### 2D Plots with ImPlot
+
+Polyscope also provides [ImPlot](https://github.com/epezent/implot) for creating little inline 2D plots like line plots, scatter plots, and histograms in the UI panes. As with ImGui, please see ImPlot's pages for documentation.
+
 ## Mouse Interactions
 
 You can implement custom mouse behaviors on clicks and other actions within your per-frame callback function. `ImGui` exposes the state of the mouse and whether a click occurred via `ImGui::GetIO()`.

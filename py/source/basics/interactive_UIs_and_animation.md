@@ -188,6 +188,14 @@ The Polyscope python package includes bindings to a significant subset of ImGui 
 
 These bindings are not yet exhaustively documented, but they follow the naming conventions of ImGui as closely as possible for simplicity. Documentation of ImGui functions and parameters lives [here](https://github.com/ocornut/imgui/blob/master/imgui.h), and  you can find the list of bound functions, types, and enums [here](https://github.com/nmwsharp/polyscope-py/blob/master/src/cpp/imgui.cpp). Common usage should be covered by the example below.
 
+### 2D Plots with ImPlot
+
+Polyscope also provides [ImPlot](https://github.com/epezent/implot) for creating little inline 2D plots like line plots, scatter plots, and histograms in the UI panes. As with ImGui, please see ImPlot's pages for documentation. 
+
+Bindings are defined in the `polyscope.implot` submodule, and again attempt to follow the original ImPlot naming exactly. Many but not all functions are bound, please file an issue for any missed functionality.
+
+### Sample Custom UI
+
 **Example:** Create the following UI in a Python callback
 
 ![callback ui demo]([[url.prefix]]/media/imgui_py_demo.png)
@@ -195,6 +203,8 @@ These bindings are not yet exhaustively documented, but they follow the naming c
 ```python
 import polyscope as ps
 import polyscope.imgui as psim
+import polyscope.implot as psimplot
+import numpy as np
 
 # A bunch of parameters which we will manipulate via the UI defined below.
 # There is nothing special about these variables, you could manipulate any other 
@@ -334,6 +344,13 @@ def callback():
         psim.TreePop()
 
     psim.PopItemWidth()
+
+
+    # Add a plot            
+    if psimplot.BeginPlot("test line plot"):
+        psimplot.PlotLine("line plot", np.random.rand(10))
+        psimplot.PlotInfLines("horizontal lines", np.random.rand(3), psimplot.ImPlotInfLinesFlags_Horizontal)
+        psimplot.EndPlot()
 
 
 ps.init() 

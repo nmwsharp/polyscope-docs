@@ -30,6 +30,10 @@ ps.screenshot()
 img = ps.screenshot_to_buffer()
 ```
 
+!!! warning "include_UI may not match"
+
+    The screenshot `include_UI=True` setting is imperfect, the UI will be visible, but may be in a different state compared to what you see in your own window. This is a known bug, and we hope to fix it in future version.
+
 ???+ func "`#!python screenshot(filename=None, transparent_bg=True, include_UI=False)`"
 
     Saves a screenshot to the path given as `filename`, with format inferred from the file extension. 
