@@ -67,7 +67,8 @@ By default, the height of the ground plane is set automatically to the bottom of
 
 Alternately, the height can be specified to a fixed location in world coordinates like:
 ```python
-ps.set_ground_height(0.) # in world coordinates along the up axis
+ps.set_ground_plane_height_mode('manual')
+ps.set_ground_plane_height(0.) # in world coordinates along the up axis
 ```
 
 ??? func "`#!python set_ground_plane_height(x)`"
