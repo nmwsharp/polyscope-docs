@@ -25,6 +25,7 @@ ps_mesh.add_scalar_quantity("rand vals2", vals_face, defined_on='faces')
 
 # visualize some random data per-edge (halfedges are also supported)
 vals_edge = np.random.rand(ps_mesh.n_edges())
+ps_mesh.set_edge_permutation(np.arange(ps_mesh.n_edges())) # set permutations so edge data is meaningful
 ps_mesh.add_scalar_quantity("rand vals3", vals_edge, defined_on='edges')
 
 # as always, we can customize the initial appearance
