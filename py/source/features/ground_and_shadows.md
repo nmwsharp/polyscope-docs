@@ -19,7 +19,7 @@ import polyscope as ps
 ps.init()
 
 # set the ground height to a fixed location manually
-ps.set_ground_height(0.) # in world coordinates
+ps.set_ground_plane_height(0.) # in world coordinates
 
 # set soft shadows on the ground
 ps.set_ground_plane_mode("shadow_only")  # set +Z as up direction
