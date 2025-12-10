@@ -286,7 +286,7 @@ In perspective mode, zooming (for instance, by manually scrolling the mouse) tra
 
 ## Centering the View on Scene Content
 
-To focus on particular areas of interest, hold ctrl+shift (cmd+shift on macOS) and click in the scene. This will re-center the view in the clicked location. You can also hold ctrl+shift (cmd+shift on macOS) and scroll to zoom relative to selected center location, which makes it easer to zoom in on small details. Use the Reset View button to reset the center of interest.
+To focus on particular areas of interest, double-click on the scene OR hold ctrl+shift (cmd+shift on macOS) and click in the scene. This will re-center the view in the clicked location. You can also hold ctrl+shift (cmd+shift on macOS) and scroll to zoom relative to selected center location, which makes it easer to zoom in on small details. Use the Reset View button to reset the center of interest.
 
 <video width=100% autoplay muted loop>
   <source src="[[url.prefix]]/media/rotation_center.mp4" type="video/mp4">
