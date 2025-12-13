@@ -5,7 +5,6 @@ Geometric data often has complex internal structures. Slice planes can be added 
   Your browser does not support the video tag.
 </video>
 
-
 **Example**: sweep a slice plane through the scene to produce the animation above
 
 ```cpp
@@ -42,9 +41,53 @@ Slice planes can also be manipulated in the GUI under `[View] --> [Slice Planes]
 
 ### Creating and modifying slice planes
 
+??? func "`#!cpp SlicePlane* addSlicePlane(std::string name)`"
+    
+    ##### add slice plane
+    
+    Add a new slice plane to the scene with the given name. An arbitrary number of slice planes may be added.
+
+
+??? func "`#!cpp SlicePlane* addSlicePlane()`"
+    
+    ##### add slice plane
+    
+    Add a new slice plane to the scene with an automatically generated name like "Scene Slice Plane 0", "Scene Slice Plane 1", etc.
+
+
+??? func "`#!cpp SlicePlane* getSlicePlane(std::string name)`"
+    
+    ##### get slice plane
+    
+    Get a slice plane by name.
+
+
+??? func "`#!cpp void removeSlicePlane(std::string name)`"
+    
+    ##### remove slice plane
+    
+    Remove a slice plane by name.
+
+
+??? func "`#!cpp void removeSlicePlane(SlicePlane* plane)`"
+    
+    ##### remove slice plane
+    
+    Remove a slice plane by pointer.
+
+
+??? func "`#!cpp void removeAllSlicePlanes()`"
+    
+    ##### remove all slice planes
+    
+    Remove all slice planes from the scene.
+
+
 ??? func "`#!cpp SlicePlane* addSceneSlicePlane(bool initiallyVisible=false)`"
     
     ##### add slice plane
+
+    **Note:** this function is considered deprecated, prefer using `addSlicePlane()` and setting visibility after adding.
     
     Add a new slice plane to the scene. An arbitrary number of slices planes may be added.
 
@@ -64,6 +107,13 @@ Slice planes can also be manipulated in the GUI under `[View] --> [Slice Planes]
 
     The unique name of the slice plane, which can be accessed like `myPlane->name`.
 
+
+??? func "`#!cpp void SlicePlane::remove()`"
+    
+    ##### remove
+
+    Remove the slice plane from the scene. After calling this, the pointer is invalid and should not be used.
+
 ??? func "`#!cpp void SlicePlane::setPose(glm::vec3 planePosition, glm::vec3 planeNormal)`"
     
     ##### set pose
@@ -72,7 +122,33 @@ Slice planes can also be manipulated in the GUI under `[View] --> [Slice Planes]
 
       - `planePosition` is any 3D position which the plane touches (the center of the plane)
       - `planeNormal` is a vector giving the normal direction of the plane, objects in this negative side of the plane will be culled
+
+
+??? func "`#!cpp glm::vec3 SlicePlane::getCenter()`"
     
+    ##### get center
+
+    Get the center position of the slice plane.
+
+
+??? func "`#!cpp glm::vec3 SlicePlane::getNormal()`"
+    
+    ##### get normal
+
+    Get the normal direction of the slice plane.
+    
+
+??? func "`#!cpp void SlicePlane::setEnabled(bool newVal)`"
+    
+    ##### enabled
+ 
+    Set the slice plane to be enabled or not. If disabled, the slice plane will not have any effect on any structures in the scene.
+
+
+??? func "`#!cpp bool SlicePlane::getEnabled()`"
+    
+    Test whether the slice plane is enabled.
+
 
 ??? func "`#!cpp void SlicePlane::setActive(bool newVal)`"
     
@@ -84,6 +160,56 @@ Slice planes can also be manipulated in the GUI under `[View] --> [Slice Planes]
 ??? func "`#!cpp bool SlicePlane::getActive()`"
     
     Test whether the slice plane is active.
+
+
+??? func "`#!cpp void SlicePlane::setTransform(glm::mat4 newTransform)`"
+    
+    ##### set transform
+
+    Set the transformation matrix for the slice plane.
+
+
+??? func "`#!cpp glm::mat4 SlicePlane::getTransform()`"
+    
+    ##### get transform
+
+    Get the transformation matrix of the slice plane.
+
+
+??? func "`#!cpp void SlicePlane::setColor(glm::vec3 newVal)`"
+    
+    ##### color
+    
+    Set the color of the slice plane.
+
+
+??? func "`#!cpp glm::vec3 SlicePlane::getColor()`"
+    
+    Get the color of the slice plane.
+
+
+??? func "`#!cpp void SlicePlane::setGridLineColor(glm::vec3 newVal)`"
+    
+    ##### grid line color
+    
+    Set the color of the grid lines on the slice plane.
+
+
+??? func "`#!cpp glm::vec3 SlicePlane::getGridLineColor()`"
+    
+    Get the grid line color of the slice plane.
+
+
+??? func "`#!cpp void SlicePlane::setTransparency(double newVal)`"
+    
+    ##### transparency
+    
+    Set the transparency of the slice plane.
+
+
+??? func "`#!cpp double SlicePlane::getTransparency()`"
+    
+    Get the transparency of the slice plane.
 
 
 ??? func "`#!cpp void SlicePlane::setDrawPlane(bool newVal)`"

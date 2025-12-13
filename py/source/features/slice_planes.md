@@ -37,9 +37,39 @@ Slice planes can also be manipulated in the GUI under `[View] --> [Slice Planes]
 
 ### Creating and modifying slice planes
 
+??? func "`#!python SlicePlane add_slice_plane(name=None)`"
+    
+    ##### add slice plane
+    
+    Add a new slice plane to the scene and return it. An arbitrary number of slice planes may be added. If no name is given, a unique name will be automatically generated.
+
+
+??? func "`#!python SlicePlane get_slice_plane(name)`"
+    
+    ##### get slice plane
+    
+    Get a slice plane by name.
+
+
+??? func "`#!python remove_slice_plane(name)`"
+    
+    ##### remove slice plane
+    
+    Remove a slice plane by name.
+
+
+??? func "`#!python remove_all_slice_planes()`"
+    
+    ##### remove all slice planes
+    
+    Remove all slice planes from the scene.
+
+
 ??? func "`#!python SlicePlane add_scene_slice_plane()`"
     
     ##### add slice plane
+    
+    **Note:** this function is considered deprecated, prefer using `addSlicePlane()` and setting visibility after adding.
     
     Add a new slice plane to the scene and return it. An arbitrary number of slices planes may be added.
 
@@ -58,6 +88,13 @@ Slice planes can also be manipulated in the GUI under `[View] --> [Slice Planes]
     Get the unique name of the slice plane.
 
 
+??? func "`#!python SlicePlane.remove()`"
+    
+    ##### remove
+
+    Remove the slice plane from the scene.
+
+
 ??? func "`#!python SlicePlane.set_pose(plane_position, plane_normal)`"
     
     ##### set pose
@@ -68,7 +105,33 @@ Slice planes can also be manipulated in the GUI under `[View] --> [Slice Planes]
       - `plane_normal` is a vector giving the normal direction of the plane, objects in this negative side of the plane will be culled
 
     These input 3D vectors can be tuples, length-3 numpy arrays, or really anything that can be indexed for three components.
+
+
+??? func "`#!python SlicePlane.get_center()`"
     
+    ##### get center
+
+    Get the center position of the slice plane.
+
+
+??? func "`#!python SlicePlane.get_normal()`"
+    
+    ##### get normal
+
+    Get the normal direction of the slice plane.
+    
+
+
+??? func "`#!python SlicePlane.set_enabled(val)`"
+    
+    ##### enabled
+ 
+    Set the slice plane to be enabled or not. If disabled, the slice plane will not have any effect on any structures in the scene.
+
+
+??? func "`#!python SlicePlane.get_enabled()`"
+    
+    Test whether the slice plane is enabled.
 
 
 ??? func "`#!python SlicePlane.set_active(val)`"
@@ -81,6 +144,42 @@ Slice planes can also be manipulated in the GUI under `[View] --> [Slice Planes]
 ??? func "`#!python SlicePlane.get_active()`"
     
     Test whether the slice plane is active.
+
+
+??? func "`#!python SlicePlane.set_color(val)`"
+    
+    ##### color
+    
+    Set the color of the slice plane. Accepts RGB values as a 3-tuple or numpy array.
+
+
+??? func "`#!python SlicePlane.get_color()`"
+    
+    Get the color of the slice plane.
+
+
+??? func "`#!python SlicePlane.set_grid_line_color(val)`"
+    
+    ##### grid line color
+    
+    Set the color of the grid lines on the slice plane. Accepts RGB values as a 3-tuple or numpy array.
+
+
+??? func "`#!python SlicePlane.get_grid_line_color()`"
+    
+    Get the grid line color of the slice plane.
+
+
+??? func "`#!python SlicePlane.set_transparency(val)`"
+    
+    ##### transparency
+    
+    Set the transparency of the slice plane.
+
+
+??? func "`#!python SlicePlane.get_transparency()`"
+    
+    Get the transparency of the slice plane.
 
 
 ??? func "`#!python SlicePlane.set_draw_plane(val)`"
