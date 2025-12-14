@@ -204,13 +204,13 @@ You can implement custom mouse behaviors on clicks and other actions within your
 
     ```cpp
     if(doing_interaction && ImGui::IsMouseClicked(1)) {
-        polyscope::state::doDefaultMouseInteraction = false;
+        polyscope::options::doDefaultMouseInteraction = false;
         // ... do your interaction
     }
 
     if(!doing_interaction) {
         // re-enable the default mouse motions after you're done
-        polyscope::state::doDefaultMouseInteraction = true;
+        polyscope::options::doDefaultMouseInteraction = true;
     }
     ```
 
