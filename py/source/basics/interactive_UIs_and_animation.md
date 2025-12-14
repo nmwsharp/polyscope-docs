@@ -451,7 +451,35 @@ Polyscope also maintains a stateful selection, displayed in the UI to provide in
 
 If desired, you can circumvent Polyscope's standard ImGui style and UI panes, in ordered to build dramatically customized applications.
 
-If desired, you can set them to your own custom functions to use alternate styles.
+!!! warning
+
+    Circumventing the standard Polyscope user interface should be considered "advanced" usage. You are more likely to encounter bugs, and you may need to look at the Polyscope source to understand the behavior. The functions listed in this section may change in future versions of Polyscope.
+
+The appearance of the ImGui UI panes can be significantly customized and styled.  See the ImGui documentation (and examples such as [this](https://github.com/ocornut/imgui/issues/707)) for styling options. Polyscope must be able to re-apply the style each time a new context is created, so it must be registered in a callback function rather than set just once.
+
+```python
+import polyscope as ps
+import polyscope.imgui as psim
+
+def ui_style_func(): # your style callback
+    style = psim.GetStyle()
+    style.WindowRounding = 1
+    style.FrameRounding = 1
+    style.FramePadding = (style.FramePadding[0], 4)
+    style.ScrollbarRounding = 1
+    style.ScrollbarSize = 20
+    style.ScaleAllSizes(ps.get_ui_scale())
+
+    colors = style.GetColors()
+    colors[psim.ImGuiCol_Text] = (0.90, 0.90, 0.90, 1.00)
+    colors[psim.ImGuiCol_TextDisabled] = (0.60, 0.60, 0.60, 1.00)
+    colors[psim.ImGuiCol_TabSelected] = (0.38, 0.76, 0.58, 0.83) 
+    # ... many more, see ImGui documentation ...
+
+    style.SetColors(colors)
+
+ps.set_configure_imgui_style_callback(ui_style_func)
+```
 
 ??? func "`#!python set_configure_imgui_style_callback(func)`"
 

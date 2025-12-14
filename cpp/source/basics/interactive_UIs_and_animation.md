@@ -301,20 +301,21 @@ If desired, you can circumvent Polyscope's standard ImGui style and UI panes, in
 
     Circumventing the standard Polyscope user interface should be considered "advanced" usage. You are more likely to encounter bugs, and you may need to look at the Polyscope source to understand the behavior. The functions listed in this section may change in future versions of Polyscope.
 
+The appearance of the ImGui UI panes can be significantly customized and styled.  See the ImGui documentation (and examples such as [this](https://github.com/ocornut/imgui/issues/707)) for styling options. Polyscope must be able to re-apply the style each time a new context is created, so it must be registered in a callback function rather than set just once.
 
-Two callback functions are made available to configure the appearance of Polyscope's ImGui panes. These callbacks are invoked internally by Polyscope during the setup process. If desired, you can set them to your own custom functions to use alternate styles.
+Two callback functions are made available to configure the appearance of Polyscope's ImGui panes. These callbacks are invoked internally by Polyscope during the setup process. If desired, you can set them to your own custom functions to use alternate styles.  See the ImGui documentation (and examples such as [this](https://github.com/ocornut/imgui/issues/707)) for styling options. Polyscope must be able to re-apply the style each time a new context is created, so it must be registered in a callback function rather than set just once.
 
 **Example:**
 ```cpp
-// clearing the callback will fall back on default imgui styles
-polyscope::options::configureImGuiStyleCallback = nullptr;
 
-// alternately, set a custom callback 
+// set a custom callback 
 // (which in this case simply configures the imgui light style)
-polyscope::options::configureImGuiStyleCallback = []() { ImGui::StyleColorsLight(); };
+polyscope::options::configureImGuiStyleCallback = []() {
+   ImGui::StyleColorsLight(); 
 
-// clearing the fonts callback will fall back on default imgui fonts
-polyscope::options::prepareImGuiFontsCallback = nullptr;
+   // or, implement your own custom imgui style here
+};
+
 
 // initialize polyscope
 polyscope::init();
@@ -336,31 +337,41 @@ polyscope::init();
 
     ```cpp
     std::tuple<ImFontAtlas*, ImFont*, ImFont*> prepareImGuiFonts() {
+
       ImGuiIO& io = ImGui::GetIO();
 
+      // DPI scaling
+      ImVec2 windowSize{static_cast<float>(view::windowWidth), static_cast<float>(view::windowHeight)};
+      ImVec2 bufferSize{static_cast<float>(view::bufferWidth), static_cast<float>(view::bufferHeight)};
+      ImVec2 imguiCoordScale = {bufferSize.x / windowSize.x, bufferSize.y / windowSize.y};
+
       // outputs
-      ImFontAtlas* globalFontAtlas;
+      ImFontAtlas* fontAtlas = nullptr; // right now this is unused by the caller, but I don't want to change
+                                        // this callback signature until I'm more confident about how this
+                                        // should work. (And it might be changing in an upcoming imgui version)
       ImFont* regularFont;
       ImFont* monoFont;
 
+      float fontSize = 16.0 * options::uiScale;
+      fontSize = std::max(1.0f, std::roundf(fontSize));
+
       { // add regular font
         ImFontConfig config;
-        regularFont = io.Fonts->AddFontFromMemoryCompressedTTF(render::getLatoRegularCompressedData(),
-                                                               render::getLatoRegularCompressedSize(), 18.0f, &config);
+        config.RasterizerDensity = std::max(imguiCoordScale.x, imguiCoordScale.y);
+        regularFont = io.Fonts->AddFontFromMemoryCompressedTTF(/* add font */);
       }
 
       { // add mono font
         ImFontConfig config;
-        monoFont = io.Fonts->AddFontFromMemoryCompressedTTF(render::getCousineRegularCompressedData(),
-                                                            render::getCousineRegularCompressedSize(), 16.0f, &config);
+        config.RasterizerDensity = std::max(imguiCoordScale.x, imguiCoordScale.y);
+        monoFont = io.Fonts->AddFontFromMemoryCompressedTTF(*/ add font */);
       }
 
-      // Add your own additional fonts here
+      // load additional fonts here
 
       io.Fonts->Build();
-      globalFontAtlas = io.Fonts;
 
-      return std::tuple<ImFontAtlas*, ImFont*, ImFont*>{globalFontAtlas, regularFont, monoFont};
+      return std::tuple<ImFontAtlas*, ImFont*, ImFont*>{fontAtlas, regularFont, monoFont};
     }
     ```
 
