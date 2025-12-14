@@ -378,3 +378,13 @@ The option `buildGui` can be used to entirely disable all of Polyscope's ImGui U
     Default: `true`.
 
 The functions `buildPolyscopeGui()`, `buildStructureGui()`, `buildPickGui()`, and `buildUserGuiAndInvokeCallback()` can be used to manually build pieces of the UI one at a time. If you are giving control to the UI via `show()`, you call the first 3 to reproduce the standard UI.
+
+## Miscellaneous
+
+??? func "`#!cpp std::function<void(const std::vector<std::string>&)> state::filesDroppedCallback`"
+
+    #### files dropped callback
+
+    This callback function is invoked whenever the user drags-and-drops file(s) onto the Polyscope window. Specify your own function implement custom behaviors like loading data.
+
+    Default: `nullptr` (no callback)

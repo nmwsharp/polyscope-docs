@@ -451,6 +451,16 @@ Polyscope also maintains a stateful selection, displayed in the UI to provide in
 
 If desired, you can circumvent Polyscope's standard ImGui style and UI panes, in ordered to build dramatically customized applications.
 
+If desired, you can set them to your own custom functions to use alternate styles.
+
+??? func "`#!python set_configure_imgui_style_callback(func)`"
+
+    A callback function which will be invoked when an ImGui context is created (which may happen several times as Polyscope runs). By default this callback sets up Polyscope's own style, but you may assign your own function to create custom styles. 
+    
+    If this callback is null, the default ImGui style will be used.
+    
+    Also, use `clear_configure_imgui_style_callback()` to clear this callback if needed.
+
 
 The option `build_gui` can be used to entirely disable all of Polyscope's ImGui UI elements, allowing you to build your own UI. Polyscope will still initialize ImGui and invoke its drawing routines each frame.
 
@@ -462,5 +472,16 @@ The option `build_gui` can be used to entirely disable all of Polyscope's ImGui 
 
     Default: `True`.
 
-The functions `build_polyscope_gui()`, `build_structure_gui()`, `build_pick_gui()`, and `build_user_gui_and_invoke_callback()`
- can be used to manually build pieces of the UI one at a time. If you are giving control to the UI via `show()`, you call the first 3 to reproduce the standard UI.
+The functions `build_polyscope_gui()`, `build_structure_gui()`, `build_pick_gui()`, and `build_user_gui_and_invoke_callback()` can be used to manually build pieces of the UI one at a time. If you are giving control to the UI via `show()`, you call the first 3 to reproduce the standard UI.
+
+## Miscellaneous
+
+??? func "`#!python set_files_dropped_callback(files)`"
+
+    #### files dropped callback
+
+    This callback function is invoked whenever the user drags-and-drops file(s) onto the Polyscope window. Specify your own function implement custom behaviors like loading data. The argumentw ill be a list of strings.
+
+    Default: `None` (no callback)
+    
+    Also, use `clear_files_dropped_callback()` to clear this callback if needed.
