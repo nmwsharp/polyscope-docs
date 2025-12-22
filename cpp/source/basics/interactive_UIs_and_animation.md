@@ -181,6 +181,120 @@ int main(int argc, char** argv) {
 }
 ```
 
+
+## Transformation Gizmos
+
+Transformation gizmos allow users adjust the rotation/translation/scale of objects in the scene. You can create your own gizmos to manipulate any transformations or positions within interactive UIs.
+
+Each gizmo wraps a `4x4` homogenous transformation matrix and updates it in response to edits. Every structure has a built-in widget to adjust its transformation, which can be enabled from the [structure options]([[url.prefix]]/structures/structure_management/#transforms), in addition to any custom gizmos you might create. The onscreen gizmos are drawn using ImGui, with help from the excellent [ImGuizmo](https://github.com/CedricGuillemet/ImGuizmo) library.
+
+<video width=100% autoplay muted loop>
+  <source src="[[url.prefix]]/media/transform_gizmo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+```cpp
+#include "polyscope/polyscope.h"
+
+// create a new gizmo in the scene
+polyscope::TransformationGizmo* gizmo1 = polyscope::addTransformationGizmo("my_gizmo");
+// if no name is given, a name is automatically generated
+polyscope::TransformationGizmo* gizmo2 = polyscope::addTransformationGizmo();
+
+// configure which motions are allowed
+gizmo1->setAllowTranslation(true);
+gizmo1->setAllowRotation(false);
+gizmo1->setAllowScaling(true);
+gizmo1->setInteractInLocalSpace(false);
+
+// adjust the appearance
+gizmo1->setGizmoSize(0.5f);
+
+// read off the current transform described by the gizmo
+glm::mat4 currentT = gizmo1->getTransform();
+glm::vec3 translation = gizmo1->getPosition(); // if you only care about the center/translation
+// see also setTransform(), setPosition()
+
+// remove gizmos
+gizmo2->remove();
+polyscope::removeTransformationGizmo("my_gizmo");
+```
+
+??? func "`#!cpp polyscope::addTransformationGizmo(std::string name = "", glm::mat4* transformToWrap = nullptr)`"
+
+    Create and add a new transformation gizmo to the scene. If no name is given, a unique name will be automatically generated.
+
+    If `transformToWrap` is provided, the gizmo will manipulate that matrix directly; otherwise, it will create and manage its own internal matrix.
+
+    Returns a (non-owning) pointer to the newly created gizmo.
+
+
+??? func "`#!cpp TransformationGizmo* getTransformationGizmo(std::string name)`"
+
+    Get a user-created transformation gizmo by name.
+
+
+??? func "`#!cpp void removeTransformationGizmo(TransformationGizmo* gizmo)`"
+
+    Remove a user-created transformation gizmo by pointer.
+
+
+??? func "`#!cpp void removeTransformationGizmo(std::string name)`"
+
+    Remove a user-created transformation gizmo by name.
+
+
+??? func "`#!cpp void removeAllTransformationGizmos()`"
+
+    Remove all user-created transformation gizmos from the scene.
+
+
+??? note "Other transform gizmo member functions"
+
+    Management:
+    ```cpp
+      void TransformationGizmo::remove() 
+    ```
+
+    Get/set the transform:
+    ```cpp
+      glm::mat4 TransformationGizmo::getTransform()
+      void TransformationGizmo::setTransform(glm::mat4 newT)
+    ```
+
+    Get/set the position (translation component of transform):
+    ```cpp
+      glm::vec3 TransformationGizmo::getPosition()
+      void TransformationGizmo::setPosition(glm::vec3 newPos)
+    ```
+
+    Configure whether interaction allows rotation/translation/scaling:
+    ```cpp
+      bool TransformationGizmo::getAllowTranslation();
+      void TransformationGizmo::setAllowTranslation(bool newVal);
+      bool TransformationGizmo::getAllowRotation();
+      void TransformationGizmo::setAllowRotation(bool newVal);
+      bool TransformationGizmo::getAllowScaling();
+      void TransformationGizmo::setAllowScaling(bool newVal);
+    ```
+
+    If true, interactions are interpreted in the local space of the gizmo; if false, in world space:
+    ```cpp
+      bool TransformationGizmo::getInteractInLocalSpace();
+      void TransformationGizmo::setInteractInLocalSpace(bool newVal);
+    ```
+
+    Adjust the visual size of the gizmo, 1.0 is the default:
+    ```cpp
+      float TransformationGizmo::getGizmoSize();
+      void TransformationGizmo::setGizmoSize(float newVal);
+    ```
+
+    Construct an ImGui UI to set values and toggle options. Must be called inside an active ImGui window:
+    ```cpp
+      void TransformationGizmo::buildInlineTransformUI();
+    ```
+
 ## Custom UIs with ImGui
 
 Polyscope integrates with the [Dear ImGui](https://github.com/ocornut/imgui) library, a widely-used framework for creating prototype/demo UIs and widgets. It implements a huge variety of GUI elements including buttons, sliders, text boxes, color pickers, trees, tables, etc.

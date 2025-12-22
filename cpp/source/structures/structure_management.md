@@ -140,6 +140,7 @@ Transparency can be controlled in the UI via the structure's `[Options] --> [Tra
 Each structure has an associated spatial _transform_ applied to it for display in the scene. The transform encodes a translation, rotation, and scaling represented as a 4x4 homogeneous matrix. Initially this transformation is just the identity transform (it does nothing), but it can be adjusted to position the structures in your scene.
 
 The transform can be controlled in the UI via the structure's `[Options] --> [Transform]` menu.
+See [transformation gizmos]([[url.prefix]]/basics/interactive_UIs_and_animation/#transformation-gizmos) for more information on the interactive onscreen transformation gizmo.
 
 ??? func "`#!cpp glm::mat4x4 Structure::getTransform()`"
 
@@ -181,6 +182,11 @@ The transform can be controlled in the UI via the structure's `[Options] --> [Tr
     
     Get the enabled state of the interactive onscreen widget which lets the user adjust an object's transform.
 
+??? func "`#!cpp TransformationGizmo& Structure::getTransformGizmo()`"
+    
+    Get a reference to the underlying `TransformationGizmo` object for the interactive transform widget.
+
+    See [transformation gizmos]([[url.prefix]]/basics/interactive_UIs_and_animation/#transformation-gizmos) for options relate to the gizmo object.
 
 
     

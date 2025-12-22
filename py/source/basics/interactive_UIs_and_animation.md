@@ -180,6 +180,120 @@ ps.set_user_callback(myCallback) # specify the per-frame function
 ps.show()
 ```
 
+## Transformation Gizmos
+
+Transformation gizmos allow users adjust the rotation/translation/scale of objects in the scene. You can create your own gizmos to manipulate any transformations or positions within interactive UIs.
+
+Each gizmo wraps a `4x4` homogenous transformation matrix and updates it in response to edits. Every structure has a built-in widget to adjust its transformation, which can be enabled from the [structure options]([[url.prefix]]/structures/structure_management/#transforms), in addition to any custom gizmos you might create. The onscreen gizmos are drawn using ImGui, with help from the excellent [ImGuizmo](https://github.com/CedricGuillemet/ImGuizmo) library.
+
+<video width=100% autoplay muted loop>
+  <source src="[[url.prefix]]/media/transform_gizmo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+```python
+import polyscope as ps
+import numpy as np
+
+# create a new gizmo in the scene
+gizmo1 = ps.add_transformation_gizmo("my_gizmo")
+# if no name is given, a name is automatically generated
+gizmo2 = ps.add_transformation_gizmo()
+
+# configure which motions are allowed
+gizmo1.set_allow_translation(True)
+gizmo1.set_allow_rotation(False)
+gizmo1.set_allow_scaling(True)
+gizmo1.set_interact_in_local_space(False)
+
+# adjust the appearance
+gizmo1.set_gizmo_scale(0.5)
+
+# read off the current transform described by the gizmo
+current_T = gizmo1.get_transform()  # 4x4 numpy array
+translation = gizmo1.get_position()  # if you only care about the center/translation
+# see also set_transform(), set_position()
+
+# remove gizmos
+gizmo2.remove()
+ps.remove_transformation_gizmo("my_gizmo")
+```
+
+??? func "`#!python add_transformation_gizmo(name=None)`"
+
+    Create and add a new transformation gizmo to the scene. If no name is given, a unique name will be automatically generated.
+
+    Returns the newly created gizmo.
+
+
+??? func "`#!python get_transformation_gizmo(name)`"
+
+    Get a user-created transformation gizmo by name.
+
+
+??? func "`#!python remove_transformation_gizmo(name)`"
+
+    Remove a user-created transformation gizmo by name.
+
+
+??? func "`#!python remove_all_transformation_gizmos()`"
+
+    Remove all user-created transformation gizmos from the scene.
+
+
+??? note "Other transform gizmo member functions"
+
+    Management:
+    ```python
+      TransformationGizmo.remove() 
+      TransformationGizmo.get_name()
+    ```
+
+    Get/set the enabled state:
+    ```python
+      TransformationGizmo.get_enabled()
+      TransformationGizmo.set_enabled(val)
+    ```
+
+    Get/set the transform as a 4x4 numpy array:
+    ```python
+      TransformationGizmo.get_transform()
+      TransformationGizmo.set_transform(T)
+    ```
+
+    Get/set the position (translation component of transform):
+    ```python
+      TransformationGizmo.get_position()
+      TransformationGizmo.set_position(p)
+    ```
+
+    Configure whether interaction allows rotation/translation/scaling:
+    ```python
+      TransformationGizmo.get_allow_translation()
+      TransformationGizmo.set_allow_translation(val)
+      TransformationGizmo.get_allow_rotation()
+      TransformationGizmo.set_allow_rotation(val)
+      TransformationGizmo.get_allow_scaling()
+      TransformationGizmo.set_allow_scaling(val)
+    ```
+
+    If true, interactions are interpreted in the local space of the gizmo; if false, in world space:
+    ```python
+      TransformationGizmo.get_interact_in_local_space()
+      TransformationGizmo.set_interact_in_local_space(val)
+    ```
+
+    Adjust the visual size of the gizmo, 1.0 is the default:
+    ```python
+      TransformationGizmo.get_gizmo_scale()
+      TransformationGizmo.set_gizmo_scale(val)
+    ```
+
+    Construct an ImGui UI to set values and toggle options. Must be called inside an active ImGui window:
+    ```python
+      TransformationGizmo.build_inline_transform_ui()
+    ```
+
 ## Custom UIs with ImGui
 
 Polyscope integrates with the [Dear ImGui](https://github.com/ocornut/imgui) library, a widely-used framework for creating prototype/demo UIs and widgets. It implements a huge variety of GUI elements including buttons, sliders, text boxes, color pickers, trees, tables, etc.
