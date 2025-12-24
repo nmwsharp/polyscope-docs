@@ -61,8 +61,8 @@ VertexData<Vector2> vecField = /* some field */
 
 // Register the field
 polyscope::getSurfaceMesh("mesh")->
-  addVertexIntrinsicVectorQuantity("great vectors", 
-                                   vecField, vBasisX, vBasisY);
+  addVertexTangentVectorQuantity("great vectors", 
+                                 vecField, vBasisX, vBasisY);
 
 polyscope::show();
 ```
