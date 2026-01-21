@@ -365,7 +365,7 @@ myMesh->setSelectionMode(MeshSelectionMode::FacesOnly);
 
 // get the mouse location from ImGui
 ImGuiIO& io = ImGui::GetIO();
-if (io.MouseClicked[0]) { // if clicked
+if (io.MouseClicked[0] && !io.WantCaptureMouse) { // if clicked
   glm::vec2 screenCoords{io.MousePos.x, io.MousePos.y};
   polyscope::PickResult pickResult = polyscope::pickAtScreenCoords(screenCoords);
 
