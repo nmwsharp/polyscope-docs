@@ -62,5 +62,5 @@ enabled | is the quantity enabled? | `#!cpp bool isEnabled()` | `#!cpp setEnable
 radius | the radius the graph is drawn with | `#!cpp double getRadius()` | `#!cpp setRadius(double val, bool isRelative=true)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 color | the color to draw the graph with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+
 

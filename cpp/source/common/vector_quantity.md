@@ -11,5 +11,5 @@ vector length | vectors will be scaled so the longest is this long. ignored if `
 vector color | the color to draw the vectors with | `#!cpp glm::vec3 getVectorColor()` | `#!cpp setVectorColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+
 

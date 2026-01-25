@@ -38,5 +38,5 @@ grid colors | two colors to use for line and background of grid | `#!cpp std::pa
 checker size | the width of checkers / stripes, always used as a relative value, unless the coord tpe is `UNIT` | `#!cpp double getCheckerSize()` | `#!cpp setCheckerSize(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 color map | the [color map]([[url.prefix]]/features/color_maps) to use for radial displays | `#!cpp std::string getColorMap()` | `#!cpp setColorMap(std::string newMap)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+
 

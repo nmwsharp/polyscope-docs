@@ -44,5 +44,5 @@ color map | the [color map]([[url.prefix]]/features/color_maps) to use | `#!cpp 
 map range | the lower and upper limits used when mapping the data in to the color map| `#!cpp std::pair<double,double> getMapRange()` | `#!cpp setMapRange(std::pair<double,double>)` and `#!cpp resetMapRange()`| no
 stripe size | the size of the stripes showing distance isolines | `#!cpp setStripeSize(double size, bool isRelative=true)` | `#!cpp double getStripeSize()` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+
 

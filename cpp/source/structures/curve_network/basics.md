@@ -124,4 +124,4 @@ radius | size of rendered points and lines | `#!cpp double getRadius()` | `#!cpp
 color | default color the curve network | `#!cpp glm::vec3 getColor` | `#! setColor(glm::vec3 newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_
+

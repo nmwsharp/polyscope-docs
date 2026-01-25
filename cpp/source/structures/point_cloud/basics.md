@@ -115,4 +115,4 @@ point color | default color for point | `#!cpp glm::vec3 getPointColor()` | `#!c
 point render mode | how to draw points | `#!cpp PointRenderMode getPointRenderMode()` | `#!cpp setPointRenderMode(PointRenderMode newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#!cpp setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_
+

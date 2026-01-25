@@ -142,4 +142,4 @@ back face policy | what [back face policy](#back-face-policies) to use | `#!cpp 
 back face color | [back face color](#back-face-policies) for the `Custom` policy| `#!cpp BackFacePolicy getBackFaceColor()` | `#!cpp setBackFaceColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 selection mode | [what elements can be selected](#picking-and-selection) | `#!cpp MeshSelectionMode getSelectionMode()` | `#!cpp setSelectionMode(MeshSelectionMode newMode)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_
+

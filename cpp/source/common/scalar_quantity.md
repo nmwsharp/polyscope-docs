@@ -41,5 +41,5 @@ isoline darkness | darkness of isoline stripes (default=`0.7`) | `#!cpp float ge
 contour thickness | thickness of isoline contour lines (default=`0.3`) | `#!cpp float getIsolineContourThickness()` | `#!cpp setIsolineContourThickness(float newVal)`| [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 
 
-_(all setters return `this` to support chaining. setEnabled() returns generic quantity, so chain it last)_
+
 

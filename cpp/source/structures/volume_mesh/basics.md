@@ -134,4 +134,4 @@ edge color | the color of the edges of the mesh | `#!cpp glm::vec3 getEdgeColor(
 edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!cpp double getEdgeWidth()` | `#!cpp setEdgeWidth(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_
+

@@ -103,4 +103,4 @@ edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reas
 cube size factor | shrink factor from 0-1 to draw gaps between cells, 0 is no shrink (default) | `#!cpp double getCubeSizeFactor()` | `#!cpp setCubeSizeFactor(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#! setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_
+

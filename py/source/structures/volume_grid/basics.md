@@ -90,4 +90,4 @@ edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reas
 cube size factor | shrink factor from 0-1 to draw gaps between cells, 0 is no shrink (default) | `#!python get_cube_size_factor()` | `#!python set_cube_size_factor(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values)
 material | what [material]([[url.prefix]]/features/materials) to use | `#!python get_material()` | `#!python set_material(name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_
+

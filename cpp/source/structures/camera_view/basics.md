@@ -105,4 +105,4 @@ focal length | size of rendered widget | `#!cpp double getWidgetFocalLength()` |
 thickness | rendered widget line thickness | `#!cpp double getWidgetThickness()` | `#!cpp setWidgetThickness(double newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 color | widget color | `#!cpp glm::vec3 getWidgetColor()` | `#!cpp setWidgetColor(glm::vec3 newVal)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
-_(All setters return `this` to support chaining. Structure options return a generic structure pointer, so chain them last.)_
+
