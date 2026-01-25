@@ -15,7 +15,7 @@ MC.h | adapted for marching cubes | [github.com/aparis69/MarchingCubeCpp](https:
 mkdocs | Doc generation | [mkdocs.org](https://mkdocs.org)
 mkdocs-material | Doc generation | [squidfunk.github.io/mkdocs-material/](https://squidfunk.github.io/mkdocs-material/)
 googletest | Unit testing | [github.com/google/googletest](https://github.com/google/googletest)
-pybind11 | (Python only) Python bindings  | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)
+nanobind | (Python only) Python bindings  | [github.com/wjakob/nanobind](https://github.com/wjakob/nanobind)
 Eigen | (Python only) numpy interop for bindings | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/)
 
 Additionally Polyscope may optionally load EGL at runtime, functionality which must be enabled by a compile flag for [headless rendering]([[url.prefix]]/features/headless_rendering). EGL is not shipped with Polyscope, and it is not linked statically nor dynamically; it is loaded at runtime from the user's system only if the headless EGL backend is initialized, akin to a plugin.
