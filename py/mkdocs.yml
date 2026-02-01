@@ -80,6 +80,8 @@ nav:
     - 'Scene Options' : 'basics/scene_options.md'
     - 'Managing Views & Cameras' : 'basics/camera_controls.md'
     - 'Interactive UIs & Animation' : 'basics/interactive_UIs_and_animation.md'
+    - 'ImGui Python API' : 'basics/custom_UIs/imgui_api.md'
+    - 'ImPlot Python API' : 'basics/custom_UIs/implot_api.md'
   - Structures and Quantities: 
     - 'Structure Management' : 'structures/structure_management.md'
     - Point Cloud:

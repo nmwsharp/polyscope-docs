@@ -300,13 +300,13 @@ Polyscope integrates with the [Dear ImGui](https://github.com/ocornut/imgui) lib
 
 The Polyscope python package includes bindings to a significant subset of ImGui in the `polyscope.imgui` submodule. 
 
-These bindings are not yet exhaustively documented, but they follow the naming conventions of ImGui as closely as possible for simplicity. Documentation of ImGui functions and parameters lives [here](https://github.com/ocornut/imgui/blob/master/imgui.h), and  you can find the list of bound functions, types, and enums [here](https://github.com/nmwsharp/polyscope-py/blob/master/src/cpp/imgui.cpp). Common usage should be covered by the example below.
+These bindings are not comprehensively documented here, but they follow the naming conventions of ImGui as closely as possible for simplicity.  See the [ImGui API Reference]([[url.prefix]]/basics/custom_UIs/imgui_api/) for a full listing of the functions bound in Polyscope.  Common usage should be covered by the example below.
 
 ### 2D Plots with ImPlot
 
-Polyscope also provides [ImPlot](https://github.com/epezent/implot) for creating little inline 2D plots like line plots, scatter plots, and histograms in the UI panes. As with ImGui, please see ImPlot's pages for documentation. 
+Polyscope also provides [ImPlot](https://github.com/epezent/implot) for creating little inline 2D plots like line plots, scatter plots, and histograms in the UI panes. 
 
-Bindings are defined in the `polyscope.implot` submodule, and again attempt to follow the original ImPlot naming exactly. Many but not all functions are bound, please file an issue for any missed functionality.
+See the [ImPlot API Reference]([[url.prefix]]/basics/custom_UIs/implot_api/) for a full listing of the functions bound in Polyscope. As with ImGui, please see ImPlot's pages for general documentation on how to use ImPlot. 
 
 ### Sample Custom UI
 
@@ -353,7 +353,7 @@ def callback():
     # 
     # If these variables are defined at the top level of a Python script file (i.e., not
     # inside any method), you will need to use the `global` keyword instead of `nonlocal`.
-    nonlocal is_true1, is_true2, ui_int, ui_float1, ui_float2, ui_color3, ui_color4, ui_text, ui_options_selected, ui_angle_rad
+    global is_true1, is_true2, ui_int, ui_float1, ui_float2, ui_color3, ui_color4, ui_text, ui_options_selected, ui_angle_rad
     
 
     # == Settings
@@ -622,7 +622,7 @@ The functions `build_polyscope_gui()`, `build_structure_gui()`, `build_pick_gui(
 
     #### files dropped callback
 
-    This callback function is invoked whenever the user drags-and-drops file(s) onto the Polyscope window. Specify your own function implement custom behaviors like loading data. The argumentw ill be a list of strings.
+    This callback function is invoked whenever the user drags-and-drops file(s) onto the Polyscope window. Specify your own function implement custom behaviors like loading data. The argument will be a list of strings.
 
     Default: `None` (no callback)
     
