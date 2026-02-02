@@ -226,6 +226,14 @@ def generate_markdown(parsed: dict, prepend: str = "") -> str:
                 lines.append(member)
             lines.append("```\n")
 
+    # Constants
+    if parsed["constants"]:
+        lines.append("## Constants\n")
+        lines.append("```python")
+        for const in parsed["constants"]:
+            lines.append(const)
+        lines.append("```\n")
+
     return "\n".join(lines)
 
 
