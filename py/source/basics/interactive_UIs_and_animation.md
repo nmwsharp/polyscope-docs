@@ -616,6 +616,12 @@ The option `build_gui` can be used to entirely disable all of Polyscope's ImGui 
 
 The functions `build_polyscope_gui()`, `build_structure_gui()`, `build_pick_gui()`, and `build_user_gui_and_invoke_callback()` can be used to manually build pieces of the UI one at a time. If you are giving control to the UI via `show()`, you call the first 3 to reproduce the standard UI.
 
+??? func "`#!python set_right_gui_pane_width(w)`"
+
+    Set the width of the right GUI pane.
+
+    Default: `500`.
+
 ## Miscellaneous
 
 ??? func "`#!python set_files_dropped_callback(files)`"

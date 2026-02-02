@@ -504,6 +504,12 @@ The option `buildGui` can be used to entirely disable all of Polyscope's ImGui U
 
 The functions `buildPolyscopeGui()`, `buildStructureGui()`, `buildPickGui()`, and `buildUserGuiAndInvokeCallback()` can be used to manually build pieces of the UI one at a time. If you are giving control to the UI via `show()`, you call the first 3 to reproduce the standard UI.
 
+??? func "`#!cpp int options::rightGuiPaneWidth`"
+
+    The width of the right GUI pane.
+
+    Default: `500`.
+
 ## Miscellaneous
 
 ??? func "`#!cpp std::function<void(const std::vector<std::string>&)> state::filesDroppedCallback`"
