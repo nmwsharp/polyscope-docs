@@ -1,6 +1,6 @@
 # Volume Meshes
 
-Volumetric meshes, such as tetrahedral (*tet*) and hexahedral (*hex*, cube-like) meshes, represent a region of 3D space. Polyscope can display tet and hex meshes, including those which have a mix of hex and tet elements. We'll use the term *cell* to refer generically to a tet or hex in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values.
+Volumetric meshes, such as pure tetrahedral (*tet*) and pure hexahedral (*hex*, cube-like) meshes, represent a region of 3D space. Polyscope can easily display pure both tet and hex meshes. However, it can also display meshes that contain a mix of hex and tet elements as well as transition prism and pyramid elements. We'll use the term *cell* to refer generically to either a tet, hex, prism or pyramid element in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values.
 
 <video width=100% autoplay muted loop>
   <source src="/media/movies/volume_demo_compress.mp4" type="video/mp4">
@@ -40,9 +40,9 @@ polyscope::getVolumeMesh("my mesh")->addVertexScalarQuantity("scalar Q", scalarV
 polyscope::show();
 ```
 
-Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different variants to register meshes with tets, hexes, or a mix of the two. All of these register helpers return a pointer to a `polyscope::VolumeMesh` object which you can then add quantities to.
+Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different variants to register meshes with tets and hexes, or a mixture of tets, hexes, prisms and pyramids. All of these register helpers return a pointer to a `polyscope::VolumeMesh` object which you can then add quantities to.
 
-![tet element ordering conventions]([[url.prefix]]/media/tet_element_orderings.jpg)
+![element ordering conventions]([[url.prefix]]/media/cellTypes.png)
 
 ???+ func "`#!cpp polyscope::registerTetMesh(std::string name, const V& vertexPositions, const C& tetIndices)`"
 
@@ -64,15 +64,15 @@ Volume meshes are registered with Polyscope by passing the location of each vert
 
     Add a new volume mesh structure to Polyscope, which may have a mix of cell types. This variant takes a rectangular array as input, where all cell rows have 8 entries, but cells with less than 8 vertices are padded with negative values.
     
-    For instance, a row of the 2D array `hexIndices` which refers to a tet cell might hold `[12, 9, 22, 51, -1, -1, -1, -1]`.
+    For instance, a row of the 2D array `hexIndices` which refers to a tet cell might hold `[12, 9, 22, 51, -1, -1, -1, -1]`.  A row in the 2D array `hexIndices` which refers to a prism cell might hold `[18, 32, 51, 17, 85, 23, -1, -1]` and a row that refers to a pyramid cell might hold `[72, 33, 86, 91, 15, -1, -1, -1]`.
 
     - `vertexPositions` is the vector array of 3D vertex locations. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 3-vectors; this allows many common types to be used as input, including `Eigen::MatrixXd` and `std::vector<std::array<double, 3>>`. The length will be the number of vertices.
 
-    - `hexIndices` is the 2D array of vertex indices for each hexahedral cell, with dimension `(C,8)` where `C` is the number of tet/hexes. For tet elements, the rows of the array should be padded with negative indices, which will be ignored. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a nested array of `unsigned int`; this allows many common types to be used as input, including `Eigen::MatrixXi` and `std::vector<std::array<int, 8>>`. All indices should be valid 0-based indices in to the vertex list. Signed types should be used to support the negative element convention as described above.
+    - `hexIndices` is the 2D array of vertex indices for each hexahedral cell, with dimension `(C,8)` where `C` is the number of cells. For tet, prism and pyramid elements, the rows of the array should be padded with negative indices as apropriate for the cell topology, which will be ignored. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a nested array of `unsigned int`; this allows many common types to be used as input, including `Eigen::MatrixXi` and `std::vector<std::array<int, 8>>`. All indices should be valid 0-based indices in to the vertex list. Signed types should be used to support the negative element convention as described above.
 
 ??? func "`#!cpp polyscope::registerTetHexMesh(std::string name, const V& vertexPositions, const Ct& tetIndices, const Ct& hexIndices)`"
 
-    Add a new volume mesh structure to Polyscope. This variant takes a mix of tet and hex elements, where each are given in their own separate list.
+    Add a new volume mesh structure to Polyscope. This variant takes a mix of tet and hex elements, where each are given in their own separate list. _(Note, this API predates support for pyramids and prism elements.  It remains for backwards compatibility)_
 
     - `vertexPositions` is the vector array of 3D vertex locations. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 3-vectors; this allows many common types to be used as input, including `Eigen::MatrixXd` and `std::vector<std::array<double, 3>>`. The length will be the number of vertices.
     
