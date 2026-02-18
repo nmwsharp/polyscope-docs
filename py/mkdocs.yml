@@ -115,6 +115,10 @@ nav:
     - Volume Grid:
       - 'Basics' : 'structures/volume_grid/basics.md'
       - 'Scalar Quantities' : 'structures/volume_grid/scalar_quantities.md'
+    - Sparse Volume Grid:
+      - 'Basics' : 'structures/sparse_volume_grid/basics.md'
+      - 'Scalar Quantities' : 'structures/sparse_volume_grid/scalar_quantities.md'
+      - 'Color Quantities' : 'structures/sparse_volume_grid/color_quantities.md'
     - Camera View:
       - 'Basics' : 'structures/camera_view/basics.md'
     - Floating Quantities:
