@@ -507,6 +507,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/custom_UIs/imgui_api/" class="md-nav__link">
+        ImGui Python API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/custom_UIs/implot_api/" class="md-nav__link">
+        ImPlot Python API
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -773,6 +801,13 @@
         <li class="md-nav__item">
   <a href="#categorical-scalars" class="md-nav__link">
     Categorical Scalars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#color-bars" class="md-nav__link">
+    Color Bars
   </a>
   
 </li>
@@ -1156,12 +1191,88 @@
       
       
         <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
-          Camera View
+          Sparse Volume Grid
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sparse Volume Grid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sparse_volume_grid/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sparse_volume_grid/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sparse_volume_grid/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+          Camera View
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_8">
           <span class="md-nav__icon md-icon"></span>
           Camera View
         </label>
@@ -1199,17 +1310,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9" >
       
       
       
-        <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="0">
           Floating Quantities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_6_8">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_9">
           <span class="md-nav__icon md-icon"></span>
           Floating Quantities
         </label>
@@ -1507,6 +1618,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#color-bars" class="md-nav__link">
+    Color Bars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scalar-quantity-options" class="md-nav__link">
     Scalar Quantity Options
   </a>
@@ -1573,6 +1691,18 @@
 <h3 id="categorical-scalars">Categorical Scalars<a class="headerlink" href="#categorical-scalars" title="Permanent link">&para;</a></h3>
 <p>Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.</p>
 <p>Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set <code>datatype='categorical'</code>. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.</p>
+<h3 id="color-bars">Color Bars<a class="headerlink" href="#color-bars" title="Permanent link">&para;</a></h3>
+<p>Each scalar quantity has an associated color map, which linearly maps scalar values to a spectrum of colors for visualization.
+See <a href="/py//features/color_maps">colormaps</a> for a listing of the available maps, and use <code>add_scalar_quantity(..., cmap="cmap_name")</code> to choose the map.</p>
+<p>The colormap is always displayed with an inline colorbar in the structures panel, which also gives a histogram of the scalar values in your quantity.
+The limits (<code>vminmax</code>) of the colormap range are given by the two numeric fields below the colored display. You can click and drag horizontally on these fields to adjust the map range, or ctrl-click (cmd-click) to enter arbitrary custom values. </p>
+<p><img alt="image inline and onscreen colorbar" src="/py//media/colorbar_options.jpg" /></p>
+<div class="admonition note">
+<p class="admonition-title">onscreen colorbar</p>
+<p>Optionally an additional onscreen colorbar, which is more similar to the colorbars used in other plotting libraries, can be enabled with <code>add_scalar_quantity(..., onscreen_colorbar_enabled=True)</code>.</p>
+<p>By default it is positioned automatically inline with the other UI elements, or it can be manually positioned with <code>add_scalar_quantity(..., onscreen_colorbar_location=(400., 400.))</code>.</p>
+<p>You can even <strong>export this color map to an <code>.svg</code> file</strong> for creating figures via the options menu.</p>
+</div>
 <h3 id="scalar-quantity-options">Scalar Quantity Options<a class="headerlink" href="#scalar-quantity-options" title="Permanent link">&para;</a></h3>
 <p>When adding a scalar quantity, the following keyword options can be set. These are available for all kinds of scalar quantities on all structures.</p>
 <p>Keyword arguments:</p>
@@ -1580,7 +1710,12 @@
 <li><code>enabled</code> boolean, whether the quantity is initially enabled (note that generally only one quantitiy can be shown at a time; the most recent will be used)</li>
 <li><code>datatype</code>, one of <code>"standard"</code>, <code>"symmetric"</code>, <code>"magnitude"</code>, or <code>"categorical"</code>, affects default colormap and map range, and the categorical policies mentioned above</li>
 <li><code>vminmax</code>, a 2-tuple of floats, specifying the min and max range for colormap limits; the default is <code>None</code>, which computes the min and max of the data</li>
+<li>colormap keywords:<ul>
 <li><code>cmap</code>, which <a href="../../../features/color_maps">colormap</a> to use</li>
+<li><code>onscreen_colorbar_enabled</code> set to <code>True</code> to enable an additional traditional colormap </li>
+<li><code>onscreen_colorbar_location</code> set to screen coordinates like <code>(400., 400.)</code> to position the onscreen colorbar manually (default is automatic)</li>
+</ul>
+</li>
 <li>isoline keywords (darker-shaded stripes showing isocontours of the scalar field):<ul>
 <li><code>isolines_enabled</code> are isolines enabled (default: <code>False</code>)</li>
 <li><code>isoline_style</code> one of <code>stripe</code>, <code>'contour</code> (default: <code>stripe</code>)</li>

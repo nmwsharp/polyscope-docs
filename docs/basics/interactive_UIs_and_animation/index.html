@@ -587,6 +587,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#transformation-gizmos" class="md-nav__link">
+    Transformation Gizmos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-uis-with-imgui" class="md-nav__link">
     Custom UIs with ImGui
   </a>
@@ -630,6 +637,26 @@
   <a href="#overriding-built-in-ui-behavior" class="md-nav__link">
     Overriding Built-In UI Behavior
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    Miscellaneous
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files-dropped-callback" class="md-nav__link">
+    files dropped callback
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1257,12 +1284,88 @@
       
       
         <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
-          Camera View
+          Sparse Volume Grid
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_7_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sparse Volume Grid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/sparse_volume_grid/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/sparse_volume_grid/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/sparse_volume_grid/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+          Camera View
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7_8">
           <span class="md-nav__icon md-icon"></span>
           Camera View
         </label>
@@ -1300,17 +1403,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_9" >
       
       
       
-        <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_7_9" id="__nav_7_9_label" tabindex="0">
           Floating Quantities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_7_8">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7_9">
           <span class="md-nav__icon md-icon"></span>
           Floating Quantities
         </label>
@@ -1735,6 +1838,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#transformation-gizmos" class="md-nav__link">
+    Transformation Gizmos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-uis-with-imgui" class="md-nav__link">
     Custom UIs with ImGui
   </a>
@@ -1778,6 +1888,26 @@
   <a href="#overriding-built-in-ui-behavior" class="md-nav__link">
     Overriding Built-In UI Behavior
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    Miscellaneous
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files-dropped-callback" class="md-nav__link">
+    files dropped callback
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1941,6 +2071,94 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+<h2 id="transformation-gizmos">Transformation Gizmos<a class="headerlink" href="#transformation-gizmos" title="Permanent link">&para;</a></h2>
+<p>Transformation gizmos allow users adjust the rotation/translation/scale of objects in the scene. You can create your own gizmos to manipulate any transformations or positions within interactive UIs.</p>
+<p>Each gizmo wraps a <code>4x4</code> homogenous transformation matrix and updates it in response to edits. Every structure has a built-in widget to adjust its transformation, which can be enabled from the <a href="/structures/structure_management/#transforms">structure options</a>, in addition to any custom gizmos you might create. The onscreen gizmos are drawn using ImGui, with help from the excellent <a href="https://github.com/CedricGuillemet/ImGuizmo">ImGuizmo</a> library.</p>
+<video width=100% autoplay muted loop>
+  <source src="/media/transform_gizmo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
+
+<span class="c1">// create a new gizmo in the scene</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">TransformationGizmo</span><span class="o">*</span><span class="w"> </span><span class="n">gizmo1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">addTransformationGizmo</span><span class="p">(</span><span class="s">&quot;my_gizmo&quot;</span><span class="p">);</span>
+<span class="c1">// if no name is given, a name is automatically generated</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">TransformationGizmo</span><span class="o">*</span><span class="w"> </span><span class="n">gizmo2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">addTransformationGizmo</span><span class="p">();</span>
+
+<span class="c1">// configure which motions are allowed</span>
+<span class="n">gizmo1</span><span class="o">-&gt;</span><span class="n">setAllowTranslation</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">gizmo1</span><span class="o">-&gt;</span><span class="n">setAllowRotation</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="n">gizmo1</span><span class="o">-&gt;</span><span class="n">setAllowScaling</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">gizmo1</span><span class="o">-&gt;</span><span class="n">setInteractInLocalSpace</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+<span class="c1">// adjust the appearance</span>
+<span class="n">gizmo1</span><span class="o">-&gt;</span><span class="n">setGizmoSize</span><span class="p">(</span><span class="mf">0.5f</span><span class="p">);</span>
+
+<span class="c1">// read off the current transform described by the gizmo</span>
+<span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">currentT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gizmo1</span><span class="o">-&gt;</span><span class="n">getTransform</span><span class="p">();</span>
+<span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">translation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gizmo1</span><span class="o">-&gt;</span><span class="n">getPosition</span><span class="p">();</span><span class="w"> </span><span class="c1">// if you only care about the center/translation</span>
+<span class="c1">// see also setTransform(), setPosition()</span>
+
+<span class="c1">// remove gizmos</span>
+<span class="n">gizmo2</span><span class="o">-&gt;</span><span class="n">remove</span><span class="p">();</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">removeTransformationGizmo</span><span class="p">(</span><span class="s">&quot;my_gizmo&quot;</span><span class="p">);</span>
+</code></pre></div>
+<details class="func">
+<summary><code class="highlight"><span class="n">polyscope</span><span class="o">::</span><span class="n">addTransformationGizmo</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="o">*</span><span class="w"> </span><span class="n">transformToWrap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span></code></summary>
+<p>Create and add a new transformation gizmo to the scene. If no name is given, a unique name will be automatically generated.</p>
+<p>If <code>transformToWrap</code> is provided, the gizmo will manipulate that matrix directly; otherwise, it will create and manage its own internal matrix.</p>
+<p>Returns a (non-owning) pointer to the newly created gizmo.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">TransformationGizmo</span><span class="o">*</span><span class="w"> </span><span class="n">getTransformationGizmo</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span></code></summary>
+<p>Get a user-created transformation gizmo by name.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">removeTransformationGizmo</span><span class="p">(</span><span class="n">TransformationGizmo</span><span class="o">*</span><span class="w"> </span><span class="n">gizmo</span><span class="p">)</span></code></summary>
+<p>Remove a user-created transformation gizmo by pointer.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">removeTransformationGizmo</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span></code></summary>
+<p>Remove a user-created transformation gizmo by name.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">removeAllTransformationGizmos</span><span class="p">()</span></code></summary>
+<p>Remove all user-created transformation gizmos from the scene.</p>
+</details>
+<details class="note">
+<summary>Other transform gizmo member functions</summary>
+<p>Management:
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">TransformationGizmo</span><span class="o">::</span><span class="n">remove</span><span class="p">()</span><span class="w"> </span>
+</code></pre></div></p>
+<p>Get/set the transform:
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">TransformationGizmo</span><span class="o">::</span><span class="n">getTransform</span><span class="p">()</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">TransformationGizmo</span><span class="o">::</span><span class="n">setTransform</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">mat4</span><span class="w"> </span><span class="n">newT</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Get/set the position (translation component of transform):
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">TransformationGizmo</span><span class="o">::</span><span class="n">getPosition</span><span class="p">()</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">TransformationGizmo</span><span class="o">::</span><span class="n">setPosition</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="w"> </span><span class="n">newPos</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Configure whether interaction allows rotation/translation/scaling:
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TransformationGizmo::getAllowTranslation</span><span class="p">();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">TransformationGizmo::setAllowTranslation</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TransformationGizmo::getAllowRotation</span><span class="p">();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">TransformationGizmo::setAllowRotation</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TransformationGizmo::getAllowScaling</span><span class="p">();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">TransformationGizmo::setAllowScaling</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">);</span>
+</code></pre></div></p>
+<p>If true, interactions are interpreted in the local space of the gizmo; if false, in world space:
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TransformationGizmo::getInteractInLocalSpace</span><span class="p">();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">TransformationGizmo::setInteractInLocalSpace</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Adjust the visual size of the gizmo, 1.0 is the default:
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="nf">TransformationGizmo::getGizmoSize</span><span class="p">();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">TransformationGizmo::setGizmoSize</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newVal</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Construct an ImGui UI to set values and toggle options. Must be called inside an active ImGui window:
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">TransformationGizmo::buildInlineTransformUI</span><span class="p">();</span>
+</code></pre></div></p>
+</details>
 <h2 id="custom-uis-with-imgui">Custom UIs with ImGui<a class="headerlink" href="#custom-uis-with-imgui" title="Permanent link">&para;</a></h2>
 <p>Polyscope integrates with the <a href="https://github.com/ocornut/imgui">Dear ImGui</a> library, a widely-used framework for creating prototype/demo UIs and widgets. It implements a huge variety of GUI elements including buttons, sliders, text boxes, color pickers, trees, tables, etc.</p>
 <p>We will not reproduce the ImGui documentation here, visit the ImGui github page for more information on how to use it, mainly in the source files <code>imgui.h</code> and <code>imgui_demo.cpp</code>. Or search for examples across the web!</p>
@@ -1953,13 +2171,13 @@
 <summary>Temporarily disable default mouse camera movement</summary>
 <p>If you implement your own interactions like clicking-and-dragging objects onscreen, you&rsquo;ll find that the Polyscope view camera unintentionally moves in response to these motions. You can temporarily disable the camera motion like:</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">doing_interaction</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ImGui</span><span class="o">::</span><span class="n">IsMouseClicked</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">doDefaultMouseInteraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">doDefaultMouseInteraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// ... do your interaction</span>
 <span class="p">}</span>
 
 <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">doing_interaction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// re-enable the default mouse motions after you&#39;re done</span>
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">state</span><span class="o">::</span><span class="n">doDefaultMouseInteraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">doDefaultMouseInteraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </details>
@@ -2034,17 +2252,17 @@
 <p class="admonition-title">Warning</p>
 <p>Circumventing the standard Polyscope user interface should be considered &ldquo;advanced&rdquo; usage. You are more likely to encounter bugs, and you may need to look at the Polyscope source to understand the behavior. The functions listed in this section may change in future versions of Polyscope.</p>
 </div>
-<p>Two callback functions are made available to configure the appearance of Polyscope&rsquo;s ImGui panes. These callbacks are invoked internally by Polyscope during the setup process. If desired, you can set them to your own custom functions to use alternate styles.</p>
+<p>The appearance of the ImGui UI panes can be significantly customized and styled.  See the ImGui documentation (and examples such as <a href="https://github.com/ocornut/imgui/issues/707">this</a>) for styling options. Polyscope must be able to re-apply the style each time a new context is created, so it must be registered in a callback function rather than set just once.</p>
+<p>Two callback functions are made available to configure the appearance of Polyscope&rsquo;s ImGui panes. These callbacks are invoked internally by Polyscope during the setup process. If desired, you can set them to your own custom functions to use alternate styles.  See the ImGui documentation (and examples such as <a href="https://github.com/ocornut/imgui/issues/707">this</a>) for styling options. Polyscope must be able to re-apply the style each time a new context is created, so it must be registered in a callback function rather than set just once.</p>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="c1">// clearing the callback will fall back on default imgui styles</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">configureImGuiStyleCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-
-<span class="c1">// alternately, set a custom callback </span>
+<div class="highlight"><pre><span></span><code><span class="c1">// set a custom callback </span>
 <span class="c1">// (which in this case simply configures the imgui light style)</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">configureImGuiStyleCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ImGui</span><span class="o">::</span><span class="n">StyleColorsLight</span><span class="p">();</span><span class="w"> </span><span class="p">};</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">configureImGuiStyleCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">ImGui</span><span class="o">::</span><span class="n">StyleColorsLight</span><span class="p">();</span><span class="w"> </span>
 
-<span class="c1">// clearing the fonts callback will fall back on default imgui fonts</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">prepareImGuiFontsCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">// or, implement your own custom imgui style here</span>
+<span class="p">};</span>
+
 
 <span class="c1">// initialize polyscope</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
@@ -2061,31 +2279,41 @@
 <p>This callback is invoked when <code>polycope::init()</code> is called, so if you are going to customize it you <strong>must</strong> do so before <code>init()</code>.</p>
 <p>The default implementation of this callback looks something like the following. You can customize your own version of this function to modify any Polyscope fonts, or if you simply want to load additional fonts, do so at the commented note below.</p>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ImFontAtlas</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">ImFont</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">ImFont</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">prepareImGuiFonts</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">  </span><span class="n">ImGuiIO</span><span class="o">&amp;</span><span class="w"> </span><span class="n">io</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImGui</span><span class="o">::</span><span class="n">GetIO</span><span class="p">();</span>
 
+<span class="w">  </span><span class="c1">// DPI scaling</span>
+<span class="w">  </span><span class="n">ImVec2</span><span class="w"> </span><span class="n">windowSize</span><span class="p">{</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">view</span><span class="o">::</span><span class="n">windowWidth</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">view</span><span class="o">::</span><span class="n">windowHeight</span><span class="p">)};</span>
+<span class="w">  </span><span class="n">ImVec2</span><span class="w"> </span><span class="n">bufferSize</span><span class="p">{</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">view</span><span class="o">::</span><span class="n">bufferWidth</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">view</span><span class="o">::</span><span class="n">bufferHeight</span><span class="p">)};</span>
+<span class="w">  </span><span class="n">ImVec2</span><span class="w"> </span><span class="n">imguiCoordScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">bufferSize</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">windowSize</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">bufferSize</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">windowSize</span><span class="p">.</span><span class="n">y</span><span class="p">};</span>
+
 <span class="w">  </span><span class="c1">// outputs</span>
-<span class="w">  </span><span class="n">ImFontAtlas</span><span class="o">*</span><span class="w"> </span><span class="n">globalFontAtlas</span><span class="p">;</span>
+<span class="w">  </span><span class="n">ImFontAtlas</span><span class="o">*</span><span class="w"> </span><span class="n">fontAtlas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// right now this is unused by the caller, but I don&#39;t want to change</span>
+<span class="w">                                    </span><span class="c1">// this callback signature until I&#39;m more confident about how this</span>
+<span class="w">                                    </span><span class="c1">// should work. (And it might be changing in an upcoming imgui version)</span>
 <span class="w">  </span><span class="n">ImFont</span><span class="o">*</span><span class="w"> </span><span class="n">regularFont</span><span class="p">;</span>
 <span class="w">  </span><span class="n">ImFont</span><span class="o">*</span><span class="w"> </span><span class="n">monoFont</span><span class="p">;</span>
 
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">uiScale</span><span class="p">;</span>
+<span class="w">  </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">roundf</span><span class="p">(</span><span class="n">fontSize</span><span class="p">));</span>
+
 <span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="c1">// add regular font</span>
 <span class="w">    </span><span class="n">ImFontConfig</span><span class="w"> </span><span class="n">config</span><span class="p">;</span>
-<span class="w">    </span><span class="n">regularFont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">Fonts</span><span class="o">-&gt;</span><span class="n">AddFontFromMemoryCompressedTTF</span><span class="p">(</span><span class="n">render</span><span class="o">::</span><span class="n">getLatoRegularCompressedData</span><span class="p">(),</span>
-<span class="w">                                                           </span><span class="n">render</span><span class="o">::</span><span class="n">getLatoRegularCompressedSize</span><span class="p">(),</span><span class="w"> </span><span class="mf">18.0f</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+<span class="w">    </span><span class="n">config</span><span class="p">.</span><span class="n">RasterizerDensity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">imguiCoordScale</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">imguiCoordScale</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="n">regularFont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">Fonts</span><span class="o">-&gt;</span><span class="n">AddFontFromMemoryCompressedTTF</span><span class="p">(</span><span class="cm">/* add font */</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="c1">// add mono font</span>
 <span class="w">    </span><span class="n">ImFontConfig</span><span class="w"> </span><span class="n">config</span><span class="p">;</span>
-<span class="w">    </span><span class="n">monoFont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">Fonts</span><span class="o">-&gt;</span><span class="n">AddFontFromMemoryCompressedTTF</span><span class="p">(</span><span class="n">render</span><span class="o">::</span><span class="n">getCousineRegularCompressedData</span><span class="p">(),</span>
-<span class="w">                                                        </span><span class="n">render</span><span class="o">::</span><span class="n">getCousineRegularCompressedSize</span><span class="p">(),</span><span class="w"> </span><span class="mf">16.0f</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+<span class="w">    </span><span class="n">config</span><span class="p">.</span><span class="n">RasterizerDensity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">imguiCoordScale</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">imguiCoordScale</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="n">monoFont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">Fonts</span><span class="o">-&gt;</span><span class="n">AddFontFromMemoryCompressedTTF</span><span class="p">(</span><span class="o">*/</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">font</span><span class="w"> </span><span class="o">*/</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// Add your own additional fonts here</span>
+<span class="w">  </span><span class="c1">// load additional fonts here</span>
 
 <span class="w">  </span><span class="n">io</span><span class="p">.</span><span class="n">Fonts</span><span class="o">-&gt;</span><span class="n">Build</span><span class="p">();</span>
-<span class="w">  </span><span class="n">globalFontAtlas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">Fonts</span><span class="p">;</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ImFontAtlas</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">ImFont</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">ImFont</span><span class="o">*&gt;</span><span class="p">{</span><span class="n">globalFontAtlas</span><span class="p">,</span><span class="w"> </span><span class="n">regularFont</span><span class="p">,</span><span class="w"> </span><span class="n">monoFont</span><span class="p">};</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ImFontAtlas</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">ImFont</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">ImFont</span><span class="o">*&gt;</span><span class="p">{</span><span class="n">fontAtlas</span><span class="p">,</span><span class="w"> </span><span class="n">regularFont</span><span class="p">,</span><span class="w"> </span><span class="n">monoFont</span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
 </details>
@@ -2097,6 +2325,18 @@
 <p>Default: <code>true</code>.</p>
 </details>
 <p>The functions <code>buildPolyscopeGui()</code>, <code>buildStructureGui()</code>, <code>buildPickGui()</code>, and <code>buildUserGuiAndInvokeCallback()</code> can be used to manually build pieces of the UI one at a time. If you are giving control to the UI via <code>show()</code>, you call the first 3 to reproduce the standard UI.</p>
+<details class="func">
+<summary><code class="highlight"><span class="kt">int</span><span class="w"> </span><span class="n">options</span><span class="o">::</span><span class="n">rightGuiPaneWidth</span></code></summary>
+<p>The width of the right GUI pane.</p>
+<p>Default: <code>500</code>.</p>
+</details>
+<h2 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">&para;</a></h2>
+<details class="func">
+<summary><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">filesDroppedCallback</span></code></summary>
+<h4 id="files-dropped-callback">files dropped callback<a class="headerlink" href="#files-dropped-callback" title="Permanent link">&para;</a></h4>
+<p>This callback function is invoked whenever the user drags-and-drops file(s) onto the Polyscope window. Specify your own function implement custom behaviors like loading data.</p>
+<p>Default: <code>nullptr</code> (no callback)</p>
+</details>
 
 
 

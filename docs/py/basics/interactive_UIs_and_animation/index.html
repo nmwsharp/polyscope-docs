@@ -14,7 +14,7 @@
         <link rel="prev" href="../camera_controls/">
       
       
-        <link rel="next" href="../../structures/structure_management/">
+        <link rel="next" href="../custom_UIs/imgui_api/">
       
       <link rel="icon" href="../../media/icons/material/baseline_highlight_black_18dp.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
@@ -572,6 +572,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#transformation-gizmos" class="md-nav__link">
+    Transformation Gizmos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-uis-with-imgui" class="md-nav__link">
     Custom UIs with ImGui
   </a>
@@ -625,10 +632,58 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    Miscellaneous
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files-dropped-callback" class="md-nav__link">
+    files dropped callback
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom_UIs/imgui_api/" class="md-nav__link">
+        ImGui Python API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom_UIs/implot_api/" class="md-nav__link">
+        ImPlot Python API
+      </a>
     </li>
   
 
@@ -1235,12 +1290,88 @@
       
       
         <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
-          Camera View
+          Sparse Volume Grid
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sparse Volume Grid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/sparse_volume_grid/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/sparse_volume_grid/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structures/sparse_volume_grid/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+          Camera View
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_8">
           <span class="md-nav__icon md-icon"></span>
           Camera View
         </label>
@@ -1278,17 +1409,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9" >
       
       
       
-        <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="0">
           Floating Quantities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_6_8">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_9">
           <span class="md-nav__icon md-icon"></span>
           Floating Quantities
         </label>
@@ -1620,6 +1751,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#transformation-gizmos" class="md-nav__link">
+    Transformation Gizmos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-uis-with-imgui" class="md-nav__link">
     Custom UIs with ImGui
   </a>
@@ -1670,6 +1808,26 @@
   <a href="#overriding-built-in-ui-behavior" class="md-nav__link">
     Overriding Built-In UI Behavior
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    Miscellaneous
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files-dropped-callback" class="md-nav__link">
+    files dropped callback
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1833,13 +1991,102 @@
 <span class="c1"># give control to the main loop, blocks until window is exited</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
+<h2 id="transformation-gizmos">Transformation Gizmos<a class="headerlink" href="#transformation-gizmos" title="Permanent link">&para;</a></h2>
+<p>Transformation gizmos allow users adjust the rotation/translation/scale of objects in the scene. You can create your own gizmos to manipulate any transformations or positions within interactive UIs.</p>
+<p>Each gizmo wraps a <code>4x4</code> homogenous transformation matrix and updates it in response to edits. Every structure has a built-in widget to adjust its transformation, which can be enabled from the <a href="/py//structures/structure_management/#transforms">structure options</a>, in addition to any custom gizmos you might create. The onscreen gizmos are drawn using ImGui, with help from the excellent <a href="https://github.com/CedricGuillemet/ImGuizmo">ImGuizmo</a> library.</p>
+<video width=100% autoplay muted loop>
+  <source src="/py//media/transform_gizmo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># create a new gizmo in the scene</span>
+<span class="n">gizmo1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">add_transformation_gizmo</span><span class="p">(</span><span class="s2">&quot;my_gizmo&quot;</span><span class="p">)</span>
+<span class="c1"># if no name is given, a name is automatically generated</span>
+<span class="n">gizmo2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">add_transformation_gizmo</span><span class="p">()</span>
+
+<span class="c1"># configure which motions are allowed</span>
+<span class="n">gizmo1</span><span class="o">.</span><span class="n">set_allow_translation</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gizmo1</span><span class="o">.</span><span class="n">set_allow_rotation</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">gizmo1</span><span class="o">.</span><span class="n">set_allow_scaling</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gizmo1</span><span class="o">.</span><span class="n">set_interact_in_local_space</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># adjust the appearance</span>
+<span class="n">gizmo1</span><span class="o">.</span><span class="n">set_gizmo_scale</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># read off the current transform described by the gizmo</span>
+<span class="n">current_T</span> <span class="o">=</span> <span class="n">gizmo1</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span>  <span class="c1"># 4x4 numpy array</span>
+<span class="n">translation</span> <span class="o">=</span> <span class="n">gizmo1</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span>  <span class="c1"># if you only care about the center/translation</span>
+<span class="c1"># see also set_transform(), set_position()</span>
+
+<span class="c1"># remove gizmos</span>
+<span class="n">gizmo2</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">remove_transformation_gizmo</span><span class="p">(</span><span class="s2">&quot;my_gizmo&quot;</span><span class="p">)</span>
+</code></pre></div>
+<details class="func">
+<summary><code class="highlight"><span class="n">add_transformation_gizmo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
+<p>Create and add a new transformation gizmo to the scene. If no name is given, a unique name will be automatically generated.</p>
+<p>Returns the newly created gizmo.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">get_transformation_gizmo</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code></summary>
+<p>Get a user-created transformation gizmo by name.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">remove_transformation_gizmo</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code></summary>
+<p>Remove a user-created transformation gizmo by name.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">remove_all_transformation_gizmos</span><span class="p">()</span></code></summary>
+<p>Remove all user-created transformation gizmos from the scene.</p>
+</details>
+<details class="note">
+<summary>Other transform gizmo member functions</summary>
+<p>Management:
+<div class="highlight"><pre><span></span><code>  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span> 
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+</code></pre></div></p>
+<p>Get/set the enabled state:
+<div class="highlight"><pre><span></span><code>  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">get_enabled</span><span class="p">()</span>
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Get/set the transform as a 4x4 numpy array:
+<div class="highlight"><pre><span></span><code>  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span>
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Get/set the position (translation component of transform):
+<div class="highlight"><pre><span></span><code>  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span>
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Configure whether interaction allows rotation/translation/scaling:
+<div class="highlight"><pre><span></span><code>  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">get_allow_translation</span><span class="p">()</span>
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">set_allow_translation</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">get_allow_rotation</span><span class="p">()</span>
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">set_allow_rotation</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">get_allow_scaling</span><span class="p">()</span>
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">set_allow_scaling</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</code></pre></div></p>
+<p>If true, interactions are interpreted in the local space of the gizmo; if false, in world space:
+<div class="highlight"><pre><span></span><code>  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">get_interact_in_local_space</span><span class="p">()</span>
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">set_interact_in_local_space</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Adjust the visual size of the gizmo, 1.0 is the default:
+<div class="highlight"><pre><span></span><code>  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">get_gizmo_scale</span><span class="p">()</span>
+  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">set_gizmo_scale</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Construct an ImGui UI to set values and toggle options. Must be called inside an active ImGui window:
+<div class="highlight"><pre><span></span><code>  <span class="n">TransformationGizmo</span><span class="o">.</span><span class="n">build_inline_transform_ui</span><span class="p">()</span>
+</code></pre></div></p>
+</details>
 <h2 id="custom-uis-with-imgui">Custom UIs with ImGui<a class="headerlink" href="#custom-uis-with-imgui" title="Permanent link">&para;</a></h2>
 <p>Polyscope integrates with the <a href="https://github.com/ocornut/imgui">Dear ImGui</a> library, a widely-used framework for creating prototype/demo UIs and widgets. It implements a huge variety of GUI elements including buttons, sliders, text boxes, color pickers, trees, tables, etc.</p>
 <p>The Polyscope python package includes bindings to a significant subset of ImGui in the <code>polyscope.imgui</code> submodule. </p>
-<p>These bindings are not yet exhaustively documented, but they follow the naming conventions of ImGui as closely as possible for simplicity. Documentation of ImGui functions and parameters lives <a href="https://github.com/ocornut/imgui/blob/master/imgui.h">here</a>, and  you can find the list of bound functions, types, and enums <a href="https://github.com/nmwsharp/polyscope-py/blob/master/src/cpp/imgui.cpp">here</a>. Common usage should be covered by the example below.</p>
+<p>These bindings are not comprehensively documented here, but they follow the naming conventions of ImGui as closely as possible for simplicity.  See the <a href="/py//basics/custom_UIs/imgui_api/">ImGui API Reference</a> for a full listing of the functions bound in Polyscope.  Common usage should be covered by the example below.</p>
 <h3 id="2d-plots-with-implot">2D Plots with ImPlot<a class="headerlink" href="#2d-plots-with-implot" title="Permanent link">&para;</a></h3>
-<p>Polyscope also provides <a href="https://github.com/epezent/implot">ImPlot</a> for creating little inline 2D plots like line plots, scatter plots, and histograms in the UI panes. As with ImGui, please see ImPlot&rsquo;s pages for documentation. </p>
-<p>Bindings are defined in the <code>polyscope.implot</code> submodule, and again attempt to follow the original ImPlot naming exactly. Many but not all functions are bound, please file an issue for any missed functionality.</p>
+<p>Polyscope also provides <a href="https://github.com/epezent/implot">ImPlot</a> for creating little inline 2D plots like line plots, scatter plots, and histograms in the UI panes. </p>
+<p>See the <a href="/py//basics/custom_UIs/implot_api/">ImPlot API Reference</a> for a full listing of the functions bound in Polyscope. As with ImGui, please see ImPlot&rsquo;s pages for general documentation on how to use ImPlot. </p>
 <h3 id="sample-custom-ui">Sample Custom UI<a class="headerlink" href="#sample-custom-ui" title="Permanent link">&para;</a></h3>
 <p><strong>Example:</strong> Create the following UI in a Python callback</p>
 <p><img alt="callback ui demo" src="/py//media/imgui_py_demo.png" /></p>
@@ -1881,7 +2128,7 @@
     <span class="c1"># </span>
     <span class="c1"># If these variables are defined at the top level of a Python script file (i.e., not</span>
     <span class="c1"># inside any method), you will need to use the `global` keyword instead of `nonlocal`.</span>
-    <span class="k">nonlocal</span> <span class="n">is_true1</span><span class="p">,</span> <span class="n">is_true2</span><span class="p">,</span> <span class="n">ui_int</span><span class="p">,</span> <span class="n">ui_float1</span><span class="p">,</span> <span class="n">ui_float2</span><span class="p">,</span> <span class="n">ui_color3</span><span class="p">,</span> <span class="n">ui_color4</span><span class="p">,</span> <span class="n">ui_text</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">,</span> <span class="n">ui_angle_rad</span>
+    <span class="k">global</span> <span class="n">is_true1</span><span class="p">,</span> <span class="n">is_true2</span><span class="p">,</span> <span class="n">ui_int</span><span class="p">,</span> <span class="n">ui_float1</span><span class="p">,</span> <span class="n">ui_float2</span><span class="p">,</span> <span class="n">ui_color3</span><span class="p">,</span> <span class="n">ui_color4</span><span class="p">,</span> <span class="n">ui_text</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">,</span> <span class="n">ui_angle_rad</span>
 
 
     <span class="c1"># == Settings</span>
@@ -2069,6 +2316,39 @@
 <p>Polyscope also maintains a stateful selection, displayed in the UI to provide information about the content of the scene. It can be accessed via <code>get_selection()</code>, <code>reset_selection()</code>, <code>have_selection()</code>.</p>
 <h2 id="overriding-built-in-ui-behavior">Overriding Built-In UI Behavior<a class="headerlink" href="#overriding-built-in-ui-behavior" title="Permanent link">&para;</a></h2>
 <p>If desired, you can circumvent Polyscope&rsquo;s standard ImGui style and UI panes, in ordered to build dramatically customized applications.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Circumventing the standard Polyscope user interface should be considered &ldquo;advanced&rdquo; usage. You are more likely to encounter bugs, and you may need to look at the Polyscope source to understand the behavior. The functions listed in this section may change in future versions of Polyscope.</p>
+</div>
+<p>The appearance of the ImGui UI panes can be significantly customized and styled.  See the ImGui documentation (and examples such as <a href="https://github.com/ocornut/imgui/issues/707">this</a>) for styling options. Polyscope must be able to re-apply the style each time a new context is created, so it must be registered in a callback function rather than set just once.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
+
+<span class="k">def</span> <span class="nf">ui_style_func</span><span class="p">():</span> <span class="c1"># your style callback</span>
+    <span class="n">style</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">()</span>
+    <span class="n">style</span><span class="o">.</span><span class="n">WindowRounding</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">style</span><span class="o">.</span><span class="n">FrameRounding</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">style</span><span class="o">.</span><span class="n">FramePadding</span> <span class="o">=</span> <span class="p">(</span><span class="n">style</span><span class="o">.</span><span class="n">FramePadding</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">style</span><span class="o">.</span><span class="n">ScrollbarRounding</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">style</span><span class="o">.</span><span class="n">ScrollbarSize</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">style</span><span class="o">.</span><span class="n">ScaleAllSizes</span><span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">get_ui_scale</span><span class="p">())</span>
+
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">GetColors</span><span class="p">()</span>
+    <span class="n">colors</span><span class="p">[</span><span class="n">psim</span><span class="o">.</span><span class="n">ImGuiCol_Text</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
+    <span class="n">colors</span><span class="p">[</span><span class="n">psim</span><span class="o">.</span><span class="n">ImGuiCol_TextDisabled</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.60</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
+    <span class="n">colors</span><span class="p">[</span><span class="n">psim</span><span class="o">.</span><span class="n">ImGuiCol_TabSelected</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.38</span><span class="p">,</span> <span class="mf">0.76</span><span class="p">,</span> <span class="mf">0.58</span><span class="p">,</span> <span class="mf">0.83</span><span class="p">)</span> 
+    <span class="c1"># ... many more, see ImGui documentation ...</span>
+
+    <span class="n">style</span><span class="o">.</span><span class="n">SetColors</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+
+<span class="n">ps</span><span class="o">.</span><span class="n">set_configure_imgui_style_callback</span><span class="p">(</span><span class="n">ui_style_func</span><span class="p">)</span>
+</code></pre></div>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_configure_imgui_style_callback</span><span class="p">(</span><span class="n">func</span><span class="p">)</span></code></summary>
+<p>A callback function which will be invoked when an ImGui context is created (which may happen several times as Polyscope runs). By default this callback sets up Polyscope&rsquo;s own style, but you may assign your own function to create custom styles. </p>
+<p>If this callback is null, the default ImGui style will be used.</p>
+<p>Also, use <code>clear_configure_imgui_style_callback()</code> to clear this callback if needed.</p>
+</details>
 <p>The option <code>build_gui</code> can be used to entirely disable all of Polyscope&rsquo;s ImGui UI elements, allowing you to build your own UI. Polyscope will still initialize ImGui and invoke its drawing routines each frame.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">set_build_gui</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></summary>
@@ -2076,8 +2356,20 @@
 <p>If false, Polyscope will not create any ImGui UIs at all, but will still set up ImGui and invoke its render steps each frame. The allows advanced users to create their own UIs totally from scratch and circumvent the standard Polyscope UIs.</p>
 <p>Default: <code>True</code>.</p>
 </details>
-<p>The functions <code>build_polyscope_gui()</code>, <code>build_structure_gui()</code>, <code>build_pick_gui()</code>, and <code>build_user_gui_and_invoke_callback()</code>
- can be used to manually build pieces of the UI one at a time. If you are giving control to the UI via <code>show()</code>, you call the first 3 to reproduce the standard UI.</p>
+<p>The functions <code>build_polyscope_gui()</code>, <code>build_structure_gui()</code>, <code>build_pick_gui()</code>, and <code>build_user_gui_and_invoke_callback()</code> can be used to manually build pieces of the UI one at a time. If you are giving control to the UI via <code>show()</code>, you call the first 3 to reproduce the standard UI.</p>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_right_gui_pane_width</span><span class="p">(</span><span class="n">w</span><span class="p">)</span></code></summary>
+<p>Set the width of the right GUI pane.</p>
+<p>Default: <code>500</code>.</p>
+</details>
+<h2 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">&para;</a></h2>
+<details class="func">
+<summary><code class="highlight"><span class="n">set_files_dropped_callback</span><span class="p">(</span><span class="n">files</span><span class="p">)</span></code></summary>
+<h4 id="files-dropped-callback">files dropped callback<a class="headerlink" href="#files-dropped-callback" title="Permanent link">&para;</a></h4>
+<p>This callback function is invoked whenever the user drags-and-drops file(s) onto the Polyscope window. Specify your own function implement custom behaviors like loading data. The argument will be a list of strings.</p>
+<p>Default: <code>None</code> (no callback)</p>
+<p>Also, use <code>clear_files_dropped_callback()</code> to clear this callback if needed.</p>
+</details>
 
 
 

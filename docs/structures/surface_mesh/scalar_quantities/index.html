@@ -911,6 +911,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#color-bars" class="md-nav__link">
+    Color Bars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scalar-quantity-options" class="md-nav__link">
     Scalar Quantity Options
   </a>
@@ -1199,12 +1206,88 @@
       
       
         <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
-          Camera View
+          Sparse Volume Grid
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_7_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sparse Volume Grid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sparse_volume_grid/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sparse_volume_grid/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sparse_volume_grid/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+          Camera View
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7_8">
           <span class="md-nav__icon md-icon"></span>
           Camera View
         </label>
@@ -1242,17 +1325,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_9" >
       
       
       
-        <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_7_9" id="__nav_7_9_label" tabindex="0">
           Floating Quantities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_7_8">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7_9">
           <span class="md-nav__icon md-icon"></span>
           Floating Quantities
         </label>
@@ -1657,6 +1740,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#color-bars" class="md-nav__link">
+    Color Bars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scalar-quantity-options" class="md-nav__link">
     Scalar Quantity Options
   </a>
@@ -1795,6 +1885,18 @@
 <h3 id="categorical-scalars">Categorical Scalars<a class="headerlink" href="#categorical-scalars" title="Permanent link">&para;</a></h3>
 <p>Scalar quantities can also be used to visualize integer-valued labels such as categories, classes, segmentations, flags, etc.</p>
 <p>Add the labels as a scalar quantity where the values just happen to be integers (each integer represents a particular class or label), and set <code>DataType::CATEGORICAL</code>. This will change the visualization to a different set of defaults, adjust some shading rules, and use a distinct color from the colormap for each label.</p>
+<h3 id="color-bars">Color Bars<a class="headerlink" href="#color-bars" title="Permanent link">&para;</a></h3>
+<p>Each scalar quantity has an associated color map, which linearly maps scalar values to a spectrum of colors for visualization.
+See <a href="/features/color_maps">colormaps</a> for a listing of the available maps, and use <code>quantity-&gt;setColorMap("cmap_name")</code> to choose the map.</p>
+<p>The colormap is always displayed with an inline colorbar in the structures panel, which also gives a histogram of the scalar values in your quantity.
+The limits (<code>vminmax</code>) of the colormap range are given by the two numeric fields below the colored display. You can click and drag horizontally on these fields to adjust the map range, or ctrl-click (cmd-click) to enter arbitrary custom values. </p>
+<p><img alt="image inline and onscreen colorbar" src="/media/colorbar_options.jpg" /></p>
+<div class="admonition note">
+<p class="admonition-title">onscreen colorbar</p>
+<p>Optionally an additional onscreen colorbar, which is more similar to the colorbars used in other plotting libraries, can be enabled with <code>quantity-&gt;setOnscreenColorbarEnabled(true)</code>.</p>
+<p>By default it is positioned automatically inline with the other UI elements, or it can be manually positioned with <code>quantity-&gt;setOnscreenColorbarLocation(glm::vec2(xpos,ypos))</code>.</p>
+<p>You can even <strong>export this color map to an <code>.svg</code> file</strong> for creating figures, via the options menu, or with <code>quantity-&gt;exportColorbarToSVG("filename.svg")</code>.</p>
+</div>
 <h3 id="scalar-quantity-options">Scalar Quantity Options<a class="headerlink" href="#scalar-quantity-options" title="Permanent link">&para;</a></h3>
 <p>These options and behaviors are available for all types of scalar quantities on any structure.</p>
 <table>
@@ -1821,6 +1923,27 @@
 <td><code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getColorMap</span><span class="p">()</span></code></td>
 <td><code class="highlight"><span class="n">setColorMap</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">newMap</span><span class="p">)</span></code></td>
 <td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>onscreen colorbar</td>
+<td>additional onscreen colorbar</td>
+<td><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">getOnscreenColorbarEnabled</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setOnscreenColorbarEnabled</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>onscreen colorbar location</td>
+<td>where to put onscreen colorbar, <code>(-1,-1)</code> (default) means auto</td>
+<td><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">getOnscreenColorbarLocation</span><span class="p">()</span></code></td>
+<td><code class="highlight"><span class="n">setOnscreenColorbarLocation</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="w"> </span><span class="n">newVal</span><span class="p">)</span></code></td>
+<td><a href="/basics/parameters/#persistent-values">yes</a></td>
+</tr>
+<tr>
+<td>save colorbar to <code>.svg</code> file</td>
+<td>export colorbar to file</td>
+<td><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">exportColorbarToSVG</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">filename</span><span class="p">)</span></code></td>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr>
 <td>map range</td>
@@ -1866,7 +1989,6 @@
 </tr>
 </tbody>
 </table>
-<p><em>(all setters return <code>this</code> to support chaining. setEnabled() returns generic quantity, so chain it last)</em></p>
 
 
 

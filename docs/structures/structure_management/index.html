@@ -1245,12 +1245,88 @@
       
       
         <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
-          Camera View
+          Sparse Volume Grid
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_7_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sparse Volume Grid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sparse_volume_grid/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sparse_volume_grid/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sparse_volume_grid/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+          Camera View
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7_8">
           <span class="md-nav__icon md-icon"></span>
           Camera View
         </label>
@@ -1288,17 +1364,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_9" >
       
       
       
-        <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_7_9" id="__nav_7_9_label" tabindex="0">
           Floating Quantities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_7_8">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7_9">
           <span class="md-nav__icon md-icon"></span>
           Floating Quantities
         </label>
@@ -1874,7 +1950,8 @@ The former is concise and programmatic, while the latter avoids the need to keep
 </details>
 <h4 id="transforms">Transforms<a class="headerlink" href="#transforms" title="Permanent link">&para;</a></h4>
 <p>Each structure has an associated spatial <em>transform</em> applied to it for display in the scene. The transform encodes a translation, rotation, and scaling represented as a 4x4 homogeneous matrix. Initially this transformation is just the identity transform (it does nothing), but it can be adjusted to position the structures in your scene.</p>
-<p>The transform can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Transform]</code> menu.</p>
+<p>The transform can be controlled in the UI via the structure&rsquo;s <code>[Options] --&gt; [Transform]</code> menu.
+See <a href="/basics/interactive_UIs_and_animation/#transformation-gizmos">transformation gizmos</a> for more information on the interactive onscreen transformation gizmo.</p>
 <details class="func">
 <summary><code class="highlight"><span class="n">glm</span><span class="o">::</span><span class="n">mat4x4</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getTransform</span><span class="p">()</span></code></summary>
 <p>Get the current transformation matrix. </p>
@@ -1914,6 +1991,11 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <details class="func">
 <summary><code class="highlight"><span class="kt">bool</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getTransformGizmoEnabled</span><span class="p">()</span></code></summary>
 <p>Get the enabled state of the interactive onscreen widget which lets the user adjust an object&rsquo;s transform.</p>
+</details>
+<details class="func">
+<summary><code class="highlight"><span class="n">TransformationGizmo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Structure</span><span class="o">::</span><span class="n">getTransformGizmo</span><span class="p">()</span></code></summary>
+<p>Get a reference to the underlying <code>TransformationGizmo</code> object for the interactive transform widget.</p>
+<p>See <a href="/basics/interactive_UIs_and_animation/#transformation-gizmos">transformation gizmos</a> for options relate to the gizmo object.</p>
 </details>
 <h4 id="slice-planes">Slice planes<a class="headerlink" href="#slice-planes" title="Permanent link">&para;</a></h4>
 <p>Options relating to <a href="/features/slice_planes/">slice planes</a> which may be present in the scene.</p>

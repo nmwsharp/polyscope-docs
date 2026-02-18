@@ -1,0 +1,3299 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://polyscope.run/py/basics/custom_UIs/implot_api/">
+      
+      
+        <link rel="prev" href="../imgui_api/">
+      
+      
+        <link rel="next" href="../../../structures/structure_management/">
+      
+      <link rel="icon" href="../../../media/icons/material/baseline_highlight_black_18dp.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+    
+    
+      
+        <title>ImPlot Python API - Polyscope - Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ffa9267a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,300i,400,400i,700,700i%7CInconsolata:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"PT Serif";--md-code-font:"Inconsolata"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extras.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#implot-api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../../.."
+      title="Polyscope - Python"
+      class="md-header__button md-logo"
+      aria-label="Polyscope - Python"
+      data-md-component="logo"
+    >
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 10 6 5h12l-3 5H9m9-6H6V2h12v2M9 22V11h6v11H9m3-9a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1Z"/></svg>
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Polyscope - Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ImPlot Python API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+    <!-- ADDED BY NSHARP language selector -->
+    <div class="md-flex__cell md-flex__cell--shrink">
+      <a href="https://polyscope.run" class="lang-button lang-button-inactive">
+        C++
+      </a>
+    </div>
+    <div class="md-flex__cell md-flex__cell--shrink">
+      <a href="https://polyscope.run/py" class="lang-button">
+        Python
+      </a>
+    </div>
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nmwsharp/polyscope" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nmwsharp/polyscope
+  </div>
+</a>
+      </div>
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Polyscope - Python" class="md-nav__button md-logo" aria-label="Polyscope - Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 10 6 5h12l-3 5H9m9-6H6V2h12v2M9 22V11h6v11H9m3-9a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1Z"/></svg>
+
+    </a>
+    Polyscope - Python
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nmwsharp/polyscope" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nmwsharp/polyscope
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/release_notes/" class="md-nav__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/dependencies/" class="md-nav__link">
+        Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installing/" class="md-nav__link">
+        Installing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../FAQ/" class="md-nav__link">
+        FAQ, Tips, and Tricks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flow/" class="md-nav__link">
+        Basic Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../program_options/" class="md-nav__link">
+        Program Options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scene_options/" class="md-nav__link">
+        Scene Options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../camera_controls/" class="md-nav__link">
+        Managing Views & Cameras
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive_UIs_and_animation/" class="md-nav__link">
+        Interactive UIs & Animation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imgui_api/" class="md-nav__link">
+        ImGui Python API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ImPlot Python API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ImPlot Python API
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implotstyle" class="md-nav__link">
+    ImPlotStyle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotinputmap" class="md-nav__link">
+    ImPlotInputMap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    Enums
+  </a>
+  
+    <nav class="md-nav" aria-label="Enums">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imaxis" class="md-nav__link">
+    ImAxis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotflags" class="md-nav__link">
+    ImPlotFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotaxisflags" class="md-nav__link">
+    ImPlotAxisFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotsubplotflags" class="md-nav__link">
+    ImPlotSubplotFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotlegendflags" class="md-nav__link">
+    ImPlotLegendFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotmousetextflags" class="md-nav__link">
+    ImPlotMouseTextFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotdragtoolflags" class="md-nav__link">
+    ImPlotDragToolFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotcolormapscaleflags" class="md-nav__link">
+    ImPlotColormapScaleFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotitemflags" class="md-nav__link">
+    ImPlotItemFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotlineflags" class="md-nav__link">
+    ImPlotLineFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotscatterflags" class="md-nav__link">
+    ImPlotScatterFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotstairsflags" class="md-nav__link">
+    ImPlotStairsFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotshadedflags" class="md-nav__link">
+    ImPlotShadedFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotbarsflags" class="md-nav__link">
+    ImPlotBarsFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotbargroupsflags" class="md-nav__link">
+    ImPlotBarGroupsFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imploterrorbarsflags" class="md-nav__link">
+    ImPlotErrorBarsFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotstemsflags" class="md-nav__link">
+    ImPlotStemsFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotinflinesflags" class="md-nav__link">
+    ImPlotInfLinesFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotpiechartflags" class="md-nav__link">
+    ImPlotPieChartFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotheatmapflags" class="md-nav__link">
+    ImPlotHeatmapFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implothistogramflags" class="md-nav__link">
+    ImPlotHistogramFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotdigitalflags" class="md-nav__link">
+    ImPlotDigitalFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotimageflags" class="md-nav__link">
+    ImPlotImageFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implottextflags" class="md-nav__link">
+    ImPlotTextFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotdummyflags" class="md-nav__link">
+    ImPlotDummyFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotcond" class="md-nav__link">
+    ImPlotCond
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotcol" class="md-nav__link">
+    ImPlotCol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotstylevar" class="md-nav__link">
+    ImPlotStyleVar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotscale" class="md-nav__link">
+    ImPlotScale
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotmarker" class="md-nav__link">
+    ImPlotMarker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotcolormap" class="md-nav__link">
+    ImPlotColormap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotlocation" class="md-nav__link">
+    ImPlotLocation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotbin" class="md-nav__link">
+    ImPlotBin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    Constants
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Structures and Quantities
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Structures and Quantities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/structure_management/" class="md-nav__link">
+        Structure Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          Point Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Point Cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/point_cloud/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/point_cloud/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/point_cloud/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/point_cloud/vector_quantities/" class="md-nav__link">
+        Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/point_cloud/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/point_cloud/variable_radius/" class="md-nav__link">
+        Variable Radius
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/point_cloud/variable_transparency/" class="md-nav__link">
+        Variable Transparency
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+          Curve Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Curve Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/curve_network/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/curve_network/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/curve_network/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/curve_network/vector_quantities/" class="md-nav__link">
+        Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/curve_network/variable_radius/" class="md-nav__link">
+        Variable Radius
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+          Surface Mesh
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          Surface Mesh
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/surface_mesh/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/surface_mesh/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/surface_mesh/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/surface_mesh/texture_map_quantities/" class="md-nav__link">
+        Texture Map Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/surface_mesh/vector_quantities/" class="md-nav__link">
+        Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/surface_mesh/parameterization_quantities/" class="md-nav__link">
+        Parameterization Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/surface_mesh/indexing_convention/" class="md-nav__link">
+        Indexing Convention
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/surface_mesh/variable_transparency/" class="md-nav__link">
+        Variable Transparency
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          Volume Mesh
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Volume Mesh
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/volume_mesh/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/volume_mesh/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/volume_mesh/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/volume_mesh/vector_quantities/" class="md-nav__link">
+        Vector Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+          Volume Grid
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_6">
+          <span class="md-nav__icon md-icon"></span>
+          Volume Grid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/volume_grid/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/volume_grid/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+          Sparse Volume Grid
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sparse Volume Grid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/sparse_volume_grid/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/sparse_volume_grid/scalar_quantities/" class="md-nav__link">
+        Scalar Quantities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/sparse_volume_grid/color_quantities/" class="md-nav__link">
+        Color Quantities
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+          Camera View
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_8">
+          <span class="md-nav__icon md-icon"></span>
+          Camera View
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/camera_view/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="0">
+          Floating Quantities
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_9">
+          <span class="md-nav__icon md-icon"></span>
+          Floating Quantities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/floating_quantities/basics/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/floating_quantities/images/" class="md-nav__link">
+        Images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structures/floating_quantities/render_images/" class="md-nav__link">
+        Render Images
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/screenshots/" class="md-nav__link">
+        Screenshots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/headless_rendering/" class="md-nav__link">
+        Headless Rendering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../parameters/" class="md-nav__link">
+        Parameters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/messages/" class="md-nav__link">
+        Messages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/materials/" class="md-nav__link">
+        Materials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/color_maps/" class="md-nav__link">
+        Color Maps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/transparency/" class="md-nav__link">
+        Transparency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/ground_and_shadows/" class="md-nav__link">
+        Ground and Shadows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/slice_planes/" class="md-nav__link">
+        Slice Planes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/2D_data/" class="md-nav__link">
+        2D Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/groups/" class="md-nav__link">
+        Groups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/implicit_helpers/" class="md-nav__link">
+        Implicit Helpers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implotstyle" class="md-nav__link">
+    ImPlotStyle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotinputmap" class="md-nav__link">
+    ImPlotInputMap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    Enums
+  </a>
+  
+    <nav class="md-nav" aria-label="Enums">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imaxis" class="md-nav__link">
+    ImAxis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotflags" class="md-nav__link">
+    ImPlotFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotaxisflags" class="md-nav__link">
+    ImPlotAxisFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotsubplotflags" class="md-nav__link">
+    ImPlotSubplotFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotlegendflags" class="md-nav__link">
+    ImPlotLegendFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotmousetextflags" class="md-nav__link">
+    ImPlotMouseTextFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotdragtoolflags" class="md-nav__link">
+    ImPlotDragToolFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotcolormapscaleflags" class="md-nav__link">
+    ImPlotColormapScaleFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotitemflags" class="md-nav__link">
+    ImPlotItemFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotlineflags" class="md-nav__link">
+    ImPlotLineFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotscatterflags" class="md-nav__link">
+    ImPlotScatterFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotstairsflags" class="md-nav__link">
+    ImPlotStairsFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotshadedflags" class="md-nav__link">
+    ImPlotShadedFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotbarsflags" class="md-nav__link">
+    ImPlotBarsFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotbargroupsflags" class="md-nav__link">
+    ImPlotBarGroupsFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imploterrorbarsflags" class="md-nav__link">
+    ImPlotErrorBarsFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotstemsflags" class="md-nav__link">
+    ImPlotStemsFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotinflinesflags" class="md-nav__link">
+    ImPlotInfLinesFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotpiechartflags" class="md-nav__link">
+    ImPlotPieChartFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotheatmapflags" class="md-nav__link">
+    ImPlotHeatmapFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implothistogramflags" class="md-nav__link">
+    ImPlotHistogramFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotdigitalflags" class="md-nav__link">
+    ImPlotDigitalFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotimageflags" class="md-nav__link">
+    ImPlotImageFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implottextflags" class="md-nav__link">
+    ImPlotTextFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotdummyflags" class="md-nav__link">
+    ImPlotDummyFlags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotcond" class="md-nav__link">
+    ImPlotCond
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotcol" class="md-nav__link">
+    ImPlotCol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotstylevar" class="md-nav__link">
+    ImPlotStyleVar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotscale" class="md-nav__link">
+    ImPlotScale
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotmarker" class="md-nav__link">
+    ImPlotMarker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotcolormap" class="md-nav__link">
+    ImPlotColormap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotlocation" class="md-nav__link">
+    ImPlotLocation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implotbin" class="md-nav__link">
+    ImPlotBin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    Constants
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="implot-api-reference">ImPlot API Reference<a class="headerlink" href="#implot-api-reference" title="Permanent link">&para;</a></h1>
+<p>All functions are in the <code>polyscope.implot</code> namespace. Please see the <a href="https://www.github.com/epezent/implot">ImPlot project</a> for full documentation of ImPlot functions and features.</p>
+<p>These Python bindings are a 1:1 mapping of the C++ ImPlot API, with concessions only for syntax that is not possible in Python. For example, C++ functions that take pointers and modify their arguments in-place instead return a Python tuple of <code>(is_changed, new_value)</code>.</p>
+<p>See <a href="/py//basics/interactive_UIs_and_animation/#sample-custom-ui">here for an example UI</a>.</p>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">BeginPlot</span><span class="p">(</span>
+    <span class="n">title_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">EndPlot</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">BeginSubplots</span><span class="p">(</span>
+    <span class="n">title_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">rows</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">cols</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">row_ratios</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">col_ratios</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">EndSubplots</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupAxis</span><span class="p">(</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupAxisLimits</span><span class="p">(</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">vmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">cond</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupAxisFormat</span><span class="p">(</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupAxisTicks</span><span class="p">(</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">labels</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">keep_default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupAxisTicks</span><span class="p">(</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">v_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">v_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">n_ticks</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">labels</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">keep_default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupAxisScale</span><span class="p">(</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">scale</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupAxisLimitsConstraints</span><span class="p">(</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">v_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">v_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupAxisZoomConstraints</span><span class="p">(</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">z_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">z_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupAxes</span><span class="p">(</span>
+    <span class="n">x_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">y_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">x_flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">y_flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupAxesLimits</span><span class="p">(</span>
+    <span class="n">x_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">cond</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupLegend</span><span class="p">(</span>
+    <span class="n">location</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupMouseText</span><span class="p">(</span>
+    <span class="n">location</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetupFinish</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotLine</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">xscale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">xstart</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotLine</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotScatter</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">xscale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">xstart</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotScatter</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotStairs</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">xscale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">xstart</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotStairs</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotShaded</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">yref</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">xscale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">xstart</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotShaded</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">yref</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotShaded</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys1</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys2</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotBars</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">bar_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.67</span><span class="p">,</span>
+    <span class="n">shift</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotBars</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">bar_size</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotBarGroups</span><span class="p">(</span>
+    <span class="n">label_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">group_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.67</span><span class="p">,</span>
+    <span class="n">shift</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotErrorBars</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">err</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotErrorBars</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">neg</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">pos</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotStems</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ref</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">start</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotStems</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ref</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotInfLines</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotPieChart</span><span class="p">(</span>
+    <span class="n">label_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">label_fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">angle0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">90</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotHeatmap</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">scale_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">scale_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">label_fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">bounds_min</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+    <span class="n">bounds_max</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotHistogram</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">bar_scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="nb">range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotHistogram2D</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">x_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">y_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+    <span class="nb">range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotDigital</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">ys</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotImage</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">tex_ref</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">bounds_min</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">bounds_max</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">uv0</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+    <span class="n">uv1</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+    <span class="n">tint_col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotText</span><span class="p">(</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">pix_offset</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PlotDummy</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">DragPoint</span><span class="p">(</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">DragLineX</span><span class="p">(</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">thickness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">DragLineY</span><span class="p">(</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">thickness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">DragRect</span><span class="p">(</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">x1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">x2</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y2</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">Annotation</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">pix_offset</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">clamp</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="nb">round</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">Annotation</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">pix_offset</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">clamp</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">TagX</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="nb">round</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">TagX</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">TagY</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="nb">round</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">TagY</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetAxis</span><span class="p">(</span><span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetAxes</span><span class="p">(</span>
+    <span class="n">x_axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">y_axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PixelsToPlot</span><span class="p">(</span>
+    <span class="n">pix</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">x_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">y_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">PixelsToPlot</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">x_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">y_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">PlotToPixels</span><span class="p">(</span>
+    <span class="n">plt</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">x_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">y_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">PlotToPixels</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">x_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">y_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">GetPlotPos</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">GetPlotSize</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">GetPlotMousePos</span><span class="p">(</span>
+    <span class="n">x_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">y_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">GetPlotLimits</span><span class="p">(</span>
+    <span class="n">x_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">y_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">IsPlotHovered</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">IsAxisHovered</span><span class="p">(</span><span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">IsSubplotsHovered</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">IsPlotSelected</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">GetPlotSelection</span><span class="p">(</span>
+    <span class="n">x_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">y_axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">CancelPlotSelection</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">HideNextItem</span><span class="p">(</span>
+    <span class="n">hidden</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">cond</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">BeginAlignedPlots</span><span class="p">(</span>
+    <span class="n">group_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">vertical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">EndAlignedPlots</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">BeginLegendPopup</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">mouse_button</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">EndLegendPopup</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">IsLegendEntryHovered</span><span class="p">(</span><span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">BeginDragDropTargetPlot</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">BeginDragDropTargetAxis</span><span class="p">(</span><span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">BeginDragDropTargetLegend</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">EndDragDropTarget</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">BeginDragDropSourcePlot</span><span class="p">(</span><span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">BeginDragDropSourceAxis</span><span class="p">(</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">BeginDragDropSourceItem</span><span class="p">(</span>
+    <span class="n">label_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">EndDragDropSource</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">GetStyle</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ImPlotStyle</span>
+<span class="n">StyleColorsAuto</span><span class="p">(</span><span class="n">dst</span><span class="p">:</span> <span class="n">ImPlotStyle</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">StyleColorsClassic</span><span class="p">(</span><span class="n">dst</span><span class="p">:</span> <span class="n">ImPlotStyle</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">StyleColorsDark</span><span class="p">(</span><span class="n">dst</span><span class="p">:</span> <span class="n">ImPlotStyle</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">StyleColorsLight</span><span class="p">(</span><span class="n">dst</span><span class="p">:</span> <span class="n">ImPlotStyle</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PushStyleColor</span><span class="p">(</span>
+    <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PushStyleColor</span><span class="p">(</span>
+    <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PopStyleColor</span><span class="p">(</span><span class="n">count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PushStyleVar</span><span class="p">(</span>
+    <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PushStyleVar</span><span class="p">(</span>
+    <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">val</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PushStyleVar</span><span class="p">(</span>
+    <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">val</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PopStyleVar</span><span class="p">(</span><span class="n">count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetNextLineStyle</span><span class="p">(</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">),</span>
+    <span class="n">weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetNextFillStyle</span><span class="p">(</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">),</span>
+    <span class="n">alpha_mod</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetNextMarkerStyle</span><span class="p">(</span>
+    <span class="n">marker</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">fill</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">),</span>
+    <span class="n">weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">outline</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">),</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">SetNextErrorBarStyle</span><span class="p">(</span>
+    <span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">),</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">GetLastItemColor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">GetStyleColorName</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<span class="n">GetMarkerName</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<span class="n">AddColormap</span><span class="p">(</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">cols</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
+    <span class="n">qual</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<span class="n">GetColormapCount</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<span class="n">GetColormapName</span><span class="p">(</span><span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<span class="n">GetColormapIndex</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<span class="n">PushColormap</span><span class="p">(</span><span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PushColormap</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PopColormap</span><span class="p">(</span><span class="n">count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">NextColormapColor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">GetColormapSize</span><span class="p">(</span><span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<span class="n">GetColormapColor</span><span class="p">(</span>
+    <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">SampleColormap</span><span class="p">(</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">ColormapScale</span><span class="p">(</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">scale_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">scale_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">ColormapSlider</span><span class="p">(</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span>
+<span class="n">ColormapButton</span><span class="p">(</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+    <span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">BustColorCache</span><span class="p">(</span><span class="n">plot_title_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">GetInputMap</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ImPlotInputMap</span>
+<span class="n">MapInputDefault</span><span class="p">(</span><span class="n">dst</span><span class="p">:</span> <span class="n">ImPlotInputMap</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">MapInputReverse</span><span class="p">(</span><span class="n">dst</span><span class="p">:</span> <span class="n">ImPlotInputMap</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">ItemIcon</span><span class="p">(</span><span class="n">col</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">ItemIcon</span><span class="p">(</span><span class="n">col</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">ColormapIcon</span><span class="p">(</span><span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">GetPlotDrawList</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">polyscope_bindings</span><span class="o">.</span><span class="n">imgui</span><span class="o">.</span><span class="n">ImDrawList</span>
+<span class="n">PushPlotClipRect</span><span class="p">(</span><span class="n">expand</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">PopPlotClipRect</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">ShowStyleSelector</span><span class="p">(</span><span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">ShowColormapSelector</span><span class="p">(</span><span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">ShowInputMapSelector</span><span class="p">(</span><span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<span class="n">ShowStyleEditor</span><span class="p">(</span><span class="n">ref</span><span class="p">:</span> <span class="n">ImPlotStyle</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">ShowUserGuide</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">ShowMetricsWindow</span><span class="p">(</span><span class="n">p_open</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</code></pre></div>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<h3 id="implotstyle">ImPlotStyle<a class="headerlink" href="#implotstyle" title="Permanent link">&para;</a></h3>
+<p><strong>Properties:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">LineWeight</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">Marker</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">MarkerSize</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">MarkerWeight</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">FillAlpha</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">ErrorBarSize</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">ErrorBarWeight</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">DigitalBitHeight</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">DigitalBitGap</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">PlotBorderSize</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">MinorAlpha</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">MajorTickLen</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">MinorTickLen</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">MajorTickSize</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">MinorTickSize</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">MajorGridSize</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">MinorGridSize</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">PlotPadding</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">LabelPadding</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">LegendPadding</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">LegendInnerPadding</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">LegendSpacing</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">MousePosPadding</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">AnnotationPadding</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">FitPadding</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">PlotDefaultSize</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">PlotMinSize</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">Colormap</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">UseLocalTime</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="n">UseISO8601</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="n">Use24HourClock</span><span class="p">:</span> <span class="nb">bool</span>
+</code></pre></div>
+<p><strong>Methods:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">GetColor</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<span class="n">SetColor</span><span class="p">(</span>
+    <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">color</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<span class="n">GetColorCount</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</code></pre></div>
+<h3 id="implotinputmap">ImPlotInputMap<a class="headerlink" href="#implotinputmap" title="Permanent link">&para;</a></h3>
+<p><strong>Properties:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Pan</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">PanMod</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">Fit</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">Select</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">SelectCancel</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">SelectMod</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">SelectHorzMod</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">SelectVertMod</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">Menu</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">OverrideMod</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">ZoomMod</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">ZoomRate</span><span class="p">:</span> <span class="nb">float</span>
+</code></pre></div>
+<h2 id="enums">Enums<a class="headerlink" href="#enums" title="Permanent link">&para;</a></h2>
+<h3 id="imaxis">ImAxis<a class="headerlink" href="#imaxis" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImAxis_X1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImAxis_X2</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImAxis_X3</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImAxis_Y1</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImAxis_Y2</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImAxis_Y3</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImAxis_COUNT</span> <span class="o">=</span> <span class="mi">6</span>
+</code></pre></div>
+<h3 id="implotflags">ImPlotFlags<a class="headerlink" href="#implotflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotFlags_NoTitle</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotFlags_NoLegend</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotFlags_NoMouseText</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotFlags_NoInputs</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotFlags_NoMenus</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotFlags_NoBoxSelect</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">ImPlotFlags_NoFrame</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">ImPlotFlags_Equal</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">ImPlotFlags_Crosshairs</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">ImPlotFlags_CanvasOnly</span> <span class="o">=</span> <span class="mi">55</span>
+</code></pre></div>
+<h3 id="implotaxisflags">ImPlotAxisFlags<a class="headerlink" href="#implotaxisflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotAxisFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotAxisFlags_NoLabel</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotAxisFlags_NoGridLines</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotAxisFlags_NoTickMarks</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotAxisFlags_NoTickLabels</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotAxisFlags_NoInitialFit</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotAxisFlags_NoMenus</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">ImPlotAxisFlags_NoSideSwitch</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">ImPlotAxisFlags_NoHighlight</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">ImPlotAxisFlags_Opposite</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">ImPlotAxisFlags_Foreground</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">ImPlotAxisFlags_Invert</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotAxisFlags_AutoFit</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">ImPlotAxisFlags_RangeFit</span> <span class="o">=</span> <span class="mi">4096</span>
+<span class="n">ImPlotAxisFlags_PanStretch</span> <span class="o">=</span> <span class="mi">8192</span>
+<span class="n">ImPlotAxisFlags_LockMin</span> <span class="o">=</span> <span class="mi">16384</span>
+<span class="n">ImPlotAxisFlags_LockMax</span> <span class="o">=</span> <span class="mi">32768</span>
+<span class="n">ImPlotAxisFlags_Lock</span> <span class="o">=</span> <span class="mi">49152</span>
+<span class="n">ImPlotAxisFlags_NoDecorations</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">ImPlotAxisFlags_AuxDefault</span> <span class="o">=</span> <span class="mi">258</span>
+</code></pre></div>
+<h3 id="implotsubplotflags">ImPlotSubplotFlags<a class="headerlink" href="#implotsubplotflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotSubplotFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotSubplotFlags_NoTitle</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotSubplotFlags_NoLegend</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotSubplotFlags_NoMenus</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotSubplotFlags_NoResize</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotSubplotFlags_NoAlign</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotSubplotFlags_ShareItems</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">ImPlotSubplotFlags_LinkRows</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">ImPlotSubplotFlags_LinkCols</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">ImPlotSubplotFlags_LinkAllX</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">ImPlotSubplotFlags_LinkAllY</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">ImPlotSubplotFlags_ColMajor</span> <span class="o">=</span> <span class="mi">1024</span>
+</code></pre></div>
+<h3 id="implotlegendflags">ImPlotLegendFlags<a class="headerlink" href="#implotlegendflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotLegendFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotLegendFlags_NoButtons</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotLegendFlags_NoHighlightItem</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotLegendFlags_NoHighlightAxis</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotLegendFlags_NoMenus</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotLegendFlags_Outside</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotLegendFlags_Horizontal</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">ImPlotLegendFlags_Sort</span> <span class="o">=</span> <span class="mi">64</span>
+</code></pre></div>
+<h3 id="implotmousetextflags">ImPlotMouseTextFlags<a class="headerlink" href="#implotmousetextflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotMouseTextFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotMouseTextFlags_NoAuxAxes</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotMouseTextFlags_NoFormat</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotMouseTextFlags_ShowAlways</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre></div>
+<h3 id="implotdragtoolflags">ImPlotDragToolFlags<a class="headerlink" href="#implotdragtoolflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotDragToolFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotDragToolFlags_NoCursors</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotDragToolFlags_NoFit</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotDragToolFlags_NoInputs</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotDragToolFlags_Delayed</span> <span class="o">=</span> <span class="mi">8</span>
+</code></pre></div>
+<h3 id="implotcolormapscaleflags">ImPlotColormapScaleFlags<a class="headerlink" href="#implotcolormapscaleflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotColormapScaleFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotColormapScaleFlags_NoLabel</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotColormapScaleFlags_Opposite</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotColormapScaleFlags_Invert</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre></div>
+<h3 id="implotitemflags">ImPlotItemFlags<a class="headerlink" href="#implotitemflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotItemFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotItemFlags_NoLegend</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotItemFlags_NoFit</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre></div>
+<h3 id="implotlineflags">ImPlotLineFlags<a class="headerlink" href="#implotlineflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotLineFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotLineFlags_Segments</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotLineFlags_Loop</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">ImPlotLineFlags_SkipNaN</span> <span class="o">=</span> <span class="mi">4096</span>
+<span class="n">ImPlotLineFlags_NoClip</span> <span class="o">=</span> <span class="mi">8192</span>
+<span class="n">ImPlotLineFlags_Shaded</span> <span class="o">=</span> <span class="mi">16384</span>
+</code></pre></div>
+<h3 id="implotscatterflags">ImPlotScatterFlags<a class="headerlink" href="#implotscatterflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotScatterFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotScatterFlags_NoClip</span> <span class="o">=</span> <span class="mi">1024</span>
+</code></pre></div>
+<h3 id="implotstairsflags">ImPlotStairsFlags<a class="headerlink" href="#implotstairsflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotStairsFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotStairsFlags_PreStep</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotStairsFlags_Shaded</span> <span class="o">=</span> <span class="mi">2048</span>
+</code></pre></div>
+<h3 id="implotshadedflags">ImPlotShadedFlags<a class="headerlink" href="#implotshadedflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotShadedFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div>
+<h3 id="implotbarsflags">ImPlotBarsFlags<a class="headerlink" href="#implotbarsflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotBarsFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotBarsFlags_Horizontal</span> <span class="o">=</span> <span class="mi">1024</span>
+</code></pre></div>
+<h3 id="implotbargroupsflags">ImPlotBarGroupsFlags<a class="headerlink" href="#implotbargroupsflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotBarGroupsFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotBarGroupsFlags_Horizontal</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotBarGroupsFlags_Stacked</span> <span class="o">=</span> <span class="mi">2048</span>
+</code></pre></div>
+<h3 id="imploterrorbarsflags">ImPlotErrorBarsFlags<a class="headerlink" href="#imploterrorbarsflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotErrorBarsFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotErrorBarsFlags_Horizontal</span> <span class="o">=</span> <span class="mi">1024</span>
+</code></pre></div>
+<h3 id="implotstemsflags">ImPlotStemsFlags<a class="headerlink" href="#implotstemsflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotStemsFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotStemsFlags_Horizontal</span> <span class="o">=</span> <span class="mi">1024</span>
+</code></pre></div>
+<h3 id="implotinflinesflags">ImPlotInfLinesFlags<a class="headerlink" href="#implotinflinesflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotInfLinesFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotInfLinesFlags_Horizontal</span> <span class="o">=</span> <span class="mi">1024</span>
+</code></pre></div>
+<h3 id="implotpiechartflags">ImPlotPieChartFlags<a class="headerlink" href="#implotpiechartflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotPieChartFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotPieChartFlags_Normalize</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotPieChartFlags_IgnoreHidden</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">ImPlotPieChartFlags_Exploding</span> <span class="o">=</span> <span class="mi">4096</span>
+</code></pre></div>
+<h3 id="implotheatmapflags">ImPlotHeatmapFlags<a class="headerlink" href="#implotheatmapflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotHeatmapFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotHeatmapFlags_ColMajor</span> <span class="o">=</span> <span class="mi">1024</span>
+</code></pre></div>
+<h3 id="implothistogramflags">ImPlotHistogramFlags<a class="headerlink" href="#implothistogramflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotHistogramFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotHistogramFlags_Horizontal</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotHistogramFlags_Cumulative</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">ImPlotHistogramFlags_Density</span> <span class="o">=</span> <span class="mi">4096</span>
+<span class="n">ImPlotHistogramFlags_NoOutliers</span> <span class="o">=</span> <span class="mi">8192</span>
+<span class="n">ImPlotHistogramFlags_ColMajor</span> <span class="o">=</span> <span class="mi">16384</span>
+</code></pre></div>
+<h3 id="implotdigitalflags">ImPlotDigitalFlags<a class="headerlink" href="#implotdigitalflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotDigitalFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div>
+<h3 id="implotimageflags">ImPlotImageFlags<a class="headerlink" href="#implotimageflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotImageFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div>
+<h3 id="implottextflags">ImPlotTextFlags<a class="headerlink" href="#implottextflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotTextFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotTextFlags_Vertical</span> <span class="o">=</span> <span class="mi">1024</span>
+</code></pre></div>
+<h3 id="implotdummyflags">ImPlotDummyFlags<a class="headerlink" href="#implotdummyflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotDummyFlags_None</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div>
+<h3 id="implotcond">ImPlotCond<a class="headerlink" href="#implotcond" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotCond_None</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotCond_Always</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotCond_Once</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre></div>
+<h3 id="implotcol">ImPlotCol<a class="headerlink" href="#implotcol" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotCol_Line</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotCol_Fill</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotCol_MarkerOutline</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotCol_MarkerFill</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImPlotCol_ErrorBar</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotCol_FrameBg</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImPlotCol_PlotBg</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotCol_PlotBorder</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">ImPlotCol_LegendBg</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotCol_LegendBorder</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ImPlotCol_LegendText</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ImPlotCol_TitleText</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">ImPlotCol_InlayText</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">ImPlotCol_AxisText</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">ImPlotCol_AxisGrid</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">ImPlotCol_AxisTick</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">ImPlotCol_AxisBg</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotCol_AxisBgHovered</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">ImPlotCol_AxisBgActive</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">ImPlotCol_Selection</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="n">ImPlotCol_Crosshairs</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">ImPlotCol_COUNT</span> <span class="o">=</span> <span class="mi">21</span>
+</code></pre></div>
+<h3 id="implotstylevar">ImPlotStyleVar<a class="headerlink" href="#implotstylevar" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotStyleVar_LineWeight</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotStyleVar_Marker</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotStyleVar_MarkerSize</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotStyleVar_MarkerWeight</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImPlotStyleVar_FillAlpha</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotStyleVar_ErrorBarSize</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImPlotStyleVar_ErrorBarWeight</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotStyleVar_DigitalBitHeight</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">ImPlotStyleVar_DigitalBitGap</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotStyleVar_PlotBorderSize</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ImPlotStyleVar_MinorAlpha</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ImPlotStyleVar_MajorTickLen</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">ImPlotStyleVar_MinorTickLen</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">ImPlotStyleVar_MajorTickSize</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">ImPlotStyleVar_MinorTickSize</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">ImPlotStyleVar_MajorGridSize</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">ImPlotStyleVar_MinorGridSize</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotStyleVar_PlotPadding</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">ImPlotStyleVar_LabelPadding</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">ImPlotStyleVar_LegendPadding</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="n">ImPlotStyleVar_LegendInnerPadding</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">ImPlotStyleVar_LegendSpacing</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">ImPlotStyleVar_MousePosPadding</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">ImPlotStyleVar_AnnotationPadding</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">ImPlotStyleVar_FitPadding</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">ImPlotStyleVar_PlotDefaultSize</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">ImPlotStyleVar_PlotMinSize</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="n">ImPlotStyleVar_COUNT</span> <span class="o">=</span> <span class="mi">27</span>
+</code></pre></div>
+<h3 id="implotscale">ImPlotScale<a class="headerlink" href="#implotscale" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotScale_Linear</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotScale_Time</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotScale_Log10</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotScale_SymLog</span> <span class="o">=</span> <span class="mi">3</span>
+</code></pre></div>
+<h3 id="implotmarker">ImPlotMarker<a class="headerlink" href="#implotmarker" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotMarker_None</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">ImPlotMarker_Circle</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotMarker_Square</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotMarker_Diamond</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotMarker_Up</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImPlotMarker_Down</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotMarker_Left</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImPlotMarker_Right</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotMarker_Cross</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">ImPlotMarker_Plus</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotMarker_Asterisk</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ImPlotMarker_COUNT</span> <span class="o">=</span> <span class="mi">10</span>
+</code></pre></div>
+<h3 id="implotcolormap">ImPlotColormap<a class="headerlink" href="#implotcolormap" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotColormap_Deep</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotColormap_Dark</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotColormap_Pastel</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotColormap_Paired</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImPlotColormap_Viridis</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotColormap_Plasma</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImPlotColormap_Hot</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotColormap_Cool</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">ImPlotColormap_Pink</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotColormap_Jet</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ImPlotColormap_Twilight</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ImPlotColormap_RdBu</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">ImPlotColormap_BrBG</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">ImPlotColormap_PiYG</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">ImPlotColormap_Spectral</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">ImPlotColormap_Greys</span> <span class="o">=</span> <span class="mi">15</span>
+</code></pre></div>
+<h3 id="implotlocation">ImPlotLocation<a class="headerlink" href="#implotlocation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotLocation_Center</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotLocation_North</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotLocation_South</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotLocation_West</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotLocation_East</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotLocation_NorthWest</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImPlotLocation_NorthEast</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ImPlotLocation_SouthWest</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotLocation_SouthEast</span> <span class="o">=</span> <span class="mi">10</span>
+</code></pre></div>
+<h3 id="implotbin">ImPlotBin<a class="headerlink" href="#implotbin" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ImPlotBin_Sqrt</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">ImPlotBin_Sturges</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">ImPlotBin_Rice</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="n">ImPlotBin_Scott</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+</code></pre></div>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">ImAxis_X1</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImAxis_X2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImAxis_X3</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImAxis_Y1</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImAxis_Y2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImAxis_Y3</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImAxis_COUNT</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotFlags_NoTitle</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotFlags_NoLegend</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotFlags_NoMouseText</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotFlags_NoInputs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotFlags_NoMenus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotFlags_NoBoxSelect</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">ImPlotFlags_NoFrame</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">ImPlotFlags_Equal</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">ImPlotFlags_Crosshairs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">ImPlotFlags_CanvasOnly</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="n">ImPlotAxisFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotAxisFlags_NoLabel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotAxisFlags_NoGridLines</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotAxisFlags_NoTickMarks</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotAxisFlags_NoTickLabels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotAxisFlags_NoInitialFit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotAxisFlags_NoMenus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">ImPlotAxisFlags_NoSideSwitch</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">ImPlotAxisFlags_NoHighlight</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">ImPlotAxisFlags_Opposite</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">ImPlotAxisFlags_Foreground</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">ImPlotAxisFlags_Invert</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotAxisFlags_AutoFit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">ImPlotAxisFlags_RangeFit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4096</span>
+<span class="n">ImPlotAxisFlags_PanStretch</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8192</span>
+<span class="n">ImPlotAxisFlags_LockMin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16384</span>
+<span class="n">ImPlotAxisFlags_LockMax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32768</span>
+<span class="n">ImPlotAxisFlags_Lock</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">49152</span>
+<span class="n">ImPlotAxisFlags_NoDecorations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">ImPlotAxisFlags_AuxDefault</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">258</span>
+<span class="n">ImPlotSubplotFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotSubplotFlags_NoTitle</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotSubplotFlags_NoLegend</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotSubplotFlags_NoMenus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotSubplotFlags_NoResize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotSubplotFlags_NoAlign</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotSubplotFlags_ShareItems</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">ImPlotSubplotFlags_LinkRows</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">ImPlotSubplotFlags_LinkCols</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">ImPlotSubplotFlags_LinkAllX</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">ImPlotSubplotFlags_LinkAllY</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">ImPlotSubplotFlags_ColMajor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotLegendFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotLegendFlags_NoButtons</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotLegendFlags_NoHighlightItem</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotLegendFlags_NoHighlightAxis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotLegendFlags_NoMenus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotLegendFlags_Outside</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotLegendFlags_Horizontal</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">ImPlotLegendFlags_Sort</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">ImPlotMouseTextFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotMouseTextFlags_NoAuxAxes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotMouseTextFlags_NoFormat</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotMouseTextFlags_ShowAlways</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotDragToolFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotDragToolFlags_NoCursors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotDragToolFlags_NoFit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotDragToolFlags_NoInputs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotDragToolFlags_Delayed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotColormapScaleFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotColormapScaleFlags_NoLabel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotColormapScaleFlags_Opposite</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotColormapScaleFlags_Invert</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotItemFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotItemFlags_NoLegend</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotItemFlags_NoFit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotLineFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotLineFlags_Segments</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotLineFlags_Loop</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">ImPlotLineFlags_SkipNaN</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4096</span>
+<span class="n">ImPlotLineFlags_NoClip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8192</span>
+<span class="n">ImPlotLineFlags_Shaded</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16384</span>
+<span class="n">ImPlotScatterFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotScatterFlags_NoClip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotStairsFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotStairsFlags_PreStep</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotStairsFlags_Shaded</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">ImPlotShadedFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotBarsFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotBarsFlags_Horizontal</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotBarGroupsFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotBarGroupsFlags_Horizontal</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotBarGroupsFlags_Stacked</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">ImPlotErrorBarsFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotErrorBarsFlags_Horizontal</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotStemsFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotStemsFlags_Horizontal</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotInfLinesFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotInfLinesFlags_Horizontal</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotPieChartFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotPieChartFlags_Normalize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotPieChartFlags_IgnoreHidden</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">ImPlotPieChartFlags_Exploding</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4096</span>
+<span class="n">ImPlotHeatmapFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotHeatmapFlags_ColMajor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotHistogramFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotHistogramFlags_Horizontal</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotHistogramFlags_Cumulative</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">ImPlotHistogramFlags_Density</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4096</span>
+<span class="n">ImPlotHistogramFlags_NoOutliers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8192</span>
+<span class="n">ImPlotHistogramFlags_ColMajor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16384</span>
+<span class="n">ImPlotDigitalFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotImageFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotTextFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotTextFlags_Vertical</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">ImPlotDummyFlags_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotCond_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotCond_Always</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotCond_Once</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotCol_Line</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotCol_Fill</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotCol_MarkerOutline</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotCol_MarkerFill</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImPlotCol_ErrorBar</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotCol_FrameBg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImPlotCol_PlotBg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotCol_PlotBorder</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">ImPlotCol_LegendBg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotCol_LegendBorder</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ImPlotCol_LegendText</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ImPlotCol_TitleText</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">ImPlotCol_InlayText</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">ImPlotCol_AxisText</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">ImPlotCol_AxisGrid</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">ImPlotCol_AxisTick</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">ImPlotCol_AxisBg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotCol_AxisBgHovered</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">ImPlotCol_AxisBgActive</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">ImPlotCol_Selection</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="n">ImPlotCol_Crosshairs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">ImPlotCol_COUNT</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">ImPlotStyleVar_LineWeight</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotStyleVar_Marker</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotStyleVar_MarkerSize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotStyleVar_MarkerWeight</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImPlotStyleVar_FillAlpha</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotStyleVar_ErrorBarSize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImPlotStyleVar_ErrorBarWeight</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotStyleVar_DigitalBitHeight</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">ImPlotStyleVar_DigitalBitGap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotStyleVar_PlotBorderSize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ImPlotStyleVar_MinorAlpha</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ImPlotStyleVar_MajorTickLen</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">ImPlotStyleVar_MinorTickLen</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">ImPlotStyleVar_MajorTickSize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">ImPlotStyleVar_MinorTickSize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">ImPlotStyleVar_MajorGridSize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">ImPlotStyleVar_MinorGridSize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">ImPlotStyleVar_PlotPadding</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">ImPlotStyleVar_LabelPadding</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">ImPlotStyleVar_LegendPadding</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="n">ImPlotStyleVar_LegendInnerPadding</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">ImPlotStyleVar_LegendSpacing</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">ImPlotStyleVar_MousePosPadding</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">ImPlotStyleVar_AnnotationPadding</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">ImPlotStyleVar_FitPadding</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">ImPlotStyleVar_PlotDefaultSize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">ImPlotStyleVar_PlotMinSize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="n">ImPlotStyleVar_COUNT</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">27</span>
+<span class="n">ImPlotScale_Linear</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotScale_Time</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotScale_Log10</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotScale_SymLog</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImPlotMarker_None</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">ImPlotMarker_Circle</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotMarker_Square</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotMarker_Diamond</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotMarker_Up</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImPlotMarker_Down</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotMarker_Left</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImPlotMarker_Right</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotMarker_Cross</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">ImPlotMarker_Plus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotMarker_Asterisk</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ImPlotMarker_COUNT</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ImPlotColormap_Deep</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotColormap_Dark</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotColormap_Pastel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotColormap_Paired</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ImPlotColormap_Viridis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotColormap_Plasma</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImPlotColormap_Hot</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotColormap_Cool</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">ImPlotColormap_Pink</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotColormap_Jet</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ImPlotColormap_Twilight</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ImPlotColormap_RdBu</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">ImPlotColormap_BrBG</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">ImPlotColormap_PiYG</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">ImPlotColormap_Spectral</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">ImPlotColormap_Greys</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">ImPlotLocation_Center</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ImPlotLocation_North</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ImPlotLocation_South</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ImPlotLocation_West</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ImPlotLocation_East</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ImPlotLocation_NorthWest</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">ImPlotLocation_NorthEast</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">ImPlotLocation_SouthWest</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">ImPlotLocation_SouthEast</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ImPlotBin_Sqrt</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">ImPlotBin_Sturges</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">ImPlotBin_Rice</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="n">ImPlotBin_Scott</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../../extra.js"></script>
+      
+    
+  </body>
+</html>
