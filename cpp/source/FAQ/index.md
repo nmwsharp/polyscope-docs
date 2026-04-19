@@ -61,6 +61,7 @@ See [Screenshots]([[url.prefix]]/features/screenshots/). Call `polyscope::screen
 
 See [Transforms]([[url.prefix]]/structures/structure_management/#transforms) for various options and to set and get per-structure transformations.
 In the GUI, you can use the `[Options] --> [Transform]` menu to enable a widget to interactively transform each object within the scene.
+You can also create [custom transformation widgets]([[url.prefix]]/basics/interactive_UIs_and_animation/#transformation-gizmos) for any purpose you would like to allow users to specify positions and orientations and read back their values.
 
 ### **Managing large numbers of structures and quantities**
 
