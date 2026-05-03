@@ -42,7 +42,7 @@ polyscope::show();
 
 Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different variants to register meshes with tets and hexes, or a mixture of tets, hexes, prisms and pyramids. All of these register helpers return a pointer to a `polyscope::VolumeMesh` object which you can then add quantities to.
 
-![element ordering conventions]([[url.prefix]]/media/cellTypes.png)
+![element ordering conventions]([[url.prefix]]/media/tet_element_orderings.jpg)
 
 ???+ func "`#!cpp polyscope::registerTetMesh(std::string name, const V& vertexPositions, const C& tetIndices)`"
 
@@ -72,7 +72,7 @@ Volume meshes are registered with Polyscope by passing the location of each vert
 
 ??? func "`#!cpp polyscope::registerTetHexMesh(std::string name, const V& vertexPositions, const Ct& tetIndices, const Ct& hexIndices)`"
 
-    Add a new volume mesh structure to Polyscope. This variant takes a mix of tet and hex elements, where each are given in their own separate list. _(Note, this API predates support for pyramids and prism elements.  It remains for backwards compatibility)_
+    Add a new volume mesh structure to Polyscope. This variant takes a mix of tet and hex elements, where each are given in their own separate list. Note that prisms and pyramids are also supported by the class, but not this constructor; use the general variant.
 
     - `vertexPositions` is the vector array of 3D vertex locations. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `float`-valued 3-vectors; this allows many common types to be used as input, including `Eigen::MatrixXd` and `std::vector<std::array<double, 3>>`. The length will be the number of vertices.
     
