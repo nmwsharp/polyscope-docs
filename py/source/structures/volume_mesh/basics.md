@@ -3,7 +3,7 @@
 Visualize volumetric 3D meshes, with tetrahedral and hexahedral (cube-like) elements, or even more general prism or pyramidal elements. Meshes may be pure tet/hex/etc, or a mixture of different element types---we'll use the term *cell* to refer generically to either a tet, hex, prism or pyramid element in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values, or use *slice planes* to inspect the internal structure.
 
 <video width=100% autoplay muted loop>
-  <source src="/media/movies/volume_demo_compress.mp4" type="video/mp4">
+  <source src="[[url.prefix]]/media/movies/volume_demo_compress.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

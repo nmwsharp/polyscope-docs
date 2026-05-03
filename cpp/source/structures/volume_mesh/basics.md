@@ -5,7 +5,7 @@ Visualize volumetric 3D meshes, with tetrahedral and hexahedral (cube-like) elem
 As always, Polyscope can visualize the mesh itself, as well as any combination of scalar, color, or vector quantities associated with the vertices or cells of the mesh. Try clicking on the mesh to inspect the value of any quantity at that location, or using *slice planes* to inspect the internal structure and quantities defined within.
 
 <video width=100% autoplay muted loop>
-  <source src="/media/movies/volume_demo_compress.mp4" type="video/mp4">
+  <source src="[[url.prefix]]/media/movies/volume_demo_compress.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
