@@ -44,7 +44,7 @@ polyscope::show();
 
 Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different variants to register meshes with pure tets and hexes, or a more general mixture of tets, hexes, prisms and pyramids. All of these register helpers return a pointer to a `polyscope::VolumeMesh` object which you can then add quantities to.
 
-![element ordering conventions]([[url.prefix]]/media/tet_element_orderings.jpg)
+![element ordering conventions]([[url.prefix]]/media/volume_mesh_element_orderings.jpg)
 
 ???+ func "`#!cpp polyscope::registerTetMesh(std::string name, const V& vertexPositions, const C& tetIndices)`"
 
