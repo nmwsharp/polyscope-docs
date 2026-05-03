@@ -1,9 +1,9 @@
 # Volume Meshes
 
-Volumetric meshes, such as tetrahedral (*tet*) and hexahedral (*hex*, cube-like) meshes, represent a region of 3D space. Polyscope can display tet and hex meshes, including those which have a mix of hex and tet elements. We'll use the term *cell* to refer generically to a tet or hex in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values.
+Visualize volumetric 3D meshes, with tetrahedral and hexahedral (cube-like) elements, or even more general prism or pyramidal elements. Meshes may be pure tet/hex/etc, or a mixture of different element types---we'll use the term *cell* to refer generically to either a tet, hex, prism or pyramid element in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values, or use *slice planes* to inspect the internal structure.
 
 <video width=100% autoplay muted loop>
-  <source src="/media/movies/volume_demo_compress.mp4" type="video/mp4">
+  <source src="[[url.prefix]]/media/movies/volume_demo_compress.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -37,9 +37,9 @@ ps_vol.add_scalar_quantity("my cell val", data_cell, defined_on='cells',
 ps.show() 
 ```
 
-Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different argument variants to register meshes with tets, hexes, or a mix of the two. 
+Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different argument variants to register meshes with tets, hexes, or a general mix of element types.
 
-![tet element ordering conventions]([[url.prefix]]/media/tet_element_orderings.jpg)
+![element ordering conventions]([[url.prefix]]/media/tet_element_orderings.jpg)
 
 
 
@@ -50,13 +50,15 @@ Volume meshes are registered with Polyscope by passing the location of each vert
     - `name` string, a name for the structure
     - `vertices` an `Nx3` numpy float array of vertex locations 
 
-    The elements are specified by a combination of the following arguments:
+    The element indices are specified by some combination of the following arguments:
 
     - `tets` a `Tx4` numpy integer array of tetrahedra, as 0-based indices in to the vertices array
     - `hexes` a `Hx8` numpy integer array of hexahedra, as 0-based indices in to the vertices array
-    - `mixed_cells` a `Mx8` numpy integer array which may contain a mix of tetrahedra and hexahedra. For any rows which are tets and thus have just 4 indices, the remaining indices should be set to any negative value.
+    - `mixed_cells` a `Mx8` numpy integer array which may contain a mix of tet, hex, prism, and pyramid elements. Each row holds 8 entries; cells with fewer than 8 vertices are right-padded with `-1`. For example, a tet row might be `[12, 9, 22, 51, -1, -1, -1, -1]`, or a pyramid row might be `[3, 7, 14, 2, 19, -1, -1, -1]`.
 
-    You may pass in `tets`, `hexes`, or both to specify the connectivty. Alternately, `mixed_cells` may be used. However, it is not supported to specify both `tets`/`hexes` and `mixed_cells`.  For the purposes of element ordering, when `tets` and `hexes` are both passed, the cells are presumed to be ordered with all tetrahedral cells coming first, then hexahedral cells.
+    You may pass in `tets`, `hexes`, or both to specify the connectivity. Alternately, `mixed_cells` may be used for any combination of cell types, including pyramids and prisms as well. However, it is not supported to specify both `tets`/`hexes` and `mixed_cells`; just pass all cells as `mixed_cells` in this case.  
+    
+    For the purposes of element ordering, when `tets` and `hexes` are both passed, the cells are presumed to be ordered with all tetrahedral cells coming first, then hexahedral cells.
 
 
     Additional optional keyword arguments:
