@@ -106,6 +106,7 @@ nav:
       - 'Misc Quantities' : 'structures/surface_mesh/misc_quantities.md'
       - 'Indexing Convention' : 'structures/surface_mesh/indexing_convention.md'
       - 'Variable Transparency' : 'structures/surface_mesh/variable_transparency.md'
+      - 'Simple Triangle Mesh' : 'structures/surface_mesh/simple_triangle_mesh.md'
     - Volume Mesh:
       - 'Basics' : 'structures/volume_mesh/basics.md'
       - 'Scalar Quantities' : 'structures/volume_mesh/scalar_quantities.md'

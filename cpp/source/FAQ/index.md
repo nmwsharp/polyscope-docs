@@ -26,6 +26,11 @@ hide:
 
     - [How do I run Polyscope remotely / on a headless server / in a notebook?](#how-do-i-run-polyscope-remotely-in-a-browser-via-a-notebook-or-on-headless-server)
 
+
+- **Structures**
+
+    - [I just want to put triangles on the screen as fast as possible, how do I do that?](#i-just-want-to-put-triangles-on-the-screen-as-fast-as-possible-how-do-i-do-that)
+
 <!-- - **Working with Data** -->
 
 <!-- - **Miscellaneous** -->
@@ -102,3 +107,8 @@ Normally, colors are shaded and tone-mapped for rendering, which means the color
 See [headless rendering]([[url.prefix]]/features/headless_rendering/). 
 
 In short, Polyscope _does_ support headless rendering: it can be used on remote serves with no display attached to render images and videos to files or buffers, by initializing with a special EGL backend. However, Polyscope _does not_ currently support any kind of client-server mode, or execution in the browser from remote machines, etc. It must be executing locally on the machine which you are using it from.  
+
+
+### **I just want to put triangles on the screen as fast as possible, how do I do that?**
+
+See the [`SimpleTriangleMesh` structure]([[url.prefix]]/structures/surface_mesh/simple_triangle_mesh). It has a limited feature set compared to the full `SurfaceMesh`, but is designed for maximum performance, and supports fast updates to both vertex positions and face connectivity as well as on-device GPU updates without a CPU round-trip. 

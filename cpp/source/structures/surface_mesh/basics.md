@@ -66,6 +66,12 @@ The locations of the vertices in a mesh can be updated with the member function 
     Note: `updateVertexPositions2D` exists with the same signature. See [2D data]([[url.prefix]]/features/2D_data).
 
 
+!!! note "SimpleTriangleMesh is made for speed"
+
+    Updating a `SurfaceMesh` is already pretty efficient, and for small-medium sized meshes you can even do it every frame. Even re-registering a new mesh from scratch each frame is probably faster than you'd think.
+
+    However, if you are working from with large meshes and just want to put triangles on the screen as efficiently as possible, check out the alternate [`SimpleTriangleMesh`]([[url.prefix]]/structures/surface_mesh/simple_triangle_mesh) structure. It has a limited feature set, but is more performant and supports faster updates to both vertex positions and face connectivity, as well as on-device GPU updates without a CPU round-trip.
+
 ### Selection / Picking
 
 "Picking" refers to selecting and inspecting elements by clicking on the object in the scene. As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information about selection. 
