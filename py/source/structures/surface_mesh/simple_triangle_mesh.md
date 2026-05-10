@@ -19,7 +19,7 @@ ps_mesh = ps.register_simple_triangle_mesh("my mesh", vertices, faces)
 
 # Add a scalar quantity at vertices
 vals = np.random.rand(100)
-ps_mesh.add_vertex_scalar_quantity("rand vals", vals, enabled=True)
+ps_mesh.add_scalar_quantity("rand vals", vals, defined_on='vertices', enabled=True)
 
 ps.show()
 ```
@@ -107,34 +107,27 @@ Visualize scalar (real-valued) data at the vertices or faces of the mesh.
 ```python
 ps_mesh = ps.register_simple_triangle_mesh("my mesh", vertices, faces)
 
-# vertex scalar
+# vertex scalar (default)
 vals_v = np.random.rand(ps_mesh.n_vertices())
-q = ps_mesh.add_vertex_scalar_quantity("vert scalar", vals_v, enabled=True)
+q = ps_mesh.add_scalar_quantity("vert scalar", vals_v, defined_on='vertices', enabled=True)
 
 # face scalar
 vals_f = np.random.rand(ps_mesh.n_faces())
-ps_mesh.add_face_scalar_quantity("face scalar", vals_f)
+ps_mesh.add_scalar_quantity("face scalar", vals_f, defined_on='faces')
 ```
 
-??? func "`#!python SimpleTriangleMesh.add_vertex_scalar_quantity(name, values, datatype='standard', enabled=None, vminmax=None, cmap=None)`"
+???+ func "`#!python SimpleTriangleMesh.add_scalar_quantity(name, values, defined_on='vertices', datatype='standard', enabled=None, vminmax=None, cmap=None)`"
 
-    Add a scalar quantity defined at the vertices of the mesh.
+    Add a scalar quantity to the mesh.
 
     - `name` string, a name for the quantity
-    - `values` a length `V` numpy float array of scalar values, one per vertex
+    - `values` a length `N` numpy float array of scalar values
+    - `defined_on` one of `'vertices'` or `'faces'`
     - `datatype` one of `'standard'`, `'symmetric'`, `'magnitude'`; see [scalar quantities]([[url.prefix]]/features/scalar_quantities) for details
 
     This function also accepts optional keyword arguments to customize appearance and behavior.
 
-??? func "`#!python SimpleTriangleMesh.add_face_scalar_quantity(name, values, datatype='standard', enabled=None, vminmax=None, cmap=None)`"
-
-    Add a scalar quantity defined at the faces of the mesh.
-
-    - `name` string, a name for the quantity
-    - `values` a length `F` numpy float array of scalar values, one per face
-    - `datatype` one of `'standard'`, `'symmetric'`, `'magnitude'`; see [scalar quantities]([[url.prefix]]/features/scalar_quantities) for details
-
-    This function also accepts optional keyword arguments to customize appearance and behavior.
+    Returns the quantity object, which can be used to call `update_data()`.
 
 ### Updating Scalar Data
 
@@ -161,28 +154,24 @@ Visualize RGB color data at the vertices or faces of the mesh. Colors are specif
 ```python
 ps_mesh = ps.register_simple_triangle_mesh("my mesh", vertices, faces)
 
-# vertex color
+# vertex color (default)
 cols_v = np.random.rand(ps_mesh.n_vertices(), 3)
-q = ps_mesh.add_vertex_color_quantity("vert color", cols_v, enabled=True)
+q = ps_mesh.add_color_quantity("vert color", cols_v, defined_on='vertices', enabled=True)
 
 # face color
 cols_f = np.random.rand(ps_mesh.n_faces(), 3)
-ps_mesh.add_face_color_quantity("face color", cols_f)
+ps_mesh.add_color_quantity("face color", cols_f, defined_on='faces')
 ```
 
-??? func "`#!python SimpleTriangleMesh.add_vertex_color_quantity(name, values, enabled=None)`"
+???+ func "`#!python SimpleTriangleMesh.add_color_quantity(name, values, defined_on='vertices', enabled=None)`"
 
-    Add an RGB color quantity defined at the vertices of the mesh.
-
-    - `name` string, a name for the quantity
-    - `values` an `(V, 3)` numpy float array of RGB colors in `[0, 1]`, one per vertex
-
-??? func "`#!python SimpleTriangleMesh.add_face_color_quantity(name, values, enabled=None)`"
-
-    Add an RGB color quantity defined at the faces of the mesh.
+    Add an RGB color quantity to the mesh.
 
     - `name` string, a name for the quantity
-    - `values` an `(F, 3)` numpy float array of RGB colors in `[0, 1]`, one per face
+    - `values` an `(N, 3)` numpy float array of RGB colors in `[0, 1]`
+    - `defined_on` one of `'vertices'` or `'faces'`
+
+    Returns the quantity object, which can be used to call `update_data()`.
 
 ### Updating Color Data
 
