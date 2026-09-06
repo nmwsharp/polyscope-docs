@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://polyscope.run/py/structures/volume_mesh/basics/">
       
       
-        <link rel="prev" href="../../surface_mesh/variable_transparency/">
+        <link rel="prev" href="../../surface_mesh/simple_triangle_mesh/">
       
       
         <link rel="next" href="../scalar_quantities/">
@@ -963,6 +963,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../surface_mesh/simple_triangle_mesh/" class="md-nav__link">
+        Simple Triangle Mesh
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1667,9 +1681,9 @@
 
 
 <h1 id="volume-meshes">Volume Meshes<a class="headerlink" href="#volume-meshes" title="Permanent link">&para;</a></h1>
-<p>Volumetric meshes, such as tetrahedral (<em>tet</em>) and hexahedral (<em>hex</em>, cube-like) meshes, represent a region of 3D space. Polyscope can display tet and hex meshes, including those which have a mix of hex and tet elements. We&rsquo;ll use the term <em>cell</em> to refer generically to a tet or hex in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values.</p>
+<p>Visualize volumetric 3D meshes, with tetrahedral and hexahedral (cube-like) elements, or even more general prism or pyramidal elements. Meshes may be pure tet/hex/etc, or a mixture of different element types&mdash;we&rsquo;ll use the term <em>cell</em> to refer generically to either a tet, hex, prism or pyramid element in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values, or use <em>slice planes</em> to inspect the internal structure.</p>
 <video width=100% autoplay muted loop>
-  <source src="/media/movies/volume_demo_compress.mp4" type="video/mp4">
+  <source src="/py//media/movies/volume_demo_compress.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -1700,8 +1714,8 @@
 <span class="c1"># Show the GUI</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </code></pre></div>
-<p>Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different argument variants to register meshes with tets, hexes, or a mix of the two. </p>
-<p><img alt="tet element ordering conventions" src="/py//media/tet_element_orderings.jpg" /></p>
+<p>Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different argument variants to register meshes with tets, hexes, or a general mix of element types.</p>
+<p><img alt="element ordering conventions" src="/py//media/tet_element_orderings.jpg" /></p>
 <details class="func" open="open">
 <summary><code class="highlight"><span class="n">register_volume_mesh</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">tets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hexes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mixed_cells</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">interior_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
 <p>Add a new volume mesh structure to Polyscope.</p>
@@ -1709,13 +1723,14 @@
 <li><code>name</code> string, a name for the structure</li>
 <li><code>vertices</code> an <code>Nx3</code> numpy float array of vertex locations </li>
 </ul>
-<p>The elements are specified by a combination of the following arguments:</p>
+<p>The element indices are specified by some combination of the following arguments:</p>
 <ul>
 <li><code>tets</code> a <code>Tx4</code> numpy integer array of tetrahedra, as 0-based indices in to the vertices array</li>
 <li><code>hexes</code> a <code>Hx8</code> numpy integer array of hexahedra, as 0-based indices in to the vertices array</li>
-<li><code>mixed_cells</code> a <code>Mx8</code> numpy integer array which may contain a mix of tetrahedra and hexahedra. For any rows which are tets and thus have just 4 indices, the remaining indices should be set to any negative value.</li>
+<li><code>mixed_cells</code> a <code>Mx8</code> numpy integer array which may contain a mix of tet, hex, prism, and pyramid elements. Each row holds 8 entries; cells with fewer than 8 vertices are right-padded with <code>-1</code>. For example, a tet row might be <code>[12, 9, 22, 51, -1, -1, -1, -1]</code>, or a pyramid row might be <code>[3, 7, 14, 2, 19, -1, -1, -1]</code>.</li>
 </ul>
-<p>You may pass in <code>tets</code>, <code>hexes</code>, or both to specify the connectivty. Alternately, <code>mixed_cells</code> may be used. However, it is not supported to specify both <code>tets</code>/<code>hexes</code> and <code>mixed_cells</code>.  For the purposes of element ordering, when <code>tets</code> and <code>hexes</code> are both passed, the cells are presumed to be ordered with all tetrahedral cells coming first, then hexahedral cells.</p>
+<p>You may pass in <code>tets</code>, <code>hexes</code>, or both to specify the connectivity. Alternately, <code>mixed_cells</code> may be used for any combination of cell types, including pyramids and prisms as well. However, it is not supported to specify both <code>tets</code>/<code>hexes</code> and <code>mixed_cells</code>; just pass all cells as <code>mixed_cells</code> in this case.  </p>
+<p>For the purposes of element ordering, when <code>tets</code> and <code>hexes</code> are both passed, the cells are presumed to be ordered with all tetrahedral cells coming first, then hexahedral cells.</p>
 <p>Additional optional keyword arguments:</p>
 <ul>
 <li><code>enabled</code> boolean, is the structure enabled initially</li>

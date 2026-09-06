@@ -1041,6 +1041,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simple_triangle_mesh/" class="md-nav__link">
+        Simple Triangle Mesh
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1841,6 +1855,11 @@
 </ul>
 <p>Note: <code>updateVertexPositions2D</code> exists with the same signature. See <a href="/features/2D_data">2D data</a>.</p>
 </details>
+<div class="admonition note">
+<p class="admonition-title">SimpleTriangleMesh is made for speed</p>
+<p>Updating a <code>SurfaceMesh</code> is already pretty efficient, and for small-medium sized meshes you can even do it every frame. Even re-registering a new mesh from scratch each frame is probably faster than you&rsquo;d think.</p>
+<p>However, if you are working from with large meshes and just want to put triangles on the screen as efficiently as possible, check out the alternate <a href="/structures/surface_mesh/simple_triangle_mesh"><code>SimpleTriangleMesh</code></a> structure. It has a limited feature set, but is more performant and supports faster updates to both vertex positions and face connectivity, as well as on-device GPU updates without a CPU round-trip.</p>
+</div>
 <h3 id="selection-picking">Selection / Picking<a class="headerlink" href="#selection-picking" title="Permanent link">&para;</a></h3>
 <p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene. As with other structures, you can call <code>interpretPickResult()</code> to get additional info about a click. See <a href="/basics/interactive_UIs_and_animation/#selection-picking">the overview of Selection / Picking</a> for general information about selection. </p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">SurfaceMeshPickResult</span><span class="w"> </span><span class="p">{</span>

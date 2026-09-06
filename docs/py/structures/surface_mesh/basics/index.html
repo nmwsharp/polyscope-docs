@@ -1034,6 +1034,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simple_triangle_mesh/" class="md-nav__link">
+        Simple Triangle Mesh
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1731,6 +1745,11 @@
 <summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">update_vertex_positions</span><span class="p">(</span><span class="n">newPos</span><span class="p">)</span></code></summary>
 <p>Update the vertex positions in a surface mesh structure. <code>newPos</code> must be valid input as to initially construct the vertex positions, with the same number of vertices.</p>
 </details>
+<div class="admonition note">
+<p class="admonition-title">SimpleTriangleMesh is made for speed</p>
+<p>Updating a <code>SurfaceMesh</code> is already pretty efficient, and for small-medium sized meshes you can even do it every frame. Even re-registering a new mesh from scratch each frame is probably faster than you&rsquo;d think.</p>
+<p>However, if you are working with large meshes and just want to put triangles on the screen as efficiently as possible, check out the alternate <a href="/py//structures/surface_mesh/simple_triangle_mesh"><code>SimpleTriangleMesh</code></a> structure. It has a limited feature set, but is more performant and supports faster updates to both vertex positions and face connectivity, as well as on-device GPU updates without a CPU round-trip.</p>
+</div>
 <h2 id="picking-and-selection">Picking and Selection<a class="headerlink" href="#picking-and-selection" title="Permanent link">&para;</a></h2>
 <p>&ldquo;Picking&rdquo; refers to selecting and inspecting elements by clicking on the object in the scene.  <a href="/py//basics/interactive_UIs_and_animation/#picking-selection-and-querying-the-scene">See the section on picking for more info</a>.</p>
 <p>Additional information about a pick which hits a mesh can be retrieved from the <code>PickResult.structure_data</code> dictionary field.</p>

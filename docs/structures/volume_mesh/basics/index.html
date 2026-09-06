@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://polyscope.run/structures/volume_mesh/basics/">
       
       
-        <link rel="prev" href="../../surface_mesh/variable_transparency/">
+        <link rel="prev" href="../../surface_mesh/simple_triangle_mesh/">
       
       
         <link rel="next" href="../scalar_quantities/">
@@ -964,6 +964,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../surface_mesh/simple_triangle_mesh/" class="md-nav__link">
+        Simple Triangle Mesh
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1775,7 +1789,8 @@
 
 
 <h1 id="volume-meshes">Volume Meshes<a class="headerlink" href="#volume-meshes" title="Permanent link">&para;</a></h1>
-<p>Volumetric meshes, such as tetrahedral (<em>tet</em>) and hexahedral (<em>hex</em>, cube-like) meshes, represent a region of 3D space. Polyscope can display tet and hex meshes, including those which have a mix of hex and tet elements. We&rsquo;ll use the term <em>cell</em> to refer generically to a tet or hex in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values.</p>
+<p>Visualize volumetric 3D meshes, with tetrahedral and hexahedral (cube-like) elements, or even more general prism or pyramidal elements. Meshes may be pure tet/hex/etc, or a mixture of different element types&mdash;we&rsquo;ll use the term <em>cell</em> to refer generically to either a tet, hex, prism or pyramid element in a volume mesh.</p>
+<p>As always, Polyscope can visualize the mesh itself, as well as any combination of scalar, color, or vector quantities associated with the vertices or cells of the mesh. Try clicking on the mesh to inspect the value of any quantity at that location, or using <em>slice planes</em> to inspect the internal structure and quantities defined within.</p>
 <video width=100% autoplay muted loop>
   <source src="/media/movies/volume_demo_compress.mp4" type="video/mp4">
   Your browser does not support the video tag.
@@ -1811,8 +1826,8 @@
 <span class="c1">// Show the GUI</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 </code></pre></div></p>
-<p>Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different variants to register meshes with tets, hexes, or a mix of the two. All of these register helpers return a pointer to a <code>polyscope::VolumeMesh</code> object which you can then add quantities to.</p>
-<p><img alt="tet element ordering conventions" src="/media/tet_element_orderings.jpg" /></p>
+<p>Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different variants to register meshes with pure tets and hexes, or a more general mixture of tets, hexes, prisms and pyramids. All of these register helpers return a pointer to a <code>polyscope::VolumeMesh</code> object which you can then add quantities to.</p>
+<p><img alt="element ordering conventions" src="/media/volume_mesh_element_orderings.jpg" /></p>
 <details class="func" open="open">
 <summary><code class="highlight"><span class="n">polyscope</span><span class="o">::</span><span class="n">registerTetMesh</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">V</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vertexPositions</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">C</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tetIndices</span><span class="p">)</span></code></summary>
 <p>Add a new volume mesh structure to Polyscope, with all tetrahedral elements.</p>
@@ -1838,21 +1853,22 @@
 </ul>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="n">polyscope</span><span class="o">::</span><span class="n">registerVolumeMesh</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">V</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vertexPositions</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">C</span><span class="o">&amp;</span><span class="w"> </span><span class="n">hexIndices</span><span class="p">)</span></code></summary>
-<p>Add a new volume mesh structure to Polyscope, which may have a mix of cell types. This variant takes a rectangular array as input, where all cell rows have 8 entries, but cells with less than 8 vertices are padded with negative values.</p>
-<p>For instance, a row of the 2D array <code>hexIndices</code> which refers to a tet cell might hold <code>[12, 9, 22, 51, -1, -1, -1, -1]</code>.</p>
+<summary><code class="highlight"><span class="n">polyscope</span><span class="o">::</span><span class="n">registerVolumeMesh</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">V</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vertexPositions</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">C</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cellIndices</span><span class="p">)</span></code></summary>
+<p>Add a new volume mesh structure to Polyscope, with a general mix of cell types.</p>
+<p>This variant takes a rectangular array as input, where all cell rows have 8 entries, but cells which are specified by less than 8 vertices are padded with <code>-1</code>.</p>
+<p>For instance, a row of the 2D array <code>cellIndices</code> which refers to a tet cell might hold <code>[12, 9, 22, 51, -1, -1, -1, -1]</code>.  A row in the 2D array <code>cellIndices</code> which refers to a prism cell might hold <code>[18, 32, 51, 17, 85, 23, -1, -1]</code>, etc.</p>
 <ul>
 <li>
 <p><code>vertexPositions</code> is the vector array of 3D vertex locations. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 3-vectors; this allows many common types to be used as input, including <code>Eigen::MatrixXd</code> and <code>std::vector&lt;std::array&lt;double, 3&gt;&gt;</code>. The length will be the number of vertices.</p>
 </li>
 <li>
-<p><code>hexIndices</code> is the 2D array of vertex indices for each hexahedral cell, with dimension <code>(C,8)</code> where <code>C</code> is the number of tet/hexes. For tet elements, the rows of the array should be padded with negative indices, which will be ignored. The type should be <a href="/data_adaptors">adaptable</a> to a nested array of <code>unsigned int</code>; this allows many common types to be used as input, including <code>Eigen::MatrixXi</code> and <code>std::vector&lt;std::array&lt;int, 8&gt;&gt;</code>. All indices should be valid 0-based indices in to the vertex list. Signed types should be used to support the negative element convention as described above.</p>
+<p><code>cellIndices</code> is the 2D array of vertex indices for each cell, with dimension <code>(C,8)</code> where <code>C</code> is the number of cells. For tet, prism and pyramid elements, the rows of the array should be right-padded with <code>-1</code> as appropriate for the cell topology. The type should be <a href="/data_adaptors">adaptable</a> to a nested array of <code>unsigned int</code>; this allows many common types to be used as input, including <code>Eigen::MatrixXi</code> and <code>std::vector&lt;std::array&lt;int, 8&gt;&gt;</code>. All indices should be valid 0-based indices in to the vertex list, except padding entries which must be <code>-1</code>. Signed types should be used to support the <code>-1</code> padding convention. (NOTE: internally cell indices use <code>UINT32_MAX</code> for invalid entries, but you should pass padding as <code>-1</code> via a signed type to the input adaptor.)</p>
 </li>
 </ul>
 </details>
 <details class="func">
 <summary><code class="highlight"><span class="n">polyscope</span><span class="o">::</span><span class="n">registerTetHexMesh</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">V</span><span class="o">&amp;</span><span class="w"> </span><span class="n">vertexPositions</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Ct</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tetIndices</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Ct</span><span class="o">&amp;</span><span class="w"> </span><span class="n">hexIndices</span><span class="p">)</span></code></summary>
-<p>Add a new volume mesh structure to Polyscope. This variant takes a mix of tet and hex elements, where each are given in their own separate list.</p>
+<p>Add a new volume mesh structure to Polyscope. This variant takes a mix of tet and hex elements, where each are given in their own separate list. Note that prisms and pyramids are also supported by the class, but not this constructor; use the general variant.</p>
 <ul>
 <li>
 <p><code>vertexPositions</code> is the vector array of 3D vertex locations. The type should be <a href="/data_adaptors">adaptable</a> to an array of <code>float</code>-valued 3-vectors; this allows many common types to be used as input, including <code>Eigen::MatrixXd</code> and <code>std::vector&lt;std::array&lt;double, 3&gt;&gt;</code>. The length will be the number of vertices.</p>
