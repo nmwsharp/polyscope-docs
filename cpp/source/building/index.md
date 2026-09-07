@@ -36,7 +36,7 @@ include(FetchContent)
 FetchContent_Declare(
    polyscope
    GIT_REPOSITORY https://github.com/nmwsharp/polyscope.git
-   GIT_TAG        master
+   GIT_TAG        [[ polyscope_latest_version ]]
    GIT_SHALLOW    TRUE
    GIT_SUBMODULES ""
    PATCH_COMMAND  git submodule update --init --recursive --depth 1
