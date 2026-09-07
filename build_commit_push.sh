@@ -1,9 +1,9 @@
 #!/bin/sh
 cd cpp
-python -m mkdocs build
+uv run mkdocs build
 cd ..
 cd py
-python -m mkdocs build
+uv run mkdocs build
 cd ..
 #git rm -rf docs/*
 rm -rf docs/*
