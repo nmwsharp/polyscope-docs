@@ -1747,7 +1747,7 @@
 <h2 id="program-structure">Program Structure<a class="headerlink" href="#program-structure" title="Permanent link">&para;</a></h2>
 <p>There are two separate ways to structure your program&rsquo;s control flow with polyscope.  Either way, <code>init()</code> must be called first.</p>
 <p><strong>Option 1: show()</strong> The simpler, and more-common approach is to call <code>show()</code>, which will run Polyscope&rsquo;s window continuously. The <code>show()</code> function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via <a href="/py//features/callbacks_and_UIs">the <code>user_callback</code></a>.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -1765,7 +1765,7 @@
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <p><strong>Option 2: frame_tick()</strong> An alternate approach is to manually call <code>frame_tick()</code> in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. <a href="/py//features/callbacks_and_UIs">The <code>user_callback</code></a> is still necessary to add ImGui UI elements.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -1786,7 +1786,7 @@
 </div>
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
 <details class="func">
-<summary><code class="highlight"><span class="n">init</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">init</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span></code></summary>
 <h5 id="init">init()<a class="headerlink" href="#init" title="Permanent link">&para;</a></h5>
 <p>Initialize polyscope. Should be called exactly once, generally at the beginning of a program. Will throw an error if anything goes wrong during initialization.</p>
 <p>Performs one-time work like setting up openGL and creating a window.</p>

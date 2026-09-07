@@ -1796,7 +1796,7 @@
 <p>Curve network structures can be registered with Polyscope by passing the node position and edge indices. There are also two helpers for constructing lines and loops which only require the node locations and automatically build connectivity.</p>
 <p>As usual in Polyscope, the <a href="/data_adaptors">data adaptors</a> allow these functions to accept a wide variety of data types as input&ndash; any <code>nodes</code> which are essentially a list of vectors and any <code>edges</code> which are a list of index tuples will work. The <code>std::vector&lt;&gt;</code> types in the example below are just one possibility.</p>
 <p>Example: add a curve network
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/curve_network.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/curve_network.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
@@ -1804,7 +1804,7 @@
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">edges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* edges between nodes */</span><span class="p">;</span>
 
 <span class="c1">// Add the curve network</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerCurveNetwork</span><span class="p">(</span><span class="s">&quot;my network&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">edges</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerCurveNetwork</span><span class="p">(</span><span class="s">"my network"</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">edges</span><span class="p">);</span>
 
 <span class="c1">// visualize!</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>

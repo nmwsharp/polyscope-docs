@@ -1731,7 +1731,7 @@
 <p>Visualize color rgb-valued data at the nodes or edges of a curve network.</p>
 <p><img alt="curve network color" src="/media/curve_network_color.jpeg" /></p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/curve_network.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/curve_network.h"</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">randColor</span><span class="p">(</span><span class="n">edges</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">edges</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1739,7 +1739,7 @@
 <span class="p">}</span>
 
 <span class="c1">// visualize</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getCurveNetwork</span><span class="p">(</span><span class="n">curveNetworkName</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addEdgeColorQuantity</span><span class="p">(</span><span class="s">&quot;random color&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">randColor</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getCurveNetwork</span><span class="p">(</span><span class="n">curveNetworkName</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addEdgeColorQuantity</span><span class="p">(</span><span class="s">"random color"</span><span class="p">,</span><span class="w"> </span><span class="n">randColor</span><span class="p">);</span>
 </code></pre></div></p>
 <details class="func">
 <summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">::</span><span class="n">addNodeColorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">values</span><span class="p">)</span></code></summary>

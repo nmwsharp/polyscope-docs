@@ -1679,8 +1679,8 @@
 <p>Try adding an <a href="/py//structures/floating_quantities/images">Image Quantitiy</a> to the camera view. When image quantities are added to camera view structures, they gain the additional ability to be displayed in the camera&rsquo;s frame.</p>
 </div>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -1688,7 +1688,7 @@
 <span class="n">intrinsics</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraIntrinsics</span><span class="p">(</span><span class="n">fov_vertical_deg</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">extrinsics</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraExtrinsics</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">),</span> <span class="n">look_dir</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="o">-</span><span class="mf">1.</span><span class="p">),</span> <span class="n">up_dir</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span>
 <span class="n">params</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraParameters</span><span class="p">(</span><span class="n">intrinsics</span><span class="p">,</span> <span class="n">extrinsics</span><span class="p">)</span>
-<span class="n">cam</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_camera_view</span><span class="p">(</span><span class="s2">&quot;cam&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_camera_view</span><span class="p">(</span><span class="s2">"cam"</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
 <span class="c1"># Set some options for the camera view</span>
 <span class="c1"># these can also be set as keyword args in register_camera_view()</span>
@@ -1700,7 +1700,7 @@
 <span class="c1"># Add an image to be displayed in the camera frame</span>
 <span class="n">w</span> <span class="o">=</span> <span class="mi">600</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">300</span>
-<span class="n">cam</span><span class="o">.</span><span class="n">add_scalar_image_quantity</span><span class="p">(</span><span class="s2">&quot;scalar_img&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)),</span>
+<span class="n">cam</span><span class="o">.</span><span class="n">add_scalar_image_quantity</span><span class="p">(</span><span class="s2">"scalar_img"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)),</span>
                               <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_in_camera_billboard</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>

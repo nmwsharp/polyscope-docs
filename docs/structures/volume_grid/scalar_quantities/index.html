@@ -1801,8 +1801,8 @@
 <p>Visualize scalar-valued data at the nodes or cells of a volume grid.</p>
 <p><img alt="volume grid node cell values" src="/media/volume_grid_cell_scalar.jpg" /></p>
 <p><strong>Example:</strong> registering a volume grid and adding a scalar quantity
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/volume_grid.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/volume_grid.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
@@ -1815,14 +1815,14 @@
 
 <span class="c1">// register the grid</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">VolumeGrid</span><span class="o">*</span><span class="w"> </span><span class="n">psGrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerVolumeGrid</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;sample grid&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">dimX</span><span class="p">,</span><span class="w"> </span><span class="n">dimY</span><span class="p">,</span><span class="w"> </span><span class="n">dimZ</span><span class="p">},</span><span class="w"> </span><span class="n">bound_low</span><span class="p">,</span><span class="w"> </span><span class="n">bound_high</span><span class="p">);</span>
+<span class="w">        </span><span class="s">"sample grid"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">dimX</span><span class="p">,</span><span class="w"> </span><span class="n">dimY</span><span class="p">,</span><span class="w"> </span><span class="n">dimZ</span><span class="p">},</span><span class="w"> </span><span class="n">bound_low</span><span class="p">,</span><span class="w"> </span><span class="n">bound_high</span><span class="p">);</span>
 
 <span class="c1">// add a scalar function on the grid</span>
 <span class="kt">uint32_t</span><span class="w"> </span><span class="n">nData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dimX</span><span class="o">*</span><span class="n">dimY</span><span class="o">*</span><span class="n">dimZ</span><span class="p">;</span>
 <span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">scalarVals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* your dimX*dimY*dimZ buffer of data*/</span><span class="p">;</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">VolumeGridNodeScalarQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">scalarQ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">    </span><span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addNodeScalarQuantity</span><span class="p">(</span><span class="s">&quot;node scalar1&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addNodeScalarQuantity</span><span class="p">(</span><span class="s">"node scalar1"</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                  </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="n">scalarVals</span><span class="p">,</span><span class="w"> </span><span class="n">nData</span><span class="p">));</span>
 <span class="n">scalarQ</span><span class="o">-&gt;</span><span class="n">setEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 
@@ -2005,7 +2005,7 @@ The limits (<code>vminmax</code>) of the colormap range are given by the two num
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 
 <span class="c1">// extract the isosurface as its own mesh structure</span>
-<span class="n">scalarQ</span><span class="o">-&gt;</span><span class="n">registerIsosurfaceAsMesh</span><span class="p">(</span><span class="s">&quot;my isosurface mesh&quot;</span><span class="p">);</span>
+<span class="n">scalarQ</span><span class="o">-&gt;</span><span class="n">registerIsosurfaceAsMesh</span><span class="p">(</span><span class="s">"my isosurface mesh"</span><span class="p">);</span>
 </code></pre></div></p>
 <p>The following settings on the <code>VolumeGridNodeScalarQuantity</code> class affect the behavior of isosurfaces. </p>
 <div class="admonition note">
@@ -2066,7 +2066,7 @@ The limits (<code>vminmax</code>) of the colormap range are given by the two num
 </table>
 <p>You can also register the isosurface as its own Polyscope surface mesh structure for further visualization.</p>
 <details class="func">
-<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">*</span><span class="w"> </span><span class="n">VolumeGridNodeScalarQuantity</span><span class="o">::</span><span class="n">registerIsosurfaceAsMesh</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">structureName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">*</span><span class="w"> </span><span class="n">VolumeGridNodeScalarQuantity</span><span class="o">::</span><span class="n">registerIsosurfaceAsMesh</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">structureName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="p">)</span></code></summary>
 <p>Extract the scalar function isosurface as described above, and register it as its own new <code>SurfaceMesh</code> structure.</p>
 <p><code></code>structureName` is the name of the newly created structure. If not given, a default name will be automatically generated.</p>
 </details>

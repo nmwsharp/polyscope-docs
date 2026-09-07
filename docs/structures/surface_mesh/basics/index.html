@@ -1806,8 +1806,8 @@
 <p><img alt="surface_mesh_demo" src="/media/mesh_demo.gif" /></p>
 <h2 id="registering-a-surface-mesh">Registering a surface mesh<a class="headerlink" href="#registering-a-surface-mesh" title="Permanent link">&para;</a></h2>
 <p>Example: registering a surface mesh from libIGL
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/surface_mesh.h"</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;igl/readOBJ.h&gt;</span>
 
 <span class="c1">// Initialize Polyscope</span>
@@ -1819,7 +1819,7 @@
 <span class="n">igl</span><span class="o">::</span><span class="n">readOBJ</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">);</span>
 
 <span class="c1">// Register the mesh with Polyscope</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"input mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">);</span>
 
 <span class="c1">// Show the GUI</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>

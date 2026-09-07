@@ -1764,7 +1764,7 @@
 <span class="n">igl</span><span class="o">::</span><span class="n">readOBJ</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">);</span>
 
 <span class="c1">// Register the mesh with Polyscope</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"input mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">);</span>
 
 <span class="c1">// Show the gui</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
@@ -1782,7 +1782,7 @@
 <span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Minv</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">K</span><span class="p">).</span><span class="n">eval</span><span class="p">();</span>
 
 <span class="c1">// Add for visualization in Polyscope</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">&quot;gaussian curvature&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"input mesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">"gaussian curvature"</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">);</span>
 </code></pre></div></p>
 <p>Adding a vector quantity:
 <div class="highlight"><pre><span></span><code><span class="c1">// Compute vertex normals</span>
@@ -1790,8 +1790,8 @@
 <span class="n">igl</span><span class="o">::</span><span class="n">per_vertex_normals</span><span class="p">(</span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">,</span><span class="w"> </span><span class="n">N_vertices</span><span class="p">);</span>
 
 <span class="c1">// Add them for visualization in Polyscope</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">)</span>
-<span class="w">  </span><span class="o">-&gt;</span><span class="n">addVertexVectorQuantity</span><span class="p">(</span><span class="s">&quot;libIGL vertex normals&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">N_vertices</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"input mesh"</span><span class="p">)</span>
+<span class="w">  </span><span class="o">-&gt;</span><span class="n">addVertexVectorQuantity</span><span class="p">(</span><span class="s">"libIGL vertex normals"</span><span class="p">,</span><span class="w"> </span><span class="n">N_vertices</span><span class="p">);</span>
 </code></pre></div></p>
 
 

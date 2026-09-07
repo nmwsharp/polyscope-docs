@@ -1758,7 +1758,7 @@
 
 <p>Visualize color rgb-valued data at the elements of a surface mesh.</p>
 <p><strong>Example</strong>: visualizing random colors at faces
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/surface_mesh.h"</span>
 
 <span class="c1">// Make some random colors</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fColor</span><span class="p">(</span><span class="n">nFaces</span><span class="p">);</span>
@@ -1768,7 +1768,7 @@
 <span class="p">}</span>
 
 <span class="c1">// Visualize</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addFaceColorQuantity</span><span class="p">(</span><span class="s">&quot;fColor&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fColor</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"name"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addFaceColorQuantity</span><span class="p">(</span><span class="s">"fColor"</span><span class="p">,</span><span class="w"> </span><span class="n">fColor</span><span class="p">);</span>
 </code></pre></div></p>
 <h3 id="add-colors-to-elements">Add Colors to Elements<a class="headerlink" href="#add-colors-to-elements" title="Permanent link">&para;</a></h3>
 <details class="func">
@@ -1795,7 +1795,7 @@
 
 <span class="c1">// a UV map to use (here, dummy data)</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vals</span><span class="p">(</span><span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">nCorners</span><span class="p">(),</span><span class="w"> </span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="p">});</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">qParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">addParameterizationQuantity</span><span class="p">(</span><span class="s">&quot;param&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vals</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">qParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">addParameterizationQuantity</span><span class="p">(</span><span class="s">"param"</span><span class="p">,</span><span class="w"> </span><span class="n">vals</span><span class="p">);</span>
 
 <span class="c1">// an image texture to use</span>
 <span class="c1">// (here, dummy data)</span>
@@ -1803,7 +1803,7 @@
 <span class="kt">size_t</span><span class="w"> </span><span class="n">dimY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">colorsTex</span><span class="p">(</span><span class="n">dimX</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dimY</span><span class="p">,</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="mf">.2</span><span class="p">,</span><span class="w"> </span><span class="mf">.3</span><span class="p">,</span><span class="w"> </span><span class="mf">.4</span><span class="p">});</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceTextureColorQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">qColor</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">addTextureColorQuantity</span><span class="p">(</span><span class="s">&quot;tColor&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">qParam</span><span class="p">,</span><span class="w"> </span><span class="n">dimX</span><span class="p">,</span><span class="w"> </span><span class="n">dimY</span><span class="p">,</span><span class="w"> </span><span class="n">colorsTex</span><span class="p">,</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">ImageOrigin</span><span class="o">::</span><span class="n">UpperLeft</span><span class="p">);</span>
+<span class="w">  </span><span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">addTextureColorQuantity</span><span class="p">(</span><span class="s">"tColor"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">qParam</span><span class="p">,</span><span class="w"> </span><span class="n">dimX</span><span class="p">,</span><span class="w"> </span><span class="n">dimY</span><span class="p">,</span><span class="w"> </span><span class="n">colorsTex</span><span class="p">,</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">ImageOrigin</span><span class="o">::</span><span class="n">UpperLeft</span><span class="p">);</span>
 <span class="n">qColor</span><span class="o">-&gt;</span><span class="n">setFilterMode</span><span class="p">(</span><span class="n">FilterMode</span><span class="o">::</span><span class="n">Nearest</span><span class="p">);</span><span class="w"> </span><span class="c1">// change filter for sampling</span>
 <span class="n">qColor</span><span class="o">-&gt;</span><span class="n">setEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 

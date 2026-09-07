@@ -1872,20 +1872,20 @@
 <p>Messages can be dismissed by clicking the button in dialog box, or pressing <code>[space]</code>.</p>
 <p><img alt="messages demo" src="/media/messages_demo.png" /></p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
 
 <span class="c1">// Generate a single warning.</span>
 <span class="c1">// Has no effect on the GUI until polyscope gets control flow</span>
 <span class="c1">// back, which happens here in the show() call below.</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Something went slightly wrong&quot;</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">"Something went slightly wrong"</span><span class="p">);</span>
 
 <span class="c1">// Generate a lot of warnings. Becase all of these warnings </span>
 <span class="c1">// have the same base message (the first string), they will </span>
 <span class="c1">// be batched together and only shown as one dialog. The detail </span>
 <span class="c1">// message for the first such warning will also be shown.</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Some problems come in groups&quot;</span><span class="p">,</span><span class="w"> </span>
-<span class="w">    </span><span class="s">&quot;detail = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">"Some problems come in groups"</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="s">"detail = "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
 <span class="p">}</span>
 
 <span class="c1">// The previous warnings would be displayed here</span>
@@ -1894,11 +1894,11 @@
 <span class="c1">// Generating an error.</span>
 <span class="c1">// The UI will block and show this error immediately. After </span>
 <span class="c1">// the error is dismissed, the call will return.</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Resistance is futile.&quot;</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">error</span><span class="p">(</span><span class="s">"Resistance is futile."</span><span class="p">);</span>
 
 <span class="c1">// Generate a fatal error.</span>
 <span class="c1">// After the error is dismissed, the program will terminate.</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">terminatingError</span><span class="p">(</span><span class="s">&quot;Resistance is futile.&quot;</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">terminatingError</span><span class="p">(</span><span class="s">"Resistance is futile."</span><span class="p">);</span>
 
 <span class="c1">// Disable the in-window popups, just print to stdout</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">displayMessagePopups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
@@ -1910,25 +1910,25 @@
 <p>Simply logs a message to <code>stdout</code>.</p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">baseMessage</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">detailMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="kt">void</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">baseMessage</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">detailMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="p">)</span></code></summary>
 <h5 id="warning">warning<a class="headerlink" href="#warning" title="Permanent link">&para;</a></h5>
 <p>Create a warning message, to be displayed the next time the UI gets flow control. </p>
 <p>When issuing a one-off warning, the <code>detailMessage</code> field need not be used.  However, if issuing warnings in a loop, warnings with the same <code>baseMessage</code> are batched together, so the UI doesn&rsquo;t get completely overwhelmed.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
 
 <span class="c1">// Generate a single warning.</span>
 <span class="c1">// Has no effect on the GUI until polyscope gets control flow</span>
 <span class="c1">// back, which happens here in the show() call below.</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Something went slightly wrong&quot;</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">"Something went slightly wrong"</span><span class="p">);</span>
 
 <span class="c1">// Generate a lot of warnings. Becase all of these warnings </span>
 <span class="c1">// have the same base message (the first string), they will </span>
 <span class="c1">// be batched together and only shown as one dialog. The detail </span>
 <span class="c1">// message for the first such warning will also be shown.</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;Some problems come in groups&quot;</span><span class="p">,</span><span class="w"> </span>
-<span class="w">    </span><span class="s">&quot;detail = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">"Some problems come in groups"</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="s">"detail = "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
 <span class="p">}</span>
 
 <span class="c1">// The previous warnings would be displayed here</span>

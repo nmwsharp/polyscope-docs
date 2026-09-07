@@ -1758,36 +1758,36 @@
 
 <p>A <strong>structure</strong> is a geometric object visualized in Polyscope, like a mesh or a point cloud. The first step in seeing your data in Polyscope is to register one or more structures to add them to the visualization. Then, <em>quantities</em> can be added to these structures, like scalar functions, colors, or vector fields.</p>
 <p>Each structure should be given a name which is unique among structures of that type. You can then use this name as a handle to perform operations on the structure; For instance, you can register a mesh with:
-<div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 </code></pre></div>
 Then, in a distant part of your code, add a scalar function to it with:
-<div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">get_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;some values&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ps</span><span class="o">.</span><span class="n">get_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">)</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"some values"</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
 </code></pre></div>
 This avoids the need to pass a reference to the structure you created around your entire codebase. Alternately, one can directly use the handle returned by <code>register_surface_mesh()</code>, instead of keying on a name string.</p>
 <h2 id="registering-structures">Registering structures<a class="headerlink" href="#registering-structures" title="Permanent link">&para;</a></h2>
 <p>Each structure offers a <code>register___(name, ...)</code> function (like <code>register_point_cloud()</code>) which accepts the name of the structure and the data necessary to construct it. These functions will return a structure object which may be used to add quantities to the structure. See the relevant sections for documentation on each of these register functions.</p>
 <h2 id="accessing-structures">Accessing structures<a class="headerlink" href="#accessing-structures" title="Permanent link">&para;</a></h2>
 <p>Polyscope offers two patterns for calling methods on a registered structure: you can either use the handle returned after structure creation, or refer to the structure by name.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="c1"># register a structure</span>
-<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 
 <span class="c1"># access with the handle</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;some values&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"some values"</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
 
 <span class="c1"># access by name</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">get_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;some values&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">get_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">)</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"some values"</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
 </code></pre></div>
 The former is concise and programmatic, while the latter avoids the need to keep track of a variable.</p>
 <p>As before, each structure offers a <code>get___(name)</code> method, like <code>get_surface_mesh(name)</code> which can be used to get a handle to the structure of that type by name.</p>
 <h2 id="removing-structures">Removing structures<a class="headerlink" href="#removing-structures" title="Permanent link">&para;</a></h2>
 <p>If no longer needed, structures can be removed by name or by handle. Removing a structure frees memory for the underlying objects, invalidating all references to the structure and its quantities.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="c1"># register a structure and some data</span>
-<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;some values&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"some values"</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
 
 <span class="c1"># look at it</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1797,7 +1797,7 @@ The former is concise and programmatic, while the latter avoids the need to keep
 <span class="c1"># remove the structure</span>
 <span class="c1"># (these two forms are equivalent, choose one) </span>
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">remove_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my_mesh&quot;</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">remove_surface_mesh</span><span class="p">(</span><span class="s2">"my_mesh"</span><span class="p">)</span>
 
 
 <span class="c1"># actually, just remove everything</span>

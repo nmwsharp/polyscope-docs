@@ -1867,10 +1867,10 @@
 <h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
 <p>A <strong>structure</strong> is a geometric object visualized in Polyscope, like a mesh or a point cloud. The first step in seeing your data in Polyscope is to register one or more structures to add them to the visualization. Then, <em>quantities</em> can be added to these structures, like scalar functions, colors, or vector fields.</p>
 <p>Each structure should be given a name which is unique among structures of that type. You can then use this name as a handle to perform operations on the structure; For instance, you can register a mesh with:
-<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
 </code></pre></div>
 Then, in a distant part of your code, add a scalar function to it with:
-<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="s">&quot;some values&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="s">"some values"</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">);</span>
 </code></pre></div>
 This avoids the need to pass a pointer to the structure you created around your entire codebase. </p>
 <div class="admonition info">
@@ -1888,22 +1888,22 @@ This avoids the need to pass a pointer to the structure you created around your 
 </details>
 <h2 id="accessing-structures">Accessing structures<a class="headerlink" href="#accessing-structures" title="Permanent link">&para;</a></h2>
 <p>Polyscope offers two patterns for calling methods on a registered structure: you can either use the pointer returned after structure creation, or refer to the structure by name.</p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/surface_mesh.h"</span>
 
 <span class="c1">// register a structure</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMesh</span><span class="o">*</span><span class="w"> </span><span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
 
 <span class="c1">// access with the pointer</span>
-<span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="s">&quot;some values&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">);</span>
+<span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="s">"some values"</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">);</span>
 
 <span class="c1">// access by name</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="s">&quot;some values&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="s">"some values"</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">);</span>
 </code></pre></div>
 The former is concise and programmatic, while the latter avoids the need to keep track of a variable.</p>
 <p>As before, each structure offers a <code>get___(name)</code> method, like <code>getSurfaceMesh(name)</code> which can be used to get a pointer to the structure of that type by name. The general form below may be useful if you are implementing your own structures.</p>
 <details class="func">
-<summary><code class="highlight"><span class="n">Structure</span><span class="o">*</span><span class="w"> </span><span class="n">getStructure</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">Structure</span><span class="o">*</span><span class="w"> </span><span class="n">getStructure</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="p">)</span></code></summary>
 <p>Get a pointer to a registered structure. The <code>type</code> must be the unique string corresponding to the structure type.</p>
 <p>As a convenience, if the <code>name</code> may be argument omitted <em>only</em> if there is exactly one structure of that type.</p>
 <p>If not such structure is available, <code>nullptr</code> will be returned.</p>

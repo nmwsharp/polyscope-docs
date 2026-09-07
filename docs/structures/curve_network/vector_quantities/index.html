@@ -1730,7 +1730,7 @@
 
 <p>Visualize vector-valued data at the nodes or edges of a curve network.</p>
 <p>Example: add vectors at nodes
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/curve_network.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/curve_network.h"</span>
 
 <span class="c1">// Generate random vectors as example vector data</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">randVec</span><span class="p">(</span><span class="n">nNodes</span><span class="p">);</span>
@@ -1739,7 +1739,7 @@
 <span class="p">}</span>
 
 <span class="c1">// Add the vector data to the curve network</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getCurveNetwork</span><span class="p">(</span><span class="s">&quot;my curve&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addNodeVectorQuantity</span><span class="p">(</span><span class="s">&quot;sample vectors&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">randVec</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getCurveNetwork</span><span class="p">(</span><span class="s">"my curve"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addNodeVectorQuantity</span><span class="p">(</span><span class="s">"sample vectors"</span><span class="p">,</span><span class="w"> </span><span class="n">randVec</span><span class="p">);</span>
 
 <span class="c1">// Visualize</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>

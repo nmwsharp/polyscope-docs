@@ -1599,53 +1599,53 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">C++</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="c1"># Initialize polyscope</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1">### Register a point cloud</span>
 <span class="c1"># `my_points` is a Nx3 numpy array</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;my points&quot;</span><span class="p">,</span> <span class="n">my_points</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">"my points"</span><span class="p">,</span> <span class="n">my_points</span><span class="p">)</span>
 
 <span class="c1">### Register a mesh</span>
 <span class="c1"># `verts` is a Nx3 numpy array of vertex positions</span>
 <span class="c1"># `faces` is a Fx3 array of indices, or a nested list</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">smooth_shade</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">smooth_shade</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Add a scalar function and a vector function defined on the mesh</span>
 <span class="c1"># vertex_scalar is a length V numpy array of values</span>
 <span class="c1"># face_vectors is an Fx3 array of vectors per face</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">get_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;my_scalar&quot;</span><span class="p">,</span> 
-        <span class="n">vertex_scalar</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;vertices&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;blues&#39;</span><span class="p">)</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">get_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_vector_quantity</span><span class="p">(</span><span class="s2">&quot;my_vector&quot;</span><span class="p">,</span> 
-        <span class="n">face_vectors</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;faces&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">get_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">)</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"my_scalar"</span><span class="p">,</span> 
+        <span class="n">vertex_scalar</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'vertices'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'blues'</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">get_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">)</span><span class="o">.</span><span class="n">add_vector_quantity</span><span class="p">(</span><span class="s2">"my_vector"</span><span class="p">,</span> 
+        <span class="n">face_vectors</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'faces'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
 
 <span class="c1"># View the point cloud and mesh we just registered in the 3D UI</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/surface_mesh.h"</span>
 
 <span class="c1">// Initialize polyscope</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
 <span class="c1">// Register a point cloud</span>
 <span class="c1">// `points` is a Nx3 array-like container of points</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">&quot;my points&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="p">)</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">"my points"</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="p">)</span>
 
 <span class="c1">// Register a surface mesh structure</span>
 <span class="c1">// `meshVerts` is a Vx3 array-like container of vertex positions</span>
 <span class="c1">// `meshFaces` is a Fx3 array-like container of face indices  </span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meshVerts</span><span class="p">,</span><span class="w"> </span><span class="n">meshFaces</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">meshVerts</span><span class="p">,</span><span class="w"> </span><span class="n">meshFaces</span><span class="p">);</span>
 
 <span class="c1">// Add a scalar and a vector function defined on the mesh</span>
 <span class="c1">// `scalarQuantity` is a length V array-like container of values</span>
 <span class="c1">// `vectorQuantity` is an Fx3 array-like container of vectors per face</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">&quot;my_scalar&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">scalarQuantity</span><span class="p">);</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="s">&quot;my_vector&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vectorQuantity</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">"my_scalar"</span><span class="p">,</span><span class="w"> </span><span class="n">scalarQuantity</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="s">"my_vector"</span><span class="p">,</span><span class="w"> </span><span class="n">vectorQuantity</span><span class="p">);</span>
 
 <span class="c1">// View the point cloud and mesh we just registered in the 3D UI</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>

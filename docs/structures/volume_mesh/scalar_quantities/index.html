@@ -1790,7 +1790,7 @@
 <div class="highlight"><pre><span></span><code><span class="cm">/* ... initialization, create mesh ... */</span><span class="w"> </span>
 
 <span class="c1">// Register the volume mesh with Polyscope</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerTetMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">verts</span><span class="p">,</span><span class="w"> </span><span class="n">tets</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerTetMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">verts</span><span class="p">,</span><span class="w"> </span><span class="n">tets</span><span class="p">);</span>
 
 <span class="c1">// Add a scalar quantity</span>
 <span class="kt">size_t</span><span class="w"> </span><span class="n">nVerts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">verts</span><span class="p">.</span><span class="n">rows</span><span class="p">();</span>
@@ -1799,12 +1799,12 @@
 <span class="w">  </span><span class="c1">// use the x-coordinate of vertex position as a test function</span>
 <span class="w">  </span><span class="n">scalarV</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">scalarQ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">getVolumeMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">&quot;scalar Q&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">scalarV</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">scalarQ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">getVolumeMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">"scalar Q"</span><span class="p">,</span><span class="w"> </span><span class="n">scalarV</span><span class="p">);</span>
 
 <span class="c1">// Set some options</span>
 <span class="n">scalarQ</span><span class="o">-&gt;</span><span class="n">setEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w">       </span><span class="c1">// initially enabled</span>
 <span class="n">scalarQ</span><span class="o">-&gt;</span><span class="n">setMapRange</span><span class="p">({</span><span class="mf">-1.</span><span class="p">,</span><span class="w"> </span><span class="mf">1.</span><span class="p">});</span><span class="w"> </span><span class="c1">// colormap from [-1,1]</span>
-<span class="n">scalarQ</span><span class="o">-&gt;</span><span class="n">setColorMap</span><span class="p">(</span><span class="s">&quot;blues&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// use a blue colormap</span>
+<span class="n">scalarQ</span><span class="o">-&gt;</span><span class="n">setColorMap</span><span class="p">(</span><span class="s">"blues"</span><span class="p">);</span><span class="w">   </span><span class="c1">// use a blue colormap</span>
 
 <span class="c1">// Show the GUI</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>

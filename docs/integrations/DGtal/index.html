@@ -1756,10 +1756,10 @@
 <span class="w">  </span><span class="n">faces</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">primalSurface</span><span class="o">-&gt;</span><span class="n">verticesAroundFace</span><span class="p">(</span><span class="w"> </span><span class="n">face</span><span class="w"> </span><span class="p">));</span>
 
 <span class="c1">// Register pointels as a point cloud</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">&quot;Pointels&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">primalSurface</span><span class="o">-&gt;</span><span class="n">positions</span><span class="p">());</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">"Pointels"</span><span class="p">,</span><span class="w"> </span><span class="n">primalSurface</span><span class="o">-&gt;</span><span class="n">positions</span><span class="p">());</span>
 
 <span class="c1">// Register surface with quadrilateral faces</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">digsurf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;Primal surface&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="k">auto</span><span class="w"> </span><span class="n">digsurf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"Primal surface"</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                 </span><span class="n">primalSurface</span><span class="o">-&gt;</span><span class="n">positions</span><span class="p">(),</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
 
 <span class="c1">// Set appearance parameters</span>
@@ -1773,7 +1773,7 @@
 <p><img alt="DGtal surface" src="/media/dgtal_surface.jpg" /></p>
 <h3 id="computing-surface-quantities">Computing surface quantities<a class="headerlink" href="#computing-surface-quantities" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// Compute some differential quantities</span>
-<span class="n">params</span><span class="p">(</span><span class="s">&quot;r-radius&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">);</span>
+<span class="n">params</span><span class="p">(</span><span class="s">"r-radius"</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">);</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">normals</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">SHG3</span><span class="o">::</span><span class="n">getCTrivialNormalVectors</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span><span class="w"> </span><span class="n">surfels</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">normalsTrivial</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">SHG3</span><span class="o">::</span><span class="n">getTrivialNormalVectors</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="n">surfels</span><span class="p">);</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">normalsII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SHG3</span><span class="o">::</span><span class="n">getIINormalVectors</span><span class="p">(</span><span class="n">binary_image</span><span class="p">,</span><span class="w"> </span><span class="n">surfels</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
@@ -1787,12 +1787,12 @@
 
 
 <span class="c1">// Add quantities for visualization </span>
-<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="s">&quot;Trivial normal vectors&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">normalsTrivial</span><span class="p">);</span>
-<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="s">&quot;CTrivial normal vectors&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">normals</span><span class="p">);</span>
-<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="s">&quot;II normal vectors&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">normalsII</span><span class="p">);</span>
-<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="s">&quot;II mean curvature&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Mcurv</span><span class="p">);</span>
-<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="s">&quot;II Gaussian curvature&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Gcurv</span><span class="p">);</span>
-<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="s">&quot;Surfel area measure&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">areaMeasure</span><span class="p">);</span>
+<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="s">"Trivial normal vectors"</span><span class="p">,</span><span class="w"> </span><span class="n">normalsTrivial</span><span class="p">);</span>
+<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="s">"CTrivial normal vectors"</span><span class="p">,</span><span class="w"> </span><span class="n">normals</span><span class="p">);</span>
+<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceVectorQuantity</span><span class="p">(</span><span class="s">"II normal vectors"</span><span class="p">,</span><span class="w"> </span><span class="n">normalsII</span><span class="p">);</span>
+<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="s">"II mean curvature"</span><span class="p">,</span><span class="w"> </span><span class="n">Mcurv</span><span class="p">);</span>
+<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="s">"II Gaussian curvature"</span><span class="p">,</span><span class="w"> </span><span class="n">Gcurv</span><span class="p">);</span>
+<span class="n">digsurf</span><span class="o">-&gt;</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="s">"Surfel area measure"</span><span class="p">,</span><span class="w"> </span><span class="n">areaMeasure</span><span class="p">);</span>
 
 <span class="c1">// Show the gui</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>

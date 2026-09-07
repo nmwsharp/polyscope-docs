@@ -1653,21 +1653,21 @@ This can also be set manually in the GUI via the point cloud <code>[Options] --&
 <p>See the <a href="/py//features/transparency">transparency</a> section for more transparency-related options.</p>
 <p><img alt="point cloud transparency demo" src="/py//media/point_cloud_scalar_transparency.jpg" /></p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ... setup, register a point cloud, etc ...</span>
 
 <span class="c1"># Get a reference to your point cloud</span>
-<span class="n">ps_cloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_point_cloud</span><span class="p">(</span><span class="s2">&quot;your point cloud name&quot;</span><span class="p">)</span>
+<span class="n">ps_cloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_point_cloud</span><span class="p">(</span><span class="s2">"your point cloud name"</span><span class="p">)</span>
 
 <span class="c1"># Add a random scalar quantity</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">ps_cloud</span><span class="o">.</span><span class="n">n_points</span><span class="p">()</span>
 <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;test_vals&quot;</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
+<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"test_vals"</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
 
 <span class="c1"># Set the quantity as the point transparency</span>
-<span class="n">ps_cloud</span><span class="o">.</span><span class="n">set_transparency_quantity</span><span class="p">(</span><span class="s2">&quot;test_vals&quot;</span><span class="p">)</span>
+<span class="n">ps_cloud</span><span class="o">.</span><span class="n">set_transparency_quantity</span><span class="p">(</span><span class="s2">"test_vals"</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Clear it out, go back to default constant size</span>

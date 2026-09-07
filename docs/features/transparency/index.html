@@ -1743,15 +1743,15 @@
 <p>The Polyscope rendering framework supports transparency to visualize complicated data with nested internal structures.</p>
 <p><img alt="transparency modes" src="/media/transparency_modes.jpg" /></p>
 <p><strong>Example:</strong> register a surface mesh and render it with transparency</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/surface_mesh.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
 <span class="cm">/* load a mesh */</span>
 
 <span class="c1">// Register the mesh with Polyscope</span>
-<span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="cm">/* vertices */</span><span class="p">,</span><span class="w"> </span><span class="cm">/* faces */</span><span class="p">);</span>
+<span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"input mesh"</span><span class="p">,</span><span class="w"> </span><span class="cm">/* vertices */</span><span class="p">,</span><span class="w"> </span><span class="cm">/* faces */</span><span class="p">);</span>
 
 <span class="c1">// Set transparency</span>
 <span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">setTransparency</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
@@ -1788,7 +1788,7 @@
 <summary><code class="highlight"><span class="n">Structure</span><span class="o">::</span><span class="n">setTransparency</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span></code></summary>
 <p>Set the transparency for a structure, <code>1</code> means completely opaque (the default), whereas <code>0</code> means completely transparent.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMesh</span><span class="o">*</span><span class="w"> </span><span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">verts</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMesh</span><span class="o">*</span><span class="w"> </span><span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">verts</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
 <span class="n">psMesh</span><span class="o">-&gt;</span><span class="n">setTransparency</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
 </code></pre></div></p>
 </details>

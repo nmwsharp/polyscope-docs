@@ -1650,7 +1650,7 @@
 <p>Screenshots can be taken manually by pressing the <code>[screenshot]</code> button in the options GUI window, or programmatically using the functions below. Clicking the GUI button generates a numbered screenshot file in the current directory; the arrow to the side of the button can be used to adjust file format and transparency settings for these screenshots.</p>
 <p>It is <strong>not</strong> necessary to call <code>show()</code> before taking screenshots. You can set up you scene and programmatically <a href="/py//basics/camera_controls">configure the camera view</a>, then call <code>screenshot()</code> to save a rendered image to disk, all without any user interaction.</p>
 <p><strong>Example:</strong> Register a mesh, position the camera, and take a screenshot
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="c1"># Initialize</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
@@ -1658,13 +1658,13 @@
 <span class="c1"># Register a mesh</span>
 <span class="n">verts</span> <span class="o">=</span> <span class="c1"># ... your data ...</span>
 <span class="n">faces</span> <span class="o">=</span> <span class="c1"># ... your data ...</span>
-<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 
 <span class="c1"># Position the camera</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">look_at</span><span class="p">((</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">))</span>
 
-<span class="c1"># Adjust some screenshot default settings if you&#39;d like</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_screenshot_extension</span><span class="p">(</span><span class="s2">&quot;.jpg&quot;</span><span class="p">);</span>
+<span class="c1"># Adjust some screenshot default settings if you'd like</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_screenshot_extension</span><span class="p">(</span><span class="s2">".jpg"</span><span class="p">);</span>
 
 <span class="c1"># Take a screenshot</span>
 <span class="c1"># It will be written to your current directory as screenshot_000000.jpg, etc</span>

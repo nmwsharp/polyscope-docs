@@ -2041,7 +2041,7 @@ The array adaptors will pick up this function and use it to access your type.</p
 <span class="kt">double</span><span class="w"> </span><span class="nf">adaptorF_custom_accessVector2Value</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UserVector2Custom</span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ind</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">foo</span><span class="p">;</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">bar</span><span class="p">;</span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&quot;bad access&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">"bad access"</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mf">-1.</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -2070,7 +2070,7 @@ The array adaptors will pick up this function and use it to access your type.</p
 </code></pre></div>
 The array adaptors will pick up this function and use it to access your type.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="c1">// Array with custom length function called &quot;bigness()&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Array with custom length function called "bigness()"</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">UserArray</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">myData</span><span class="p">;</span>
 <span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">bigness</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">myData</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>

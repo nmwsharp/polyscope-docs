@@ -1787,7 +1787,7 @@
 <p>Try adding an <a href="/structures/floating_quantities/images">Image Quantitiy</a> to the camera view. When image quantities are added to camera view structures, they gain the additional ability to be displayed in the camera&rsquo;s frame.</p>
 </div>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/camera_view.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/camera_view.h"</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
 <span class="c1">// Create a camera view from parameters</span>
@@ -1799,7 +1799,7 @@
 <span class="w">                        </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">1.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">})</span><span class="w">      </span><span class="c1">// up direction</span>
 <span class="w">                </span><span class="p">);</span>
 
-<span class="n">polyscope</span><span class="o">::</span><span class="n">CameraView</span><span class="o">*</span><span class="w"> </span><span class="n">cam1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCameraView</span><span class="p">(</span><span class="s">&quot;cam1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">CameraView</span><span class="o">*</span><span class="w"> </span><span class="n">cam1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCameraView</span><span class="p">(</span><span class="s">"cam1"</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
 
 <span class="c1">// Set some options for the camera view</span>
 <span class="n">cam1</span><span class="o">-&gt;</span><span class="n">setWidgetFocalLength</span><span class="p">(</span><span class="mf">0.75</span><span class="p">);</span><span class="w">           </span><span class="c1">// size of displayed widget (relative value)</span>
@@ -1813,7 +1813,7 @@
 <span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">imageColor</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">);</span><span class="w"> </span><span class="c1">// fill with your data</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">ColorImageQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">    </span><span class="n">cam1</span><span class="o">-&gt;</span><span class="n">addColorImageQuantity</span><span class="p">(</span><span class="s">&quot;color image&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">imageColor</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">cam1</span><span class="o">-&gt;</span><span class="n">addColorImageQuantity</span><span class="p">(</span><span class="s">"color image"</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">imageColor</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                </span><span class="n">polyscope</span><span class="o">::</span><span class="n">ImageOrigin</span><span class="o">::</span><span class="n">UpperLeft</span><span class="p">);</span>
 <span class="n">im</span><span class="o">-&gt;</span><span class="n">setEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 <span class="n">im</span><span class="o">-&gt;</span><span class="n">setShowInCameraBillboard</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>

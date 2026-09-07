@@ -1588,21 +1588,21 @@
 <p>By default, all points in the cloud have the same radius. However, any point cloud scalar quantity can be additionally interpreted as the radius of the points. This can also be set manually in the GUI via the point cloud <code>[Options] --&gt; [Variable Radius]</code>.</p>
 <p><img alt="point cloud radius demo" src="/py//media/point_cloud_radius.jpg" /></p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ... setup, register a point cloud, etc ...</span>
 
 <span class="c1"># Get a reference to your point cloud</span>
-<span class="n">ps_cloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_point_cloud</span><span class="p">(</span><span class="s2">&quot;your point cloud name&quot;</span><span class="p">)</span>
+<span class="n">ps_cloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_point_cloud</span><span class="p">(</span><span class="s2">"your point cloud name"</span><span class="p">)</span>
 
 <span class="c1"># Add a random scalar quantity</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">ps_cloud</span><span class="o">.</span><span class="n">n_points</span><span class="p">()</span>
 <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;test_vals&quot;</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
+<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"test_vals"</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
 
 <span class="c1"># Set the quantity as the point size</span>
-<span class="n">ps_cloud</span><span class="o">.</span><span class="n">set_point_radius_quantity</span><span class="p">(</span><span class="s2">&quot;test_vals&quot;</span><span class="p">)</span>
+<span class="n">ps_cloud</span><span class="o">.</span><span class="n">set_point_radius_quantity</span><span class="p">(</span><span class="s2">"test_vals"</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Clear it out, go back to default constant size</span>
@@ -1611,7 +1611,7 @@
 
 <span class="c1"># Set the quantity as the size using actual world-coordinate units,</span>
 <span class="c1"># rather than auto-scaling the size</span>
-<span class="n">ps_cloud</span><span class="o">.</span><span class="n">set_point_radius_quantity</span><span class="p">(</span><span class="s2">&quot;test_vals&quot;</span><span class="p">,</span> <span class="n">autoscale</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ps_cloud</span><span class="o">.</span><span class="n">set_point_radius_quantity</span><span class="p">(</span><span class="s2">"test_vals"</span><span class="p">,</span> <span class="n">autoscale</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
 <p>Any negative values in the scalar quantity will be clamped to <code>0</code>. By default, values will be rescaled such that the largest corresponds to the size from the point radius option (thus, using any constant scalar quantity will make the radii identical to the default value with no radius set). This automatic scaling can be disabled by setting <code>autoscale=False</code> below.</p>

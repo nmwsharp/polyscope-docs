@@ -1787,8 +1787,8 @@
 <p>Visualize scalar-valued data at the nodes or cells of a sparse volume grid.</p>
 <p><img alt="sparse volume grid scalar quantity" src="/media/sparse_volume_scalar_quantity.jpg" /></p>
 <p><strong>Example:</strong> adding scalar quantities to a sparse volume grid
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/sparse_volume_grid.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/sparse_volume_grid.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
@@ -1800,18 +1800,18 @@
 <span class="p">};</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">SparseVolumeGrid</span><span class="o">*</span><span class="w"> </span><span class="n">psGrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSparseVolumeGrid</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;sample sparse grid&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">cellWidth</span><span class="p">,</span><span class="w"> </span><span class="n">occupiedCells</span><span class="p">);</span>
+<span class="w">        </span><span class="s">"sample sparse grid"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">cellWidth</span><span class="p">,</span><span class="w"> </span><span class="n">occupiedCells</span><span class="p">);</span>
 
 <span class="c1">// === Cell scalar: one value per occupied cell ===</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cellScalars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.1f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">};</span>
-<span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addCellScalarQuantity</span><span class="p">(</span><span class="s">&quot;cell scalar&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cellScalars</span><span class="p">);</span>
+<span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addCellScalarQuantity</span><span class="p">(</span><span class="s">"cell scalar"</span><span class="p">,</span><span class="w"> </span><span class="n">cellScalars</span><span class="p">);</span>
 
 <span class="c1">// === Node scalar: values at node indices ===</span>
 <span class="c1">// For each cell (i,j,k), its corner nodes are (i+dx, j+dy, k+dz) for dx,dy,dz in {0,1}.</span>
 <span class="c1">// Collect all unique nodes and provide a value for each.</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">ivec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nodeIndices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* all unique corner nodes */</span><span class="w"> </span><span class="p">};</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nodeValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* one value per node index */</span><span class="w"> </span><span class="p">};</span>
-<span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addNodeScalarQuantity</span><span class="p">(</span><span class="s">&quot;node scalar&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nodeIndices</span><span class="p">,</span><span class="w"> </span><span class="n">nodeValues</span><span class="p">);</span>
+<span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addNodeScalarQuantity</span><span class="p">(</span><span class="s">"node scalar"</span><span class="p">,</span><span class="w"> </span><span class="n">nodeIndices</span><span class="p">,</span><span class="w"> </span><span class="n">nodeValues</span><span class="p">);</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 </code></pre></div></p>

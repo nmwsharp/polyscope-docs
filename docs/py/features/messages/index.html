@@ -1763,20 +1763,20 @@
 <p>Messages can be dismissed by clicking the button in dialog box, or pressing <code>[space]</code>.</p>
 <p><img alt="messages demo" src="/py//media/messages_demo.png" /></p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># Generate a single warning.</span>
 <span class="c1"># Has no effect on the GUI until polyscope gets control flow</span>
 <span class="c1"># back, which happens here in the show() call below.</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Something went slightly wrong&quot;</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Something went slightly wrong"</span><span class="p">)</span>
 
 <span class="c1"># Generate a lot of warnings. Becase all of these warnings </span>
 <span class="c1"># have the same base message (the first string), they will </span>
 <span class="c1"># be batched together and only shown as one dialog. The detail </span>
 <span class="c1"># message for the first such warning will also be shown.</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5000</span><span class="p">):</span>
-  <span class="n">ps</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Some problems come in groups&quot;</span><span class="p">,</span> <span class="s2">&quot;some details: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+  <span class="n">ps</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Some problems come in groups"</span><span class="p">,</span> <span class="s2">"some details: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 
 <span class="c1"># The previous warnings would be displayed here</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1784,7 +1784,7 @@
 <span class="c1"># Generating an error.</span>
 <span class="c1"># The UI will block and show this error immediately. After </span>
 <span class="c1"># the error is dismissed, the call will return.</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Resistance is futile.&quot;</span><span class="p">);</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Resistance is futile."</span><span class="p">);</span>
 
 <span class="c1"># Disable the in-window popups, just print to stdout</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_display_message_popups</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -1796,7 +1796,7 @@
 <p>Simply logs a message to <code>stdout</code>.</p>
 </details>
 <details class="func">
-<summary><code class="highlight"><span class="n">warning</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">warning</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span></code></summary>
 <h5 id="warning">warning<a class="headerlink" href="#warning" title="Permanent link">&para;</a></h5>
 <p>Create a warning message, to be displayed the next time the UI gets flow control. </p>
 <p>When issuing a one-off warning, the <code>detail</code> field need not be used.  However, if issuing warnings in a loop, warnings with the same base <code>message</code> are batched together, so the UI doesn&rsquo;t get completely overwhelmed (see example above).</p>

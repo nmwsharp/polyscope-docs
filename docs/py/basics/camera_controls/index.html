@@ -1851,15 +1851,15 @@
   <h1>Managing Views & Cameras</h1>
 
 <p>These functions control the current viewing camera in for the Polyscope scene, as well as more-generally managing camera parameters across visualizations, such as for <a href="/py//structures/camera_view/basics">Camera View structures</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># change the default up-direction or front-direction for the scene</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_up_dir</span><span class="p">(</span><span class="s2">&quot;z_up&quot;</span><span class="p">)</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_front_dir</span><span class="p">(</span><span class="s2">&quot;neg_y_front&quot;</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_up_dir</span><span class="p">(</span><span class="s2">"z_up"</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_front_dir</span><span class="p">(</span><span class="s2">"neg_y_front"</span><span class="p">)</span>
 
 <span class="c1"># change the navigation style (default is Turntable)</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_navigation_style</span><span class="p">(</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_navigation_style</span><span class="p">(</span><span class="s2">"free"</span><span class="p">)</span>
 
 <span class="c1"># get the current camera view matrix</span>
 <span class="n">view_mat</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_camera_view_matrix</span><span class="p">()</span>
@@ -1881,7 +1881,7 @@
 <span class="c1"># you can even use the parameters to create a camera view structure,</span>
 <span class="c1"># which visualize views of the scene as a frame and can hold image</span>
 <span class="c1"># quantities</span>
-<span class="n">ps_cam</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_camera_view</span><span class="p">(</span><span class="s2">&quot;cam1&quot;</span><span class="p">,</span> <span class="n">cam_params</span><span class="p">)</span> 
+<span class="n">ps_cam</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_camera_view</span><span class="p">(</span><span class="s2">"cam1"</span><span class="p">,</span> <span class="n">cam_params</span><span class="p">)</span> 
 </code></pre></div>
 <h2 id="window-controls">Window Controls<a class="headerlink" href="#window-controls" title="Permanent link">&para;</a></h2>
 <p>Get and set the size of the window which appears on the user&rsquo;s display.</p>
@@ -1996,8 +1996,8 @@
 <p>The style of the camera navigation. Affects what happens when you drag to rotate around the 3D view with your mouse.</p>
 <p>This value can be manually set under the <code>view</code> menu of the ui. </p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_navigation_style</span><span class="p">(</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_navigation_style</span><span class="p">(</span><span class="s2">"free"</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
 <details class="func">
@@ -2021,8 +2021,8 @@
 </ul>
 <p>Default: <code>'y_up'</code>.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_up_dir</span><span class="p">(</span><span class="s2">&quot;z_up&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_up_dir</span><span class="p">(</span><span class="s2">"z_up"</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
 <details class="func">
@@ -2045,8 +2045,8 @@
 </ul>
 <p>Default: <code>z_front</code>.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_front_dir</span><span class="p">(</span><span class="s2">&quot;z_front&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_front_dir</span><span class="p">(</span><span class="s2">"z_front"</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
 <details class="func">
@@ -2063,10 +2063,10 @@
 <p>Set the camera view projection to be either orthographic or perspective (default).</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="c1"># Enable the orthographic view</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_view_projection_mode</span><span class="p">(</span><span class="s2">&quot;orthographic&quot;</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_view_projection_mode</span><span class="p">(</span><span class="s2">"orthographic"</span><span class="p">)</span>
 
 <span class="c1"># Go back to default perspective projection</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_view_projection_mode</span><span class="p">(</span><span class="s2">&quot;perspective&quot;</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_view_projection_mode</span><span class="p">(</span><span class="s2">"perspective"</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
 <h2 id="centering-the-view-on-scene-content">Centering the View on Scene Content<a class="headerlink" href="#centering-the-view-on-scene-content" title="Permanent link">&para;</a></h2>
@@ -2094,7 +2094,7 @@
 <summary><code class="highlight"><span class="n">get_view_as_json</span><span class="p">()</span></code></summary>
 <p>Get the current view parameters specified as a json string. Returns a string.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">my_str</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_view_as_json</span><span class="p">()</span>
 </code></pre></div></p>
 </details>
@@ -2108,7 +2108,7 @@
 <h2 id="camera-parameters-objects">Camera Parameters Objects<a class="headerlink" href="#camera-parameters-objects" title="Permanent link">&para;</a></h2>
 <p><code>CameraParameters</code> objects describe a camera view in Polyscope, including its <em>intrinsics</em> (the field of view and aspect ratio), and <em>extrinsics</em> (the location and orientation). These parameters are used both for manipulations of the interactive viewport, as well as creating <a href="/py//structures/camera_view/basics">Camera View structures</a> which are visualized as part of the content in your scene.</p>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="c1"># construct camera parameters</span>
 <span class="n">intrinsics</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">CameraIntrinsics</span><span class="p">(</span><span class="n">fov_vertical_deg</span><span class="o">=</span><span class="mf">60.</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
@@ -2122,7 +2122,7 @@
 <span class="n">curr_params</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_view_camera_parameters</span><span class="p">()</span>
 
 <span class="c1"># or, use the parameters to create a camera view</span>
-<span class="n">cam</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_camera_view</span><span class="p">(</span><span class="s2">&quot;cam1&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_camera_view</span><span class="p">(</span><span class="s2">"cam1"</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </code></pre></div></p>
 <h3 id="camera-intrinsics">Camera Intrinsics<a class="headerlink" href="#camera-intrinsics" title="Permanent link">&para;</a></h3>
 <p>A <code>CameraIntrinsics</code> object describes the field of view and aspect ratio of a camera. It <strong>does not</strong> describe a &ldquo;pixel resolution&rdquo; for a camera&mdash;you could have many images of different resolutions all associated with the same camera, as long as the aspect ratios are right.</p>
@@ -2188,7 +2188,7 @@
 <h4 id="generating-pixel-rays">Generating pixel rays<a class="headerlink" href="#generating-pixel-rays" title="Permanent link">&para;</a></h4>
 <p>It is often necessary to generate the world-space ray corresponding to each pixel of an image in a camera view. The base point for these rays is easy, it is just <code>params.get_position()</code>. However the ray directions vary-per pixel; the <code>CameraParameters</code> object has two helpers to automatically construct these rays.</p>
 <details class="func">
-<summary><code class="highlight"><span class="n">CameraParameters</span><span class="o">.</span><span class="n">generate_camera_rays</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">CameraParameters</span><span class="o">.</span><span class="n">generate_camera_rays</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">'upper_left'</span><span class="p">)</span></code></summary>
 <p>Generate an array of rays corresponding to an image with the given resolution <code>dims=(w,h)</code>. The result is a <code>[h,w,3]</code> numpy buffer. Ray origins are all implicitly given by <code>params.get_position()</code>.</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="n">rays</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">generate_camera_rays</span><span class="p">((</span><span class="mi">300</span><span class="p">,</span><span class="mi">200</span><span class="p">))</span>

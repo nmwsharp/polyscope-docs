@@ -1867,7 +1867,7 @@
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>https://github.com/nmwsharp/polyscope.git
 </code></pre></div>
 <p>Then, add the following lines to your <code>CMakeLists.txt</code>:
-<div class="highlight"><pre><span></span><code>add_subdirectory(&quot;path/to/polyscope&quot;)
+<div class="highlight"><pre><span></span><code>add_subdirectory("path/to/polyscope")
 
 ...
 
@@ -1888,7 +1888,7 @@ FetchContent_Declare(
    GIT_REPOSITORY https://github.com/nmwsharp/polyscope.git
    GIT_TAG        v2.6.1
    GIT_SHALLOW    TRUE
-   GIT_SUBMODULES &quot;&quot;
+   GIT_SUBMODULES ""
    PATCH_COMMAND  git submodule update --init --recursive --depth 1
 )
 # NOTE: the lines GIT_SHALLOW, GIT_SUBMODULES, PATCH_COMMAND are optional, they shallow-clone the repo+submodules to reduce size
@@ -1948,7 +1948,7 @@ target_link_libraries(YOUR_TARGET_NAME polyscope)
 <p>By default the CMake script builds all (both) backends. But for instance, the OpenGL3 backend could be excluded from the build with
 <div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-DPOLYSCOPE_BACKEND_OPENGL3_GLFW<span class="o">=</span>OFF<span class="w"> </span>..
 </code></pre></div>
-and the mock backend could be used at runtime with <code class="highlight"><span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="s">&quot;openGL_mock&quot;</span><span class="p">)</span></code>.</p>
+and the mock backend could be used at runtime with <code class="highlight"><span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="s">"openGL_mock"</span><span class="p">)</span></code>.</p>
 <h3 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h3>
 <p>Unit test live in the <code>/test/</code> directory, and cover most of the core functionality of Polyscope. Polyscope uses googletest, which will be downloaded automatically when you build the tests.</p>
 <p>To build and run the tests, use:</p>

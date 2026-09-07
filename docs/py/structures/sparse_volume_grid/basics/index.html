@@ -1703,8 +1703,8 @@
 
 <p>As usual, first you register a sparse volume grid by specifying a grid origin, cell size, and list of occupied cells. Then you can add quantities such as scalar or color data defined per-cell or per-node.</p>
 <p><strong>Example:</strong> registering a sparse volume grid and adding a scalar quantity
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -1719,11 +1719,11 @@
 <span class="p">])</span>
 
 <span class="c1"># register the grid</span>
-<span class="n">ps_grid</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_sparse_volume_grid</span><span class="p">(</span><span class="s2">&quot;sample sparse grid&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">cell_width</span><span class="p">,</span> <span class="n">occupied_cells</span><span class="p">)</span>
+<span class="n">ps_grid</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_sparse_volume_grid</span><span class="p">(</span><span class="s2">"sample sparse grid"</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">cell_width</span><span class="p">,</span> <span class="n">occupied_cells</span><span class="p">)</span>
 
 <span class="c1"># add a scalar function on the grid (one value per cell)</span>
 <span class="n">cell_scalars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">occupied_cells</span><span class="p">))</span>
-<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;cell scalar&quot;</span><span class="p">,</span> <span class="n">cell_scalars</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"cell scalar"</span><span class="p">,</span> <span class="n">cell_scalars</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'cells'</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
@@ -1766,9 +1766,9 @@
 </ul>
 <p><img alt="sparse volume grid render modes" src="/py//media/sparse_volume_render_modes.jpg" /></p>
 <p>The wireframe appearance can be adjusted with <code>set_wireframe_radius()</code> and <code>set_wireframe_color()</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">ps_grid</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">register_sparse_volume_grid</span><span class="p">(</span><span class="s2">&quot;sample sparse grid&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">cellWidth</span><span class="p">,</span> <span class="n">occupiedCells</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">ps_grid</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">register_sparse_volume_grid</span><span class="p">(</span><span class="s2">"sample sparse grid"</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">cellWidth</span><span class="p">,</span> <span class="n">occupiedCells</span><span class="p">);</span>
 
-<span class="n">ps_grid</span><span class="o">.</span><span class="n">set_render_mode</span><span class="p">(</span><span class="s2">&quot;wireframe&quot;</span><span class="p">)</span>
+<span class="n">ps_grid</span><span class="o">.</span><span class="n">set_render_mode</span><span class="p">(</span><span class="s2">"wireframe"</span><span class="p">)</span>
 <span class="n">ps_grid</span><span class="o">.</span><span class="n">set_wireframe_radius</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">ps_grid</span><span class="o">.</span><span class="n">set_wireframe_color</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
 </code></pre></div>
@@ -1781,16 +1781,16 @@
 <span class="n">screen_coords</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">MousePos</span>
 <span class="n">pick_result</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="n">screen_coords</span><span class="o">=</span><span class="n">screen_coords</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_type_name</span> <span class="o">==</span> <span class="s2">&quot;Sparse Volume Grid&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_type_name</span> <span class="o">==</span> <span class="s2">"Sparse Volume Grid"</span><span class="p">:</span>
     <span class="c1"># always:</span>
-    <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_data</span><span class="p">[</span><span class="s2">&quot;element_type&quot;</span><span class="p">]</span>    <span class="c1"># either &quot;cell&quot; or &quot;node&quot;, depending on what was picked</span>
+    <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_data</span><span class="p">[</span><span class="s2">"element_type"</span><span class="p">]</span>    <span class="c1"># either "cell" or "node", depending on what was picked</span>
 
     <span class="c1"># if a cell was picked:</span>
-    <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_data</span><span class="p">[</span><span class="s2">&quot;cell_index&quot;</span><span class="p">]</span>      <span class="c1"># the integer grid index of the picked cell, as a tuple (i,j,k)</span>
-    <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_data</span><span class="p">[</span><span class="s2">&quot;cell_flat_index&quot;</span><span class="p">]</span> <span class="c1"># the ID of the picked cell, i.e. its index in the occupied_cells list</span>
+    <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_data</span><span class="p">[</span><span class="s2">"cell_index"</span><span class="p">]</span>      <span class="c1"># the integer grid index of the picked cell, as a tuple (i,j,k)</span>
+    <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_data</span><span class="p">[</span><span class="s2">"cell_flat_index"</span><span class="p">]</span> <span class="c1"># the ID of the picked cell, i.e. its index in the occupied_cells list</span>
 
     <span class="c1"># if a node was picked:</span>
-    <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_data</span><span class="p">[</span><span class="s2">&quot;node_index&quot;</span><span class="p">]</span>      <span class="c1"># the integer grid index of the picked node, as a tuple (i,j,k)</span>
+    <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_data</span><span class="p">[</span><span class="s2">"node_index"</span><span class="p">]</span>      <span class="c1"># the integer grid index of the picked node, as a tuple (i,j,k)</span>
 </code></pre></div></p>
 <p>By default, only cells can be selected, until you have added some data on nodes. You can override this behavior by calling <code>sparse_volume_grid.mark_nodes_as_used()</code>, to act as if a node quantity had been added.</p>
 <h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>

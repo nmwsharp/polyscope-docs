@@ -1798,8 +1798,8 @@
 
 <h3 id="registering-a-volume-mesh">Registering a volume mesh<a class="headerlink" href="#registering-a-volume-mesh" title="Permanent link">&para;</a></h3>
 <p>Example: registering a tetrahedral mesh from libIGL
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/volume_mesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/volume_mesh.h"</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;igl/readMESH.h&gt;</span>
 
 <span class="c1">// Initialize Polyscope</span>
@@ -1808,11 +1808,11 @@
 <span class="c1">// Read mesh from file</span>
 <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">V</span><span class="p">;</span><span class="w"> </span><span class="c1">// vertex positions</span>
 <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXi</span><span class="w"> </span><span class="n">T</span><span class="p">;</span><span class="w"> </span><span class="c1">// tetrahedra</span>
-<span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXi</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="c1">// faces (we don&#39;t use these here)</span>
-<span class="n">igl</span><span class="o">::</span><span class="n">readMESH</span><span class="p">(</span><span class="s">&quot;path/to/volume.mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">);</span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXi</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="c1">// faces (we don't use these here)</span>
+<span class="n">igl</span><span class="o">::</span><span class="n">readMESH</span><span class="p">(</span><span class="s">"path/to/volume.mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">);</span>
 
 <span class="c1">// Register the volume mesh with Polyscope</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerTetMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerTetMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
 
 <span class="c1">// Add a scalar quantity</span>
 <span class="kt">size_t</span><span class="w"> </span><span class="n">nVerts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">.</span><span class="n">rows</span><span class="p">();</span>
@@ -1821,7 +1821,7 @@
 <span class="w">  </span><span class="c1">// use the x-coordinate of vertex position as a test function</span>
 <span class="w">  </span><span class="n">scalarV</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getVolumeMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">&quot;scalar Q&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">scalarV</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getVolumeMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">"scalar Q"</span><span class="p">,</span><span class="w"> </span><span class="n">scalarV</span><span class="p">);</span>
 
 <span class="c1">// Show the GUI</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>

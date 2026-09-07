@@ -1997,14 +1997,14 @@
 </video>
 
 <p><strong>Example</strong>: sweep a slice plane through the scene to produce the animation above</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># Read &amp; register the mesh</span>
 <span class="n">vertices</span> <span class="o">=</span> <span class="c1"># your vertices</span>
 <span class="n">faces</span> <span class="o">=</span> <span class="c1"># your faces</span>
-<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 
 <span class="c1"># Add a slice plane</span>
 <span class="n">ps_plane</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">add_scene_slice_plane</span><span class="p">()</span>
@@ -2148,7 +2148,7 @@
 </details>
 <h3 id="per-structure-ignore-slice-planes">Per-structure ignore slice planes<a class="headerlink" href="#per-structure-ignore-slice-planes" title="Permanent link">&para;</a></h3>
 <p>By default, every slice plane affects all content in the scene. However, we can also make a particular structure ignore a given slice plane, so that it only slices through some of the objects in the scene. This can be set in the GUI for each structure under <code>[Options] --&gt; [Slice Planes]</code>, or programatically with the function below.</p>
-<div class="highlight"><pre><span></span><code><span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 <span class="n">ps_plane</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">add_scene_slice_plane</span><span class="p">()</span>
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_ignore_slice_plane</span><span class="p">(</span><span class="n">ps_plane</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
@@ -2166,7 +2166,7 @@
 <h3 id="cull-whole-elements">Cull whole elements<a class="headerlink" href="#cull-whole-elements" title="Permanent link">&para;</a></h3>
 <p>For some structures, slice planes can be set to discretely cull away whole elements, rather than slicing directly through the middle of an element.  This option can be set in the GUI for each structure under <code>[Options] --&gt; [Slice Planes]</code>, or programatically with the function below.</p>
 <p><img alt="cull whole elements settings" src="/py//media/cull_whole_elements.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 <span class="n">ps_plane</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">add_scene_slice_plane</span><span class="p">()</span>
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_cull_whole_elements</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>

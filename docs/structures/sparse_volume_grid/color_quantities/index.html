@@ -1745,8 +1745,8 @@
 <p>Visualize color data at the nodes or cells of a sparse volume grid.</p>
 <p><img alt="sparse volume grid color quantity" src="/media/sparse_volume_color_quantity.jpg" /></p>
 <p><strong>Example:</strong> adding color quantities to a sparse volume grid
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/sparse_volume_grid.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/sparse_volume_grid.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
@@ -1758,18 +1758,18 @@
 <span class="p">};</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">SparseVolumeGrid</span><span class="o">*</span><span class="w"> </span><span class="n">psGrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSparseVolumeGrid</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;sample sparse grid&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">cellWidth</span><span class="p">,</span><span class="w"> </span><span class="n">occupiedCells</span><span class="p">);</span>
+<span class="w">        </span><span class="s">"sample sparse grid"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">cellWidth</span><span class="p">,</span><span class="w"> </span><span class="n">occupiedCells</span><span class="p">);</span>
 
 <span class="c1">// === Cell color: one RGB color per occupied cell ===</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cellColors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">{</span><span class="mf">1.f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.f</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">0.f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.f</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">0.f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.f</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">1.f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.f</span><span class="p">},</span>
 <span class="p">};</span>
-<span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addCellColorQuantity</span><span class="p">(</span><span class="s">&quot;cell color&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cellColors</span><span class="p">);</span>
+<span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addCellColorQuantity</span><span class="p">(</span><span class="s">"cell color"</span><span class="p">,</span><span class="w"> </span><span class="n">cellColors</span><span class="p">);</span>
 
 <span class="c1">// === Node color: colors at node indices ===</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">ivec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nodeIndices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* all unique corner nodes */</span><span class="w"> </span><span class="p">};</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nodeColors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* one RGB color per node index */</span><span class="w"> </span><span class="p">};</span>
-<span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addNodeColorQuantity</span><span class="p">(</span><span class="s">&quot;node color&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nodeIndices</span><span class="p">,</span><span class="w"> </span><span class="n">nodeColors</span><span class="p">);</span>
+<span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addNodeColorQuantity</span><span class="p">(</span><span class="s">"node color"</span><span class="p">,</span><span class="w"> </span><span class="n">nodeIndices</span><span class="p">,</span><span class="w"> </span><span class="n">nodeColors</span><span class="p">);</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 </code></pre></div></p>

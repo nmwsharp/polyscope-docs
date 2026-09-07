@@ -1664,36 +1664,36 @@
 
 <p>Visualize scalar (real or integer)-valued data at the points of a point cloud.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># register a point cloud</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ps_cloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;my points&quot;</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
+<span class="n">ps_cloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">"my points"</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
 
 <span class="c1"># generate some random data per-point</span>
 <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 
 <span class="c1"># basic visualization</span>
-<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;rand vals&quot;</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
+<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"rand vals"</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
 
 <span class="c1"># manually specify a range for colormapping</span>
-<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;rand vals with range&quot;</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">vminmax</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">),</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"rand vals with range"</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">vminmax</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">),</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># use a different colormap</span>
-<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;rand vals with range&quot;</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;blues&#39;</span><span class="p">)</span>
+<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"rand vals with range"</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'blues'</span><span class="p">)</span>
 
-<span class="c1"># use the &#39;datatype&#39; to specify default visualization semantics</span>
+<span class="c1"># use the 'datatype' to specify default visualization semantics</span>
 <span class="n">vals_gaussian</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
-<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;gaussian vals symmetric&quot;</span><span class="p">,</span> <span class="n">vals_gaussian</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s1">&#39;symmetric&#39;</span><span class="p">)</span>
+<span class="n">ps_cloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"gaussian vals symmetric"</span><span class="p">,</span> <span class="n">vals_gaussian</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s1">'symmetric'</span><span class="p">)</span>
 
 <span class="c1"># view the point cloud with all of these quantities</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </code></pre></div></p>
 <details class="func" open="open">
-<summary><code class="highlight"><span class="n">PointCloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="n">vminmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">PointCloud</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s2">"standard"</span><span class="p">,</span> <span class="n">vminmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
 <p>Add a scalar quantity to the point cloud.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>

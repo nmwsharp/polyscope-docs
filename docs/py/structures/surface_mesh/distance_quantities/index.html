@@ -1572,8 +1572,8 @@
 <p>Visualize distance-valued data at the elements of a surface mesh.</p>
 <p>Distance quantities are basically scalars, but are visualized with alternating stripes to show distance contours.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="n">N_vert</span> <span class="o">=</span> <span class="mi">100</span>
@@ -1582,21 +1582,21 @@
 <span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N_vert</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N_face</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># (F,3) array of indices </span>
                                                       <span class="c1"># for triangular faces</span>
 
-<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 
 <span class="n">dists</span> <span class="o">=</span> <span class="c1"># your distances, a length N_vert array</span>
 
 <span class="c1"># visualize the distance</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_distance_quantity</span><span class="p">(</span><span class="s2">&quot;distances&quot;</span><span class="p">,</span> <span class="n">dists</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stripe_size</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_distance_quantity</span><span class="p">(</span><span class="s2">"distances"</span><span class="p">,</span> <span class="n">dists</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stripe_size</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
 
 <span class="c1"># use defaults for signed distances</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_distance_quantity</span><span class="p">(</span><span class="s2">&quot;signed distances&quot;</span><span class="p">,</span> <span class="n">dists</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_distance_quantity</span><span class="p">(</span><span class="s2">"signed distances"</span><span class="p">,</span> <span class="n">dists</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># view the mesh with these quantities</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </code></pre></div></p>
 <details class="func" open="open">
-<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_distance_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;vertices&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vminmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stripe_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stripe_size_relative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_distance_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'vertices'</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vminmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stripe_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stripe_size_relative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
 <p>Add a distance quantity to the mesh.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>

@@ -1637,8 +1637,8 @@
 <p>Visualize color rgb-valued data at the nodes or edges of a curve network.</p>
 <p><img alt="curve network color" src="/py//media/curve_network_color.jpeg" /></p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># register a curve network </span>
@@ -1646,22 +1646,22 @@
 <span class="n">N_edge</span> <span class="o">=</span> <span class="mi">250</span>
 <span class="n">nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_node</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N_node</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N_edge</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">ps_net</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">&quot;my network&quot;</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
+<span class="n">ps_net</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">"my network"</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
 
 <span class="c1"># visualize some random colors per-node</span>
 <span class="n">vals_node</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_node</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ps_net</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">&quot;rand vals&quot;</span><span class="p">,</span> <span class="n">vals_node</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ps_net</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">"rand vals"</span><span class="p">,</span> <span class="n">vals_node</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># visualize some random colors per-edge</span>
 <span class="n">vals_edge</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_edge</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ps_net</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">&quot;rand vals2&quot;</span><span class="p">,</span> <span class="n">vals_edge</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;edges&#39;</span><span class="p">)</span>
+<span class="n">ps_net</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">"rand vals2"</span><span class="p">,</span> <span class="n">vals_edge</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'edges'</span><span class="p">)</span>
 
 
 <span class="c1"># view the network with all of these quantities</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </code></pre></div></p>
 <details class="func" open="open">
-<summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;nodes&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'nodes'</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
 <p>Add a scalar quantity to the network.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>

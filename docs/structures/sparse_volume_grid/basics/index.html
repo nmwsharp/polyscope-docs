@@ -1797,8 +1797,8 @@
 
 <p>As usual, first you register a sparse volume grid by specifying a grid origin, cell size, and list of occupied cells. Then you can add quantities such as scalar or color data defined per-cell or per-node.</p>
 <p><strong>Example:</strong> registering a sparse volume grid and adding a scalar quantity
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/sparse_volume_grid.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/sparse_volume_grid.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
@@ -1814,13 +1814,13 @@
 
 <span class="c1">// register the grid</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">SparseVolumeGrid</span><span class="o">*</span><span class="w"> </span><span class="n">psGrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSparseVolumeGrid</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;sample sparse grid&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">cellWidth</span><span class="p">,</span><span class="w"> </span><span class="n">occupiedCells</span><span class="p">);</span>
+<span class="w">        </span><span class="s">"sample sparse grid"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">cellWidth</span><span class="p">,</span><span class="w"> </span><span class="n">occupiedCells</span><span class="p">);</span>
 
 <span class="c1">// add a scalar function on the grid (one value per cell)</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cellScalars</span><span class="p">(</span><span class="n">occupiedCells</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cellScalars</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">cellScalars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 
-<span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addCellScalarQuantity</span><span class="p">(</span><span class="s">&quot;cell scalar&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cellScalars</span><span class="p">);</span>
+<span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addCellScalarQuantity</span><span class="p">(</span><span class="s">"cell scalar"</span><span class="p">,</span><span class="w"> </span><span class="n">cellScalars</span><span class="p">);</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 </code></pre></div></p>
@@ -1850,7 +1850,7 @@
 <p><img alt="sparse volume grid render modes" src="/media/sparse_volume_render_modes.jpg" /></p>
 <p>The wireframe appearance can be adjusted with <code>SparseVolumeGrid::setWireframeRadius()</code> and <code>SparseVolumeGrid::setWireframeColor()</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">SparseVolumeGrid</span><span class="o">*</span><span class="w"> </span><span class="n">psGrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSparseVolumeGrid</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;sample sparse grid&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">cellWidth</span><span class="p">,</span><span class="w"> </span><span class="n">occupiedCells</span><span class="p">);</span>
+<span class="w">        </span><span class="s">"sample sparse grid"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">cellWidth</span><span class="p">,</span><span class="w"> </span><span class="n">occupiedCells</span><span class="p">);</span>
 
 <span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">setRenderMode</span><span class="p">(</span><span class="n">SparseVolumeGridRenderMode</span><span class="o">::</span><span class="n">Wireframe</span><span class="p">);</span>
 <span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">setWireframeRadius</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span><span class="w"> </span>

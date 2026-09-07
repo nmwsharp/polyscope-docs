@@ -1795,8 +1795,8 @@
 <h3 id="tangent-vectors">Tangent vectors<a class="headerlink" href="#tangent-vectors" title="Permanent link">&para;</a></h3>
 <p><em>Tangent</em> vectors lie flat against the surface of a mesh. They are defined as 2D vector in a local 2D coordinate system at each vertex or face. We need to specify the vector itself as well as the basis vectors for the local coordinate systems.</p>
 <p>Example: visualizing tangent vectors with geometry-central
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/surface_mesh.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
@@ -1806,7 +1806,7 @@
 <span class="n">std</span><span class="o">::</span><span class="n">tie</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span><span class="w"> </span><span class="n">geometry</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadMesh</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
 
 <span class="c1">// Register the mesh with polyscope</span>
-<span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;mesh&quot;</span><span class="p">,</span>
+<span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"mesh"</span><span class="p">,</span>
 <span class="w">              </span><span class="n">geometry</span><span class="o">-&gt;</span><span class="n">inputVertexPositions</span><span class="p">,</span><span class="w"> </span><span class="n">mesh</span><span class="o">-&gt;</span><span class="n">getFaceVertexList</span><span class="p">(),</span>
 <span class="w">              </span><span class="n">polyscopePermutations</span><span class="p">(</span><span class="o">*</span><span class="n">mesh</span><span class="p">));</span>
 
@@ -1824,8 +1824,8 @@
 <span class="n">VertexData</span><span class="o">&lt;</span><span class="n">Vector2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vecField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* some field */</span>
 
 <span class="c1">// Register the field</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span>
-<span class="w">  </span><span class="n">addVertexTangentVectorQuantity</span><span class="p">(</span><span class="s">&quot;great vectors&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"mesh"</span><span class="p">)</span><span class="o">-&gt;</span>
+<span class="w">  </span><span class="n">addVertexTangentVectorQuantity</span><span class="p">(</span><span class="s">"great vectors"</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                 </span><span class="n">vecField</span><span class="p">,</span><span class="w"> </span><span class="n">vBasisX</span><span class="p">,</span><span class="w"> </span><span class="n">vBasisY</span><span class="p">);</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>

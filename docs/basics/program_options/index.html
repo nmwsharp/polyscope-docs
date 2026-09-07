@@ -1963,10 +1963,10 @@
   <h1>Program Options</h1>
 
 <p>These are general settings which affect polyscope&rsquo;s behavior as a library. It is often convenient to set them just before calling <code>polyscope::init</code>, but they may set be anywhere.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
 
 <span class="c1">// a few options</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">programName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;important app&quot;</span><span class="p">;</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">programName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"important app"</span><span class="p">;</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">verbosity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">usePrefsFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 
@@ -1979,7 +1979,7 @@
 <h5 id="program-name">program name<a class="headerlink" href="#program-name" title="Permanent link">&para;</a></h5>
 <p>A general name to use when referring to the program in window headings, etc. Default: <code>Polyscope</code>.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">programName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;important app&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">programName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"important app"</span><span class="p">;</span>
 </code></pre></div></p>
 </details>
 <details class="func">
@@ -2000,8 +2000,8 @@
 <h5 id="print-prefix">print prefix<a class="headerlink" href="#print-prefix" title="Permanent link">&para;</a></h5>
 <p>A string used as a prefix for all messages printed to the terminal by polyscope.  Default: <code>[polyscope]</code>.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">printPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;[MYAPP] &quot;</span><span class="p">;</span>
-<span class="c1">// prints now look like &quot;[MYAPP] loaded openGL&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">printPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"[MYAPP] "</span><span class="p">;</span>
+<span class="c1">// prints now look like "[MYAPP] loaded openGL"</span>
 </code></pre></div></p>
 </details>
 <details class="func">

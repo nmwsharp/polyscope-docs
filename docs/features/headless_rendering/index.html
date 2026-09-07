@@ -1815,7 +1815,7 @@
 <p>At runtime, you must tell Polyscope to initialize with the EGL engine. The simplest way to do this is to specify it explicitly when you call <code>init()</code>. Alternately, the default automatic initialization scheme will select the EGL headless backend if no others are available, but only if you enable the headless backends option first.</p>
 <p><strong>Example:</strong> headless usage
 <div class="highlight"><pre><span></span><code><span class="c1">// explicit initialization</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="s">&quot;openGL3_egl&quot;</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="s">"openGL3_egl"</span><span class="p">);</span>
 <span class="c1">// OR</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">options</span><span class="o">::</span><span class="n">allowHeadlessBackends</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w">  </span><span class="c1">// enable headless backends</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span><span class="w"> </span><span class="c1">// automatic initialization will use the EGL backend</span>

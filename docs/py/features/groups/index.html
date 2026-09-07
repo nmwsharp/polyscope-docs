@@ -1925,35 +1925,35 @@
 </video>
 
 <p><strong>Example</strong>: Basic usage of groups</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># make a point cloud</span>
 <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">300</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">psCloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;my cloud&quot;</span><span class="p">,</span> <span class="n">pts</span><span class="p">)</span>
+<span class="n">psCloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">"my cloud"</span><span class="p">,</span> <span class="n">pts</span><span class="p">)</span>
 
 <span class="c1"># make a curve network</span>
 <span class="n">nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="p">])</span>
-<span class="n">psCurve</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">&quot;my network&quot;</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
+<span class="n">psCurve</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">"my network"</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
 
 <span class="c1"># create a group for these two objects</span>
-<span class="n">group</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;my group&quot;</span><span class="p">)</span>
-<span class="n">psCurve</span><span class="o">.</span><span class="n">add_to_group</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="c1"># you also say psCurve.add_to_group(&quot;my group&quot;)</span>
+<span class="n">group</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">"my group"</span><span class="p">)</span>
+<span class="n">psCurve</span><span class="o">.</span><span class="n">add_to_group</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="c1"># you also say psCurve.add_to_group("my group")</span>
 <span class="n">psCloud</span><span class="o">.</span><span class="n">add_to_group</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
 
 <span class="c1"># toggle the enabled state for everything in the group</span>
 <span class="n">group</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># hide items in group from displaying in the UI</span>
-<span class="c1"># (useful if you are registering huge numbers of structures you don&#39;t always need to see)</span>
+<span class="c1"># (useful if you are registering huge numbers of structures you don't always need to see)</span>
 <span class="n">group</span><span class="o">.</span><span class="n">set_hide_descendants_from_structure_lists</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">group</span><span class="o">.</span><span class="n">set_show_child_details</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># nest groups inside of other groups</span>
-<span class="n">super_group</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;py parent group&quot;</span><span class="p">)</span>
+<span class="n">super_group</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">"py parent group"</span><span class="p">)</span>
 <span class="n">super_group</span><span class="o">.</span><span class="n">add_child_group</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>

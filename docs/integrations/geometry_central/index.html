@@ -1797,12 +1797,12 @@
 <p>This section demonstrates using Polyscope with <a href="https://geometry-central.net">geometry-central</a>! Note that a few useful adaptor functions are included in <code>geometrycentral/surface/meshio.h</code>.</p>
 <p>See <a href="https://github.com/nmwsharp/gc-polyscope-project-template">this repository</a> for a sample project configuration and CMAKE build system.</p>
 <h3 id="registering-a-surface-mesh">Registering a surface mesh<a class="headerlink" href="#registering-a-surface-mesh" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/surface_mesh.h"</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometrycentral/surface/surface_mesh.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometrycentral/surface/vertex_position_geometry.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometrycentral/surface/meshio.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"geometrycentral/surface/surface_mesh.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"geometrycentral/surface/vertex_position_geometry.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"geometrycentral/surface/meshio.h"</span>
 
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">geometrycentral</span><span class="o">::</span><span class="nn">surface</span><span class="p">;</span>
 
@@ -1813,12 +1813,12 @@
 <span class="n">geom</span><span class="p">.</span><span class="n">requireVertexPositions</span><span class="p">();</span>
 
 <span class="c1">// Register the mesh with polyscope</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="p">.</span><span class="n">vertexPositions</span><span class="p">,</span><span class="w"> </span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"myMesh"</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="p">.</span><span class="n">vertexPositions</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                              </span><span class="n">mesh</span><span class="p">.</span><span class="n">getFaceVertexList</span><span class="p">());</span>
 
 <span class="c1">// Note: for a VertexPositionGeometry, one could instead use:</span>
 <span class="n">VertexPositionGeometry</span><span class="o">&amp;</span><span class="w"> </span><span class="n">posGeom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* your geometry */</span><span class="p">;</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">posGeom</span><span class="p">.</span><span class="n">inputVertexPositions</span><span class="p">,</span><span class="w"> </span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"myMesh"</span><span class="p">,</span><span class="w"> </span><span class="n">posGeom</span><span class="p">.</span><span class="n">inputVertexPositions</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                               </span><span class="n">mesh</span><span class="p">.</span><span class="n">getFaceVertexList</span><span class="p">());</span>
 </code></pre></div>
 <div class="admonition warning">
@@ -1832,25 +1832,25 @@
 <div class="highlight"><pre><span></span><code><span class="cm">/* (continuing up from the Registering example above) */</span>
 
 <span class="n">VertexData</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">myScalar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* some scalar on vertices */</span><span class="p">;</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">&quot;myScalar&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">myScalar</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getMesh</span><span class="p">(</span><span class="s">"myMesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">"myScalar"</span><span class="p">,</span><span class="w"> </span><span class="n">myScalar</span><span class="p">);</span>
 
 <span class="n">FaceData</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">otherScalar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* another scalar on faces*/</span><span class="p">;</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="s">&quot;otherScalar&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">otherScalar</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getMesh</span><span class="p">(</span><span class="s">"myMesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="s">"otherScalar"</span><span class="p">,</span><span class="w"> </span><span class="n">otherScalar</span><span class="p">);</span>
 
 <span class="n">FaceData</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">anotherScalar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* another scalar on edges*/</span><span class="p">;</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addEdgeScalarQuantity</span><span class="p">(</span><span class="s">&quot;super important edge scalar&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getMesh</span><span class="p">(</span><span class="s">"myMesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addEdgeScalarQuantity</span><span class="p">(</span><span class="s">"super important edge scalar"</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                                     </span><span class="n">anotherScalar</span><span class="p">);</span>
 
 <span class="c1">// Containers holding `Vector3`s can be used for 3D vectors at faces and vertices</span>
 <span class="c1">// Example: vertex normals as computed in geometry-central</span>
 <span class="n">posGeom</span><span class="o">-&gt;</span><span class="n">requireVertexNormals</span><span class="p">();</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexVectorQuantity</span><span class="p">(</span><span class="s">&quot;vertex normals&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getMesh</span><span class="p">(</span><span class="s">"myMesh"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVertexVectorQuantity</span><span class="p">(</span><span class="s">"vertex normals"</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                                       </span><span class="n">posGeom</span><span class="o">-&gt;</span><span class="n">vertexNormals</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="custom-ordering">Custom ordering<a class="headerlink" href="#custom-ordering" title="Permanent link">&para;</a></h4>
 <p>Geometry-central&rsquo;s ordering of mesh halfedges and corners is different from Polyscope&rsquo;s default ordering (see <a href="../../../structures/surface_mesh/indexing_convention">indexing convention</a>). As such, you must tell Polyscope about this ordering for edge-valued, halfedge-valued or corner-valued visualizations to work properly. The geometry-central function <code>polyscopePermutations(HalfedgeMesh&amp; mesh)</code> from <code>meshio.h</code> generates the ordering data in an approriate form for Polyscope, and can be passed either at construction time or after.</p>
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMesh</span><span class="o">*</span><span class="w"> </span><span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"myMesh"</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                   </span><span class="n">geom</span><span class="o">-&gt;</span><span class="n">vertexPositions</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                   </span><span class="n">mesh</span><span class="o">-&gt;</span><span class="n">getFaceVertexList</span><span class="p">());</span>
 
@@ -1859,7 +1859,7 @@
 <span class="c1">// could alternately pass polyscopePermutations(*mesh) as additional </span>
 <span class="c1">// last parameter of constructor</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">SurfaceMesh</span><span class="o">*</span><span class="w"> </span><span class="n">psMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"myMesh"</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                   </span><span class="n">geom</span><span class="o">-&gt;</span><span class="n">vertexPositions</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                   </span><span class="n">mesh</span><span class="o">-&gt;</span><span class="n">getFaceVertexList</span><span class="p">(),</span>
 <span class="w">                                   </span><span class="n">polyscopePermutations</span><span class="p">(</span><span class="o">*</span><span class="n">mesh</span><span class="p">));</span>
@@ -1868,13 +1868,13 @@
 <h4 id="1-forms">1-forms<a class="headerlink" href="#1-forms" title="Permanent link">&para;</a></h4>
 <p>To communicate the canonical edge orientation when passing a 1-form, use <code>polyscopeEdgeOrientations(mesh)</code> from <code>meshio.h</code>.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometrycentral/surface/meshio.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"geometrycentral/surface/meshio.h"</span>
 
 <span class="n">HalfedgeMesh</span><span class="o">&amp;</span><span class="w"> </span><span class="n">mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* your mesh */</span><span class="p">;</span>
 <span class="n">EdgeData</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">myForm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* your 1-form */</span><span class="p">;</span>
 
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;myMesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span>
-<span class="w">  </span><span class="n">addOneFormIntrinsicVectorQuantity</span><span class="p">(</span><span class="s">&quot;my form&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">myForm</span><span class="p">,</span><span class="w"> </span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"myMesh"</span><span class="p">)</span><span class="o">-&gt;</span>
+<span class="w">  </span><span class="n">addOneFormIntrinsicVectorQuantity</span><span class="p">(</span><span class="s">"my form"</span><span class="p">,</span><span class="w"> </span><span class="n">myForm</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                    </span><span class="n">polyscopeEdgeOrientations</span><span class="p">(</span><span class="n">mesh</span><span class="p">));</span>
 </code></pre></div></p>
 

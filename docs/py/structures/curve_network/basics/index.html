@@ -1687,8 +1687,8 @@
 <h3 id="registering-a-curve-network">Registering a curve network<a class="headerlink" href="#registering-a-curve-network" title="Permanent link">&para;</a></h3>
 <p>Curve network structures can be registered with Polyscope by passing the node position and edge indices. </p>
 <p><strong>Example:</strong> a network of random curves 
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># generate some random nodes and edges between them</span>
@@ -1696,7 +1696,7 @@
 <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 
 <span class="c1"># visualize!</span>
-<span class="n">ps_net</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">&quot;my network&quot;</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
+<span class="n">ps_net</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">"my network"</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
 <div class="admonition note">
@@ -1777,7 +1777,7 @@
 </tbody>
 </table>
 <p>Example: set options which affect the appearance of the curve network
-<div class="highlight"><pre><span></span><code><span class="n">network</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">&quot;my net&quot;</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">network</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">"my net"</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
 
 <span class="n">network</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># disable</span>
 <span class="n">network</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">()</span> <span class="c1"># default is true</span>
@@ -1786,12 +1786,12 @@
 <span class="n">network</span><span class="o">.</span><span class="n">set_radius</span><span class="p">(</span><span class="mf">1.7</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># radius in absolute world units</span>
 
 <span class="n">network</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span> <span class="c1"># rgb triple on [0,1]</span>
-<span class="n">network</span><span class="o">.</span><span class="n">set_material</span><span class="p">(</span><span class="s2">&quot;candy&quot;</span><span class="p">)</span>
+<span class="n">network</span><span class="o">.</span><span class="n">set_material</span><span class="p">(</span><span class="s2">"candy"</span><span class="p">)</span>
 <span class="n">network</span><span class="o">.</span><span class="n">set_transparency</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="c1"># alternately:</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">&quot;my net 2&quot;</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
-                           <span class="n">material</span><span class="o">=</span><span class="s1">&#39;candy&#39;</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">register_curve_network</span><span class="p">(</span><span class="s2">"my net 2"</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                           <span class="n">material</span><span class="o">=</span><span class="s1">'candy'</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span>
                            <span class="n">transparency</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </code></pre></div></p>
 

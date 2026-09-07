@@ -1808,7 +1808,7 @@
 <p><img alt="point_cloud_demo" src="../../../media/point_cloud_demo.gif" /></p>
 <h3 id="registering-a-point-cloud">Registering a point cloud<a class="headerlink" href="#registering-a-point-cloud" title="Permanent link">&para;</a></h3>
 <p>Example: a point cloud of random points
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/point_cloud.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/point_cloud.h"</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">points</span><span class="p">;</span>
 
@@ -1821,7 +1821,7 @@
 <span class="p">}</span>
 
 <span class="c1">// visualize!</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">*</span><span class="w"> </span><span class="n">psCloud</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">&quot;really great points&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">*</span><span class="w"> </span><span class="n">psCloud</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud</span><span class="p">(</span><span class="s">"really great points"</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="p">);</span>
 
 <span class="c1">// set some options</span>
 <span class="n">psCloud</span><span class="o">-&gt;</span><span class="n">setPointRadius</span><span class="p">(</span><span class="mf">0.02</span><span class="p">);</span>

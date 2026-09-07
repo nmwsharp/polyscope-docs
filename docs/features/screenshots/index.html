@@ -1772,20 +1772,20 @@
 <p>Screenshots can be taken manually by pressing the <code>[screenshot]</code> button in the options GUI window, or programmatically using the functions below. Clicking the GUI button generates a numbered screenshot file in the current directory; the arrow to the side of the button can be used to adjust file format and transparency settings for these screenshots.</p>
 <p>It is <strong>not</strong> necessary to call <code>polyscope::show()</code> before taking screenshots. You can set up you scene and programmatically <a href="/basics/camera_controls">configure the camera view</a>, then call <code>polyscope::screenshot()</code> to save a rendered image to disk, all without any user interaction.</p>
 <p><strong>Example:</strong> Register a mesh, position the camera, and take a screenshot
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/surface_mesh.h"</span>
 
 <span class="c1">// Initialize Polyscope</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
 <span class="c1">// Register your mesh with Polyscope</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="cm">/* your verts */</span><span class="p">,</span><span class="w"> </span><span class="cm">/* your faces */</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerSurfaceMesh</span><span class="p">(</span><span class="s">"input mesh"</span><span class="p">,</span><span class="w"> </span><span class="cm">/* your verts */</span><span class="p">,</span><span class="w"> </span><span class="cm">/* your faces */</span><span class="p">);</span>
 
 <span class="c1">// Position the camera</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">lookAt</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="mf">10.</span><span class="p">,</span><span class="w"> </span><span class="mf">10.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">},</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">2.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">});</span>
 
-<span class="c1">// Adjust some screenshot default settings if you&#39;d like</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">screenshotExtension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;.jpg&quot;</span><span class="p">;</span>
+<span class="c1">// Adjust some screenshot default settings if you'd like</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">screenshotExtension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">".jpg"</span><span class="p">;</span>
 
 <span class="c1">// Take a screenshot</span>
 <span class="c1">// It will be written to your current directory as screenshot_000000.jpg, etc</span>
@@ -1794,7 +1794,7 @@
 <span class="c1">// Set some options and save a named screenshot</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">ScreenshotOptions</span><span class="w"> </span><span class="n">opts</span><span class="p">;</span>
 <span class="n">opts</span><span class="p">.</span><span class="n">transparentBackground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">screenshot</span><span class="p">(</span><span class="s">&quot;my_scene.jpg&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">screenshot</span><span class="p">(</span><span class="s">"my_scene.jpg"</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">);</span>
 
 <span class="c1">// Get the pixels as a raw buffer</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">screenshotToBuffer</span><span class="p">(</span><span class="n">opts</span><span class="p">);</span>

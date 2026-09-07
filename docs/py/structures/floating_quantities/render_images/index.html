@@ -1815,17 +1815,17 @@
 <h2 id="depth-render-image-quantity">Depth Render Image Quantity<a class="headerlink" href="#depth-render-image-quantity" title="Permanent link">&para;</a></h2>
 <p>A depth render image quantity takes a depth value per-pixel, and (optionally) a world-space normal per-pixel. The depth image will be rendered with surface shading using Polyscope&rsquo;s <a href="/py//features/materials/">materials</a>.</p>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">w</span> <span class="o">=</span> <span class="mi">1024</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">768</span>
 <span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 <span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 
-<span class="n">ps</span><span class="o">.</span><span class="n">add_depth_render_image_quantity</span><span class="p">(</span><span class="s2">&quot;render_img&quot;</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> 
-                                   <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">,</span> 
-                                   <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;wax&#39;</span><span class="p">,</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">add_depth_render_image_quantity</span><span class="p">(</span><span class="s2">"render_img"</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> 
+                                   <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">'upper_left'</span><span class="p">,</span> 
+                                   <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span> <span class="n">material</span><span class="o">=</span><span class="s1">'wax'</span><span class="p">,</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
                                    <span class="n">allow_fullscreen_compositing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">polyscope</span><span class="p">::</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
@@ -1850,8 +1850,8 @@
 <p>A <em>color</em> render image applies <a href="/features/materials/">materials</a> shading and lighting to the image, just like Polyscope usually does for meshes and other objects. A <em>raw color</em> render image does not do any additional shading, and simply displays the given colors directly onto the screen.</p>
 </div>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">w</span> <span class="o">=</span> <span class="mi">1024</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">768</span>
@@ -1859,9 +1859,9 @@
 <span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 
-<span class="n">ps</span><span class="o">.</span><span class="n">add_color_render_image_quantity</span><span class="p">(</span><span class="s2">&quot;render_img&quot;</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> 
-                                   <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">,</span> 
-                                   <span class="n">material</span><span class="o">=</span><span class="s1">&#39;wax&#39;</span><span class="p">,</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">add_color_render_image_quantity</span><span class="p">(</span><span class="s2">"render_img"</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> 
+                                   <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">'upper_left'</span><span class="p">,</span> 
+                                   <span class="n">material</span><span class="o">=</span><span class="s1">'wax'</span><span class="p">,</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="p">)</span>
 </code></pre></div></p>
 <p>If normals are not given, they will be computed internally via screen-space derivatives.</p>
 <details class="func">
@@ -1888,8 +1888,8 @@
 <h2 id="scalar-render-image-quantity">Scalar Render Image Quantity<a class="headerlink" href="#scalar-render-image-quantity" title="Permanent link">&para;</a></h2>
 <p>A scalar render image quantity takes a depth value per-pixel, (optionally) a world-space normal per-pixel, and a scalar value per-pixel. The depth image will be rendered with surface shading using Polyscope&rsquo;s <a href="/py//features/materials/">materials</a>, with the scalar value shaded and colormapped as a scalar quantity.</p>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">w</span> <span class="o">=</span> <span class="mi">1024</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">768</span>
@@ -1897,9 +1897,9 @@
 <span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">scalars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 
-<span class="n">ps</span><span class="o">.</span><span class="n">add_scalar_render_image_quantity</span><span class="p">(</span><span class="s2">&quot;render_img3&quot;</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">scalars</span><span class="p">,</span> 
-                                     <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">,</span> 
-                                     <span class="n">vminmax</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="p">,</span><span class="mf">.3</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;reds&#39;</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">add_scalar_render_image_quantity</span><span class="p">(</span><span class="s2">"render_img3"</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">scalars</span><span class="p">,</span> 
+                                     <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">'upper_left'</span><span class="p">,</span> 
+                                     <span class="n">vminmax</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="p">,</span><span class="mf">.3</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'reds'</span><span class="p">)</span>
 </code></pre></div></p>
 <p>If normals are not given, they will be computed internally via screen-space derivatives.</p>
 <details class="func">
@@ -1957,15 +1957,15 @@ The limits (<code>vminmax</code>) of the colormap range are given by the two num
 <h2 id="raw-color-render-image-quantity">Raw Color Render Image Quantity<a class="headerlink" href="#raw-color-render-image-quantity" title="Permanent link">&para;</a></h2>
 <p>A raw color render image quantity takes a depth value per-pixel and a color value per-pixel. The colors will be directly displayed onscreen, with depth compositing into the scene.</p>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">w</span> <span class="o">=</span> <span class="mi">1024</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">768</span>
 <span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 
-<span class="n">ps</span><span class="o">.</span><span class="n">add_raw_color_render_image_quantity</span><span class="p">(</span><span class="s2">&quot;render_img3&quot;</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> 
+<span class="n">ps</span><span class="o">.</span><span class="n">add_raw_color_render_image_quantity</span><span class="p">(</span><span class="s2">"render_img3"</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> 
                                        <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_fullscreen_compositing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div></p>
 <div class="admonition info">
@@ -1988,16 +1988,16 @@ The limits (<code>vminmax</code>) of the colormap range are given by the two num
 <h2 id="raw-color-alpha-render-image-quantity">Raw Color Alpha Render Image Quantity<a class="headerlink" href="#raw-color-alpha-render-image-quantity" title="Permanent link">&para;</a></h2>
 <p>Just like the above <code>ColorRenderImageQuantity</code>, but with an additional alpha channel which gets alpha-composited onto the scene.</p>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">w</span> <span class="o">=</span> <span class="mi">1024</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">768</span>
 <span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 <span class="n">color_alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="n">ps</span><span class="o">.</span><span class="n">add_raw_color_alpha_render_image_quantity</span><span class="p">(</span><span class="s2">&quot;render_img3&quot;</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">color_alphas</span><span class="p">,</span> 
-                                             <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">&#39;upper_left&#39;</span><span class="p">,</span> 
+<span class="n">ps</span><span class="o">.</span><span class="n">add_raw_color_alpha_render_image_quantity</span><span class="p">(</span><span class="s2">"render_img3"</span><span class="p">,</span> <span class="n">depths</span><span class="p">,</span> <span class="n">color_alphas</span><span class="p">,</span> 
+                                             <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s1">'upper_left'</span><span class="p">,</span> 
                                              <span class="n">is_premultiplied</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div></p>
 <details class="func">

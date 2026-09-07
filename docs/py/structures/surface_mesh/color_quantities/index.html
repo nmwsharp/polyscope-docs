@@ -1664,8 +1664,8 @@
 
 <p>Visualize color rgb-valued data at the elements of a surface mesh.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="n">N_vert</span> <span class="o">=</span> <span class="mi">100</span>
@@ -1674,22 +1674,22 @@
 <span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N_vert</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N_face</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># (F,3) array of indices </span>
                                                       <span class="c1"># for triangular faces</span>
 
-<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 
 <span class="c1"># visualize some random data per-vertex</span>
 <span class="n">colors_vert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_vert</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">&quot;rand colors&quot;</span><span class="p">,</span> <span class="n">colors_vert</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">"rand colors"</span><span class="p">,</span> <span class="n">colors_vert</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># visualize some random data per-face</span>
 <span class="n">colors_face</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_face</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">&quot;rand colors2&quot;</span><span class="p">,</span> <span class="n">colors_face</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;faces&#39;</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">"rand colors2"</span><span class="p">,</span> <span class="n">colors_face</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'faces'</span><span class="p">)</span>
 
 <span class="c1"># view the mesh with all of these quantities</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </code></pre></div></p>
 <h3 id="add-colors-to-elements">Add Colors to Elements<a class="headerlink" href="#add-colors-to-elements" title="Permanent link">&para;</a></h3>
 <details class="func" open="open">
-<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;vertices&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">param_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s2">&quot;upper_left&quot;</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'vertices'</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">param_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">image_origin</span><span class="o">=</span><span class="s2">"upper_left"</span><span class="p">)</span></code></summary>
 <p>Add a color quantity to the mesh.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>
@@ -1703,8 +1703,8 @@
 <p>Texture images define data by storing it an image grid, and using coordinates defined on the face-corners or vertices of a mesh to sample values from the image for each point on the surface.</p>
 <p>To visualize color data defined in texture maps, first add a <a href="/py//structures/surface_mesh/parameterization_quantities/">Parameterization Quantity</a> (aka UV map) defining the coordinates. Then, add a buffer of image data to be sampled from.</p>
 <p><strong>Example</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -1713,18 +1713,18 @@
 <span class="n">N_face</span> <span class="o">=</span> <span class="mi">250</span>
 <span class="n">vertices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_vert</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N_vert</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N_face</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 
 <span class="c1"># add a parameterization (aka UV map)</span>
 <span class="n">param_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">ps_mesh</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_parameterization_quantity</span><span class="p">(</span><span class="s2">&quot;test_param&quot;</span><span class="p">,</span> <span class="n">param_vals</span><span class="p">,</span> 
-                                      <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;vertices&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_parameterization_quantity</span><span class="p">(</span><span class="s2">"test_param"</span><span class="p">,</span> <span class="n">param_vals</span><span class="p">,</span> 
+                                      <span class="n">defined_on</span><span class="o">=</span><span class="s1">'vertices'</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># add the texture quantity</span>
 <span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">color_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">dims</span><span class="p">)</span> <span class="c1"># dummy placeholder image data</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">&quot;test_vals&quot;</span><span class="p">,</span> <span class="n">color_vals</span><span class="p">,</span> 
-                           <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;texture&#39;</span><span class="p">,</span> <span class="n">param_name</span><span class="o">=</span><span class="s2">&quot;test_param&quot;</span><span class="p">,</span> <span class="n">filter_mode</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">add_color_quantity</span><span class="p">(</span><span class="s2">"test_vals"</span><span class="p">,</span> <span class="n">color_vals</span><span class="p">,</span> 
+                           <span class="n">defined_on</span><span class="o">=</span><span class="s1">'texture'</span><span class="p">,</span> <span class="n">param_name</span><span class="o">=</span><span class="s2">"test_param"</span><span class="p">,</span> <span class="n">filter_mode</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>

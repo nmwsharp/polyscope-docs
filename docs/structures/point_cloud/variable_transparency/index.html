@@ -1747,7 +1747,7 @@ This can also be set manually in the GUI via the point cloud <code>[Options] --&
 <p>See the <a href="/features/transparency">transparency</a> section for more transparency-related options.</p>
 <p><img alt="point cloud transparency demo" src="/media/point_cloud_scalar_transparency.jpg" /></p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/point_cloud.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/point_cloud.h"</span>
 
 <span class="c1">// Populate a random scalar quantity</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">xC</span><span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
@@ -1758,9 +1758,9 @@ This can also be set manually in the GUI via the point cloud <code>[Options] --&
 <span class="c1">// Get a reference to some point cloud</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">psCloud</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">getPointCloud</span><span class="p">(</span><span class="cm">/* your point cloud name */</span><span class="p">);</span>
 
-<span class="k">auto</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">psCloud</span><span class="o">-&gt;</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="s">&quot;xC&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xC</span><span class="p">);</span><span class="w"> </span><span class="c1">// add the quantity</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">psCloud</span><span class="o">-&gt;</span><span class="n">addScalarQuantity</span><span class="p">(</span><span class="s">"xC"</span><span class="p">,</span><span class="w"> </span><span class="n">xC</span><span class="p">);</span><span class="w"> </span><span class="c1">// add the quantity</span>
 <span class="n">psCloud</span><span class="o">-&gt;</span><span class="n">setTransparencyQuantity</span><span class="p">(</span><span class="n">q</span><span class="p">);</span><span class="w"> </span><span class="c1">// set the quantity as the radius</span>
-<span class="c1">// psCloud-&gt;setTransparencyQuantity(&quot;xC&quot;); // equivalently, the name can be used</span>
+<span class="c1">// psCloud-&gt;setTransparencyQuantity("xC"); // equivalently, the name can be used</span>
 </code></pre></div></p>
 <p>All values will be clamped into the <code>[0,1]</code> range. The transparency is multiplicative with any other transparency effects, such as setting the structure&rsquo;s global transparency value.</p>
 <details class="func">

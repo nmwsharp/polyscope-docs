@@ -1862,7 +1862,7 @@
 <span class="n">igl</span><span class="o">::</span><span class="n">boundary_loop</span><span class="p">(</span><span class="n">meshF</span><span class="p">,</span><span class="w"> </span><span class="n">bnd</span><span class="p">);</span>
 
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bnd</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">&quot;mesh has no boundary, cannot parameterize&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">polyscope</span><span class="o">::</span><span class="n">warning</span><span class="p">(</span><span class="s">"mesh has no boundary, cannot parameterize"</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -1875,8 +1875,8 @@
 <span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">V_uv</span><span class="p">;</span>
 <span class="n">igl</span><span class="o">::</span><span class="n">lscm</span><span class="p">(</span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">V_uv</span><span class="p">);</span>
 
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="o">-&gt;</span><span class="n">addVertexParameterizationQuantity</span><span class="p">(</span><span class="s">&quot;LSCM parameterization&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">V_uv</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"input mesh"</span><span class="p">)</span>
+<span class="w">    </span><span class="o">-&gt;</span><span class="n">addVertexParameterizationQuantity</span><span class="p">(</span><span class="s">"LSCM parameterization"</span><span class="p">,</span><span class="w"> </span><span class="n">V_uv</span><span class="p">);</span>
 </code></pre></div></p>
 <h2 id="adding">Adding<a class="headerlink" href="#adding" title="Permanent link">&para;</a></h2>
 <details class="func">
@@ -1932,7 +1932,7 @@
 </details>
 <p>Additionally, the seams of a parameterization can be visualized as a <a href="/structures/curve_network/basics">curve network</a>. These seams are computed automatically by Polyscope, the curve network is created by calling the function below, and is otherwise an ordinary curve network.</p>
 <details class="func">
-<summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">*</span><span class="w"> </span><span class="n">SurfaceParameterizationQuantity</span><span class="o">::</span><span class="n">createCurveNetworkFromSeams</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">structureName</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">CurveNetwork</span><span class="o">*</span><span class="w"> </span><span class="n">SurfaceParameterizationQuantity</span><span class="o">::</span><span class="n">createCurveNetworkFromSeams</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">structureName</span><span class="o">=</span><span class="s">""</span><span class="p">)</span></code></summary>
 <h4 id="createcurvenetworkfromseams">createCurveNetworkFromSeams<a class="headerlink" href="#createcurvenetworkfromseams" title="Permanent link">&para;</a></h4>
 <p>Create a <a href="/structures/curve_network/basics">curve network</a> from the seams of a UV map.</p>
 <ul>

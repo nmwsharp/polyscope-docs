@@ -1700,8 +1700,8 @@
 <p><img alt="surface_mesh_demo" src="/py//media/mesh_demo.gif" /></p>
 <h2 id="registering-a-surface-mesh">Registering a surface mesh<a class="headerlink" href="#registering-a-surface-mesh" title="Permanent link">&para;</a></h2>
 <p>Example: registering a mesh
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="n">vertices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (V,3) vertex position array</span>
@@ -1709,7 +1709,7 @@
                                                 <span class="c1"># for triangular faces</span>
 
 <span class="c1"># visualize!</span>
-<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
 <p>Surface meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each face.</p>
@@ -1861,13 +1861,13 @@
 </tbody>
 </table>
 <p>Example: set options which affect the appearance of the mesh
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="n">vertices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (V,3) vertex position array</span>
 <span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># (F,3) array of indices </span>
                                                 <span class="c1"># for triangular faces</span>
-<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># disable</span>
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">()</span> <span class="c1"># default is true</span>
@@ -1876,14 +1876,14 @@
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_edge_color</span><span class="p">((</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span> 
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_edge_width</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_smooth_shade</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_material</span><span class="p">(</span><span class="s2">&quot;candy&quot;</span><span class="p">)</span>
+<span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_material</span><span class="p">(</span><span class="s2">"candy"</span><span class="p">)</span>
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_transparency</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="c1"># alternately:</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;my mesh2&quot;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+<span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"my mesh2"</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                          <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span> <span class="n">edge_color</span><span class="o">=</span><span class="p">((</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)),</span>
                          <span class="n">edge_width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">smooth_shade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                         <span class="n">material</span><span class="o">=</span><span class="s1">&#39;candy&#39;</span><span class="p">,</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+                         <span class="n">material</span><span class="o">=</span><span class="s1">'candy'</span><span class="p">,</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </code></pre></div></p>
 
 

@@ -1871,32 +1871,32 @@
 <p>You can specify a callback function which Polyscope will invoke on each frame while the window is active.  This callback can be used to build a program-specific GUI, update an animation, perform computation, etc.  With this approach, you simplify set the desired callback function, and then call <code>polyscope.show()</code> as usual.</p>
 <p>Your callback function should have no arguments and no return value. To use state inside your callback, access it directly from the outer scope where your function was defined.</p>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope.imgui</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">psim</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># track state</span>
 <span class="n">my_val</span> <span class="o">=</span> <span class="mi">10</span>
 
-<span class="k">def</span> <span class="nf">my_other_function</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_other_function</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">callback</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">():</span>
     <span class="c1"># Executed every frame</span>
 
     <span class="c1"># Update content in the scene</span>
-    <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;this frame point&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">"this frame point"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 
     <span class="c1"># access state from the outer scope</span>
-    <span class="k">global</span> <span class="n">my_val</span> <span class="c1"># note: python has weird rules about &#39;global&#39; vs &#39;nonlocal&#39;</span>
+    <span class="k">global</span> <span class="n">my_val</span> <span class="c1"># note: python has weird rules about 'global' vs 'nonlocal'</span>
 
     <span class="c1"># Build a UI element to edit a parameter, which will </span>
     <span class="c1"># appear in the onscreen panel</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">my_val</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputInt</span><span class="p">(</span><span class="s2">&quot;my val&quot;</span><span class="p">,</span> <span class="n">my_val</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">my_val</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputInt</span><span class="p">(</span><span class="s2">"my val"</span><span class="p">,</span> <span class="n">my_val</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;run subroutine&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">"run subroutine"</span><span class="p">):</span>
         <span class="n">my_other_function</span><span class="p">()</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">set_user_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
@@ -1956,9 +1956,9 @@
 <p>The simplest approach is to just re-call structure-registration or quantity-adder functions with the updated data. Adding new structures/quantities with the same name will replace any existing ones, they will even <a href="/py//basics/parameters/#persistent-values">inherit any options which have been set</a>. This should be fast enough for small-medium sized data at interactive rates.</p>
 <p>Additionally, some structures have special more-efficient functions which update the structure in-place, if you are not changing the number of elements (e.g. <a href="/py//structures/surface_mesh/basics/#updating-a-mesh"><code>SurfaceMesh.update_vertex_positions()</code></a>). Currently, if you are changing the number of elements (number of points in a point cloud, or number of vertices or connectivity of a mesh), you have no choice but to register a whole new structure.</p>
 <p><strong>Example:</strong> A typical basic setup for playing time-series data</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope.imgui</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">psim</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># a list of your data for each frame</span>
 <span class="n">n_timestep</span> <span class="o">=</span> <span class="mi">50</span>
@@ -1969,7 +1969,7 @@
 <span class="n">curr_frame</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">auto_playing</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">myCallback</span><span class="p">():</span> <span class="c1"># gets executed per-frame</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">myCallback</span><span class="p">():</span> <span class="c1"># gets executed per-frame</span>
 
   <span class="c1"># Python scope resolution quirks</span>
   <span class="c1"># may need `nonlocal` rather than `global`` if your callback is </span>
@@ -1977,7 +1977,7 @@
   <span class="k">global</span> <span class="n">curr_frame</span><span class="p">,</span> <span class="n">auto_playing</span>
 
   <span class="n">update_frame_data</span> <span class="o">=</span> <span class="kc">False</span>
-  <span class="n">_</span><span class="p">,</span> <span class="n">auto_playing</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">&quot;Autoplay&quot;</span><span class="p">,</span> <span class="n">auto_playing</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">auto_playing</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">"Autoplay"</span><span class="p">,</span> <span class="n">auto_playing</span><span class="p">)</span>
 
   <span class="c1"># Advance the frame</span>
   <span class="k">if</span> <span class="n">auto_playing</span><span class="p">:</span>
@@ -1985,16 +1985,16 @@
     <span class="n">curr_frame</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_frame</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n_timestep</span>
 
   <span class="c1"># Slider to manually scrub through frames  </span>
-  <span class="n">slider_updated</span><span class="p">,</span> <span class="n">curr_frame</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderInt</span><span class="p">(</span><span class="s2">&quot;Curr Frame&quot;</span><span class="p">,</span> <span class="n">curr_frame</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_timestep</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">slider_updated</span><span class="p">,</span> <span class="n">curr_frame</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderInt</span><span class="p">(</span><span class="s2">"Curr Frame"</span><span class="p">,</span> <span class="n">curr_frame</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_timestep</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
   <span class="n">update_frame_data</span> <span class="o">=</span> <span class="n">update_frame_data</span> <span class="ow">or</span> <span class="n">slider_updated</span>
 
   <span class="c1"># Update the scene content if-needed</span>
   <span class="k">if</span> <span class="n">update_frame_data</span><span class="p">:</span>
-    <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;frame points&quot;</span><span class="p">,</span> <span class="n">per_frame_points</span><span class="p">[</span><span class="n">curr_frame</span><span class="p">,:,:])</span>
+    <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">"frame points"</span><span class="p">,</span> <span class="n">per_frame_points</span><span class="p">[</span><span class="n">curr_frame</span><span class="p">,:,:])</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
-<span class="c1"># set the scene scale manually so it doesn&#39;t jump around </span>
+<span class="c1"># set the scene scale manually so it doesn't jump around </span>
 <span class="c1"># as the data changes</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_automatically_compute_scene_extents</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">set_length_scale</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -2013,11 +2013,11 @@
   Your browser does not support the video tag.
 </video>
 
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># create a new gizmo in the scene</span>
-<span class="n">gizmo1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">add_transformation_gizmo</span><span class="p">(</span><span class="s2">&quot;my_gizmo&quot;</span><span class="p">)</span>
+<span class="n">gizmo1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">add_transformation_gizmo</span><span class="p">(</span><span class="s2">"my_gizmo"</span><span class="p">)</span>
 <span class="c1"># if no name is given, a name is automatically generated</span>
 <span class="n">gizmo2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">add_transformation_gizmo</span><span class="p">()</span>
 
@@ -2037,7 +2037,7 @@
 
 <span class="c1"># remove gizmos</span>
 <span class="n">gizmo2</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">remove_transformation_gizmo</span><span class="p">(</span><span class="s2">&quot;my_gizmo&quot;</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">remove_transformation_gizmo</span><span class="p">(</span><span class="s2">"my_gizmo"</span><span class="p">)</span>
 </code></pre></div>
 <details class="func">
 <summary><code class="highlight"><span class="n">add_transformation_gizmo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
@@ -2104,10 +2104,10 @@
 <h3 id="sample-custom-ui">Sample Custom UI<a class="headerlink" href="#sample-custom-ui" title="Permanent link">&para;</a></h3>
 <p><strong>Example:</strong> Create the following UI in a Python callback</p>
 <p><img alt="callback ui demo" src="/py//media/imgui_py_demo.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
-<span class="kn">import</span> <span class="nn">polyscope.implot</span> <span class="k">as</span> <span class="nn">psimplot</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope.imgui</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">psim</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope.implot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">psimplot</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># A bunch of parameters which we will manipulate via the UI defined below.</span>
 <span class="c1"># There is nothing special about these variables, you could manipulate any other </span>
@@ -2120,18 +2120,18 @@
 <span class="n">ui_color3</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="n">ui_color4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
 <span class="n">ui_angle_rad</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">ui_text</span> <span class="o">=</span> <span class="s2">&quot;some input text&quot;</span>
-<span class="n">ui_options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;option A&quot;</span><span class="p">,</span> <span class="s2">&quot;option B&quot;</span><span class="p">,</span> <span class="s2">&quot;option C&quot;</span><span class="p">]</span>
+<span class="n">ui_text</span> <span class="o">=</span> <span class="s2">"some input text"</span>
+<span class="n">ui_options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"option A"</span><span class="p">,</span> <span class="s2">"option B"</span><span class="p">,</span> <span class="s2">"option C"</span><span class="p">]</span>
 <span class="n">ui_options_selected</span> <span class="o">=</span> <span class="n">ui_options</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">():</span>
     <span class="c1"># ... do something important here ...</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;executing function&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"executing function"</span><span class="p">)</span>
 
 <span class="c1"># Define our callback function, which Polyscope will repeatedly execute while running the UI.</span>
 <span class="c1"># We can write any code we want here, but in particular it is an opportunity to create ImGui </span>
 <span class="c1"># interface elements and define a custom UI.</span>
-<span class="k">def</span> <span class="nf">callback</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">():</span>
 
     <span class="c1"># If we want to use local variables &amp; assign to them in the UI code below, </span>
     <span class="c1"># we need to mark them as nonlocal. This is because of how Python scoping </span>
@@ -2154,22 +2154,22 @@
 
     <span class="c1"># == Show text in the UI</span>
 
-    <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">&quot;Some sample text&quot;</span><span class="p">)</span>
-    <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">&quot;An important value: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+    <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">"Some sample text"</span><span class="p">)</span>
+    <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">"An important value: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
     <span class="n">psim</span><span class="o">.</span><span class="n">Separator</span><span class="p">()</span>
 
 
     <span class="c1"># == Buttons</span>
 
-    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;A button&quot;</span><span class="p">)):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">"A button"</span><span class="p">)):</span>
         <span class="c1"># This code is executed when the button is pressed</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">)</span>
 
     <span class="c1"># By default, each element goes on a new line. Use this </span>
     <span class="c1"># to put the next element on the _same_ line.</span>
     <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
 
-    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Another button&quot;</span><span class="p">)):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">"Another button"</span><span class="p">)):</span>
         <span class="c1"># This code is executed when the button is pressed</span>
         <span class="n">my_function</span><span class="p">()</span>
 
@@ -2187,33 +2187,33 @@
     <span class="c1"># For numeric inputs, ctrl-click on the box to type in a value.</span>
 
     <span class="c1"># Checkbox</span>
-    <span class="n">changed</span><span class="p">,</span> <span class="n">is_true1</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">&quot;flag1&quot;</span><span class="p">,</span> <span class="n">is_true1</span><span class="p">)</span> 
+    <span class="n">changed</span><span class="p">,</span> <span class="n">is_true1</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">"flag1"</span><span class="p">,</span> <span class="n">is_true1</span><span class="p">)</span> 
     <span class="k">if</span><span class="p">(</span><span class="n">changed</span><span class="p">):</span> <span class="c1"># optionally, use this conditional to take action on the new value</span>
         <span class="k">pass</span> 
     <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
-    <span class="n">changed</span><span class="p">,</span> <span class="n">is_true2</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">&quot;flag2&quot;</span><span class="p">,</span> <span class="n">is_true2</span><span class="p">)</span> 
+    <span class="n">changed</span><span class="p">,</span> <span class="n">is_true2</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s2">"flag2"</span><span class="p">,</span> <span class="n">is_true2</span><span class="p">)</span> 
 
     <span class="c1"># Input ints</span>
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_int</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputInt</span><span class="p">(</span><span class="s2">&quot;ui_int&quot;</span><span class="p">,</span> <span class="n">ui_int</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step_fast</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> 
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_int</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputInt</span><span class="p">(</span><span class="s2">"ui_int"</span><span class="p">,</span> <span class="n">ui_int</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step_fast</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> 
 
     <span class="c1"># Input floats using two different styles of widget</span>
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_float1</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputFloat</span><span class="p">(</span><span class="s2">&quot;ui_float1&quot;</span><span class="p">,</span> <span class="n">ui_float1</span><span class="p">)</span> 
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_float1</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputFloat</span><span class="p">(</span><span class="s2">"ui_float1"</span><span class="p">,</span> <span class="n">ui_float1</span><span class="p">)</span> 
     <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_float2</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderFloat</span><span class="p">(</span><span class="s2">&quot;ui_float2&quot;</span><span class="p">,</span> <span class="n">ui_float2</span><span class="p">,</span> <span class="n">v_min</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">v_max</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_float2</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderFloat</span><span class="p">(</span><span class="s2">"ui_float2"</span><span class="p">,</span> <span class="n">ui_float2</span><span class="p">,</span> <span class="n">v_min</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">v_max</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
     <span class="c1"># Input colors</span>
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_color3</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">ColorEdit3</span><span class="p">(</span><span class="s2">&quot;ui_color3&quot;</span><span class="p">,</span> <span class="n">ui_color3</span><span class="p">)</span>
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_color3</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">ColorEdit3</span><span class="p">(</span><span class="s2">"ui_color3"</span><span class="p">,</span> <span class="n">ui_color3</span><span class="p">)</span>
     <span class="n">psim</span><span class="o">.</span><span class="n">SameLine</span><span class="p">()</span> 
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_color4</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">ColorEdit4</span><span class="p">(</span><span class="s2">&quot;ui_color4&quot;</span><span class="p">,</span> <span class="n">ui_color4</span><span class="p">)</span>
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_color4</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">ColorEdit4</span><span class="p">(</span><span class="s2">"ui_color4"</span><span class="p">,</span> <span class="n">ui_color4</span><span class="p">)</span>
 
     <span class="c1"># Input text</span>
-    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_text</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputText</span><span class="p">(</span><span class="s2">&quot;enter text&quot;</span><span class="p">,</span> <span class="n">ui_text</span><span class="p">)</span>
+    <span class="n">changed</span><span class="p">,</span> <span class="n">ui_text</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">InputText</span><span class="p">(</span><span class="s2">"enter text"</span><span class="p">,</span> <span class="n">ui_text</span><span class="p">)</span>
 
     <span class="c1"># Combo box to choose from options</span>
     <span class="c1"># There, the options are a list of strings in `ui_options`,</span>
     <span class="c1"># and the currently selected element is stored in `ui_options_selected`.</span>
     <span class="n">psim</span><span class="o">.</span><span class="n">PushItemWidth</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-    <span class="n">changed</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">BeginCombo</span><span class="p">(</span><span class="s2">&quot;Pick one&quot;</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">)</span>
+    <span class="n">changed</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">BeginCombo</span><span class="p">(</span><span class="s2">"Pick one"</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">changed</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">ui_options</span><span class="p">:</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">selected</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">Selectable</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">ui_options_selected</span><span class="o">==</span><span class="n">val</span><span class="p">)</span>
@@ -2231,17 +2231,17 @@
     <span class="n">psim</span><span class="o">.</span><span class="n">SetNextItemOpen</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">psim</span><span class="o">.</span><span class="n">ImGuiCond_FirstUseEver</span><span class="p">)</span>
 
     <span class="c1"># The body is executed only when the sub-menu is open. Note the push/pop pair!</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">TreeNode</span><span class="p">(</span><span class="s2">&quot;Collapsible sub-menu&quot;</span><span class="p">)):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">TreeNode</span><span class="p">(</span><span class="s2">"Collapsible sub-menu"</span><span class="p">)):</span>
 
-        <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">&quot;Detailed information&quot;</span><span class="p">)</span>
+        <span class="n">psim</span><span class="o">.</span><span class="n">TextUnformatted</span><span class="p">(</span><span class="s2">"Detailed information"</span><span class="p">)</span>
 
-        <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">&quot;sub-button&quot;</span><span class="p">)):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">psim</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="s2">"sub-button"</span><span class="p">)):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">)</span>
 
         <span class="c1"># There are many different UI elements offered by ImGui, many of which</span>
-        <span class="c1"># are bound in python by Polyscope. See ImGui&#39;s documentation in `imgui.h`,</span>
+        <span class="c1"># are bound in python by Polyscope. See ImGui's documentation in `imgui.h`,</span>
         <span class="c1"># or the polyscope bindings in `polyscope/src/cpp/imgui.cpp`.</span>
-        <span class="n">changed</span><span class="p">,</span> <span class="n">ui_angle_rad</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderAngle</span><span class="p">(</span><span class="s2">&quot;ui_float2&quot;</span><span class="p">,</span> <span class="n">ui_angle_rad</span><span class="p">,</span> 
+        <span class="n">changed</span><span class="p">,</span> <span class="n">ui_angle_rad</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">SliderAngle</span><span class="p">(</span><span class="s2">"ui_float2"</span><span class="p">,</span> <span class="n">ui_angle_rad</span><span class="p">,</span> 
                 <span class="n">v_degrees_min</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">v_degrees_max</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 
         <span class="n">psim</span><span class="o">.</span><span class="n">TreePop</span><span class="p">()</span>
@@ -2250,9 +2250,9 @@
 
 
     <span class="c1"># Add a plot            </span>
-    <span class="k">if</span> <span class="n">psimplot</span><span class="o">.</span><span class="n">BeginPlot</span><span class="p">(</span><span class="s2">&quot;test line plot&quot;</span><span class="p">):</span>
-        <span class="n">psimplot</span><span class="o">.</span><span class="n">PlotLine</span><span class="p">(</span><span class="s2">&quot;line plot&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-        <span class="n">psimplot</span><span class="o">.</span><span class="n">PlotInfLines</span><span class="p">(</span><span class="s2">&quot;horizontal lines&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">psimplot</span><span class="o">.</span><span class="n">ImPlotInfLinesFlags_Horizontal</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">psimplot</span><span class="o">.</span><span class="n">BeginPlot</span><span class="p">(</span><span class="s2">"test line plot"</span><span class="p">):</span>
+        <span class="n">psimplot</span><span class="o">.</span><span class="n">PlotLine</span><span class="p">(</span><span class="s2">"line plot"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">psimplot</span><span class="o">.</span><span class="n">PlotInfLines</span><span class="p">(</span><span class="s2">"horizontal lines"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">psimplot</span><span class="o">.</span><span class="n">ImPlotInfLinesFlags_Horizontal</span><span class="p">)</span>
         <span class="n">psimplot</span><span class="o">.</span><span class="n">EndPlot</span><span class="p">()</span>
 
 
@@ -2270,7 +2270,7 @@
     <span class="c1"># ... do your interaction</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">doing_interaction</span><span class="p">:</span>
-    <span class="c1"># re-enable the default mouse motions after you&#39;re done</span>
+    <span class="c1"># re-enable the default mouse motions after you're done</span>
     <span class="n">ps</span><span class="o">.</span><span class="n">set_do_default_mouse_interaction</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 </details>
@@ -2299,7 +2299,7 @@
 <span class="n">myMesh</span> <span class="o">=</span> <span class="c1"># ...  your added mesh ... */</span>
 
 <span class="c1"># make only faces clickable in the mesh</span>
-<span class="n">myMesh</span><span class="o">.</span><span class="n">set_selection_mode</span><span class="p">(</span><span class="s1">&#39;faces_only&#39;</span><span class="p">)</span>
+<span class="n">myMesh</span><span class="o">.</span><span class="n">set_selection_mode</span><span class="p">(</span><span class="s1">'faces_only'</span><span class="p">)</span>
 
 <span class="c1"># get the mouse location from ImGui</span>
 <span class="n">io</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">GetIO</span><span class="p">()</span>
@@ -2310,14 +2310,14 @@
   <span class="c1"># check out pick_result.is_hit, pick_result.structureName, pick_result.depth, etc</span>
 
   <span class="c1"># get additional information if we clicked on a mesh</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">pick_result</span><span class="o">.</span><span class="n">isHit</span> <span class="ow">and</span> <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_name</span> <span class="o">==</span> <span class="s2">&quot;myMesh&quot;</span><span class="p">):</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">pick_result</span><span class="o">.</span><span class="n">isHit</span> <span class="ow">and</span> <span class="n">pick_result</span><span class="o">.</span><span class="n">structure_name</span> <span class="o">==</span> <span class="s2">"myMesh"</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">pick_result</span><span class="o">.</span><span class="n">structure_data</span><span class="p">)</span> <span class="c1"># additional dictionary of element type, coords, etc.</span>
 </code></pre></div></p>
 <p>A pick query returns a combined struct with info such as what structure was clicked on, and depth of the point in the scene.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PickResult</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PickResult</span><span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">is_hit</span> <span class="o">=</span> <span class="o">...</span>               <span class="c1"># did we hit anything?</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">structure_type_name</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># structure type which was hit, like &quot;Point Cloud&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">structure_name</span> <span class="o">=</span> <span class="o">...</span>       <span class="c1"># name of structure which was hit, like &quot;my_points&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">structure_type_name</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># structure type which was hit, like "Point Cloud"</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">structure_name</span> <span class="o">=</span> <span class="o">...</span>       <span class="c1"># name of structure which was hit, like "my_points"</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">quantity_name</span> <span class="o">=</span> <span class="o">...</span>        <span class="c1"># name of quantity which was hit (most quantities cannot be picked, you pick the structure instead)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">screen_coords</span> <span class="o">=</span> <span class="o">...</span>        <span class="c1"># coordinates of the query location</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">buffer_inds</span> <span class="o">=</span> <span class="o">...</span>          <span class="c1"># render buffer indices of the query location</span>
@@ -2335,10 +2335,10 @@
 <p>Circumventing the standard Polyscope user interface should be considered &ldquo;advanced&rdquo; usage. You are more likely to encounter bugs, and you may need to look at the Polyscope source to understand the behavior. The functions listed in this section may change in future versions of Polyscope.</p>
 </div>
 <p>The appearance of the ImGui UI panes can be significantly customized and styled.  See the ImGui documentation (and examples such as <a href="https://github.com/ocornut/imgui/issues/707">this</a>) for styling options. Polyscope must be able to re-apply the style each time a new context is created, so it must be registered in a callback function rather than set just once.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">polyscope.imgui</span> <span class="k">as</span> <span class="nn">psim</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope.imgui</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">psim</span>
 
-<span class="k">def</span> <span class="nf">ui_style_func</span><span class="p">():</span> <span class="c1"># your style callback</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ui_style_func</span><span class="p">():</span> <span class="c1"># your style callback</span>
     <span class="n">style</span> <span class="o">=</span> <span class="n">psim</span><span class="o">.</span><span class="n">GetStyle</span><span class="p">()</span>
     <span class="n">style</span><span class="o">.</span><span class="n">WindowRounding</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">style</span><span class="o">.</span><span class="n">FrameRounding</span> <span class="o">=</span> <span class="mi">1</span>

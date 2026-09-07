@@ -1601,7 +1601,7 @@
 <p>Nodes will be drawn as spheres, and the connecting edges drawn as cylinders. This quantity can be useful for visualizing paths on the surface, or wireframes.</p>
 <p><strong>Example</strong>: drawing mesh&rsquo;s dual with <a href="../../../integrations/geometry_central/">geometry-central</a>.</p>
 <p><img alt="surface_graph_demo" src="../../../media/surface_graph_demo.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/surface_mesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/surface_mesh.h"</span>
 
 <span class="c1">// geometry-central things</span>
 <span class="n">geom</span><span class="o">-&gt;</span><span class="n">requireFaceIndices</span><span class="p">();</span>
@@ -1632,8 +1632,8 @@
 <span class="w">  </span><span class="n">edgeInds</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="n">fa</span><span class="p">,</span><span class="w"> </span><span class="n">fb</span><span class="p">});</span>
 <span class="p">}</span>
 
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">)</span><span class="o">-&gt;</span>
-<span class="w">  </span><span class="n">addSurfaceGraphQuantity</span><span class="p">(</span><span class="s">&quot;dual graph&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">positions</span><span class="p">,</span><span class="w"> </span><span class="n">edgeInds</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">)</span><span class="o">-&gt;</span>
+<span class="w">  </span><span class="n">addSurfaceGraphQuantity</span><span class="p">(</span><span class="s">"dual graph"</span><span class="p">,</span><span class="w"> </span><span class="n">positions</span><span class="p">,</span><span class="w"> </span><span class="n">edgeInds</span><span class="p">);</span>
 </code></pre></div>
 <details class="func">
 <summary><code class="highlight"><span class="n">SurfaceMesh</span><span class="o">::</span><span class="n">addSurfaceGraphQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">P</span><span class="o">&amp;</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">E</span><span class="o">&amp;</span><span class="w"> </span><span class="n">edges</span><span class="p">)</span></code></summary>

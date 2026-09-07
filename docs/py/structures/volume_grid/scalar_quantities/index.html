@@ -1707,8 +1707,8 @@
 <p>Visualize scalar-valued data at the nodes or cells of a volume grid.</p>
 <p><img alt="volume grid node cell values" src="/py//media/volume_grid_cell_scalar.jpg" /></p>
 <p><strong>Example:</strong> registering a volume grid and adding a scalar quantity
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -1718,23 +1718,23 @@
 <span class="n">bound_high</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">)</span>
 
 <span class="c1"># register the grid</span>
-<span class="n">ps_grid</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_volume_grid</span><span class="p">(</span><span class="s2">&quot;sample grid&quot;</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">bound_low</span><span class="p">,</span> <span class="n">bound_high</span><span class="p">)</span>
+<span class="n">ps_grid</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_volume_grid</span><span class="p">(</span><span class="s2">"sample grid"</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">bound_low</span><span class="p">,</span> <span class="n">bound_high</span><span class="p">)</span>
 
 <span class="c1"># your dimX*dimY*dimZ buffer of data</span>
 <span class="n">scalar_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dims</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> 
 
 <span class="c1"># add a scalar function on the grid</span>
-<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;node scalar&quot;</span><span class="p">,</span> <span class="n">scalar_vals</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;nodes&#39;</span><span class="p">)</span>
+<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"node scalar"</span><span class="p">,</span> <span class="n">scalar_vals</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'nodes'</span><span class="p">)</span>
 
 <span class="c1"># set some scalar options </span>
-<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;node scalar2&quot;</span><span class="p">,</span> <span class="n">scalar_vals</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;nodes&#39;</span><span class="p">,</span> 
-                            <span class="n">vminmax</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;blues&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"node scalar2"</span><span class="p">,</span> <span class="n">scalar_vals</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'nodes'</span><span class="p">,</span> 
+                            <span class="n">vminmax</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'blues'</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
 <h3 id="add-scalars">Add scalars<a class="headerlink" href="#add-scalars" title="Permanent link">&para;</a></h3>
 <details class="func" open="open">
-<summary><code class="highlight"><span class="n">VolumeGrid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;nodes&#39;</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">scalar_args</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">VolumeGrid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'nodes'</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s2">"standard"</span><span class="p">,</span> <span class="o">**</span><span class="n">scalar_args</span><span class="p">)</span></code></summary>
 <p>Add a scalar quantity defined at the nodes of the grid.</p>
 <ul>
 <li><code>name</code> string, a name for the quantity</li>
@@ -1750,7 +1750,7 @@
 <p>See <a href="/py//features/implicit_helpers">Implicit Helpers</a> for more details about implicit helpers.</p>
 </div>
 <details class="func">
-<summary><code class="highlight"><span class="n">VolumeGrid</span><span class="o">.</span><span class="n">add_scalar_quantity_from_callable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;nodes&#39;</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">scalar_args</span><span class="p">)</span></code></summary>
+<summary><code class="highlight"><span class="n">VolumeGrid</span><span class="o">.</span><span class="n">add_scalar_quantity_from_callable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'nodes'</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s2">"standard"</span><span class="p">,</span> <span class="o">**</span><span class="n">scalar_args</span><span class="p">)</span></code></summary>
 <p>Add a scalar quantity defined at the nodes of the grid, sampling automatically via a callable function.</p>
 <ul>
 <li><code>func</code> is a function which performs a batch of evaluations of the implicit function. It should take a <code>(Q,3)</code> numpy array of world-space xyz locations at which to evaluate the function where <code>Q</code> is the number of queries, and return a <code>(Q,)</code> numpy array of results. </li>
@@ -1803,14 +1803,14 @@ The limits (<code>vminmax</code>) of the colormap range are given by the two num
 <div class="highlight"><pre><span></span><code><span class="c1"># continued after the grid as been set up as in the example above</span>
 
 <span class="c1"># draw the isosurfce, hiding the usual grid so it is visible</span>
-<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;node scalar&quot;</span><span class="p">,</span> <span class="n">scalar_vals</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;nodes&#39;</span><span class="p">,</span>
+<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"node scalar"</span><span class="p">,</span> <span class="n">scalar_vals</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'nodes'</span><span class="p">,</span>
                             <span class="n">enable_isosurface_viz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">isosurface_level</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
                             <span class="n">isosurface_color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span>
                             <span class="n">enable_gridcube_viz</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># draw the isosurface, using a slice plane to cut through it</span>
-<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;node scalar&quot;</span><span class="p">,</span> <span class="n">scalar_vals</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;nodes&#39;</span><span class="p">,</span>
+<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"node scalar"</span><span class="p">,</span> <span class="n">scalar_vals</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'nodes'</span><span class="p">,</span>
                             <span class="n">enable_isosurface_viz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">isosurface_level</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
                             <span class="n">slice_planes_affect_isosurface</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">add_scene_slice_plane</span><span class="p">()</span>
@@ -1818,10 +1818,10 @@ The limits (<code>vminmax</code>) of the colormap range are given by the two num
 
 
 <span class="c1"># extract the isosurface as its own mesh structure</span>
-<span class="n">scalarQ</span><span class="o">-&gt;</span><span class="n">registerIsosurfaceAsMesh</span><span class="p">(</span><span class="s2">&quot;my isosurface mesh&quot;</span><span class="p">);</span>
-<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;node scalar&quot;</span><span class="p">,</span> <span class="n">scalar_vals</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;nodes&#39;</span><span class="p">,</span>
+<span class="n">scalarQ</span><span class="o">-&gt;</span><span class="n">registerIsosurfaceAsMesh</span><span class="p">(</span><span class="s2">"my isosurface mesh"</span><span class="p">);</span>
+<span class="n">ps_grid</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"node scalar"</span><span class="p">,</span> <span class="n">scalar_vals</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'nodes'</span><span class="p">,</span>
                             <span class="n">enable_isosurface_viz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">isosurface_level</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-                            <span class="n">register_isosurface_as_mesh_with_name</span><span class="o">=</span><span class="s1">&#39;isosurface mesh&#39;</span><span class="p">)</span>
+                            <span class="n">register_isosurface_as_mesh_with_name</span><span class="o">=</span><span class="s1">'isosurface mesh'</span><span class="p">)</span>
 </code></pre></div></p>
 <p>The following optional arguments to the node scalar quantity adder affect the behavior of isosurfaces. </p>
 <div class="admonition note">

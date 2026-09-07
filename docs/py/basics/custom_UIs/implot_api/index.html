@@ -2215,7 +2215,7 @@
 <span class="n">EndSubplots</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 <span class="n">SetupAxis</span><span class="p">(</span>
     <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span>
     <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 <span class="n">SetupAxisLimits</span><span class="p">(</span>
@@ -2401,7 +2401,7 @@
     <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="n">label_fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">label_fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%.1f</span><span class="s1">'</span><span class="p">,</span>
     <span class="n">angle0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">90</span><span class="p">,</span>
     <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
@@ -2410,7 +2410,7 @@
     <span class="n">values</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
     <span class="n">scale_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="n">scale_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
-    <span class="n">label_fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">label_fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%.1f</span><span class="s1">'</span><span class="p">,</span>
     <span class="n">bounds_min</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
     <span class="n">bounds_max</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
     <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
@@ -2677,14 +2677,14 @@
     <span class="n">scale_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">scale_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">size</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%g</span><span class="s1">'</span><span class="p">,</span>
     <span class="n">flags</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 <span class="n">ColormapSlider</span><span class="p">(</span>
     <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span>
     <span class="n">cmap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span>
 <span class="n">ColormapButton</span><span class="p">(</span>

@@ -1751,7 +1751,7 @@
 </ul>
 <p>The ground plane and shadow settings can also be manually adjusted in the GUI under the <code>[Appearance] --&gt; [Ground Plane]</code> menu. The ground plane does not support all <a href="/features/transparency">transparency modes</a>: with simple transparency it is disabled, and pretty transparency there are no reflections or shadows.</p>
 <p><strong>Example:</strong> adjust the ground plane &amp; shadow appearance</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
@@ -1768,7 +1768,7 @@
 <span class="cm">/* load your mesh, point cloud, etc */</span>
 
 <span class="c1">// take screenshot from the current camera view, which will have transparent shadows</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">screenshot</span><span class="p">(</span><span class="s">&quot;test_image.png&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">screenshot</span><span class="p">(</span><span class="s">"test_image.png"</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
 
 <span class="c1">// open the GUI</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>

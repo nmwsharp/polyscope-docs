@@ -1649,23 +1649,23 @@
 <p>The Polyscope rendering framework supports transparency to visualize complicated data with nested internal structures.</p>
 <p><img alt="transparency modes" src="/py//media/transparency_modes.jpg" /></p>
 <p><strong>Example:</strong> register a surface mesh and render it with transparency</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># Add a mesh with transparency</span>
 <span class="c1"># ... load verts and faces ...</span>
-<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;mesh&quot;</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> 
+<span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"mesh"</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> 
                                     <span class="n">transparency</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 
 <span class="c1"># As soon as any structure has transparency set, the transparency mode</span>
-<span class="c1"># is automatically changed to &#39;pretty&#39; (depth peeling). It can be further</span>
+<span class="c1"># is automatically changed to 'pretty' (depth peeling). It can be further</span>
 <span class="c1"># changed like:</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">set_transparency_mode</span><span class="p">(</span><span class="s1">&#39;simple&#39;</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">set_transparency_mode</span><span class="p">(</span><span class="s1">'simple'</span><span class="p">)</span>
 
 <span class="c1"># take screenshot from the current camera view, </span>
 <span class="c1"># which will have transparency according to the structure</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="s2">&quot;test_image.png&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">);</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="s2">"test_image.png"</span><span class="p">,</span> <span class="kc">True</span><span class="p">);</span>
 
 <span class="c1"># open the GUI</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -1696,7 +1696,7 @@
 <summary><code class="highlight"><span class="n">Structure</span><span class="o">.</span><span class="n">set_transparency</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></code></summary>
 <p>Set the transparency for a structure, <code>1</code> means completely opaque (the default), whereas <code>0</code> means completely transparent.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">&quot;mesh&quot;</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ps_mesh</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">register_surface_mesh</span><span class="p">(</span><span class="s2">"mesh"</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
 <span class="n">ps_mesh</span><span class="o">.</span><span class="n">set_transparency</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </code></pre></div></p>
 </details>

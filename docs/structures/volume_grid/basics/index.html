@@ -1783,8 +1783,8 @@
 </video>
 
 <p><strong>Example:</strong> registering a volume grid and adding a scalar quantity
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/volume_grid.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/volume_grid.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
@@ -1797,14 +1797,14 @@
 
 <span class="c1">// register the grid</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">VolumeGrid</span><span class="o">*</span><span class="w"> </span><span class="n">psGrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerVolumeGrid</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;sample grid&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">dimX</span><span class="p">,</span><span class="w"> </span><span class="n">dimY</span><span class="p">,</span><span class="w"> </span><span class="n">dimZ</span><span class="p">},</span><span class="w"> </span><span class="n">bound_low</span><span class="p">,</span><span class="w"> </span><span class="n">bound_high</span><span class="p">);</span>
+<span class="w">        </span><span class="s">"sample grid"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">dimX</span><span class="p">,</span><span class="w"> </span><span class="n">dimY</span><span class="p">,</span><span class="w"> </span><span class="n">dimZ</span><span class="p">},</span><span class="w"> </span><span class="n">bound_low</span><span class="p">,</span><span class="w"> </span><span class="n">bound_high</span><span class="p">);</span>
 
 <span class="c1">// add a scalar function on the grid</span>
 <span class="kt">uint32_t</span><span class="w"> </span><span class="n">nData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dimX</span><span class="o">*</span><span class="n">dimY</span><span class="o">*</span><span class="n">dimZ</span><span class="p">;</span>
 <span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">scalarVals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* your dimX*dimY*dimZ buffer of data*/</span><span class="p">;</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">VolumeGridNodeScalarQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">scalarQ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">    </span><span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addNodeScalarQuantity</span><span class="p">(</span><span class="s">&quot;node scalar1&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">psGrid</span><span class="o">-&gt;</span><span class="n">addNodeScalarQuantity</span><span class="p">(</span><span class="s">"node scalar1"</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                  </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="n">scalarVals</span><span class="p">,</span><span class="w"> </span><span class="n">nData</span><span class="p">));</span>
 <span class="n">scalarQ</span><span class="o">-&gt;</span><span class="n">setEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 

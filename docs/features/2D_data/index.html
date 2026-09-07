@@ -1742,8 +1742,8 @@
 
 <p>Polyscope is primarily focused on 3D data, but can also be used for 2D visualization. This section descibes a few helpers which make it easier to do so.</p>
 <p>Example: register a 2D point cloud and add some vectors to it 
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/point_cloud.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/point_cloud.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
@@ -1757,8 +1757,8 @@
 <span class="w">  </span><span class="n">points</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="p">{</span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.5</span><span class="p">});</span>
 <span class="p">}</span>
 
-<span class="c1">// Register it. Note the &quot;2D&quot; in the function call.</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud2D</span><span class="p">(</span><span class="s">&quot;flat points&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="p">);</span>
+<span class="c1">// Register it. Note the "2D" in the function call.</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">registerPointCloud2D</span><span class="p">(</span><span class="s">"flat points"</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="p">);</span>
 
 
 <span class="c1">// Build a random vector</span>
@@ -1767,8 +1767,8 @@
 <span class="w">  </span><span class="n">randVec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">glm</span><span class="o">::</span><span class="n">vec2</span><span class="p">{</span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.5</span><span class="p">,</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">randomUnit</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">.5</span><span class="p">};</span>
 <span class="p">}</span>
 
-<span class="c1">// Add it to the point cloud. Note the &quot;2D&quot; in the function call</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getPointCloud</span><span class="p">(</span><span class="s">&quot;flat points&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVectorQuantity2D</span><span class="p">(</span><span class="s">&quot;random vector&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">randVec</span><span class="p">);</span>
+<span class="c1">// Add it to the point cloud. Note the "2D" in the function call</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getPointCloud</span><span class="p">(</span><span class="s">"flat points"</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">addVectorQuantity2D</span><span class="p">(</span><span class="s">"random vector"</span><span class="p">,</span><span class="w"> </span><span class="n">randVec</span><span class="p">);</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 </code></pre></div></p>

@@ -1914,8 +1914,8 @@
 <p><code>SimpleTriangleMesh</code> is an alternate minimal-and-efficient structure for displaying triangle meshes. It only supports pure triangle meshes and a limited set of quantities and other features, but it is higher-performance and supports more general updates (including changing the <em>number</em> of vertex and faces without creating a new mesh).</p>
 <p>The <a href="/structures/surface_mesh/basics/">Surface Mesh</a> structure is the primary way to display surface meshes in Polyscope for almost all use cases, and has a much larger feature set. Only use <code>SimpleTriangleMesh</code> if you particularly need for fast performance, large meshes, or dynamic updates.</p>
 <p><strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/simple_triangle_mesh.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/simple_triangle_mesh.h"</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
 
@@ -1925,11 +1925,11 @@
 
 <span class="c1">// Register the mesh</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">SimpleTriangleMesh</span><span class="o">*</span><span class="w"> </span><span class="n">mesh</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSimpleTriangleMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSimpleTriangleMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
 
 <span class="c1">// Add a scalar quantity at vertices</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vertScalar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25f</span><span class="p">};</span>
-<span class="n">mesh</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vertScalar</span><span class="p">);</span>
+<span class="n">mesh</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">"height"</span><span class="p">,</span><span class="w"> </span><span class="n">vertScalar</span><span class="p">);</span>
 
 <span class="n">polyscope</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 </code></pre></div></p>
@@ -2053,18 +2053,18 @@
 <p>Visualize scalar (real-valued) data at the vertices or faces of the mesh.</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">SimpleTriangleMesh</span><span class="o">*</span><span class="w"> </span><span class="n">mesh</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSimpleTriangleMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSimpleTriangleMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
 
 <span class="c1">// Vertex scalars</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vScalar</span><span class="p">(</span><span class="n">nVerts</span><span class="p">);</span>
 <span class="cm">/* fill vScalar ... */</span>
-<span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">&quot;my vertex scalar&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vScalar</span><span class="p">);</span>
+<span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="o">-&gt;</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="s">"my vertex scalar"</span><span class="p">,</span><span class="w"> </span><span class="n">vScalar</span><span class="p">);</span>
 <span class="n">q</span><span class="o">-&gt;</span><span class="n">setEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 
 <span class="c1">// Face scalars</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fScalar</span><span class="p">(</span><span class="n">nFaces</span><span class="p">);</span>
 <span class="cm">/* fill fScalar ... */</span>
-<span class="n">mesh</span><span class="o">-&gt;</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="s">&quot;my face scalar&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fScalar</span><span class="p">);</span>
+<span class="n">mesh</span><span class="o">-&gt;</span><span class="n">addFaceScalarQuantity</span><span class="p">(</span><span class="s">"my face scalar"</span><span class="p">,</span><span class="w"> </span><span class="n">fScalar</span><span class="p">);</span>
 </code></pre></div></p>
 <details class="func">
 <summary><code class="highlight"><span class="n">SimpleTriangleMeshVertexScalarQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">SimpleTriangleMesh</span><span class="o">::</span><span class="n">addVertexScalarQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="n">DataType</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataType</span><span class="o">::</span><span class="n">STANDARD</span><span class="p">)</span></code></summary>
@@ -2204,16 +2204,16 @@ The limits (<code>vminmax</code>) of the colormap range are given by the two num
 <p>Visualize RGB color data at the vertices or faces of the mesh. Colors are specified as 3-vectors of floats in the range <code>[0,1]</code>.</p>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><span class="n">polyscope</span><span class="o">::</span><span class="n">SimpleTriangleMesh</span><span class="o">*</span><span class="w"> </span><span class="n">mesh</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSimpleTriangleMesh</span><span class="p">(</span><span class="s">&quot;my mesh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
+<span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerSimpleTriangleMesh</span><span class="p">(</span><span class="s">"my mesh"</span><span class="p">,</span><span class="w"> </span><span class="n">vertices</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">);</span>
 
 <span class="c1">// Vertex colors</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vColor</span><span class="p">(</span><span class="n">nVerts</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mf">0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8f</span><span class="p">});</span>
-<span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">qv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="o">-&gt;</span><span class="n">addVertexColorQuantity</span><span class="p">(</span><span class="s">&quot;my vertex color&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vColor</span><span class="p">);</span>
+<span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">qv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="o">-&gt;</span><span class="n">addVertexColorQuantity</span><span class="p">(</span><span class="s">"my vertex color"</span><span class="p">,</span><span class="w"> </span><span class="n">vColor</span><span class="p">);</span>
 <span class="n">qv</span><span class="o">-&gt;</span><span class="n">setEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 
 <span class="c1">// Face colors</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fColor</span><span class="p">(</span><span class="n">nFaces</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mf">0.1f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">});</span>
-<span class="n">mesh</span><span class="o">-&gt;</span><span class="n">addFaceColorQuantity</span><span class="p">(</span><span class="s">&quot;my face color&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fColor</span><span class="p">);</span>
+<span class="n">mesh</span><span class="o">-&gt;</span><span class="n">addFaceColorQuantity</span><span class="p">(</span><span class="s">"my face color"</span><span class="p">,</span><span class="w"> </span><span class="n">fColor</span><span class="p">);</span>
 </code></pre></div></p>
 <details class="func">
 <summary><code class="highlight"><span class="n">SimpleTriangleMeshVertexColorQuantity</span><span class="o">*</span><span class="w"> </span><span class="n">SimpleTriangleMesh</span><span class="o">::</span><span class="n">addVertexColorQuantity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">values</span><span class="p">)</span></code></summary>

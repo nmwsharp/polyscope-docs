@@ -1946,7 +1946,7 @@
 
 <p>These functions control the current viewing camera in for the Polyscope scene, as well as more-generally managing camera parameters across visualizations, such as for <a href="/structures/camera_view/basics">Camera View structures</a>.</p>
 <p><strong>Example of common camera operations:</strong>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;polyscope/polyscope.h&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"polyscope/polyscope.h"</span>
 
 <span class="c1">// set the size of the window</span>
 <span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">setWindowSize</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="w"> </span><span class="mi">800</span><span class="p">);</span>
@@ -1978,7 +1978,7 @@
 <span class="c1">// you can even use the parameters to create a camera view structure,</span>
 <span class="c1">// which visualize views of the scene as a frame and can hold image</span>
 <span class="c1">// quantities</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">CameraView</span><span class="o">*</span><span class="w"> </span><span class="n">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCameraView</span><span class="p">(</span><span class="s">&quot;cam1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">CameraView</span><span class="o">*</span><span class="w"> </span><span class="n">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCameraView</span><span class="p">(</span><span class="s">"cam1"</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"> </span>
 </code></pre></div></p>
 <h2 id="window-controls">Window Controls<a class="headerlink" href="#window-controls" title="Permanent link">&para;</a></h2>
 <p>Get and set the size of the window which appears on the user&rsquo;s display.</p>
@@ -2221,7 +2221,7 @@
 <span class="w">    </span><span class="n">polyscope</span><span class="o">::</span><span class="n">view</span><span class="o">::</span><span class="n">getCameraParametersForCurrentView</span><span class="p">();</span>
 
 <span class="c1">// or, use the parameters to create a camera view</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">CameraView</span><span class="o">*</span><span class="w"> </span><span class="n">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCameraView</span><span class="p">(</span><span class="s">&quot;cam1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">CameraView</span><span class="o">*</span><span class="w"> </span><span class="n">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polyscope</span><span class="o">::</span><span class="n">registerCameraView</span><span class="p">(</span><span class="s">"cam1"</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
 </code></pre></div></p>
 <h3 id="intrinsics">Intrinsics<a class="headerlink" href="#intrinsics" title="Permanent link">&para;</a></h3>
 <p>A <code>CameraIntrinsics</code> object describes the field of view and aspect ratio of a camera. It <strong>does not</strong> describe a &ldquo;pixel resolution&rdquo; for a camera&mdash;you could have many images of different resolutions all associated with the same camera, as long as the aspect ratios are right.</p>

@@ -1700,20 +1700,20 @@
 <p><img alt="point_cloud_demo" src="../../../media/point_cloud_demo.gif" /></p>
 <h3 id="registering-a-point-cloud">Registering a point cloud<a class="headerlink" href="#registering-a-point-cloud" title="Permanent link">&para;</a></h3>
 <p>Example: a point cloud of random points
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
 <span class="c1"># generate some points</span>
 <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># visualize!</span>
-<span class="n">ps_cloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;my points&quot;</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
+<span class="n">ps_cloud</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">"my points"</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># with some options</span>
-<span class="n">ps_cloud_opt</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;my points&quot;</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> 
-                                       <span class="n">radius</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">point_render_mode</span><span class="o">=</span><span class="s1">&#39;quad&#39;</span><span class="p">)</span>
+<span class="n">ps_cloud_opt</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">"my points"</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> 
+                                       <span class="n">radius</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">point_render_mode</span><span class="o">=</span><span class="s1">'quad'</span><span class="p">)</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
 <details class="func" open="open">
@@ -1764,7 +1764,7 @@
 <details class="func">
 <summary><code class="highlight"><span class="n">PointCloud</span><span class="o">.</span><span class="n">set_point_render_mode</span><span class="p">(</span><span class="n">newVal</span><span class="p">)</span></code></summary>
 <p>Set the the rendering method used to draw each point. Pass the string name of the style to use. One of <code>'sphere'</code> (default) or <code>'quad'</code>.</p>
-<p>As usual, this can also be set as a keyword argument when the point cloud is registered, like <code class="highlight"><span class="n">register_point_cloud</span><span class="p">(</span><span class="s1">&#39;my points&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">point_render_mode</span><span class="o">=</span><span class="s1">&#39;quad&#39;</span><span class="p">)</span></code>.</p>
+<p>As usual, this can also be set as a keyword argument when the point cloud is registered, like <code class="highlight"><span class="n">register_point_cloud</span><span class="p">(</span><span class="s1">'my points'</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">point_render_mode</span><span class="o">=</span><span class="s1">'quad'</span><span class="p">)</span></code>.</p>
 <p>There is also a corresponding <code>get_point_render_mode()</code>.</p>
 </details>
 <h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
@@ -1811,7 +1811,7 @@
 </tbody>
 </table>
 <p>Example: set options which affect the appearance of the point cloud
-<div class="highlight"><pre><span></span><code><span class="n">cloud</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;my points&quot;</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">cloud</span> <span class="o">=</span> <span class="n">polyscope</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">"my points"</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
 
 <span class="n">cloud</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># disable</span>
 <span class="n">cloud</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">()</span> <span class="c1"># default is true</span>
@@ -1820,11 +1820,11 @@
 <span class="n">cloud</span><span class="o">.</span><span class="n">set_radius</span><span class="p">(</span><span class="mf">1.7</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># radius in absolute world units</span>
 
 <span class="n">cloud</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span> <span class="c1"># rgb triple on [0,1]</span>
-<span class="n">cloud</span><span class="o">.</span><span class="n">set_material</span><span class="p">(</span><span class="s2">&quot;candy&quot;</span><span class="p">)</span>
+<span class="n">cloud</span><span class="o">.</span><span class="n">set_material</span><span class="p">(</span><span class="s2">"candy"</span><span class="p">)</span>
 <span class="n">cloud</span><span class="o">.</span><span class="n">set_transparency</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="c1"># alternately:</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">&quot;my points 2&quot;</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;candy&#39;</span><span class="p">,</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">register_point_cloud</span><span class="p">(</span><span class="s2">"my points 2"</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">'candy'</span><span class="p">,</span>
                         <span class="n">radius</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
                         <span class="n">transparency</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </code></pre></div></p>

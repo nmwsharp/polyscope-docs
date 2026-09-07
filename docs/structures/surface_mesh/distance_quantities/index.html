@@ -1702,9 +1702,9 @@
 <span class="n">igl</span><span class="o">::</span><span class="n">exact_geodesic</span><span class="p">(</span><span class="n">meshV</span><span class="p">,</span><span class="w"> </span><span class="n">meshF</span><span class="p">,</span><span class="w"> </span><span class="n">VS</span><span class="p">,</span><span class="w"> </span><span class="n">FS</span><span class="p">,</span><span class="w"> </span><span class="n">VT</span><span class="p">,</span><span class="w"> </span><span class="n">FT</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
 
 <span class="c1">// Add the distance quantity to the surface mesh</span>
-<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">&quot;input mesh&quot;</span><span class="p">)</span>
+<span class="n">polyscope</span><span class="o">::</span><span class="n">getSurfaceMesh</span><span class="p">(</span><span class="s">"input mesh"</span><span class="p">)</span>
 <span class="w">    </span><span class="o">-&gt;</span><span class="n">addVertexDistanceQuantity</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;distance from vertex &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">iVertexSource</span><span class="p">),</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
+<span class="w">        </span><span class="s">"distance from vertex "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">iVertexSource</span><span class="p">),</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
 </code></pre></div></p>
 <h3 id="add-distance-to-vertices">Add distance to vertices<a class="headerlink" href="#add-distance-to-vertices" title="Permanent link">&para;</a></h3>
 <details class="func">
