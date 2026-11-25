@@ -457,3 +457,184 @@ It is often necessary to generate the world-space ray corresponding to each pixe
     Generate the rays corresponding to the [upperleft, upperright, lowerleft, lowerright] corners of the camera's view. 
 
     This method is useful because the caller can easily linearly interpolate the normalize get ray directions for all pixels in an image, but this method just needs to return a small amount of data. This makes it easy to e.g. generate rays for a real-time renderer on a GPU, without transferring a whole buffer of ray directions for each frame.
+
+
+## Multiple Viewports
+
+Polyscope can split its window into multiple independent **viewports**, each with its own camera, navigation state, and projection mode. This is useful for inspecting a scene from multiple angles simultaneously, or comparing different data side-by-side. Viewports can be arranged in a regular grid, or in any custom layout.
+
+![a 2x2 grid of viewports showing a mesh, a point cloud, a wireframe curve network, and a vector field]([[url.prefix]]/media/viewports_demo.jpg)
+
+**Example**: create a 2×1 split view with independent cameras and show a mesh only on the left. (This is a simplified variant of the image above, which uses a 2×2 grid with a shared camera and shows one structure per viewport.)
+
+[[% raw %]]
+```python
+import numpy as np
+import polyscope as ps
+ps.init()
+
+# Register two structures
+vertices = np.array([[0,0,0],[1,0,0],[0,1,0],[0,0,1]], dtype=float)
+faces    = np.array([[0,1,2],[0,1,3],[0,2,3],[1,2,3]])
+ps_mesh  = ps.register_surface_mesh("mesh", vertices, faces)
+ps_cloud = ps.register_point_cloud("cloud", vertices)
+
+# Split the window into left and right halves
+# (the image above uses create_viewport_grid(2, 2) for four viewports)
+ps.create_viewport_grid(2, 1)
+
+# Independent cameras so each viewport can have its own viewpoint
+# (the image above leaves the default of one shared camera)
+ps.set_viewports_share_navigation(False)
+
+# Left viewport (0): perspective view, mesh only
+ps.activate_viewport(0)
+ps.set_view_projection_mode("perspective")
+ps.look_at((0., 0., 3.), (0.3, 0.3, 0.3))
+ps_mesh.set_viewport_visibility_exclusive(0)
+
+# Right viewport (1): orthographic top-down view, both structures visible
+ps.activate_viewport(1)
+ps.set_view_projection_mode("orthographic")
+ps.look_at((0., 3., 0.), (0.3, 0.3, 0.3))
+
+ps.show()
+```
+[[% endraw %]]
+
+### Creating viewports
+
+The helper `create_viewport_grid()` handles the very common case of arranging views in a regular grid. More generally, you can manually create any number of viewports and arrange them at any location on the screen using the positioning functions below. If viewports overlap, they are drawn with viewport 0 on the bottom and subsequent viewports on top.
+
+**Example**: a full-window main view with a small inset in the lower-right corner
+
+```python
+ps.set_num_viewports(2)
+
+ps.activate_viewport(0)
+ps.set_active_viewport_relative_location(0., 0.)   # fill the whole window
+ps.set_active_viewport_relative_size(1., 1.)
+
+ps.activate_viewport(1)                            # inset: drawn on top of viewport 0
+ps.set_active_viewport_relative_location(0.7, 0.0) # lower-right corner
+ps.set_active_viewport_relative_size(0.3, 0.3)
+```
+
+??? func "`#!python create_viewport_grid(grid_width, grid_height)`"
+
+
+    High-level helper: creates `grid_width × grid_height` viewports arranged in a uniform grid, each occupying an equal tile of the window. This is the simplest way to set up a split view.
+
+    For a single full-window view, call `create_viewport_grid(1, 1)`.
+
+
+??? func "`#!python set_num_viewports(count)`"
+
+
+    Low-level: set the total number of viewports. After calling this, use `activate_viewport()` and `set_active_viewport_relative_location()` / `set_active_viewport_relative_size()` to position each one manually.
+
+
+??? func "`#!python get_num_viewports()`"
+
+    Return the current number of viewports.
+
+
+### Activating and positioning viewports
+
+!!! note "The active viewport"
+    At any point one viewport is designated as the **active** viewport; the active viewport changes whenever you click in the window, or by calling `activate_viewport()`. Unless otherwise noted, all view-related operations apply to the active viewport — this includes camera adjustments (`look_at`, `reset_camera_to_home_view`), projection mode (`set_view_projection_mode`), navigation style (`set_navigation_style`), field of view, and serialization via `get_view_as_json` / `set_view_from_json`. Use `activate_viewport()` to switch the active viewport before making changes.
+
+??? func "`#!python activate_viewport(viewport_ind)`"
+
+
+    Set the active viewport to index `viewport_ind`. Subsequent camera and view calls will apply to this viewport.
+
+
+??? func "`#!python get_active_viewport_index()`"
+
+    Return the index of the currently active viewport.
+
+
+??? func "`#!python set_active_viewport_relative_location(pos_x, pos_y)`"
+
+
+    Set the position of the active viewport within the window, as a fraction of the window size on `[0, 1]`. This sets the location of the viewport's bottom-left corner, and `(0, 0)` is the bottom-left corner of the window.
+
+
+??? func "`#!python set_active_viewport_relative_size(width, height)`"
+
+
+    Set the size of the active viewport as a fraction of the window size on `[0, 1]`.
+
+
+??? func "`#!python get_active_viewport_buffer_width()`"
+
+    Return the pixel width of the active viewport's framebuffer.
+
+
+??? func "`#!python get_active_viewport_buffer_height()`"
+
+    Return the pixel height of the active viewport's framebuffer.
+
+
+### Navigation sharing
+
+By default all viewports share a single camera, so rotating or zooming in one moves all of them together. Disable this to give each viewport its own independent camera.
+
+??? func "`#!python set_viewports_share_navigation(share_navigation)`"
+
+
+    If `True` (the default), all viewports share the same camera — rotating, zooming, or panning in one viewport affects all of them. Set to `False` to give each viewport an independent camera and navigation state. When `False`, any manual interaction or programmatic camera changes apply only to the active viewport.
+
+
+??? func "`#!python get_viewports_share_navigation()`"
+
+    Return whether viewports currently share navigation.
+
+
+### Per-structure viewport visibility
+
+By default every structure is visible in all viewports. You can restrict a structure to appear only in specific viewports.
+
+```python
+ps_mesh = ps.register_surface_mesh("my mesh", vertices, faces)
+
+ps.create_viewport_grid(2, 1)
+
+# Show mesh only in viewport 0
+ps_mesh.set_viewport_visibility_exclusive(0)
+```
+
+!!! note "Quantities are not per-viewport"
+    Although _structure_ visibility (e.g. meshes, point clouds, etc) can be toggled per-viewport, _quantity_ visibility (e.g. which scalar quantity on a mesh) *cannot* be toggled per-viewport.
+
+    To emulate showing different quantities in different viewports, register two copies of the structure, assign each to a different viewport using `set_viewport_visibility_exclusive()`, and enable a different quantity on each copy.
+
+??? func "`#!python Structure.set_viewport_visibility(viewport_ind, val)`"
+
+
+    Set whether the structure is visible in viewport `viewport_ind`. Does not affect visibility in other viewports.
+
+
+??? func "`#!python Structure.set_viewport_visibility_all(val)`"
+
+
+    Set the visibility of the structure to `val` in every viewport simultaneously.
+
+
+??? func "`#!python Structure.set_viewport_visibility_exclusive(viewport_ind)`"
+
+
+    Make the structure visible only in viewport `viewport_ind`, hiding it in all others.
+
+
+??? func "`#!python Structure.get_viewport_visibility(viewport_ind=-1)`"
+
+    Return whether the structure is visible in viewport `viewport_ind`. Pass `-1` (default) to query the currently active viewport.
+
+
+### Coordinate conversions
+
+These helpers convert between global window coordinates and per-viewport local coordinates. They are mainly useful when doing custom picking or hit-testing against a multi-viewport layout.
+
+Given a point in global screen/buffer coordinates, `screen_coords_to_viewport_ind()` / `buffer_inds_to_viewport_ind()` return which viewport contains it. The `*_global_to_viewport()` variants additionally return the point expressed in that viewport's local coordinate space. The inverse `*_viewport_to_global()` functions convert a local viewport coordinate back to global window coordinates.

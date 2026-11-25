@@ -499,3 +499,185 @@ It is often necessary to generate the world-space ray corresponding to each pixe
     Generate the rays corresponding to the [upperleft, upperright, lowerleft, lowerright] corners of the camera's view. 
 
     This method is useful because the caller can easily linearly interpolate the normalize get ray directions for all pixels in an image, but this method just needs to return a small amount of data. This makes it easy to e.g. generate rays for a real-time renderer on a GPU, without transferring a whole buffer of ray directions for each frame.
+
+
+## Multiple Viewports
+
+Polyscope can split its window into multiple independent **viewports**, each with its own camera, navigation state, and projection mode. This is useful for inspecting a scene from multiple angles simultaneously, or comparing different data side-by-side. Viewports can be arranged in a regular grid, or in any custom layout.
+
+![a 2x2 grid of viewports showing a mesh, a point cloud, a wireframe curve network, and a vector field]([[url.prefix]]/media/viewports_demo.jpg)
+
+**Example**: create a 2×1 split view with independent cameras and show a mesh only on the left. (This is a simplified variant of the image above, which uses a 2×2 grid with a shared camera and shows one structure per viewport.)
+
+```cpp
+#include "polyscope/polyscope.h"
+#include "polyscope/point_cloud.h"
+#include "polyscope/surface_mesh.h"
+
+polyscope::init();
+
+// Register two structures
+std::vector<glm::vec3> pts = {{0,0,0},{1,0,0},{0,1,0},{0,0,1}};
+std::vector<std::array<int,3>> tris = {{{0,1,2}},{{0,1,3}},{{0,2,3}},{{1,2,3}}};
+auto* psMesh  = polyscope::registerSurfaceMesh("mesh", pts, tris);
+auto* psCloud = polyscope::registerPointCloud("cloud", pts);
+
+// Split the window into left and right halves
+// (the image above uses createViewportGrid(2, 2) for four viewports)
+polyscope::view::createViewportGrid(2, 1);
+
+// Independent cameras so each viewport can have its own viewpoint
+// (the image above leaves the default of one shared camera)
+polyscope::view::setViewportsShareNavigation(false);
+
+// Left viewport (0): perspective view, mesh only
+polyscope::view::activateViewport(0);
+polyscope::view::projectionMode = polyscope::ProjectionMode::Perspective;
+polyscope::view::lookAt(glm::vec3{0., 0., 3.}, glm::vec3{0.3, 0.3, 0.3});
+psMesh->setViewportVisibilityExclusive(0);
+
+// Right viewport (1): orthographic top-down view, both structures visible
+polyscope::view::activateViewport(1);
+polyscope::view::projectionMode = polyscope::ProjectionMode::Orthographic;
+polyscope::view::lookAt(glm::vec3{0., 3., 0.}, glm::vec3{0.3, 0.3, 0.3});
+
+polyscope::show();
+```
+
+
+### Creating viewports
+
+The helper `createViewportGrid()` handles the very common case of arranging views in a regular grid. More generally, you can manually create any number of viewports and arrange them at any location on the screen using the positioning functions below. If viewports overlap, they are drawn with viewport 0 on the bottom and subsequent viewports on top.
+
+**Example**: a full-window main view with a small inset in the lower-right corner
+
+```cpp
+polyscope::view::setNumViewports(2);
+
+polyscope::view::activateViewport(0);
+polyscope::view::setActiveViewportRelativeLocation(0.f, 0.f);  // fill the whole window
+polyscope::view::setActiveViewportRelativeSize(1.f, 1.f);
+
+polyscope::view::activateViewport(1);                          // inset: drawn on top of viewport 0
+polyscope::view::setActiveViewportRelativeLocation(0.7f, 0.0f); // lower-right corner
+polyscope::view::setActiveViewportRelativeSize(0.3f, 0.3f);
+```
+
+??? func "`#!cpp void polyscope::view::createViewportGrid(int gridWidth, int gridHeight)`"
+
+
+    High-level helper: creates `gridWidth × gridHeight` viewports arranged in a uniform grid, each occupying an equal tile of the window. This is the simplest way to set up a split view.
+
+    For a single full-window view, call `createViewportGrid(1, 1)`.
+
+
+??? func "`#!cpp void polyscope::view::setNumViewports(int count)`"
+
+
+    Low-level: set the total number of viewports. After calling this, use `activateViewport()` and `setActiveViewportRelativeLocation()` / `setActiveViewportRelativeSize()` to position each one manually.
+
+
+??? func "`#!cpp int polyscope::view::getNumViewports()`"
+
+    Return the current number of viewports.
+
+
+### Activating and positioning viewports
+
+!!! note "The active viewport"
+    At any point one viewport is designated as the **active** viewport; the active viewport changes whenever you click in the window, or by calling `activateViewport()`. Unless otherwise noted, all view-related operations apply to the active viewport — this includes camera adjustments (`lookAt`, `resetCameraToHomeView`), projection mode (`projectionMode`), navigation style (`style`), field of view, and serialization via `getViewAsJson` / `setViewFromJson`. Use `activateViewport()` to switch the active viewport before making changes.
+
+??? func "`#!cpp void polyscope::view::activateViewport(int viewportInd)`"
+
+
+    Set the active viewport to index `viewportInd`. Subsequent camera and view calls will apply to this viewport.
+
+
+??? func "`#!cpp int polyscope::view::getActiveViewportIndex()`"
+
+    Return the index of the currently active viewport.
+
+
+??? func "`#!cpp void polyscope::view::setActiveViewportRelativeLocation(float posX, float posY)`"
+
+
+    Set the position of the active viewport within the window, as a fraction of the window size on `[0, 1]`. This sets the location of the viewport's bottom-left corner, and `(0, 0)` is the bottom-left corner of the window.
+
+
+??? func "`#!cpp void polyscope::view::setActiveViewportRelativeSize(float width, float height)`"
+
+
+    Set the size of the active viewport as a fraction of the window size on `[0, 1]`.
+
+
+??? func "`#!cpp int polyscope::view::getActiveViewportBufferWidth()`"
+
+    Return the pixel width of the active viewport's framebuffer.
+
+
+??? func "`#!cpp int polyscope::view::getActiveViewportBufferHeight()`"
+
+    Return the pixel height of the active viewport's framebuffer.
+
+
+### Navigation sharing
+
+By default all viewports share a single camera, so rotating or zooming in one moves all of them together. Disable this to give each viewport its own independent camera.
+
+??? func "`#!cpp void polyscope::view::setViewportsShareNavigation(bool shareNavigation)`"
+
+
+    If `true` (the default), all viewports share the same camera — rotating, zooming, or panning in one viewport affects all of them. Set to `false` to give each viewport an independent camera and navigation state. When `false`, any manual interaction or programmatic camera changes apply only to the active viewport.
+
+
+??? func "`#!cpp bool polyscope::view::getViewportsShareNavigation()`"
+
+    Return whether viewports currently share navigation.
+
+
+### Per-structure viewport visibility
+
+By default every structure is visible in all viewports. You can restrict a structure to appear only in specific viewports.
+
+```cpp
+polyscope::SurfaceMesh* psMesh = polyscope::registerSurfaceMesh("my mesh", meshV, meshF);
+
+polyscope::view::createViewportGrid(2, 1);
+
+// Show mesh only in viewport 0
+psMesh->setViewportVisibilityExclusive(0);
+```
+
+!!! note "Quantities are not per-viewport"
+    Although _structure_ visibility (e.g. meshes, point clouds, etc) can be toggled per-viewport, _quantity_ visibility (e.g. which scalar quantity on a mesh) *cannot* be toggled per-viewport.
+
+    To emulate showing different quantities in different viewports, register two copies of the structure, assign each to a different viewport using `setViewportVisibilityExclusive()`, and enable a different quantity on each copy.
+
+??? func "`#!cpp void Structure::setViewportVisibility(int32_t viewportInd, bool val)`"
+
+
+    Set whether the structure is visible in viewport `viewportInd`. Does not affect visibility in other viewports.
+
+
+??? func "`#!cpp void Structure::setViewportVisibilityAll(bool val)`"
+
+
+    Set the visibility of the structure to `val` in every viewport simultaneously.
+
+
+??? func "`#!cpp void Structure::setViewportVisibilityExclusive(int32_t viewportInd)`"
+
+
+    Make the structure visible only in viewport `viewportInd`, hiding it in all others.
+
+
+??? func "`#!cpp bool Structure::getViewportVisibility(int32_t viewportInd=-1)`"
+
+    Return whether the structure is visible in viewport `viewportInd`. Pass `-1` (default) to query the currently active viewport.
+
+
+### Coordinate conversions
+
+These helpers convert between global window coordinates and per-viewport local coordinates. They are mainly useful when doing custom picking or hit-testing against a multi-viewport layout.
+
+Given a point in global screen/buffer coordinates, `screenCoordsToViewportInd()` / `bufferIndsToViewportInd()` return which viewport contains it. The `*GlobalToViewport()` variants additionally return the point expressed in that viewport's local coordinate space. The inverse `*ViewportToGlobal()` functions convert a local viewport coordinate back to global window coordinates.

@@ -10,6 +10,7 @@ hide:
     - [How do I take a screenshot / save an image?](#how-do-i-take-a-screenshot-save-an-image)
     - [Positioning objects in the scene and reading back results](#positioning-objects-in-the-scene-and-reading-back-results)
     - [Managing large numbers of structures and quantities](#managing-large-numbers-of-structures-and-quantities)
+    - [How do I show multiple views / split the window into panels?](#how-do-i-show-multiple-views-split-the-window-into-panels)
 
 - **Interactions**
 
@@ -77,6 +78,10 @@ Every structure has controls in its options UI menu under `Options --> Structure
 Use [Groups]([[url.prefix]]/features/groups/) to group your structures in to categories which can be enabled/disabled all together. Notice the `hide descendants` and `show details` options on groups, which can totally hide structures from the UI while still offering some control via the group.
 
 You can always use the [Custom UIs]([[url.prefix]]/features/callbacks_and_UIs/) to create your own interface buttons and selectors which programmatically enable or disable registered objects or adjust their settings.
+
+### **How do I show multiple views / split the window into panels?**
+
+See [Multiple Viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports). Polyscope can split its window into any number of independent viewports, each with its own camera, navigation state, and projection mode — and each viewport can show different content by toggling per-structure visibility. Call `createViewportGrid(w, h)` to get started with a simple grid layout, or position viewports manually for a custom arrangement.
 
 ### **How do I show animated data**
 
