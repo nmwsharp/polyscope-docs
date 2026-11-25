@@ -1,1 +1,3 @@
 .DS_Store
+example_scripts/imgui.ini
+example_scripts/.polyscope.ini

@@ -332,6 +332,12 @@ You can implement custom mouse behaviors on clicks and other actions within your
 
     Convert a click location to a ray in world-space.
 
+    When using [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports), `screenCoords` are global coordinates on the whole window (like the mouse position), and the camera of the viewport containing them is used.
+
+??? func "`#!cpp glm::vec3 view::viewportScreenCoordsToWorldRay(glm::vec2 screenCoords, int32_t viewportInd = -1)`"
+
+    Like `screenCoordsToWorldRay()`, but for [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports) where `screenCoords` are local to the viewport `viewportInd` (the active viewport by default). The camera of that viewport is used. Also see `view::viewportBufferIndsToWorldRay()` and `view::viewportScreenCoordsAndDepthToWorldPosition()`.
+
 ??? func "`#!cpp glm::vec3 view::screenCoordsToWorldPosition(glm::vec2 screenCoords)`"
 
     Convert a click location to a location in world-space, by reading from the scene's depth buffer.
@@ -394,8 +400,11 @@ struct PickResult {
   std::string structureType = "";        // structure type which was hit, like "Point Cloud"
   std::string structureName = "";        // name of structure which was hit, like "my_points"
   std::string quantityName = "";         // name of quantity which was hit (most quantities cannot be picked, you pick the structure instead)
-  glm::vec2 screenCoords;                // coordinates of the query location
-  glm::ivec2 bufferInds;                 // render buffer indices of the query location
+  glm::vec2 screenCoords;                // coordinates of the query location, in the whole window
+  glm::ivec2 bufferInds;                 // render buffer indices of the query location, in the whole window
+  int32_t viewportInd = 0;               // which viewport the query location landed in (always 0 if using a single viewport)
+  glm::vec2 viewportScreenCoords;        // screen coordinates of the query location, local to that viewport
+  glm::ivec2 viewportBufferInds;         // render buffer indices of the query location, local to that viewport
   glm::vec3 position;                    // 3d position which was hit, in world space
   float depth;                           // depth to the hit, in world units
   uint64_t localIndex = INVALID_IND_64;  // structure-specific index of the element which was hit

@@ -559,7 +559,7 @@ polyscope::view::setActiveViewportRelativeLocation(0.f, 0.f);  // fill the whole
 polyscope::view::setActiveViewportRelativeSize(1.f, 1.f);
 
 polyscope::view::activateViewport(1);                          // inset: drawn on top of viewport 0
-polyscope::view::setActiveViewportRelativeLocation(0.7f, 0.0f); // lower-right corner
+polyscope::view::setActiveViewportRelativeLocation(0.7f, 0.7f); // lower-right corner
 polyscope::view::setActiveViewportRelativeSize(0.3f, 0.3f);
 ```
 
@@ -601,7 +601,7 @@ polyscope::view::setActiveViewportRelativeSize(0.3f, 0.3f);
 ??? func "`#!cpp void polyscope::view::setActiveViewportRelativeLocation(float posX, float posY)`"
 
 
-    Set the position of the active viewport within the window, as a fraction of the window size on `[0, 1]`. This sets the location of the viewport's bottom-left corner, and `(0, 0)` is the bottom-left corner of the window.
+    Set the position of the active viewport within the window, as a fraction of the window size on `[0, 1]`. This sets the location of the viewport's top-left corner, and `(0, 0)` is the top-left corner of the window, with y increasing downward (like screen coordinates).
 
 
 ??? func "`#!cpp void polyscope::view::setActiveViewportRelativeSize(float width, float height)`"

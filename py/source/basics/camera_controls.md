@@ -516,7 +516,7 @@ ps.set_active_viewport_relative_location(0., 0.)   # fill the whole window
 ps.set_active_viewport_relative_size(1., 1.)
 
 ps.activate_viewport(1)                            # inset: drawn on top of viewport 0
-ps.set_active_viewport_relative_location(0.7, 0.0) # lower-right corner
+ps.set_active_viewport_relative_location(0.7, 0.7) # lower-right corner
 ps.set_active_viewport_relative_size(0.3, 0.3)
 ```
 
@@ -558,7 +558,7 @@ ps.set_active_viewport_relative_size(0.3, 0.3)
 ??? func "`#!python set_active_viewport_relative_location(pos_x, pos_y)`"
 
 
-    Set the position of the active viewport within the window, as a fraction of the window size on `[0, 1]`. This sets the location of the viewport's bottom-left corner, and `(0, 0)` is the bottom-left corner of the window.
+    Set the position of the active viewport within the window, as a fraction of the window size on `[0, 1]`. This sets the location of the viewport's top-left corner, and `(0, 0)` is the top-left corner of the window, with y increasing downward (like screen coordinates).
 
 
 ??? func "`#!python set_active_viewport_relative_size(width, height)`"
