@@ -1,8 +1,8 @@
 # Simple Triangle Mesh
 
-`SimpleTriangleMesh` is an alternate minimal-and-efficient structure for displaying triangle meshes. It only supports pure triangle meshes and a limited set of quantities and other features, but it is higher-performance and supports more general updates (including changing the _number_ of vertex and faces without creating a new mesh).
+`SimpleTriangleMesh` is an alternate minimal-and-efficient structure for displaying triangle meshes. It only supports pure triangle meshes and a limited set of quantities and other features, but it is higher-performance and supports more general updates (including changing the _number_ of vertices and faces without creating a new mesh).
 
-The [Surface Mesh]([[url.prefix]]/structures/surface_mesh/basics/) structure is the primary way to display surface meshes in Polyscope for almost all use cases, and has a much larger feature set. Only use `SimpleTriangleMesh` if you particularly need for fast performance, large meshes, or dynamic updates.
+The [Surface Mesh]([[url.prefix]]/structures/surface_mesh/basics/) structure is the primary way to display surface meshes in Polyscope for almost all use cases, and has a much larger feature set. Only use `SimpleTriangleMesh` if you particularly need fast performance, large meshes, or dynamic updates.
 
 
 **Example:**
@@ -107,6 +107,8 @@ See [structure management]([[url.prefix]]/structures/structure_management/#struc
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
 color | surface color | `#!cpp glm::vec3 getSurfaceColor()` | `#!cpp setSurfaceColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+edge color | color of the edges of the mesh | `#!cpp glm::vec3 getEdgeColor()` | `#!cpp setEdgeColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `#!cpp double getEdgeWidth()` | `#!cpp setEdgeWidth(double val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 back face policy | how back faces are rendered | `#!cpp BackFacePolicy getBackFacePolicy()` | `#!cpp setBackFacePolicy(BackFacePolicy newPolicy)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 back face color | color used when policy is `Custom` | `#!cpp glm::vec3 getBackFaceColor()` | `#!cpp setBackFaceColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 material | material used for shading | `#!cpp std::string getMaterial()` | `#!cpp setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
@@ -154,7 +156,7 @@ mesh->addFaceScalarQuantity("my face scalar", fScalar);
 
 ### Updating Scalar Data
 
-Scalar quantity values can be updated in-place without removing and re-adding the quantity. The new data must have the same count as the original.
+Scalar quantity values can be updated in-place without removing and re-adding the quantity. If the mesh size was changed via `updateMesh()`, `updateData()` should be called with a new data array of the updated length.
 
 ??? func "`#!cpp void SimpleTriangleMeshVertexScalarQuantity::updateData(const T& newValues)`"
 
@@ -206,7 +208,7 @@ mesh->addFaceColorQuantity("my face color", fColor);
 
 ### Updating Color Data
 
-Color quantity values can be updated in-place without removing and re-adding the quantity. The new data must have the same count as the original.
+Color quantity values can be updated in-place without removing and re-adding the quantity. If the mesh size was changed via `updateMesh()`, `updateData()` should be called with a new data array of the updated length.
 
 ??? func "`#!cpp void SimpleTriangleMeshVertexColorQuantity::updateData(const T& newValues)`"
 

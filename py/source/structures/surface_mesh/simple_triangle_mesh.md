@@ -9,17 +9,18 @@ The [Surface Mesh]([[url.prefix]]/structures/surface_mesh/basics/) structure is 
 ```python
 import numpy as np
 import polyscope as ps
+
 ps.init()
 
-vertices = np.random.rand(100, 3)          # (V,3) float array of vertex positions
-faces = np.random.randint(0, 100, (200,3)) # (F,3) int array of triangle indices
+vertices = np.random.rand(100, 3)  # (V,3) float array of vertex positions
+faces = np.random.randint(0, 100, (200, 3))  # (F,3) int array of triangle indices
 
 # Register the mesh
 ps_mesh = ps.register_simple_triangle_mesh("my mesh", vertices, faces)
 
 # Add a scalar quantity at vertices
 vals = np.random.rand(100)
-ps_mesh.add_scalar_quantity("rand vals", vals, defined_on='vertices', enabled=True)
+ps_mesh.add_scalar_quantity("rand vals", vals, defined_on="vertices", enabled=True)
 
 ps.show()
 ```
@@ -27,7 +28,7 @@ ps.show()
 
 ## Registering
 
-???+ func "`#!python register_simple_triangle_mesh(name, vertices, faces)`"
+???+ func "`#!python register_simple_triangle_mesh(name, vertices, faces, enabled=None, color=None, edge_color=None, edge_width=None, material=None, back_face_policy=None, back_face_color=None, transparency=None)`"
 
     Add a new simple triangle mesh structure to Polyscope.
 
@@ -35,7 +36,7 @@ ps.show()
     - `vertices` an `(V, 3)` numpy float array of vertex positions
     - `faces` an `(F, 3)` numpy integer array of triangle face indices, as 0-based indices into the vertex array
 
-    Only triangle faces are supported.
+    Only triangle faces are supported. Additional optional keyword arguments set initial options on the mesh (see [Options](#options) below).
 
 As with all structures, there are also `get_simple_triangle_mesh(name)`, `has_simple_triangle_mesh(name)`, and `remove_simple_triangle_mesh(name)`.
 
@@ -89,6 +90,8 @@ See [structure management]([[url.prefix]]/structures/structure_management/#struc
 **Parameter** | **Meaning** | **Getter** | **Setter** | **Persistent?**
 --- | --- | --- | --- | ---
 color | surface color | `get_color()` | `set_color(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+edge color | color of the edges of the mesh | `get_edge_color()` | `set_edge_color(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reasonable edges | `get_edge_width()` | `set_edge_width(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 back face policy | how back faces are rendered | `get_back_face_policy()` | `set_back_face_policy(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 back face color | color used when policy is `"custom"` | `get_back_face_color()` | `set_back_face_color(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 material | material used for shading | `get_material()` | `set_material(val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
@@ -109,11 +112,11 @@ ps_mesh = ps.register_simple_triangle_mesh("my mesh", vertices, faces)
 
 # vertex scalar (default)
 vals_v = np.random.rand(ps_mesh.n_vertices())
-q = ps_mesh.add_scalar_quantity("vert scalar", vals_v, defined_on='vertices', enabled=True)
+q = ps_mesh.add_scalar_quantity("vert scalar", vals_v, defined_on="vertices", enabled=True)
 
 # face scalar
 vals_f = np.random.rand(ps_mesh.n_faces())
-ps_mesh.add_scalar_quantity("face scalar", vals_f, defined_on='faces')
+ps_mesh.add_scalar_quantity("face scalar", vals_f, defined_on="faces")
 ```
 
 ???+ func "`#!python SimpleTriangleMesh.add_scalar_quantity(name, values, defined_on='vertices', datatype='standard', enabled=None, vminmax=None, cmap=None)`"
@@ -123,7 +126,7 @@ ps_mesh.add_scalar_quantity("face scalar", vals_f, defined_on='faces')
     - `name` string, a name for the quantity
     - `values` a length `N` numpy float array of scalar values
     - `defined_on` one of `'vertices'` or `'faces'`
-    - `datatype` one of `'standard'`, `'symmetric'`, `'magnitude'`; see [scalar quantities]([[url.prefix]]/features/scalar_quantities) for details
+    - `datatype` one of `'standard'`, `'symmetric'`, `'magnitude'`, `'categorical'`; see [scalar quantities]([[url.prefix]]/features/scalar_quantities) for details
 
     This function also accepts optional keyword arguments to customize appearance and behavior.
 
@@ -131,7 +134,7 @@ ps_mesh.add_scalar_quantity("face scalar", vals_f, defined_on='faces')
 
 ### Updating Scalar Data
 
-Scalar quantity values can be updated in-place without removing and re-adding the quantity. The new data must have the same count as the original.
+Scalar quantity values can be updated in-place without removing and re-adding the quantity. If the mesh size was changed via `update_mesh()`, `update_data()` should be called with a new data array of the updated length.
 
 ??? func "`#!python SimpleTriangleMeshVertexScalarQuantity.update_data(values)`"
 
@@ -156,11 +159,11 @@ ps_mesh = ps.register_simple_triangle_mesh("my mesh", vertices, faces)
 
 # vertex color (default)
 cols_v = np.random.rand(ps_mesh.n_vertices(), 3)
-q = ps_mesh.add_color_quantity("vert color", cols_v, defined_on='vertices', enabled=True)
+q = ps_mesh.add_color_quantity("vert color", cols_v, defined_on="vertices", enabled=True)
 
 # face color
 cols_f = np.random.rand(ps_mesh.n_faces(), 3)
-ps_mesh.add_color_quantity("face color", cols_f, defined_on='faces')
+ps_mesh.add_color_quantity("face color", cols_f, defined_on="faces")
 ```
 
 ???+ func "`#!python SimpleTriangleMesh.add_color_quantity(name, values, defined_on='vertices', enabled=None)`"
@@ -175,7 +178,7 @@ ps_mesh.add_color_quantity("face color", cols_f, defined_on='faces')
 
 ### Updating Color Data
 
-Color quantity values can be updated in-place without removing and re-adding the quantity. The new data must have the same count as the original.
+Color quantity values can be updated in-place without removing and re-adding the quantity. If the mesh size was changed via `update_mesh()`, `update_data()` should be called with a new data array of the updated length.
 
 ??? func "`#!python SimpleTriangleMeshVertexColorQuantity.update_data(values)`"
 

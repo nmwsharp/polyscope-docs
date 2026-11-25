@@ -70,7 +70,7 @@ The locations of the vertices in a mesh can be updated with the member function 
 
     Updating a `SurfaceMesh` is already pretty efficient, and for small-medium sized meshes you can even do it every frame. Even re-registering a new mesh from scratch each frame is probably faster than you'd think.
 
-    However, if you are working from with large meshes and just want to put triangles on the screen as efficiently as possible, check out the alternate [`SimpleTriangleMesh`]([[url.prefix]]/structures/surface_mesh/simple_triangle_mesh) structure. It has a limited feature set, but is more performant and supports faster updates to both vertex positions and face connectivity, as well as on-device GPU updates without a CPU round-trip.
+    However, if you are working with large meshes and just want to put triangles on the screen as efficiently as possible, check out the alternate [`SimpleTriangleMesh`]([[url.prefix]]/structures/surface_mesh/simple_triangle_mesh) structure. It has a limited feature set, but is more performant and supports faster updates to both vertex positions and face connectivity, as well as on-device GPU updates without a CPU round-trip.
 
 ### Selection / Picking
 
