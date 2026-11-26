@@ -332,6 +332,12 @@ You can implement custom mouse behaviors on clicks and other actions within your
 
     Convert a click location to a ray in world-space.
 
+    When using [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports), `screenCoords` are global coordinates on the whole window (like the mouse position), and the camera of the viewport containing them is used.
+
+??? func "`#!cpp glm::vec3 view::viewportScreenCoordsToWorldRay(glm::vec2 screenCoords, int32_t viewportInd = -1)`"
+
+    Like `screenCoordsToWorldRay()`, but for [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports) where `screenCoords` are local to the viewport `viewportInd` (the active viewport by default). The camera of that viewport is used. Also see `view::viewportBufferIndsToWorldRay()` and `view::viewportScreenCoordsAndDepthToWorldPosition()`.
+
 ??? func "`#!cpp glm::vec3 view::screenCoordsToWorldPosition(glm::vec2 screenCoords)`"
 
     Convert a click location to a location in world-space, by reading from the scene's depth buffer.
@@ -351,6 +357,8 @@ You can implement custom mouse behaviors on clicks and other actions within your
     Evaluate a "pick" query to get the contents of the rendered view at a specified location. The return is a `PickResult` struct, see below.
 
     See also `#!cpp PickResult pickAtBufferInds(glm::ivec2 bufferInds)` for a variant which takes buffer indices as an argument instead.
+
+    When using [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports), `screenCoords` and `bufferInds` are global coordinates on the whole window, and the pick is routed to the viewport containing them. To pick directly in a specific viewport using viewport-local coordinates, use `#!cpp PickResult pickViewportAtScreenCoords(glm::vec2 screenCoords, int32_t viewportInd = -1)` or `#!cpp PickResult pickViewportAtBufferInds(glm::ivec2 bufferInds, int32_t viewportInd = -1)` (passing `-1` for the active viewport).
 
     Screen coordinates and buffer indices both refer to a location in the rendered 2d image. Screen coordinates are real-valued, whereas buffer indices are integer. On some platforms they may be identical, but on others with high-DPI screens, they may differ. In the common-case of getting mouse positions from ImGui, you want screen coords.
 
@@ -394,8 +402,11 @@ struct PickResult {
   std::string structureType = "";        // structure type which was hit, like "Point Cloud"
   std::string structureName = "";        // name of structure which was hit, like "my_points"
   std::string quantityName = "";         // name of quantity which was hit (most quantities cannot be picked, you pick the structure instead)
-  glm::vec2 screenCoords;                // coordinates of the query location
-  glm::ivec2 bufferInds;                 // render buffer indices of the query location
+  glm::vec2 screenCoords;                // coordinates of the query location, in the whole window
+  glm::ivec2 bufferInds;                 // render buffer indices of the query location, in the whole window
+  int32_t viewportInd = 0;               // which viewport the query location landed in (always 0 if using a single viewport)
+  glm::vec2 viewportScreenCoords;        // screen coordinates of the query location, local to that viewport
+  glm::ivec2 viewportBufferInds;         // render buffer indices of the query location, local to that viewport
   glm::vec3 position;                    // 3d position which was hit, in world space
   float depth;                           // depth to the hit, in world units
   uint64_t localIndex = INVALID_IND_64;  // structure-specific index of the element which was hit
