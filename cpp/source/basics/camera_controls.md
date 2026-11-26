@@ -585,7 +585,7 @@ polyscope::view::setActiveViewportRelativeSize(0.3f, 0.3f);
 ### Activating and positioning viewports
 
 !!! note "The active viewport"
-    At any point one viewport is designated as the **active** viewport; the active viewport changes whenever you click in the window, or by calling `activateViewport()`. Unless otherwise noted, all view-related operations apply to the active viewport — this includes camera adjustments (`lookAt`, `resetCameraToHomeView`), projection mode (`projectionMode`), navigation style (`style`), field of view, and serialization via `getViewAsJson` / `setViewFromJson`. Use `activateViewport()` to switch the active viewport before making changes.
+    At all times one viewport is designated as the **active** viewport; the active viewport changes whenever you click or scroll in the window, or by calling `activateViewport()`. Unless otherwise noted, all view-related operations apply to the active viewport — this includes camera adjustments (`lookAt`, `resetCameraToHomeView`), projection mode (`projectionMode`), navigation style (`style`), field of view, and serialization via `getViewAsJson` / `setViewFromJson`. Use `activateViewport()` to switch the active viewport before making changes.
 
 ??? func "`#!cpp void polyscope::view::activateViewport(int viewportInd)`"
 

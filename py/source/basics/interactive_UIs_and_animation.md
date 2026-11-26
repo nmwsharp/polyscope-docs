@@ -516,9 +516,11 @@ You can implement custom mouse behaviors on clicks and other actions within your
 
 "Picking" refers to querying the content under the cursor in the rendered image.  Polyscope implements render buffer-based picking, to efficiently get the object and element under the cursor even on large complex scenes.
 
-??? func "`#!python pick(screen_coords=None, buffer_inds=None)`"
+??? func "`#!python pick(screen_coords=None, buffer_inds=None, viewport_ind=None)`"
 
     Evaluate a "pick" query to get the contents of the rendered view at a specified location.  One of `screen_coords` or `buffer_inds` should be passed as the input location, but not both.  The return is a `PickResult` class, see below. 
+
+    When using [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports), leaving `viewport_ind=None` (default) interprets `screen_coords` / `buffer_inds` as global coordinates on the whole window and routes the pick to the viewport containing them. Passing an integer `viewport_ind` (or `-1` for the active viewport) interprets the coordinates as local to that viewport.
 
     Screen coordinates and buffer indices both refer to a location in the rendered 2d image. Screen coordinates are real-valued, whereas buffer indices are integer. On some platforms they may be identical, but on others with high-DPI screens, they may differ. In the common-case of getting mouse positions from ImGui, you want screen coords.
 

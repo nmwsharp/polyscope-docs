@@ -542,7 +542,7 @@ ps.set_active_viewport_relative_size(0.3, 0.3)
 ### Activating and positioning viewports
 
 !!! note "The active viewport"
-    At any point one viewport is designated as the **active** viewport; the active viewport changes whenever you click in the window, or by calling `activate_viewport()`. Unless otherwise noted, all view-related operations apply to the active viewport — this includes camera adjustments (`look_at`, `reset_camera_to_home_view`), projection mode (`set_view_projection_mode`), navigation style (`set_navigation_style`), field of view, and serialization via `get_view_as_json` / `set_view_from_json`. Use `activate_viewport()` to switch the active viewport before making changes.
+    At all times one viewport is designated as the **active** viewport; the active viewport changes whenever you click or scroll in the window, or by calling `activate_viewport()`. Unless otherwise noted, all view-related operations apply to the active viewport — this includes camera adjustments (`look_at`, `reset_camera_to_home_view`), projection mode (`set_view_projection_mode`), navigation style (`set_navigation_style`), field of view, and serialization via `get_view_as_json` / `set_view_from_json`. Use `activate_viewport()` to switch the active viewport before making changes.
 
 ??? func "`#!python activate_viewport(viewport_ind)`"
 
