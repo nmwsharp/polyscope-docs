@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://polyscope.run/py/structures/volume_mesh/basics/">
       
       
-        <link rel="prev" href="../../surface_mesh/variable_transparency/">
+        <link rel="prev" href="../../surface_mesh/simple_triangle_mesh/">
       
       
         <link rel="next" href="../scalar_quantities/">
@@ -963,6 +963,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../surface_mesh/simple_triangle_mesh/" class="md-nav__link">
+        Simple Triangle Mesh
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1667,41 +1681,41 @@
 
 
 <h1 id="volume-meshes">Volume Meshes<a class="headerlink" href="#volume-meshes" title="Permanent link">&para;</a></h1>
-<p>Volumetric meshes, such as tetrahedral (<em>tet</em>) and hexahedral (<em>hex</em>, cube-like) meshes, represent a region of 3D space. Polyscope can display tet and hex meshes, including those which have a mix of hex and tet elements. We&rsquo;ll use the term <em>cell</em> to refer generically to a tet or hex in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values.</p>
+<p>Visualize volumetric 3D meshes, with tetrahedral and hexahedral (cube-like) elements, or even more general prism or pyramidal elements. Meshes may be pure tet/hex/etc, or a mixture of different element types&mdash;we&rsquo;ll use the term <em>cell</em> to refer generically to either a tet, hex, prism or pyramid element in a volume mesh. As always, Polyscope can also handle scalar, color, or vector quantities associated with the vertices or cells of the mesh, and you can click on the mesh elements to inspect values, or use <em>slice planes</em> to inspect the internal structure.</p>
 <video width=100% autoplay muted loop>
-  <source src="/media/movies/volume_demo_compress.mp4" type="video/mp4">
+  <source src="/py//media/movies/volume_demo_compress.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 <h3 id="registering-a-volume-mesh">Registering a volume mesh<a class="headerlink" href="#registering-a-volume-mesh" title="Permanent link">&para;</a></h3>
 <p><strong>Example</strong>: registering a tetrahedral mesh</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">igl</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">igl</span>
 
-<span class="n">verts</span><span class="p">,</span> <span class="n">tets</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">igl</span><span class="o">.</span><span class="n">read_mesh</span><span class="p">(</span><span class="s2">&quot;my_mesh.mesh&quot;</span><span class="p">)</span>
-<span class="n">ps_vol</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_volume_mesh</span><span class="p">(</span><span class="s2">&quot;test volume mesh&quot;</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">tets</span><span class="o">=</span><span class="n">tets</span><span class="p">)</span>
+<span class="n">verts</span><span class="p">,</span> <span class="n">tets</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">igl</span><span class="o">.</span><span class="n">read_mesh</span><span class="p">(</span><span class="s2">"my_mesh.mesh"</span><span class="p">)</span>
+<span class="n">ps_vol</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_volume_mesh</span><span class="p">(</span><span class="s2">"test volume mesh"</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">tets</span><span class="o">=</span><span class="n">tets</span><span class="p">)</span>
 
 <span class="n">n_vert</span> <span class="o">=</span> <span class="n">verts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">n_cell</span> <span class="o">=</span> <span class="n">tets</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Add a scalar function on vertices</span>
 <span class="n">data_vert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_vert</span><span class="p">)</span>
-<span class="n">ps_vol</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;my vertex val&quot;</span><span class="p">,</span> <span class="n">data_vert</span><span class="p">)</span>
+<span class="n">ps_vol</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"my vertex val"</span><span class="p">,</span> <span class="n">data_vert</span><span class="p">)</span>
 
 <span class="c1"># you can also access the structure by name</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">get_volume_mesh</span><span class="p">(</span><span class="s2">&quot;test volume mesh&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;my vertex val&quot;</span><span class="p">,</span> <span class="n">data_vert</span><span class="p">)</span>
+<span class="n">ps</span><span class="o">.</span><span class="n">get_volume_mesh</span><span class="p">(</span><span class="s2">"test volume mesh"</span><span class="p">)</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"my vertex val"</span><span class="p">,</span> <span class="n">data_vert</span><span class="p">)</span>
 
 <span class="c1"># Add a scalar function on cells (with some options set)</span>
 <span class="n">data_cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_cell</span><span class="p">)</span>
-<span class="n">ps_vol</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">&quot;my cell val&quot;</span><span class="p">,</span> <span class="n">data_cell</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span>
-                           <span class="n">vminmax</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;blues&#39;</span><span class="p">)</span>
+<span class="n">ps_vol</span><span class="o">.</span><span class="n">add_scalar_quantity</span><span class="p">(</span><span class="s2">"my cell val"</span><span class="p">,</span> <span class="n">data_cell</span><span class="p">,</span> <span class="n">defined_on</span><span class="o">=</span><span class="s1">'cells'</span><span class="p">,</span>
+                           <span class="n">vminmax</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'blues'</span><span class="p">)</span>
 
 <span class="c1"># Show the GUI</span>
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </code></pre></div>
-<p>Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different argument variants to register meshes with tets, hexes, or a mix of the two. </p>
-<p><img alt="tet element ordering conventions" src="/py//media/tet_element_orderings.jpg" /></p>
+<p>Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different argument variants to register meshes with tets, hexes, or a general mix of element types.</p>
+<p><img alt="element ordering conventions" src="/py//media/tet_element_orderings.jpg" /></p>
 <details class="func" open="open">
 <summary><code class="highlight"><span class="n">register_volume_mesh</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">tets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hexes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mixed_cells</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">interior_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></summary>
 <p>Add a new volume mesh structure to Polyscope.</p>
@@ -1709,13 +1723,14 @@
 <li><code>name</code> string, a name for the structure</li>
 <li><code>vertices</code> an <code>Nx3</code> numpy float array of vertex locations </li>
 </ul>
-<p>The elements are specified by a combination of the following arguments:</p>
+<p>The element indices are specified by some combination of the following arguments:</p>
 <ul>
 <li><code>tets</code> a <code>Tx4</code> numpy integer array of tetrahedra, as 0-based indices in to the vertices array</li>
 <li><code>hexes</code> a <code>Hx8</code> numpy integer array of hexahedra, as 0-based indices in to the vertices array</li>
-<li><code>mixed_cells</code> a <code>Mx8</code> numpy integer array which may contain a mix of tetrahedra and hexahedra. For any rows which are tets and thus have just 4 indices, the remaining indices should be set to any negative value.</li>
+<li><code>mixed_cells</code> a <code>Mx8</code> numpy integer array which may contain a mix of tet, hex, prism, and pyramid elements. Each row holds 8 entries; cells with fewer than 8 vertices are right-padded with <code>-1</code>. For example, a tet row might be <code>[12, 9, 22, 51, -1, -1, -1, -1]</code>, or a pyramid row might be <code>[3, 7, 14, 2, 19, -1, -1, -1]</code>.</li>
 </ul>
-<p>You may pass in <code>tets</code>, <code>hexes</code>, or both to specify the connectivty. Alternately, <code>mixed_cells</code> may be used. However, it is not supported to specify both <code>tets</code>/<code>hexes</code> and <code>mixed_cells</code>.  For the purposes of element ordering, when <code>tets</code> and <code>hexes</code> are both passed, the cells are presumed to be ordered with all tetrahedral cells coming first, then hexahedral cells.</p>
+<p>You may pass in <code>tets</code>, <code>hexes</code>, or both to specify the connectivity. Alternately, <code>mixed_cells</code> may be used for any combination of cell types, including pyramids and prisms as well. However, it is not supported to specify both <code>tets</code>/<code>hexes</code> and <code>mixed_cells</code>; just pass all cells as <code>mixed_cells</code> in this case.  </p>
+<p>For the purposes of element ordering, when <code>tets</code> and <code>hexes</code> are both passed, the cells are presumed to be ordered with all tetrahedral cells coming first, then hexahedral cells.</p>
 <p>Additional optional keyword arguments:</p>
 <ul>
 <li><code>enabled</code> boolean, is the structure enabled initially</li>
@@ -1792,8 +1807,8 @@
 </tbody>
 </table>
 <p><strong>Example</strong>: set options which affect the appearance of the mesh
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">polyscope</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polyscope</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
 
 <span class="c1"># a simple inline mesh</span>
 <span class="n">verts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
@@ -1811,7 +1826,7 @@
   <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
   <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
 <span class="p">])</span>
-<span class="n">ps_vol</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_volume_mesh</span><span class="p">(</span><span class="s2">&quot;test volume mesh&quot;</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">mixed_cells</span><span class="o">=</span><span class="n">cells</span><span class="p">)</span>
+<span class="n">ps_vol</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">register_volume_mesh</span><span class="p">(</span><span class="s2">"test volume mesh"</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">mixed_cells</span><span class="o">=</span><span class="n">cells</span><span class="p">)</span>
 
 <span class="n">ps_vol</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># disable</span>
 <span class="n">ps_vol</span><span class="o">.</span><span class="n">set_enabled</span><span class="p">()</span> <span class="c1"># default is true</span>
@@ -1820,14 +1835,14 @@
 <span class="n">ps_vol</span><span class="o">.</span><span class="n">set_interior_color</span><span class="p">((</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
 <span class="n">ps_vol</span><span class="o">.</span><span class="n">set_edge_color</span><span class="p">((</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span> 
 <span class="n">ps_vol</span><span class="o">.</span><span class="n">set_edge_width</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">ps_vol</span><span class="o">.</span><span class="n">set_material</span><span class="p">(</span><span class="s2">&quot;wax&quot;</span><span class="p">)</span>
+<span class="n">ps_vol</span><span class="o">.</span><span class="n">set_material</span><span class="p">(</span><span class="s2">"wax"</span><span class="p">)</span>
 <span class="n">ps_vol</span><span class="o">.</span><span class="n">set_transparency</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="c1"># alternately:</span>
-<span class="n">ps</span><span class="o">.</span><span class="n">register_volume_mesh</span><span class="p">(</span><span class="s2">&quot;test volume mesh 2&quot;</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">mixed_cells</span><span class="o">=</span><span class="n">cells</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+<span class="n">ps</span><span class="o">.</span><span class="n">register_volume_mesh</span><span class="p">(</span><span class="s2">"test volume mesh 2"</span><span class="p">,</span> <span class="n">verts</span><span class="p">,</span> <span class="n">mixed_cells</span><span class="o">=</span><span class="n">cells</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                          <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span> <span class="n">interior_color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span>
                          <span class="n">edge_color</span><span class="o">=</span><span class="p">((</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)),</span> <span class="n">edge_width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
-                         <span class="n">material</span><span class="o">=</span><span class="s1">&#39;candy&#39;</span><span class="p">,</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+                         <span class="n">material</span><span class="o">=</span><span class="s1">'candy'</span><span class="p">,</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="n">ps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>

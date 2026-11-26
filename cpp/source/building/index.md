@@ -36,8 +36,12 @@ include(FetchContent)
 FetchContent_Declare(
    polyscope
    GIT_REPOSITORY https://github.com/nmwsharp/polyscope.git
-   GIT_TAG        master
+   GIT_TAG        [[ polyscope_latest_version ]]
+   GIT_SHALLOW    TRUE
+   GIT_SUBMODULES ""
+   PATCH_COMMAND  git submodule update --init --recursive --depth 1
 )
+# NOTE: the lines GIT_SHALLOW, GIT_SUBMODULES, PATCH_COMMAND are optional, they shallow-clone the repo+submodules to reduce size
 
 FetchContent_MakeAvailable(polyscope)
 target_link_libraries(YOUR_TARGET_NAME polyscope)

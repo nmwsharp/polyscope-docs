@@ -507,6 +507,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#i-just-want-to-put-triangles-on-the-screen-as-fast-as-possible-how-do-i-do-that" class="md-nav__link">
+    I just want to put triangles on the screen as fast as possible, how do I do that?
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1064,6 +1071,20 @@
     <li class="md-nav__item">
       <a href="../structures/surface_mesh/variable_transparency/" class="md-nav__link">
         Variable Transparency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structures/surface_mesh/simple_triangle_mesh/" class="md-nav__link">
+        Simple Triangle Mesh
       </a>
     </li>
   
@@ -1743,6 +1764,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#i-just-want-to-put-triangles-on-the-screen-as-fast-as-possible-how-do-i-do-that" class="md-nav__link">
+    I just want to put triangles on the screen as fast as possible, how do I do that?
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1792,6 +1820,12 @@
 <li><a href="#how-do-i-run-polyscope-remotely-in-a-browser-via-a-notebook-or-on-headless-server">How do I run Polyscope remotely / on a headless server / in a notebook?</a></li>
 </ul>
 </li>
+<li>
+<p><strong>Structures</strong></p>
+<ul>
+<li><a href="#i-just-want-to-put-triangles-on-the-screen-as-fast-as-possible-how-do-i-do-that">I just want to put triangles on the screen as fast as possible, how do I do that?</a></li>
+</ul>
+</li>
 </ul>
 <!-- - **Working with Data** -->
 
@@ -1806,7 +1840,8 @@
 <p>See <a href="/py//features/screenshots/">Screenshots</a>. Call <code>screenshot()</code>, or click the <code>[screenshot]</code> button in the upper-left corner of the UI.</p>
 <h3 id="positioning-objects-in-the-scene-and-reading-back-results"><strong>Positioning objects in the scene and reading back results</strong><a class="headerlink" href="#positioning-objects-in-the-scene-and-reading-back-results" title="Permanent link">&para;</a></h3>
 <p>See <a href="/py//structures/structure_management/#transforms">Transforms</a> for various options and to set and get per-structure transformations.
-In the GUI, you can use the <code>[Options] --&gt; [Transform]</code> menu to enable a widget to interactively transform each object within the scene.</p>
+In the GUI, you can use the <code>[Options] --&gt; [Transform]</code> menu to enable a widget to interactively transform each object within the scene.
+You can also create <a href="/py//basics/interactive_UIs_and_animation/#transformation-gizmos">custom transformation widgets</a> for any purpose you would like to allow users to specify positions and orientations and read back their values.</p>
 <h3 id="managing-large-numbers-of-structures-and-quantities"><strong>Managing large numbers of structures and quantities</strong><a class="headerlink" href="#managing-large-numbers-of-structures-and-quantities" title="Permanent link">&para;</a></h3>
 <p>Polyscope generally scales just fine with 100s or even 1000s of distinctly named structures in the scene. However, with this many structures, it may become difficult to select what you want in the UI. Polyscope has a few features which can help:</p>
 <p>Every structure has controls in its options UI menu under <code>Options --&gt; Structure Selection</code> and <code>Options --&gt; Quantity Selection</code> which can be used to enable/disable all structures and quantities, or isolate to viewing a single structure.</p>
@@ -1831,6 +1866,8 @@ In the GUI, you can use the <code>[Options] --&gt; [Transform]</code> menu to en
 <p>See <a href="/py//features/headless_rendering/">headless rendering</a>. </p>
 <p>In short, Polyscope <em>does</em> support headless rendering: it can be used on remote serves with no display attached to render images and videos to files or buffers, by initializing with a special EGL backend. However, Polyscope <em>does not</em> currently support any kind of client-server mode, or execution in the browser from remote machines, etc. It must be executing locally on the machine which you are using it from.  </p>
 <p>Polyscope does not currently support creating interactive visualizations inline in IPython/Jupyter notebooks when the kernel is executing on a remote server. If the kernel is executing on your local machine, you <em>can</em> use Polyscope, but the windows will be created directly on your desktop system outside of the notebook.</p>
+<h3 id="i-just-want-to-put-triangles-on-the-screen-as-fast-as-possible-how-do-i-do-that"><strong>I just want to put triangles on the screen as fast as possible, how do I do that?</strong><a class="headerlink" href="#i-just-want-to-put-triangles-on-the-screen-as-fast-as-possible-how-do-i-do-that" title="Permanent link">&para;</a></h3>
+<p>See the <a href="/py//structures/surface_mesh/simple_triangle_mesh"><code>SimpleTriangleMesh</code> structure</a>. It has a limited feature set compared to the full <code>SurfaceMesh</code>, but is designed for maximum performance, and supports fast updates to both vertex positions and face connectivity as well as on-device GPU updates without a CPU round-trip.</p>
 
 
 

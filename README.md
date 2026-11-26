@@ -3,25 +3,24 @@ Documentation for polyscope
 
 To contribute, check out the [instructions here](https://polyscope.run/about/contributing/).
 
-Managed using mkdocs.
+The underlying docs engine is mkdocs and mkdocs-material stack. 
 
-To install mkdocs, theme, and plugins:
-```
-pip install mkdocs==1.4.2 mkdocs-material==9.0.13 mkdocs-macros-plugin==0.7.0 pygments markdown-include
-```
 
-NOTE: the versions of mkdocs things are pinned above. New versions (esp. for mkdocs-material) break our docs fairly often, in part because of our custom-overridden html. When bumping these versions, make sure nothing breaks.
+### Building the docs locally
 
-To preview locally:
+The easiest way to install the dependencies and run the build is with [uv](https://docs.astral.sh/uv/) — install it once with `curl -LsSf https://astral.sh/uv/install.sh | sh`. Package versions are pinned in `uv.lock`.
+
+E.g. to preview locally, run from the `cpp/` or `py/` directory:
 ```
-python3 -m mkdocs serve
+uv run mkdocs serve
 ```
 
-To build and deploy:
+NOTE: versions of mkdocs packages are pinned because new releases (esp. mkdocs-material) break our docs fairly often, in part because of our custom-overridden html. When bumping versions, make sure nothing breaks.
+
+### Deploying new versions
+
+To build and deploy (from the repo root):
 ```
-python3 -m mkdocs build
-git add docs/
-git commit
-git push
+./build_commit_push.sh
 ```
-the gnomes will promptly get to work building the website, and content at polyscope.run will update in a few minutes.
+this internally invokes the build commands and pushes to the hosting repo. The gnomes will promptly get to work building the website, and content at polyscope.run will update in a few minutes.
