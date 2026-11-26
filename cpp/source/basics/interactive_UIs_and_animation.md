@@ -334,9 +334,9 @@ You can implement custom mouse behaviors on clicks and other actions within your
 
     When using [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports), `screenCoords` are global coordinates on the whole window (like the mouse position), and the camera of the viewport containing them is used.
 
-??? func "`#!cpp glm::vec3 view::viewportScreenCoordsToWorldRay(glm::vec2 screenCoords, int32_t viewportInd = -1)`"
+??? func "`#!cpp glm::vec3 view::screenCoordsToWorldRayViewport(glm::vec2 screenCoords, int32_t viewportInd = -1)`"
 
-    Like `screenCoordsToWorldRay()`, but for [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports) where `screenCoords` are local to the viewport `viewportInd` (the active viewport by default). The camera of that viewport is used. Also see `view::viewportBufferIndsToWorldRay()` and `view::viewportScreenCoordsAndDepthToWorldPosition()`.
+    Like `screenCoordsToWorldRay()`, but for [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports) where `screenCoords` are local to the viewport `viewportInd` (the active viewport by default). The camera of that viewport is used. Also see `view::bufferIndsToWorldRayViewport()` and `view::screenCoordsAndDepthToWorldPositionViewport()`.
 
 ??? func "`#!cpp glm::vec3 view::screenCoordsToWorldPosition(glm::vec2 screenCoords)`"
 
@@ -358,7 +358,7 @@ You can implement custom mouse behaviors on clicks and other actions within your
 
     See also `#!cpp PickResult pickAtBufferInds(glm::ivec2 bufferInds)` for a variant which takes buffer indices as an argument instead.
 
-    When using [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports), `screenCoords` and `bufferInds` are global coordinates on the whole window, and the pick is routed to the viewport containing them. To pick directly in a specific viewport using viewport-local coordinates, use `#!cpp PickResult pickViewportAtScreenCoords(glm::vec2 screenCoords, int32_t viewportInd = -1)` or `#!cpp PickResult pickViewportAtBufferInds(glm::ivec2 bufferInds, int32_t viewportInd = -1)` (passing `-1` for the active viewport).
+    When using [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports), `screenCoords` and `bufferInds` are global coordinates on the whole window, and the pick is routed to the viewport containing them. To pick directly in a specific viewport using viewport-local coordinates, use `#!cpp PickResult pickAtScreenCoordsViewport(glm::vec2 screenCoords, int32_t viewportInd = -1)` or `#!cpp PickResult pickAtBufferIndsViewport(glm::ivec2 bufferInds, int32_t viewportInd = -1)` (passing `-1` for the active viewport).
 
     Screen coordinates and buffer indices both refer to a location in the rendered 2d image. Screen coordinates are real-valued, whereas buffer indices are integer. On some platforms they may be identical, but on others with high-DPI screens, they may differ. In the common-case of getting mouse positions from ImGui, you want screen coords.
 

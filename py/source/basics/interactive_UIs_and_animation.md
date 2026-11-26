@@ -497,9 +497,9 @@ You can implement custom mouse behaviors on clicks and other actions within your
 
     When using [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports), `screen_coords` are global coordinates on the whole window (like the mouse position), and the camera of the viewport containing them is used.
 
-??? func "`#!python viewport_screen_coords_to_world_ray(screen_coords, viewport_ind=-1)`"
+??? func "`#!python screen_coords_to_world_ray_viewport(screen_coords, viewport_ind=-1)`"
 
-    Like `screen_coords_to_world_ray()`, but for [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports) where `screen_coords` are local to the viewport `viewport_ind` (the active viewport by default). The camera of that viewport is used. Also see `viewport_buffer_inds_to_world_ray()` and `viewport_screen_coords_and_depth_to_world_position()`.
+    Like `screen_coords_to_world_ray()`, but for [multiple viewports]([[url.prefix]]/basics/camera_controls/#multiple-viewports) where `screen_coords` are local to the viewport `viewport_ind` (the active viewport by default). The camera of that viewport is used. Also see `buffer_inds_to_world_ray_viewport()` and `screen_coords_and_depth_to_world_position_viewport()`.
 
 ??? func "`#!python screen_coords_to_world_position(screen_coords)`"
 
