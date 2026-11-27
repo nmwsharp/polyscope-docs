@@ -82,7 +82,30 @@ Documentation is hosted in its own [separate repository](https://github.com/nmws
 
 There are two duplicate copies of all the docs for C++ and Python, stored in parallel directories `/cpp` and `/py`. A few shared files and assets are stored in the `/shared` directory, or symlinked from the `/py` subdirectory to point to a file the `/cpp` directory. We try to keep these two parallel versions in sync as much as possible, only differing where necessary between C++ and Python.
 
-To preview the documentation while editing, first install the necessary packages with `pip install mkdocs mkdocs-material==6.2.8 mkdocs-macros-plugin pygments`. Then run `python3 -m mkdocs serve` (run this command from the `/cpp` directory to view C++ docs, and likewise for `/py`). A local address will be printed to your terminal, which you can navigate to in-browser to see the docs.
+To preview the documentation while editing:
+
+=== "uv"
+
+    Run this from the `/cpp` directory to view C++ docs, or from `/py` for Python docs:
+    ```sh
+    uv run mkdocs serve
+    ```
+    uv installs the necessary packages automatically, at the versions pinned in `uv.lock`.
+
+=== "conda"
+
+    From the repository root, create an environment with the necessary packages:
+    ```sh
+    conda create -n polyscope-docs python=3.12
+    conda activate polyscope-docs
+    python -m pip install mkdocs==1.4.2 mkdocs-material==9.0.13 mkdocs-material-extensions==1.3.1 mkdocs-macros-plugin==1.5.0
+    ```
+    Then run this from the `/cpp` directory to view C++ docs, or from `/py` for Python docs:
+    ```sh
+    mkdocs serve
+    ```
+
+A local address will be printed to your terminal, which you can navigate to in-browser to see the docs.
 
 Hopefully editing the docs markdown files should be self-evident, you can mainly copy existing content & formatting. Any new files need to be added the manifests in `mkdocs.yml`.  Don't forget to add a blurb to the [release notes](../release_notes)! 
 
@@ -108,20 +131,37 @@ The bindings are actually managed internally as two separate Python packages: `p
 
 Note that a few stylistic conventions between Python and C++. In particular, we do not expose classes for quantities, but set options via optional keyword arguments when the quantity is added. The nanobind C++ bindings take Eigen arrays as arguments, because nanobind performs automatic translation between Eigen/numpy.
 
-Python binding unit tests are stored in `/test/polyscope_test.py`. As with C++, these are mainly just simple "smoke tests" which call the functions with dummy data and ensure no errors are thrown. All new bindings functions need a test! To build and test the bindings, first compile the bindings from the `polyscope-py` root directory like
-```sh
-mkdir build
-cd build
-cmake ..
-make -j8
-```
-the run `python polyscope_test.py`. As you write code, these bindings must be recompiled to reflect any changes to the nanobind C++. When testing, make sure there is not another copy of Polyscope for Python installed in your system, which might unintentionally be used instead of the development version! Also, the adjacent `demo_app.py` can be used for simple testing.
+Python binding unit tests are stored in `/test/polyscope_test.py`. As with C++, these are mainly just simple "smoke tests" which call the functions with dummy data and ensure no errors are thrown. All new bindings functions need a test! To build and test the bindings, run these from the `polyscope-py` root directory:
+
+=== "uv"
+
+    ```sh
+    git submodule update --init --recursive
+    uv sync
+    uv run cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+    uv run cmake --build build --parallel 12
+    uv run test/polyscope_test.py
+    ```
+
+=== "conda"
+
+    ```sh
+    git submodule update --init --recursive
+    conda create -n polyscope-dev python=3.12
+    conda activate polyscope-dev
+    python -m pip install numpy typing_extensions cmake
+    cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+    cmake --build build --parallel 12
+    python test/polyscope_test.py
+    ```
+
+As you write code, these bindings must be recompiled to reflect any changes to the nanobind C++. When testing, make sure there is not another copy of Polyscope for Python installed in your environment, which might unintentionally be used instead of the development version! Also, `test/scripts/polyscope_demo.py` can be used for simple testing.
 
 Don't forget, the Python bindings have a parallel set of docs in the `/py` [directory](https://github.com/nmwsharp/polyscope-docs/tree/master/docs/py). Updates to Python should be reflected there.
 
 When all your tests are passing, create a pull request! As with C++, submitting a pull request to the Python bindings will trigger a cloud build and some automated checks.
 
-Actually deploying a new Python version to `pip` and `conda` package managers is a somewhat significant process, so we typically group together updates before cutting a new version.  Ping @nmwsharp to get a new version deployed.  Major and minor versions of the Python library are kept in-sync with the C++ library versions, whereas patch versions (`1.2.4` --> `1.2.5`) are used for new updates to the Python bindings only.
+Actually deploying a new Python version to PyPI and conda-forge is a somewhat significant process, so we typically group together updates before cutting a new version.  Ping @nmwsharp to get a new version deployed.  Major and minor versions of the Python library are kept in-sync with the C++ library versions, whereas patch versions (`1.2.4` --> `1.2.5`) are used for new updates to the Python bindings only.
 
 
 
