@@ -35,6 +35,17 @@ The former is concise and programmatic, while the latter avoids the need to keep
 
 As before, each structure offers a `get___(name)` method, like `get_surface_mesh(name)` which can be used to get a handle to the structure of that type by name.
 
+If the type of structure is only known at runtime, `get_structure(structure_type, name)` can be used instead.
+
+??? func "`#!python get_structure(structure_type, name)`"
+
+    Get a handle to a structure by type and name. The result is an object of the corresponding type, such as a `SurfaceMesh` or a `PointCloud`.
+
+    - `structure_type` string, one of `'Surface Mesh'`, `'Point Cloud'`, etc. These are the same names reported by `PickResult.structure_type_name`.
+    - `name` string, the name of the structure
+
+    Raises an error if there is no such structure.
+
 
 ## Removing structures
 

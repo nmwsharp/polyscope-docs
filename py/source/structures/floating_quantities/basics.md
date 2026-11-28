@@ -13,3 +13,27 @@ One example of a floating quantity is an Images Quantity. You might want to visu
 
 
 The sub-menus to the left give the various floating quantities available.
+
+## Removing floating quantities
+
+Floating quantities which were added at the root level of the scene can be removed by name.
+
+```python
+import polyscope as ps
+import numpy as np
+
+ps.init()
+
+ps.add_scalar_image_quantity("my image", np.zeros((100, 200)))
+ps.remove_floating_quantity("my image")
+```
+
+For a floating quantity which was added to a particular structure, use that structure's [`remove_quantity()`]([[url.prefix]]/structures/structure_management/#quantities), like `ps_mesh.remove_quantity("my image")`.
+
+??? func "`#!python remove_floating_quantity(name, error_if_absent=False)`"
+
+    Remove a floating quantity which was added at the root level of the scene.
+
+    - `name` string, the name of the quantity
+    - `error_if_absent` boolean, raise an error if there is no such quantity
+

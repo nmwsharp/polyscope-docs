@@ -123,6 +123,35 @@ ps.show(3)
 
 ### Iterate over children in a group
 
+```python
+group = ps.get_group("my group")
+
+for structure in group.get_child_structures():
+    structure.set_transparency(0.5)
+
+    if isinstance(structure, ps.PointCloud):
+        structure.set_radius(0.01)
+
+for child_group in group.get_child_groups():
+    print(child_group.get_name())
+```
+
+??? func "`#!python Group.get_child_structures()`"
+    
+    ##### get child structures
+
+    Get a list of all structures contained in the group. Each entry is an object of the corresponding type, such as a `SurfaceMesh` or a `PointCloud`.
+
+    Only returns top-level children, does not recurse into sub-groups.
+
+??? func "`#!python Group.get_child_groups()`"
+    
+    ##### get child groups
+
+    Get a list of all nested groups contained in the group, as `Group` objects.
+
+    Only returns top-level children, does not recurse into sub-groups.
+
 ??? func "`#!python Group.get_child_structure_names()`"
     
     ##### get child structure names
@@ -131,7 +160,7 @@ ps.show(3)
 
     Only returns top-level children, does not recurse into sub-groups.
 
-    You can get the underlying structures like `get_surface_mesh(structure_name)`, etc, and process as desired.
+    To work with the structures themselves, use `get_child_structures()` instead.
 
 ??? func "`#!python Group.get_child_group_names()`"
     
@@ -141,7 +170,7 @@ ps.show(3)
 
     Only returns top-level children, does not recurse into sub-groups.
 
-    You can get the underlying groups like `get_group(group_name)`, etc, and process as desired.
+    To work with the groups themselves, use `get_child_groups()` instead.
 
 ### Group settings
 
