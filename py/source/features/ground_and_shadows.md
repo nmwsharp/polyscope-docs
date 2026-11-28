@@ -61,7 +61,7 @@ The `shadow_blur_iters` and `shadow_darkness` parameters below adjust the visual
 
 ## Ground plane positioning
 
-The orientation of the ground plane is determined by the [up direction for the scene]([[url.prefix]]/basics/camera_controls/#up-direction), which can be set along any of the coordinate directions such as `+X`, `-Z`, etc.
+The orientation of the ground plane is determined by the [up direction for the scene]([[url.prefix]]/basics/camera_controls/#canonical-up-and-front), which can be set along any of the coordinate directions such as `+X`, `-Z`, etc.
 
 By default, the height of the ground plane is set automatically to the bottom of the bounding box for the scene content (and can optionally be relatively offset via `set_ground_plane_height_factor()`).
 

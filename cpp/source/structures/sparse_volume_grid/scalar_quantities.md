@@ -42,7 +42,7 @@ polyscope::show();
 
     - `name` the name of the quantity
     - `values` a flat array of scalars, one per occupied cell in the same order as the `occupiedCells` array used at registration. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array.
-    - `type` the [data type]([[url.prefix]]/features/data_types) of the scalar (standard, symmetric, magnitude, etc.)
+    - `type` the [data type](#scalar-quantity-options) of the scalar (standard, symmetric, magnitude, etc.)
 
 
 ### Add node scalars
@@ -56,7 +56,7 @@ polyscope::show();
     - `name` the name of the quantity
     - `nodeIndices` an array of `glm::ivec3` node grid indices. The type should be [adaptable]([[url.prefix]]/data_adaptors) to an array of `glm::ivec3`.
     - `nodeValues` a flat array of scalar values, one per entry in `nodeIndices`. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array.
-    - `type` the [data type]([[url.prefix]]/features/data_types) of the scalar (standard, symmetric, magnitude, etc.)
+    - `type` the [data type](#scalar-quantity-options) of the scalar (standard, symmetric, magnitude, etc.)
 
 
 [[% include 'common/scalar_quantity.md' %]]

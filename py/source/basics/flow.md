@@ -6,7 +6,7 @@ Polyscope needs to be initialized exactly once by calling `init()`, typically ne
 
 There are two separate ways to structure your program's control flow with polyscope.  Either way, `init()` must be called first.
 
-**Option 1: show()** The simpler, and more-common approach is to call `show()`, which will run Polyscope's window continuously. The `show()` function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via [the `user_callback`]([[url.prefix]]/features/callbacks_and_UIs).
+**Option 1: show()** The simpler, and more-common approach is to call `show()`, which will run Polyscope's window continuously. The `show()` function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via [the `user_callback`]([[url.prefix]]/basics/interactive_UIs_and_animation/).
 
 ```python
 import polyscope as ps
@@ -27,7 +27,7 @@ ps.show() # shows the UI, blocks until the UI exits
 ps.show()
 ```
 
-**Option 2: frame_tick()** An alternate approach is to manually call `frame_tick()` in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. [The `user_callback`]([[url.prefix]]/features/callbacks_and_UIs) is still necessary to add ImGui UI elements.
+**Option 2: frame_tick()** An alternate approach is to manually call `frame_tick()` in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. [The `user_callback`]([[url.prefix]]/basics/interactive_UIs_and_animation/) is still necessary to add ImGui UI elements.
 
 ```python
 import polyscope as ps
@@ -51,7 +51,7 @@ When using `frame_tick()`, see the setting `set_frame_tick_limit_fps_mode()` to 
 
     Polyscope includes ImGui, allowing you to build custom UI elements like buttons and fields. 
 
-    Regardless of which control flow method you use, ImGui calls can _only_ be made within [the `userCallback` function]([[url.prefix]]/features/callbacks_and_UIs). Making ImGui calls elsewhere will lead to errors and crashes.
+    Regardless of which control flow method you use, ImGui calls can _only_ be made within [the `userCallback` function]([[url.prefix]]/basics/interactive_UIs_and_animation/). Making ImGui calls elsewhere will lead to errors and crashes.
 
 ## Functions
 
@@ -63,7 +63,7 @@ When using `frame_tick()`, see the setting `set_frame_tick_limit_fps_mode()` to 
 
     Performs one-time work like setting up openGL and creating a window.
 
-    `backend` is an optional specifier for which [rendering backend]([[url.prefix]]/building#backends) to use, passing `""` selects a reasonable default backend. Generally, you should not need to manually set the backend.
+    `backend` is an optional specifier for which [rendering backend]([[url.prefix]]/features/headless_rendering/) to use, passing `""` selects a reasonable default backend. Generally, you should not need to manually set the backend.
 
 
 ??? func "`#!python show()`"

@@ -73,7 +73,7 @@ polyscope::show();
 
 ### Picking
 
-"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information. 
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#picking-selection-and-querying-the-scene) for general information. 
 
 By default, if you have only registered data defined on nodes, then only nodes can be picked (and vice-versa for cells). You can override this behavior by calling `VolumeGrid::markNodesAsUsed()`, to act as if a node quantity had been added, and likewise for `VolumeGrid::markCellsAsUsed()`.
 

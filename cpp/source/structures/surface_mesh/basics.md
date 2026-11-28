@@ -74,7 +74,7 @@ The locations of the vertices in a mesh can be updated with the member function 
 
 ### Selection / Picking
 
-"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information about selection. 
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#picking-selection-and-querying-the-scene) for general information about selection. 
 
 ```cpp
 struct SurfaceMeshPickResult {
@@ -146,6 +146,6 @@ edge width | how thick to draw mesh edges, use `0.` to disable and `1.` for reas
 material | what [material]([[url.prefix]]/features/materials) to use | `#!cpp std::string getMaterial()` | `#!cpp setMaterial(std::string name)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 back face policy | what [back face policy](#back-face-policies) to use | `#!cpp BackFacePolicy getBackFacePolicy()` | `#!cpp setBackFacePolicy(BackFacePolicy newPolicy)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 back face color | [back face color](#back-face-policies) for the `Custom` policy| `#!cpp BackFacePolicy getBackFaceColor()` | `#!cpp setBackFaceColor(glm::vec3 val)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
-selection mode | [what elements can be selected](#picking-and-selection) | `#!cpp MeshSelectionMode getSelectionMode()` | `#!cpp setSelectionMode(MeshSelectionMode newMode)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
+selection mode | [what elements can be selected](#selection-picking) | `#!cpp MeshSelectionMode getSelectionMode()` | `#!cpp setSelectionMode(MeshSelectionMode newMode)` | [yes]([[url.prefix]]/basics/parameters/#persistent-values) |
 
 

@@ -77,7 +77,7 @@ Every structure has controls in its options UI menu under `Options --> Structure
 
 Use [Groups]([[url.prefix]]/features/groups/) to group your structures in to categories which can be enabled/disabled all together. Notice the `hide descendants` and `show details` options on groups, which can totally hide structures from the UI while still offering some control via the group.
 
-You can always use the [Custom UIs]([[url.prefix]]/features/callbacks_and_UIs/) to create your own interface buttons and selectors which programmatically enable or disable registered objects or adjust their settings.
+You can always use the [Custom UIs]([[url.prefix]]/basics/interactive_UIs_and_animation/#custom-uis-with-imgui) to create your own interface buttons and selectors which programmatically enable or disable registered objects or adjust their settings.
 
 ### **How do I show multiple views / split the window into panels?**
 

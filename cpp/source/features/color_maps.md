@@ -9,20 +9,20 @@ Different color maps are appropriate for different situations:
 
 <!--TODO render images of these-->
 
-Polyscope supports the following built-in color maps:
+Polyscope supports the following built-in color maps[^4]:
 
 | **Name** | **Type** | **String Key** | 
 --- | --- | ---
-viridis | sequential | `viridis`
+viridis[^1] | sequential | `viridis`
 blues | sequential | `blues`
 reds | sequential | `reds`
 coolwarm | diverging | `coolwarm`
 pink-green | diverging | `pink-green`
-phase | cyclic | `phase`
+phase[^2] | cyclic | `phase`
 spectral | decorative | `spectral`
 rainbow | decorative | `rainbow`
 jet | decorative | `jet`
-turbo | decorative | `turbo`
+turbo[^3] | decorative | `turbo`
 
 
 [^1]: Viridis is by Nathaniel J. Smith, Stefan van der Walt, and Eric Firing. [link](https://github.com/BIDS/colormap/blob/master/colormaps.py)

@@ -6,7 +6,7 @@ Polyscope needs to be initialized exactly once by calling `init()`, typically ne
 
 There are two separate ways to structure your program's control flow with polyscope.  Either way, `init()` must be called first.
 
-**Option 1: show()** The simpler, and more-common approach is to call `show()`, which will run Polyscope's window continuously. The `show()` function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via [the `userCallback`]([[url.prefix]]/features/callbacks_and_UIs).
+**Option 1: show()** The simpler, and more-common approach is to call `show()`, which will run Polyscope's window continuously. The `show()` function will not return until the window is closed. If you want to execute your own code while the Polyscope window is active, you must do so via [the `userCallback`]([[url.prefix]]/basics/interactive_UIs_and_animation/).
 
 ```cpp
 #include "polyscope/polyscope.h"
@@ -29,7 +29,7 @@ polyscope::show(); // shows the UI, blocks until the UI exits
 polyscope::show();
 ```
 
-**Option 2: frameTick()** An alternate approach is to manually call `frameTick()` in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. [The `userCallback`]([[url.prefix]]/features/callbacks_and_UIs) is still necessary to add ImGui UI elements.
+**Option 2: frameTick()** An alternate approach is to manually call `frameTick()` in a tight loop to run the UI. This is useful to quickly integrate Polyscope into existing programs which already have a main loop. [The `userCallback`]([[url.prefix]]/basics/interactive_UIs_and_animation/) is still necessary to add ImGui UI elements.
 
 ```cpp
 #include "polyscope/polyscope.h"
@@ -55,7 +55,7 @@ When using `frameTick()`, see the setting `options::frameTickLimitFPSMode` to cu
 
     Polyscope includes ImGui, allowing you to build custom UI elements like buttons and fields. 
 
-    Regardless of which control flow method you use, ImGui calls can _only_ be made within [the `userCallback` function]([[url.prefix]]/features/callbacks_and_UIs). Making ImGui calls elsewhere will lead to errors and crashes.
+    Regardless of which control flow method you use, ImGui calls can _only_ be made within [the `userCallback` function]([[url.prefix]]/basics/interactive_UIs_and_animation/). Making ImGui calls elsewhere will lead to errors and crashes.
 
 ## Functions
 

@@ -39,7 +39,7 @@ ps.show()
 
 Volume meshes are registered with Polyscope by passing the location of each vertex in the mesh, as well as the vertex indices for each cell. There are a few different argument variants to register meshes with tets, hexes, or a general mix of element types.
 
-![element ordering conventions]([[url.prefix]]/media/tet_element_orderings.jpg)
+![element ordering conventions]([[url.prefix]]/media/volume_mesh_element_orderings.jpg)
 
 
 

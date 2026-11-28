@@ -67,7 +67,7 @@ A color render image quantity takes a depth value per-pixel, (optionally) a worl
 
 !!! info "Color vs. Raw Color Render Images"
 
-    A _color_ render image applies [materials](/features/materials/) shading and lighting to the image, just like Polyscope usually does for meshes and other objects. A _raw color_ render image does not do any additional shading, and simply displays the given colors directly onto the screen.
+    A _color_ render image applies [materials]([[url.prefix]]/features/materials/) shading and lighting to the image, just like Polyscope usually does for meshes and other objects. A _raw color_ render image does not do any additional shading, and simply displays the given colors directly onto the screen.
 
 **Example:**
 ```python

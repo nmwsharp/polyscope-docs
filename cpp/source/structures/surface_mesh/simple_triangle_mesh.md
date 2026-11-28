@@ -74,7 +74,7 @@ The `SimpleTriangleMesh` structure supports a wider range of updates than the st
 
 ## Selection / Picking
 
-"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. As with other structures, call `interpretPickResult()` to get element-level information about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information.
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene. As with other structures, call `interpretPickResult()` to get element-level information about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#picking-selection-and-querying-the-scene) for general information.
 
 ```cpp
 struct SimpleTriangleMeshPickResult {
@@ -145,14 +145,14 @@ mesh->addFaceScalarQuantity("my face scalar", fScalar);
     Add a scalar quantity defined at the vertices of the mesh.
 
     - `values` is the array of scalars at vertices. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. The length must equal the current vertex count.
-    - `type` is the [data type]([[url.prefix]]/features/scalar_quantities/#data-type) hint used for color mapping. Default is `DataType::STANDARD`.
+    - `type` is the [data type]([[url.prefix]]/structures/surface_mesh/scalar_quantities/#scalar-quantity-options) hint used for color mapping. Default is `DataType::STANDARD`.
 
 ??? func "`#!cpp SimpleTriangleMeshFaceScalarQuantity* SimpleTriangleMesh::addFaceScalarQuantity(std::string name, const T& values, DataType type = DataType::STANDARD)`"
 
     Add a scalar quantity defined at the faces of the mesh.
 
     - `values` is the array of scalars at faces. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array. The length must equal the current face count.
-    - `type` is the [data type]([[url.prefix]]/features/scalar_quantities/#data-type) hint used for color mapping. Default is `DataType::STANDARD`.
+    - `type` is the [data type]([[url.prefix]]/structures/surface_mesh/scalar_quantities/#scalar-quantity-options) hint used for color mapping. Default is `DataType::STANDARD`.
 
 ### Updating Scalar Data
 

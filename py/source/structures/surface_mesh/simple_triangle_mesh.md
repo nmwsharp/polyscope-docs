@@ -126,7 +126,7 @@ ps_mesh.add_scalar_quantity("face scalar", vals_f, defined_on="faces")
     - `name` string, a name for the quantity
     - `values` a length `N` numpy float array of scalar values
     - `defined_on` one of `'vertices'` or `'faces'`
-    - `datatype` one of `'standard'`, `'symmetric'`, `'magnitude'`, `'categorical'`; see [scalar quantities]([[url.prefix]]/features/scalar_quantities) for details
+    - `datatype` one of `'standard'`, `'symmetric'`, `'magnitude'`, `'categorical'`; see [scalar quantities]([[url.prefix]]/structures/surface_mesh/scalar_quantities/#scalar-quantity-options) for details
 
     This function also accepts optional keyword arguments to customize appearance and behavior.
 

@@ -113,7 +113,7 @@ Slice planes have [special functionality]([[url.prefix]]/features/slice_planes/#
 
 ### Selection / Picking
 
-"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#selection-picking) for general information.
+"Picking" refers to selecting and inspecting elements by clicking on the object in the scene.  As with other structures, you can call `interpretPickResult()` to get additional info about a click. See [the overview of Selection / Picking]([[url.prefix]]/basics/interactive_UIs_and_animation/#picking-selection-and-querying-the-scene) for general information.
 
 ```cpp
 struct VolumeMeshPickResult {

@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
 
 ??? func "`#!cpp bool options::openImGuiWindowForUserCallback`"
 
-    If true, an ImGui window will be created and docked to the side of the UI when the [user callback function](../callbacks_and_UIs) is invoked. This means you can immediately start making ui calls like `ImGui::Button("do stuff")`. 
+    If true, an ImGui window will be created and docked to the side of the UI when the [user callback function]([[url.prefix]]/basics/interactive_UIs_and_animation/) is invoked. This means you can immediately start making ui calls like `ImGui::Button("do stuff")`. 
     
     If false, no ImGui anything will be pushed on the stack when the callback is invoked, and the user is entirely responsible for making any ImGui calls (or not making any).
 

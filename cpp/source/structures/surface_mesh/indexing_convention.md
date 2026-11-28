@@ -1,6 +1,6 @@
 ## Default ordering
 
-Polyscope abstracts over data types by accepting generic ordered containers of data to visualize (see [input adaptors](../../../basics/array_adaptors)). Unfortunately, not everyone can agree on how to order the elements of their meshes---which edge is the i'th edge in a mesh?
+Polyscope abstracts over data types by accepting generic ordered containers of data to visualize (see [input adaptors]([[url.prefix]]/data_adaptors/)). Unfortunately, not everyone can agree on how to order the elements of their meshes---which edge is the i'th edge in a mesh?
 
 For vertices and faces, Polyscope only supports one order: the order of the elements used when you registered the mesh. However, for edges, halfedges, and corners it is more complicated. For these data, you should generally explicitly tell Polyscope what ordering/indexing you will be using for the data.
 
@@ -44,7 +44,7 @@ For edge-valued data, a permutation _must_ be set. This is a sanity check to cat
 
     Set a non-standard ordering for edge-valued data on a mesh.
 
-    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::vector<size_t>`.
+    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors]([[url.prefix]]/data_adaptors/). One good choice is a `#!cpp std::vector<size_t>`.
 
     If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `permArr`.
 
@@ -78,7 +78,7 @@ Arrays of halfedge-valued data passed for visualization will be interpted in tha
 
     Set a non-standard ordering for halfedge-valued data on a mesh.
 
-    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::vector<size_t>`.
+    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors]([[url.prefix]]/data_adaptors/). One good choice is a `#!cpp std::vector<size_t>`.
 
     If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `permArr`.
 
@@ -111,7 +111,7 @@ Arrays of corner-valued data passed for visualization will be interpted in that 
 
     Set a non-standard ordering for corner-valued data on a mesh.
 
-    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::vector<size_t>`.
+    The argument should be an array-like type which can be interpreted as an array integers, see [input adaptors]([[url.prefix]]/data_adaptors/). One good choice is a `#!cpp std::vector<size_t>`.
     
     If the size of your index space is different from size of the default index space, the optional second argument must give this new size. If not given, the size will be inferred from the largest entry in `permArr`.
 
@@ -130,7 +130,7 @@ The permutations should be passed as a `#!cpp std::array<std::pair<T,size_t>,3>`
 
     Set all of the ordering permutations at once, as described above.
     
-    The argument should be a `std::array<>` of an array-like type which can be interpreted as an array integers, see [input adaptors](../../../basics/array_adaptors). One good choice is a `#!cpp std::array<std::pair<std::vector<size_t>, size_t>, 3>`.
+    The argument should be a `std::array<>` of an array-like type which can be interpreted as an array integers, see [input adaptors]([[url.prefix]]/data_adaptors/). One good choice is a `#!cpp std::array<std::pair<std::vector<size_t>, size_t>, 3>`.
     
     If the size of your index space is different from size of the default index space, the second component of each pair must give this new size. Otherwise, the second component of the pair may be set to zero, to infer the size of the index space from the maximum index given.
     

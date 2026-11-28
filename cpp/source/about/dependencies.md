@@ -1,4 +1,4 @@
-Polyscope stands on the shoulders of many outstanding open-source projects. These dependencies are all [permissively licensed]([[url.prefix]]/about/license), and [bundled with the project]([[url.prefix]]/building); we just list them here to give due credit!
+Polyscope stands on the shoulders of many outstanding open-source projects. These dependencies are all [permissively licensed]([[url.prefix]]/about/license), and bundled with the project; we just list them here to give due credit!
 
 
 | Name | Purpose | Link |
