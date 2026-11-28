@@ -33,6 +33,20 @@ scalarQ->setEnabled(true);
 polyscope::show();
 ```
 
+### Data layout
+
+Volume grid data is passed as a flat array, with the X index changing fastest, then Y, then Z. The value at 3D index `(i,j,k)` is stored at
+
+```cpp
+// for node data
+size_t ind = i + nodeDimX * (j + nodeDimY * k);
+
+// for cell data, where cellDim = nodeDim - 1 along each axis
+size_t ind = i + cellDimX * (j + cellDimY * k);
+```
+
+Here `i` steps along the x-axis, `j` along the y-axis, and `k` along the z-axis. With `spacing = (boundMax - boundMin) / (nodeDim - 1)` computed per-axis, node `(i,j,k)` is located at `boundMin + (i,j,k) * spacing`, and cell `(i,j,k)` is centered at `boundMin + (i+0.5, j+0.5, k+0.5) * spacing`. The helpers `VolumeGrid::flattenNodeIndex()` and `VolumeGrid::flattenCellIndex()` compute these flat indices from a `glm::uvec3`.
+
 ### Add scalars
 
 ???+ func "`#!cpp VolumeGridNodeScalarQuantity* VolumeGrid::addNodeScalarQuantity(std::string name, const T& data, DataType type = DataType::STANDARD)`"
@@ -44,7 +58,7 @@ polyscope::show();
     - `data` is the (flattened) array of scalars at nodes. The type should be [adaptable]([[url.prefix]]/data_adaptors) to a `float` scalar array; this includes may common types like `std::vector<float>` and `Eigen::VectorXd`. The length should be the number of nodes in the grid.
 
 
-??? func "`#!cpp VolumeGridCellScalarQuantity* VolumeMesh::addCellScalarQuantity(std::string name, const T& data, DataType type = DataType::STANDARD)`"
+??? func "`#!cpp VolumeGridCellScalarQuantity* VolumeGrid::addCellScalarQuantity(std::string name, const T& data, DataType type = DataType::STANDARD)`"
 
     Add a scalar quantity defined at the cells of the grid.
     

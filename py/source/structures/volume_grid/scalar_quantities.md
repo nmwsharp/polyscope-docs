@@ -19,7 +19,7 @@ bound_high = (3., 3., 3.)
 ps_grid = ps.register_volume_grid("sample grid", dims, bound_low, bound_high)
 
 # your dimX*dimY*dimZ buffer of data
-scalar_vals = np.zeros(dims[0], dims[1], dims[2]) 
+scalar_vals = np.zeros((dims[0], dims[1], dims[2])) 
 
 # add a scalar function on the grid
 ps_grid.add_scalar_quantity("node scalar", scalar_vals, defined_on='nodes')
@@ -31,14 +31,44 @@ ps_grid.add_scalar_quantity("node scalar2", scalar_vals, defined_on='nodes',
 ps.show()
 ```
 
+### Data layout
+
+Volume grid data is passed as a 3D array indexed like `values[i,j,k]`, where `i` steps along the x-axis, `j` along the y-axis, and `k` along the z-axis. Pass the 3D array directly, there is no need to flatten it.
+
+| `defined_on` | Shape of `values` | World position of `values[i,j,k]` |
+--- | --- | ---
+`'nodes'` | `node_dims` | `bound_low + (i,j,k) * spacing`
+`'cells'` | `node_dims - 1` | `bound_low + (i+0.5, j+0.5, k+0.5) * spacing`
+
+where `spacing = (bound_high - bound_low) / (node_dims - 1)`, computed per-axis.
+
+**Example:** evaluating a function at the grid nodes
+```python
+layout_dims = (20, 30, 40)
+bound_low = (-3., -3., -3.)
+bound_high = (3., 3., 3.)
+layout_grid = ps.register_volume_grid("layout grid", layout_dims, bound_low, bound_high)
+
+# coordinates of the nodes along each axis
+xs, ys, zs = [np.linspace(bound_low[d], bound_high[d], layout_dims[d]) for d in range(3)]
+
+# NOTE: indexing='ij' is essential, numpy's default 'xy' swaps the x and y axes
+X, Y, Z = np.meshgrid(xs, ys, zs, indexing='ij')
+
+values = np.sqrt(X**2 + Y**2 + Z**2) - 1.  # shape (20, 30, 40)
+layout_grid.add_scalar_quantity("sphere sdf", values, defined_on='nodes')
+```
+
+If your array is instead indexed as `values[k,j,i]` (z first), transpose it with `values.transpose(2,1,0)` before passing it in.
+
 ### Add scalars
 
 ???+ func "`#!python VolumeGrid.add_scalar_quantity(name, values, defined_on='nodes', datatype="standard", **scalar_args)`"
 
-    Add a scalar quantity defined at the nodes of the grid.
+    Add a scalar quantity defined at the nodes or cells of the grid.
     
     - `name` string, a name for the quantity
-    - `values` a numpy array of shape `(dimX, dimY, dimZ)` giving scalars at nodes/cells. 
+    - `values` a numpy array of scalars indexed as `values[i,j,k]` along x,y,z. The shape is `node_dims` for nodes, and `node_dims - 1` for cells (see [data layout](#data-layout)).
     - `defined_on` one of `'nodes', 'cells'`, is this data a value per node or a value per cell?
     
     This function also accepts optional keyword arguments listed below, which customize the appearance and behavior of the quantity.
@@ -91,7 +121,6 @@ ps.show()
 
 
 # extract the isosurface as its own mesh structure
-scalarQ->registerIsosurfaceAsMesh("my isosurface mesh");
 ps_grid.add_scalar_quantity("node scalar", scalar_vals, defined_on='nodes',
                             enable_isosurface_viz=True, isosurface_level=0.5,
                             register_isosurface_as_mesh_with_name='isosurface mesh')
